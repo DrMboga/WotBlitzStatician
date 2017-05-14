@@ -3,6 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotBlitzStatician.Model", "WotBlitzStatician.Model\WotBlitzStatician.Model.csproj", "{57968678-40AB-4359-B874-EC6241BF1FD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotBlitzStatician.Data", "WotBlitzStatician.Data\WotBlitzStatician.Data.csproj", "{E1080405-537F-4762-8D66-457353BDF915}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotBlitzStatician.WotApiClient", "WotBlitzStatician.WotApiClient\WotBlitzStatician.WotApiClient.csproj", "{0D07D248-B04E-4E12-964B-0F04DCDF4BF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotBlitzStatician.Logic", "WotBlitzStatician.Logic\WotBlitzStatician.Logic.csproj", "{70704092-149F-4D72-A73E-6733CE725999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotBlitzStatician.Logic.Tests", "WotBlitzStatician.Logic.Tests\WotBlitzStatician.Logic.Tests.csproj", "{AA318A16-C3A8-4294-B051-252EE4B098DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +21,21 @@ Global
 		{57968678-40AB-4359-B874-EC6241BF1FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57968678-40AB-4359-B874-EC6241BF1FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57968678-40AB-4359-B874-EC6241BF1FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1080405-537F-4762-8D66-457353BDF915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1080405-537F-4762-8D66-457353BDF915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1080405-537F-4762-8D66-457353BDF915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1080405-537F-4762-8D66-457353BDF915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D07D248-B04E-4E12-964B-0F04DCDF4BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D07D248-B04E-4E12-964B-0F04DCDF4BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D07D248-B04E-4E12-964B-0F04DCDF4BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D07D248-B04E-4E12-964B-0F04DCDF4BF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70704092-149F-4D72-A73E-6733CE725999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70704092-149F-4D72-A73E-6733CE725999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70704092-149F-4D72-A73E-6733CE725999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70704092-149F-4D72-A73E-6733CE725999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA318A16-C3A8-4294-B051-252EE4B098DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA318A16-C3A8-4294-B051-252EE4B098DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA318A16-C3A8-4294-B051-252EE4B098DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA318A16-C3A8-4294-B051-252EE4B098DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
