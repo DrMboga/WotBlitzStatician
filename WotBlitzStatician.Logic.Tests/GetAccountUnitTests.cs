@@ -55,7 +55,9 @@ namespace WotBlitzStatician.Logic.Tests
                 .Verify(accessor => accessor.SaveAccountInfo(It.IsAny<AccountInfo>()), Times.Never());
             _blitzStaticianDataAccessorMock
                 .Verify(accessor => accessor.SaveTanksStatistic(It.IsAny<List<AccountTankStatistics>>()), Times.Never());
- 		}
+
+            Console.WriteLine("> GetAccountUnitTests.GetExistingAccountFromDb passed");
+        }
 
 	}
 }
