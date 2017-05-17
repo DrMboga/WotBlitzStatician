@@ -9,6 +9,7 @@
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
     <PackageReference Include="Moq" Version="4.7.10" />
+    <PackageReference Include="log4net" Version="2.0.8" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,5 +17,10 @@
     <ProjectReference Include="..\WotBlitzStatician.Logic\WotBlitzStatician.Logic.csproj" />
     <ProjectReference Include="..\WotBlitzStatician.Model\WotBlitzStatician.Model.csproj" />
     <ProjectReference Include="..\WotBlitzStatician.WotApiClient\WotBlitzStatician.WotApiClient.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Log4Net.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
+using System.Xml;
+using log4net;
+using log4net.Config;
 using Moq;
 using WotBlitzStatician.Data;
 using WotBlitzStatician.WotApiClient;
@@ -11,6 +16,8 @@ namespace WotBlitzStatician.Logic.Tests
 {
     public class GetAccountUnitTests
     {
+        private static readonly ILog _log = LogManager.GetLogger(typeof(GetAccountUnitTests));
+
 		private readonly Random _random = new Random();
 
 		private IBlitzStaticianLogic _blitzStaticianLogicMock;
@@ -21,6 +28,12 @@ namespace WotBlitzStatician.Logic.Tests
 
 		public GetAccountUnitTests()
         {
+			var log4netConfig = new XmlDocument();
+			log4netConfig.Load(File.OpenRead("Log4net.xml"));
+
+			var repo = LogManager.CreateRepository(Assembly.GetEntryAssembly(), typeof(log4net.Repository.Hierarchy.Hierarchy));
+            XmlConfigurator.Configure(repo, log4netConfig["log4net"]);
+
             _blitzStaticianDataAccessorMock = new Mock<IBlitzStaticianDataAccessor>();
             _wgApiClientMock = new Mock<IWargamingApiClient>();
             _blitzStaticianLogicMock = new BlitzStaticianLogic(_blitzStaticianDataAccessorMock.Object, _wgApiClientMock.Object);
@@ -56,7 +69,7 @@ namespace WotBlitzStatician.Logic.Tests
             _blitzStaticianDataAccessorMock
                 .Verify(accessor => accessor.SaveTanksStatistic(It.IsAny<List<AccountTankStatistics>>()), Times.Never());
 
-            Console.WriteLine("> GetAccountUnitTests.GetExistingAccountFromDb passed");
+            _log.Debug("GetAccountUnitTests.GetExistingAccountFromDb passed");
         }
 
 	}
