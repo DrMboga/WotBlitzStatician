@@ -14,9 +14,9 @@ using Xunit;
 
 namespace WotBlitzStatician.Logic.Tests
 {
-    public class GetAccountUnitTests
-    {
-        private static readonly ILog _log = LogManager.GetLogger(typeof(GetAccountUnitTests));
+	public class GetAccountUnitTests
+	{
+		private static readonly ILog _log = LogManager.GetLogger(typeof(GetAccountUnitTests));
 
 		private readonly Random _random = new Random();
 
@@ -27,16 +27,16 @@ namespace WotBlitzStatician.Logic.Tests
 
 
 		public GetAccountUnitTests()
-        {
+		{
 			var log4netConfig = new XmlDocument();
 			log4netConfig.Load(File.OpenRead("Log4net.xml"));
 
 			var repo = LogManager.CreateRepository(Assembly.GetEntryAssembly(), typeof(log4net.Repository.Hierarchy.Hierarchy));
-            XmlConfigurator.Configure(repo, log4netConfig["log4net"]);
+			XmlConfigurator.Configure(repo, log4netConfig["log4net"]);
 
-            _blitzStaticianDataAccessorMock = new Mock<IBlitzStaticianDataAccessor>();
-            _wgApiClientMock = new Mock<IWargamingApiClient>();
-            _blitzStaticianLogic = new BlitzStaticianLogic(_blitzStaticianDataAccessorMock.Object, _wgApiClientMock.Object);
+			_blitzStaticianDataAccessorMock = new Mock<IBlitzStaticianDataAccessor>();
+			_wgApiClientMock = new Mock<IWargamingApiClient>();
+			_blitzStaticianLogic = new BlitzStaticianLogic(_blitzStaticianDataAccessorMock.Object, _wgApiClientMock.Object);
 
 			_expectedAccount = new AccountInfo
 			{
@@ -46,34 +46,34 @@ namespace WotBlitzStatician.Logic.Tests
 
 		}
 
-        [Fact]
+		[Fact]
 		public async Task GetExistingAccountFromDb()
-        {
-            _blitzStaticianDataAccessorMock.Setup(accessor => accessor.GetAccountInfo(It.IsAny<string>()))
-                                           .Returns(_expectedAccount);
+		{
+			_blitzStaticianDataAccessorMock.Setup(accessor => accessor.GetAccountInfo(It.IsAny<string>()))
+				.Returns(_expectedAccount);
 
 			var account = await _blitzStaticianLogic.GetAccount(string.Empty);
 
-            Assert.NotNull(account); //, "Existing account wasn't found");
-            Assert.Equal(_expectedAccount.NickName, account.NickName); //, "Account nicknames doesn't match");
-            Assert.Equal(_expectedAccount.AccountId, account.AccountId); //, "Account ids doesn't match");
+			Assert.NotNull(account); //, "Existing account wasn't found");
+			Assert.Equal(_expectedAccount.NickName, account.NickName); //, "Account nicknames doesn't match");
+			Assert.Equal(_expectedAccount.AccountId, account.AccountId); //, "Account ids doesn't match");
 
-            _blitzStaticianDataAccessorMock
-                .Verify(accessor => accessor.GetAccountInfo(It.IsAny<string>()), Times.Once());
-            _wgApiClientMock
-                .Verify(apiClient => apiClient.FindAccount(It.IsAny<string>()), Times.Never());
-            _wgApiClientMock
+			_blitzStaticianDataAccessorMock
+				.Verify(accessor => accessor.GetAccountInfo(It.IsAny<string>()), Times.Once());
+			_wgApiClientMock
+				.Verify(apiClient => apiClient.FindAccount(It.IsAny<string>()), Times.Never());
+			_wgApiClientMock
 				.Verify(apiClient => apiClient.GetTanksStatisticks(It.IsAny<long>()), Times.Never());
-            _blitzStaticianDataAccessorMock
-                .Verify(accessor => accessor.SaveAccountInfo(It.IsAny<AccountInfo>()), Times.Never());
-            _blitzStaticianDataAccessorMock
-                .Verify(accessor => accessor.SaveTanksStatistic(It.IsAny<List<AccountTankStatistics>>()), Times.Never());
+			_blitzStaticianDataAccessorMock
+				.Verify(accessor => accessor.SaveAccountInfo(It.IsAny<AccountInfo>()), Times.Never());
+			_blitzStaticianDataAccessorMock
+				.Verify(accessor => accessor.SaveTanksStatistic(It.IsAny<List<AccountTankStatistics>>()), Times.Never());
 
-            _log.Debug("GetExistingAccountFromDb passed");
-        }
+			_log.Debug("GetExistingAccountFromDb passed");
+		}
 
 
-	    [Fact]
+		[Fact]
 		public async Task GetExistingAccountFirstTime()
 		{
 			_blitzStaticianDataAccessorMock.Setup(accessor => accessor.GetAccountInfo(It.IsAny<string>()))
@@ -101,7 +101,7 @@ namespace WotBlitzStatician.Logic.Tests
 			_log.Debug("GetExistingAccountFirstTime passed");
 		}
 
-	    [Fact]
+		[Fact]
 		public async Task GetExistingAccountFirstTimeNotFound()
 		{
 			_blitzStaticianDataAccessorMock.Setup(accessor => accessor.GetAccountInfo(It.IsAny<string>()))
