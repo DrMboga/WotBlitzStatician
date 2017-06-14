@@ -6,10 +6,15 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="AutoMapper" Version="6.1.0" />
   </ItemGroup>
    
   <ItemGroup>
     <ProjectReference Include="..\WotBlitzStatician.Model\WotBlitzStatician.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Internal\" />
+    <Folder Include="Mappers\" />
+  </ItemGroup>
 </Project>

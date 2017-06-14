@@ -5,7 +5,6 @@
 
 	public class BlitzStaticianDataAccessor : IBlitzStaticianDataAccessor
 	{
-		// ToDo: Get EF framework from nuget
 
 		public AccountInfo GetAccountInfo(string nick)
 		{

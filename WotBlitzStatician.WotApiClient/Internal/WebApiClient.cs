@@ -10,9 +10,6 @@
 	{
 		public async Task<TResponse> GetResponse<TResponse>(string baseAddress, string request)
 		{
-			//			var handler = new HttpClientHandler {Proxy = new WebProxy("http://proxy.avp.ru:8080", true)};
-			//
-			//			using (var client = new HttpClient(handler))
 			using (var client = new HttpClient())
 			{
 				client.BaseAddress = new Uri(baseAddress);
