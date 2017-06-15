@@ -26,7 +26,8 @@
 			Log4NetHelper.ConfigureLog4Net();
 		}
 
-		[Fact]
+        //[Fact(Skip = "There is something wrong with http requests.")]
+        [Fact]
 		public async Task TestTankopedia()
 		{
 			var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
@@ -38,6 +39,32 @@
 			_log.Debug($"TestTankopedia got {allVehicles.Count} vehicles from WG API");
 			var firstTank = allVehicles[0];
 			_log.Debug($"TestTankopedia. First tank is {firstTank.TankId} - '{firstTank.Name}'; Tier {firstTank.Tier}; Nation '{firstTank.Nation}'; Type '{firstTank.Type}'");
+		}
+
+        [Fact]
+        public async Task TestAccountStat()
+        {
+			var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
+            var accountInfo = await wgApiClient.GetAccountInfoAllStatisticsAsync("46512100");
+
+			Assert.NotNull(accountInfo);
+            Assert.NotNull(accountInfo.AccountInfoStatistics);
+
+            _log.Debug($"Got Account '{accountInfo.NickName}'. LastBattleTime '{accountInfo.LastBattleTime}'; Battles count {accountInfo.AccountInfoStatistics.Battles}");
+        }
+
+        [Fact]
+        public async Task TestAccountTankStat()
+        {
+			var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
+            var tanksStat = await wgApiClient.GetTanksStatisticsAsync("46512100");
+
+			Assert.NotNull(tanksStat);
+			Assert.True(tanksStat.Count > 0, "tanksStat count is 0");
+
+			_log.Debug($"TestAccountTankStat got {tanksStat.Count} vehicles from WG API");
+			var firstTank = tanksStat[0];
+            _log.Debug($"TestAccountTankStat. First tank is {firstTank.TankId}; Battles: {firstTank.Battles}; Battle life time {firstTank.BattleLifeTime}");
 		}
 	}
 }
