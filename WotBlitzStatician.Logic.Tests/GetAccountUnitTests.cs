@@ -61,9 +61,9 @@ namespace WotBlitzStatician.Logic.Tests
 			_blitzStaticianDataAccessorMock
 				.Verify(accessor => accessor.GetAccountInfo(It.IsAny<string>()), Times.Once());
 			_wgApiClientMock
-				.Verify(apiClient => apiClient.FindAccount(It.IsAny<string>()), Times.Never());
+				.Verify(apiClient => apiClient.FindAccountAsync(It.IsAny<string>()), Times.Never());
 			_wgApiClientMock
-				.Verify(apiClient => apiClient.GetTanksStatisticks(It.IsAny<long>()), Times.Never());
+				.Verify(apiClient => apiClient.GetTanksStatisticsAsync(It.IsAny<string>()), Times.Never());
 			_blitzStaticianDataAccessorMock
 				.Verify(accessor => accessor.SaveAccountInfo(It.IsAny<AccountInfo>()), Times.Never());
 			_blitzStaticianDataAccessorMock
@@ -78,7 +78,7 @@ namespace WotBlitzStatician.Logic.Tests
 		{
 			_blitzStaticianDataAccessorMock.Setup(accessor => accessor.GetAccountInfo(It.IsAny<string>()))
 				.Returns<AccountInfo>(null);
-			_wgApiClientMock.Setup(client => client.FindAccount(It.IsAny<string>()))
+			_wgApiClientMock.Setup(client => client.FindAccountAsync(It.IsAny<string>()))
 				.Returns(Task.FromResult(_expectedAccount));
 
 			var account = await _blitzStaticianLogic.GetAccount(string.Empty);
@@ -90,9 +90,9 @@ namespace WotBlitzStatician.Logic.Tests
 			_blitzStaticianDataAccessorMock
 				.Verify(accessor => accessor.GetAccountInfo(It.IsAny<string>()), Times.Once());
 			_wgApiClientMock
-				.Verify(apiClient => apiClient.FindAccount(It.IsAny<string>()), Times.Once());
+				.Verify(apiClient => apiClient.FindAccountAsync(It.IsAny<string>()), Times.Once());
 			_wgApiClientMock
-				.Verify(apiClient => apiClient.GetTanksStatisticks(It.IsAny<long>()), Times.Once());
+				.Verify(apiClient => apiClient.GetTanksStatisticsAsync(It.IsAny<string>()), Times.Once());
 			_blitzStaticianDataAccessorMock
 				.Verify(accessor => accessor.SaveAccountInfo(It.IsAny<AccountInfo>()), Times.Once());
 			_blitzStaticianDataAccessorMock
@@ -106,7 +106,7 @@ namespace WotBlitzStatician.Logic.Tests
 		{
 			_blitzStaticianDataAccessorMock.Setup(accessor => accessor.GetAccountInfo(It.IsAny<string>()))
 				.Returns<AccountInfo>(null);
-			_wgApiClientMock.Setup(client => client.FindAccount(It.IsAny<string>()))
+			_wgApiClientMock.Setup(client => client.FindAccountAsync(It.IsAny<string>()))
 				.Returns(Task.FromResult<AccountInfo>(null));
 
 			var ex = await Assert.ThrowsAsync<ArgumentException>(() => _blitzStaticianLogic.GetAccount(string.Empty));
