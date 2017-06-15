@@ -6,12 +6,12 @@ namespace WotBlitzStatician.WotApiClient
 {
 	public interface IWargamingApiClient
 	{
-		Task<List<VehicleEncyclopedia>> GetWontEncyclopediaVehicles();
+		Task<List<VehicleEncyclopedia>> GetWotEncyclopediaVehiclesAsync();
 
-		Task<AccountInfo> FindAccount(string nickName);
+		Task<AccountInfo> FindAccountAsync(string nickName);
 
-		Task<AccountInfo> GetAccountInfoAllStatistics(long accountId);
+		Task<AccountInfo> GetAccountInfoAllStatisticsAsync(string accountId);
 
-		Task<List<AccountTankStatistics>> GetTanksStatisticks(long accountId);
+		Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(string accountId);
 	}
 }
