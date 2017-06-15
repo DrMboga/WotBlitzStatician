@@ -28,11 +28,7 @@ namespace WotBlitzStatician.Logic.Tests
 
 		public GetAccountUnitTests()
 		{
-			var log4netConfig = new XmlDocument();
-			log4netConfig.Load(File.OpenRead("Log4net.xml"));
-
-			var repo = LogManager.CreateRepository(Assembly.GetEntryAssembly(), typeof(log4net.Repository.Hierarchy.Hierarchy));
-			XmlConfigurator.Configure(repo, log4netConfig["log4net"]);
+			Log4NetHelper.ConfigureLog4Net();
 
 			_blitzStaticianDataAccessorMock = new Mock<IBlitzStaticianDataAccessor>();
 			_wgApiClientMock = new Mock<IWargamingApiClient>();
