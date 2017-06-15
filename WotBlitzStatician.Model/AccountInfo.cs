@@ -23,6 +23,11 @@ namespace WotBlitzStaticitian.Model
 		public DateTime AccountCreatedAt { get; set; }
 
 		/// <summary>
+		/// Время последнего боя
+		/// </summary>
+		public DateTime? LastBattleTime { get; set; }
+
+		/// <summary>
 		/// Последним просматривался (куки)
 		/// </summary>
 		public bool IsLastSession { get; set; }
@@ -31,6 +36,6 @@ namespace WotBlitzStaticitian.Model
 		public AccountInfoPrivate AccountInfoPrivate { get; set; }
 
 		[NotMapped]
-		public AccountInfoStatistics AccountInfoStatistica { get; set; }
+		public AccountInfoStatistics AccountInfoStatistics { get; set; }
 	}
 }
