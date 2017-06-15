@@ -25,7 +25,7 @@ namespace WotBlitzStatician.Logic
 			if (account == null)
 			{
 				//First time
-				var accountfromWg = await _wgApiClient.FindAccount(nick);
+				var accountfromWg = await _wgApiClient.FindAccountAsync(nick);
 				if (accountfromWg == null)
 					throw new ArgumentException($"Nick '{nick}' not found.", nameof(nick));
 				await LoadStatisticsFromWg(accountfromWg);
@@ -57,13 +57,13 @@ namespace WotBlitzStatician.Logic
 
 		public async Task LoadStatisticsFromWgAsync(long accountId)
 		{
-			var account = await _wgApiClient.GetAccountInfoAllStatistics(accountId);
+			var account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId.ToString());
 			await LoadStatisticsFromWg(account);
 		}
 
 		public async Task LoadStatisticsFromWg(AccountInfo accountInfo)
 		{
-			var tanksInfo = await _wgApiClient.GetTanksStatisticks(accountInfo.AccountId);
+			var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId.ToString());
 			_dataAccessor.SaveAccountInfo(accountInfo);
 			_dataAccessor.SaveTanksStatistic(tanksInfo);
 		}
