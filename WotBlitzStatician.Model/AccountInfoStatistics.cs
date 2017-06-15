@@ -1,8 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿
 
 namespace WotBlitzStaticitian.Model
 {
+	using System;
+	using System.ComponentModel.DataAnnotations;
+	using System.ComponentModel.DataAnnotations.Schema;
+	
 	public class AccountInfoStatistics
 	{
 		[Key]
@@ -15,6 +18,11 @@ namespace WotBlitzStaticitian.Model
 		///Количество боёв
 		///</summary>
 		public long Battles { get; set; }
+		
+		///<summary>
+		///Дата обновления информации об игроке
+		///</summary>
+		public DateTime? UpdatedAt { get; set; }
 
 		///<summary>
 		///Очки захвата базы
