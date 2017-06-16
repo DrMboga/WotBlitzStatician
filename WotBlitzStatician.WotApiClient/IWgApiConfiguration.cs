@@ -8,6 +8,8 @@
 		string ApplicationId { get; set; }
 
 		string BaseAddress { get; set; }
+		
+		string AccountListFinderAddressTemplate { get; set; }
 
 		string AccountStatRequestAddressTemplate { get; set; }
 
