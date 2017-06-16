@@ -31,12 +31,18 @@
 			return allVehicles.Select(t => mapper.Map(t)).ToList();
 		}
 
-		public async Task<AccountInfo> FindAccountAsync(string nickName)
+		public async Task<List<AccountInfo>> FindAccountAsync(string nickName)
 		{
-			throw new System.NotImplementedException();
+			var webClient = new WebApiClient();
+			var accountListResponse = await webClient.GetResponse<List<WotAccountListResponse>>(
+				_configuration.BaseAddress,
+				string.Format(_configuration.AccountListFinderAddressTemplate, _configuration.ApplicationId, nickName));
+
+			var accountFindResponseMapper = new AccounutFindResponseMapper();
+			return accountListResponse.Select(a => accountFindResponseMapper.Map(a)).ToList();
 		}
 
-		public async Task<AccountInfo> GetAccountInfoAllStatisticsAsync(string accountId)
+		public async Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId)
 		{
 			var webClient = new WebApiClient();
 
@@ -44,7 +50,7 @@
 					_configuration.BaseAddress,
 					string.Format(_configuration.AccountStatRequestAddressTemplate, _configuration.ApplicationId, accountId));
 
-			var accountInfoResponse = accountInfo[accountId];
+			var accountInfoResponse = accountInfo[accountId.ToString()];
 			var accountInfoMapper = new AccountInfoMapper();
 
 			var accountInfoMapped = accountInfoMapper.Map(accountInfoResponse);
@@ -56,7 +62,7 @@
 			return accountInfoMapped;
 		}
 
-		public async Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(string accountId)
+		public async Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId)
 		{
 			var webClient = new WebApiClient();
 
@@ -65,7 +71,7 @@
 				string.Format(_configuration.AccountTanksStatisticRequestAddressTemplate, _configuration.ApplicationId, accountId));
 
 			var mapper = new TanksStatMapper();
-			return tanksStat[accountId].Select(s => mapper.Map(s)).ToList();
+			return tanksStat[accountId.ToString()].Select(s => mapper.Map(s)).ToList();
 		}
 	}
 }
