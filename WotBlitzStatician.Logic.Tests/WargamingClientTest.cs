@@ -1,5 +1,6 @@
 ﻿namespace WotBlitzStatician.Logic.Tests
 {
+	using System.Text;
 	using System.Threading.Tasks;
 	using log4net;
 	using WotBlitzStatician.WotApiClient;
@@ -11,6 +12,8 @@
 		{
 			public string ApplicationId { get; set; } = "demo";
 			public string BaseAddress { get; set; } = "https://api.wotblitz.ru/wotb/";
+			public string AccountListFinderAddressTemplate { get; set; } =
+				"account/list/?application_id={0}&search={1}";
 			public string AccountStatRequestAddressTemplate { get; set; } =
 				"account/info/?application_id={0}&account_id={1}";
 			public string AccountTanksStatisticRequestAddressTemplate { get; set; } =
@@ -28,24 +31,38 @@
 
         //[Fact(Skip = "There is something wrong with http requests.")]
         [Fact]
-		public async Task TestTankopedia()
-		{
-			var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
-			var allVehicles = await wgApiClient.GetWotEncyclopediaVehiclesAsync();
+	public async Task TestTankopedia()
+	{
+		var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
+		var allVehicles = await wgApiClient.GetWotEncyclopediaVehiclesAsync();
 
-			Assert.NotNull(allVehicles);
-			Assert.True(allVehicles.Count > 0, "Vehicles count is 0");
+		Assert.NotNull(allVehicles);
+		Assert.True(allVehicles.Count > 0, "Vehicles count is 0");
 
-			_log.Debug($"TestTankopedia got {allVehicles.Count} vehicles from WG API");
-			var firstTank = allVehicles[0];
-			_log.Debug($"TestTankopedia. First tank is {firstTank.TankId} - '{firstTank.Name}'; Tier {firstTank.Tier}; Nation '{firstTank.Nation}'; Type '{firstTank.Type}'");
-		}
+		_log.Debug($"TestTankopedia got {allVehicles.Count} vehicles from WG API");
+		var firstTank = allVehicles[0];
+		_log.Debug($"TestTankopedia. First tank is {firstTank.TankId} - '{firstTank.Name}'; Tier {firstTank.Tier}; Nation '{firstTank.Nation}'; Type '{firstTank.Type}'");
+	}
 
+	[Fact]
+	public async Task TestFindAccount()
+	{
+		var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
+		var accountsFound = await wgApiClient.FindAccountAsync("1Tortee1");
+		Assert.NotNull(accountsFound);
+		Assert.True(accountsFound.Count > 0, "Found 0 accounts");
+
+		var logSb = new StringBuilder($"TestFindAccount found {accountsFound.Count} accounts:[");
+		accountsFound.ForEach(a => logSb.Append($"{a.AccountId}-'{a.NickName}';"));
+		logSb.Append("]");
+		_log.Debug(logSb.ToString());
+	}
+		
         [Fact]
         public async Task TestAccountStat()
         {
 			var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
-            var accountInfo = await wgApiClient.GetAccountInfoAllStatisticsAsync("46512100");
+            var accountInfo = await wgApiClient.GetAccountInfoAllStatisticsAsync(46512100);
 
 			Assert.NotNull(accountInfo);
             Assert.NotNull(accountInfo.AccountInfoStatistics);
@@ -57,7 +74,7 @@
         public async Task TestAccountTankStat()
         {
 			var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
-            var tanksStat = await wgApiClient.GetTanksStatisticsAsync("46512100");
+            var tanksStat = await wgApiClient.GetTanksStatisticsAsync(46512100);
 
 			Assert.NotNull(tanksStat);
 			Assert.True(tanksStat.Count > 0, "tanksStat count is 0");
