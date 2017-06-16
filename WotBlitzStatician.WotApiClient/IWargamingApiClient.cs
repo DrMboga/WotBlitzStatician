@@ -8,10 +8,10 @@ namespace WotBlitzStatician.WotApiClient
 	{
 		Task<List<VehicleEncyclopedia>> GetWotEncyclopediaVehiclesAsync();
 
-		Task<AccountInfo> FindAccountAsync(string nickName);
+		Task<List<AccountInfo>> FindAccountAsync(string nickName);
 
-		Task<AccountInfo> GetAccountInfoAllStatisticsAsync(string accountId);
+		Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId);
 
-		Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(string accountId);
+		Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId);
 	}
 }
