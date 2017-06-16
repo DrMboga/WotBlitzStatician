@@ -1,11 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using WotBlitzStatician.Data;
-using WotBlitzStatician.WotApiClient;
-using WotBlitzStaticitian.Model;
-
-namespace WotBlitzStatician.Logic
+﻿namespace WotBlitzStatician.Logic
 {
+	using System;
+	using System.Threading.Tasks;
+	using WotBlitzStatician.Data;
+	using WotBlitzStatician.WotApiClient;
+	using WotBlitzStaticitian.Model;
+	using System.Linq;
+	
 	public class BlitzStaticianLogic : IBlitzStaticianLogic
 	{
 		private readonly IBlitzStaticianDataAccessor _dataAccessor;
@@ -25,11 +26,17 @@ namespace WotBlitzStatician.Logic
 			if (account == null)
 			{
 				//First time
-				var accountfromWg = await _wgApiClient.FindAccountAsync(nick);
-				if (accountfromWg == null)
+				var accountsfromWg = await _wgApiClient.FindAccountAsync(nick);
+				if (accountsfromWg != null && accountsfromWg.Count > 0)
+				{
+					// Find exactly the same nick
+					account = accountsfromWg.FirstOrDefault(a => a != null && a.NickName.Equals(nick, StringComparison.OrdinalIgnoreCase));
+				}
+				if (account == null)
 					throw new ArgumentException($"Nick '{nick}' not found.", nameof(nick));
-				await LoadStatisticsFromWg(accountfromWg);
-				return accountfromWg;
+				// Loading all account statistics
+				account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(account.AccountId);
+				await LoadStatisticsFromWgAndSaveToDb(account);
 			}
 
 			return account;
@@ -57,13 +64,13 @@ namespace WotBlitzStatician.Logic
 
 		public async Task LoadStatisticsFromWgAsync(long accountId)
 		{
-			var account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId.ToString());
-			await LoadStatisticsFromWg(account);
+			var account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId);
+			await LoadStatisticsFromWgAndSaveToDb(account);
 		}
 
-		public async Task LoadStatisticsFromWg(AccountInfo accountInfo)
+		public async Task LoadStatisticsFromWgAndSaveToDb(AccountInfo accountInfo)
 		{
-			var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId.ToString());
+			var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId);
 			_dataAccessor.SaveAccountInfo(accountInfo);
 			_dataAccessor.SaveTanksStatistic(tanksInfo);
 		}
