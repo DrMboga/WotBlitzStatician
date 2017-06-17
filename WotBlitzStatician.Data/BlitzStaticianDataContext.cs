@@ -3,7 +3,7 @@
     using Microsoft.EntityFrameworkCore;
     using WotBlitzStaticitian.Model;
 
-    internal class BlitzStaticianDataContext : DbContext
+    public class BlitzStaticianDataContext : DbContext
     {
         public DbSet<AccountInfo> Account { get; set; }
         public DbSet<AccountInfoPrivate> AccountInfoPrivate { get; set; }
