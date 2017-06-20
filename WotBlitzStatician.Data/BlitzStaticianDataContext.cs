@@ -3,6 +3,9 @@
     using Microsoft.EntityFrameworkCore;
     using WotBlitzStaticitian.Model;
 
+	// dotnet ef migrations add InitialCreate
+	// dotnet ef database update
+
     public class BlitzStaticianDataContext : DbContext
     {
         public DbSet<AccountInfo> Account { get; set; }
@@ -13,7 +16,7 @@
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlite("Data Source=BlitzStatician.db");
+			optionsBuilder.UseSqlite("Data Source=..\..\..\BlitzStatician.db");
 		}
     }
 }
