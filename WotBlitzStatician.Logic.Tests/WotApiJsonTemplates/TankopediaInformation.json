@@ -1,0 +1,67 @@
+https://api.wotblitz.ru/wotb/encyclopedia/info/?application_id=demo
+
+{
+    "data": {
+        "achievement_sections": {
+            "battle": {
+                "name": "«Герой Битвы»",
+                "order": 0
+            },
+            "commemorative": {
+                "name": "Памятные знаки",
+                "order": 3
+            },
+            "epic": {
+                "name": "Эпические медали",
+                "order": 2
+            },
+            "platoon": {
+                "name": "Взводные награды",
+                "order": 5
+            },
+            "step": {
+                "name": "Этапные награды",
+                "order": 4
+            },
+            "title": {
+                "name": "Почётные звания",
+                "order": 1
+            }
+        },
+        "game_version": "3.8.0",
+        "languages": {
+            "cs": "Čeština",
+            "de": "Deutsch",
+            "en": "English",
+            "es": "Español",
+            "fr": "Français",
+            "ko": "한국어",
+            "pl": "Polski",
+            "ru": "Русский",
+            "th": "ไทย",
+            "tr": "Türkçe",
+            "vi": "Tiếng Việt",
+            "zh-cn": "简体中文",
+            "zh-tw": "繁體中文"
+        },
+        "tanks_updated_at": 1493893859,
+        "vehicle_nations": {
+            "china": "Китай",
+            "france": "Франция",
+            "germany": "Германия",
+            "japan": "Япония",
+            "other": "Сборная нация",
+            "uk": "Великобритания",
+            "usa": "США",
+            "ussr": "СССР"
+        },
+        "vehicle_types": {
+            "AT-SPG": "ПТ-САУ",
+            "heavyTank": "Тяжёлый танк",
+            "lightTank": "Легкий танк",
+            "mediumTank": "Средний танк"
+        }
+    },
+    "meta": {},
+    "status": "ok"
+}
