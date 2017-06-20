@@ -1,12 +1,13 @@
 ﻿namespace WotBlitzStatician.Logic.Tests
 {
-	using System.Text;
-	using System.Threading.Tasks;
-	using log4net;
-	using WotBlitzStatician.WotApiClient;
-	using Xunit;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using log4net;
+    using WotBlitzStatician.WotApiClient;
+    using Xunit;
 
-	public class WargamingClientTest
+    public class WargamingClientTest
 	{
 		private class TestWgApiConfiguration : IWgApiConfiguration
 		{
@@ -44,19 +45,25 @@
 		_log.Debug($"TestTankopedia. First tank is {firstTank.TankId} - '{firstTank.Name}'; Tier {firstTank.Tier}; Nation '{firstTank.Nation}'; Type '{firstTank.Type}'");
 	}
 
-	[Fact]
-	public async Task TestFindAccount()
-	{
-		var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
-		var accountsFound = await wgApiClient.FindAccountAsync("1Tortee1");
-		Assert.NotNull(accountsFound);
-		Assert.True(accountsFound.Count > 0, "Found 0 accounts");
+        [Fact]
+        public async Task TestFindAccount()
+        {
+            string accountNick = "1Tortee1";
+			var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
+			var accountsFound = await wgApiClient.FindAccountAsync(accountNick);
 
-		var logSb = new StringBuilder($"TestFindAccount found {accountsFound.Count} accounts:[");
-		accountsFound.ForEach(a => logSb.Append($"{a.AccountId}-'{a.NickName}';"));
-		logSb.Append("]");
-		_log.Debug(logSb.ToString());
-	}
+			Assert.NotNull(accountsFound);
+			Assert.True(accountsFound.Count > 0, "Found 0 accounts");
+
+            _log.Debug($"TestFindAccount found {accountsFound.Count} accounts like '{accountNick}'.");
+
+			// Find exactly the same nick
+			var account = accountsFound.FirstOrDefault(a => a != null && a.NickName.Equals(accountNick, StringComparison.OrdinalIgnoreCase));
+            Assert.NotNull(account);
+
+            _log.Debug($"Found account is '{account.NickName}'; Id: '{account.AccountId}'");
+
+		}
 		
         [Fact]
         public async Task TestAccountStat()
