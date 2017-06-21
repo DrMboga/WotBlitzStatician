@@ -1,19 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Threading.Tasks;
-using System.Xml;
-using log4net;
-using log4net.Config;
-using Moq;
-using WotBlitzStatician.Data;
-using WotBlitzStatician.WotApiClient;
-using WotBlitzStaticitian.Model;
-using Xunit;
-
 namespace WotBlitzStatician.Logic.Tests
 {
+	using System;
+	using System.Collections.Generic;
+	using System.Threading.Tasks;
+	using log4net;
+	using Moq;
+	using WotBlitzStatician.Data;
+	using WotBlitzStatician.WotApiClient;
+	using WotBlitzStatician.Model;
+	using Xunit;
+	
 	public class GetAccountUnitTests
 	{
 		private static readonly ILog _log = LogManager.GetLogger(typeof(GetAccountUnitTests));
