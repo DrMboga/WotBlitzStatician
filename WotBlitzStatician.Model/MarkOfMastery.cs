@@ -1,4 +1,4 @@
-﻿namespace WotBlitzStaticitian.Model
+﻿namespace WotBlitzStatician.Model
 {
 	///<summary>
 	///Знаки классности:
