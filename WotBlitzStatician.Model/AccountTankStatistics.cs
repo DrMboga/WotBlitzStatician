@@ -1,6 +1,7 @@
 ﻿namespace WotBlitzStatician.Model
 {
 	using System;
+	using System.Collections.Generic;
 	using System.ComponentModel.DataAnnotations;
 	using System.ComponentModel.DataAnnotations.Schema;
 	 
@@ -25,6 +26,12 @@
 		/// </summary>
 		[NotMapped]
 		public VehicleEncyclopedia VehicleInfo { get; set; }
+		
+		[NotMapped]
+		public List<AccountInfoTankAchievment> Achievments { get; set; }
+
+		[NotMapped]
+		public List<AccountInfoTankAchievment> AchievmentsMaxSeries { get; set; }
 
 		///<summary>
 		///Общее время в боях в секундах
