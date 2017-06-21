@@ -14,7 +14,10 @@
         public DbSet<AccountTankStatistics> AccountTankStatistics { get; set; }
 	public DbSet<AccountClanInfo> AccountClanInfo { get; set; }
 	
-        public DbSet<VehicleEncyclopedia> VehiclesEncyclopedia { get; set; }
+	public DbSet<AccountInfoAchievment> AccountInfoAchievments { get; set; }
+	public DbSet<AccountInfoTankAchievment> AccountInfoTankAchievments { get; set; }
+
+	public DbSet<VehicleEncyclopedia> VehiclesEncyclopedia { get; set; }
 	public DbSet<AchievementOption> AchievementOptions { get; set; }
 	public DbSet<Achievement> Achievements { get; set; }
 	public DbSet<DictionaryLanguage> DictionaryLanguage { get; set; }
