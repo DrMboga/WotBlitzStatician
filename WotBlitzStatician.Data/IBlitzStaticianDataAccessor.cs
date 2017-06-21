@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using WotBlitzStaticitian.Model;
-
-namespace WotBlitzStatician.Data
+﻿namespace WotBlitzStatician.Data
 {
+	using System.Collections.Generic;
+	using WotBlitzStatician.Model;
+	 
 	public interface IBlitzStaticianDataAccessor
 	{
 		AccountInfo GetAccountInfo(string nick);
