@@ -20,7 +20,7 @@
 		///<summary>
 		///Дата обновления информации об игроке
 		///</summary>
-		public DateTime? UpdatedAt { get; set; }
+		public DateTime UpdatedAt { get; set; }
 
 		///<summary>
 		///Очки захвата базы
