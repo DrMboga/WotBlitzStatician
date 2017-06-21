@@ -1,9 +1,9 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace WotBlitzStaticitian.Model
+﻿namespace WotBlitzStatician.Model
 {
+	using System;
+	using System.ComponentModel.DataAnnotations;
+	using System.ComponentModel.DataAnnotations.Schema;
+	
 	public class AccountInfoPrivate
 	{
 		[Key]
