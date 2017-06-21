@@ -2,7 +2,7 @@
 {
 	using System;
 	using Newtonsoft.Json;
-	using WotBlitzStaticitian.Model;
+	using WotBlitzStatician.Model;
 
 	internal class WotAccountTanksStatResponse
 	{
