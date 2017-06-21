@@ -1,6 +1,7 @@
 ﻿namespace WotBlitzStatician.Model
 {
 	using System;
+	using System.Collections.Generic;
 	using System.ComponentModel.DataAnnotations;
 	using System.ComponentModel.DataAnnotations.Schema;
 	 
@@ -37,5 +38,11 @@
 
 		[NotMapped]
 		public AccountInfoStatistics AccountInfoStatistics { get; set; }
+		
+		[NotMapped]
+		public List<AccountInfoAchievment> Achievments { get; set; }
+
+		[NotMapped]
+		public List<AccountInfoAchievment> AchievmentsMaxSeries { get; set; }
 	}
 }
