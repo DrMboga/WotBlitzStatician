@@ -4,7 +4,7 @@
 	using System.Threading.Tasks;
 	using WotBlitzStatician.Data;
 	using WotBlitzStatician.WotApiClient;
-	using WotBlitzStaticitian.Model;
+	using WotBlitzStatician.Model;
 	using System.Linq;
 	
 	public class BlitzStaticianLogic : IBlitzStaticianLogic
