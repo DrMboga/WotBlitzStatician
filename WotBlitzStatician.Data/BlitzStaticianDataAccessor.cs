@@ -1,7 +1,7 @@
 ﻿namespace WotBlitzStatician.Data
 {
 	using System.Collections.Generic;
-	using WotBlitzStaticitian.Model;
+	using WotBlitzStatician.Model;
 
 	public class BlitzStaticianDataAccessor : IBlitzStaticianDataAccessor
 	{
