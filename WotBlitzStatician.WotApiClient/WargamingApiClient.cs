@@ -3,9 +3,10 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Threading.Tasks;
+	using WotBlitzStatician.Model;
 	using WotBlitzStatician.WotApiClient.InternalModel;
 	using WotBlitzStatician.WotApiClient.Mappers;
-	using WotBlitzStaticitian.Model;
+	
 
 	public class WargamingApiClient : IWargamingApiClient
 	{
