@@ -1,8 +1,8 @@
 ﻿namespace WotBlitzStatician.WotApiClient.Mappers
 {
 	using AutoMapper;
+	using WotBlitzStatician.Model;
 	using WotBlitzStatician.WotApiClient.InternalModel;
-	using WotBlitzStaticitian.Model;
 
 	internal class AccounutFindResponseMapper : IMapper<WotAccountListResponse, AccountInfo>
 	{
