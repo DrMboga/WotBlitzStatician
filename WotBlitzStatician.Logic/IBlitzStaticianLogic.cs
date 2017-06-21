@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using WotBlitzStaticitian.Model;
-
-namespace WotBlitzStatician.Logic
+﻿namespace WotBlitzStatician.Logic
 {
+	using System.Threading.Tasks;
+	using WotBlitzStatician.Model;
+	 
 	public interface IBlitzStaticianLogic
 	{
 		Task LoadStatisticsFromWgAsync(long accountId);
