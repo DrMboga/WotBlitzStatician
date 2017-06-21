@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace WotBlitzStaticitian.Model
+﻿namespace WotBlitzStatician.Model
 {
+	using System.ComponentModel.DataAnnotations;
+	 
 	public class VehicleEncyclopedia
 	{
 		///<summary>
