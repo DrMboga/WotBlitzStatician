@@ -1,6 +1,4 @@
-﻿
-
-namespace WotBlitzStaticitian.Model
+﻿namespace WotBlitzStatician.Model
 {
 	using System;
 	using System.ComponentModel.DataAnnotations;
