@@ -6,15 +6,16 @@
 	using WotBlitzStatician.Model;
 	using WotBlitzStatician.WotApiClient.InternalModel;
 	using WotBlitzStatician.WotApiClient.Mappers;
+	using WotBlitzStatician.WotApiClient.RequestStringBuilder;
 	
 
 	public class WargamingApiClient : IWargamingApiClient
 	{
-		private readonly IWgApiConfiguration _configuration;
+		private readonly RequestBuilder _requestBuilder;
 
 		public WargamingApiClient(IWgApiConfiguration configuration)
 		{
-			_configuration = configuration;
+			_requestBuilder = new RequestBuilder(configuration.BaseAddress, configuration.ApplicationId, configuration.Language);
 		}
 
 		public async Task<List<VehicleEncyclopedia>> GetWotEncyclopediaVehiclesAsync()
@@ -22,8 +23,8 @@
 			var webClient = new WebApiClient();
 
 			var tankopedia = await webClient.GetResponse<Dictionary<string, WotEncyclopediaVehiclesResponse>>(
-				_configuration.BaseAddress,
-				string.Format(_configuration.VehiclesEncyclopediaRequestAddressTemplate, _configuration.ApplicationId));
+				_requestBuilder.BaseAddress,
+				_requestBuilder.BuildRequestUrl(RequestType.EncyclopediaVehicles));
 			var allVehicles = tankopedia.Values.ToList();
 			allVehicles.AddMarkI();
 			allVehicles.AddHetzerKame();
@@ -36,8 +37,8 @@
 		{
 			var webClient = new WebApiClient();
 			var accountListResponse = await webClient.GetResponse<List<WotAccountListResponse>>(
-				_configuration.BaseAddress,
-				string.Format(_configuration.AccountListFinderAddressTemplate, _configuration.ApplicationId, nickName));
+				_requestBuilder.BaseAddress,
+				_requestBuilder.BuildRequestUrl(RequestType.AccountList, new RequestParameter{ParameterType = ParameterType.Search, ParameterValue = nickName }));
 
 			var accountFindResponseMapper = new AccounutFindResponseMapper();
 			return accountListResponse.Select(a => accountFindResponseMapper.Map(a)).ToList();
@@ -48,8 +49,8 @@
 			var webClient = new WebApiClient();
 
 			var accountInfo = await webClient.GetResponse<Dictionary<string, WotAccountInfoResponse>>(
-					_configuration.BaseAddress,
-					string.Format(_configuration.AccountStatRequestAddressTemplate, _configuration.ApplicationId, accountId));
+				_requestBuilder.BaseAddress,
+				_requestBuilder.BuildRequestUrl(RequestType.AccountInfo, new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() }));
 
 			var accountInfoResponse = accountInfo[accountId.ToString()];
 			var accountInfoMapper = new AccountInfoMapper();
@@ -68,8 +69,8 @@
 			var webClient = new WebApiClient();
 
 			var tanksStat = await webClient.GetResponse<Dictionary<string, List<WotAccountTanksStatResponse>>>(
-				_configuration.BaseAddress,
-				string.Format(_configuration.AccountTanksStatisticRequestAddressTemplate, _configuration.ApplicationId, accountId));
+				_requestBuilder.BaseAddress,
+				_requestBuilder.BuildRequestUrl(RequestType.TanksStat, new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() }));
 
 			var mapper = new TanksStatMapper();
 			return tanksStat[accountId.ToString()].Select(s => mapper.Map(s)).ToList();
