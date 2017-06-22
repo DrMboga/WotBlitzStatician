@@ -9,12 +9,6 @@
 
 		string BaseAddress { get; set; }
 		
-		string AccountListFinderAddressTemplate { get; set; }
-
-		string AccountStatRequestAddressTemplate { get; set; }
-
-		string AccountTanksStatisticRequestAddressTemplate { get; set; }
-
-		string VehiclesEncyclopediaRequestAddressTemplate { get; set; }
+		string Language { get; set; }
 	}
 }
