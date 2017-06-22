@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
+	using Autofac;
     using log4net;
     using WotBlitzStatician.WotApiClient;
     using Xunit;
@@ -17,18 +18,24 @@
 		}
 
 		private static readonly ILog _log = LogManager.GetLogger(typeof(WargamingClientTest));
-		private readonly IWgApiConfiguration _wgApiConfiguration = new TestWgApiConfiguration();
+		private readonly IContainer _container;
 
 		public WargamingClientTest()
 		{
 			Log4NetHelper.ConfigureLog4Net();
+			
+			var containerBuilder = new ContainerBuilder();
+			containerBuilder.RegisterType<TestWgApiConfiguration>().As<IWgApiConfiguration>();
+			containerBuilder.ConfigureWargamingApi();
+
+			_container = containerBuilder.Build();
 		}
 
         //[Fact(Skip = "There is something wrong with http requests.")]
         [Fact]
 	public async Task TestTankopedia()
 	{
-		var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
+		var wgApiClient = _container.Resolve<IWargamingApiClient>();
 		var allVehicles = await wgApiClient.GetWotEncyclopediaVehiclesAsync();
 
 		Assert.NotNull(allVehicles);
@@ -43,7 +50,7 @@
         public async Task TestFindAccount()
         {
             string accountNick = "1Tortee1";
-			var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
+			var wgApiClient = _container.Resolve<IWargamingApiClient>();
 			var accountsFound = await wgApiClient.FindAccountAsync(accountNick);
 
 			Assert.NotNull(accountsFound);
@@ -62,7 +69,7 @@
         [Fact]
         public async Task TestAccountStat()
         {
-			var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
+		var wgApiClient = _container.Resolve<IWargamingApiClient>();
             var accountInfo = await wgApiClient.GetAccountInfoAllStatisticsAsync(46512100);
 
 			Assert.NotNull(accountInfo);
@@ -74,7 +81,7 @@
         [Fact]
         public async Task TestAccountTankStat()
         {
-			var wgApiClient = new WargamingApiClient(_wgApiConfiguration);
+			var wgApiClient = _container.Resolve<IWargamingApiClient>();
             var tanksStat = await wgApiClient.GetTanksStatisticsAsync(46512100);
 
 			Assert.NotNull(tanksStat);
