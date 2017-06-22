@@ -5,20 +5,20 @@
 	using System.Linq;
 	using System.Text;
 
-	internal class RequestBuilder
+	internal class RequestBuilder : IRequestBuilder
 	{
 		private readonly Uri _baseUri;
 		private readonly Dictionary<RequestType, string> _requestPaths = new Dictionary<RequestType, string>();
 		private readonly Dictionary<ParameterType, string> _parameterNames = new Dictionary<ParameterType, string>();
 		private readonly List<RequestParameter> _requestParameters = new List<RequestParameter>();
 
-		public RequestBuilder(string baseAddress, string applicationId, string language)
+		public RequestBuilder(IWgApiConfiguration configuration)
 		{
-			_baseUri = new Uri(baseAddress);
+			_baseUri = new Uri(configuration.BaseAddress);
 			FillRequestPathsDictionary();
 			FillParameterNamesDictionary();
-			_requestParameters.Add(new RequestParameter{ParameterType = ParameterType.ApplicationId, ParameterValue = applicationId});
-			_requestParameters.Add(new RequestParameter{ParameterType = ParameterType.Language, ParameterValue = language});
+			_requestParameters.Add(new RequestParameter{ParameterType = ParameterType.ApplicationId, ParameterValue = configuration.ApplicationId});
+			_requestParameters.Add(new RequestParameter{ParameterType = ParameterType.Language, ParameterValue = configuration.Language});
 		}
 
 		public string BaseAddress => _baseUri.ToString();
