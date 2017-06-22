@@ -13,13 +13,7 @@
 		{
 			public string ApplicationId { get; set; } = "demo";
 			public string BaseAddress { get; set; } = "https://api.wotblitz.ru/wotb/";
-			public string AccountListFinderAddressTemplate { get; set; } =
-				"account/list/?application_id={0}&search={1}";
-			public string AccountStatRequestAddressTemplate { get; set; } =
-				"account/info/?application_id={0}&account_id={1}";
-			public string AccountTanksStatisticRequestAddressTemplate { get; set; } =
-				"tanks/stats/?application_id={0}&account_id={1}";
-			public string VehiclesEncyclopediaRequestAddressTemplate { get; set; } = "encyclopedia/vehicles/?application_id={0}";
+			public string Language { get; set; } = "ru";
 		}
 
 		private static readonly ILog _log = LogManager.GetLogger(typeof(WargamingClientTest));
