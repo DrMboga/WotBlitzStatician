@@ -11,11 +11,11 @@
 
 	public class WargamingApiClient : IWargamingApiClient
 	{
-		private readonly RequestBuilder _requestBuilder;
+		private readonly IRequestBuilder _requestBuilder;
 
-		public WargamingApiClient(IWgApiConfiguration configuration)
+		internal WargamingApiClient(IRequestBuilder requestBuilder)
 		{
-			_requestBuilder = new RequestBuilder(configuration.BaseAddress, configuration.ApplicationId, configuration.Language);
+			_requestBuilder = requestBuilder;
 		}
 
 		public async Task<List<VehicleEncyclopedia>> GetWotEncyclopediaVehiclesAsync()
