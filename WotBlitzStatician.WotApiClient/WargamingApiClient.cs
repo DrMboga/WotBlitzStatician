@@ -4,6 +4,7 @@
 	using System.Linq;
 	using System.Threading.Tasks;
 	using WotBlitzStatician.Model;
+	using WotBlitzStatician.WotApiClient.DTO;
 	using WotBlitzStatician.WotApiClient.InternalModel;
 	using WotBlitzStatician.WotApiClient.Mappers;
 	using WotBlitzStatician.WotApiClient.RequestStringBuilder;
@@ -74,6 +75,26 @@
 
 			var mapper = new TanksStatMapper();
 			return tanksStat[accountId.ToString()].Select(s => mapper.Map(s)).ToList();
+		}
+		
+		public async Task<WotEncyclopediaInfo> GetStaticDictionaries()
+		{
+			var webClient = new WebApiClient();
+			var encyclopedia = await webClient.GetResponse<WotEncyclopediaInfoResponse>(
+				_requestBuilder.BaseAddress,
+				_requestBuilder.BuildRequestUrl(RequestType.EncyclopediaInfo));
+
+			var responseInfo = new WotEncyclopediaInfo();
+			if (encyclopedia?.Languages == null) return responseInfo;
+
+			var languageMapper = new DictionaryLanguageMapper();
+			responseInfo.DictionaryLanguages = languageMapper.Map(encyclopedia.Languages);
+
+			// DictionaryNationMapper
+
+			// DictionaryVehicleTypeMapper
+
+			return responseInfo;
 		}
 	}
 }
