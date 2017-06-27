@@ -7,6 +7,8 @@
 	{
 		Task LoadStatisticsFromWgAsync(long accountId);
 
+        Task LoadStaticDataAndSaveToDb();
+
 		AccountInfo GetLastLoggedAccount();
 
 		Task<AccountInfo> GetAccount(string nick);

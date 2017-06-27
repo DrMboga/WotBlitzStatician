@@ -18,5 +18,13 @@
 		void SaveAccountInfo(AccountInfo accountInfo);
 
 		void SaveTanksStatistic(List<AccountTankStatistics> taksStat);
+
+        void SaveLanguagesDictionary(List<DictionaryLanguage> languages);
+
+        void SaveNationsDictionary(List<DictionaryNations> nations);
+
+        void SaveVehicleTypesDictionary(List<DictionaryVehicleType> vehicleTypes);
+
+        void SaveVehicleEncyclopedia(List<VehicleEncyclopedia> vehicles);
 	}
 }

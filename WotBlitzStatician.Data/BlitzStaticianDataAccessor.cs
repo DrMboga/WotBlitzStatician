@@ -1,9 +1,10 @@
 ﻿namespace WotBlitzStatician.Data
 {
-	using System.Collections.Generic;
-	using WotBlitzStatician.Model;
+    using System;
+    using System.Collections.Generic;
+    using WotBlitzStatician.Model;
 
-	public class BlitzStaticianDataAccessor : IBlitzStaticianDataAccessor
+    public class BlitzStaticianDataAccessor : IBlitzStaticianDataAccessor
 	{
 
 		public AccountInfo GetAccountInfo(string nick)
@@ -40,5 +41,25 @@
 		{
 			throw new System.NotImplementedException();
 		}
-	}
+
+        public void SaveLanguagesDictionary(List<DictionaryLanguage> languages)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveNationsDictionary(List<DictionaryNations> nations)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveVehicleTypesDictionary(List<DictionaryVehicleType> vehicleTypes)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveVehicleEncyclopedia(List<VehicleEncyclopedia> vehicles)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
