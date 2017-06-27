@@ -91,5 +91,26 @@
             var firstTank = tanksStat[0];
             _log.Debug($"TestAccountTankStat. First tank is {firstTank.TankId}; Battles: {firstTank.Battles}; Battle life time {firstTank.BattleLifeTime}");
         }
+
+        [Fact]
+        public async Task TestStaticDictionary()
+        {
+            var wgApiClient = _container.Resolve<IWargamingApiClient>();
+            var staticDictionaies = await wgApiClient.GetStaticDictionaries();
+
+            Assert.NotNull(staticDictionaies);
+            Assert.NotNull(staticDictionaies.DictionaryLanguages);
+            Assert.NotNull(staticDictionaies.DictionaryNationses);
+            Assert.NotNull(staticDictionaies.DictionaryVehicleTypes);
+
+            _log.Debug($"DictionaryLanguages count is {staticDictionaies.DictionaryLanguages.Count()}");
+            _log.Debug($"DictionaryLanguages first Item '{staticDictionaies.DictionaryLanguages[0].LanguageId}' - '{staticDictionaies.DictionaryLanguages[0].LanguageName}'");
+
+			_log.Debug($"DictionaryNationses count is {staticDictionaies.DictionaryNationses.Count()}");
+            _log.Debug($"DictionaryNationses first Item '{staticDictionaies.DictionaryNationses[0].NationId}' - '{staticDictionaies.DictionaryNationses[0].NationName}'");
+
+			_log.Debug($"DictionaryVehicleTypes count is {staticDictionaies.DictionaryVehicleTypes.Count()}");
+            _log.Debug($"DictionaryVehicleTypes first Item '{staticDictionaies.DictionaryVehicleTypes[0].VehicleTypeId}' - '{staticDictionaies.DictionaryVehicleTypes[0].VehicleTypeName}'");
+        }
     }
 }

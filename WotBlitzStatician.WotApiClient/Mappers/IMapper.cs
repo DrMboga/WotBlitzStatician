@@ -10,8 +10,6 @@
 	/// Destination mapping type.
 	/// </typeparam>
 	public interface IMapper<in TSource, TDestination>
-		where TSource : class
-		where TDestination : class
 	{
 		/// <summary>
 		/// Maps data from source to destination objects. 

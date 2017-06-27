@@ -4,20 +4,21 @@
 	using AutoMapper;
 	using WotBlitzStatician.Model;
 
-	internal class DictionaryLanguageMapper : IMapper<Dictionary<string, string>, List<DictionaryLanguage>>
+    internal class DictionaryLanguageMapper : IMapper<KeyValuePair<string, string>, DictionaryLanguage>
 	{
 		public DictionaryLanguageMapper()
 		{
-			Mapper.Initialize(m => m.CreateMap<Dictionary<string, string>, List<DictionaryLanguage>>());
-			// ToDo: read the documentation
+            Mapper.Initialize(m => m.CreateMap<KeyValuePair<string, string>, DictionaryLanguage>()
+                              .ForMember(dest => dest.LanguageId, op => op.MapFrom(s => s.Key))
+                              .ForMember(dest => dest.LanguageName, op => op.MapFrom(svm => svm.Value)));		
 		}
 
-		public List<DictionaryLanguage> Map(Dictionary<string, string> source)
+		public DictionaryLanguage Map(KeyValuePair<string, string> source)
 		{
-			return Mapper.Map<Dictionary<string, string>, List<DictionaryLanguage>>(source);
+			return Mapper.Map<KeyValuePair<string, string>, DictionaryLanguage>(source);
 		}
 
-		public List<DictionaryLanguage> Map(Dictionary<string, string> source, List<DictionaryLanguage> destination)
+		public DictionaryLanguage Map(KeyValuePair<string, string> source, DictionaryLanguage destination)
 		{
 			return Mapper.Map(source, destination);
 		}

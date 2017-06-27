@@ -88,13 +88,27 @@
 			if (encyclopedia?.Languages == null) return responseInfo;
 
 			var languageMapper = new DictionaryLanguageMapper();
-			responseInfo.DictionaryLanguages = languageMapper.Map(encyclopedia.Languages);
+            responseInfo.DictionaryLanguages = new List<DictionaryLanguage>();
+            foreach (var lan in encyclopedia.Languages)
+            {
+                responseInfo.DictionaryLanguages.Add(languageMapper.Map(lan));
+            }
 
-			// DictionaryNationMapper
+            var nationMapper = new DictionaryNationMapper();
+            responseInfo.DictionaryNationses = new List<DictionaryNations>();
+            foreach (var nation in encyclopedia.VehicleNations)
+            {
+                responseInfo.DictionaryNationses.Add(nationMapper.Map(nation));
+            }
 
-			// DictionaryVehicleTypeMapper
+            var vehicleTypesMapper = new DictionaryVehicleTypeMapper();
+            responseInfo.DictionaryVehicleTypes = new List<DictionaryVehicleType>();
+            foreach (var vt in encyclopedia.VehicleTypes)
+            {
+                responseInfo.DictionaryVehicleTypes.Add(vehicleTypesMapper.Map(vt));
+            }
 
-			return responseInfo;
+            return responseInfo;
 		}
 	}
 }
