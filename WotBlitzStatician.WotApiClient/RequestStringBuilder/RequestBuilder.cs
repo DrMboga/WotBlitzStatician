@@ -43,6 +43,7 @@
 			_parameterNames[ParameterType.ApplicationId] = "application_id";
 			_parameterNames[ParameterType.Search] = "search";
 			_parameterNames[ParameterType.AccountId] = "account_id";
+            _parameterNames[ParameterType.ClanId] = "clan_id";
 
 		}
 

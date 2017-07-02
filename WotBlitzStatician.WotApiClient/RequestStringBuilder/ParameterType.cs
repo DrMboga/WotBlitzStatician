@@ -5,6 +5,7 @@
 		Language,
 		ApplicationId,
 		Search,
-		AccountId
+		AccountId,
+        ClanId
 	}
 }

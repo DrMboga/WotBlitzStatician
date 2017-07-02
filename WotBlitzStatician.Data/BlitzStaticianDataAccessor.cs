@@ -61,5 +61,10 @@
         {
             throw new NotImplementedException();
         }
+
+        public void SaveClanInfo(AccountClanInfo clanInfo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

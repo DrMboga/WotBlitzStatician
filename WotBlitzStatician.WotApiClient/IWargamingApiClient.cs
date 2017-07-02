@@ -15,6 +15,8 @@
 
 		Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId);
 		
-		Task<WotEncyclopediaInfo> GetStaticDictionaries();
+        Task<WotEncyclopediaInfo> GetStaticDictionariesAsync();
+
+        Task<AccountClanInfo> GetAccountClanInfoAsync(long accountId);
 	}
 }

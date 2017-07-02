@@ -19,6 +19,8 @@
 
 		void SaveTanksStatistic(List<AccountTankStatistics> taksStat);
 
+        void SaveClanInfo(AccountClanInfo clanInfo);
+
         void SaveLanguagesDictionary(List<DictionaryLanguage> languages);
 
         void SaveNationsDictionary(List<DictionaryNations> nations);

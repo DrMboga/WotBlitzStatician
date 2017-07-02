@@ -96,7 +96,7 @@
         public async Task TestStaticDictionary()
         {
             var wgApiClient = _container.Resolve<IWargamingApiClient>();
-            var staticDictionaies = await wgApiClient.GetStaticDictionaries();
+            var staticDictionaies = await wgApiClient.GetStaticDictionariesAsync();
 
             Assert.NotNull(staticDictionaies);
             Assert.NotNull(staticDictionaies.DictionaryLanguages);
@@ -111,6 +111,21 @@
 
 			_log.Debug($"DictionaryVehicleTypes count is {staticDictionaies.DictionaryVehicleTypes.Count()}");
             _log.Debug($"DictionaryVehicleTypes first Item '{staticDictionaies.DictionaryVehicleTypes[0].VehicleTypeId}' - '{staticDictionaies.DictionaryVehicleTypes[0].VehicleTypeName}'");
+        }
+
+		// dotnet test --filter FullyQualifiedName=WotBlitzStatician.Logic.Tests.WargamingClientTest.TestClanInfo
+		[Fact]
+        public async Task TestClanInfo()
+        {
+            var wgApiClient = _container.Resolve<IWargamingApiClient>();
+            var accountClanInfo = await wgApiClient.GetAccountClanInfoAsync(46512100);
+
+            Assert.NotNull(accountClanInfo);
+
+            _log.Debug($"Got clan info for accountId {accountClanInfo.AccountId} - {accountClanInfo.PlayerRole};" 
+                       + $" joined at {accountClanInfo.PlayerJoinedAt}; clan tag {accountClanInfo.ClanTag};" 
+                       + $" members count {accountClanInfo.MembersCount}; leader is '{accountClanInfo.ClanLeaderName}'"
+                       + $" clan id {accountClanInfo.ClanId}");
         }
     }
 }

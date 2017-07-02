@@ -44,7 +44,7 @@
 
 		public async Task LoadStaticDataAndSaveToDb()
 		{
-            var encyclopedia = await _wgApiClient.GetStaticDictionaries();
+            var encyclopedia = await _wgApiClient.GetStaticDictionariesAsync();
             var vehicles = await _wgApiClient.GetWotEncyclopediaVehiclesAsync();
             // ToDo: Achievements
 
@@ -83,8 +83,16 @@
 		public async Task LoadStatisticsFromWgAndSaveToDb(AccountInfo accountInfo)
 		{
 			var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId);
-			_dataAccessor.SaveAccountInfo(accountInfo);
+            var clanInfo = await _wgApiClient.GetAccountClanInfoAsync(accountInfo.AccountId);
+            _dataAccessor.SaveAccountInfo(accountInfo);
+
+            // ToDo: Achievements
+            // ToDo: Tank achievements
 			_dataAccessor.SaveTanksStatistic(tanksInfo);
+            if(clanInfo != null && clanInfo.ClanId > 0)
+            {
+                _dataAccessor.SaveClanInfo(clanInfo);
+            }
 		}
     }
 }

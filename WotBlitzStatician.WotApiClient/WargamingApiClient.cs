@@ -1,16 +1,17 @@
 ﻿namespace WotBlitzStatician.WotApiClient
 {
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Threading.Tasks;
-	using WotBlitzStatician.Model;
-	using WotBlitzStatician.WotApiClient.DTO;
-	using WotBlitzStatician.WotApiClient.InternalModel;
-	using WotBlitzStatician.WotApiClient.Mappers;
-	using WotBlitzStatician.WotApiClient.RequestStringBuilder;
-	
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using WotBlitzStatician.Model;
+    using WotBlitzStatician.WotApiClient.DTO;
+    using WotBlitzStatician.WotApiClient.InternalModel;
+    using WotBlitzStatician.WotApiClient.Mappers;
+    using WotBlitzStatician.WotApiClient.RequestStringBuilder;
 
-	public class WargamingApiClient : IWargamingApiClient
+
+    public class WargamingApiClient : IWargamingApiClient
 	{
 		private readonly IRequestBuilder _requestBuilder;
 
@@ -77,7 +78,7 @@
 			return tanksStat[accountId.ToString()].Select(s => mapper.Map(s)).ToList();
 		}
 		
-		public async Task<WotEncyclopediaInfo> GetStaticDictionaries()
+		public async Task<WotEncyclopediaInfo> GetStaticDictionariesAsync()
 		{
 			var webClient = new WebApiClient();
 			var encyclopedia = await webClient.GetResponse<WotEncyclopediaInfoResponse>(
@@ -110,5 +111,39 @@
 
             return responseInfo;
 		}
-	}
+
+        public async Task<AccountClanInfo> GetAccountClanInfoAsync(long accountId)
+        {
+            var webClient = new WebApiClient();
+            var playerAccountInfoResponse = await webClient.GetResponse<Dictionary<string, WotClansAccountinfoResponse>>(
+	            _requestBuilder.BaseAddress,
+	            _requestBuilder.BuildRequestUrl(
+	                    RequestType.ClanAccountInfo,
+	                    new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() }));
+
+            var playerAccountInfo = playerAccountInfoResponse[accountId.ToString()];
+            if (playerAccountInfo == null)
+                return null;
+
+            var clanAccountInfoMapper = new ClanAccountInfoMapper();
+            var accountClanInfo = clanAccountInfoMapper.Map(playerAccountInfo);
+
+            if (!playerAccountInfo.ClanId.HasValue)
+                return accountClanInfo;
+
+            string clanId = playerAccountInfo.ClanId.Value.ToString();
+
+            var clanInfoResponse = await webClient.GetResponse<Dictionary<string, WotClanInfoResponse>>(
+			    _requestBuilder.BaseAddress,
+				_requestBuilder.BuildRequestUrl(
+                    RequestType.ClanInfo,
+                    new RequestParameter { ParameterType = ParameterType.ClanId, ParameterValue = clanId }));
+
+            var clanInfo = clanInfoResponse[clanId];
+            var clanInfoMapper = new ClanInfoResponseMapper();
+            clanInfoMapper.Map(clanInfo, accountClanInfo);
+
+            return accountClanInfo;
+        }
+    }
 }
