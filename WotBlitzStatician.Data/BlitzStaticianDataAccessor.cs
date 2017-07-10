@@ -66,5 +66,10 @@
         {
             throw new NotImplementedException();
         }
+	
+	public void SaveAchievementsDictionary(List<Achievement> achievements)
+		{
+			throw new NotImplementedException();
+		}
     }
 }
