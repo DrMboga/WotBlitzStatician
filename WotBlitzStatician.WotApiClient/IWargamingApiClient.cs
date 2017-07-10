@@ -18,5 +18,7 @@
         Task<WotEncyclopediaInfo> GetStaticDictionariesAsync();
 
         Task<AccountClanInfo> GetAccountClanInfoAsync(long accountId);
+		
+	Task<List<Achievement>> GetAchievementsDictionaryAsync();
 	}
 }
