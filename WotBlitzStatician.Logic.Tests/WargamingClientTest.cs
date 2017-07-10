@@ -127,5 +127,25 @@
                        + $" members count {accountClanInfo.MembersCount}; leader is '{accountClanInfo.ClanLeaderName}'"
                        + $" clan id {accountClanInfo.ClanId}");
         }
+	    
+	    [Fact]
+	public async Task TestAchievemntsDictionary()
+	    {
+			var wgApiClient = _container.Resolve<IWargamingApiClient>();
+		    var achievements = await wgApiClient.GetAchievementsDictionaryAsync();
+
+		    Assert.NotNull(achievements);
+
+			_log.Debug($"<TestAchievemntsDictionary> Got {achievements.Count} achievement Dictionaries");
+
+		    var firstWithNotNullOptions = achievements.First(a => a.Options != null);
+
+			Assert.True(firstWithNotNullOptions.Options.All(o => !string.IsNullOrWhiteSpace(o.AchievementId)));
+
+			_log.Debug($"First achievement with option is: '{firstWithNotNullOptions.AchievementId}' - "
+				+ $"'{firstWithNotNullOptions.Name}'; Description '{firstWithNotNullOptions.Description}';"
+				+ $"Order {firstWithNotNullOptions.Order}; Section: '{firstWithNotNullOptions.Section}'"
+				+ $"FirstOption: '{firstWithNotNullOptions.Options.First().Name}'");
+	    }	
     }
 }
