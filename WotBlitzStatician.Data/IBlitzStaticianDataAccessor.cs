@@ -28,5 +28,7 @@
         void SaveVehicleTypesDictionary(List<DictionaryVehicleType> vehicleTypes);
 
         void SaveVehicleEncyclopedia(List<VehicleEncyclopedia> vehicles);
+		
+	void SaveAchievementsDictionary(List<Achievement> achievements);
 	}
 }
