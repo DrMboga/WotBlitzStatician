@@ -145,5 +145,35 @@
 
             return accountClanInfo;
         }
+	
+	public async Task<List<Achievement>> GetAchievementsDictionaryAsync()
+	{
+		var webClient = new WebApiClient();
+		var acievementsresponse = await webClient.GetResponse<Dictionary<string, WotEncyclopediaAchievementsResponse>>(
+			_requestBuilder.BaseAddress,
+			_requestBuilder.BuildRequestUrl(RequestType.EncyclopediaAchievements));
+
+		var achievements = new List<Achievement>();
+
+		foreach (var achievementsresponseValue in acievementsresponse.Values)
+		{
+			var achievementMapper = new DictionaryAchievementsMapper();
+			var achievement = achievementMapper.Map(achievementsresponseValue);
+			if (achievementsresponseValue.Options != null && achievementsresponseValue.Options.Length > 0)
+			{
+				achievement.Options = new List<AchievementOption>();
+				var achievementOptionMapper = new DictionaryAchievementOptionMapper();
+				foreach (var wotEncyclopediaAchievementsOption in achievementsresponseValue.Options)
+				{
+					var option = achievementOptionMapper.Map(wotEncyclopediaAchievementsOption);
+					option.AchievementId = achievement.AchievementId;
+					achievement.Options.Add(option);
+				}
+			}
+			achievements.Add(achievement);
+		}
+
+		return achievements;
+	}
     }
 }
