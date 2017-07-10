@@ -46,12 +46,13 @@
 		{
             var encyclopedia = await _wgApiClient.GetStaticDictionariesAsync();
             var vehicles = await _wgApiClient.GetWotEncyclopediaVehiclesAsync();
-            // ToDo: Achievements
+            var achievements = await _wgApiClient.GetAchievementsDictionaryAsync();
 
             _dataAccessor.SaveLanguagesDictionary(encyclopedia.DictionaryLanguages);
             _dataAccessor.SaveNationsDictionary(encyclopedia.DictionaryNationses);
             _dataAccessor.SaveVehicleTypesDictionary(encyclopedia.DictionaryVehicleTypes);
             _dataAccessor.SaveVehicleEncyclopedia(vehicles);
+	    _dataAccessor.SaveAchievementsDictionary(achievements);
 		}
 
 		public AccountInfoPrivate GetAccountPrivateStatistics(long accountId)
