@@ -17,6 +17,7 @@
 				.ForMember(dest => dest.Name, op => op.MapFrom(s => s.Name))
 				.ForMember(dest => dest.Order, op => op.MapFrom(s => s.Order))
 				.ForMember(dest => dest.Section, op => op.MapFrom(s => s.Section))
+                              .ForMember(dest => dest.Options, op => op.Ignore())
 			);
 		}
 

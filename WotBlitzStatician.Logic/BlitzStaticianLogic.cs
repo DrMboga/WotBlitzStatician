@@ -42,8 +42,8 @@
 			return account;
 		}
 
-		public async Task LoadStaticDataAndSaveToDb()
-		{
+        public async Task LoadStaticDataAndSaveToDb()
+        {
             var encyclopedia = await _wgApiClient.GetStaticDictionariesAsync();
             var vehicles = await _wgApiClient.GetWotEncyclopediaVehiclesAsync();
             var achievements = await _wgApiClient.GetAchievementsDictionaryAsync();
@@ -52,8 +52,8 @@
             _dataAccessor.SaveNationsDictionary(encyclopedia.DictionaryNationses);
             _dataAccessor.SaveVehicleTypesDictionary(encyclopedia.DictionaryVehicleTypes);
             _dataAccessor.SaveVehicleEncyclopedia(vehicles);
-	    _dataAccessor.SaveAchievementsDictionary(achievements);
-		}
+            _dataAccessor.SaveAchievementsDictionary(achievements);
+        }
 
 		public AccountInfoPrivate GetAccountPrivateStatistics(long accountId)
 		{

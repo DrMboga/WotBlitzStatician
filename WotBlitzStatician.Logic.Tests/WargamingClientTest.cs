@@ -127,25 +127,25 @@
                        + $" members count {accountClanInfo.MembersCount}; leader is '{accountClanInfo.ClanLeaderName}'"
                        + $" clan id {accountClanInfo.ClanId}");
         }
-	    
-	    [Fact]
-	public async Task TestAchievemntsDictionary()
-	    {
-			var wgApiClient = _container.Resolve<IWargamingApiClient>();
-		    var achievements = await wgApiClient.GetAchievementsDictionaryAsync();
 
-		    Assert.NotNull(achievements);
+        [Fact]
+        public async Task TestAchievemntsDictionary()
+        {
+            var wgApiClient = _container.Resolve<IWargamingApiClient>();
+            var achievements = await wgApiClient.GetAchievementsDictionaryAsync();
 
-			_log.Debug($"<TestAchievemntsDictionary> Got {achievements.Count} achievement Dictionaries");
+            Assert.NotNull(achievements);
 
-		    var firstWithNotNullOptions = achievements.First(a => a.Options != null);
+            _log.Debug($"<TestAchievemntsDictionary> Got {achievements.Count} achievement Dictionaries");
 
-			Assert.True(firstWithNotNullOptions.Options.All(o => !string.IsNullOrWhiteSpace(o.AchievementId)));
+            var firstWithNotNullOptions = achievements.First(a => a.Options != null);
 
-			_log.Debug($"First achievement with option is: '{firstWithNotNullOptions.AchievementId}' - "
-				+ $"'{firstWithNotNullOptions.Name}'; Description '{firstWithNotNullOptions.Description}';"
-				+ $"Order {firstWithNotNullOptions.Order}; Section: '{firstWithNotNullOptions.Section}'"
-				+ $"FirstOption: '{firstWithNotNullOptions.Options.First().Name}'");
-	    }	
+            Assert.True(firstWithNotNullOptions.Options.All(o => !string.IsNullOrWhiteSpace(o.AchievementId)));
+
+            _log.Debug($"First achievement with option is: '{firstWithNotNullOptions.AchievementId}' - "
+                + $"'{firstWithNotNullOptions.Name}'; Description '{firstWithNotNullOptions.Description}';"
+                + $"Order {firstWithNotNullOptions.Order}; Section: '{firstWithNotNullOptions.Section}'"
+                + $"FirstOption: '{firstWithNotNullOptions.Options.First().Name}'");
+        }	
     }
 }
