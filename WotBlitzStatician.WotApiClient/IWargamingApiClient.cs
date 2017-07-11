@@ -15,10 +15,14 @@
 
 		Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId);
 		
-        Task<WotEncyclopediaInfo> GetStaticDictionariesAsync();
+		Task<WotEncyclopediaInfo> GetStaticDictionariesAsync();
 
-        Task<AccountClanInfo> GetAccountClanInfoAsync(long accountId);
+		Task<AccountClanInfo> GetAccountClanInfoAsync(long accountId);
+
+		Task<List<Achievement>> GetAchievementsDictionaryAsync();
 		
-	Task<List<Achievement>> GetAchievementsDictionaryAsync();
+		Task<List<AccountInfoAchievment>> GetAccountAchievementsAsync(long accountId);
+		
+		Task<List<AccountInfoTankAchievment>> GetAccountTankAchievementsAsync(long accountId);
 	}
 }
