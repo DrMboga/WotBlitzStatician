@@ -68,8 +68,18 @@
         }
 	
 	public void SaveAchievementsDictionary(List<Achievement> achievements)
-		{
-			throw new NotImplementedException();
-		}
+	{
+		throw new NotImplementedException();
+	}
+	public void SaveAccountAchievements(List<AccountInfoAchievment> accountInfoAchievments)
+	{
+		throw new NotImplementedException();
+	}
+
+	public void SaveAccountTankAchievements(List<AccountInfoTankAchievment> accountInfoTankAchievments)
+	{
+		throw new NotImplementedException();
+	}		
+
     }
 }
