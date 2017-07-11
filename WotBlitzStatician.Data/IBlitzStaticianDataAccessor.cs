@@ -30,5 +30,10 @@
         void SaveVehicleEncyclopedia(List<VehicleEncyclopedia> vehicles);
 		
 	void SaveAchievementsDictionary(List<Achievement> achievements);
+		
+	void SaveAccountAchievements(List<AccountInfoAchievment> accountInfoAchievments);
+
+	void SaveAccountTankAchievements(List<AccountInfoTankAchievment> accountInfoTankAchievments);
+
 	}
 }
