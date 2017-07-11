@@ -84,16 +84,18 @@
 		public async Task LoadStatisticsFromWgAndSaveToDb(AccountInfo accountInfo)
 		{
 			var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId);
-            var clanInfo = await _wgApiClient.GetAccountClanInfoAsync(accountInfo.AccountId);
-            _dataAccessor.SaveAccountInfo(accountInfo);
+			var clanInfo = await _wgApiClient.GetAccountClanInfoAsync(accountInfo.AccountId);
+			var accountAchievements = await _wgApiClient.GetAccountAchievementsAsync(accountInfo.AccountId);
+			var accountTankAchievements = await _wgApiClient.GetAccountTankAchievementsAsync(accountInfo.AccountId);
 
-            // ToDo: Achievements
-            // ToDo: Tank achievements
+            		_dataAccessor.SaveAccountInfo(accountInfo);
+			_dataAccessor.SaveAccountAchievements(accountAchievements);
+            		_dataAccessor.SaveAccountTankAchievements(accountTankAchievements);
 			_dataAccessor.SaveTanksStatistic(tanksInfo);
-            if(clanInfo != null && clanInfo.ClanId > 0)
-            {
-                _dataAccessor.SaveClanInfo(clanInfo);
-            }
+		    if(clanInfo != null && clanInfo.ClanId > 0)
+		    {
+			_dataAccessor.SaveClanInfo(clanInfo);
+		    }
 		}
     }
 }
