@@ -175,5 +175,79 @@
 
 		return achievements;
 	}
+	
+		public async Task<List<AccountInfoAchievment>> GetAccountAchievementsAsync(long accountId)
+		{
+			var webClient = new WebApiClient();
+			var accountAchievementsResponse = await webClient.GetResponse <Dictionary<string, WotAccountAchievementResponse>>(
+				_requestBuilder.BaseAddress,
+				_requestBuilder.BuildRequestUrl(
+					RequestType.AccountAchievements,
+					new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() }));
+
+			var accountAchievements = accountAchievementsResponse[accountId.ToString()];
+
+			var accountAchievementsInfo = accountAchievements
+				.Achievements.Select(achievement => new AccountInfoAchievment
+				{
+					AccountId = accountId,
+					AccountInfoAchievmentId = achievement.Key,
+					Count = Convert.ToInt32(achievement.Value)
+				}).ToList();
+
+			accountAchievementsInfo.AddRange(accountAchievements
+					.MaxSeries.Select(achievement => new AccountInfoAchievment
+					{
+						AccountId = accountId,
+						AccountInfoAchievmentId = achievement.Key,
+						Count = Convert.ToInt32(achievement.Value),
+						IsMaxSeries = true
+					}).ToList()
+			);
+
+			return accountAchievementsInfo;
+		}
+
+		public async Task<List<AccountInfoTankAchievment>> GetAccountTankAchievementsAsync(long accountId)
+		{
+			var webClient = new WebApiClient();
+			var accountTankAchievementsResponse = await webClient.GetResponse<Dictionary<string, WotAccountTankAchievementResponse[]>>(
+				_requestBuilder.BaseAddress,
+				_requestBuilder.BuildRequestUrl(
+					RequestType.TanksAcievements,
+					new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() }));
+
+			var accountTanks = accountTankAchievementsResponse[accountId.ToString()];
+
+			var accountTankAchievements = new List<AccountInfoTankAchievment>();
+
+			foreach (var tank in accountTanks)
+			{
+				accountTankAchievements.AddRange(
+					tank.Achievements.Select(achievement => new AccountInfoTankAchievment
+						{
+							TankId = tank.TankId.Value,
+							AccountId = accountId,
+							AccountInfoAchievmentId = achievement.Key,
+							Count = Convert.ToInt32(achievement.Value)
+						})
+						.ToList()
+				);
+				accountTankAchievements.AddRange(
+					tank.MaxSeries.Select(achievement => new AccountInfoTankAchievment
+						{
+							TankId = tank.TankId.Value,
+							AccountId = accountId,
+							AccountInfoAchievmentId = achievement.Key,
+							Count = Convert.ToInt32(achievement.Value),
+							IsMaxSeries = true
+						})
+						.ToList()
+				);
+			}
+
+			return accountTankAchievements;
+		}	
+	
     }
 }
