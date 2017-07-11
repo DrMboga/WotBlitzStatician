@@ -147,5 +147,38 @@
                 + $"Order {firstWithNotNullOptions.Order}; Section: '{firstWithNotNullOptions.Section}'"
                 + $"FirstOption: '{firstWithNotNullOptions.Options.First().Name}'");
         }	
+	    
+
+	[Fact]
+	    public async Task TestAccountAchievements()
+	    {
+			var wgApiClient = _container.Resolve<IWargamingApiClient>();
+		    var accountAchievements = await wgApiClient.GetAccountAchievementsAsync(46512100);
+
+		    var firstAchievement = accountAchievements.First(a => !a.IsMaxSeries);
+		    var firstMaxSeries = accountAchievements.First(a => a.IsMaxSeries);
+
+			_log.Debug($"<TestAccountAchievements> Got {accountAchievements.Count} achievement for account. "
+				+ $"First achievement is '{firstAchievement.AccountInfoAchievmentId}'; Count {firstAchievement.Count}. "
+				+ $"First max series is '{firstMaxSeries.AccountInfoAchievmentId}'; Count {firstMaxSeries.Count}");
+		}
+
+
+		[Fact]
+	    public async Task TestAccountTankAchievements()
+	    {
+			var wgApiClient = _container.Resolve<IWargamingApiClient>();
+		    var accountTankAchievements = await wgApiClient.GetAccountTankAchievementsAsync(46512100);
+
+		    var firstTank = accountTankAchievements.GroupBy(t => t.TankId, (key, a) => new {key, Achievements = a.ToList()}).First();
+
+			var firstAchievement = firstTank.Achievements.First(a => !a.IsMaxSeries);
+		    var firstMaxSeries = firstTank.Achievements.First(a => a.IsMaxSeries);
+
+			_log.Debug($"<TestAccountTankAchievements> Got {accountTankAchievements.Count} achievement for all tanks in account. "
+				+ $"First tank is {firstTank.key} has {firstTank.Achievements.Count} acievements. "
+				+ $"First achievement for first tank is '{firstAchievement.AccountInfoAchievmentId}'; Count {firstAchievement.Count}. "
+				+ $"First max series for first tank is '{firstMaxSeries.AccountInfoAchievmentId}'; Count {firstMaxSeries.Count}");
+		}
     }
 }
