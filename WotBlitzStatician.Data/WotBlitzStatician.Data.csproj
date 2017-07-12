@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="1.0.2" />
+    <PackageReference Include="Autofac" Version="4.6.0" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />

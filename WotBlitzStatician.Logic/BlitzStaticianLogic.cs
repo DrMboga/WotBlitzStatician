@@ -48,6 +48,8 @@
             var vehicles = await _wgApiClient.GetWotEncyclopediaVehiclesAsync();
             var achievements = await _wgApiClient.GetAchievementsDictionaryAsync();
 
+            encyclopedia.DictionaryLanguages.ForEach(l => l.LastUpdated = DateTime.Now);
+
             _dataAccessor.SaveLanguagesDictionary(encyclopedia.DictionaryLanguages);
             _dataAccessor.SaveNationsDictionary(encyclopedia.DictionaryNationses);
             _dataAccessor.SaveVehicleTypesDictionary(encyclopedia.DictionaryVehicleTypes);

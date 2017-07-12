@@ -14,6 +14,7 @@
 
 		public TestDatabase()
         {
+            Log4NetHelper.ConfigureLog4Net();
         }
 
 		[Fact]

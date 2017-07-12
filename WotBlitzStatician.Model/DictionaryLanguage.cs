@@ -1,5 +1,6 @@
 ﻿namespace WotBlitzStatician.Model
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     public class DictionaryLanguage
