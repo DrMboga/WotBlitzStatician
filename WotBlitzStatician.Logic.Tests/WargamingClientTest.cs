@@ -15,6 +15,7 @@
             public string ApplicationId { get; set; } = "demo";
             public string BaseAddress { get; set; } = "https://api.wotblitz.ru/wotb/";
             public string Language { get; set; } = "ru";
+	    public Int32 DictionariesUpdateFrequencyInDays { get; set; } = 7;
         }
 
         private static readonly ILog _log = LogManager.GetLogger(typeof(WargamingClientTest));
