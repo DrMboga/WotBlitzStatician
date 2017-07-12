@@ -8,5 +8,7 @@
         public string LanguageId { get; set; }
 
         public string LanguageName { get; set; }
+        
+        public DateTime LastUpdated { get; set; }
     }
 }
