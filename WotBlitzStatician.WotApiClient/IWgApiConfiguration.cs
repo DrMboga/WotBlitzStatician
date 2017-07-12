@@ -10,5 +10,7 @@
 		string BaseAddress { get; set; }
 		
 		string Language { get; set; }
+		
+		int DictionariesUpdateFrequencyInDays { get; set; }
 	}
 }
