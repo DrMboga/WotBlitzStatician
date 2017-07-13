@@ -78,7 +78,7 @@
             // ToDo: ChangeTableName
 			using (var context = new BlitzStaticianDataContext())
 			{
-                context.Merge(context.VehiclesEncyclopedia, vehicles);
+                context.Merge(context.VehicleEncyclopedia, vehicles);
 				context.SaveChanges();
 			}
         }
@@ -96,8 +96,8 @@
             //ToDo: contextFactory
             using (var context = new BlitzStaticianDataContext())
             {
-                context.Merge(context.Achievements, achievements);
-                context.Merge(context.AchievementOptions, achievementOptions);
+                context.Merge(context.Achievement, achievements);
+                context.Merge(context.AchievementOption, achievementOptions);
                 context.SaveChanges();
             }
         }
