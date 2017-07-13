@@ -9,9 +9,10 @@ using WotBlitzStatician.Model;
 namespace WotBlitzStatician.Data.Migrations
 {
     [DbContext(typeof(BlitzStaticianDataContext))]
-    partial class BlitzStaticianDataContextModelSnapshot : ModelSnapshot
+    [Migration("20170713111041_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.2");
