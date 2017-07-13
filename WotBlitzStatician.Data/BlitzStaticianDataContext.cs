@@ -8,7 +8,14 @@
 
     public class BlitzStaticianDataContext : DbContext
     {
-        public DbSet<AccountInfo> AccountInfo { get; set; }
+	    private readonly string _connectionString;
+
+	    public BlitzStaticianDataContext(string connectionString)
+	    {
+		    _connectionString = connectionString;
+	    }
+
+	    public DbSet<AccountInfo> AccountInfo { get; set; }
         public DbSet<AccountInfoPrivate> AccountInfoPrivate { get; set; }
         public DbSet<AccountInfoStatistics> AccountInfoStatistics { get; set; }
         public DbSet<AccountTankStatistics> AccountTankStatistics { get; set; }
@@ -26,8 +33,7 @@
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source=..\..\..\BlitzStatician.db");
-//            optionsBuilder.UseSqlite(@"Data Source=/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician.Logic.Tests/BlitzStatician.db");
+	        optionsBuilder.UseSqlite(_connectionString);
         }
     }
 }

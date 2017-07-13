@@ -4,8 +4,14 @@
     using System.Collections.Generic;
     using WotBlitzStatician.Model;
 
-    public class BlitzStaticianDataAccessor : IBlitzStaticianDataAccessor
+	public class BlitzStaticianDataAccessor : IBlitzStaticianDataAccessor
 	{
+		private readonly IBlitzStaticianDataContextFactory _blitzStaticianDataContextFactory;
+
+		public BlitzStaticianDataAccessor(IBlitzStaticianDataContextFactory blitzStaticianDataContextFactory)
+		{
+			_blitzStaticianDataContextFactory = blitzStaticianDataContextFactory;
+		}
 
 		public AccountInfo GetAccountInfo(string nick)
 		{
@@ -42,74 +48,69 @@
 			throw new System.NotImplementedException();
 		}
 
-        public void SaveLanguagesDictionary(List<DictionaryLanguage> languages)
-        {
-            //ToDo: contextFactory
-			using (var context = new BlitzStaticianDataContext())
+		public void SaveLanguagesDictionary(List<DictionaryLanguage> languages)
+		{
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
 			{
 				context.Merge(context.DictionaryLanguage, languages);
 				context.SaveChanges();
 			}
-        }
+		}
 
-        public void SaveNationsDictionary(List<DictionaryNations> nations)
-        {
-			//ToDo: contextFactory
-			using (var context = new BlitzStaticianDataContext())
+		public void SaveNationsDictionary(List<DictionaryNations> nations)
+		{
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
 			{
-                context.Merge(context.DictionaryNations, nations);
+				context.Merge(context.DictionaryNations, nations);
 				context.SaveChanges();
 			}
 		}
 
-        public void SaveVehicleTypesDictionary(List<DictionaryVehicleType> vehicleTypes)
-        {
-			//ToDo: contextFactory
-			using (var context = new BlitzStaticianDataContext())
+		public void SaveVehicleTypesDictionary(List<DictionaryVehicleType> vehicleTypes)
+		{
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
 			{
-                context.Merge(context.DictionaryVehicleType, vehicleTypes);
+				context.Merge(context.DictionaryVehicleType, vehicleTypes);
 				context.SaveChanges();
 			}
-        }
+		}
 
-        public void SaveVehicleEncyclopedia(List<VehicleEncyclopedia> vehicles)
-        {
-			//ToDo: contextFactory
-            // ToDo: ChangeTableName
-			using (var context = new BlitzStaticianDataContext())
+		public void SaveVehicleEncyclopedia(List<VehicleEncyclopedia> vehicles)
+		{
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
 			{
-                context.Merge(context.VehicleEncyclopedia, vehicles);
+				context.Merge(context.VehicleEncyclopedia, vehicles);
 				context.SaveChanges();
 			}
-        }
+		}
 
-        public void SaveClanInfo(AccountClanInfo clanInfo)
-        {
-            throw new NotImplementedException();
-        }
+		public void SaveClanInfo(AccountClanInfo clanInfo)
+		{
+			throw new NotImplementedException();
+		}
 
-        public void SaveAchievementsDictionary(List<Achievement> achievements)
-        {
-            var achievementOptions = new List<AchievementOption>();
-            achievements.ForEach(a => achievementOptions.AddRange(a.Options));
+		public void SaveAchievementsDictionary(List<Achievement> achievements)
+		{
+			var achievementOptions = new List<AchievementOption>();
+			achievements.ForEach(a => achievementOptions.AddRange(a.Options));
 
-            //ToDo: contextFactory
-            using (var context = new BlitzStaticianDataContext())
-            {
-                context.Merge(context.Achievement, achievements);
-                context.Merge(context.AchievementOption, achievementOptions);
-                context.SaveChanges();
-            }
-        }
-	public void SaveAccountAchievements(List<AccountInfoAchievment> accountInfoAchievments)
-	{
-		throw new NotImplementedException();
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
+			{
+				context.Merge(context.Achievement, achievements);
+				context.Merge(context.AchievementOption, achievementOptions);
+				context.SaveChanges();
+			}
+		}
+
+		public void SaveAccountAchievements(List<AccountInfoAchievment> accountInfoAchievments)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void SaveAccountTankAchievements(List<AccountInfoTankAchievment> accountInfoTankAchievments)
+		{
+			throw new NotImplementedException();
+		}
+
 	}
-
-	public void SaveAccountTankAchievements(List<AccountInfoTankAchievment> accountInfoTankAchievments)
-	{
-		throw new NotImplementedException();
-	}		
-
-    }
 }

@@ -4,9 +4,10 @@
 
     public static class BlitzStaticianDataAccessorInstaller
     {
-		public static void ConfigureDataAccessor(this ContainerBuilder containerBuilder)
+		public static void ConfigureDataAccessor(this ContainerBuilder containerBuilder, string connectionString)
 		{
-            // ToDo: Create context factory
+			containerBuilder.Register(c => new BlitzStaticianDataContextFactory(connectionString))
+				.As<IBlitzStaticianDataContextFactory>();
             containerBuilder.RegisterType<BlitzStaticianDataAccessor>().As<IBlitzStaticianDataAccessor>();
 		}
     }
