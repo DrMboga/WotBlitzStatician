@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using WotBlitzStatician.Model;
 
 	public class BlitzStaticianDataAccessor : IBlitzStaticianDataAccessor
@@ -13,9 +14,22 @@
 			_blitzStaticianDataContextFactory = blitzStaticianDataContextFactory;
 		}
 
+        // ToDo: refactor - split get methods and save methods
 		public AccountInfo GetAccountInfo(string nick)
 		{
-			throw new System.NotImplementedException();
+            using(var context = _blitzStaticianDataContextFactory.CreateContext())
+            {
+                var account = context.AccountInfo.FirstOrDefault(a => a.NickName.Equals(nick, StringComparison.CurrentCultureIgnoreCase));
+                if (account == null)
+                    return null;
+                // ToDo: use join
+                account.AccountInfoStatistics = context
+                    .AccountInfoStatistics
+                    .Where(a => a.AccountId == account.AccountId)
+                    .OrderByDescending(i => i.UpdatedAt)
+                    .FirstOrDefault();
+                return account;
+            }
 		}
 
 		public AccountInfo GetLastLoggedAccount()
@@ -92,7 +106,9 @@
 		public void SaveAchievementsDictionary(List<Achievement> achievements)
 		{
 			var achievementOptions = new List<AchievementOption>();
-			achievements.ForEach(a => achievementOptions.AddRange(a.Options));
+            achievements
+                .Where(a => a.Options != null).ToList()
+                .ForEach(a => achievementOptions.AddRange(a.Options));
 
 			using (var context = _blitzStaticianDataContextFactory.CreateContext())
 			{
@@ -111,6 +127,16 @@
 		{
 			throw new NotImplementedException();
 		}
+
+        public DateTime GetStaticDataLastUpdateDate()
+        {
+            using(var context = _blitzStaticianDataContextFactory.CreateContext())
+            {
+                if (context.DictionaryLanguage.Count() == 0)
+                    return new DateTime(1980, 3, 28);
+                return context.DictionaryLanguage.First().LastUpdated;
+            }
+        }
 
 	}
 }

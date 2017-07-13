@@ -4,10 +4,13 @@
 	using System.Net.Http;
 	using System.Net.Http.Headers;
 	using System.Threading.Tasks;
-	using Newtonsoft.Json;
+    using log4net;
+    using Newtonsoft.Json;
 
 	internal class WebApiClient
 	{
+        private static readonly ILog _log = LogManager.GetLogger(typeof(WebApiClient));
+
 		public async Task<TResponse> GetResponse<TResponse>(string baseAddress, string request)
 		{
 			using (var client = new HttpClient())
@@ -17,6 +20,9 @@
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 				var response = await client.GetAsync(request);
+
+                _log.Debug($"Request '{baseAddress}{request}' - Status: '{response.StatusCode}'");
+
 				response.EnsureSuccessStatusCode();
 				var responseString = await response.Content.ReadAsStringAsync();
 

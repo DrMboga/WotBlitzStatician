@@ -17,10 +17,10 @@
 			public int DictionariesUpdateFrequencyInDays { get; set; } = 7;
 		}
 
-		private const string ConnectionString = @"Data Source=..\..\..\BlitzStatician.db";
-		//		private const string ConnectionString = @"Data Source=/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician.Logic.Tests/BlitzStatician.db";
+		//private const string ConnectionString = @"Data Source=..\..\..\BlitzStatician.db";
+		private const string ConnectionString = @"Data Source=/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician.Logic.Tests/BlitzStatician.db";
 
-		private static readonly ILog _log = LogManager.GetLogger(typeof(WargamingClientTest));
+		private static readonly ILog _log = LogManager.GetLogger(typeof(TestWgApiConfiguration));
 		private readonly IContainer _container;
 
         public StaticianIntegrationTest()

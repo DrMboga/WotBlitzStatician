@@ -11,17 +11,27 @@
 	{
 		private readonly IBlitzStaticianDataAccessor _dataAccessor;
 		private readonly IWargamingApiClient _wgApiClient;
+        private readonly IWgApiConfiguration _wgApiConfiguration;
 
 		public BlitzStaticianLogic(
-			IBlitzStaticianDataAccessor blitzStaticianDataAccessor,
-			IWargamingApiClient wargamingApiClient)
+            IBlitzStaticianDataAccessor blitzStaticianDataAccessor,
+            IWargamingApiClient wargamingApiClient,
+            IWgApiConfiguration wargamingApiConfiguration)
 		{
 			_dataAccessor = blitzStaticianDataAccessor;
 			_wgApiClient = wargamingApiClient;
+            _wgApiConfiguration = wargamingApiConfiguration;
 		}
 
 		public async Task<AccountInfo> GetAccount(string nick)
 		{
+            var lastStaticDictionariesUpdateDate = _dataAccessor.GetStaticDataLastUpdateDate();
+
+            if(Convert.ToInt32((DateTime.Now - lastStaticDictionariesUpdateDate).TotalDays) >= _wgApiConfiguration.DictionariesUpdateFrequencyInDays)
+            {
+                await LoadStaticDataAndSaveToDb();
+            }
+
 			var account = _dataAccessor.GetAccountInfo(nick);
 			if (account == null)
 			{
@@ -36,6 +46,7 @@
 					throw new ArgumentException($"Nick '{nick}' not found.", nameof(nick));
 				// Loading all account statistics
 				account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(account.AccountId);
+                account.IsLastSession = true;
 				await LoadStatisticsFromWgAndSaveToDb(account);
 			}
 
@@ -83,21 +94,21 @@
 			await LoadStatisticsFromWgAndSaveToDb(account);
 		}
 
-		public async Task LoadStatisticsFromWgAndSaveToDb(AccountInfo accountInfo)
-		{
-			var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId);
-			var clanInfo = await _wgApiClient.GetAccountClanInfoAsync(accountInfo.AccountId);
-			var accountAchievements = await _wgApiClient.GetAccountAchievementsAsync(accountInfo.AccountId);
-			var accountTankAchievements = await _wgApiClient.GetAccountTankAchievementsAsync(accountInfo.AccountId);
+        public async Task LoadStatisticsFromWgAndSaveToDb(AccountInfo accountInfo)
+        {
+            var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId);
+            var clanInfo = await _wgApiClient.GetAccountClanInfoAsync(accountInfo.AccountId);
+            var accountAchievements = await _wgApiClient.GetAccountAchievementsAsync(accountInfo.AccountId);
+            var accountTankAchievements = await _wgApiClient.GetAccountTankAchievementsAsync(accountInfo.AccountId);
 
-            		_dataAccessor.SaveAccountInfo(accountInfo);
-			_dataAccessor.SaveAccountAchievements(accountAchievements);
-            		_dataAccessor.SaveAccountTankAchievements(accountTankAchievements);
-			_dataAccessor.SaveTanksStatistic(tanksInfo);
-		    if(clanInfo != null && clanInfo.ClanId > 0)
-		    {
-			_dataAccessor.SaveClanInfo(clanInfo);
-		    }
-		}
+            _dataAccessor.SaveAccountInfo(accountInfo);
+            _dataAccessor.SaveAccountAchievements(accountAchievements);
+            _dataAccessor.SaveAccountTankAchievements(accountTankAchievements);
+            _dataAccessor.SaveTanksStatistic(tanksInfo);
+            if (clanInfo != null && clanInfo.ClanId > 0)
+            {
+                _dataAccessor.SaveClanInfo(clanInfo);
+            }
+        }
     }
 }

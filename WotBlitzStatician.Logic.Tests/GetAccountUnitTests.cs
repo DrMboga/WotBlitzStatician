@@ -21,14 +21,14 @@ namespace WotBlitzStatician.Logic.Tests
 		private Mock<IWargamingApiClient> _wgApiClientMock;
 		private AccountInfo _expectedAccount;
 
-
+        // ToDo: Actualize this
 		public GetAccountUnitTests()
 		{
 			Log4NetHelper.ConfigureLog4Net();
 
 			_blitzStaticianDataAccessorMock = new Mock<IBlitzStaticianDataAccessor>();
 			_wgApiClientMock = new Mock<IWargamingApiClient>();
-			_blitzStaticianLogic = new BlitzStaticianLogic(_blitzStaticianDataAccessorMock.Object, _wgApiClientMock.Object);
+            _blitzStaticianLogic = new BlitzStaticianLogic(_blitzStaticianDataAccessorMock.Object, _wgApiClientMock.Object, null);
 
 			_expectedAccount = new AccountInfo
 			{

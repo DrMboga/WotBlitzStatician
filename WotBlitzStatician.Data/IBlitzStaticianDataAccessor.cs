@@ -1,23 +1,24 @@
 ﻿namespace WotBlitzStatician.Data
 {
-	using System.Collections.Generic;
+    using System;
+    using System.Collections.Generic;
 	using WotBlitzStatician.Model;
-	 
-	public interface IBlitzStaticianDataAccessor
-	{
-		AccountInfo GetAccountInfo(string nick);
 
-		AccountInfo GetLastLoggedAccount();
+    public interface IBlitzStaticianDataAccessor
+    {
+        AccountInfo GetAccountInfo(string nick);
 
-		AccountTankStatistics GetAllTanksByAccount(long accountId);
+        AccountInfo GetLastLoggedAccount();
 
-		AccountInfoStatistics GetAccountStatistics(long accountId);
+        AccountTankStatistics GetAllTanksByAccount(long accountId);
 
-		AccountInfoPrivate GetAccountPrivateStatistics(long accountId);
+        AccountInfoStatistics GetAccountStatistics(long accountId);
 
-		void SaveAccountInfo(AccountInfo accountInfo);
+        AccountInfoPrivate GetAccountPrivateStatistics(long accountId);
 
-		void SaveTanksStatistic(List<AccountTankStatistics> taksStat);
+        void SaveAccountInfo(AccountInfo accountInfo);
+
+        void SaveTanksStatistic(List<AccountTankStatistics> taksStat);
 
         void SaveClanInfo(AccountClanInfo clanInfo);
 
@@ -28,12 +29,14 @@
         void SaveVehicleTypesDictionary(List<DictionaryVehicleType> vehicleTypes);
 
         void SaveVehicleEncyclopedia(List<VehicleEncyclopedia> vehicles);
-		
-	void SaveAchievementsDictionary(List<Achievement> achievements);
-		
-	void SaveAccountAchievements(List<AccountInfoAchievment> accountInfoAchievments);
 
-	void SaveAccountTankAchievements(List<AccountInfoTankAchievment> accountInfoTankAchievments);
+        void SaveAchievementsDictionary(List<Achievement> achievements);
 
-	}
+        void SaveAccountAchievements(List<AccountInfoAchievment> accountInfoAchievments);
+
+        void SaveAccountTankAchievements(List<AccountInfoTankAchievment> accountInfoTankAchievments);
+
+        DateTime GetStaticDataLastUpdateDate();
+
+    }
 }
