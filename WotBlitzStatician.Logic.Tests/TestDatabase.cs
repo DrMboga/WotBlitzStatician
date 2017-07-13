@@ -10,7 +10,8 @@
 
 	public class TestDatabase
     {
-	    private static readonly ILog _log = LogManager.GetLogger(typeof(WargamingClientTest));
+	    private const string ConnectionString = @"Data Source=..\..\..\BlitzStatician.db";
+		private static readonly ILog _log = LogManager.GetLogger(typeof(WargamingClientTest));
 
 		public TestDatabase()
         {
@@ -22,20 +23,20 @@
 		{
 			List<DictionaryLanguage> languagesFormDb;
 
-			using (var context = new BlitzStaticianDataContext())
+			using (var context = new BlitzStaticianDataContext(ConnectionString))
 		    {
 			    languagesFormDb = context.DictionaryLanguage.ToList();
 		    }
 
 			_log.Debug($"Got {languagesFormDb.Count} languages from DB first time");
 
-			using (var context = new BlitzStaticianDataContext())
+			using (var context = new BlitzStaticianDataContext(ConnectionString))
 			{
 				context.Merge(context.DictionaryLanguage, GetLanguagesStub());
 				context.SaveChanges();
 			}
 
-			using (var context = new BlitzStaticianDataContext())
+			using (var context = new BlitzStaticianDataContext(ConnectionString))
 			{
 				languagesFormDb = context.DictionaryLanguage.ToList();
 			}
