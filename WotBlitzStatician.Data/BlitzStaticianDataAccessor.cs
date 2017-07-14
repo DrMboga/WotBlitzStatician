@@ -3,11 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using log4net;
     using Microsoft.EntityFrameworkCore;
     using WotBlitzStatician.Model;
 
 	public class BlitzStaticianDataAccessor : IBlitzStaticianDataAccessor
 	{
+        private static readonly ILog _log = LogManager.GetLogger(typeof(BlitzStaticianDataAccessor));
 		private readonly IBlitzStaticianDataContextFactory _blitzStaticianDataContextFactory;
 
 		public BlitzStaticianDataAccessor(IBlitzStaticianDataContextFactory blitzStaticianDataContextFactory)
@@ -25,6 +27,10 @@
 		            .Where(q => q.AccountInfo.NickName.Equals(nick, StringComparison.CurrentCultureIgnoreCase))
 		            .OrderByDescending(q => q.Statistics.UpdatedAt)
 		            .FirstOrDefault();
+
+                _log.Debug($"<GetAccountInfo> got " +
+                           $"{(accountInfo == null ? "null" : accountInfo.Statistics.UpdatedAt.ToString())} " +
+                           $"updated row by '{nick}' nick");
 
 	            if (accountInfo == null)
 		            return null;
@@ -71,12 +77,19 @@
 			{
 				context.Merge(context.AccountInfo, new List<AccountInfo> {accountInfo});
 				context.AccountInfoStatistics.Add(accountInfo.AccountInfoStatistics);
+                context.SaveChanges();
 			}
+            _log.Debug($"<SaveAccountInfo> saved '{accountInfo.AccountId}' account. UpdatedAt date '{accountInfo.AccountInfoStatistics.UpdatedAt}'");
 		}
 
 		public void SaveTanksStatistic(List<AccountTankStatistics> taksStat)
 		{
-			throw new System.NotImplementedException();
+            using(var context = _blitzStaticianDataContextFactory.CreateContext())
+            {
+                context.AccountTankStatistics.AddRange(taksStat);
+                context.SaveChanges();
+            }
+            _log.Debug($"<SaveTanksStatistic> saved {taksStat.Count()} tanks");
 		}
 
 		public void SaveLanguagesDictionary(List<DictionaryLanguage> languages)
@@ -117,7 +130,18 @@
 
 		public void SaveClanInfo(AccountClanInfo clanInfo)
 		{
-			throw new NotImplementedException();
+            using(var context = _blitzStaticianDataContextFactory.CreateContext())
+            {
+                var previousClan = context.AccountClanInfo.Where(c => c.AccountId == clanInfo.AccountId).FirstOrDefault();
+                if(previousClan != null)
+                {
+                    context.Entry(previousClan).State = EntityState.Deleted;
+                    context.SaveChanges();
+                }
+                context.AccountClanInfo.Add(clanInfo);
+                context.SaveChanges();
+            }
+            _log.Debug($"<SaveClanInfo> saved '{clanInfo.ClanTag}' clan info.");
 		}
 
 		public void SaveAchievementsDictionary(List<Achievement> achievements)
@@ -137,7 +161,7 @@
 
 		public void SaveAccountAchievements(List<AccountInfoAchievment> accountInfoAchievments)
 		{
-			if(accountInfoAchievments == null)
+            if(accountInfoAchievments == null || accountInfoAchievments.Count() == 0)
 				return;
 			// This entity is too complicated for merge. Just delete all achievements for account and add new
 			using (var context = _blitzStaticianDataContextFactory.CreateContext())
@@ -151,11 +175,26 @@
 				context.AccountInfoAchievment.AddRange(accountInfoAchievments);
 				context.SaveChanges();
 			}
+            _log.Debug($"<SaveAccountAchievements> saved {accountInfoAchievments.Count()} achievements.");
 		}
 
 		public void SaveAccountTankAchievements(List<AccountInfoTankAchievment> accountInfoTankAchievments)
 		{
-			throw new NotImplementedException();
+            if (accountInfoTankAchievments == null || accountInfoTankAchievments.Count() == 0)
+				return;
+			// This entity is too complicated for merge. Just delete all achievements for account and add new
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
+			{
+                context.AccountInfoTankAchievment
+					.Where(a => a.AccountId == accountInfoTankAchievments.First().AccountId)
+					.ToList()
+					.ForEach(a => context.Entry(a).State = EntityState.Deleted);
+				context.SaveChanges();
+
+				context.AccountInfoTankAchievment.AddRange(accountInfoTankAchievments);
+				context.SaveChanges();
+			}
+            _log.Debug($"<SaveAccountTankAchievements> saved {accountInfoTankAchievments.Count()} tank acievements.");
 		}
 
         public DateTime GetStaticDataLastUpdateDate()

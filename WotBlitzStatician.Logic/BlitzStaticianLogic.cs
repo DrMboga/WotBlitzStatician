@@ -101,9 +101,13 @@
             var accountAchievements = await _wgApiClient.GetAccountAchievementsAsync(accountInfo.AccountId);
             var accountTankAchievements = await _wgApiClient.GetAccountTankAchievementsAsync(accountInfo.AccountId);
 
+            // ToDo: Map with formulas
             _dataAccessor.SaveAccountInfo(accountInfo);
+            // ToDo: Deduplicate
             _dataAccessor.SaveAccountAchievements(accountAchievements);
+            // ToDo: Deduplicate
             _dataAccessor.SaveAccountTankAchievements(accountTankAchievements);
+            // ToDo: Map with formulas
             _dataAccessor.SaveTanksStatistic(tanksInfo);
             if (clanInfo != null && clanInfo.ClanId > 0)
             {
