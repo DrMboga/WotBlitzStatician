@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Microsoft.EntityFrameworkCore;
     using WotBlitzStatician.Model;
 
 	public class BlitzStaticianDataAccessor : IBlitzStaticianDataAccessor
@@ -19,17 +20,29 @@
 		{
             using(var context = _blitzStaticianDataContextFactory.CreateContext())
             {
-                var account = context.AccountInfo.FirstOrDefault(a => a.NickName.Equals(nick, StringComparison.CurrentCultureIgnoreCase));
-                if (account == null)
-                    return null;
-                // ToDo: use join
-                account.AccountInfoStatistics = context
-                    .AccountInfoStatistics
-                    .Where(a => a.AccountId == account.AccountId)
-                    .OrderByDescending(i => i.UpdatedAt)
-                    .FirstOrDefault();
-                return account;
-            }
+	            var accountInfo = context.AccountInfo
+		            .Join(context.AccountInfoStatistics, a => a.AccountId, s => s.AccountId, (a, s) => new {AccountInfo = a, Statistics = s})
+		            .Where(q => q.AccountInfo.NickName.Equals(nick, StringComparison.CurrentCultureIgnoreCase))
+		            .OrderByDescending(q => q.Statistics.UpdatedAt)
+		            .FirstOrDefault();
+
+	            if (accountInfo == null)
+		            return null;
+
+	            var account = accountInfo.AccountInfo;
+	            account.AccountInfoStatistics = accountInfo.Statistics;
+
+
+/*	            var allAchievements = context
+		            .AccountInfoAchievment
+					.Where(a => a.AccountId == account.AccountId)
+		            .ToList();
+
+	            account.Achievments = allAchievements.Where(a => !a.IsMaxSeries).ToList();
+				account.AchievmentsMaxSeries = allAchievements.Where(a => a.IsMaxSeries).ToList();*/
+
+				return account;
+			}
 		}
 
 		public AccountInfo GetLastLoggedAccount()
@@ -54,7 +67,11 @@
 
 		public void SaveAccountInfo(AccountInfo accountInfo)
 		{
-			throw new System.NotImplementedException();
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
+			{
+				context.Merge(context.AccountInfo, new List<AccountInfo> {accountInfo});
+				context.AccountInfoStatistics.Add(accountInfo.AccountInfoStatistics);
+			}
 		}
 
 		public void SaveTanksStatistic(List<AccountTankStatistics> taksStat)
@@ -120,7 +137,20 @@
 
 		public void SaveAccountAchievements(List<AccountInfoAchievment> accountInfoAchievments)
 		{
-			throw new NotImplementedException();
+			if(accountInfoAchievments == null)
+				return;
+			// This entity is too complicated for merge. Just delete all achievements for account and add new
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
+			{
+				context.AccountInfoAchievment
+					.Where(a => a.AccountId == accountInfoAchievments.First().AccountId)
+					.ToList()
+					.ForEach(a => context.Entry(a).State = EntityState.Deleted);
+				context.SaveChanges();
+
+				context.AccountInfoAchievment.AddRange(accountInfoAchievments);
+				context.SaveChanges();
+			}
 		}
 
 		public void SaveAccountTankAchievements(List<AccountInfoTankAchievment> accountInfoTankAchievments)
