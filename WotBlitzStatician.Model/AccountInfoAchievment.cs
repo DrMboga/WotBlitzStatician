@@ -6,7 +6,9 @@
 	public class AccountInfoAchievment
 	{
 		[Key]
-		public string AccountInfoAchievmentId { get; set; }
+		public long AccountInfoAchievementId { get; set; }
+
+		public string AchievementId { get; set; }
 
 		[ForeignKey("AccountInfo")]
 		public long AccountId { get; set; }
