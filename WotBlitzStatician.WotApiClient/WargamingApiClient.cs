@@ -191,7 +191,7 @@
 				.Achievements.Select(achievement => new AccountInfoAchievment
 				{
 					AccountId = accountId,
-					AccountInfoAchievmentId = achievement.Key,
+					AchievementId = achievement.Key,
 					Count = Convert.ToInt32(achievement.Value)
 				}).ToList();
 
@@ -199,7 +199,7 @@
 					.MaxSeries.Select(achievement => new AccountInfoAchievment
 					{
 						AccountId = accountId,
-						AccountInfoAchievmentId = achievement.Key,
+						AchievementId = achievement.Key,
 						Count = Convert.ToInt32(achievement.Value),
 						IsMaxSeries = true
 					}).ToList()
@@ -228,7 +228,7 @@
 						{
 							TankId = tank.TankId.Value,
 							AccountId = accountId,
-							AccountInfoAchievmentId = achievement.Key,
+							AchievementId = achievement.Key,
 							Count = Convert.ToInt32(achievement.Value)
 						})
 						.ToList()
@@ -238,7 +238,7 @@
 						{
 							TankId = tank.TankId.Value,
 							AccountId = accountId,
-							AccountInfoAchievmentId = achievement.Key,
+							AchievementId = achievement.Key,
 							Count = Convert.ToInt32(achievement.Value),
 							IsMaxSeries = true
 						})
