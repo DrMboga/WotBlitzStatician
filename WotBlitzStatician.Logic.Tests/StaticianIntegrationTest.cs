@@ -61,13 +61,13 @@
 
             _log.Debug($"Got {achievements.Count} achievements.");
 
-            var achievementsToRemove = achievements
-                .Where(a => a.IsMaxSeries && achievements.Any(a2 => a2.AccountInfoAchievmentId == a.AccountInfoAchievmentId && !a2.IsMaxSeries))
-                .ToList();
-
-            achievementsToRemove.ForEach(r => achievements.Remove(r));
-
-            _log.Debug($"{achievements.Count()} remains after deduplication.");
+//            var achievementsToRemove = achievements
+//                .Where(a => a.IsMaxSeries && achievements.Any(a2 => a2.AccountInfoAchievmentId == a.AccountInfoAchievmentId && !a2.IsMaxSeries))
+//                .ToList();
+//
+//            achievementsToRemove.ForEach(r => achievements.Remove(r));
+//
+//            _log.Debug($"{achievements.Count()} remains after deduplication.");
 
             dataAccessor.SaveAccountAchievements(achievements);
         }

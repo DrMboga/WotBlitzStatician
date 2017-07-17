@@ -160,8 +160,8 @@
 		    var firstMaxSeries = accountAchievements.First(a => a.IsMaxSeries);
 
 			_log.Debug($"<TestAccountAchievements> Got {accountAchievements.Count} achievement for account. "
-				+ $"First achievement is '{firstAchievement.AccountInfoAchievmentId}'; Count {firstAchievement.Count}. "
-				+ $"First max series is '{firstMaxSeries.AccountInfoAchievmentId}'; Count {firstMaxSeries.Count}");
+				+ $"First achievement is '{firstAchievement.AchievementId}'; Count {firstAchievement.Count}. "
+				+ $"First max series is '{firstMaxSeries.AchievementId}'; Count {firstMaxSeries.Count}");
 		}
 
 
@@ -178,8 +178,8 @@
 
 			_log.Debug($"<TestAccountTankAchievements> Got {accountTankAchievements.Count} achievement for all tanks in account. "
 				+ $"First tank is {firstTank.key} has {firstTank.Achievements.Count} acievements. "
-				+ $"First achievement for first tank is '{firstAchievement.AccountInfoAchievmentId}'; Count {firstAchievement.Count}. "
-				+ $"First max series for first tank is '{firstMaxSeries.AccountInfoAchievmentId}'; Count {firstMaxSeries.Count}");
+				+ $"First achievement for first tank is '{firstAchievement.AchievementId}'; Count {firstAchievement.Count}. "
+				+ $"First max series for first tank is '{firstMaxSeries.AchievementId}'; Count {firstMaxSeries.Count}");
 		}
     }
 }
