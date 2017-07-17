@@ -10,6 +10,11 @@
     {
 	    private readonly string _connectionString;
 
+//	    public BlitzStaticianDataContext()
+//			:this(@"Data Source=..\..\..\BlitzStatician.db")
+//	    {
+//	    }
+
 	    public BlitzStaticianDataContext(string connectionString)
 	    {
 		    _connectionString = connectionString;
