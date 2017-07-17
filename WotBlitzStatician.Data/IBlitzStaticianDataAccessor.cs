@@ -38,5 +38,9 @@
 
         DateTime GetStaticDataLastUpdateDate();
 
+	    DateTime? GetLastAccountUpdatedDate(long accountId);
+
+	    Dictionary<long, double> GetVehicleTires();
+
     }
 }

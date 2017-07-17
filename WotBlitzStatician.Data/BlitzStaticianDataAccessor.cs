@@ -201,11 +201,33 @@
         {
             using(var context = _blitzStaticianDataContextFactory.CreateContext())
             {
-                if (context.DictionaryLanguage.Count() == 0)
-                    return new DateTime(1980, 3, 28);
+                if (!context.DictionaryLanguage.Any())
+                    return DefaultDate;
                 return context.DictionaryLanguage.First().LastUpdated;
             }
         }
 
+		private static DateTime DefaultDate => new DateTime(1980, 3, 28);
+
+		public DateTime? GetLastAccountUpdatedDate(long accountId)
+		{
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
+			{
+				var lastDate = context.AccountInfoStatistics
+					.Where(a => a.AccountId == accountId)
+					.OrderByDescending(a => a.UpdatedAt)
+					.Select(a => a.UpdatedAt)
+					.FirstOrDefault();
+				return lastDate == DateTime.MinValue ? null : (DateTime?)lastDate;
+			}
+		}
+
+		public Dictionary<long, double> GetVehicleTires()
+		{
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
+			{
+				return context.VehicleEncyclopedia.Select(v => new {v.TankId, v.Tier}).ToDictionary(k => k.TankId, v => (double) v.Tier);
+			}
+		}
 	}
 }
