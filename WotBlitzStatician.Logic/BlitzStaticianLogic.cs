@@ -1,12 +1,14 @@
 ﻿namespace WotBlitzStatician.Logic
 {
 	using System;
+	using System.Collections.Generic;
 	using System.Threading.Tasks;
 	using WotBlitzStatician.Data;
 	using WotBlitzStatician.WotApiClient;
 	using WotBlitzStatician.Model;
 	using System.Linq;
-	
+	using WotBlitzStatician.Logic.Calculations;
+
 	public class BlitzStaticianLogic : IBlitzStaticianLogic
 	{
 		private readonly IBlitzStaticianDataAccessor _dataAccessor;
@@ -96,23 +98,50 @@
 
         public async Task LoadStatisticsFromWgAndSaveToDb(AccountInfo accountInfo)
         {
-            var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId);
+			
+	        var lastUpdatedAt = _dataAccessor.GetLastAccountUpdatedDate(accountInfo.AccountId);
+	        if (lastUpdatedAt.HasValue &&
+	            (DateTime.Now - lastUpdatedAt.Value).TotalMinutes <= 20) // ToDo: _config.RequestsDelayInMinutes
+			{
+//		        Logger.Info(
+//			        $"Last update was at '{lastUpdatedDate:dd.MM.yyyy HH:mm}', so we don't need to update statistic again at the moment.");
+		        return;
+	        }
+
+			var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId);
             var clanInfo = await _wgApiClient.GetAccountClanInfoAsync(accountInfo.AccountId);
             var accountAchievements = await _wgApiClient.GetAccountAchievementsAsync(accountInfo.AccountId);
             var accountTankAchievements = await _wgApiClient.GetAccountTankAchievementsAsync(accountInfo.AccountId);
 
-            // ToDo: Map with formulas
-            _dataAccessor.SaveAccountInfo(accountInfo);
-            // ToDo: Deduplicate
+			// Filter tanksInfo by LastUpdateDate
+	        tanksInfo = tanksInfo.Where(t => t.LastBattleTime >= (lastUpdatedAt ?? DateTime.MinValue)).ToList();
+			CalculateStatistitcs(accountInfo.AccountInfoStatistics, tanksInfo);
+
+			_dataAccessor.SaveAccountInfo(accountInfo);
             _dataAccessor.SaveAccountAchievements(accountAchievements);
-            // ToDo: Deduplicate
             _dataAccessor.SaveAccountTankAchievements(accountTankAchievements);
-            // ToDo: Map with formulas
             _dataAccessor.SaveTanksStatistic(tanksInfo);
             if (clanInfo != null && clanInfo.ClanId > 0)
             {
                 _dataAccessor.SaveClanInfo(clanInfo);
             }
         }
-    }
+
+		private void CalculateStatistitcs(AccountInfoStatistics accountStat, List<AccountTankStatistics> tanksInfo)
+		{
+			var tankTires = _dataAccessor.GetVehicleTires();
+
+			accountStat.AvgTier = accountStat.CalculateMiddleTier(tanksInfo, tankTires);
+			accountStat.Wn7 = accountStat.CalculateWn7();
+			accountStat.Effectivity = accountStat.CalculateEffectivity();
+
+			foreach (var accountTankStatistic in tanksInfo)
+			{
+				if (!tankTires.ContainsKey(accountTankStatistic.TankId))
+					continue;
+				accountTankStatistic.Wn7 = accountTankStatistic.CalculateWn7(tankTires[accountTankStatistic.TankId]);
+				accountTankStatistic.Effectivity = accountTankStatistic.CalculateEffectivity(tankTires[accountTankStatistic.TankId]);
+			}
+		}
+	}
 }
