@@ -53,7 +53,10 @@
 
 		public AccountInfo GetLastLoggedAccount()
 		{
-			throw new System.NotImplementedException();
+            using(var context = _blitzStaticianDataContextFactory.CreateContext())
+            {
+                return context.AccountInfo.FirstOrDefault(a => a.IsLastSession);
+            }
 		}
 
 		public AccountTankStatistics GetAllTanksByAccount(long accountId)

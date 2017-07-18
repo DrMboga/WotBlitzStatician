@@ -8,9 +8,11 @@
 	using WotBlitzStatician.Model;
 	using System.Linq;
 	using WotBlitzStatician.Logic.Calculations;
+    using log4net;
 
-	public class BlitzStaticianLogic : IBlitzStaticianLogic
+    public class BlitzStaticianLogic : IBlitzStaticianLogic
 	{
+        private static readonly ILog _log = LogManager.GetLogger(typeof(BlitzStaticianLogic));
 		private readonly IBlitzStaticianDataAccessor _dataAccessor;
 		private readonly IWargamingApiClient _wgApiClient;
         private readonly IWgApiConfiguration _wgApiConfiguration;
@@ -100,11 +102,12 @@
         {
 			
 	        var lastUpdatedAt = _dataAccessor.GetLastAccountUpdatedDate(accountInfo.AccountId);
-	        if (lastUpdatedAt.HasValue &&
-	            (DateTime.Now - lastUpdatedAt.Value).TotalMinutes <= 20) // ToDo: _config.RequestsDelayInMinutes
+            _log.Debug($"Account id {accountInfo.AccountId}. LastUpdated at '{lastUpdatedAt}'");
+            if (lastUpdatedAt.HasValue && accountInfo.AccountInfoStatistics != null &&
+                (accountInfo.AccountInfoStatistics.UpdatedAt - lastUpdatedAt.Value).TotalMinutes <= 20) // ToDo: _config.RequestsDelayInMinutes
 			{
-//		        Logger.Info(
-//			        $"Last update was at '{lastUpdatedDate:dd.MM.yyyy HH:mm}', so we don't need to update statistic again at the moment.");
+                _log.Info(
+			        $"Last update was at '{lastUpdatedAt:dd.MM.yyyy HH:mm}', so we don't need to update statistic again at the moment.");
 		        return;
 	        }
 
@@ -113,10 +116,12 @@
             var accountAchievements = await _wgApiClient.GetAccountAchievementsAsync(accountInfo.AccountId);
             var accountTankAchievements = await _wgApiClient.GetAccountTankAchievementsAsync(accountInfo.AccountId);
 
+            CalculateStatistitcs(accountInfo.AccountInfoStatistics, tanksInfo);
+
 			// Filter tanksInfo by LastUpdateDate
 	        tanksInfo = tanksInfo.Where(t => t.LastBattleTime >= (lastUpdatedAt ?? DateTime.MinValue)).ToList();
-			CalculateStatistitcs(accountInfo.AccountInfoStatistics, tanksInfo);
-
+            _log.Debug($"Filtered {tanksInfo.Count()} tanks by last session");
+			
 			_dataAccessor.SaveAccountInfo(accountInfo);
             _dataAccessor.SaveAccountAchievements(accountAchievements);
             _dataAccessor.SaveAccountTankAchievements(accountTankAchievements);

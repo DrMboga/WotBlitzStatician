@@ -52,25 +52,26 @@
             _log.Debug($"Got account {account.AccountId}. Updated at '{account.AccountInfoStatistics.UpdatedAt}'");
         }
 
-        [Fact]
-        public async Task TestAccountAchievementsSave()
-        {
-            var wgApi = _container.Resolve<IWargamingApiClient>();
-            var dataAccessor = _container.Resolve<IBlitzStaticianDataAccessor>();
-            var achievements = await wgApi.GetAccountAchievementsAsync(46512100);
+		[Fact]
+		public async Task TestGetAccountData()
+		{
+			var logic = _container.Resolve<IBlitzStaticianLogic>();
+            var account = logic.GetLastLoggedAccount();
 
-            _log.Debug($"Got {achievements.Count} achievements.");
+            Assert.NotNull(account);
 
-//            var achievementsToRemove = achievements
-//                .Where(a => a.IsMaxSeries && achievements.Any(a2 => a2.AccountInfoAchievmentId == a.AccountInfoAchievmentId && !a2.IsMaxSeries))
-//                .ToList();
-//
-//            achievementsToRemove.ForEach(r => achievements.Remove(r));
-//
-//            _log.Debug($"{achievements.Count()} remains after deduplication.");
+			_log.Debug($"Got last logged account {account.AccountId}. Last battle time '{account.LastBattleTime}'");
 
-            dataAccessor.SaveAccountAchievements(achievements);
-        }
+            await logic.LoadStatisticsFromWgAsync(account.AccountId);
+
+			account = logic.GetLastLoggedAccount();
+
+			Assert.NotNull(account);
+
+            _log.Debug($"Got last logged account again {account.AccountId}. Last battle time '{account.LastBattleTime}'");
+
+		}
+
 
 	}
 }
