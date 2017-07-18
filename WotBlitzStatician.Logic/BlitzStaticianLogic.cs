@@ -50,7 +50,6 @@
 					throw new ArgumentException($"Nick '{nick}' not found.", nameof(nick));
 				// Loading all account statistics
 				account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(account.AccountId);
-                account.IsLastSession = true;
 				await LoadStatisticsFromWgAndSaveToDb(account);
 			}
 
@@ -100,14 +99,13 @@
 
         public async Task LoadStatisticsFromWgAndSaveToDb(AccountInfo accountInfo)
         {
-			
-	        var lastUpdatedAt = _dataAccessor.GetLastAccountUpdatedDate(accountInfo.AccountId);
-            _log.Debug($"Account id {accountInfo.AccountId}. LastUpdated at '{lastUpdatedAt}'");
-            if (lastUpdatedAt.HasValue && accountInfo.AccountInfoStatistics != null &&
-                (accountInfo.AccountInfoStatistics.UpdatedAt - lastUpdatedAt.Value).TotalMinutes <= 20) // ToDo: _config.RequestsDelayInMinutes
+			var lastBattle = _dataAccessor.GetLastBattleTime(accountInfo.AccountId);
+            _log.Debug($"Account id {accountInfo.AccountId}. LastBattle at '{lastBattle}'");
+            if (lastBattle.HasValue && 
+                (accountInfo.LastBattleTime.Value - lastBattle.Value).TotalMinutes <= 20) // ToDo: _config.RequestsDelayInMinutes
 			{
                 _log.Info(
-			        $"Last update was at '{lastUpdatedAt:dd.MM.yyyy HH:mm}', so we don't need to update statistic again at the moment.");
+			        $"Last update was at '{lastBattle:dd.MM.yyyy HH:mm}', so we don't need to update statistic again at the moment.");
 		        return;
 	        }
 
@@ -119,9 +117,10 @@
             CalculateStatistitcs(accountInfo.AccountInfoStatistics, tanksInfo);
 
 			// Filter tanksInfo by LastUpdateDate
-	        tanksInfo = tanksInfo.Where(t => t.LastBattleTime >= (lastUpdatedAt ?? DateTime.MinValue)).ToList();
+	        tanksInfo = tanksInfo.Where(t => t.LastBattleTime >= (lastBattle ?? DateTime.MinValue)).ToList();
             _log.Debug($"Filtered {tanksInfo.Count()} tanks by last session");
 			
+	        accountInfo.IsLastSession = true;
 			_dataAccessor.SaveAccountInfo(accountInfo);
             _dataAccessor.SaveAccountAchievements(accountAchievements);
             _dataAccessor.SaveAccountTankAchievements(accountTankAchievements);
