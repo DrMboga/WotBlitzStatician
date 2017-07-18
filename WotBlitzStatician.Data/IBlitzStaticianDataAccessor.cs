@@ -42,5 +42,7 @@
 
 	    Dictionary<long, double> GetVehicleTires();
 
+	    DateTime? GetLastBattleTime(long accountId);
+
     }
 }

@@ -232,5 +232,17 @@
 				return context.VehicleEncyclopedia.Select(v => new {v.TankId, v.Tier}).ToDictionary(k => k.TankId, v => (double) v.Tier);
 			}
 		}
+
+		public DateTime? GetLastBattleTime(long accountId)
+		{
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
+			{
+				var lastBattle = context.AccountInfo
+					.Where(a => a.AccountId == accountId)
+					.Select(a => a.LastBattleTime)
+					.FirstOrDefault();
+				return lastBattle == DateTime.MinValue ? null : lastBattle;
+			}
+		}
 	}
 }
