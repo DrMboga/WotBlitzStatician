@@ -12,5 +12,7 @@
 		string Language { get; set; }
 		
 		int DictionariesUpdateFrequencyInDays { get; set; }
+
+		IProxySettings ProxySettings { get; set; }
 	}
 }

@@ -11,7 +11,7 @@
 
 			containerBuilder.RegisterType<RequestBuilder>().As<IRequestBuilder>();
 			// Manually calling the internal constructor
-			containerBuilder.Register(c => new WargamingApiClient(c.Resolve<IRequestBuilder>()))
+			containerBuilder.Register(c => new WargamingApiClient(c.Resolve<IRequestBuilder>(), c.Resolve<IWgApiConfiguration>().ProxySettings))
 				.As<IWargamingApiClient>();
 
 		}
