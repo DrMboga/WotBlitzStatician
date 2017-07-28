@@ -10,12 +10,22 @@
 
     public class WargamingClientTest
     {
+		private class TestProxySettings : IProxySettings
+		{
+			public bool UseProxy { get; set; } = false;
+			public string Domain { get; set; }
+			public string User { get; set; }
+			public string PwdHash { get; set; }
+		}
+
         private class TestWgApiConfiguration : IWgApiConfiguration
         {
             public string ApplicationId { get; set; } = "demo";
             public string BaseAddress { get; set; } = "https://api.wotblitz.ru/wotb/";
             public string Language { get; set; } = "ru";
             public Int32 DictionariesUpdateFrequencyInDays { get; set; } = 7;
+
+	        public IProxySettings ProxySettings { get; set; } = new TestProxySettings();
         }
 
         private static readonly ILog _log = LogManager.GetLogger(typeof(WargamingClientTest));
