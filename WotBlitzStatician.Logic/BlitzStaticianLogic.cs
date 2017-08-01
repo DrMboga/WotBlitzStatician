@@ -29,12 +29,7 @@
 
 		public async Task<AccountInfo> GetAccount(string nick)
 		{
-            var lastStaticDictionariesUpdateDate = _dataAccessor.GetStaticDataLastUpdateDate();
-
-            if(Convert.ToInt32((DateTime.Now - lastStaticDictionariesUpdateDate).TotalDays) >= _wgApiConfiguration.DictionariesUpdateFrequencyInDays)
-            {
-                await LoadStaticDataAndSaveToDb();
-            }
+            await CheckAndUpdateStaticData();
 
 			var account = _dataAccessor.GetAccountInfo(nick);
 			if (account == null)
@@ -56,7 +51,18 @@
 			return account;
 		}
 
-        public async Task LoadStaticDataAndSaveToDb()
+		private async Task CheckAndUpdateStaticData()
+		{
+			var lastStaticDictionariesUpdateDate = _dataAccessor.GetStaticDataLastUpdateDate();
+
+			if (Convert.ToInt32((DateTime.Now - lastStaticDictionariesUpdateDate).TotalDays) >=
+			    _wgApiConfiguration.DictionariesUpdateFrequencyInDays)
+			{
+				await LoadStaticDataAndSaveToDb();
+			}
+		}
+
+		public async Task LoadStaticDataAndSaveToDb()
         {
             var encyclopedia = await _wgApiClient.GetStaticDictionariesAsync();
             var vehicles = await _wgApiClient.GetWotEncyclopediaVehiclesAsync();
@@ -93,6 +99,7 @@
 
 		public async Task LoadStatisticsFromWgAsync(long accountId)
 		{
+			await CheckAndUpdateStaticData();
 			var account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId);
 			await LoadStatisticsFromWgAndSaveToDb(account);
 		}
