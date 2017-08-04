@@ -126,8 +126,12 @@
 			// Filter tanksInfo by LastUpdateDate
 	        tanksInfo = tanksInfo.Where(t => t.LastBattleTime >= (lastBattle ?? DateTime.MinValue)).ToList();
             _log.Debug($"Filtered {tanksInfo.Count()} tanks by last session");
-			
-	        accountInfo.IsLastSession = true;
+
+			// Filter tank achievemnts
+	        accountTankAchievements = accountTankAchievements.Where(a => tanksInfo.Any(t => t.TankId == a.TankId)).ToList();
+			_log.Debug($"Filtered {accountTankAchievements.Count()} tank achievements by last session");
+
+			accountInfo.IsLastSession = true;
 			_dataAccessor.SaveAccountInfo(accountInfo);
             _dataAccessor.SaveAccountAchievements(accountAchievements);
             _dataAccessor.SaveAccountTankAchievements(accountTankAchievements);
