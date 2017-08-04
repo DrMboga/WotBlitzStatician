@@ -164,18 +164,27 @@
 
 		public void SaveAccountAchievements(List<AccountInfoAchievment> accountInfoAchievments)
 		{
-            if(accountInfoAchievments == null || accountInfoAchievments.Count() == 0)
+            if(accountInfoAchievments == null || !accountInfoAchievments.Any())
 				return;
-			// This entity is too complicated for merge. Just delete all achievements for account and add new
 			using (var context = _blitzStaticianDataContextFactory.CreateContext())
 			{
-				context.AccountInfoAchievment
-					.Where(a => a.AccountId == accountInfoAchievments.First().AccountId)
-					.ToList()
-					.ForEach(a => context.Entry(a).State = EntityState.Deleted);
-				context.SaveChanges();
-
-				context.AccountInfoAchievment.AddRange(accountInfoAchievments);
+				foreach (var accountInfoAchievment in accountInfoAchievments)
+				{
+					long accountInfoAchievmentId = context.AccountInfoAchievment
+						.Where(a => a.AccountId == accountInfoAchievment.AccountId && a.AchievementId == accountInfoAchievment.AchievementId && a.IsMaxSeries == accountInfoAchievment.IsMaxSeries)
+						.Select(a => a.AccountInfoAchievementId)
+						.FirstOrDefault();
+					if (default(long) == accountInfoAchievmentId)
+					{
+						context.AccountInfoAchievment.Add(accountInfoAchievment);
+					}
+					else
+					{
+						accountInfoAchievment.AccountInfoAchievementId = accountInfoAchievmentId;
+						context.AccountInfoAchievment.Attach(accountInfoAchievment);
+						context.Entry(accountInfoAchievment).State = EntityState.Modified;
+					}
+				}
 				context.SaveChanges();
 			}
             _log.Debug($"<SaveAccountAchievements> saved {accountInfoAchievments.Count()} achievements.");
@@ -183,18 +192,28 @@
 
 		public void SaveAccountTankAchievements(List<AccountInfoTankAchievment> accountInfoTankAchievments)
 		{
-            if (accountInfoTankAchievments == null || accountInfoTankAchievments.Count() == 0)
+            if (accountInfoTankAchievments == null || !accountInfoTankAchievments.Any())
 				return;
-			// This entity is too complicated for merge. Just delete all achievements for account and add new
 			using (var context = _blitzStaticianDataContextFactory.CreateContext())
 			{
-                context.AccountInfoTankAchievment
-					.Where(a => a.AccountId == accountInfoTankAchievments.First().AccountId)
-					.ToList()
-					.ForEach(a => context.Entry(a).State = EntityState.Deleted);
-				context.SaveChanges();
+				foreach (var accountInfoTankAchievment in accountInfoTankAchievments)
+				{
+					long accountInfoTankAchievmentId = context.AccountInfoTankAchievment
+						.Where(a => a.AccountId == accountInfoTankAchievment.AccountId && a.AchievementId == accountInfoTankAchievment.AchievementId && a.IsMaxSeries == accountInfoTankAchievment.IsMaxSeries && a.TankId == accountInfoTankAchievment.TankId)
+						.Select(a => a.AccountInfoAchievementId)
+						.FirstOrDefault();
+					if (default(long) == accountInfoTankAchievmentId)
+					{
+						context.AccountInfoTankAchievment.Add(accountInfoTankAchievment);
+					}
+					else
+					{
+						accountInfoTankAchievment.AccountInfoAchievementId = accountInfoTankAchievmentId;
+						context.AccountInfoTankAchievment.Attach(accountInfoTankAchievment);
+						context.Entry(accountInfoTankAchievment).State = EntityState.Modified;
+					}
 
-				context.AccountInfoTankAchievment.AddRange(accountInfoTankAchievments);
+				}
 				context.SaveChanges();
 			}
             _log.Debug($"<SaveAccountTankAchievements> saved {accountInfoTankAchievments.Count()} tank acievements.");
