@@ -1,0 +1,785 @@
+﻿2017-08-01 18:40:59,650 (DEBUG) 9 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-01 18:41:06,489 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/info/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-01 18:41:14,306 (DEBUG) 13 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/vehicles/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-01 18:41:19,554 (DEBUG) 11 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/achievements/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-01 18:41:26,924 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-01 18:41:27,158 (DEBUG) 9 - [BlitzStaticianLogic] Account id 46512100. LastBattle at ''
+2017-08-01 18:41:31,814 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-01 18:41:36,507 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-01 18:41:41,249 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-01 18:41:41,563 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-01 18:41:41,925 (DEBUG) 11 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-01 18:41:41,971 (DEBUG) 11 - [BlitzStaticianLogic] Filtered 159 tanks by last session
+2017-08-01 18:41:42,000 (DEBUG) 11 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '01.08.2017 18:05:11'
+2017-08-01 18:41:42,065 (DEBUG) 11 - [BlitzStaticianDataAccessor] <SaveAccountAchievements> saved 69 achievements.
+2017-08-01 18:41:42,635 (DEBUG) 11 - [BlitzStaticianDataAccessor] <SaveAccountTankAchievements> saved 3958 tank acievements.
+2017-08-01 18:41:42,693 (DEBUG) 11 - [BlitzStaticianDataAccessor] <SaveTanksStatistic> saved 159 tanks
+2017-08-01 18:41:42,718 (DEBUG) 11 - [BlitzStaticianDataAccessor] <SaveClanInfo> saved 'XXX_L' clan info.
+2017-08-01 18:41:53,872 (DEBUG) 10 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-01 18:41:58,188 (DEBUG) 13 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-01 18:41:58,230 (DEBUG) 13 - [BlitzStaticianLogic] Account id 46512100. LastBattle at '01.08.2017 17:57:02'
+2017-08-01 18:41:58,230 (INFO ) 13 - [BlitzStaticianLogic] Last update was at '01.08.2017 17:57', so we don't need to update statistic again at the moment.
+2017-08-01 18:50:20,752 (DEBUG) 23 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-01 18:50:22,174 (DEBUG) 25 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-01 18:50:26,900 (DEBUG) 25 - [BlitzStaticianLogic] Account id 46512100. LastBattle at '01.08.2017 17:57:02'
+2017-08-01 18:50:30,203 (DEBUG) 24 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-01 18:50:31,587 (DEBUG) 28 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-01 18:50:31,895 (DEBUG) 26 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-01 18:50:33,007 (DEBUG) 26 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-01 18:50:35,796 (DEBUG) 25 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-01 18:50:46,814 (DEBUG) 25 - [BlitzStaticianLogic] Filtered 2 tanks by last session
+2017-08-01 18:50:51,412 (DEBUG) 25 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '01.08.2017 18:05:11'
+2017-08-01 18:52:01,613 (DEBUG) 25 - [BlitzStaticianDataAccessor] <SaveAccountAchievements> saved 69 achievements.
+2017-08-01 18:52:08,666 (DEBUG) 25 - [BlitzStaticianDataAccessor] <SaveAccountTankAchievements> saved 3958 tank acievements.
+2017-08-01 18:52:11,480 (DEBUG) 25 - [BlitzStaticianDataAccessor] <SaveTanksStatistic> saved 2 tanks
+2017-08-01 18:52:15,023 (DEBUG) 25 - [BlitzStaticianDataAccessor] <SaveClanInfo> saved 'XXX_L' clan info.
+2017-08-03 11:03:48,757 (DEBUG) 9 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 11:03:50,409 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 11:03:55,895 (DEBUG) 10 - [BlitzStaticianLogic] Account id 46512100. LastBattle at '01.08.2017 18:46:59'
+2017-08-03 11:04:04,045 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 11:04:06,247 (DEBUG) 15 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 11:04:06,571 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 11:04:08,153 (DEBUG) 16 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 11:04:10,381 (DEBUG) 12 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 11:04:15,323 (DEBUG) 12 - [BlitzStaticianLogic] Filtered 7 tanks by last session
+2017-08-03 11:04:19,122 (DEBUG) 12 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '03.08.2017 10:25:26'
+2017-08-03 11:05:47,170 (DEBUG) 12 - [BlitzStaticianDataAccessor] <SaveAccountAchievements> saved 69 achievements.
+2017-08-03 11:06:13,203 (DEBUG) 12 - [BlitzStaticianDataAccessor] <SaveAccountTankAchievements> saved 3959 tank acievements.
+2017-08-03 11:06:16,739 (DEBUG) 12 - [BlitzStaticianDataAccessor] <SaveTanksStatistic> saved 7 tanks
+2017-08-03 11:06:19,815 (DEBUG) 12 - [BlitzStaticianDataAccessor] <SaveClanInfo> saved 'XXX_L' clan info.
+2017-08-03 15:40:49,071 (DEBUG) 4 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 15:40:50,762 (DEBUG) 13 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:40:51,221 (DEBUG) 13 - [BlitzStaticianLogic] Account id 46512100. LastBattle at '03.08.2017 7:39:18'
+2017-08-03 15:40:51,685 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:40:52,170 (DEBUG) 13 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:40:52,475 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 15:40:52,658 (DEBUG) 13 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:40:52,861 (DEBUG) 15 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:40:52,897 (DEBUG) 15 - [BlitzStaticianLogic] Filtered 1 tanks by last session
+2017-08-03 15:40:52,898 (DEBUG) 15 - [BlitzStaticianLogic] Filtered 28 tank achievements by last session
+2017-08-03 15:40:53,826 (ERROR) 15 - [ErrorHandlerMiddleware] PUT: /api/WotBlitzStatCollect/46512100
+Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyException(Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithPropagation(Int32 commandIndex, DbDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.Consume(DbDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at WotBlitzStatician.Data.BlitzStaticianDataAccessor.SaveAccountInfo(AccountInfo accountInfo) in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Data\BlitzStaticianDataAccessor.cs:line 83
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAndSaveToDb>d__13.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 135
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAsync>d__12.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.APIControllers.WotBlitzStatCollectController.<Put>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\APIControllers\WotBlitzStatCollectController.cs:line 24
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.ErrorHandlerMiddleware.<Invoke>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\ErrorHandlerMiddleware.cs:line 26
+2017-08-03 15:41:14,229 (DEBUG) 4 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 15:41:14,478 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:41:14,523 (DEBUG) 4 - [BlitzStaticianLogic] Account id 46512100. LastBattle at '03.08.2017 7:39:18'
+2017-08-03 15:41:15,000 (DEBUG) 13 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:41:15,133 (DEBUG) 26 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:41:16,002 (DEBUG) 14 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 15:41:16,485 (DEBUG) 13 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:41:16,773 (DEBUG) 14 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:41:16,781 (DEBUG) 14 - [BlitzStaticianLogic] Filtered 1 tanks by last session
+2017-08-03 15:41:16,782 (DEBUG) 14 - [BlitzStaticianLogic] Filtered 28 tank achievements by last session
+2017-08-03 15:41:17,377 (ERROR) 14 - [ErrorHandlerMiddleware] PUT: /api/WotBlitzStatCollect/46512100
+Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyException(Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithPropagation(Int32 commandIndex, DbDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.Consume(DbDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at WotBlitzStatician.Data.BlitzStaticianDataAccessor.SaveAccountInfo(AccountInfo accountInfo) in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Data\BlitzStaticianDataAccessor.cs:line 83
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAndSaveToDb>d__13.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 135
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAsync>d__12.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.APIControllers.WotBlitzStatCollectController.<Put>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\APIControllers\WotBlitzStatCollectController.cs:line 24
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.ErrorHandlerMiddleware.<Invoke>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\ErrorHandlerMiddleware.cs:line 26
+2017-08-03 15:42:08,077 (DEBUG) 27 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 15:42:08,683 (DEBUG) 27 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:42:08,716 (DEBUG) 27 - [BlitzStaticianLogic] Account id 46512100. LastBattle at '03.08.2017 7:39:18'
+2017-08-03 15:42:09,118 (DEBUG) 31 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:42:09,419 (DEBUG) 33 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:42:10,414 (DEBUG) 27 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 15:42:10,859 (DEBUG) 27 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:42:11,763 (DEBUG) 28 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:42:11,779 (DEBUG) 28 - [BlitzStaticianLogic] Filtered 1 tanks by last session
+2017-08-03 15:42:11,780 (DEBUG) 28 - [BlitzStaticianLogic] Filtered 28 tank achievements by last session
+2017-08-03 15:42:12,408 (ERROR) 28 - [ErrorHandlerMiddleware] PUT: /api/WotBlitzStatCollect/46512100
+Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyException(Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithPropagation(Int32 commandIndex, DbDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.Consume(DbDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at WotBlitzStatician.Data.BlitzStaticianDataAccessor.SaveAccountInfo(AccountInfo accountInfo) in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Data\BlitzStaticianDataAccessor.cs:line 83
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAndSaveToDb>d__13.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 135
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAsync>d__12.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.APIControllers.WotBlitzStatCollectController.<Put>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\APIControllers\WotBlitzStatCollectController.cs:line 24
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.ErrorHandlerMiddleware.<Invoke>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\ErrorHandlerMiddleware.cs:line 26
+2017-08-03 15:46:19,255 (DEBUG) 9 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 15:46:21,436 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:46:21,934 (DEBUG) 10 - [BlitzStaticianLogic] Account id 46512100. LastBattle at '03.08.2017 7:39:18'
+2017-08-03 15:46:22,348 (DEBUG) 17 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:46:23,962 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:46:25,356 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 15:46:25,563 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:46:27,262 (DEBUG) 13 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:46:27,299 (DEBUG) 13 - [BlitzStaticianLogic] Filtered 1 tanks by last session
+2017-08-03 15:46:27,301 (DEBUG) 13 - [BlitzStaticianLogic] Filtered 28 tank achievements by last session
+2017-08-03 15:46:28,196 (ERROR) 13 - [ErrorHandlerMiddleware] PUT: /api/WotBlitzStatCollect/46512100
+Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: Database operation expected to affect 1 row(s) but actually affected 0 row(s). Data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ThrowAggregateUpdateConcurrencyException(Int32 commandIndex, Int32 expectedRowsAffected, Int32 rowsAffected)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetWithPropagation(Int32 commandIndex, DbDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.Consume(DbDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at WotBlitzStatician.Data.BlitzStaticianDataAccessor.SaveAccountInfo(AccountInfo accountInfo) in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Data\BlitzStaticianDataAccessor.cs:line 83
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAndSaveToDb>d__13.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 135
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAsync>d__12.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.APIControllers.WotBlitzStatCollectController.<Put>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\APIControllers\WotBlitzStatCollectController.cs:line 24
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.ErrorHandlerMiddleware.<Invoke>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\ErrorHandlerMiddleware.cs:line 26
+2017-08-03 15:56:42,909 (DEBUG) 12 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 15:56:44,254 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:56:44,706 (DEBUG) 4 - [BlitzStaticianLogic] Account id 46512100. LastBattle at '03.08.2017 7:39:18'
+2017-08-03 15:56:45,032 (DEBUG) 16 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:56:45,508 (DEBUG) 16 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:56:45,958 (DEBUG) 19 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 15:56:46,232 (DEBUG) 12 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:56:46,756 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 15:56:46,810 (DEBUG) 4 - [BlitzStaticianLogic] Filtered 1 tanks by last session
+2017-08-03 15:56:46,811 (DEBUG) 4 - [BlitzStaticianLogic] Filtered 28 tank achievements by last session
+2017-08-03 16:44:06,742 (DEBUG) 9 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 16:44:08,954 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/info/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:44:10,688 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/vehicles/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:44:11,304 (DEBUG) 11 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/achievements/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:44:13,991 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:44:14,245 (DEBUG) 9 - [BlitzStaticianLogic] Account id 46512100. LastBattle at ''
+2017-08-03 16:44:14,654 (DEBUG) 15 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:44:15,151 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:44:15,435 (DEBUG) 15 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 16:44:15,653 (DEBUG) 11 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:44:15,899 (DEBUG) 11 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:44:15,944 (DEBUG) 11 - [BlitzStaticianLogic] Filtered 159 tanks by last session
+2017-08-03 16:44:15,952 (DEBUG) 11 - [BlitzStaticianLogic] Filtered 3959 tank achievements by last session
+2017-08-03 16:44:15,979 (DEBUG) 11 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '03.08.2017 12:15:46'
+2017-08-03 16:44:29,506 (ERROR) 11 - [ErrorHandlerMiddleware] PUT: /api/WotBlitzStatCollect/46512100
+System.InvalidOperationException: The instance of entity type 'AccountInfoAchievment' cannot be tracked because another instance of this type with the same key is already being tracked. When adding new entities, for most key types a unique temporary key value will be created if no key is set (i.e. if the key property is assigned the default value for its type). If you are explicitly setting key values for new entities, ensure they do not collide with existing entities or temporary values generated for other new entities. When attaching existing entities, ensure that only one entity instance with a given key value is attached to the context.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph(EntityEntryGraphNode node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at WotBlitzStatician.Data.BlitzStaticianDataAccessor.SaveAccountAchievements(List`1 accountInfoAchievments) in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Data\BlitzStaticianDataAccessor.cs:line 184
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAndSaveToDb>d__13.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 136
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAsync>d__12.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.APIControllers.WotBlitzStatCollectController.<Put>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\APIControllers\WotBlitzStatCollectController.cs:line 24
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.ErrorHandlerMiddleware.<Invoke>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\ErrorHandlerMiddleware.cs:line 26
+2017-08-03 16:47:44,558 (DEBUG) 23 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 16:48:04,458 (DEBUG) 24 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/info/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:48:06,578 (DEBUG) 28 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/vehicles/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:48:08,311 (DEBUG) 24 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/achievements/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:48:09,733 (DEBUG) 28 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:48:09,774 (DEBUG) 28 - [BlitzStaticianLogic] Account id 46512100. LastBattle at ''
+2017-08-03 16:48:10,180 (DEBUG) 23 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:48:10,332 (DEBUG) 29 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:48:10,518 (DEBUG) 23 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 16:48:10,689 (DEBUG) 28 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:48:10,942 (DEBUG) 23 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:48:10,961 (DEBUG) 23 - [BlitzStaticianLogic] Filtered 159 tanks by last session
+2017-08-03 16:48:10,982 (DEBUG) 23 - [BlitzStaticianLogic] Filtered 3959 tank achievements by last session
+2017-08-03 16:48:10,993 (DEBUG) 23 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '03.08.2017 12:15:46'
+2017-08-03 16:48:11,597 (ERROR) 23 - [ErrorHandlerMiddleware] PUT: /api/WotBlitzStatCollect/46512100
+System.InvalidOperationException: The instance of entity type 'AccountInfoAchievment' cannot be tracked because another instance of this type with the same key is already being tracked. When adding new entities, for most key types a unique temporary key value will be created if no key is set (i.e. if the key property is assigned the default value for its type). If you are explicitly setting key values for new entities, ensure they do not collide with existing entities or temporary values generated for other new entities. When attaching existing entities, ensure that only one entity instance with a given key value is attached to the context.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph(EntityEntryGraphNode node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at WotBlitzStatician.Data.BlitzStaticianDataAccessor.SaveAccountAchievements(List`1 accountInfoAchievments) in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Data\BlitzStaticianDataAccessor.cs:line 184
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAndSaveToDb>d__13.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 136
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAsync>d__12.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.APIControllers.WotBlitzStatCollectController.<Put>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\APIControllers\WotBlitzStatCollectController.cs:line 24
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.ErrorHandlerMiddleware.<Invoke>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\ErrorHandlerMiddleware.cs:line 26
+2017-08-03 16:51:21,796 (DEBUG) 4 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 16:51:22,057 (DEBUG) 18 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/info/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:51:23,610 (DEBUG) 18 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/vehicles/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:51:24,251 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/achievements/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:51:26,352 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:51:29,176 (DEBUG) 4 - [BlitzStaticianLogic] Account id 46512100. LastBattle at ''
+2017-08-03 16:51:30,233 (DEBUG) 20 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:51:30,916 (DEBUG) 15 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:51:31,044 (DEBUG) 19 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 16:51:31,677 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:51:32,615 (DEBUG) 19 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:51:34,574 (DEBUG) 19 - [BlitzStaticianLogic] Filtered 159 tanks by last session
+2017-08-03 16:51:36,147 (DEBUG) 19 - [BlitzStaticianLogic] Filtered 3959 tank achievements by last session
+2017-08-03 16:51:38,513 (DEBUG) 19 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '03.08.2017 12:15:46'
+2017-08-03 16:52:45,171 (ERROR) 19 - [ErrorHandlerMiddleware] PUT: /api/WotBlitzStatCollect/46512100
+System.InvalidOperationException: The instance of entity type 'AccountInfoAchievment' cannot be tracked because another instance of this type with the same key is already being tracked. When adding new entities, for most key types a unique temporary key value will be created if no key is set (i.e. if the key property is assigned the default value for its type). If you are explicitly setting key values for new entities, ensure they do not collide with existing entities or temporary values generated for other new entities. When attaching existing entities, ensure that only one entity instance with a given key value is attached to the context.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph(EntityEntryGraphNode node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at WotBlitzStatician.Data.BlitzStaticianDataAccessor.SaveAccountAchievements(List`1 accountInfoAchievments) in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Data\BlitzStaticianDataAccessor.cs:line 184
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAndSaveToDb>d__13.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 136
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAsync>d__12.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.APIControllers.WotBlitzStatCollectController.<Put>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\APIControllers\WotBlitzStatCollectController.cs:line 24
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.ErrorHandlerMiddleware.<Invoke>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\ErrorHandlerMiddleware.cs:line 26
+2017-08-03 16:53:23,548 (DEBUG) 29 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 16:53:23,686 (DEBUG) 28 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/info/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:53:25,222 (DEBUG) 28 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/vehicles/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:53:25,848 (DEBUG) 22 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/achievements/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:53:27,313 (DEBUG) 15 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:53:30,499 (DEBUG) 15 - [BlitzStaticianLogic] Account id 46512100. LastBattle at ''
+2017-08-03 16:53:31,022 (DEBUG) 28 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:53:31,261 (DEBUG) 15 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:53:31,431 (DEBUG) 22 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 16:53:31,627 (DEBUG) 22 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:53:31,909 (DEBUG) 12 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:53:31,916 (DEBUG) 12 - [BlitzStaticianLogic] Filtered 159 tanks by last session
+2017-08-03 16:53:31,923 (DEBUG) 12 - [BlitzStaticianLogic] Filtered 3959 tank achievements by last session
+2017-08-03 16:53:31,932 (DEBUG) 12 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '03.08.2017 12:15:46'
+2017-08-03 16:53:38,773 (ERROR) 12 - [ErrorHandlerMiddleware] PUT: /api/WotBlitzStatCollect/46512100
+System.InvalidOperationException: The instance of entity type 'AccountInfoAchievment' cannot be tracked because another instance of this type with the same key is already being tracked. When adding new entities, for most key types a unique temporary key value will be created if no key is set (i.e. if the key property is assigned the default value for its type). If you are explicitly setting key values for new entities, ensure they do not collide with existing entities or temporary values generated for other new entities. When attaching existing entities, ensure that only one entity instance with a given key value is attached to the context.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph(EntityEntryGraphNode node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at WotBlitzStatician.Data.BlitzStaticianDataAccessor.SaveAccountAchievements(List`1 accountInfoAchievments) in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Data\BlitzStaticianDataAccessor.cs:line 184
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAndSaveToDb>d__13.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 136
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAsync>d__12.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.APIControllers.WotBlitzStatCollectController.<Put>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\APIControllers\WotBlitzStatCollectController.cs:line 24
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.ErrorHandlerMiddleware.<Invoke>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\ErrorHandlerMiddleware.cs:line 26
+2017-08-03 16:53:58,563 (DEBUG) 29 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 16:53:58,850 (DEBUG) 20 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/info/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:54:00,512 (DEBUG) 28 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/vehicles/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:54:01,324 (DEBUG) 20 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/achievements/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 16:54:02,787 (DEBUG) 29 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:54:02,838 (DEBUG) 29 - [BlitzStaticianLogic] Account id 46512100. LastBattle at ''
+2017-08-03 16:54:03,312 (DEBUG) 20 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:54:03,461 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:54:03,660 (DEBUG) 29 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 16:54:03,861 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:54:04,015 (DEBUG) 29 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 16:54:04,640 (ERROR) 29 - [ErrorHandlerMiddleware] PUT: /api/WotBlitzStatCollect/46512100
+WotBlitzStatician.WotApiClient.ResponseException: Field:application_id  Message:REQUEST_LIMIT_EXCEEDED  Value:demo  Code:407
+   at WotBlitzStatician.WotApiClient.WebApiClient.<GetResponse>d__4`1.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.WotApiClient\Internal\WebApiClient.cs:line 63
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WotBlitzStatician.WotApiClient.WargamingApiClient.<GetAccountTankAchievementsAsync>d__11.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.WotApiClient\WargamingApiClient.cs:line 216
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAndSaveToDb>d__13.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 122
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAsync>d__12.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.APIControllers.WotBlitzStatCollectController.<Put>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\APIControllers\WotBlitzStatCollectController.cs:line 24
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.ErrorHandlerMiddleware.<Invoke>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\ErrorHandlerMiddleware.cs:line 26
+2017-08-03 17:00:15,332 (DEBUG) 9 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 17:00:16,805 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/info/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 17:00:19,141 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/vehicles/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 17:00:22,844 (DEBUG) 11 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/achievements/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 17:00:25,283 (DEBUG) 16 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:00:25,509 (DEBUG) 16 - [BlitzStaticianLogic] Account id 46512100. LastBattle at ''
+2017-08-03 17:00:25,845 (DEBUG) 16 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:00:26,332 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:00:26,777 (DEBUG) 16 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 17:00:27,052 (DEBUG) 16 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:00:27,309 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:00:27,349 (DEBUG) 9 - [BlitzStaticianLogic] Filtered 159 tanks by last session
+2017-08-03 17:00:27,356 (DEBUG) 9 - [BlitzStaticianLogic] Filtered 3959 tank achievements by last session
+2017-08-03 17:00:27,380 (DEBUG) 9 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '03.08.2017 12:15:46'
+2017-08-03 17:01:38,090 (ERROR) 9 - [ErrorHandlerMiddleware] PUT: /api/WotBlitzStatCollect/46512100
+System.InvalidOperationException: The instance of entity type 'AccountInfoAchievment' cannot be tracked because another instance of this type with the same key is already being tracked. When adding new entities, for most key types a unique temporary key value will be created if no key is set (i.e. if the key property is assigned the default value for its type). If you are explicitly setting key values for new entities, ensure they do not collide with existing entities or temporary values generated for other new entities. When attaching existing entities, ensure that only one entity instance with a given key value is attached to the context.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph(EntityEntryGraphNode node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at WotBlitzStatician.Data.BlitzStaticianDataAccessor.SaveAccountAchievements(List`1 accountInfoAchievments) in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Data\BlitzStaticianDataAccessor.cs:line 184
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAndSaveToDb>d__13.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 136
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAsync>d__12.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.APIControllers.WotBlitzStatCollectController.<Put>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\APIControllers\WotBlitzStatCollectController.cs:line 24
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.ErrorHandlerMiddleware.<Invoke>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\ErrorHandlerMiddleware.cs:line 26
+2017-08-03 17:08:32,948 (DEBUG) 9 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 17:08:34,263 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/info/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 17:08:35,931 (DEBUG) 15 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/vehicles/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 17:08:36,585 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/achievements/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 17:08:39,686 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:08:39,945 (DEBUG) 10 - [BlitzStaticianLogic] Account id 46512100. LastBattle at ''
+2017-08-03 17:08:40,273 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:08:40,485 (DEBUG) 15 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:08:40,646 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 17:08:41,000 (DEBUG) 15 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:08:41,383 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:08:41,433 (DEBUG) 9 - [BlitzStaticianLogic] Filtered 159 tanks by last session
+2017-08-03 17:08:41,441 (DEBUG) 9 - [BlitzStaticianLogic] Filtered 3959 tank achievements by last session
+2017-08-03 17:08:41,470 (DEBUG) 9 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '03.08.2017 12:15:46'
+2017-08-03 17:09:27,446 (ERROR) 9 - [ErrorHandlerMiddleware] PUT: /api/WotBlitzStatCollect/46512100
+System.InvalidOperationException: The instance of entity type 'AccountInfoAchievment' cannot be tracked because another instance of this type with the same key is already being tracked. When adding new entities, for most key types a unique temporary key value will be created if no key is set (i.e. if the key property is assigned the default value for its type). If you are explicitly setting key values for new entities, ensure they do not collide with existing entities or temporary values generated for other new entities. When attaching existing entities, ensure that only one entity instance with a given key value is attached to the context.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph(EntityEntryGraphNode node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at WotBlitzStatician.Data.BlitzStaticianDataAccessor.SaveAccountAchievements(List`1 accountInfoAchievments) in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Data\BlitzStaticianDataAccessor.cs:line 184
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAndSaveToDb>d__13.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 136
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.Logic.BlitzStaticianLogic.<LoadStatisticsFromWgAsync>d__12.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician.Logic\BlitzStaticianLogic.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.APIControllers.WotBlitzStatCollectController.<Put>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\APIControllers\WotBlitzStatCollectController.cs:line 24
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeActionMethodAsync>d__27.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextActionFilterAsync>d__25.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeNextResourceFilter>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.<InvokeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.<Invoke>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at WotBlitzStatician.ErrorHandlerMiddleware.<Invoke>d__3.MoveNext() in E:\Mike\Test\WotBlitzStatician-master\WotBlitzStatician\ErrorHandlerMiddleware.cs:line 26
+2017-08-03 17:14:13,234 (DEBUG) 9 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-03 17:14:14,667 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/info/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 17:14:16,605 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/vehicles/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 17:14:17,408 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/encyclopedia/achievements/?application_id=demo&language=ru' - Status: 'OK'
+2017-08-03 17:14:20,273 (DEBUG) 19 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:14:20,544 (DEBUG) 19 - [BlitzStaticianLogic] Account id 46512100. LastBattle at ''
+2017-08-03 17:14:21,114 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:14:21,437 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:14:21,737 (DEBUG) 17 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-03 17:14:21,942 (DEBUG) 17 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:14:22,460 (DEBUG) 17 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-03 17:14:22,507 (DEBUG) 17 - [BlitzStaticianLogic] Filtered 159 tanks by last session
+2017-08-03 17:14:22,515 (DEBUG) 17 - [BlitzStaticianLogic] Filtered 3959 tank achievements by last session
+2017-08-03 17:14:22,541 (DEBUG) 17 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '03.08.2017 12:15:46'
+2017-08-03 17:14:40,434 (DEBUG) 17 - [BlitzStaticianDataAccessor] <SaveAccountAchievements> saved 69 achievements.
+2017-08-03 17:15:27,522 (DEBUG) 17 - [BlitzStaticianDataAccessor] <SaveAccountTankAchievements> saved 3959 tank acievements.
+2017-08-03 17:15:27,590 (DEBUG) 17 - [BlitzStaticianDataAccessor] <SaveTanksStatistic> saved 159 tanks
+2017-08-03 17:15:27,638 (DEBUG) 17 - [BlitzStaticianDataAccessor] <SaveClanInfo> saved 'XXX_L' clan info.
+2017-08-04 08:54:09,174 (DEBUG) 10 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-04 08:54:10,889 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-04 08:54:11,347 (DEBUG) 10 - [BlitzStaticianLogic] Account id 46512100. LastBattle at '03.08.2017 12:02:24'
+2017-08-04 08:54:11,705 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-04 08:54:12,136 (DEBUG) 15 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-04 08:54:12,545 (DEBUG) 9 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-04 08:54:12,719 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-04 08:54:13,036 (DEBUG) 12 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-04 08:54:13,079 (DEBUG) 12 - [BlitzStaticianLogic] Filtered 7 tanks by last session
+2017-08-04 08:54:13,080 (DEBUG) 12 - [BlitzStaticianLogic] Filtered 186 tank achievements by last session
+2017-08-04 08:54:13,230 (DEBUG) 12 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '04.08.2017 7:55:21'
+2017-08-04 08:54:13,380 (DEBUG) 12 - [BlitzStaticianDataAccessor] <SaveAccountAchievements> saved 69 achievements.
+2017-08-04 08:54:13,807 (DEBUG) 12 - [BlitzStaticianDataAccessor] <SaveAccountTankAchievements> saved 186 tank acievements.
+2017-08-04 08:54:13,825 (DEBUG) 12 - [BlitzStaticianDataAccessor] <SaveTanksStatistic> saved 7 tanks
+2017-08-04 08:54:13,858 (DEBUG) 12 - [BlitzStaticianDataAccessor] <SaveClanInfo> saved 'XXX_L' clan info.
+2017-08-04 14:15:34,542 (DEBUG) 3 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-04 14:15:35,752 (DEBUG) 13 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-04 14:15:36,158 (DEBUG) 13 - [BlitzStaticianLogic] Account id 46512100. LastBattle at '04.08.2017 7:47:52'
+2017-08-04 14:15:36,787 (DEBUG) 13 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-04 14:15:37,182 (DEBUG) 20 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-04 14:15:37,477 (DEBUG) 3 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-04 14:15:37,897 (DEBUG) 13 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-04 14:15:38,286 (DEBUG) 20 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-04 14:15:38,359 (DEBUG) 20 - [BlitzStaticianLogic] Filtered 3 tanks by last session
+2017-08-04 14:15:38,361 (DEBUG) 20 - [BlitzStaticianLogic] Filtered 73 tank achievements by last session
+2017-08-04 14:15:38,528 (DEBUG) 20 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '04.08.2017 13:10:26'
+2017-08-04 14:15:38,662 (DEBUG) 20 - [BlitzStaticianDataAccessor] <SaveAccountAchievements> saved 69 achievements.
+2017-08-04 14:15:38,787 (DEBUG) 20 - [BlitzStaticianDataAccessor] <SaveAccountTankAchievements> saved 73 tank acievements.
+2017-08-04 14:15:38,803 (DEBUG) 20 - [BlitzStaticianDataAccessor] <SaveTanksStatistic> saved 3 tanks
+2017-08-04 14:15:38,856 (DEBUG) 20 - [BlitzStaticianDataAccessor] <SaveClanInfo> saved 'XXX_L' clan info.
+2017-08-07 10:19:36,056 (DEBUG) 10 - [WotBlitzStatCollectController] WotBlitzStatCollect: 46512100
+2017-08-07 10:19:38,061 (DEBUG) 10 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-07 10:19:38,598 (DEBUG) 10 - [BlitzStaticianLogic] Account id 46512100. LastBattle at '04.08.2017 10:39:05'
+2017-08-07 10:19:39,165 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/stats/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-07 10:19:39,713 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-07 10:19:40,132 (DEBUG) 19 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/clans/info/?application_id=demo&language=ru&clan_id=40493' - Status: 'OK'
+2017-08-07 10:19:40,322 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/account/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-07 10:19:40,815 (DEBUG) 4 - [WebApiClient] Request 'https://api.wotblitz.ru/wotb/tanks/achievements/?application_id=demo&language=ru&account_id=46512100' - Status: 'OK'
+2017-08-07 10:19:40,854 (DEBUG) 4 - [BlitzStaticianLogic] Filtered 12 tanks by last session
+2017-08-07 10:19:40,858 (DEBUG) 4 - [BlitzStaticianLogic] Filtered 343 tank achievements by last session
+2017-08-07 10:19:41,006 (DEBUG) 4 - [BlitzStaticianDataAccessor] <SaveAccountInfo> saved '46512100' account. UpdatedAt date '07.08.2017 7:48:07'
+2017-08-07 10:19:41,164 (DEBUG) 4 - [BlitzStaticianDataAccessor] <SaveAccountAchievements> saved 69 achievements.
+2017-08-07 10:19:42,072 (DEBUG) 4 - [BlitzStaticianDataAccessor] <SaveAccountTankAchievements> saved 343 tank acievements.
+2017-08-07 10:19:42,090 (DEBUG) 4 - [BlitzStaticianDataAccessor] <SaveTanksStatistic> saved 12 tanks
+2017-08-07 10:19:42,124 (DEBUG) 4 - [BlitzStaticianDataAccessor] <SaveClanInfo> saved 'XXX_L' clan info.

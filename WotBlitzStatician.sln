@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotBlitzStatician.Logic", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotBlitzStatician.Logic.Tests", "WotBlitzStatician.Logic.Tests\WotBlitzStatician.Logic.Tests.csproj", "{AA318A16-C3A8-4294-B051-252EE4B098DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotBlitzStatician", "WotBlitzStatician\WotBlitzStatician.csproj", "{81D0C14E-A81C-45B8-A7A2-66E53ABD0F5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,5 +39,9 @@ Global
 		{AA318A16-C3A8-4294-B051-252EE4B098DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA318A16-C3A8-4294-B051-252EE4B098DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA318A16-C3A8-4294-B051-252EE4B098DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81D0C14E-A81C-45B8-A7A2-66E53ABD0F5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81D0C14E-A81C-45B8-A7A2-66E53ABD0F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81D0C14E-A81C-45B8-A7A2-66E53ABD0F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81D0C14E-A81C-45B8-A7A2-66E53ABD0F5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

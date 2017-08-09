@@ -1,0 +1,249 @@
+﻿2017-08-01 18:40:51,829 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-01 18:40:52,009 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-01 18:40:53,383 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-01 18:40:53,557 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-01 18:40:53,573 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-01 18:40:53,575 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-01 18:40:53,625 (INFO ) 10 - [WebHost] Request finished in 252.7825ms 404 
+2017-08-01 18:40:59,369 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-01 18:40:59,370 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-01 18:40:59,413 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-01 18:40:59,649 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-01 18:41:42,718 (DEBUG) 11 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
+2017-08-01 18:41:42,731 (INFO ) 11 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 43316.0158ms
+2017-08-01 18:41:42,737 (INFO ) 11 - [WebHost] Request finished in 43366.4323ms 200 
+2017-08-01 18:41:53,856 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-01 18:41:53,856 (DEBUG) 10 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-01 18:41:53,859 (DEBUG) 10 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-01 18:41:53,872 (INFO ) 10 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-01 18:41:58,232 (DEBUG) 13 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
+2017-08-01 18:41:58,233 (INFO ) 13 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 4374.8165ms
+2017-08-01 18:41:58,234 (INFO ) 13 - [WebHost] Request finished in 4378.7774ms 200 
+2017-08-01 18:50:20,731 (INFO ) 23 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-01 18:50:20,732 (DEBUG) 23 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-01 18:50:20,738 (DEBUG) 23 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-01 18:50:20,752 (INFO ) 23 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-01 18:52:20,104 (DEBUG) 25 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
+2017-08-01 18:52:20,106 (INFO ) 25 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 119362.8028ms
+2017-08-01 18:52:20,107 (INFO ) 25 - [WebHost] Request finished in 119370.676ms 200 
+2017-08-03 11:03:31,954 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-03 11:03:32,140 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-03 11:03:33,314 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-03 11:03:33,506 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-03 11:03:33,523 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-03 11:03:33,525 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-03 11:03:33,579 (INFO ) 10 - [WebHost] Request finished in 284.2963ms 404 
+2017-08-03 11:03:48,478 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 11:03:48,479 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 11:03:48,527 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 11:03:48,755 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 11:06:22,027 (DEBUG) 12 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
+2017-08-03 11:06:22,052 (INFO ) 12 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 153518.6106ms
+2017-08-03 11:06:22,057 (INFO ) 12 - [WebHost] Request finished in 153574.1889ms 200 
+2017-08-03 15:37:31,482 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-03 15:37:31,663 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-03 15:37:32,891 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-03 15:37:33,073 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-03 15:37:33,089 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
+2017-08-03 15:37:33,090 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
+2017-08-03 15:37:33,144 (INFO ) 9 - [WebHost] Request finished in 261.0563ms 404 
+2017-08-03 15:40:48,799 (INFO ) 4 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 15:40:48,800 (DEBUG) 4 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 15:40:48,839 (DEBUG) 4 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 15:40:49,070 (INFO ) 4 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 15:40:53,522 (INFO ) 15 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 4680.9268ms
+2017-08-03 15:40:53,875 (INFO ) 15 - [WebHost] Request finished in 5075.3545ms 500 application/json
+2017-08-03 15:41:14,214 (INFO ) 4 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 15:41:14,215 (DEBUG) 4 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 15:41:14,216 (DEBUG) 4 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 15:41:14,229 (INFO ) 4 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 15:41:17,224 (INFO ) 14 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 3008.1276ms
+2017-08-03 15:41:17,383 (INFO ) 14 - [WebHost] Request finished in 3168.6821ms 500 application/json
+2017-08-03 15:42:08,059 (INFO ) 27 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 15:42:08,060 (DEBUG) 27 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 15:42:08,065 (DEBUG) 27 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 15:42:08,076 (INFO ) 27 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 15:42:12,254 (INFO ) 28 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 4187.7599ms
+2017-08-03 15:42:12,412 (INFO ) 28 - [WebHost] Request finished in 4352.9339ms 500 application/json
+2017-08-03 15:43:27,509 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-03 15:43:27,662 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-03 15:43:28,798 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-03 15:43:28,965 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-03 15:43:28,976 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
+2017-08-03 15:43:28,977 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
+2017-08-03 15:43:29,031 (INFO ) 9 - [WebHost] Request finished in 248.2644ms 404 
+2017-08-03 15:46:10,917 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-03 15:46:11,093 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-03 15:46:12,130 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-03 15:46:12,288 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-03 15:46:12,299 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
+2017-08-03 15:46:12,301 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
+2017-08-03 15:46:12,344 (INFO ) 9 - [WebHost] Request finished in 227.7723ms 404 
+2017-08-03 15:46:18,981 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 15:46:18,982 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 15:46:19,024 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 15:46:19,254 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 15:46:27,922 (INFO ) 13 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 8895.8678ms
+2017-08-03 15:46:28,249 (INFO ) 13 - [WebHost] Request finished in 9268.6868ms 500 application/json
+2017-08-03 15:54:02,445 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-03 15:54:02,617 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-03 15:54:03,355 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-03 15:54:03,520 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-03 15:54:03,531 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-03 15:54:03,533 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-03 15:54:03,579 (INFO ) 10 - [WebHost] Request finished in 238.9109ms 404 
+2017-08-03 15:56:42,649 (INFO ) 12 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 15:56:42,650 (DEBUG) 12 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 15:56:42,690 (DEBUG) 12 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 15:56:42,907 (INFO ) 12 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 16:43:56,636 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-03 16:43:56,839 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-03 16:43:58,032 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-03 16:43:58,206 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-03 16:43:58,218 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-03 16:43:58,219 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-03 16:43:58,264 (INFO ) 10 - [WebHost] Request finished in 247.8756ms 404 
+2017-08-03 16:44:06,456 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 16:44:06,457 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 16:44:06,499 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 16:44:06,740 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 16:44:29,217 (INFO ) 11 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 22716.2246ms
+2017-08-03 16:44:29,556 (INFO ) 11 - [WebHost] Request finished in 23099.8688ms 500 application/json
+2017-08-03 16:47:44,535 (INFO ) 23 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 16:47:44,536 (DEBUG) 23 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 16:47:44,543 (DEBUG) 23 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 16:47:44,558 (INFO ) 23 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 16:48:11,428 (INFO ) 23 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 26885.0374ms
+2017-08-03 16:48:11,603 (INFO ) 23 - [WebHost] Request finished in 27067.0666ms 500 application/json
+2017-08-03 16:51:21,776 (INFO ) 4 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 16:51:21,777 (DEBUG) 4 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 16:51:21,783 (DEBUG) 4 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 16:51:21,796 (INFO ) 4 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 16:52:45,000 (INFO ) 19 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 83213.5806ms
+2017-08-03 16:52:45,177 (INFO ) 19 - [WebHost] Request finished in 83397.7582ms 500 application/json
+2017-08-03 16:53:23,512 (INFO ) 29 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 16:53:23,513 (DEBUG) 29 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 16:53:23,519 (DEBUG) 29 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 16:53:23,548 (INFO ) 29 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 16:53:38,611 (INFO ) 12 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 15091.5347ms
+2017-08-03 16:53:38,778 (INFO ) 12 - [WebHost] Request finished in 15265.8947ms 500 application/json
+2017-08-03 16:53:58,548 (INFO ) 29 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 16:53:58,549 (DEBUG) 29 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 16:53:58,550 (DEBUG) 29 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 16:53:58,563 (INFO ) 29 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 16:54:04,468 (INFO ) 29 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 5916.611ms
+2017-08-03 16:54:04,643 (INFO ) 29 - [WebHost] Request finished in 6094.9232ms 500 application/json
+2017-08-03 17:00:06,100 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-03 17:00:06,284 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-03 17:00:07,160 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-03 17:00:07,344 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-03 17:00:07,356 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-03 17:00:07,357 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-03 17:00:07,401 (INFO ) 10 - [WebHost] Request finished in 258.4798ms 404 
+2017-08-03 17:00:15,051 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 17:00:15,052 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 17:00:15,101 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 17:00:15,331 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 17:01:37,804 (INFO ) 9 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 82699.048ms
+2017-08-03 17:01:38,148 (INFO ) 9 - [WebHost] Request finished in 83094.1996ms 500 application/json
+2017-08-03 17:08:21,474 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-03 17:08:21,706 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-03 17:08:22,590 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-03 17:08:22,774 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-03 17:08:22,787 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
+2017-08-03 17:08:22,789 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
+2017-08-03 17:08:22,839 (INFO ) 9 - [WebHost] Request finished in 258.4182ms 404 
+2017-08-03 17:08:32,645 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 17:08:32,645 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 17:08:32,692 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 17:08:32,947 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 17:09:27,056 (INFO ) 9 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 54361.3813ms
+2017-08-03 17:09:27,512 (INFO ) 9 - [WebHost] Request finished in 54864.5571ms 500 application/json
+2017-08-03 17:14:03,302 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-03 17:14:03,481 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-03 17:14:04,451 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-03 17:14:04,637 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-03 17:14:04,648 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-03 17:14:04,650 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-03 17:14:04,694 (INFO ) 10 - [WebHost] Request finished in 262.2677ms 404 
+2017-08-03 17:14:12,938 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-03 17:14:12,939 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-03 17:14:12,985 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-03 17:14:13,232 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-03 17:15:27,639 (DEBUG) 17 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
+2017-08-03 17:15:27,653 (INFO ) 17 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 74663.893ms
+2017-08-03 17:15:27,658 (INFO ) 17 - [WebHost] Request finished in 74717.4333ms 200 
+2017-08-04 08:53:53,494 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-04 08:53:53,760 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-04 08:53:54,965 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-04 08:53:55,173 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-04 08:53:55,185 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
+2017-08-04 08:53:55,186 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
+2017-08-04 08:53:55,230 (INFO ) 9 - [WebHost] Request finished in 288.8266ms 404 
+2017-08-04 08:54:08,879 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-04 08:54:08,880 (DEBUG) 10 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-04 08:54:08,925 (DEBUG) 10 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-04 08:54:09,172 (INFO ) 10 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-04 08:54:13,859 (DEBUG) 12 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
+2017-08-04 08:54:13,873 (INFO ) 12 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 4946.8322ms
+2017-08-04 08:54:13,876 (INFO ) 12 - [WebHost] Request finished in 4997.0174ms 200 
+2017-08-04 14:14:14,009 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-04 14:14:14,101 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-04 14:15:34,283 (INFO ) 3 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:5000/api/WotBlitzStatCollect/46512100  0
+2017-08-04 14:15:34,395 (DEBUG) 3 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-04 14:15:34,434 (DEBUG) 3 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-04 14:15:34,541 (INFO ) 3 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-04 14:15:38,857 (DEBUG) 20 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
+2017-08-04 14:15:38,863 (INFO ) 20 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 4434.723ms
+2017-08-04 14:15:38,901 (INFO ) 20 - [WebHost] Request finished in 4638.3679ms 200 
+2017-08-04 14:17:07,873 (DEBUG) 1 - [WebHost] Hosting shutdown
+2017-08-04 17:02:18,630 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-04 17:02:18,830 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-04 17:02:58,053 (INFO ) 4 - [WebHost] Request starting HTTP/1.1 GET http://localhost:5000/api/WotBlitzStatCollect/  
+2017-08-04 17:02:58,250 (DEBUG) 4 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect'.
+2017-08-04 17:02:58,295 (DEBUG) 4 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician)
+2017-08-04 17:02:58,354 (INFO ) 4 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-04 17:02:58,356 (DEBUG) 4 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ObjectResult.
+2017-08-04 17:02:58,380 (DEBUG) 4 - [ObjectResultExecutor] No information found on request to perform content negotiation.
+2017-08-04 17:02:58,383 (DEBUG) 4 - [ObjectResultExecutor] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain; charset=utf-8' to write the response.
+2017-08-04 17:02:58,384 (INFO ) 4 - [ObjectResultExecutor] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2017-08-04 17:02:58,459 (INFO ) 4 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician) in 162.4156ms
+2017-08-04 17:02:58,468 (INFO ) 4 - [WebHost] Request finished in 431.5615ms 200 text/plain; charset=utf-8
+2017-08-07 10:13:38,965 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-07 10:13:39,181 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-07 10:13:40,441 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-07 10:13:40,632 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-07 10:13:40,645 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-07 10:13:40,646 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-07 10:13:40,694 (INFO ) 10 - [WebHost] Request finished in 275.5513ms 404 
+2017-08-07 10:13:52,559 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/api/WotBlitzStatCollect/  
+2017-08-07 10:13:52,560 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect'.
+2017-08-07 10:13:52,606 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician)
+2017-08-07 10:13:52,719 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-07 10:13:52,722 (DEBUG) 9 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ObjectResult.
+2017-08-07 10:13:52,745 (DEBUG) 9 - [ObjectResultExecutor] No information found on request to perform content negotiation.
+2017-08-07 10:13:52,749 (DEBUG) 9 - [ObjectResultExecutor] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain; charset=utf-8' to write the response.
+2017-08-07 10:13:52,749 (INFO ) 9 - [ObjectResultExecutor] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
+2017-08-07 10:13:52,782 (INFO ) 9 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician) in 175.0822ms
+2017-08-07 10:13:52,785 (INFO ) 9 - [WebHost] Request finished in 225.5164ms 200 text/plain; charset=utf-8
+2017-08-07 10:19:03,446 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-07 10:19:03,608 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-07 10:19:04,257 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-07 10:19:04,428 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-07 10:19:04,440 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
+2017-08-07 10:19:04,442 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
+2017-08-07 10:19:04,487 (INFO ) 9 - [WebHost] Request finished in 244.6676ms 404 
+2017-08-07 10:19:35,765 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
+2017-08-07 10:19:35,766 (DEBUG) 10 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
+2017-08-07 10:19:35,806 (DEBUG) 10 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
+2017-08-07 10:19:36,055 (INFO ) 10 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
+2017-08-07 10:19:42,125 (DEBUG) 4 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
+2017-08-07 10:19:42,140 (INFO ) 4 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 6331.4413ms
+2017-08-07 10:19:42,144 (INFO ) 4 - [WebHost] Request finished in 6378.4216ms 200 
+2017-08-07 16:11:13,928 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-07 16:11:14,091 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-07 16:11:15,287 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
+2017-08-07 16:11:15,484 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-07 16:11:15,497 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-07 16:11:15,499 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-07 16:11:15,546 (INFO ) 10 - [WebHost] Request finished in 275.0633ms 404 
