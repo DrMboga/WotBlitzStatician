@@ -11,13 +11,8 @@
 
 	public class Startup
 	{
-//		public void ConfigureServices(IServiceCollection services)
-//		{
-//			services.AddLogging();
-//			services.AddMvc();
-//
-//		}
-		public IServiceProvider ConfigureServices(IServiceCollection services)
+
+        public IServiceProvider ConfigureServices(IServiceCollection services)
 		{
 			services.AddLogging();
 			services.AddMvc();
@@ -34,9 +29,17 @@
 			loggerFactory.AddLog4Net();
 
 			app.UseErrorHandler();
-//			app.UseDeveloperExceptionPage();
+			//			app.UseDeveloperExceptionPage();
 
-			app.UseMvcWithDefaultRoute();
+			//			app.UseMvcWithDefaultRoute();
+			app.UseStaticFiles();
+
+			app.UseMvc(routes =>
+			{
+				routes.MapRoute(
+					name: "default",
+					template: "{controller=Home}/{action=Index}/{id?}");
+			});
 		}
 	}
 }

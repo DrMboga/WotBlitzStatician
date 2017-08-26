@@ -1,249 +1,1079 @@
-﻿2017-08-01 18:40:51,829 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-01 18:40:52,009 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-01 18:40:53,383 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-01 18:40:53,557 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-01 18:40:53,573 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
-2017-08-01 18:40:53,575 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
-2017-08-01 18:40:53,625 (INFO ) 10 - [WebHost] Request finished in 252.7825ms 404 
-2017-08-01 18:40:59,369 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-01 18:40:59,370 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-01 18:40:59,413 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-01 18:40:59,649 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-01 18:41:42,718 (DEBUG) 11 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
-2017-08-01 18:41:42,731 (INFO ) 11 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 43316.0158ms
-2017-08-01 18:41:42,737 (INFO ) 11 - [WebHost] Request finished in 43366.4323ms 200 
-2017-08-01 18:41:53,856 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-01 18:41:53,856 (DEBUG) 10 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-01 18:41:53,859 (DEBUG) 10 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-01 18:41:53,872 (INFO ) 10 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-01 18:41:58,232 (DEBUG) 13 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
-2017-08-01 18:41:58,233 (INFO ) 13 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 4374.8165ms
-2017-08-01 18:41:58,234 (INFO ) 13 - [WebHost] Request finished in 4378.7774ms 200 
-2017-08-01 18:50:20,731 (INFO ) 23 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-01 18:50:20,732 (DEBUG) 23 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-01 18:50:20,738 (DEBUG) 23 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-01 18:50:20,752 (INFO ) 23 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-01 18:52:20,104 (DEBUG) 25 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
-2017-08-01 18:52:20,106 (INFO ) 25 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 119362.8028ms
-2017-08-01 18:52:20,107 (INFO ) 25 - [WebHost] Request finished in 119370.676ms 200 
-2017-08-03 11:03:31,954 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-03 11:03:32,140 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-03 11:03:33,314 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-03 11:03:33,506 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-03 11:03:33,523 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
-2017-08-03 11:03:33,525 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
-2017-08-03 11:03:33,579 (INFO ) 10 - [WebHost] Request finished in 284.2963ms 404 
-2017-08-03 11:03:48,478 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 11:03:48,479 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 11:03:48,527 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 11:03:48,755 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 11:06:22,027 (DEBUG) 12 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
-2017-08-03 11:06:22,052 (INFO ) 12 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 153518.6106ms
-2017-08-03 11:06:22,057 (INFO ) 12 - [WebHost] Request finished in 153574.1889ms 200 
-2017-08-03 15:37:31,482 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-03 15:37:31,663 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-03 15:37:32,891 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-03 15:37:33,073 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-03 15:37:33,089 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
-2017-08-03 15:37:33,090 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
-2017-08-03 15:37:33,144 (INFO ) 9 - [WebHost] Request finished in 261.0563ms 404 
-2017-08-03 15:40:48,799 (INFO ) 4 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 15:40:48,800 (DEBUG) 4 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 15:40:48,839 (DEBUG) 4 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 15:40:49,070 (INFO ) 4 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 15:40:53,522 (INFO ) 15 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 4680.9268ms
-2017-08-03 15:40:53,875 (INFO ) 15 - [WebHost] Request finished in 5075.3545ms 500 application/json
-2017-08-03 15:41:14,214 (INFO ) 4 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 15:41:14,215 (DEBUG) 4 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 15:41:14,216 (DEBUG) 4 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 15:41:14,229 (INFO ) 4 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 15:41:17,224 (INFO ) 14 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 3008.1276ms
-2017-08-03 15:41:17,383 (INFO ) 14 - [WebHost] Request finished in 3168.6821ms 500 application/json
-2017-08-03 15:42:08,059 (INFO ) 27 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 15:42:08,060 (DEBUG) 27 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 15:42:08,065 (DEBUG) 27 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 15:42:08,076 (INFO ) 27 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 15:42:12,254 (INFO ) 28 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 4187.7599ms
-2017-08-03 15:42:12,412 (INFO ) 28 - [WebHost] Request finished in 4352.9339ms 500 application/json
-2017-08-03 15:43:27,509 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-03 15:43:27,662 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-03 15:43:28,798 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-03 15:43:28,965 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-03 15:43:28,976 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
-2017-08-03 15:43:28,977 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
-2017-08-03 15:43:29,031 (INFO ) 9 - [WebHost] Request finished in 248.2644ms 404 
-2017-08-03 15:46:10,917 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-03 15:46:11,093 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-03 15:46:12,130 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-03 15:46:12,288 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-03 15:46:12,299 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
-2017-08-03 15:46:12,301 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
-2017-08-03 15:46:12,344 (INFO ) 9 - [WebHost] Request finished in 227.7723ms 404 
-2017-08-03 15:46:18,981 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 15:46:18,982 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 15:46:19,024 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 15:46:19,254 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 15:46:27,922 (INFO ) 13 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 8895.8678ms
-2017-08-03 15:46:28,249 (INFO ) 13 - [WebHost] Request finished in 9268.6868ms 500 application/json
-2017-08-03 15:54:02,445 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-03 15:54:02,617 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-03 15:54:03,355 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-03 15:54:03,520 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-03 15:54:03,531 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
-2017-08-03 15:54:03,533 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
-2017-08-03 15:54:03,579 (INFO ) 10 - [WebHost] Request finished in 238.9109ms 404 
-2017-08-03 15:56:42,649 (INFO ) 12 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 15:56:42,650 (DEBUG) 12 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 15:56:42,690 (DEBUG) 12 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 15:56:42,907 (INFO ) 12 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 16:43:56,636 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-03 16:43:56,839 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-03 16:43:58,032 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-03 16:43:58,206 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-03 16:43:58,218 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
-2017-08-03 16:43:58,219 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
-2017-08-03 16:43:58,264 (INFO ) 10 - [WebHost] Request finished in 247.8756ms 404 
-2017-08-03 16:44:06,456 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 16:44:06,457 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 16:44:06,499 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 16:44:06,740 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 16:44:29,217 (INFO ) 11 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 22716.2246ms
-2017-08-03 16:44:29,556 (INFO ) 11 - [WebHost] Request finished in 23099.8688ms 500 application/json
-2017-08-03 16:47:44,535 (INFO ) 23 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 16:47:44,536 (DEBUG) 23 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 16:47:44,543 (DEBUG) 23 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 16:47:44,558 (INFO ) 23 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 16:48:11,428 (INFO ) 23 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 26885.0374ms
-2017-08-03 16:48:11,603 (INFO ) 23 - [WebHost] Request finished in 27067.0666ms 500 application/json
-2017-08-03 16:51:21,776 (INFO ) 4 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 16:51:21,777 (DEBUG) 4 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 16:51:21,783 (DEBUG) 4 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 16:51:21,796 (INFO ) 4 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 16:52:45,000 (INFO ) 19 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 83213.5806ms
-2017-08-03 16:52:45,177 (INFO ) 19 - [WebHost] Request finished in 83397.7582ms 500 application/json
-2017-08-03 16:53:23,512 (INFO ) 29 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 16:53:23,513 (DEBUG) 29 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 16:53:23,519 (DEBUG) 29 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 16:53:23,548 (INFO ) 29 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 16:53:38,611 (INFO ) 12 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 15091.5347ms
-2017-08-03 16:53:38,778 (INFO ) 12 - [WebHost] Request finished in 15265.8947ms 500 application/json
-2017-08-03 16:53:58,548 (INFO ) 29 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 16:53:58,549 (DEBUG) 29 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 16:53:58,550 (DEBUG) 29 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 16:53:58,563 (INFO ) 29 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 16:54:04,468 (INFO ) 29 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 5916.611ms
-2017-08-03 16:54:04,643 (INFO ) 29 - [WebHost] Request finished in 6094.9232ms 500 application/json
-2017-08-03 17:00:06,100 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-03 17:00:06,284 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-03 17:00:07,160 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-03 17:00:07,344 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-03 17:00:07,356 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
-2017-08-03 17:00:07,357 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
-2017-08-03 17:00:07,401 (INFO ) 10 - [WebHost] Request finished in 258.4798ms 404 
-2017-08-03 17:00:15,051 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 17:00:15,052 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 17:00:15,101 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 17:00:15,331 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 17:01:37,804 (INFO ) 9 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 82699.048ms
-2017-08-03 17:01:38,148 (INFO ) 9 - [WebHost] Request finished in 83094.1996ms 500 application/json
-2017-08-03 17:08:21,474 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-03 17:08:21,706 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-03 17:08:22,590 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-03 17:08:22,774 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-03 17:08:22,787 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
-2017-08-03 17:08:22,789 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
-2017-08-03 17:08:22,839 (INFO ) 9 - [WebHost] Request finished in 258.4182ms 404 
-2017-08-03 17:08:32,645 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 17:08:32,645 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 17:08:32,692 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 17:08:32,947 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 17:09:27,056 (INFO ) 9 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 54361.3813ms
-2017-08-03 17:09:27,512 (INFO ) 9 - [WebHost] Request finished in 54864.5571ms 500 application/json
-2017-08-03 17:14:03,302 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-03 17:14:03,481 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-03 17:14:04,451 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-03 17:14:04,637 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-03 17:14:04,648 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
-2017-08-03 17:14:04,650 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
-2017-08-03 17:14:04,694 (INFO ) 10 - [WebHost] Request finished in 262.2677ms 404 
-2017-08-03 17:14:12,938 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-03 17:14:12,939 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-03 17:14:12,985 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-03 17:14:13,232 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-03 17:15:27,639 (DEBUG) 17 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
-2017-08-03 17:15:27,653 (INFO ) 17 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 74663.893ms
-2017-08-03 17:15:27,658 (INFO ) 17 - [WebHost] Request finished in 74717.4333ms 200 
-2017-08-04 08:53:53,494 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-04 08:53:53,760 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-04 08:53:54,965 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-04 08:53:55,173 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-04 08:53:55,185 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
-2017-08-04 08:53:55,186 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
-2017-08-04 08:53:55,230 (INFO ) 9 - [WebHost] Request finished in 288.8266ms 404 
-2017-08-04 08:54:08,879 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-04 08:54:08,880 (DEBUG) 10 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-04 08:54:08,925 (DEBUG) 10 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-04 08:54:09,172 (INFO ) 10 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-04 08:54:13,859 (DEBUG) 12 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
-2017-08-04 08:54:13,873 (INFO ) 12 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 4946.8322ms
-2017-08-04 08:54:13,876 (INFO ) 12 - [WebHost] Request finished in 4997.0174ms 200 
-2017-08-04 14:14:14,009 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-04 14:14:14,101 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-04 14:15:34,283 (INFO ) 3 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:5000/api/WotBlitzStatCollect/46512100  0
-2017-08-04 14:15:34,395 (DEBUG) 3 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-04 14:15:34,434 (DEBUG) 3 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-04 14:15:34,541 (INFO ) 3 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-04 14:15:38,857 (DEBUG) 20 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
-2017-08-04 14:15:38,863 (INFO ) 20 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 4434.723ms
-2017-08-04 14:15:38,901 (INFO ) 20 - [WebHost] Request finished in 4638.3679ms 200 
-2017-08-04 14:17:07,873 (DEBUG) 1 - [WebHost] Hosting shutdown
-2017-08-04 17:02:18,630 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-04 17:02:18,830 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-04 17:02:58,053 (INFO ) 4 - [WebHost] Request starting HTTP/1.1 GET http://localhost:5000/api/WotBlitzStatCollect/  
-2017-08-04 17:02:58,250 (DEBUG) 4 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect'.
-2017-08-04 17:02:58,295 (DEBUG) 4 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician)
-2017-08-04 17:02:58,354 (INFO ) 4 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
-2017-08-04 17:02:58,356 (DEBUG) 4 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ObjectResult.
-2017-08-04 17:02:58,380 (DEBUG) 4 - [ObjectResultExecutor] No information found on request to perform content negotiation.
-2017-08-04 17:02:58,383 (DEBUG) 4 - [ObjectResultExecutor] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain; charset=utf-8' to write the response.
-2017-08-04 17:02:58,384 (INFO ) 4 - [ObjectResultExecutor] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
-2017-08-04 17:02:58,459 (INFO ) 4 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician) in 162.4156ms
-2017-08-04 17:02:58,468 (INFO ) 4 - [WebHost] Request finished in 431.5615ms 200 text/plain; charset=utf-8
-2017-08-07 10:13:38,965 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-07 10:13:39,181 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-07 10:13:40,441 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-07 10:13:40,632 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-07 10:13:40,645 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
-2017-08-07 10:13:40,646 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
-2017-08-07 10:13:40,694 (INFO ) 10 - [WebHost] Request finished in 275.5513ms 404 
-2017-08-07 10:13:52,559 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/api/WotBlitzStatCollect/  
-2017-08-07 10:13:52,560 (DEBUG) 9 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect'.
-2017-08-07 10:13:52,606 (DEBUG) 9 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician)
-2017-08-07 10:13:52,719 (INFO ) 9 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
-2017-08-07 10:13:52,722 (DEBUG) 9 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ObjectResult.
-2017-08-07 10:13:52,745 (DEBUG) 9 - [ObjectResultExecutor] No information found on request to perform content negotiation.
-2017-08-07 10:13:52,749 (DEBUG) 9 - [ObjectResultExecutor] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter' and content type 'text/plain; charset=utf-8' to write the response.
-2017-08-07 10:13:52,749 (INFO ) 9 - [ObjectResultExecutor] Executing ObjectResult, writing value Microsoft.AspNetCore.Mvc.ControllerContext.
-2017-08-07 10:13:52,782 (INFO ) 9 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.GetStatus (WotBlitzStatician) in 175.0822ms
-2017-08-07 10:13:52,785 (INFO ) 9 - [WebHost] Request finished in 225.5164ms 200 text/plain; charset=utf-8
-2017-08-07 10:19:03,446 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-07 10:19:03,608 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-07 10:19:04,257 (INFO ) 9 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-07 10:19:04,428 (DEBUG) 9 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-07 10:19:04,440 (DEBUG) 9 - [MvcRouteHandler] No actions matched the current request
-2017-08-07 10:19:04,442 (DEBUG) 9 - [RouterMiddleware] Request did not match any routes.
-2017-08-07 10:19:04,487 (INFO ) 9 - [WebHost] Request finished in 244.6676ms 404 
-2017-08-07 10:19:35,765 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 PUT http://localhost:43636/api/WotBlitzStatCollect/46512100  0
-2017-08-07 10:19:35,766 (DEBUG) 10 - [TreeRouter] Request successfully matched the route with name '(null)' and template 'api/WotBlitzStatCollect/{accountId}'.
-2017-08-07 10:19:35,806 (DEBUG) 10 - [ControllerActionInvoker] Executing action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician)
-2017-08-07 10:19:36,055 (INFO ) 10 - [ControllerActionInvoker] Executing action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) with arguments (46512100) - ModelState is Valid
-2017-08-07 10:19:42,125 (DEBUG) 4 - [ControllerActionInvoker] Executed action method WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.EmptyResult.
-2017-08-07 10:19:42,140 (INFO ) 4 - [ControllerActionInvoker] Executed action WotBlitzStatician.APIControllers.WotBlitzStatCollectController.Put (WotBlitzStatician) in 6331.4413ms
-2017-08-07 10:19:42,144 (INFO ) 4 - [WebHost] Request finished in 6378.4216ms 200 
-2017-08-07 16:11:13,928 (DEBUG) 1 - [WebHost] Hosting starting
-2017-08-07 16:11:14,091 (DEBUG) 1 - [WebHost] Hosting started
-2017-08-07 16:11:15,287 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:43636/  
-2017-08-07 16:11:15,484 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
-2017-08-07 16:11:15,497 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
-2017-08-07 16:11:15,499 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
-2017-08-07 16:11:15,546 (INFO ) 10 - [WebHost] Request finished in 275.0633ms 404 
+﻿2017-08-26 19:25:12,892 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 19:25:13,243 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 19:25:15,130 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 19:25:15,467 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 19:25:15,550 (DEBUG) 7 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 19:25:15,627 (INFO ) 7 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 19:25:36,953 (DEBUG) 7 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 19:25:37,384 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 19:25:37,491 (ERROR) 7 - [ViewResultExecutor] The view 'Index' was not found. Searched locations: /Views/Home/Index.cshtml, /Views/Shared/Index.cshtml
+2017-08-26 19:25:37,517 (INFO ) 7 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 21963.1894ms
+2017-08-26 19:25:38,198 (INFO ) 7 - [WebHost] Request finished in 23102.9688ms 500 application/json
+2017-08-26 19:25:38,345 (INFO ) 12 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/favicon.ico  
+2017-08-26 19:25:38,346 (DEBUG) 12 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 19:25:38,347 (DEBUG) 12 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 19:25:38,350 (DEBUG) 12 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 19:25:38,356 (INFO ) 12 - [WebHost] Request finished in 10.3702ms 404 
+2017-08-26 19:29:22,301 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 19:29:22,570 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 19:29:24,406 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 19:29:24,744 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 19:29:24,842 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 19:29:24,917 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 19:29:24,923 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 19:29:25,415 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 19:29:25,539 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 19:29:25,960 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 418.5381ms.
+2017-08-26 19:29:25,996 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 19:29:27,424 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1428.37ms.
+2017-08-26 19:29:27,438 (DEBUG) 6 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 19:29:27,440 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 19:29:27,596 (INFO ) 6 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 19:29:27,765 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 2923.5406ms
+2017-08-26 19:29:27,784 (INFO ) 6 - [WebHost] Request finished in 3416.0227ms 200 text/html; charset=utf-8
+2017-08-26 21:05:22,431 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 21:05:22,720 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 21:05:24,769 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 21:05:25,081 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 21:05:25,164 (DEBUG) 8 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 21:05:25,231 (INFO ) 8 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 21:05:25,237 (DEBUG) 8 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 21:05:25,743 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 21:05:25,872 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 21:05:26,232 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 357.9943ms.
+2017-08-26 21:05:26,259 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 21:05:27,612 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1353.353ms.
+2017-08-26 21:05:27,624 (DEBUG) 8 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 21:05:27,626 (INFO ) 8 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 21:05:27,762 (INFO ) 8 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 21:05:27,830 (INFO ) 8 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 2665.9587ms
+2017-08-26 21:05:27,906 (INFO ) 8 - [WebHost] Request finished in 3172.3394ms 200 text/html; charset=utf-8
+2017-08-26 21:08:04,933 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 21:08:05,233 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 21:08:07,085 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 21:08:07,405 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 21:08:07,496 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 21:08:07,567 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 21:08:07,573 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 21:08:08,068 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 21:08:08,199 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 21:08:08,596 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 395.4051ms.
+2017-08-26 21:08:08,628 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 21:08:09,980 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1350.182ms.
+2017-08-26 21:08:09,993 (DEBUG) 6 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 21:08:09,995 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 21:08:10,152 (INFO ) 6 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 21:08:10,220 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 2723.7859ms
+2017-08-26 21:08:10,299 (INFO ) 6 - [WebHost] Request finished in 3251.5785ms 200 text/html; charset=utf-8
+2017-08-26 21:10:32,173 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 21:10:32,494 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 21:10:34,303 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 21:10:34,624 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 21:10:34,707 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 21:10:34,777 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 21:10:34,784 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 21:10:35,207 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 21:10:35,327 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 21:10:35,722 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 393.5408ms.
+2017-08-26 21:10:35,758 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 21:10:37,069 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1311.1348ms.
+2017-08-26 21:10:37,082 (DEBUG) 6 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 21:10:37,084 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 21:10:37,223 (INFO ) 6 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 21:10:37,287 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 2579.6999ms
+2017-08-26 21:10:37,365 (INFO ) 6 - [WebHost] Request finished in 3097.3718ms 200 text/html; charset=utf-8
+2017-08-26 21:13:26,693 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 21:13:27,029 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 21:13:28,884 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 21:13:29,229 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 21:13:29,325 (DEBUG) 8 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 21:13:29,405 (INFO ) 8 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 21:13:29,413 (DEBUG) 8 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 21:13:29,925 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 21:13:30,054 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 21:13:30,492 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 436.9468ms.
+2017-08-26 21:13:30,519 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 21:13:31,890 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1370.9877ms.
+2017-08-26 21:13:31,896 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 21:13:31,902 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 4.9923ms.
+2017-08-26 21:13:31,902 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 21:13:31,991 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 88.9362ms.
+2017-08-26 21:13:32,000 (DEBUG) 8 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 21:13:32,002 (INFO ) 8 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 21:13:32,150 (INFO ) 8 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 21:13:32,212 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-26 21:13:32,215 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 21:13:32,389 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 173.6444ms.
+2017-08-26 21:13:32,389 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 21:13:32,598 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 209.2367ms.
+2017-08-26 21:13:32,834 (INFO ) 8 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3508.8998ms
+2017-08-26 21:13:32,853 (INFO ) 8 - [WebHost] Request finished in 4006.9147ms 200 text/html; charset=utf-8
+2017-08-26 21:13:48,723 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 21:13:48,723 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 21:13:48,723 (DEBUG) 8 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 21:13:48,724 (INFO ) 8 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 21:13:48,724 (DEBUG) 8 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 21:13:48,726 (DEBUG) 8 - [RazorViewEngine] View lookup cache hit for view 'Index' in controller 'Home'.
+2017-08-26 21:13:48,726 (DEBUG) 8 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 21:13:48,727 (INFO ) 8 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 21:13:48,727 (DEBUG) 8 - [RazorViewEngine] View lookup cache hit for view '_Layout' in controller 'Home'.
+2017-08-26 21:13:48,728 (INFO ) 8 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 4.1814ms
+2017-08-26 21:13:48,728 (INFO ) 8 - [WebHost] Request finished in 5.1471ms 200 text/html; charset=utf-8
+2017-08-26 21:13:50,908 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 21:13:50,908 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 21:13:50,908 (DEBUG) 8 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 21:13:50,908 (INFO ) 8 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 21:13:50,908 (DEBUG) 8 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 21:13:50,908 (DEBUG) 8 - [RazorViewEngine] View lookup cache hit for view 'Index' in controller 'Home'.
+2017-08-26 21:13:50,908 (DEBUG) 8 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 21:13:50,908 (INFO ) 8 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 21:13:50,908 (DEBUG) 8 - [RazorViewEngine] View lookup cache hit for view '_Layout' in controller 'Home'.
+2017-08-26 21:13:50,909 (INFO ) 8 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 0.863ms
+2017-08-26 21:13:50,909 (INFO ) 8 - [WebHost] Request finished in 1.4869ms 200 text/html; charset=utf-8
+2017-08-26 21:13:52,965 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/Home/About  
+2017-08-26 21:13:52,967 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 21:13:52,968 (DEBUG) 8 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 21:13:52,971 (DEBUG) 8 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 21:13:52,979 (INFO ) 8 - [WebHost] Request finished in 13.6032ms 404 
+2017-08-26 21:13:58,072 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/Home/Contact  
+2017-08-26 21:13:58,072 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 21:13:58,072 (DEBUG) 6 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 21:13:58,072 (DEBUG) 6 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 21:13:58,073 (INFO ) 6 - [WebHost] Request finished in 0.7194ms 404 
+2017-08-26 23:04:45,243 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:04:45,625 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:04:47,480 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:04:47,810 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:04:47,896 (DEBUG) 7 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:04:47,968 (INFO ) 7 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:04:47,974 (DEBUG) 7 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:04:48,453 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 23:04:48,578 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:04:49,020 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 440.0722ms.
+2017-08-26 23:04:49,053 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:04:50,435 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1382.0618ms.
+2017-08-26 23:04:50,442 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:04:50,448 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 5.2888ms.
+2017-08-26 23:04:50,448 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:04:50,539 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 90.7773ms.
+2017-08-26 23:04:50,549 (DEBUG) 7 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 23:04:50,550 (INFO ) 7 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 23:04:50,746 (INFO ) 7 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 23:04:50,804 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-26 23:04:50,807 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:04:50,985 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 177.1601ms.
+2017-08-26 23:04:50,985 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:04:51,196 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 211.2367ms.
+2017-08-26 23:04:51,577 (INFO ) 7 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3681.2195ms
+2017-08-26 23:04:51,589 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.min.css?v=j162InBwFwJ4_Qn7bEQ2XarhuIwluDedfQ8dd2V2MPY  
+2017-08-26 23:04:51,590 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:04:51,591 (DEBUG) 6 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:04:51,594 (DEBUG) 6 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:04:51,600 (INFO ) 7 - [WebHost] Request finished in 4163.4328ms 200 text/html; charset=utf-8
+2017-08-26 23:04:51,601 (INFO ) 6 - [WebHost] Request finished in 11.5079ms 404 
+2017-08-26 23:05:00,720 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:05:00,720 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:05:00,720 (DEBUG) 7 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:05:00,721 (INFO ) 7 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:05:00,721 (DEBUG) 7 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:05:00,723 (DEBUG) 7 - [RazorViewEngine] View lookup cache hit for view 'Index' in controller 'Home'.
+2017-08-26 23:05:00,723 (DEBUG) 7 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 23:05:00,723 (INFO ) 7 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 23:05:00,724 (DEBUG) 7 - [RazorViewEngine] View lookup cache hit for view '_Layout' in controller 'Home'.
+2017-08-26 23:05:00,725 (INFO ) 7 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 4.4463ms
+2017-08-26 23:05:00,725 (INFO ) 7 - [WebHost] Request finished in 5.2899ms 200 text/html; charset=utf-8
+2017-08-26 23:05:00,733 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.min.css?v=j162InBwFwJ4_Qn7bEQ2XarhuIwluDedfQ8dd2V2MPY  
+2017-08-26 23:05:00,733 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:05:00,733 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:05:00,733 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:05:00,733 (INFO ) 10 - [WebHost] Request finished in 0.5249ms 404 
+2017-08-26 23:05:02,561 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/Home/About  
+2017-08-26 23:05:02,561 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:05:02,561 (DEBUG) 7 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:05:02,561 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:05:02,561 (INFO ) 7 - [WebHost] Request finished in 0.2922ms 404 
+2017-08-26 23:05:11,680 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:05:11,681 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:05:11,681 (DEBUG) 8 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:05:11,681 (INFO ) 8 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:05:11,681 (DEBUG) 8 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:05:11,681 (DEBUG) 8 - [RazorViewEngine] View lookup cache hit for view 'Index' in controller 'Home'.
+2017-08-26 23:05:11,681 (DEBUG) 8 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 23:05:11,681 (INFO ) 8 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 23:05:11,681 (DEBUG) 8 - [RazorViewEngine] View lookup cache hit for view '_Layout' in controller 'Home'.
+2017-08-26 23:05:11,682 (INFO ) 8 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 1.001ms
+2017-08-26 23:05:11,682 (INFO ) 8 - [WebHost] Request finished in 1.4517ms 200 text/html; charset=utf-8
+2017-08-26 23:05:11,689 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.min.css?v=j162InBwFwJ4_Qn7bEQ2XarhuIwluDedfQ8dd2V2MPY  
+2017-08-26 23:05:11,689 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:05:11,689 (DEBUG) 7 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:05:11,689 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:05:11,689 (INFO ) 7 - [WebHost] Request finished in 0.3192ms 404 
+2017-08-26 23:12:48,347 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:12:48,608 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:12:50,512 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:12:50,823 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:12:50,905 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:12:50,975 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:12:50,980 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:12:51,483 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 23:12:51,605 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:12:52,008 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 402.1705ms.
+2017-08-26 23:12:52,044 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:12:53,448 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1403.3662ms.
+2017-08-26 23:12:53,454 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:12:53,460 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 5.9042ms.
+2017-08-26 23:12:53,460 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:12:53,547 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 87.5344ms.
+2017-08-26 23:12:53,556 (DEBUG) 6 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 23:12:53,557 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 23:12:53,708 (INFO ) 6 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 23:12:53,763 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-26 23:12:53,767 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:12:53,938 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 171.2533ms.
+2017-08-26 23:12:53,938 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:12:54,154 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 215.3631ms.
+2017-08-26 23:12:54,587 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3681.3111ms
+2017-08-26 23:12:54,593 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.min.css?v=j162InBwFwJ4_Qn7bEQ2XarhuIwluDedfQ8dd2V2MPY  
+2017-08-26 23:12:54,597 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:12:54,597 (INFO ) 3 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2017-08-26 23:12:54,597 (DEBUG) 3 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:12:54,599 (DEBUG) 3 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:12:54,598 (DEBUG) 7 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:12:54,601 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:12:54,601 (DEBUG) 3 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:12:54,614 (INFO ) 6 - [WebHost] Request finished in 4138.3675ms 200 text/html; charset=utf-8
+2017-08-26 23:12:54,615 (INFO ) 7 - [WebHost] Request finished in 21.5663ms 404 
+2017-08-26 23:12:54,615 (INFO ) 3 - [WebHost] Request finished in 17.6357ms 404 
+2017-08-26 23:14:43,308 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:14:43,590 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:14:45,410 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:14:45,735 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:14:45,818 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:14:45,888 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:14:45,898 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:14:46,377 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 23:14:46,499 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:14:46,958 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 456.9983ms.
+2017-08-26 23:14:46,995 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:14:48,394 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1397.9438ms.
+2017-08-26 23:14:48,400 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:14:48,405 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 5.3189ms.
+2017-08-26 23:14:48,405 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:14:48,494 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 88.7487ms.
+2017-08-26 23:14:48,502 (DEBUG) 6 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 23:14:48,504 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 23:14:48,654 (INFO ) 6 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 23:14:48,720 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-26 23:14:48,720 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:14:48,850 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 129.6882ms.
+2017-08-26 23:14:48,850 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:14:49,057 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 207.2021ms.
+2017-08-26 23:14:49,437 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3618.8395ms
+2017-08-26 23:14:49,466 (INFO ) 6 - [WebHost] Request finished in 4089.0232ms 200 text/html; charset=utf-8
+2017-08-26 23:14:49,478 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.min.css?v=j162InBwFwJ4_Qn7bEQ2XarhuIwluDedfQ8dd2V2MPY  
+2017-08-26 23:14:49,478 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2017-08-26 23:14:49,479 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:14:49,479 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:14:49,480 (DEBUG) 6 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:14:49,480 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:14:49,483 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:14:49,483 (DEBUG) 6 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:14:49,489 (INFO ) 10 - [WebHost] Request finished in 10.295ms 404 
+2017-08-26 23:14:49,489 (INFO ) 6 - [WebHost] Request finished in 11.2525ms 404 
+2017-08-26 23:20:51,894 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:20:52,158 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:20:53,966 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:20:54,276 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:20:54,358 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:20:54,426 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:20:54,432 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:20:54,837 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 23:20:54,953 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:20:55,408 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 453.0789ms.
+2017-08-26 23:20:55,444 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:20:56,803 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1359.4028ms.
+2017-08-26 23:20:56,809 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:20:56,815 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 5.529ms.
+2017-08-26 23:20:56,815 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:20:56,918 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 102.9846ms.
+2017-08-26 23:20:56,928 (DEBUG) 6 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 23:20:56,929 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 23:20:57,075 (INFO ) 6 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 23:20:57,140 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-26 23:20:57,144 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:20:57,270 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 126.1947ms.
+2017-08-26 23:20:57,270 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:20:57,464 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 193.0323ms.
+2017-08-26 23:20:57,828 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3469.7443ms
+2017-08-26 23:20:57,835 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.css  
+2017-08-26 23:20:57,835 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/css/bootstrap.css  
+2017-08-26 23:20:57,835 (INFO ) 14 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2017-08-26 23:20:57,836 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:20:57,836 (DEBUG) 14 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:20:57,837 (DEBUG) 14 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:20:57,837 (DEBUG) 8 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:20:57,839 (DEBUG) 8 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:20:57,839 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:20:57,839 (DEBUG) 14 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:20:57,848 (INFO ) 6 - [WebHost] Request finished in 3918.5953ms 200 text/html; charset=utf-8
+2017-08-26 23:20:57,848 (INFO ) 7 - [WebHost] Request finished in 12.7482ms 404 
+2017-08-26 23:20:57,848 (INFO ) 8 - [WebHost] Request finished in 12.849ms 404 
+2017-08-26 23:20:57,848 (INFO ) 14 - [WebHost] Request finished in 12.8627ms 404 
+2017-08-26 23:22:39,660 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:22:39,986 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:22:41,856 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:22:42,181 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:22:42,268 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:22:42,343 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:22:42,349 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:22:42,780 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 23:22:42,903 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:22:43,358 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 453.562ms.
+2017-08-26 23:22:43,394 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:22:44,727 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1332.0663ms.
+2017-08-26 23:22:44,733 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:22:44,738 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 5.0048ms.
+2017-08-26 23:22:44,738 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:22:44,825 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 86.9184ms.
+2017-08-26 23:22:44,834 (DEBUG) 6 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 23:22:44,836 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 23:22:44,995 (INFO ) 6 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 23:22:45,059 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-26 23:22:45,063 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:22:45,202 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 138.5776ms.
+2017-08-26 23:22:45,202 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:22:45,408 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 205.8931ms.
+2017-08-26 23:22:45,786 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3517.6181ms
+2017-08-26 23:22:45,795 (INFO ) 3 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/js/bootstrap.js  
+2017-08-26 23:22:45,795 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.js?v=Ynfdc1vuMNOWZfqTj4N3SPcebazoGXiIPgtfE-b2TO4  
+2017-08-26 23:22:45,795 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.css  
+2017-08-26 23:22:45,795 (INFO ) 14 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/jquery/dist/jquery.js  
+2017-08-26 23:22:45,796 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:22:45,796 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:22:45,797 (DEBUG) 7 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:22:45,798 (DEBUG) 8 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:22:45,799 (DEBUG) 8 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:22:45,800 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:22:45,800 (DEBUG) 14 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:22:45,800 (DEBUG) 3 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:22:45,809 (INFO ) 6 - [WebHost] Request finished in 3991.5164ms 200 text/html; charset=utf-8
+2017-08-26 23:22:45,809 (INFO ) 7 - [WebHost] Request finished in 13.961ms 404 
+2017-08-26 23:22:45,810 (INFO ) 8 - [WebHost] Request finished in 13.9412ms 404 
+2017-08-26 23:22:45,811 (INFO ) 3 - [WebHost] Request finished in 13.8904ms 404 
+2017-08-26 23:22:45,811 (INFO ) 14 - [WebHost] Request finished in 13.8518ms 404 
+2017-08-26 23:22:45,830 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/css/bootstrap.css  
+2017-08-26 23:22:45,831 (DEBUG) 8 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:22:45,831 (INFO ) 8 - [WebHost] Request finished in 1.1538ms 404 
+2017-08-26 23:32:22,440 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:32:22,793 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:32:24,966 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:32:25,275 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:32:25,360 (DEBUG) 7 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:32:25,424 (INFO ) 7 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:32:25,429 (DEBUG) 7 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:32:25,915 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 23:32:26,037 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:32:26,453 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 414.6026ms.
+2017-08-26 23:32:26,488 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:32:27,783 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1294.0321ms.
+2017-08-26 23:32:27,788 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:32:27,794 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 5.6267ms.
+2017-08-26 23:32:27,794 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:32:27,885 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 90.8423ms.
+2017-08-26 23:32:27,893 (DEBUG) 7 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 23:32:27,894 (INFO ) 7 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 23:32:28,036 (INFO ) 7 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 23:32:28,100 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-26 23:32:28,104 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:32:28,256 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 151.2373ms.
+2017-08-26 23:32:28,256 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:32:28,455 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 199.6308ms.
+2017-08-26 23:32:28,826 (INFO ) 7 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3465.8907ms
+2017-08-26 23:32:28,832 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.min.css?v=j162InBwFwJ4_Qn7bEQ2XarhuIwluDedfQ8dd2V2MPY  
+2017-08-26 23:32:28,832 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2017-08-26 23:32:28,833 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:32:28,833 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:32:28,835 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:32:28,835 (DEBUG) 6 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:32:28,839 (DEBUG) 6 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:32:28,839 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:32:28,849 (INFO ) 7 - [WebHost] Request finished in 3917.9333ms 200 text/html; charset=utf-8
+2017-08-26 23:32:28,849 (INFO ) 10 - [WebHost] Request finished in 16.8721ms 404 
+2017-08-26 23:32:28,850 (INFO ) 6 - [WebHost] Request finished in 17.278ms 404 
+2017-08-26 23:33:11,044 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:33:11,352 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:33:13,370 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:33:13,680 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:33:13,766 (DEBUG) 7 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:33:13,833 (INFO ) 7 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:33:13,838 (DEBUG) 7 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:33:14,307 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 23:33:14,427 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:33:14,870 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/Index.cshtml' completed in 441.651ms.
+2017-08-26 23:33:14,906 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' started.
+2017-08-26 23:33:16,279 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/Index.cshtml' completed in 1373.1322ms.
+2017-08-26 23:33:16,285 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:33:16,291 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 5.8072ms.
+2017-08-26 23:33:16,291 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:33:16,382 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 90.8118ms.
+2017-08-26 23:33:16,390 (DEBUG) 7 - [ViewResultExecutor] The view 'Index' was found.
+2017-08-26 23:33:16,392 (INFO ) 7 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/Index.cshtml.
+2017-08-26 23:33:16,534 (INFO ) 7 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 23:33:16,598 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-26 23:33:16,599 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:33:16,739 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 140.5346ms.
+2017-08-26 23:33:16,739 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:33:16,940 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 200.7574ms.
+2017-08-26 23:33:17,337 (INFO ) 7 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3571.2352ms
+2017-08-26 23:33:17,360 (INFO ) 7 - [WebHost] Request finished in 4025.4108ms 200 text/html; charset=utf-8
+2017-08-26 23:33:17,369 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.min.css?v=j162InBwFwJ4_Qn7bEQ2XarhuIwluDedfQ8dd2V2MPY  
+2017-08-26 23:33:17,369 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2017-08-26 23:33:17,370 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:33:17,370 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:33:17,371 (DEBUG) 10 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:33:17,371 (DEBUG) 7 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:33:17,373 (DEBUG) 10 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:33:17,373 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:33:17,379 (INFO ) 10 - [WebHost] Request finished in 10.3114ms 404 
+2017-08-26 23:33:17,379 (INFO ) 7 - [WebHost] Request finished in 10.3408ms 404 
+2017-08-26 23:53:13,628 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:53:13,864 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:53:15,733 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:53:16,062 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:53:16,143 (DEBUG) 7 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:53:16,209 (INFO ) 7 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:53:16,215 (DEBUG) 7 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:53:16,664 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 23:53:16,788 (ERROR) 7 - [ViewResultExecutor] The view 'Index' was not found. Searched locations: /Views/Home/Index.cshtml, /Views/Shared/Index.cshtml
+2017-08-26 23:53:16,812 (INFO ) 7 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 667.2774ms
+2017-08-26 23:53:17,472 (INFO ) 7 - [WebHost] Request finished in 1772.3375ms 500 application/json
+2017-08-26 23:54:10,147 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:54:10,456 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:54:12,268 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:54:12,579 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:54:12,666 (DEBUG) 8 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:54:12,738 (INFO ) 8 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:54:32,388 (DEBUG) 8 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:54:32,823 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 23:54:32,940 (ERROR) 8 - [ViewResultExecutor] The view 'Index' was not found. Searched locations: /Views/Home/Index.cshtml, /Views/Shared/Index.cshtml
+2017-08-26 23:54:32,964 (INFO ) 8 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 20295.7732ms
+2017-08-26 23:54:33,595 (INFO ) 8 - [WebHost] Request finished in 21357.4165ms 500 application/json
+2017-08-26 23:55:07,179 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:55:07,419 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:55:09,179 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:55:09,467 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:55:09,553 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:55:09,622 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:55:12,647 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:55:13,080 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'Home'.
+2017-08-26 23:55:13,235 (ERROR) 6 - [ViewResultExecutor] The view 'Index' was not found. Searched locations: /Views/Home/Index.cshtml, /Views/Shared/Index.cshtml
+2017-08-26 23:55:13,258 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3703.7866ms
+2017-08-26 23:55:13,868 (INFO ) 6 - [WebHost] Request finished in 4714.8789ms 500 application/json
+2017-08-26 23:55:28,683 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:55:28,683 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:55:28,683 (DEBUG) 7 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:55:28,684 (INFO ) 7 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:55:33,818 (DEBUG) 7 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:55:33,822 (DEBUG) 7 - [RazorViewEngine] View lookup cache hit for view 'Index' in controller 'Home'.
+2017-08-26 23:55:33,822 (ERROR) 7 - [ViewResultExecutor] The view 'Index' was not found. Searched locations: /Views/Home/Index.cshtml, /Views/Shared/Index.cshtml
+2017-08-26 23:55:33,822 (INFO ) 7 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 5138.885ms
+2017-08-26 23:55:34,032 (INFO ) 7 - [WebHost] Request finished in 5348.9462ms 500 application/json
+2017-08-26 23:55:39,789 (INFO ) 10 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:55:39,789 (DEBUG) 10 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:55:39,789 (DEBUG) 10 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:55:39,789 (INFO ) 10 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:55:39,789 (DEBUG) 10 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:55:39,789 (DEBUG) 10 - [RazorViewEngine] View lookup cache hit for view 'Index' in controller 'Home'.
+2017-08-26 23:55:39,789 (ERROR) 10 - [ViewResultExecutor] The view 'Index' was not found. Searched locations: /Views/Home/Index.cshtml, /Views/Shared/Index.cshtml
+2017-08-26 23:55:39,789 (INFO ) 10 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 0.5465ms
+2017-08-26 23:55:40,033 (INFO ) 10 - [WebHost] Request finished in 244.2508ms 500 application/json
+2017-08-26 23:55:47,299 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/SearchPlayer  
+2017-08-26 23:55:47,300 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:55:47,300 (DEBUG) 6 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:55:47,303 (DEBUG) 6 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:55:47,309 (INFO ) 6 - [WebHost] Request finished in 10.1259ms 404 
+2017-08-26 23:56:24,627 (INFO ) 11 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/home/SearchPlayer  
+2017-08-26 23:56:24,634 (DEBUG) 11 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:56:24,634 (DEBUG) 11 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.SearchPlayer (WotBlitzStatician)
+2017-08-26 23:56:24,635 (INFO ) 11 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.SearchPlayer (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:56:24,635 (DEBUG) 11 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.SearchPlayer (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:56:24,635 (DEBUG) 11 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-26 23:56:24,673 (DEBUG) 11 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-26 23:56:25,120 (DEBUG) 11 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 447.004ms.
+2017-08-26 23:56:25,123 (DEBUG) 11 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-26 23:56:26,418 (DEBUG) 11 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1294.5748ms.
+2017-08-26 23:56:26,424 (DEBUG) 11 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:56:26,433 (DEBUG) 11 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 9.0262ms.
+2017-08-26 23:56:26,433 (DEBUG) 11 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:56:26,496 (DEBUG) 11 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 62.871ms.
+2017-08-26 23:56:26,500 (DEBUG) 11 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-26 23:56:26,501 (INFO ) 11 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-26 23:56:26,637 (INFO ) 11 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 23:56:26,699 (DEBUG) 11 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-26 23:56:26,699 (DEBUG) 11 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:56:26,844 (DEBUG) 11 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 145.2844ms.
+2017-08-26 23:56:26,845 (DEBUG) 11 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:56:27,061 (DEBUG) 11 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 216.0782ms.
+2017-08-26 23:56:27,374 (INFO ) 12 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.min.css?v=j162InBwFwJ4_Qn7bEQ2XarhuIwluDedfQ8dd2V2MPY  
+2017-08-26 23:56:27,374 (DEBUG) 12 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:56:27,374 (DEBUG) 12 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:56:27,374 (DEBUG) 12 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:56:27,374 (INFO ) 12 - [WebHost] Request finished in 0.4703ms 404 
+2017-08-26 23:56:27,386 (INFO ) 11 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.SearchPlayer (WotBlitzStatician) in 2750.8479ms
+2017-08-26 23:56:27,389 (INFO ) 11 - [WebHost] Request finished in 2762.1663ms 200 text/html; charset=utf-8
+2017-08-26 23:56:27,397 (INFO ) 13 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2017-08-26 23:56:27,397 (DEBUG) 13 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:56:27,397 (DEBUG) 13 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:56:27,397 (DEBUG) 13 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:56:27,397 (INFO ) 13 - [WebHost] Request finished in 0.4906ms 404 
+2017-08-26 23:57:38,708 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:57:39,044 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:57:40,764 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:57:41,057 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:57:41,139 (DEBUG) 8 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:57:41,207 (INFO ) 8 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:57:41,214 (DEBUG) 8 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:57:41,610 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-26 23:57:41,732 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-26 23:57:42,154 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 420.1473ms.
+2017-08-26 23:57:42,175 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-26 23:57:43,278 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1102.4145ms.
+2017-08-26 23:57:43,284 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:57:43,293 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 8.9428ms.
+2017-08-26 23:57:43,293 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:57:43,390 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 97.088ms.
+2017-08-26 23:57:43,398 (DEBUG) 8 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-26 23:57:43,400 (INFO ) 8 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-26 23:57:43,543 (INFO ) 8 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 23:57:43,606 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-26 23:57:43,606 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:57:43,750 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 144.089ms.
+2017-08-26 23:57:43,750 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:57:43,955 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 204.4186ms.
+2017-08-26 23:57:44,332 (INFO ) 8 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3193.5018ms
+2017-08-26 23:57:44,339 (INFO ) 3 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.min.css?v=j162InBwFwJ4_Qn7bEQ2XarhuIwluDedfQ8dd2V2MPY  
+2017-08-26 23:57:44,339 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2017-08-26 23:57:44,341 (DEBUG) 3 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:57:44,341 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:57:44,342 (DEBUG) 3 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:57:44,342 (DEBUG) 6 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:57:44,345 (DEBUG) 3 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:57:44,345 (DEBUG) 6 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:57:44,355 (INFO ) 8 - [WebHost] Request finished in 3626.6406ms 200 text/html; charset=utf-8
+2017-08-26 23:57:44,355 (INFO ) 6 - [WebHost] Request finished in 15.0231ms 404 
+2017-08-26 23:57:44,355 (INFO ) 3 - [WebHost] Request finished in 15.2223ms 404 
+2017-08-26 23:59:53,745 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-26 23:59:54,041 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-26 23:59:55,833 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-26 23:59:56,141 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:59:56,228 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-26 23:59:56,303 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-26 23:59:56,309 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-26 23:59:56,776 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-26 23:59:56,897 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-26 23:59:57,331 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 432.7383ms.
+2017-08-26 23:59:57,352 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-26 23:59:58,574 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1221.7992ms.
+2017-08-26 23:59:58,580 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:59:58,590 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 10.2519ms.
+2017-08-26 23:59:58,590 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-26 23:59:58,711 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 121.0188ms.
+2017-08-26 23:59:58,720 (DEBUG) 6 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-26 23:59:58,722 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-26 23:59:58,866 (INFO ) 6 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-26 23:59:58,927 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-26 23:59:58,932 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:59:59,089 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 157.1115ms.
+2017-08-26 23:59:59,089 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-26 23:59:59,312 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 223.4003ms.
+2017-08-26 23:59:59,686 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3457.3179ms
+2017-08-26 23:59:59,695 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.min.css?v=j162InBwFwJ4_Qn7bEQ2XarhuIwluDedfQ8dd2V2MPY  
+2017-08-26 23:59:59,697 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2017-08-26 23:59:59,697 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:59:59,699 (DEBUG) 8 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:59:59,699 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-26 23:59:59,699 (DEBUG) 7 - [MvcRouteHandler] No actions matched the current request
+2017-08-26 23:59:59,701 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:59:59,701 (DEBUG) 8 - [RouterMiddleware] Request did not match any routes.
+2017-08-26 23:59:59,712 (INFO ) 6 - [WebHost] Request finished in 3912.6373ms 200 text/html; charset=utf-8
+2017-08-26 23:59:59,712 (INFO ) 8 - [WebHost] Request finished in 15.6132ms 404 
+2017-08-26 23:59:59,713 (INFO ) 7 - [WebHost] Request finished in 17.233ms 404 
+2017-08-27 00:03:42,385 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-27 00:03:42,719 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-27 00:03:44,590 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-27 00:03:44,905 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:03:44,992 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-27 00:03:45,068 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-27 00:03:45,075 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 00:03:45,555 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 00:03:45,678 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:03:46,113 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 432.5123ms.
+2017-08-27 00:03:46,145 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:03:47,454 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1308.431ms.
+2017-08-27 00:03:47,460 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:03:47,471 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 9.9559ms.
+2017-08-27 00:03:47,471 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:03:47,590 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 119.3285ms.
+2017-08-27 00:03:47,599 (DEBUG) 6 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 00:03:47,601 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 00:03:47,747 (INFO ) 6 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-27 00:03:47,808 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-27 00:03:47,813 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:03:47,970 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 156.7251ms.
+2017-08-27 00:03:47,970 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:03:48,200 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 229.8557ms.
+2017-08-27 00:03:48,592 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3599.4242ms
+2017-08-27 00:03:48,598 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.min.css?v=j162InBwFwJ4_Qn7bEQ2XarhuIwluDedfQ8dd2V2MPY  
+2017-08-27 00:03:48,599 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.min.js?v=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU  
+2017-08-27 00:03:48,600 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:03:48,600 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:03:48,603 (DEBUG) 7 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:03:48,603 (DEBUG) 8 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:03:48,605 (DEBUG) 8 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:03:48,606 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:03:48,616 (INFO ) 7 - [WebHost] Request finished in 17.0485ms 404 
+2017-08-27 00:03:48,616 (INFO ) 6 - [WebHost] Request finished in 4062.6028ms 200 text/html; charset=utf-8
+2017-08-27 00:03:48,617 (INFO ) 8 - [WebHost] Request finished in 16.7731ms 404 
+2017-08-27 00:06:11,673 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-27 00:06:11,990 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-27 00:06:13,817 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-27 00:06:14,141 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:06:14,234 (DEBUG) 7 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-27 00:06:14,305 (INFO ) 7 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-27 00:06:14,311 (DEBUG) 7 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 00:06:14,799 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 00:06:14,923 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:06:15,366 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 441.3079ms.
+2017-08-27 00:06:15,403 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:06:16,778 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1375.325ms.
+2017-08-27 00:06:16,785 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:06:16,796 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 10.3595ms.
+2017-08-27 00:06:16,796 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:06:16,913 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 117.619ms.
+2017-08-27 00:06:16,922 (DEBUG) 7 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 00:06:16,923 (INFO ) 7 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 00:06:17,073 (INFO ) 7 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-27 00:06:17,138 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-27 00:06:17,143 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:06:17,301 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 157.8128ms.
+2017-08-27 00:06:17,301 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:06:17,545 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 243.3887ms.
+2017-08-27 00:06:17,928 (INFO ) 7 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3693.7918ms
+2017-08-27 00:06:17,945 (INFO ) 7 - [WebHost] Request finished in 4165.6984ms 200 text/html; charset=utf-8
+2017-08-27 00:06:17,955 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/css/bootstrap.css  
+2017-08-27 00:06:17,956 (INFO ) 15 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/js/bootstrap.js  
+2017-08-27 00:06:17,956 (INFO ) 14 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/jquery/dist/jquery.js  
+2017-08-27 00:06:17,956 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.css  
+2017-08-27 00:06:17,956 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.js?v=Ynfdc1vuMNOWZfqTj4N3SPcebazoGXiIPgtfE-b2TO4  
+2017-08-27 00:06:17,956 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:06:17,956 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:06:17,958 (DEBUG) 6 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:06:17,958 (DEBUG) 8 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:06:17,959 (DEBUG) 14 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:06:17,959 (DEBUG) 8 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:06:17,959 (DEBUG) 6 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:06:17,959 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:06:17,959 (DEBUG) 15 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:06:17,964 (INFO ) 8 - [WebHost] Request finished in 8.7686ms 404 
+2017-08-27 00:06:17,965 (INFO ) 14 - [WebHost] Request finished in 8.9549ms 404 
+2017-08-27 00:06:17,964 (INFO ) 7 - [WebHost] Request finished in 9.0636ms 404 
+2017-08-27 00:06:18,011 (INFO ) 6 - [WebHost] Request finished in 55.1802ms 404 
+2017-08-27 00:06:18,015 (INFO ) 15 - [WebHost] Request finished in 59.3833ms 404 
+2017-08-27 00:10:25,768 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-27 00:10:26,031 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-27 00:10:27,960 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-27 00:10:28,271 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:10:28,351 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-27 00:10:28,421 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-27 00:10:28,426 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 00:10:28,896 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 00:10:29,011 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:10:29,439 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 425.8901ms.
+2017-08-27 00:10:29,476 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:10:30,861 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1384.927ms.
+2017-08-27 00:10:30,867 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:10:30,877 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 9.1509ms.
+2017-08-27 00:10:30,877 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:10:30,962 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 85.2083ms.
+2017-08-27 00:10:30,970 (DEBUG) 6 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 00:10:30,972 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 00:10:31,121 (INFO ) 6 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-27 00:10:31,185 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-27 00:10:31,185 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:10:31,331 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 145.4264ms.
+2017-08-27 00:10:31,331 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:10:31,574 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 243.3664ms.
+2017-08-27 00:10:31,956 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3604.7079ms
+2017-08-27 00:10:31,967 (INFO ) 15 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/css/bootstrap.css  
+2017-08-27 00:10:31,967 (INFO ) 14 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/js/bootstrap.js  
+2017-08-27 00:10:31,967 (INFO ) 13 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.js?v=Ynfdc1vuMNOWZfqTj4N3SPcebazoGXiIPgtfE-b2TO4  
+2017-08-27 00:10:31,967 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.css  
+2017-08-27 00:10:31,968 (DEBUG) 13 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:10:31,968 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:10:31,969 (DEBUG) 7 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:10:31,969 (DEBUG) 13 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:10:31,971 (DEBUG) 15 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:10:31,971 (DEBUG) 13 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:10:31,971 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:10:31,971 (DEBUG) 14 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:10:31,980 (INFO ) 6 - [WebHost] Request finished in 4055.9948ms 200 text/html; charset=utf-8
+2017-08-27 00:10:31,980 (INFO ) 13 - [WebHost] Request finished in 13.1195ms 404 
+2017-08-27 00:10:31,980 (INFO ) 7 - [WebHost] Request finished in 13.2777ms 404 
+2017-08-27 00:10:31,980 (INFO ) 15 - [WebHost] Request finished in 13.0999ms 404 
+2017-08-27 00:10:31,980 (INFO ) 14 - [WebHost] Request finished in 13.1059ms 404 
+2017-08-27 00:10:32,001 (INFO ) 13 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/jquery/dist/jquery.js  
+2017-08-27 00:10:32,001 (DEBUG) 13 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:10:32,001 (INFO ) 13 - [WebHost] Request finished in 5.295ms 404 
+2017-08-27 00:13:11,555 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-27 00:13:11,873 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-27 00:13:13,698 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-27 00:13:14,025 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:13:14,112 (DEBUG) 8 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-27 00:13:14,183 (INFO ) 8 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-27 00:13:14,188 (DEBUG) 8 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 00:13:14,687 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 00:13:14,834 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:13:15,274 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 438.8086ms.
+2017-08-27 00:13:15,300 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:13:16,594 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1293.6773ms.
+2017-08-27 00:13:16,601 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:13:16,610 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 9.2308ms.
+2017-08-27 00:13:16,610 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:13:16,707 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 96.6799ms.
+2017-08-27 00:13:16,716 (DEBUG) 8 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 00:13:16,718 (INFO ) 8 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 00:13:16,864 (INFO ) 8 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-27 00:13:16,931 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-27 00:13:16,932 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:13:17,093 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 161.5459ms.
+2017-08-27 00:13:17,094 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:13:17,348 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 254.1353ms.
+2017-08-27 00:13:17,757 (INFO ) 8 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3644.6015ms
+2017-08-27 00:13:17,765 (INFO ) 14 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.css  
+2017-08-27 00:13:17,766 (INFO ) 15 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/css/bootstrap.css  
+2017-08-27 00:13:17,766 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/js/bootstrap.js  
+2017-08-27 00:13:17,765 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/jquery/dist/jquery.js  
+2017-08-27 00:13:17,768 (DEBUG) 14 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:13:17,769 (DEBUG) 14 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:13:17,771 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:13:17,771 (DEBUG) 15 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:13:17,771 (DEBUG) 14 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:13:17,771 (DEBUG) 6 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:13:17,780 (INFO ) 8 - [WebHost] Request finished in 4123.5878ms 200 text/html; charset=utf-8
+2017-08-27 00:13:17,780 (INFO ) 6 - [WebHost] Request finished in 13.8541ms 404 
+2017-08-27 00:13:17,780 (INFO ) 15 - [WebHost] Request finished in 13.9024ms 404 
+2017-08-27 00:13:17,780 (INFO ) 7 - [WebHost] Request finished in 15.0859ms 404 
+2017-08-27 00:13:17,780 (INFO ) 14 - [WebHost] Request finished in 15.1839ms 404 
+2017-08-27 00:13:17,801 (INFO ) 14 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.js?v=Ynfdc1vuMNOWZfqTj4N3SPcebazoGXiIPgtfE-b2TO4  
+2017-08-27 00:13:17,801 (DEBUG) 14 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:13:17,801 (DEBUG) 14 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:13:17,801 (DEBUG) 14 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:13:17,801 (INFO ) 14 - [WebHost] Request finished in 2.7185ms 404 
+2017-08-27 00:14:48,985 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-27 00:14:49,249 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-27 00:14:51,204 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-27 00:14:51,520 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:14:51,610 (DEBUG) 7 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-27 00:14:51,687 (INFO ) 7 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-27 00:14:51,692 (DEBUG) 7 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 00:14:52,171 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 00:14:52,313 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:14:52,745 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 430.5136ms.
+2017-08-27 00:14:52,777 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:14:54,089 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1311.9197ms.
+2017-08-27 00:14:54,096 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:14:54,106 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 9.6026ms.
+2017-08-27 00:14:54,106 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:14:54,203 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 97.2213ms.
+2017-08-27 00:14:54,211 (DEBUG) 7 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 00:14:54,213 (INFO ) 7 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 00:14:54,354 (INFO ) 7 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-27 00:14:54,422 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-27 00:14:54,426 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:14:54,589 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 162.0741ms.
+2017-08-27 00:14:54,589 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:14:54,840 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 251.5224ms.
+2017-08-27 00:14:55,234 (INFO ) 7 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3623.3856ms
+2017-08-27 00:14:55,245 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.css  
+2017-08-27 00:14:55,245 (INFO ) 14 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/css/bootstrap.css  
+2017-08-27 00:14:55,245 (INFO ) 13 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.js?v=Ynfdc1vuMNOWZfqTj4N3SPcebazoGXiIPgtfE-b2TO4  
+2017-08-27 00:14:55,245 (INFO ) 15 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/jquery/dist/jquery.js  
+2017-08-27 00:14:55,246 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:14:55,246 (DEBUG) 13 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:14:55,247 (DEBUG) 13 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:14:55,247 (DEBUG) 6 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:14:55,249 (DEBUG) 15 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:14:55,249 (DEBUG) 6 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:14:55,249 (DEBUG) 14 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:14:55,249 (DEBUG) 13 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:14:55,259 (INFO ) 7 - [WebHost] Request finished in 4091.2536ms 200 text/html; charset=utf-8
+2017-08-27 00:14:55,259 (INFO ) 14 - [WebHost] Request finished in 13.949ms 404 
+2017-08-27 00:14:55,259 (INFO ) 15 - [WebHost] Request finished in 13.713ms 404 
+2017-08-27 00:14:55,259 (INFO ) 6 - [WebHost] Request finished in 16.849ms 404 
+2017-08-27 00:14:55,259 (INFO ) 13 - [WebHost] Request finished in 16.7256ms 404 
+2017-08-27 00:14:55,280 (INFO ) 14 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/js/bootstrap.js  
+2017-08-27 00:14:55,280 (DEBUG) 14 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:14:55,280 (INFO ) 14 - [WebHost] Request finished in 7.4465ms 404 
+2017-08-27 00:15:05,626 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-27 00:15:05,627 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:15:05,627 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-27 00:15:05,628 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-27 00:15:05,628 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 00:15:05,631 (DEBUG) 6 - [RazorViewEngine] View lookup cache hit for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 00:15:05,631 (DEBUG) 6 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 00:15:05,631 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 00:15:05,631 (DEBUG) 6 - [RazorViewEngine] View lookup cache hit for view '_Layout' in controller 'Home'.
+2017-08-27 00:15:05,632 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 5.5828ms
+2017-08-27 00:15:05,633 (INFO ) 6 - [WebHost] Request finished in 6.2157ms 200 text/html; charset=utf-8
+2017-08-27 00:15:05,638 (INFO ) 15 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/css/bootstrap.css  
+2017-08-27 00:15:05,638 (DEBUG) 15 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:15:05,638 (INFO ) 15 - [WebHost] Request finished in 0.3612ms 404 
+2017-08-27 00:15:05,641 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.js?v=Ynfdc1vuMNOWZfqTj4N3SPcebazoGXiIPgtfE-b2TO4  
+2017-08-27 00:15:05,641 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/jquery/dist/jquery.js  
+2017-08-27 00:15:05,641 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:15:05,641 (DEBUG) 6 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:15:05,641 (DEBUG) 7 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:15:05,642 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:15:05,642 (INFO ) 6 - [WebHost] Request finished in 0.1679ms 404 
+2017-08-27 00:15:05,641 (INFO ) 13 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/js/bootstrap.js  
+2017-08-27 00:15:05,665 (DEBUG) 13 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:15:05,665 (INFO ) 13 - [WebHost] Request finished in 23.7235ms 404 
+2017-08-27 00:15:05,670 (INFO ) 7 - [WebHost] Request finished in 0.3205ms 404 
+2017-08-27 00:15:05,670 (INFO ) 15 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.css  
+2017-08-27 00:15:05,674 (DEBUG) 15 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:15:05,674 (DEBUG) 15 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:15:05,674 (DEBUG) 15 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:15:05,674 (INFO ) 15 - [WebHost] Request finished in 3.9627ms 404 
+2017-08-27 00:15:09,409 (INFO ) 14 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/Home/About  
+2017-08-27 00:15:09,409 (DEBUG) 14 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:15:09,410 (DEBUG) 14 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:15:09,410 (DEBUG) 14 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:15:09,410 (INFO ) 14 - [WebHost] Request finished in 1.4318ms 404 
+2017-08-27 00:31:08,416 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-27 00:31:08,788 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-27 00:31:10,716 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-27 00:31:11,039 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:31:11,128 (DEBUG) 7 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-27 00:31:11,197 (INFO ) 7 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-27 00:31:11,203 (DEBUG) 7 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 00:31:11,661 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 00:31:11,783 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:31:12,237 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 452.8045ms.
+2017-08-27 00:31:12,271 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 00:31:13,579 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1308.0011ms.
+2017-08-27 00:31:13,586 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:31:13,596 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 9.8479ms.
+2017-08-27 00:31:13,596 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 00:31:13,693 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 97.408ms.
+2017-08-27 00:31:13,701 (DEBUG) 7 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 00:31:13,703 (INFO ) 7 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 00:31:13,848 (INFO ) 7 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-27 00:31:13,916 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-27 00:31:13,920 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:31:14,075 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 154.3571ms.
+2017-08-27 00:31:14,075 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 00:31:14,325 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 250.111ms.
+2017-08-27 00:31:14,689 (INFO ) 7 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3560.7096ms
+2017-08-27 00:31:14,706 (INFO ) 7 - [WebHost] Request finished in 4027.073ms 200 text/html; charset=utf-8
+2017-08-27 00:31:14,715 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/jquery/dist/jquery.js  
+2017-08-27 00:31:14,718 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.css  
+2017-08-27 00:31:14,715 (INFO ) 14 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.js?v=Ynfdc1vuMNOWZfqTj4N3SPcebazoGXiIPgtfE-b2TO4  
+2017-08-27 00:31:14,718 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/css/bootstrap.css  
+2017-08-27 00:31:14,718 (INFO ) 15 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/js/bootstrap.js  
+2017-08-27 00:31:14,719 (DEBUG) 14 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:31:14,719 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 00:31:14,721 (DEBUG) 14 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:31:14,721 (DEBUG) 6 - [MvcRouteHandler] No actions matched the current request
+2017-08-27 00:31:14,722 (DEBUG) 8 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:31:14,722 (DEBUG) 14 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:31:14,722 (DEBUG) 15 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:31:14,722 (DEBUG) 6 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:31:14,722 (DEBUG) 7 - [RouterMiddleware] Request did not match any routes.
+2017-08-27 00:31:14,729 (INFO ) 14 - [WebHost] Request finished in 13.2341ms 404 
+2017-08-27 00:31:14,729 (INFO ) 7 - [WebHost] Request finished in 10.3985ms 404 
+2017-08-27 00:31:14,729 (INFO ) 15 - [WebHost] Request finished in 10.3318ms 404 
+2017-08-27 00:31:14,729 (INFO ) 8 - [WebHost] Request finished in 13.48ms 404 
+2017-08-27 00:31:14,785 (INFO ) 6 - [WebHost] Request finished in 66.7521ms 404 
+2017-08-27 01:09:31,684 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-27 01:09:31,986 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-27 01:09:34,017 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-27 01:09:34,051 (DEBUG) 6 - [StaticFileMiddleware] The request path / does not match a supported file type
+2017-08-27 01:09:34,376 (DEBUG) 6 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 01:09:34,461 (DEBUG) 6 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-27 01:09:34,528 (INFO ) 6 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-27 01:09:34,534 (DEBUG) 6 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 01:09:34,961 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 01:09:35,096 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 01:09:35,554 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 455.8481ms.
+2017-08-27 01:09:35,620 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 01:09:36,977 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1356.9881ms.
+2017-08-27 01:09:36,984 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 01:09:36,994 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 10.5995ms.
+2017-08-27 01:09:36,995 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 01:09:37,097 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 102.3515ms.
+2017-08-27 01:09:37,105 (DEBUG) 6 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 01:09:37,107 (INFO ) 6 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 01:09:37,298 (INFO ) 6 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-27 01:09:37,374 (DEBUG) 6 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-27 01:09:37,379 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 01:09:37,554 (DEBUG) 6 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 174.0059ms.
+2017-08-27 01:09:37,554 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 01:09:37,837 (DEBUG) 6 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 283.1956ms.
+2017-08-27 01:09:38,237 (INFO ) 6 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3776.533ms
+2017-08-27 01:09:38,249 (INFO ) 3 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/css/site.css  
+2017-08-27 01:09:38,252 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/css/bootstrap.css  
+2017-08-27 01:09:38,252 (INFO ) 13 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/js/site.js?v=Ynfdc1vuMNOWZfqTj4N3SPcebazoGXiIPgtfE-b2TO4  
+2017-08-27 01:09:38,253 (INFO ) 14 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/bootstrap/dist/js/bootstrap.js  
+2017-08-27 01:09:38,266 (INFO ) 6 - [WebHost] Request finished in 4290.6585ms 200 text/html; charset=utf-8
+2017-08-27 01:09:38,268 (INFO ) 7 - [StaticFileMiddleware] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.css'. Physical path: '/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician/wwwroot/lib/bootstrap/dist/css/bootstrap.css'
+2017-08-27 01:09:38,268 (INFO ) 14 - [StaticFileMiddleware] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.js'. Physical path: '/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician/wwwroot/lib/bootstrap/dist/js/bootstrap.js'
+2017-08-27 01:09:38,268 (INFO ) 13 - [StaticFileMiddleware] Sending file. Request path: '/js/site.js'. Physical path: '/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician/wwwroot/js/site.js'
+2017-08-27 01:09:38,268 (INFO ) 3 - [StaticFileMiddleware] Sending file. Request path: '/css/site.css'. Physical path: '/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician/wwwroot/css/site.css'
+2017-08-27 01:09:38,281 (INFO ) 6 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/lib/jquery/dist/jquery.js  
+2017-08-27 01:09:38,281 (INFO ) 6 - [StaticFileMiddleware] Sending file. Request path: '/lib/jquery/dist/jquery.js'. Physical path: '/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician/wwwroot/lib/jquery/dist/jquery.js'
+2017-08-27 01:09:38,392 (INFO ) 13 - [WebHost] Request finished in 140.3036ms 200 application/javascript
+2017-08-27 01:09:38,400 (INFO ) 3 - [WebHost] Request finished in 153.5171ms 200 text/css
+2017-08-27 01:09:38,438 (INFO ) 7 - [WebHost] Request finished in 185.5714ms 200 application/javascript
+2017-08-27 01:09:38,441 (INFO ) 3 - [WebHost] Request finished in 189.0502ms 200 text/css
+2017-08-27 01:09:38,449 (INFO ) 6 - [WebHost] Request finished in 168.1305ms 200 application/javascript
+2017-08-27 01:15:34,801 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-27 01:15:35,157 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-27 01:15:37,017 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-27 01:15:37,049 (DEBUG) 8 - [StaticFileMiddleware] The request path / does not match a supported file type
+2017-08-27 01:15:37,380 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 01:15:37,469 (DEBUG) 8 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-27 01:15:37,544 (INFO ) 8 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-27 01:15:37,550 (DEBUG) 8 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 01:15:37,982 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 01:15:38,141 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 01:15:38,715 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 571.9083ms.
+2017-08-27 01:15:38,742 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 01:15:40,240 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1497.2825ms.
+2017-08-27 01:15:40,247 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 01:15:40,257 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 10.1354ms.
+2017-08-27 01:15:40,257 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 01:15:40,370 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 113.3036ms.
+2017-08-27 01:15:40,379 (DEBUG) 8 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 01:15:40,380 (INFO ) 8 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 01:15:40,531 (INFO ) 8 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-27 01:15:40,727 (DEBUG) 8 - [DefaultKeyResolver] Repository contains no viable default key. Caller should generate a key with immediate activation.
+2017-08-27 01:15:40,727 (DEBUG) 8 - [KeyRingProvider] Policy resolution states that a new key should be added to the key ring.
+2017-08-27 01:15:40,734 (INFO ) 8 - [XmlKeyManager] Creating key {46524c14-97db-466d-ab1f-f79bb7d15e77} with creation date 2017-08-26 22:15:40Z, activation date 2017-08-26 22:15:40Z, and expiration date 2017-11-24 22:15:40Z.
+2017-08-27 01:15:40,755 (DEBUG) 8 - [XmlKeyManager] Descriptor deserializer type for key {46524c14-97db-466d-ab1f-f79bb7d15e77} is 'Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=1.1.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'.
+2017-08-27 01:15:40,758 (DEBUG) 8 - [XmlKeyManager] No key escrow sink found. Not writing key {46524c14-97db-466d-ab1f-f79bb7d15e77} to escrow.
+2017-08-27 01:15:40,758 (WARN ) 8 - [XmlKeyManager] No XML encryptor configured. Key {46524c14-97db-466d-ab1f-f79bb7d15e77} may be persisted to storage in unencrypted form.
+2017-08-27 01:15:40,769 (INFO ) 8 - [FileSystemXmlRepository] Writing data to file '/Users/mike/.aspnet/DataProtection-Keys/key-46524c14-97db-466d-ab1f-f79bb7d15e77.xml'.
+2017-08-27 01:15:40,772 (DEBUG) 8 - [XmlKeyManager] Key cache expiration token triggered by 'CreateNewKey' operation.
+2017-08-27 01:15:40,774 (DEBUG) 8 - [FileSystemXmlRepository] Reading data from file '/Users/mike/.aspnet/DataProtection-Keys/key-46524c14-97db-466d-ab1f-f79bb7d15e77.xml'.
+2017-08-27 01:15:40,780 (DEBUG) 8 - [XmlKeyManager] Found key {46524c14-97db-466d-ab1f-f79bb7d15e77}.
+2017-08-27 01:15:40,784 (DEBUG) 8 - [DefaultKeyResolver] Considering key {46524c14-97db-466d-ab1f-f79bb7d15e77} with expiration date 2017-11-24 22:15:40Z as default key.
+2017-08-27 01:15:40,805 (DEBUG) 8 - [ManagedAuthenticatedEncryptorDescriptor] Using managed symmetric algorithm 'System.Security.Cryptography.Aes'.
+2017-08-27 01:15:40,806 (DEBUG) 8 - [ManagedAuthenticatedEncryptorDescriptor] Using managed keyed hash algorithm 'System.Security.Cryptography.HMACSHA256'.
+2017-08-27 01:15:40,822 (DEBUG) 8 - [KeyRingProvider] Using key {46524c14-97db-466d-ab1f-f79bb7d15e77} as the default key.
+2017-08-27 01:15:40,826 (DEBUG) 8 - [KeyRingBasedDataProtector] Performing protect operation to key {46524c14-97db-466d-ab1f-f79bb7d15e77} with purposes ('/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician', 'Microsoft.AspNetCore.Antiforgery.AntiforgeryToken.v1').
+2017-08-27 01:15:40,835 (DEBUG) 8 - [KeyRingBasedDataProtector] Performing protect operation to key {46524c14-97db-466d-ab1f-f79bb7d15e77} with purposes ('/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician', 'Microsoft.AspNetCore.Antiforgery.AntiforgeryToken.v1').
+2017-08-27 01:15:40,864 (DEBUG) 8 - [DefaultAntiforgery] A new antiforgery cookie token was created.
+2017-08-27 01:15:40,898 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-27 01:15:40,898 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 01:15:40,958 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 59.731ms.
+2017-08-27 01:15:40,958 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 01:15:41,117 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 159.365ms.
+2017-08-27 01:15:41,410 (INFO ) 8 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3941.2271ms
+2017-08-27 01:15:41,429 (INFO ) 8 - [WebHost] Request finished in 4449.2334ms 200 text/html; charset=utf-8
+2017-08-27 01:15:50,259 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 POST http://localhost:54268/SearchPlayer application/x-www-form-urlencoded 199
+2017-08-27 01:15:50,260 (DEBUG) 8 - [StaticFileMiddleware] POST requests are not supported
+2017-08-27 01:15:50,262 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 01:15:50,271 (DEBUG) 8 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.SearchPlayerController.Index (WotBlitzStatician)
+2017-08-27 01:15:50,469 (INFO ) 8 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.SearchPlayerController.Index (WotBlitzStatician) with arguments (Mboga) - ModelState is Valid
+2017-08-27 01:16:00,333 (DEBUG) 8 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.SearchPlayerController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 01:16:00,334 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view 'Index' in controller 'SearchPlayer'.
+2017-08-27 01:16:00,336 (ERROR) 8 - [ViewResultExecutor] The view 'Index' was not found. Searched locations: /Views/SearchPlayer/Index.cshtml, /Views/Shared/Index.cshtml
+2017-08-27 01:16:00,342 (INFO ) 8 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.SearchPlayerController.Index (WotBlitzStatician) in 10070.2405ms
+2017-08-27 01:16:00,871 (INFO ) 8 - [WebHost] Request finished in 10612.1444ms 500 application/json
+2017-08-27 01:21:01,603 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-27 01:21:01,927 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-27 01:21:03,743 (INFO ) 8 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-27 01:21:03,776 (DEBUG) 8 - [StaticFileMiddleware] The request path / does not match a supported file type
+2017-08-27 01:21:04,099 (DEBUG) 8 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 01:21:04,186 (DEBUG) 8 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-27 01:21:04,258 (INFO ) 8 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-27 01:21:04,264 (DEBUG) 8 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 01:21:04,744 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 01:21:04,870 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 01:21:05,410 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 538.3935ms.
+2017-08-27 01:21:05,437 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 01:21:06,837 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1400.564ms.
+2017-08-27 01:21:06,845 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 01:21:06,855 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 10.4334ms.
+2017-08-27 01:21:06,855 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 01:21:06,929 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 73.3136ms.
+2017-08-27 01:21:06,938 (DEBUG) 8 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 01:21:06,940 (INFO ) 8 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 01:21:07,093 (INFO ) 8 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-27 01:21:07,260 (DEBUG) 8 - [KeyRingBasedDataProtector] Performing unprotect operation to key {46524c14-97db-466d-ab1f-f79bb7d15e77} with purposes ('/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician', 'Microsoft.AspNetCore.Antiforgery.AntiforgeryToken.v1').
+2017-08-27 01:21:07,282 (DEBUG) 8 - [FileSystemXmlRepository] Reading data from file '/Users/mike/.aspnet/DataProtection-Keys/key-46524c14-97db-466d-ab1f-f79bb7d15e77.xml'.
+2017-08-27 01:21:07,290 (DEBUG) 8 - [XmlKeyManager] Found key {46524c14-97db-466d-ab1f-f79bb7d15e77}.
+2017-08-27 01:21:07,308 (DEBUG) 8 - [DefaultKeyResolver] Considering key {46524c14-97db-466d-ab1f-f79bb7d15e77} with expiration date 2017-11-24 22:15:40Z as default key.
+2017-08-27 01:21:07,329 (DEBUG) 8 - [ManagedAuthenticatedEncryptorDescriptor] Using managed symmetric algorithm 'System.Security.Cryptography.Aes'.
+2017-08-27 01:21:07,330 (DEBUG) 8 - [ManagedAuthenticatedEncryptorDescriptor] Using managed keyed hash algorithm 'System.Security.Cryptography.HMACSHA256'.
+2017-08-27 01:21:07,347 (DEBUG) 8 - [KeyRingProvider] Using key {46524c14-97db-466d-ab1f-f79bb7d15e77} as the default key.
+2017-08-27 01:21:07,370 (DEBUG) 8 - [KeyRingBasedDataProtector] Performing protect operation to key {46524c14-97db-466d-ab1f-f79bb7d15e77} with purposes ('/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician', 'Microsoft.AspNetCore.Antiforgery.AntiforgeryToken.v1').
+2017-08-27 01:21:07,377 (DEBUG) 8 - [DefaultAntiforgery] An antiforgery cookie token was reused.
+2017-08-27 01:21:07,409 (DEBUG) 8 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-27 01:21:07,410 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 01:21:07,468 (DEBUG) 8 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 58.7694ms.
+2017-08-27 01:21:07,469 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 01:21:07,606 (DEBUG) 8 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 137.7034ms.
+2017-08-27 01:21:07,890 (INFO ) 8 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3703.5177ms
+2017-08-27 01:21:07,912 (INFO ) 8 - [WebHost] Request finished in 4205.5544ms 200 text/html; charset=utf-8
+2017-08-27 01:21:14,330 (INFO ) 3 - [WebHost] Request starting HTTP/1.1 POST http://localhost:54268/Home/SearchPlayer application/x-www-form-urlencoded 198
+2017-08-27 01:21:14,331 (DEBUG) 3 - [StaticFileMiddleware] POST requests are not supported
+2017-08-27 01:21:14,331 (DEBUG) 3 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 01:21:14,340 (DEBUG) 3 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.SearchPlayer (WotBlitzStatician)
+2017-08-27 01:21:14,534 (INFO ) 3 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.SearchPlayer (WotBlitzStatician) with arguments (MMMd) - ModelState is Valid
+2017-08-27 01:21:21,347 (DEBUG) 3 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.SearchPlayer (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 01:21:21,352 (DEBUG) 3 - [RazorViewEngine] View lookup cache hit for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 01:21:21,352 (DEBUG) 3 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 01:21:21,352 (INFO ) 3 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 01:21:21,353 (DEBUG) 3 - [KeyRingBasedDataProtector] Performing unprotect operation to key {46524c14-97db-466d-ab1f-f79bb7d15e77} with purposes ('/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician', 'Microsoft.AspNetCore.Antiforgery.AntiforgeryToken.v1').
+2017-08-27 01:21:21,353 (DEBUG) 3 - [KeyRingBasedDataProtector] Performing protect operation to key {46524c14-97db-466d-ab1f-f79bb7d15e77} with purposes ('/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician', 'Microsoft.AspNetCore.Antiforgery.AntiforgeryToken.v1').
+2017-08-27 01:21:21,353 (DEBUG) 3 - [DefaultAntiforgery] An antiforgery cookie token was reused.
+2017-08-27 01:21:21,354 (DEBUG) 3 - [RazorViewEngine] View lookup cache hit for view '_Layout' in controller 'Home'.
+2017-08-27 01:21:21,355 (INFO ) 3 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.SearchPlayer (WotBlitzStatician) in 7014.3382ms
+2017-08-27 01:21:21,355 (INFO ) 3 - [WebHost] Request finished in 7025.0288ms 200 text/html; charset=utf-8
+2017-08-27 01:28:25,945 (DEBUG) 1 - [WebHost] Hosting starting
+2017-08-27 01:28:26,208 (DEBUG) 1 - [WebHost] Hosting started
+2017-08-27 01:28:28,091 (INFO ) 7 - [WebHost] Request starting HTTP/1.1 GET http://localhost:54268/  
+2017-08-27 01:28:28,123 (DEBUG) 7 - [StaticFileMiddleware] The request path / does not match a supported file type
+2017-08-27 01:28:28,451 (DEBUG) 7 - [RouteBase] Request successfully matched the route with name 'default' and template '{controller=Home}/{action=Index}/{id?}'.
+2017-08-27 01:28:28,538 (DEBUG) 7 - [ControllerActionInvoker] Executing action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician)
+2017-08-27 01:28:28,609 (INFO ) 7 - [ControllerActionInvoker] Executing action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) with arguments ((null)) - ModelState is Valid
+2017-08-27 01:28:28,615 (DEBUG) 7 - [ControllerActionInvoker] Executed action method WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician), returned result Microsoft.AspNetCore.Mvc.ViewResult.
+2017-08-27 01:28:29,112 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view 'SearchPlayer' in controller 'Home'.
+2017-08-27 01:28:29,223 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 01:28:29,748 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 523.3492ms.
+2017-08-27 01:28:29,775 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' started.
+2017-08-27 01:28:31,226 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Home/SearchPlayer.cshtml' completed in 1450.6266ms.
+2017-08-27 01:28:31,233 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 01:28:31,247 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/_ViewStart.cshtml' completed in 13.6586ms.
+2017-08-27 01:28:31,247 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' started.
+2017-08-27 01:28:31,369 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/_ViewStart.cshtml' completed in 121.767ms.
+2017-08-27 01:28:31,379 (DEBUG) 7 - [ViewResultExecutor] The view 'SearchPlayer' was found.
+2017-08-27 01:28:31,382 (INFO ) 7 - [ViewResultExecutor] Executing ViewResult, running view at path /Views/Home/SearchPlayer.cshtml.
+2017-08-27 01:28:31,535 (INFO ) 7 - [DataProtectionServices] User profile is available. Using '/Users/mike/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2017-08-27 01:28:31,702 (DEBUG) 7 - [KeyRingBasedDataProtector] Performing unprotect operation to key {46524c14-97db-466d-ab1f-f79bb7d15e77} with purposes ('/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician', 'Microsoft.AspNetCore.Antiforgery.AntiforgeryToken.v1').
+2017-08-27 01:28:31,716 (DEBUG) 7 - [FileSystemXmlRepository] Reading data from file '/Users/mike/.aspnet/DataProtection-Keys/key-46524c14-97db-466d-ab1f-f79bb7d15e77.xml'.
+2017-08-27 01:28:31,733 (DEBUG) 7 - [XmlKeyManager] Found key {46524c14-97db-466d-ab1f-f79bb7d15e77}.
+2017-08-27 01:28:31,753 (DEBUG) 7 - [DefaultKeyResolver] Considering key {46524c14-97db-466d-ab1f-f79bb7d15e77} with expiration date 2017-11-24 22:15:40Z as default key.
+2017-08-27 01:28:31,776 (DEBUG) 7 - [ManagedAuthenticatedEncryptorDescriptor] Using managed symmetric algorithm 'System.Security.Cryptography.Aes'.
+2017-08-27 01:28:31,778 (DEBUG) 7 - [ManagedAuthenticatedEncryptorDescriptor] Using managed keyed hash algorithm 'System.Security.Cryptography.HMACSHA256'.
+2017-08-27 01:28:31,795 (DEBUG) 7 - [KeyRingProvider] Using key {46524c14-97db-466d-ab1f-f79bb7d15e77} as the default key.
+2017-08-27 01:28:31,824 (DEBUG) 7 - [KeyRingBasedDataProtector] Performing protect operation to key {46524c14-97db-466d-ab1f-f79bb7d15e77} with purposes ('/Users/mike/Developer/WotBlitzStatician/WotBlitzStatician', 'Microsoft.AspNetCore.Antiforgery.AntiforgeryToken.v1').
+2017-08-27 01:28:31,833 (DEBUG) 7 - [DefaultAntiforgery] An antiforgery cookie token was reused.
+2017-08-27 01:28:31,867 (DEBUG) 7 - [RazorViewEngine] View lookup cache miss for view '_Layout' in controller 'Home'.
+2017-08-27 01:28:31,867 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 01:28:31,928 (DEBUG) 7 - [RazorCompilationService] Code generation for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 60.7101ms.
+2017-08-27 01:28:31,928 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' started.
+2017-08-27 01:28:32,079 (DEBUG) 7 - [DefaultRoslynCompilationService] Compilation of the generated code for the Razor file at '/Views/Shared/_Layout.cshtml' completed in 150.5457ms.
+2017-08-27 01:28:32,344 (INFO ) 7 - [ControllerActionInvoker] Executed action WotBlitzStatician.Controllers.HomeController.Index (WotBlitzStatician) in 3805.7872ms
+2017-08-27 01:28:32,363 (INFO ) 7 - [WebHost] Request finished in 4308.1862ms 200 text/html; charset=utf-8
