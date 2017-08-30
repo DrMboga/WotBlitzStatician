@@ -2,7 +2,8 @@
 {
 	using System.Threading.Tasks;
 	using Microsoft.AspNetCore.Mvc;
-    using WotBlitzStatician.Logic;
+	using Microsoft.AspNetCore.Routing;
+	using WotBlitzStatician.Logic;
     using WotBlitzStatician.ViewModel;
 
 	public class HomeController : Controller
@@ -14,10 +15,14 @@
 			_blitzStaticianLogic = blitzStaticianLogic;
 		}
 
-		// GET: /<controller>/
         public IActionResult Index()
         {
-            return SearchPlayer();
+	        var lastAccount = _blitzStaticianLogic.GetLastLoggedAccount();
+	        if (lastAccount != null)
+	        {
+				return RedirectToAction("Details", "AccountInfo", new RouteValueDictionary { { "id", lastAccount.AccountId } });
+			}
+	        return SearchPlayer();
         }
 
 		public IActionResult SearchPlayer()
@@ -32,12 +37,5 @@
 
 			return View(model);
 		}
-
-		public string Details([FromRoute(Name = "id")]long accountId)
-		{
-			return $"Details for accountId {accountId}";
-		}
-
-
 	}
 }
