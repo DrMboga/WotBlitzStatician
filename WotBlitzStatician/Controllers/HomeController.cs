@@ -1,10 +1,20 @@
 ﻿namespace WotBlitzStatician.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
+	using System.Threading.Tasks;
+	using Microsoft.AspNetCore.Mvc;
+    using WotBlitzStatician.Logic;
+    using WotBlitzStatician.ViewModel;
 
-    public class HomeController : Controller
-    {
-        // GET: /<controller>/
+	public class HomeController : Controller
+	{
+		private readonly IBlitzStaticianLogic _blitzStaticianLogic;
+
+		public HomeController(IBlitzStaticianLogic blitzStaticianLogic)
+		{
+			_blitzStaticianLogic = blitzStaticianLogic;
+		}
+
+		// GET: /<controller>/
         public IActionResult Index()
         {
             return SearchPlayer();
@@ -16,12 +26,18 @@
 		}
 
 		[HttpPost]
-		public IActionResult SearchPlayer(string PlayerName)
+		public async Task<IActionResult> SearchPlayer(SearchPlayerViewModel model)
 		{
-			// ToDo: Create viewModel,
-			// https://docs.microsoft.com/ru-ru/aspnet/core/tutorials/first-mvc-app/search
-			return View();
+			model.Accounts = await _blitzStaticianLogic.FindAccounts(model.SearchingNick);
+
+			return View(model);
 		}
+
+		public string Details([FromRoute(Name = "id")]long accountId)
+		{
+			return $"Details for accountId {accountId}";
+		}
+
 
 	}
 }
