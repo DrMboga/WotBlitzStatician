@@ -1,5 +1,6 @@
 ﻿namespace WotBlitzStatician.Logic
 {
+	using System.Collections.Generic;
 	using System.Threading.Tasks;
 	using WotBlitzStatician.Model;
 	 
@@ -12,6 +13,8 @@
 		AccountInfo GetLastLoggedAccount();
 
 		Task<AccountInfo> GetAccount(string nick);
+
+		Task<List<AccountInfo>> FindAccounts(string nick);
 
 		AccountInfoStatistics GetAccountStatistics(long accountId);
 

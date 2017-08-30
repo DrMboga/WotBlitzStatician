@@ -51,6 +51,11 @@
 			return account;
 		}
 
+		public async Task<List<AccountInfo>> FindAccounts(string nick)
+		{
+			return await _wgApiClient.FindAccountAsync(nick);
+		}
+
 		private async Task CheckAndUpdateStaticData()
 		{
 			var lastStaticDictionariesUpdateDate = _dataAccessor.GetStaticDataLastUpdateDate();
