@@ -7,9 +7,9 @@
 <h2>Поиск игроков</h2>
 <form asp-controller="Home" asp-action="SearchPlayer">
     <p>
-        Title: @Html.TextBoxFor(model => model.SearchingNick)
+        Ник игрока: @Html.TextBoxFor(model => model.SearchingNick)
         <!--<input type="text" name="PlayerName" >-->
-        <input type="submit" value="Search" />
+        <input type="submit" value="Найти" />
     </p>
     @if (Model?.Accounts != null)
     {
@@ -17,7 +17,7 @@
             <thead>
             <tr>
                 <th>
-                    NickName
+                    Ник игрока
                 </th>
                 <th></th>
             </tr>
@@ -30,7 +30,7 @@
                         @Html.DisplayFor(modelItem => item.NickName)
                     </td>
                     <td>
-                        <a asp-controller="Home" asp-action="Details" asp-route-id="@item.AccountId">Details</a> |
+                        <a asp-controller="AccountInfo" asp-action="Details" asp-route-id="@item.AccountId">Details</a> |
                     </td>
                 </tr>
             }
