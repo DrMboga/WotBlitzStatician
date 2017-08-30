@@ -1,10 +1,40 @@
-﻿@{
+﻿@model WotBlitzStatician.ViewModel.SearchPlayerViewModel
+
+@{
+
 }
 
 <h2>Поиск игроков</h2>
 <form asp-controller="Home" asp-action="SearchPlayer">
     <p>
-        Title: <input type="text" name="PlayerName">
+        Title: @Html.TextBoxFor(model => model.SearchingNick)
+        <!--<input type="text" name="PlayerName" >-->
         <input type="submit" value="Search" />
     </p>
+    @if (Model?.Accounts != null)
+    {
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    NickName
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.Accounts)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NickName)
+                    </td>
+                    <td>
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@item.AccountId">Details</a> |
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
 </form>
