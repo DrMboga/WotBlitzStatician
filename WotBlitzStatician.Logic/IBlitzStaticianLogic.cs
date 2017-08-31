@@ -12,11 +12,13 @@
 
 		AccountInfo GetLastLoggedAccount();
 
+		void SetLastLoggedAccount(long accountId);
+
 		Task<AccountInfo> GetAccount(string nick);
 
 		Task<List<AccountInfo>> FindAccounts(string nick);
 
-		AccountInfoStatistics GetAccountStatistics(long accountId);
+		Task<AccountInfo> GetAccountStatistics(long accountId);
 
 		AccountInfoPrivate GetAccountPrivateStatistics(long accountId);
 

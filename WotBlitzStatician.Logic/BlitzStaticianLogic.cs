@@ -87,9 +87,18 @@
 			return _dataAccessor.GetAccountPrivateStatistics(accountId);
 		}
 
-		public AccountInfoStatistics GetAccountStatistics(long accountId)
+		public async Task<AccountInfo> GetAccountStatistics(long accountId)
 		{
-			return _dataAccessor.GetAccountStatistics(accountId);
+			var accountInfo = _dataAccessor.GetAccountStatistics(accountId);
+			if (accountInfo == null)
+			{
+				// First time
+				// Loading all account statistics
+				accountInfo = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId);
+				await LoadStatisticsFromWgAndSaveToDb(accountInfo);
+
+			}
+			return accountInfo;
 		}
 
 		public AccountTankStatistics GetAllTanksByAccount(long accountId)
@@ -109,7 +118,12 @@
 			await LoadStatisticsFromWgAndSaveToDb(account);
 		}
 
-        public async Task LoadStatisticsFromWgAndSaveToDb(AccountInfo accountInfo)
+		public void SetLastLoggedAccount(long accountId)
+		{
+			_dataAccessor.SetLastSession(accountId);
+		}
+
+		public async Task LoadStatisticsFromWgAndSaveToDb(AccountInfo accountInfo)
         {
 			var lastBattle = _dataAccessor.GetLastBattleTime(accountInfo.AccountId);
             _log.Debug($"Account id {accountInfo.AccountId}. LastBattle at '{lastBattle}'");
@@ -136,8 +150,8 @@
 	        accountTankAchievements = accountTankAchievements.Where(a => tanksInfo.Any(t => t.TankId == a.TankId)).ToList();
 			_log.Debug($"Filtered {accountTankAchievements.Count()} tank achievements by last session");
 
-			accountInfo.IsLastSession = true;
 			_dataAccessor.SaveAccountInfo(accountInfo);
+			_dataAccessor.SetLastSession(accountInfo.AccountId);
             _dataAccessor.SaveAccountAchievements(accountAchievements);
             _dataAccessor.SaveAccountTankAchievements(accountTankAchievements);
             _dataAccessor.SaveTanksStatistic(tanksInfo);
