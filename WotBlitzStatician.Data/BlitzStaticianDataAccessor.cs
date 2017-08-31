@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Linq.Expressions;
     using log4net;
     using Microsoft.EntityFrameworkCore;
     using WotBlitzStatician.Model;
@@ -20,26 +21,34 @@
         // ToDo: refactor - split get methods and save methods
 		public AccountInfo GetAccountInfo(string nick)
 		{
-            using(var context = _blitzStaticianDataContextFactory.CreateContext())
-            {
-	            var accountInfo = context.AccountInfo
-		            .Join(context.AccountInfoStatistics, a => a.AccountId, s => s.AccountId, (a, s) => new {AccountInfo = a, Statistics = s})
-		            .Where(q => q.AccountInfo.NickName.Equals(nick, StringComparison.CurrentCultureIgnoreCase))
-		            .OrderByDescending(q => q.Statistics.UpdatedAt)
-		            .FirstOrDefault();
+			return GetAccountInfo(a => a.NickName.Equals(nick, StringComparison.CurrentCultureIgnoreCase));
+		}
 
-                _log.Debug($"<GetAccountInfo> got " +
-                           $"{(accountInfo == null ? "null" : accountInfo.Statistics.UpdatedAt.ToString())} " +
-                           $"updated row by '{nick}' nick");
-
-	            if (accountInfo == null)
-		            return null;
-
-	            var account = accountInfo.AccountInfo;
-	            account.AccountInfoStatistics = accountInfo.Statistics;
+		private AccountInfo GetAccountInfo(Func<AccountInfo, bool> predicate)
+		{
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
+			{
+				var accountInfo = context.AccountInfo
+					.Join(context.AccountInfoStatistics, a => a.AccountId, s => s.AccountId,
+						(a, s) => new {AccountInfo = a, Statistics = s})
+					.Where(q => predicate(q.AccountInfo))
+					.OrderByDescending(q => q.Statistics.UpdatedAt)
+					.FirstOrDefault();
 
 
-/*	            var allAchievements = context
+				if (accountInfo == null)
+				{
+					_log.Debug($"<GetAccountInfo> got nothing.");
+					return null;
+				}
+				_log.Debug($"<GetAccountInfo> got '{accountInfo.AccountInfo.NickName}' account. Last battle at '{accountInfo.AccountInfo.LastBattleTime}'");
+
+				var account = accountInfo.AccountInfo;
+				account.AccountInfoStatistics = accountInfo.Statistics;
+
+				// ToDo: Clan info
+
+				/*	            var allAchievements = context
 		            .AccountInfoAchievment
 					.Where(a => a.AccountId == account.AccountId)
 		            .ToList();
@@ -64,14 +73,30 @@
 			throw new System.NotImplementedException();
 		}
 
-		public AccountInfoStatistics GetAccountStatistics(long accountId)
+		public AccountInfo GetAccountStatistics(long accountId)
 		{
-			throw new System.NotImplementedException();
+			return GetAccountInfo(a => a.AccountId == accountId);
 		}
 
 		public AccountInfoPrivate GetAccountPrivateStatistics(long accountId)
 		{
 			throw new System.NotImplementedException();
+		}
+
+		public void SetLastSession(long accountId)
+		{
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
+			{
+				var accountInfo = context.AccountInfo.FirstOrDefault(a => a.AccountId == accountId);
+				var anotherAccounts = context.AccountInfo.Where(a => a.AccountId != accountId && a.IsLastSession).ToList();
+				if (accountInfo != null)
+				{
+					accountInfo.IsLastSession = true;
+					anotherAccounts.ForEach(a => a.IsLastSession = false);
+
+					context.SaveChanges();
+				}
+			}
 		}
 
 		public void SaveAccountInfo(AccountInfo accountInfo)

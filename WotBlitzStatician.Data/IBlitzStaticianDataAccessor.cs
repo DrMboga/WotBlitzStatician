@@ -12,11 +12,13 @@
 
         AccountTankStatistics GetAllTanksByAccount(long accountId);
 
-        AccountInfoStatistics GetAccountStatistics(long accountId);
+	    AccountInfo GetAccountStatistics(long accountId);
 
         AccountInfoPrivate GetAccountPrivateStatistics(long accountId);
 
         void SaveAccountInfo(AccountInfo accountInfo);
+
+	    void SetLastSession(long accountId);
 
         void SaveTanksStatistic(List<AccountTankStatistics> taksStat);
 
