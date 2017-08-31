@@ -1,7 +1,9 @@
 ﻿namespace WotBlitzStatician.ViewModel
 {
+	using WotBlitzStatician.Model;
+
 	public class AccountInfoViewModel
 	{
-		public long AccountId { get; set; }
+		public AccountInfo AccountInfo { get; set; }
 	}
 }
