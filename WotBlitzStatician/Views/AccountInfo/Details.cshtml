@@ -1,5 +1,7 @@
 ﻿@model WotBlitzStatician.ViewModel.AccountInfoViewModel
 @{
+	ViewData["NickName"] = Model.AccountInfo.NickName;
+	ViewData["AccountId"] = Model.AccountInfo.AccountId;
 }
 
-<h2>Аккаунт @Model.AccountId </h2>
+<h2>Аккаунт @Model.AccountInfo.AccountId </h2>
