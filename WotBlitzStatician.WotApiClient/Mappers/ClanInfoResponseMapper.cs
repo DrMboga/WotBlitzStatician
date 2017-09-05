@@ -7,9 +7,11 @@
 
     internal class ClanInfoResponseMapper : IMapper<WotClanInfoResponse, AccountClanInfo>
     {
-        public ClanInfoResponseMapper()
+		private readonly IMapper _mapper;
+
+		public ClanInfoResponseMapper()
         {
-			Mapper.Initialize(m => m.CreateMap<WotClanInfoResponse, AccountClanInfo>()
+			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotClanInfoResponse, AccountClanInfo>()
 							  .ForMember(dest => dest.ClanDescription, op => op.MapFrom(s => s.Description))
                               .ForMember(dest => dest.ClanCreatedAt, op => op.MapFrom(s => s.CreatedAt))
                               .ForMember(dest => dest.ClanId, op => op.MapFrom(s => s.ClanId))
@@ -18,18 +20,18 @@
                               .ForMember(dest => dest.ClanName, op => op.MapFrom(s => s.Name))
                               .ForMember(dest => dest.ClanTag, op => op.MapFrom(s => s.Tag))
                               .ForMember(dest => dest.MembersCount, op => op.MapFrom(s => s.MembersCount))
-                             );
+                                                        ));
 
 		}
 
         public AccountClanInfo Map(WotClanInfoResponse source)
         {
-            return Mapper.Map<WotClanInfoResponse, AccountClanInfo>(source);
+            return _mapper.Map<WotClanInfoResponse, AccountClanInfo>(source);
         }
 
         public AccountClanInfo Map(WotClanInfoResponse source, AccountClanInfo destination)
         {
-            return Mapper.Map(source, destination);
+            return _mapper.Map(source, destination);
         }
     }
 }

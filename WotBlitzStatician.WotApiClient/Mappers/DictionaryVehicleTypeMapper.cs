@@ -7,21 +7,23 @@
 
     internal class DictionaryVehicleTypeMapper : IMapper<KeyValuePair<string, string>, DictionaryVehicleType>
     {
-        public DictionaryVehicleTypeMapper()
+		private readonly IMapper _mapper;
+
+		public DictionaryVehicleTypeMapper()
         {
-			Mapper.Initialize(m => m.CreateMap<KeyValuePair<string, string>, DictionaryVehicleType>()
+			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<KeyValuePair<string, string>, DictionaryVehicleType>()
                               .ForMember(dest => dest.VehicleTypeId, op => op.MapFrom(s => s.Key))
-                              .ForMember(dest => dest.VehicleTypeName, op => op.MapFrom(svm => svm.Value)));
+                                                         .ForMember(dest => dest.VehicleTypeName, op => op.MapFrom(svm => svm.Value))));
         }
 
         public DictionaryVehicleType Map(KeyValuePair<string, string> source)
         {
-            return Mapper.Map<KeyValuePair<string, string>, DictionaryVehicleType>(source);
+            return _mapper.Map<KeyValuePair<string, string>, DictionaryVehicleType>(source);
         }
 
         public DictionaryVehicleType Map(KeyValuePair<string, string> source, DictionaryVehicleType destination)
         {
-            return Mapper.Map(source, destination);
+            return _mapper.Map(source, destination);
         }
     }
 }

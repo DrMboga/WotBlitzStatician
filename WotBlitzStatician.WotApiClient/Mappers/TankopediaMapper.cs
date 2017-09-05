@@ -6,10 +6,11 @@
 
 	internal class TankopediaMapper : IMapper<WotEncyclopediaVehiclesResponse, VehicleEncyclopedia>
 	{
+		private readonly IMapper _mapper;
 
-        public TankopediaMapper()
+		public TankopediaMapper()
         {
-            Mapper.Initialize(m => m.CreateMap<WotEncyclopediaVehiclesResponse, VehicleEncyclopedia>()
+            _mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotEncyclopediaVehiclesResponse, VehicleEncyclopedia>()
                 .ForMember(dest => dest.TankId, op => op.MapFrom(s => s.TankId))
                 .ForMember(dest => dest.Name, op => op.MapFrom(s => s.Name))
                 .ForMember(dest => dest.Tier, op => op.MapFrom(s => s.Tier))
@@ -24,18 +25,18 @@
                 .ForMember(dest => dest.Tag, op => op.MapFrom(s => s.Tag))
                 .ForMember(dest => dest.PreviewImageUrl, op => op.MapFrom(s => s.Images["preview"]))
                 .ForMember(dest => dest.NormalImageUrl, op => op.MapFrom(s => s.Images["normal"]))
-               );
+                                                        ));
 
         }
 
 		public VehicleEncyclopedia Map(WotEncyclopediaVehiclesResponse source)
 		{
-			return Mapper.Map<WotEncyclopediaVehiclesResponse, VehicleEncyclopedia>(source);
+			return _mapper.Map<WotEncyclopediaVehiclesResponse, VehicleEncyclopedia>(source);
 		}
 
 		public VehicleEncyclopedia Map(WotEncyclopediaVehiclesResponse source, VehicleEncyclopedia destination)
 		{
-			return Mapper.Map(source, destination);
+			return _mapper.Map(source, destination);
 		}
 	}
 }

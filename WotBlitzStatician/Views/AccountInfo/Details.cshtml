@@ -1,17 +1,17 @@
 ﻿@model WotBlitzStatician.ViewModel.AccountInfoViewModel
 @{
-	ViewData["NickName"] = Model.AccountInfo.NickName;
-	ViewData["AccountId"] = Model.AccountInfo.AccountId;
+	ViewData["NickName"] = Model.NickName;
+	ViewData["AccountId"] = Model.AccountId;
 }
 
-<h2>@Model.AccountInfo.NickName []</h2>
+<h2>@Model.NickName []</h2>
 <table class="table">
 	<tr>
 		<td>
 			Последний бой
 		</td>
 		<td>
-			@Model.AccountInfo.LastBattleTime
+			@Html.DisplayFor(m => m.LastBattleTime, null)
 		</td>
 	</tr>
 	<tr>
@@ -19,7 +19,7 @@
 			Боёв
 		</td>
 		<td>
-			@($"{Model.AccountInfo.AccountInfoStatistics.Battles:N0}")
+			@Html.DisplayFor(m => m.Battles, null)
 		</td>
 	</tr>
 	<tr>
@@ -27,15 +27,17 @@
 			Побед
 		</td>
 		<td>
-			@($"{Model.AccountInfo.AccountInfoStatistics.Wins:N0}") (@($"{Convert.ToDouble(Model.AccountInfo.AccountInfoStatistics.Wins * 100) / Model.AccountInfo.AccountInfoStatistics.Battles:N2}%"))
+			@Html.DisplayFor(m => m.Wins, null) (@Html.DisplayFor(m => m.Winrate, null)%)
 		</td>
 	</tr>
 	<tr>
 		<td>
 			Wn7
 		</td>
-		<td class="wn7 @Model.Wn7Style">
-			@($"{Model.AccountInfo.AccountInfoStatistics.Wn7:N0} ({Model.Wn7Grade})")
+		<td class="@Model.Wn7Style"> <!--ToDo: Use javascript-->
+			<b>
+			@Html.DisplayFor(m => m.Wn7, null) (@Html.DisplayFor(m => m.Wn7GradeS, null))         
+			</b>
 		</td>
 	</tr>
 	<tr>
@@ -43,7 +45,7 @@
 			Средний урон
 		</td>
 		<td>
-			@($"{Model.AccountInfo.AccountInfoStatistics.DamageDealt / Model.AccountInfo.AccountInfoStatistics.Battles:N0}")
+			@Html.DisplayFor(m => m.AvgDamage, null)
 		</td>
 	</tr>
 	<tr>
@@ -51,7 +53,7 @@
 			Средний опыт
 		</td>
 		<td>
-			@($"{Model.AccountInfo.AccountInfoStatistics.Xp / Model.AccountInfo.AccountInfoStatistics.Battles:N0}")
+			@Html.DisplayFor(m => m.AvgXp, null)
 		</td>
 	</tr>
 	<tr>
@@ -59,7 +61,7 @@
 			Танкоуровень
 		</td>
 		<td>
-			@($"{Model.AccountInfo.AccountInfoStatistics.AvgTier:N2}")
+			@Html.DisplayFor(m => m.AvgTier, null)
 		</td>
 	</tr>
 @*	<tr>*@

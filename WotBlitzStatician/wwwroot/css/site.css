@@ -23,39 +23,39 @@ textarea {
 }
 
 .wn7_very_bad {
-	background: #000000;
+    color: #000000;
 }
 
 .wn7_bad {
-	background: #cd3333;
+    color: #cd3333;
 }
 
 .wn7_below_average {
-	background: #d77900;
+    color: #d77900;
 }
 
 .wn7_average {
-	background: #d7b600;
+    color: #d7b600;
 }
 
 .wn7_good {
-	background: #6d9521;
+    color: #6d9521;
 }
 
 .wn7_very_good {
-	background: #4c762e;
+    color: #4c762e;
 }
 
 .wn7_great {
-	background: #4a92b7;
+    color: #4a92b7;
 }
 
 .wn7_unicum {
-	background: #83579d;
+    color: #83579d;
 }
 
 .wn7_super_unicum {
-	background: #5a3175;
+    color: #5a3175;
 }
 
 

@@ -6,9 +6,11 @@
 
 	internal class DictionaryAchievementsMapper : IMapper<WotEncyclopediaAchievementsResponse, Achievement>
 	{
+		private readonly IMapper _mapper;
+
 		public DictionaryAchievementsMapper()
 		{
-			Mapper.Initialize(m => m.CreateMap<WotEncyclopediaAchievementsResponse, Achievement>()
+			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotEncyclopediaAchievementsResponse, Achievement>()
 				.ForMember(dest => dest.AchievementId, op => op.MapFrom(s => s.AchievementId))
 				.ForMember(dest => dest.Condition, op => op.MapFrom(s => s.Condition))
 				.ForMember(dest => dest.Description, op => op.MapFrom(s => s.Description))
@@ -18,17 +20,17 @@
 				.ForMember(dest => dest.Order, op => op.MapFrom(s => s.Order))
 				.ForMember(dest => dest.Section, op => op.MapFrom(s => s.Section))
                               .ForMember(dest => dest.Options, op => op.Ignore())
-			);
+                                                        ));
 		}
 
 		public Achievement Map(WotEncyclopediaAchievementsResponse source)
 		{
-			return Mapper.Map<WotEncyclopediaAchievementsResponse, Achievement>(source);
+			return _mapper.Map<WotEncyclopediaAchievementsResponse, Achievement>(source);
 		}
 
 		public Achievement Map(WotEncyclopediaAchievementsResponse source, Achievement destination)
 		{
-			return Mapper.Map(source, destination);
+			return _mapper.Map(source, destination);
 		}
 	}
 }

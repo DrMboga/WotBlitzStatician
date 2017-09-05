@@ -6,9 +6,11 @@
 
 	internal class TanksStatMapper : IMapper<WotAccountTanksStatResponse, AccountTankStatistics>
 	{
+		private readonly IMapper _mapper;
+
 		public TanksStatMapper()
 		{
-			Mapper.Initialize(m => m.CreateMap<WotAccountTanksStatResponse, AccountTankStatistics>()
+			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotAccountTanksStatResponse, AccountTankStatistics>()
 				.ForMember(dest => dest.TankId, op => op.MapFrom(s => s.TankId))
 				.ForMember(dest => dest.BattleLifeTime, op => op.MapFrom(s => s.BattleLifeTime))
 				.ForMember(dest => dest.LastBattleTime, op => op.MapFrom(s => s.LastBattleTime))
@@ -30,17 +32,17 @@
 				.ForMember(dest => dest.WinAndSurvived, op => op.MapFrom(s => s.All.WinAndSurvived))
 				.ForMember(dest => dest.Wins, op => op.MapFrom(s => s.All.Wins))
 				.ForMember(dest => dest.Xp, op => op.MapFrom(s => s.All.Xp))
-			);
+                                                        ));
 		}
 
 		public AccountTankStatistics Map(WotAccountTanksStatResponse source)
 		{
-			return Mapper.Map<WotAccountTanksStatResponse, AccountTankStatistics>(source);
+			return _mapper.Map<WotAccountTanksStatResponse, AccountTankStatistics>(source);
 		}
 
 		public AccountTankStatistics Map(WotAccountTanksStatResponse source, AccountTankStatistics destination)
 		{
-			return Mapper.Map(source, destination);
+			return _mapper.Map(source, destination);
 		}
 	}
 }

@@ -6,22 +6,24 @@
 
     internal class DictionaryNationMapper : IMapper<KeyValuePair<string, string>, DictionaryNations>
     {
-        public DictionaryNationMapper()
+		private readonly IMapper _mapper;
+
+		public DictionaryNationMapper()
         {
-			Mapper.Initialize(m => m.CreateMap<KeyValuePair<string, string>, DictionaryNations>()
+			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<KeyValuePair<string, string>, DictionaryNations>()
                               .ForMember(dest => dest.NationId, op => op.MapFrom(s => s.Key))
-                              .ForMember(dest => dest.NationName, op => op.MapFrom(svm => svm.Value)));
+                                                         .ForMember(dest => dest.NationName, op => op.MapFrom(svm => svm.Value))));
 
 		}
 
         public DictionaryNations Map(KeyValuePair<string, string> source)
         {
-            return Mapper.Map<KeyValuePair<string, string>, DictionaryNations>(source);
+            return _mapper.Map<KeyValuePair<string, string>, DictionaryNations>(source);
         }
 
         public DictionaryNations Map(KeyValuePair<string, string> source, DictionaryNations destination)
         {
-            return Mapper.Map(source, destination);
+            return _mapper.Map(source, destination);
         }
     }
 }

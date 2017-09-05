@@ -6,9 +6,11 @@
 
 	internal class AccountInfoStatisticsMapper : IMapper<WotAccountInfoResponse, AccountInfoStatistics>
 	{
+		private readonly IMapper _mapper;
+
 		public AccountInfoStatisticsMapper()
 		{
-			Mapper.Initialize(m => m.CreateMap<WotAccountInfoResponse, AccountInfoStatistics>()
+			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotAccountInfoResponse, AccountInfoStatistics>()
 				.ForMember(dest => dest.UpdatedAt, op => op.MapFrom(s => s.UpdatedAt))
 				.ForMember(dest => dest.AccountId, op => op.MapFrom(s => s.AccountId))
 				.ForMember(dest => dest.Battles, op => op.MapFrom(s => s.Statistics.All.Battles))
@@ -30,17 +32,17 @@
 				.ForMember(dest => dest.WinAndSurvived, op => op.MapFrom(s => s.Statistics.All.WinAndSurvived))
 				.ForMember(dest => dest.Wins, op => op.MapFrom(s => s.Statistics.All.Wins))
 				.ForMember(dest => dest.Xp, op => op.MapFrom(s => s.Statistics.All.Xp))
-			);
+                                                        ));
 		}
 
 		public AccountInfoStatistics Map(WotAccountInfoResponse source)
 		{
-			return Mapper.Map<WotAccountInfoResponse, AccountInfoStatistics>(source);
+			return _mapper.Map<WotAccountInfoResponse, AccountInfoStatistics>(source);
 		}
 
 		public AccountInfoStatistics Map(WotAccountInfoResponse source, AccountInfoStatistics destination)
 		{
-			return Mapper.Map(source, destination);
+			return _mapper.Map(source, destination);
 		}
 	}
 }
