@@ -4,4 +4,70 @@
 	ViewData["AccountId"] = Model.AccountInfo.AccountId;
 }
 
-<h2>Аккаунт @Model.AccountInfo.AccountId </h2>
+<h2>@Model.AccountInfo.NickName []</h2>
+<table class="table">
+	<tr>
+		<td>
+			Последний бой
+		</td>
+		<td>
+			@Model.AccountInfo.LastBattleTime
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Боёв
+		</td>
+		<td>
+			@($"{Model.AccountInfo.AccountInfoStatistics.Battles:N0}")
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Побед
+		</td>
+		<td>
+			@($"{Model.AccountInfo.AccountInfoStatistics.Wins:N0}") (@($"{Convert.ToDouble(Model.AccountInfo.AccountInfoStatistics.Wins * 100) / Model.AccountInfo.AccountInfoStatistics.Battles:N2}%"))
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Wn7
+		</td>
+		<td class="wn7 @Model.Wn7Style">
+			@($"{Model.AccountInfo.AccountInfoStatistics.Wn7:N0} ({Model.Wn7Grade})")
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Средний урон
+		</td>
+		<td>
+			@($"{Model.AccountInfo.AccountInfoStatistics.DamageDealt / Model.AccountInfo.AccountInfoStatistics.Battles:N0}")
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Средний опыт
+		</td>
+		<td>
+			@($"{Model.AccountInfo.AccountInfoStatistics.Xp / Model.AccountInfo.AccountInfoStatistics.Battles:N0}")
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Танкоуровень
+		</td>
+		<td>
+			@($"{Model.AccountInfo.AccountInfoStatistics.AvgTier:N2}")
+		</td>
+	</tr>
+@*	<tr>*@
+@*		<td>*@
+@*		</td>*@
+@*		<td>*@
+@*			@Model.AccountInfo.AccountInfoStatistics*@
+@*		</td>*@
+@*	</tr>*@
+
+</table>
