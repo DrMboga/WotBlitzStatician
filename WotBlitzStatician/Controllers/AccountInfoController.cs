@@ -21,6 +21,11 @@
 
 			_blitzStaticianLogic.SetLastLoggedAccount(accountId);
 
+			// toDo: Create mapper
+		    var wn7Grade = viewModel.AccountInfo.AccountInfoStatistics.Wn7.GetWn7();
+		    viewModel.Wn7Style = wn7Grade.GetWn7GradationStyle();
+		    viewModel.Wn7Grade = wn7Grade.ToString();
+
 			return View(viewModel);
 		}
 
