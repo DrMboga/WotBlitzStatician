@@ -27,16 +27,17 @@
 			Побед
 		</td>
 		<td>
-			@Html.DisplayFor(m => m.Wins, null) (@Html.DisplayFor(m => m.Winrate, null)%)
+			@Html.DisplayFor(m => m.Wins, null) - 
+			<b id="winrate">@Html.DisplayFor(m => m.Winrate, null)% (@Html.DisplayFor(m => m.WinrateGrade, null))</b>
 		</td>
 	</tr>
 	<tr>
 		<td>
 			Wn7
 		</td>
-		<td class="@Model.Wn7Style"> <!--ToDo: Use javascript-->
+		<td id="wn7">
 			<b>
-			@Html.DisplayFor(m => m.Wn7, null) (@Html.DisplayFor(m => m.Wn7GradeS, null))         
+				@Html.DisplayFor(m => m.Wn7, null) (@Html.DisplayFor(m => m.Wn7Grade, null))         
 			</b>
 		</td>
 	</tr>
@@ -64,12 +65,9 @@
 			@Html.DisplayFor(m => m.AvgTier, null)
 		</td>
 	</tr>
-@*	<tr>*@
-@*		<td>*@
-@*		</td>*@
-@*		<td>*@
-@*			@Model.AccountInfo.AccountInfoStatistics*@
-@*		</td>*@
-@*	</tr>*@
-
 </table>
+
+<script>
+	var wn7Grade = "@Model.Wn7Grade.ToString()";
+	var winrateGrade = "@Model.WinrateGrade.ToString()";
+</script>
