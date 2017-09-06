@@ -17,48 +17,6 @@ textarea {
     max-width: 280px;
 }
 
-/*Wn7*/
-.wn7 {
-	color: #ffffff;
-}
-
-.wn7_very_bad {
-    color: #000000;
-}
-
-.wn7_bad {
-    color: #cd3333;
-}
-
-.wn7_below_average {
-    color: #d77900;
-}
-
-.wn7_average {
-    color: #d7b600;
-}
-
-.wn7_good {
-    color: #6d9521;
-}
-
-.wn7_very_good {
-    color: #4c762e;
-}
-
-.wn7_great {
-    color: #4a92b7;
-}
-
-.wn7_unicum {
-    color: #83579d;
-}
-
-.wn7_super_unicum {
-    color: #5a3175;
-}
-
-
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
