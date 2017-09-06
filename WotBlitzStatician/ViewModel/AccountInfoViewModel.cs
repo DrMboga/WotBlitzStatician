@@ -6,11 +6,6 @@
 
 	public class AccountInfoViewModel
 	{
-        [Obsolete]
-		public string Wn7Style { get; set; }
-        [Obsolete]
-		public string Wn7GradeS { get; set; }
-
         public long AccountId { get; set; }
 
         public string NickName { get; set; }
