@@ -9,29 +9,33 @@
 	using System.Linq;
 	using WotBlitzStatician.Logic.Calculations;
     using log4net;
+	using WotBlitzStatician.Data.DataAccessors;
 
-    public class BlitzStaticianLogic : IBlitzStaticianLogic
+	public class BlitzStaticianLogic : IBlitzStaticianLogic
 	{
         private static readonly ILog _log = LogManager.GetLogger(typeof(BlitzStaticianLogic));
-		private readonly IBlitzStaticianDataAccessor _dataAccessor;
+		private readonly IAccountInfoDataAccessor _accountInfoDataAccessor;
+		private readonly IStaticInfoDataAccessor _staticInfoDataAccessor;
+		private readonly ITanksStatisticsDataAccessor _tanksStatisticsDataAccessor;
 		private readonly IWargamingApiClient _wgApiClient;
         private readonly IWgApiConfiguration _wgApiConfiguration;
 
 		public BlitzStaticianLogic(
-            IBlitzStaticianDataAccessor blitzStaticianDataAccessor,
             IWargamingApiClient wargamingApiClient,
-            IWgApiConfiguration wargamingApiConfiguration)
+            IWgApiConfiguration wargamingApiConfiguration, IAccountInfoDataAccessor accountInfoDataAccessor, IStaticInfoDataAccessor staticInfoDataAccessor, ITanksStatisticsDataAccessor tanksStatisticsDataAccessor)
 		{
-			_dataAccessor = blitzStaticianDataAccessor;
 			_wgApiClient = wargamingApiClient;
             _wgApiConfiguration = wargamingApiConfiguration;
+			_accountInfoDataAccessor = accountInfoDataAccessor;
+			_staticInfoDataAccessor = staticInfoDataAccessor;
+			_tanksStatisticsDataAccessor = tanksStatisticsDataAccessor;
 		}
 
 		public async Task<AccountInfo> GetAccount(string nick)
 		{
             await CheckAndUpdateStaticData();
 
-			var account = _dataAccessor.GetAccountInfo(nick);
+			var account = _accountInfoDataAccessor.GetAccountInfo(nick);
 			if (account == null)
 			{
 				//First time
@@ -58,7 +62,7 @@
 
 		private async Task CheckAndUpdateStaticData()
 		{
-			var lastStaticDictionariesUpdateDate = _dataAccessor.GetStaticDataLastUpdateDate();
+			var lastStaticDictionariesUpdateDate = _staticInfoDataAccessor.GetStaticDataLastUpdateDate();
 
 			if (Convert.ToInt32((DateTime.Now - lastStaticDictionariesUpdateDate).TotalDays) >=
 			    _wgApiConfiguration.DictionariesUpdateFrequencyInDays)
@@ -75,21 +79,21 @@
 
             encyclopedia.DictionaryLanguages.ForEach(l => l.LastUpdated = DateTime.Now);
 
-            _dataAccessor.SaveLanguagesDictionary(encyclopedia.DictionaryLanguages);
-            _dataAccessor.SaveNationsDictionary(encyclopedia.DictionaryNationses);
-            _dataAccessor.SaveVehicleTypesDictionary(encyclopedia.DictionaryVehicleTypes);
-            _dataAccessor.SaveVehicleEncyclopedia(vehicles);
-            _dataAccessor.SaveAchievementsDictionary(achievements);
+	        _staticInfoDataAccessor.SaveLanguagesDictionary(encyclopedia.DictionaryLanguages);
+	        _staticInfoDataAccessor.SaveNationsDictionary(encyclopedia.DictionaryNationses);
+	        _staticInfoDataAccessor.SaveVehicleTypesDictionary(encyclopedia.DictionaryVehicleTypes);
+	        _staticInfoDataAccessor.SaveVehicleEncyclopedia(vehicles);
+	        _staticInfoDataAccessor.SaveAchievementsDictionary(achievements);
         }
 
 		public AccountInfoPrivate GetAccountPrivateStatistics(long accountId)
 		{
-			return _dataAccessor.GetAccountPrivateStatistics(accountId);
+			return _accountInfoDataAccessor.GetAccountPrivateStatistics(accountId);
 		}
 
 		public async Task<AccountInfo> GetAccountStatistics(long accountId)
 		{
-			var accountInfo = _dataAccessor.GetAccountStatistics(accountId);
+			var accountInfo = _accountInfoDataAccessor.GetAccountStatistics(accountId);
 			if (accountInfo == null)
 			{
 				// First time
@@ -103,12 +107,12 @@
 
 		public AccountTankStatistics GetAllTanksByAccount(long accountId)
 		{
-			return _dataAccessor.GetAllTanksByAccount(accountId);
+			return _tanksStatisticsDataAccessor.GetAllTanksByAccount(accountId);
 		}
 
 		public AccountInfo GetLastLoggedAccount()
 		{
-			return _dataAccessor.GetLastLoggedAccount();
+			return _accountInfoDataAccessor.GetLastLoggedAccount();
 		}
 
 		public async Task LoadStatisticsFromWgAsync(long accountId)
@@ -120,12 +124,12 @@
 
 		public void SetLastLoggedAccount(long accountId)
 		{
-			_dataAccessor.SetLastSession(accountId);
+			_accountInfoDataAccessor.SetLastSession(accountId);
 		}
 
 		public async Task LoadStatisticsFromWgAndSaveToDb(AccountInfo accountInfo)
         {
-			var lastBattle = _dataAccessor.GetLastBattleTime(accountInfo.AccountId);
+			var lastBattle = _accountInfoDataAccessor.GetLastBattleTime(accountInfo.AccountId);
             _log.Debug($"Account id {accountInfo.AccountId}. LastBattle at '{lastBattle}'");
             if (lastBattle.HasValue && 
                 (accountInfo.LastBattleTime.Value - lastBattle.Value).TotalMinutes <= 20) // ToDo: _config.RequestsDelayInMinutes
@@ -150,20 +154,20 @@
 	        accountTankAchievements = accountTankAchievements.Where(a => tanksInfo.Any(t => t.TankId == a.TankId)).ToList();
 			_log.Debug($"Filtered {accountTankAchievements.Count()} tank achievements by last session");
 
-			_dataAccessor.SaveAccountInfo(accountInfo);
-			_dataAccessor.SetLastSession(accountInfo.AccountId);
-            _dataAccessor.SaveAccountAchievements(accountAchievements);
-            _dataAccessor.SaveAccountTankAchievements(accountTankAchievements);
-            _dataAccessor.SaveTanksStatistic(tanksInfo);
+			_accountInfoDataAccessor.SaveAccountInfo(accountInfo);
+			_accountInfoDataAccessor.SetLastSession(accountInfo.AccountId);
+            _accountInfoDataAccessor.SaveAccountAchievements(accountAchievements);
+            _tanksStatisticsDataAccessor.SaveAccountTankAchievements(accountTankAchievements);
+            _tanksStatisticsDataAccessor.SaveTanksStatistic(tanksInfo);
             if (clanInfo != null && clanInfo.ClanId > 0)
             {
-                _dataAccessor.SaveClanInfo(clanInfo);
+                _accountInfoDataAccessor.SaveClanInfo(clanInfo);
             }
         }
 
 		private void CalculateStatistitcs(AccountInfoStatistics accountStat, List<AccountTankStatistics> tanksInfo)
 		{
-			var tankTires = _dataAccessor.GetVehicleTires();
+			var tankTires = _staticInfoDataAccessor.GetVehicleTires();
 
 			accountStat.AvgTier = accountStat.CalculateMiddleTier(tanksInfo, tankTires);
 			accountStat.Wn7 = accountStat.CalculateWn7();
