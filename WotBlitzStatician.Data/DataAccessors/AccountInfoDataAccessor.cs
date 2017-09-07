@@ -143,6 +143,8 @@
 				var accountInfo = context.AccountInfo
 					.Join(context.AccountInfoStatistics, a => a.AccountId, s => s.AccountId,
 						(a, s) => new { AccountInfo = a, Statistics = s })
+					.GroupJoin(context.AccountClanInfo, j1 => j1.AccountInfo.AccountId, c => c.AccountId,
+						(j1, c) => new {j1.AccountInfo, j1.Statistics, ClanInfo = c})
 					.Where(q => predicate(q.AccountInfo))
 					.OrderByDescending(q => q.Statistics.UpdatedAt)
 					.FirstOrDefault();
@@ -157,8 +159,11 @@
 
 				var account = accountInfo.AccountInfo;
 				account.AccountInfoStatistics = accountInfo.Statistics;
+				if (accountInfo.ClanInfo != null)
+				{
+					account.AccountClanInfo = accountInfo.ClanInfo.FirstOrDefault();
+				}
 
-				// ToDo: Clan info
 
 				/*	            var allAchievements = context
 		            .AccountInfoAchievment
