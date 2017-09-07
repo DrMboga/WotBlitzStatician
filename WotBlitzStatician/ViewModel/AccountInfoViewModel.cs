@@ -36,5 +36,7 @@
 
         [DisplayFormat(DataFormatString = "{0:N2}")] 
         public decimal AvgTier { get; set; }
+
+		public AccountClanInfoViewModel AccountClanInfo { get; set; }
 	}
 }
