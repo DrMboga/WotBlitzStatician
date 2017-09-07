@@ -3,7 +3,6 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Threading.Tasks;
-	using WotBlitzStatician.Data;
 	using WotBlitzStatician.WotApiClient;
 	using WotBlitzStatician.Model;
 	using System.Linq;

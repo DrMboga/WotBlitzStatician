@@ -8,10 +8,14 @@
 	public class AccountInfoController : Controller
     {
 	    private readonly IBlitzStaticianLogic _blitzStaticianLogic;
+        private readonly IBlitzStatitianDataAnalyser _dataAnalyser;
 
-	    public AccountInfoController(IBlitzStaticianLogic blitzStaticianLogic)
+	    public AccountInfoController(
+            IBlitzStaticianLogic blitzStaticianLogic,
+            IBlitzStatitianDataAnalyser dataAnalyser)
 	    {
 		    _blitzStaticianLogic = blitzStaticianLogic;
+            _dataAnalyser = dataAnalyser;
 	    }
 
 	    public async Task<IActionResult> Details([FromRoute(Name = "id")]long accountId)
@@ -22,6 +26,9 @@
             var viewModel = accountInfoMapper.Map(accountInfo);
 
 			_blitzStaticianLogic.SetLastLoggedAccount(accountId);
+
+            var delta = _dataAnalyser.GetAccountLastSessionDelta(accountId);
+            // ToDo: Create viewModel and mapper
 
 			return View(viewModel);
 		}

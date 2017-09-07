@@ -10,4 +10,7 @@
     <ProjectReference Include="..\WotBlitzStatician.Model\WotBlitzStatician.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dto\" />
+  </ItemGroup>
 </Project>

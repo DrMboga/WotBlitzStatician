@@ -30,6 +30,7 @@
 			containerBuilder.ConfigureWargamingApi();
 			containerBuilder.ConfigureDataAccessor(connectionString);
 			containerBuilder.RegisterType<BlitzStaticianLogic>().As<IBlitzStaticianLogic>();
+            containerBuilder.RegisterType<BlitzStatitianDataAnalyser>().As<IBlitzStatitianDataAnalyser>();
 		}
 	}
 }
