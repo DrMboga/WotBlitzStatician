@@ -44,5 +44,8 @@
 
 		[NotMapped]
 		public List<AccountInfoAchievment> AchievmentsMaxSeries { get; set; }
+
+		[NotMapped]
+		public AccountClanInfo AccountClanInfo { get; set; }
 	}
 }
