@@ -9,7 +9,7 @@ namespace WotBlitzStatician.Logic.Tests
 	using WotBlitzStatician.WotApiClient;
 	using WotBlitzStatician.Model;
 	using Xunit;
-	
+	/*
 	public class GetAccountUnitTests
 	{
 		private static readonly ILog _log = LogManager.GetLogger(typeof(GetAccountUnitTests));
@@ -110,4 +110,5 @@ namespace WotBlitzStatician.Logic.Tests
 			_log.Debug($"GetExistingAccountFirstTimeNotFound passed. Exception message: '{ex.Message}'");
 		}
 	}
+	*/
 }
