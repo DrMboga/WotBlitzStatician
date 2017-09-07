@@ -2,9 +2,13 @@
 @{
 	ViewData["NickName"] = Model.NickName;
 	ViewData["AccountId"] = Model.AccountId;
+	var clanInfo = Model.AccountClanInfo == null ? "" : $"В клане [{Model.AccountClanInfo.ClanTag}] '{Model.AccountClanInfo.ClanName}' c {Model.AccountClanInfo.JoinedAt}";
 }
 
-<h2>@Model.NickName []</h2>
+<h2>@Model.NickName</h2>
+<br/>
+<p>@clanInfo</p>
+<br/>
 <table class="table">
 	<tr>
 		<td>
