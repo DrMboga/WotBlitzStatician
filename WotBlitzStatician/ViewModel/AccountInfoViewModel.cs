@@ -29,14 +29,16 @@
         public Wn7Gradations Wn7Grade { get; set; }
 
 		[DisplayFormat(DataFormatString = "{0:N0}")]
-		public long AvgDamage { get; set; }
+		public decimal AvgDamage { get; set; }
 
 		[DisplayFormat(DataFormatString = "{0:N0}")]
-		public long AvgXp { get; set; }
+		public decimal AvgXp { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:N2}")] 
         public decimal AvgTier { get; set; }
 
 		public AccountClanInfoViewModel AccountClanInfo { get; set; }
+
+		public AccountInfoDeltaViewModel AccountInfoDelta { get; set; }
 	}
 }

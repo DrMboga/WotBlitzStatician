@@ -13,6 +13,7 @@
         [DisplayFormat(DataFormatString = "+{0:N0}")] 
         public long BattlesDelta { get; set; }
 
+        public DateTime PresentUpdatedAt { get; set; }
         public DateTime PastUpdatedAt { get; set; }
 
         [DisplayFormat(DataFormatString = "+{0}")] 
