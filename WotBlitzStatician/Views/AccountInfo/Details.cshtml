@@ -8,14 +8,18 @@
 <h2>@Model.NickName</h2>
 <br/>
 <p>@clanInfo</p>
+<p>Последний бой @Html.DisplayFor(m => m.LastBattleTime, null)</p>
 <br/>
 <table class="table">
 	<tr>
 		<td>
-			Последний бой
+			Статистика обновлена
 		</td>
 		<td>
-			@Html.DisplayFor(m => m.LastBattleTime, null)
+			@Html.DisplayFor(m => m.AccountInfoDelta.PresentUpdatedAt, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.UpdatedAtDelta, null)</small>
+		</td>
+		<td>
+			@Html.DisplayFor(m => m.AccountInfoDelta.PastUpdatedAt, null)
 		</td>
 	</tr>
 	<tr>
@@ -23,7 +27,10 @@
 			Боёв
 		</td>
 		<td>
-			@Html.DisplayFor(m => m.Battles, null)
+			@Html.DisplayFor(m => m.Battles, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.BattlesDelta, null)</small>
+</td>
+		<td>
+			@Html.DisplayFor(m => m.AccountInfoDelta.PastBattles, null)
 		</td>
 	</tr>
 	<tr>
@@ -31,18 +38,34 @@
 			Побед
 		</td>
 		<td>
-			@Html.DisplayFor(m => m.Wins, null) - 
-			<b id="winrate">@Html.DisplayFor(m => m.Winrate, null)% (@Html.DisplayFor(m => m.WinrateGrade, null))</b>
+			@Html.DisplayFor(m => m.Wins, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.WinsDelta, null) </small>
+</td>
+		<td>
+			@Html.DisplayFor(m => m.AccountInfoDelta.PastWins, null)
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Winrate
+		</td>
+		<td>
+			<b id="winrate">@Html.DisplayFor(m => m.Winrate, null)% (@Html.DisplayFor(m => m.WinrateGrade, null))</b> <small>@Html.DisplayFor(m => m.AccountInfoDelta.WinrateDelta, null) </small>
+		</td>
+		<td>
+			<b>@Html.DisplayFor(m => m.AccountInfoDelta.PastWinrate, null)%</b>
 		</td>
 	</tr>
 	<tr>
 		<td>
 			Wn7
 		</td>
-		<td id="wn7">
-			<b>
-				@Html.DisplayFor(m => m.Wn7, null) (@Html.DisplayFor(m => m.Wn7Grade, null))         
-			</b>
+		<td>
+			<b id="wn7">
+				@Html.DisplayFor(m => m.Wn7, null) (@Html.DisplayFor(m => m.Wn7Grade, null)) 
+			</b> <small>@Html.DisplayFor(m => m.AccountInfoDelta.Wn7Delta, null)</small>
+		</td>
+		<td>
+			@Html.DisplayFor(m => m.AccountInfoDelta.PastWn7, null)
 		</td>
 	</tr>
 	<tr>
@@ -50,7 +73,10 @@
 			Средний урон
 		</td>
 		<td>
-			@Html.DisplayFor(m => m.AvgDamage, null)
+			@Html.DisplayFor(m => m.AvgDamage, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.AvgDamageDelta, null) </small>
+</td>
+		<td>
+			@Html.DisplayFor(m => m.AccountInfoDelta.PastAvgDamage, null)
 		</td>
 	</tr>
 	<tr>
@@ -58,7 +84,10 @@
 			Средний опыт
 		</td>
 		<td>
-			@Html.DisplayFor(m => m.AvgXp, null)
+			@Html.DisplayFor(m => m.AvgXp, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.AvgXpDelta, null) </small>
+</td>
+		<td>
+			@Html.DisplayFor(m => m.AccountInfoDelta.PastAvgXp, null)
 		</td>
 	</tr>
 	<tr>
@@ -66,7 +95,10 @@
 			Танкоуровень
 		</td>
 		<td>
-			@Html.DisplayFor(m => m.AvgTier, null)
+			@Html.DisplayFor(m => m.AvgTier, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.AvgTierDelta, null) </small>
+</td>
+		<td>
+			@Html.DisplayFor(m => m.AccountInfoDelta.PastAvgTier, null)
 		</td>
 	</tr>
 </table>
