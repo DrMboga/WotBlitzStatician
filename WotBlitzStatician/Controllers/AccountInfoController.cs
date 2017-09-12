@@ -28,7 +28,8 @@
 			_blitzStaticianLogic.SetLastLoggedAccount(accountId);
 
             var delta = _dataAnalyser.GetAccountLastSessionDelta(accountId);
-            // ToDo: Create viewModel and mapper
+		    var deltaMapper = new AccountInfoDeltaMapper();
+		    viewModel.AccountInfoDelta = deltaMapper.Map(delta);
 
 			return View(viewModel);
 		}
