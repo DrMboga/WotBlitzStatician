@@ -27,9 +27,9 @@
 				        .ForMember(dest => dest.Wn7, op => op.MapFrom(s => s.AccountInfoStatistics.Wn7))
 				        .ForMember(dest => dest.Wn7Grade, op => op.MapFrom(s => s.AccountInfoStatistics.Wn7.GetWn7Grade()))
 				        .ForMember(dest => dest.AvgDamage, op => op
-					        .MapFrom(s => s.AccountInfoStatistics.DamageDealt / s.AccountInfoStatistics.Battles))
+					        .MapFrom(s => (decimal) s.AccountInfoStatistics.DamageDealt / s.AccountInfoStatistics.Battles))
 				        .ForMember(dest => dest.AvgXp, op => op
-					        .MapFrom(s => s.AccountInfoStatistics.Xp / s.AccountInfoStatistics.Battles))
+					        .MapFrom(s => (decimal) s.AccountInfoStatistics.Xp / s.AccountInfoStatistics.Battles))
 				        .ForMember(dest => dest.AvgTier, op => op.MapFrom(s => s.AccountInfoStatistics.AvgTier));
 					m.CreateMap<AccountClanInfo, AccountClanInfoViewModel>()
 						.ForMember(dest => dest.ClanId, op => op.MapFrom(s => s.ClanId))
