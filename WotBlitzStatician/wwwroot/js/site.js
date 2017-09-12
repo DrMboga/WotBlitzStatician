@@ -5,6 +5,8 @@ if (typeof winrateGrade !== 'undefined') {
 	ChangeWinrateStyle(winrateGrade);
 }
 
+ChangeDeltaStyle();
+
 function ChangeWn7Style(grade) {
 	var x = document.getElementById("wn7");
 	if (x == null) {
@@ -19,6 +21,19 @@ function ChangeWinrateStyle(grade) {
 		return;
 	}
 	x.style.color = GetColorByGrade(grade);
+}
+
+function ChangeDeltaStyle() {
+	var smallElements = document.getElementsByTagName("small");
+	for (var i = 0; i < smallElements.length; i++) {
+		var text = smallElements[i].innerText;
+		if (text.indexOf("+") === 0) {
+			smallElements[i].style.color = "Green";
+		}
+		if (text.indexOf("-") === 0) {
+			smallElements[i].style.color = "Red";
+		}
+	}
 }
 
 function GetColorByGrade(grade) {
