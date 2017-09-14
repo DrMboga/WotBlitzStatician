@@ -1,4 +1,15 @@
 ﻿@model WotBlitzStatician.ViewModel.TankDeltaViewModel
 @{
 }
-<p>@Model.Name</p>
+<table>
+	<tr>
+		<td rowspan="2" width="100" height="73" 
+			style="background-image: url(../../img/flags/@(Model.Nation).png); background-repeat: no-repeat; background-size: 100% 100%;">
+			<img src ="@Model.PreviewImageUrl" width="100%" height="100%"/>
+		</td>
+		<td>
+			<img  width="23" height="24" src="@Model.MarkOfMasteryImageUrl"/>
+		</td>
+		<td>@Model.Name</td>
+	</tr>
+</table>
