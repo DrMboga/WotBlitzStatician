@@ -9,6 +9,7 @@
 		DateTime GetStaticDataLastUpdateDate();
 		Dictionary<long, double> GetVehicleTires();
 
+		AchievementOption[] GetMarksOfMastery();
 
 		void SaveLanguagesDictionary(List<DictionaryLanguage> languages);
 

@@ -4,6 +4,7 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using log4net;
+	using Microsoft.EntityFrameworkCore;
 	using WotBlitzStatician.Model;
 
 	public class StaticInfoDataAccessor : IStaticInfoDataAccessor
@@ -33,6 +34,17 @@
 			using (var context = _blitzStaticianDataContextFactory.CreateContext())
 			{
 				return context.VehicleEncyclopedia.Select(v => new { v.TankId, v.Tier }).ToDictionary(k => k.TankId, v => (double)v.Tier);
+			}
+		}
+
+		public AchievementOption[] GetMarksOfMastery()
+		{
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
+			{
+				return context.AchievementOption
+					.Where(o => o.AchievementId == "markOfMastery")
+					.OrderBy(o => o.AcievementOptionId)
+					.ToArray();
 			}
 		}
 
@@ -82,7 +94,9 @@
 			using (var context = _blitzStaticianDataContextFactory.CreateContext())
 			{
 				context.Merge(context.Achievement, achievements);
-				context.Merge(context.AchievementOption, achievementOptions);
+				context.Database.ExecuteSqlCommand("DELETE FROM AchievementOption");
+				context.Database.ExecuteSqlCommand("VACUUM");
+				context.AchievementOption.AddRange(achievementOptions);
 				context.SaveChanges();
 			}
 		}

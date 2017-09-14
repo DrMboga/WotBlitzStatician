@@ -51,5 +51,47 @@
                               .ToList();
 			}
 		}
+
+	    public List<long> TankIdsForPeriod(long accountId, DateTime dateFrom)
+	    {
+			using (var context = _blitzStaticianDataContextFactory.CreateContext())
+			{
+				return context.AccountTankStatistics
+					.Where(t => t.AccountId == accountId && t.LastBattleTime >= dateFrom)
+					.Select(t => t.TankId)
+					.Distinct()
+					.ToList();
+			}
+		}
+
+	    public DateTime GetPrelastTankBattleTimeBeforePeriod(long accountId, long tankId, DateTime periodDateFrom)
+	    {
+		    using (var context = _blitzStaticianDataContextFactory.CreateContext())
+		    {
+			    return context.AccountTankStatistics
+				    .Where(t => t.AccountId == accountId & t.TankId == tankId & t.LastBattleTime < periodDateFrom)
+				    .OrderByDescending(o => o.LastBattleTime)
+				    .Select(s => s.LastBattleTime)
+				    .FirstOrDefault();
+		    }
+	    }
+
+	    public List<AccountTankStatistics> GeTankInfoForPeriod(long accountId, long tankId, DateTime dateFrom)
+	    {
+		    var tanks = new List<AccountTankStatistics>();
+		    using (var context = _blitzStaticianDataContextFactory.CreateContext())
+		    {
+			    var tanksJoined = context.AccountTankStatistics
+				    .Join(context.VehicleEncyclopedia, t => t.TankId, v => v.TankId, (t, v) => new {TankStat = t, VehicleInfo = v})
+					.Where(t => t.TankStat.AccountId == accountId & t.TankStat.TankId == tankId & t.TankStat.LastBattleTime >= dateFrom)
+				    .ToList();
+			    tanksJoined.ForEach(t =>
+			    {
+				    t.TankStat.VehicleInfo = t.VehicleInfo;
+					tanks.Add(t.TankStat);
+			    });
+			}
+		    return tanks;
+	    }
     }
 }
