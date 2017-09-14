@@ -29,6 +29,7 @@
 			containerBuilder.RegisterInstance(appsettings).As<IWgApiConfiguration>();
 			containerBuilder.ConfigureWargamingApi();
 			containerBuilder.ConfigureDataAccessor(connectionString);
+            containerBuilder.RegisterType<BlitzStaticianDictionary>().As<IBlitzStaticianDictionary>().SingleInstance();
 			containerBuilder.RegisterType<BlitzStaticianLogic>().As<IBlitzStaticianLogic>();
             containerBuilder.RegisterType<BlitzStatitianDataAnalyser>().As<IBlitzStatitianDataAnalyser>();
 		}
