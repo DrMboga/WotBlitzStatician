@@ -1,6 +1,7 @@
 ﻿namespace WotBlitzStatician.ViewModel
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using WotBlitzStatician.Model;
 
@@ -11,6 +12,8 @@
         public string NickName { get; set; }
 
         public DateTime LastBattleTime { get; set; }
+
+		public DateTime PreLastUpdatedDate { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public long Battles { get; set; }
@@ -40,5 +43,7 @@
 		public AccountClanInfoViewModel AccountClanInfo { get; set; }
 
 		public AccountInfoDeltaViewModel AccountInfoDelta { get; set; }
+
+		public List<long> LastSessionTanks { get; set; }
 	}
 }
