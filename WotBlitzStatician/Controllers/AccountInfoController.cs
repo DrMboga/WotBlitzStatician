@@ -1,5 +1,6 @@
 ﻿namespace WotBlitzStatician.Controllers
 {
+	using System.Linq;
 	using System.Threading.Tasks;
 	using Microsoft.AspNetCore.Mvc;
 	using WotBlitzStatician.Logic;
@@ -27,9 +28,13 @@
 
 			_blitzStaticianLogic.SetLastLoggedAccount(accountId);
 
-            var delta = _dataAnalyser.GetAccountLastSessionDelta(accountId);
+		    viewModel.PreLastUpdatedDate = _dataAnalyser.GetPrelastStatisticsUpdateDate(accountId);
+
+            var delta = _dataAnalyser.GetAccountDelta(accountId, viewModel.PreLastUpdatedDate);
 		    var deltaMapper = new AccountInfoDeltaMapper();
 		    viewModel.AccountInfoDelta = deltaMapper.Map(delta);
+
+		    viewModel.LastSessionTanks = _dataAnalyser.GetTankIdsByLastSession(accountId, viewModel.PreLastUpdatedDate);
 
 			return View(viewModel);
 		}
