@@ -10,6 +10,7 @@
 		public long AccountId { get; set; }
 		public string Name { get; set; }
 		public long Tier { get; set; }
+        public string RomanTier { get; set; }
 		public string Nation { get; set; }
 		public string Type { get; set; }
 		public bool IsPremium { get; set; }

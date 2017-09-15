@@ -1,6 +1,7 @@
 ﻿namespace WotBlitzStatician.Mappers
 {
-	using AutoMapper;
+    using System;
+    using AutoMapper;
 	using WotBlitzStatician.Logic.Dto;
 	using WotBlitzStatician.ViewModel;
 
@@ -16,6 +17,7 @@
 					.ForMember(dest => dest.AccountId, op => op.MapFrom(s => s.AccountId))
 					.ForMember(dest => dest.Name, op => op.MapFrom(s => s.Name))
 					.ForMember(dest => dest.Tier, op => op.MapFrom(s => s.Tier))
+                    .ForMember(dest => dest.RomanTier, op => op.MapFrom(s => Convert.ToInt32(s.Tier).ToRomanNumeral()))
 					.ForMember(dest => dest.Nation, op => op.MapFrom(s => s.Nation))
 					.ForMember(dest => dest.Type, op => op.MapFrom(s => s.Type))
 					.ForMember(dest => dest.IsPremium, op => op.MapFrom(s => s.IsPremium))
