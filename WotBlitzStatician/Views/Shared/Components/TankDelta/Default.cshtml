@@ -3,7 +3,7 @@
 }
 <table>
 	<tr>
-		<td rowspan="2" width="124" height="73" 
+		<td rowspan="4" width="124" height="73" 
 			style="background-image: url(../../img/flags/@(Model.Nation).png); background-repeat: no-repeat; background-size: 100% 100%;">
             <table>
 				<tr>
@@ -30,9 +30,25 @@
         <td>
             <img src = "../../img/tank-type@(Model.IsPremium ? "-prem" : "")/@(Model.Type).png" width="24" height="24"/>
         </td>
-		<td>@Html.DisplayFor(m => m.Name, null)</td>
-		<td style="padding-left: 10px">@Html.DisplayFor(m => m.PresentLastBattle, null) <small>@Html.DisplayFor(m => m.LastBattleDelta, null)</small></td>
+		<td> <b>@Html.DisplayFor(m => m.Name, null)</b></td>
 	</tr>
 	<tr>
+		<td colspan = 3>
+		Боёв: @Html.DisplayFor(m => m.PresentBattles, null) <small>@Html.DisplayFor(m => m.BattlesDelta, null)</small> 
+		Побед: <b style="color: @(Model.WinrateGrade.GetColorByGrade())">@Html.DisplayFor(m => m.PresentWinrate, null)</b> <small>@Html.DisplayFor(m => m.WinrateDelta, null)</small>
+        Wn7: <b style="color: @(Model.Wn7Grade.GetColorByGrade())">@Html.DisplayFor(m => m.PresentWn7, null)</b> <small>@Html.DisplayFor(m => m.Wn7Delta, null)</small>
+		</td>
+	</tr>
+	<tr>
+        <td colspan = 3>
+        Ср. урон: @Html.DisplayFor(m => m.PresentAvgDamage, null) <small>@Html.DisplayFor(m => m.AvgDamageDelta, null)</small> 
+        Ср. опыт: @Html.DisplayFor(m => m.PresentAvgXp, null) <small>@Html.DisplayFor(m => m.AvgXpDelta, null)</small> 
+        </td>
+	</tr>
+	<tr>
+		<td colspan = 3>
+			Последний бой: @Html.DisplayFor(m => m.PresentLastBattle, null) <small>@Html.DisplayFor(m => m.LastBattleDelta, null)</small>
+		</td>
 	</tr>
 </table>
+

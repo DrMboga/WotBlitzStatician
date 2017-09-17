@@ -20,7 +20,7 @@
 		public string MarkOfMasteryImageUrl { get; set; }
 
 		[DisplayFormat(DataFormatString = "{0:N0}")]
-		public long PastBattles { get; set; }
+		public long PresentBattles { get; set; }
 
 		[DisplayFormat(DataFormatString = "+{0:N0}")]
 		public long BattlesDelta { get; set; }
@@ -32,33 +32,37 @@
 		public TimeSpan LastBattleDelta { get; set; }
 
 		[DisplayFormat(DataFormatString = "{0:N0}")]
-		public long PastWins { get; set; }
+		public long PresentWins { get; set; }
 
 		[DisplayFormat(DataFormatString = "+{0:N0}")]
 		public long WinsDelta { get; set; }
 
-		[DisplayFormat(DataFormatString = "{0:N2}")]
-		public decimal PastWinrate { get; set; }
+		[DisplayFormat(DataFormatString = "{0:N2}%")]
+		public decimal PresentWinrate { get; set; }
 
 		public string WinrateDelta { get; set; }
 
+        public WinrateGradations WinrateGrade { get; set; }
+
 		[DisplayFormat(DataFormatString = "{0:N0}")]
-		public decimal PastAvgDamage { get; set; }
+		public decimal PresentAvgDamage { get; set; }
 
 		public string AvgDamageDelta { get; set; }
 
 		[DisplayFormat(DataFormatString = "{0:N0}")]
-		public decimal PastAvgXp { get; set; }
+		public decimal PresentAvgXp { get; set; }
 
 		public string AvgXpDelta { get; set; }
 
 		[DisplayFormat(DataFormatString = "{0:N0}")]
-		public decimal PastWn7 { get; set; }
+		public decimal PresentWn7 { get; set; }
 
 		public string Wn7Delta { get; set; }
 
+        public Wn7Gradations Wn7Grade { get; set; }
+
 		[DisplayFormat(DataFormatString = "{0:N0}")]
-		public decimal PastEffectivity { get; set; }
+		public decimal PresentEffectivity { get; set; }
 
 		public string EffectivityDelta { get; set; }
 	}

@@ -52,7 +52,9 @@
 						Winrate
 					</td>
 					<td>
-						<b id="winrate">@Html.DisplayFor(m => m.Winrate, null)% (@Html.DisplayFor(m => m.WinrateGrade, null))</b> <small>@Html.DisplayFor(m => m.AccountInfoDelta.WinrateDelta, null) </small>
+						<b style="color: @(Model.WinrateGrade.GetColorByGrade())">
+						@Html.DisplayFor(m => m.Winrate, null)% (@Html.DisplayFor(m => m.WinrateGrade, null))
+						</b> <small>@Html.DisplayFor(m => m.AccountInfoDelta.WinrateDelta, null) </small>
 					</td>
 					<td>
 						<b>@Html.DisplayFor(m => m.AccountInfoDelta.PastWinrate, null)%</b>
@@ -63,7 +65,7 @@
 						Wn7
 					</td>
 					<td>
-						<b id="wn7">
+						<b style="color: @(Model.Wn7Grade.GetColorByGrade())">
 							@Html.DisplayFor(m => m.Wn7, null) (@Html.DisplayFor(m => m.Wn7Grade, null))
 						</b> <small>@Html.DisplayFor(m => m.AccountInfoDelta.Wn7Delta, null)</small>
 					</td>
@@ -118,7 +120,3 @@
 		</td>
 	</tr>
 </table>
-	<script>
-	var wn7Grade = "@Model.Wn7Grade.ToString()";
-	var winrateGrade = "@Model.WinrateGrade.ToString()";
-		</script>
