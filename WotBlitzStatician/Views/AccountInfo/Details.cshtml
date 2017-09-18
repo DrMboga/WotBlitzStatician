@@ -55,6 +55,7 @@
 						<b style="color: @(Model.WinrateGrade.GetColorByGrade())">
 						@Html.DisplayFor(m => m.Winrate, null)% (@Html.DisplayFor(m => m.WinrateGrade, null))
 						</b> <small>@Html.DisplayFor(m => m.AccountInfoDelta.WinrateDelta, null) </small>
+						- @Html.DisplayFor(m => m.AccountInfoDelta.IntervalWinrate, null)%
 					</td>
 					<td>
 						<b>@Html.DisplayFor(m => m.AccountInfoDelta.PastWinrate, null)%</b>
@@ -79,6 +80,7 @@
 					</td>
 					<td>
 						@Html.DisplayFor(m => m.AvgDamage, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.AvgDamageDelta, null) </small>
+						- @Html.DisplayFor(m => m.AccountInfoDelta.IntervalAvgDamage, null)
 					</td>
 					<td>
 						@Html.DisplayFor(m => m.AccountInfoDelta.PastAvgDamage, null)
@@ -90,6 +92,7 @@
 					</td>
 					<td>
 						@Html.DisplayFor(m => m.AvgXp, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.AvgXpDelta, null) </small>
+						- @Html.DisplayFor(m => m.AccountInfoDelta.IntervalAvgXp, null)
 					</td>
 					<td>
 						@Html.DisplayFor(m => m.AccountInfoDelta.PastAvgXp, null)
