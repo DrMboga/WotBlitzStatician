@@ -55,5 +55,11 @@
 
 		public string EffectivityDelta { get; set; }
 
+	    [DisplayFormat(DataFormatString = "{0:N2}")]
+	    public decimal IntervalWinrate { get; set; }
+	    [DisplayFormat(DataFormatString = "{0:N0}")]
+	    public decimal IntervalAvgDamage { get; set; }
+	    [DisplayFormat(DataFormatString = "{0:N0}")]
+	    public decimal IntervalAvgXp { get; set; }
 	}
 }
