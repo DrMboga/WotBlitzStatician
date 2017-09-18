@@ -64,6 +64,10 @@
             delta.AvgTier = new ValueDelta<decimal, decimal>((decimal)max.AvgTier, (decimal)min.AvgTier, (decimal)Math.Abs(max.AvgTier - min.AvgTier), min.AvgTier > max.AvgTier);
             delta.Effectivity = new ValueDelta<decimal, decimal>((decimal)max.Effectivity, (decimal)min.Effectivity, (decimal)Math.Abs(max.Effectivity - min.Effectivity), min.Effectivity > max.Effectivity);
 
+	        delta.IntervalWinrate = 100 * Convert.ToDecimal(delta.Wins.Delta) / delta.Battles.Delta;
+	        delta.IntervalAvgDamage = Math.Abs(Convert.ToDecimal(max.DamageDealt) - Convert.ToDecimal(min.DamageDealt)) / delta.Battles.Delta;
+	        delta.IntervalAvgXp = Math.Abs(Convert.ToDecimal(max.Xp) - Convert.ToDecimal(min.Xp)) / delta.Battles.Delta;
+
 			return delta;
         }
 
@@ -99,6 +103,10 @@
 		    delta.AvgXp = new ValueDelta<decimal, decimal>(avgXpMax, avgXpMin, Math.Abs(avgXpMax - avgXpMin), avgXpMin > avgXpMax);
 		    delta.Wn7 = new ValueDelta<decimal, decimal>((decimal)max.Wn7, (decimal)min.Wn7, (decimal)Math.Abs(max.Wn7 - min.Wn7), min.Wn7 > max.Wn7);
 		    delta.Effectivity = new ValueDelta<decimal, decimal>((decimal)max.Effectivity, (decimal)min.Effectivity, (decimal)Math.Abs(max.Effectivity - min.Effectivity), min.Effectivity > max.Effectivity);
+
+		    delta.IntervalWinrate = 100 * Convert.ToDecimal(delta.Wins.Delta) / delta.Battles.Delta;
+		    delta.IntervalAvgDamage = Math.Abs(Convert.ToDecimal(max.DamageDealt) - Convert.ToDecimal(min.DamageDealt)) / delta.Battles.Delta;
+		    delta.IntervalAvgXp = Math.Abs(Convert.ToDecimal(max.Xp) - Convert.ToDecimal(min.Xp)) / delta.Battles.Delta;
 
 			return delta;
 	    }
