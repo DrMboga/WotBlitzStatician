@@ -14,5 +14,12 @@ namespace WotBlitzStatician.Logic.Dto
 		public ValueDelta<decimal, decimal> AvgTier { get; set; }
         public ValueDelta<decimal, decimal> Effectivity { get; set; }
 
+	    public decimal IntervalWinrate { get; set; }
+	    public decimal IntervalAvgDamage { get; set; }
+	    public decimal IntervalAvgXp { get; set; }
+	    public decimal IntervalAvgTier { get; set; }
+	    public decimal IntervalWn7 { get; set; }
+	    public decimal IntervalEffectivity { get; set; }
+
 	}
 }
