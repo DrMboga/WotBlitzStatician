@@ -37,7 +37,11 @@
 				        op => op.ResolveUsing(s => $"{(s.AvgTier.IsNegative ? "-" : "+")}{s.AvgTier.Delta:N2}"))
 			        .ForMember(dest => dest.PastEffectivity, op => op.MapFrom(s => s.Effectivity.PastValue))
 			        .ForMember(dest => dest.EffectivityDelta,
-				        op => op.ResolveUsing(s => $"{(s.Effectivity.IsNegative ? "-" : "+")}{s.Effectivity.Delta:N2}"))));
+				        op => op.ResolveUsing(s => $"{(s.Effectivity.IsNegative ? "-" : "+")}{s.Effectivity.Delta:N2}"))
+			        .ForMember(dest => dest.IntervalWinrate, op => op.MapFrom(s => s.IntervalWinrate))
+			        .ForMember(dest => dest.IntervalAvgDamage, op => op.MapFrom(s => s.IntervalAvgDamage))
+			        .ForMember(dest => dest.IntervalAvgXp, op => op.MapFrom(s => s.IntervalAvgXp))
+						));
 
         }
 
