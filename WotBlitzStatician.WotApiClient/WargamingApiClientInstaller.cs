@@ -1,19 +1,42 @@
 ﻿namespace WotBlitzStatician.WotApiClient
 {
+	using System.Collections.Generic;
 	using Autofac;
+	using WotBlitzStatician.Model;
+	using WotBlitzStatician.Model.MapperLogic;
+	using WotBlitzStatician.WotApiClient.InternalModel;
+	using WotBlitzStatician.WotApiClient.Mappers;
 	using WotBlitzStatician.WotApiClient.RequestStringBuilder;
 
 	public static class WargamingApiClientInstaller
 	{
 		public static void ConfigureWargamingApi(this ContainerBuilder containerBuilder)
 		{
-			// ToDo: register the parameters factory and inject it into RequestBuilder
+			containerBuilder.ConfigureMappers();
 
 			containerBuilder.RegisterType<RequestBuilder>().As<IRequestBuilder>();
 			// Manually calling the internal constructor
-			containerBuilder.Register(c => new WargamingApiClient(c.Resolve<IRequestBuilder>(), c.Resolve<IWgApiConfiguration>().ProxySettings))
+			containerBuilder.Register(c => new WargamingApiClient(c.Resolve<IRequestBuilder>(), c.Resolve<IWgApiConfiguration>().ProxySettings, c.Resolve<IMapperHelper>()))
 				.As<IWargamingApiClient>();
 
+		}
+
+		private static void ConfigureMappers(this ContainerBuilder containerBuilder)
+		{
+			containerBuilder.RegisterType<AccountInfoMapper>().As<IMapper<WotAccountInfoResponse, AccountInfo>>();
+			containerBuilder.RegisterType<AccountInfoStatisticsMapper>().As<IMapper<WotAccountInfoResponse, AccountInfoStatistics>>();
+			containerBuilder.RegisterType<AccounutFindResponseMapper>().As<IMapper<List<WotAccountListResponse>, List<AccountInfo>>>();
+			containerBuilder.RegisterType<ClanAccountInfoMapper>().As<IMapper<WotClansAccountinfoResponse, AccountClanInfo>>();
+			containerBuilder.RegisterType<ClanInfoResponseMapper>().As<IMapper<WotClanInfoResponse, AccountClanInfo>>();
+			containerBuilder.RegisterType<DictionaryAchievementOptionMapper>().As<IMapper<WotEncyclopediaAchievementsOptions, AchievementOption>>();
+			containerBuilder.RegisterType<DictionaryAchievementsMapper>().As<IMapper<WotEncyclopediaAchievementsResponse, Achievement>>();
+			containerBuilder.RegisterType<DictionaryLanguageMapper>().As<IMapper<Dictionary<string, string>, List<DictionaryLanguage>>>();
+			containerBuilder.RegisterType<DictionaryNationMapper>().As<IMapper<Dictionary<string, string>, List<DictionaryNations>>>();
+			containerBuilder.RegisterType<DictionaryVehicleTypeMapper>().As<IMapper<Dictionary<string, string>, List<DictionaryVehicleType>>>();
+			containerBuilder.RegisterType<TankopediaMapper>().As<IMapper<List<WotEncyclopediaVehiclesResponse>, List<VehicleEncyclopedia>>>();
+			containerBuilder.RegisterType<TanksStatMapper>().As<IMapper<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>>();
+
+			containerBuilder.RegisterType<MapperHelper>().As<IMapperHelper>();
 		}
 
 	}

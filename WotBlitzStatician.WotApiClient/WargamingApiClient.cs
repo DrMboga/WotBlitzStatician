@@ -5,9 +5,9 @@
     using System.Linq;
     using System.Threading.Tasks;
     using WotBlitzStatician.Model;
+    using WotBlitzStatician.Model.MapperLogic;
     using WotBlitzStatician.WotApiClient.DTO;
     using WotBlitzStatician.WotApiClient.InternalModel;
-    using WotBlitzStatician.WotApiClient.Mappers;
     using WotBlitzStatician.WotApiClient.RequestStringBuilder;
 
 
@@ -15,11 +15,13 @@
 	{
 		private readonly IRequestBuilder _requestBuilder;
 		private readonly IProxySettings _proxySettings;
+		private readonly IMapperHelper _mapper;
 
-		internal WargamingApiClient(IRequestBuilder requestBuilder, IProxySettings proxySettings)
+		internal WargamingApiClient(IRequestBuilder requestBuilder, IProxySettings proxySettings, IMapperHelper mapper)
 		{
 			_requestBuilder = requestBuilder;
 			_proxySettings = proxySettings;
+			_mapper = mapper;
 		}
 
 		public async Task<List<VehicleEncyclopedia>> GetWotEncyclopediaVehiclesAsync()
@@ -33,8 +35,7 @@
 			allVehicles.AddMarkI();
 			allVehicles.AddHetzerKame();
 
-			var mapper = new TankopediaMapper();
-			return allVehicles.Select(t => mapper.Map(t)).ToList();
+			return _mapper.Map<List<WotEncyclopediaVehiclesResponse>, List<VehicleEncyclopedia>>(allVehicles);
 		}
 
 		public async Task<List<AccountInfo>> FindAccountAsync(string nickName)
@@ -44,8 +45,7 @@
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(RequestType.AccountList, new RequestParameter{ParameterType = ParameterType.Search, ParameterValue = nickName }));
 
-			var accountFindResponseMapper = new AccounutFindResponseMapper();
-			return accountListResponse.Select(a => accountFindResponseMapper.Map(a)).ToList();
+			return _mapper.Map<List<WotAccountListResponse>, List<AccountInfo>>(accountListResponse);
 		}
 
 		public async Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId)
@@ -57,12 +57,10 @@
 				_requestBuilder.BuildRequestUrl(RequestType.AccountInfo, new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() }));
 
 			var accountInfoResponse = accountInfo[accountId.ToString()];
-			var accountInfoMapper = new AccountInfoMapper();
 
-			var accountInfoMapped = accountInfoMapper.Map(accountInfoResponse);
+			var accountInfoMapped = _mapper.Map<WotAccountInfoResponse, AccountInfo>(accountInfoResponse);
 
-			var accountInfoStatMapper = new AccountInfoStatisticsMapper();
-			accountInfoMapped.AccountInfoStatistics = accountInfoStatMapper.Map(accountInfoResponse);
+			accountInfoMapped.AccountInfoStatistics = _mapper.Map<WotAccountInfoResponse, AccountInfoStatistics>(accountInfoResponse);
 			// ToDo: Map PrivateInfo
 
 			return accountInfoMapped;
@@ -76,8 +74,7 @@
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(RequestType.TanksStat, new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() }));
 
-			var mapper = new TanksStatMapper();
-			return tanksStat[accountId.ToString()].Select(s => mapper.Map(s)).ToList();
+			return _mapper.Map<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>(tanksStat[accountId.ToString()]);
 		}
 		
 		public async Task<WotEncyclopediaInfo> GetStaticDictionariesAsync()
@@ -90,26 +87,9 @@
 			var responseInfo = new WotEncyclopediaInfo();
 			if (encyclopedia?.Languages == null) return responseInfo;
 
-			var languageMapper = new DictionaryLanguageMapper();
-            responseInfo.DictionaryLanguages = new List<DictionaryLanguage>();
-            foreach (var lan in encyclopedia.Languages)
-            {
-                responseInfo.DictionaryLanguages.Add(languageMapper.Map(lan));
-            }
-
-            var nationMapper = new DictionaryNationMapper();
-            responseInfo.DictionaryNationses = new List<DictionaryNations>();
-            foreach (var nation in encyclopedia.VehicleNations)
-            {
-                responseInfo.DictionaryNationses.Add(nationMapper.Map(nation));
-            }
-
-            var vehicleTypesMapper = new DictionaryVehicleTypeMapper();
-            responseInfo.DictionaryVehicleTypes = new List<DictionaryVehicleType>();
-            foreach (var vt in encyclopedia.VehicleTypes)
-            {
-                responseInfo.DictionaryVehicleTypes.Add(vehicleTypesMapper.Map(vt));
-            }
+			responseInfo.DictionaryLanguages = _mapper.Map<Dictionary<string, string>, List<DictionaryLanguage>>(encyclopedia.Languages);
+			responseInfo.DictionaryNationses = _mapper.Map<Dictionary<string, string>, List<DictionaryNations>>(encyclopedia.VehicleNations);
+			responseInfo.DictionaryVehicleTypes = _mapper.Map<Dictionary<string, string>, List<DictionaryVehicleType>>(encyclopedia.VehicleTypes);
 
             return responseInfo;
 		}
@@ -127,8 +107,7 @@
             if (playerAccountInfo == null)
                 return null;
 
-            var clanAccountInfoMapper = new ClanAccountInfoMapper();
-            var accountClanInfo = clanAccountInfoMapper.Map(playerAccountInfo);
+            var accountClanInfo = _mapper.Map<WotClansAccountinfoResponse, AccountClanInfo>(playerAccountInfo);
 
             if (!playerAccountInfo.ClanId.HasValue)
                 return accountClanInfo;
@@ -142,8 +121,7 @@
                     new RequestParameter { ParameterType = ParameterType.ClanId, ParameterValue = clanId }));
 
             var clanInfo = clanInfoResponse[clanId];
-            var clanInfoMapper = new ClanInfoResponseMapper();
-            clanInfoMapper.Map(clanInfo, accountClanInfo);
+            _mapper.Map(clanInfo, accountClanInfo);
 
             return accountClanInfo;
         }
@@ -159,15 +137,13 @@
 
 		foreach (var achievementsresponseValue in acievementsresponse.Values)
 		{
-			var achievementMapper = new DictionaryAchievementsMapper();
-			var achievement = achievementMapper.Map(achievementsresponseValue);
+			var achievement = _mapper.Map<WotEncyclopediaAchievementsResponse, Achievement>(achievementsresponseValue);
 			if (achievementsresponseValue.Options != null && achievementsresponseValue.Options.Length > 0)
 			{
 				achievement.Options = new List<AchievementOption>();
-				var achievementOptionMapper = new DictionaryAchievementOptionMapper();
 				foreach (var wotEncyclopediaAchievementsOption in achievementsresponseValue.Options)
 				{
-					var option = achievementOptionMapper.Map(wotEncyclopediaAchievementsOption);
+					var option = _mapper.Map<WotEncyclopediaAchievementsOptions, AchievementOption>(wotEncyclopediaAchievementsOption);
 					option.AchievementId = achievement.AchievementId;
 					achievement.Options.Add(option);
 				}
