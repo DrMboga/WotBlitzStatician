@@ -1,8 +1,9 @@
 ﻿namespace WotBlitzStatician.WotApiClient.Mappers
 {
-    using System;
-    using AutoMapper;
-    using WotBlitzStatician.Model;
+	using AutoMapper;
+    using AutoMapper.Configuration.Conventions;
+	using WotBlitzStatician.Model;
+    using WotBlitzStatician.Model.MapperLogic;
     using WotBlitzStatician.WotApiClient.InternalModel;
 
     internal class ClanInfoResponseMapper : IMapper<WotClanInfoResponse, AccountClanInfo>
@@ -11,16 +12,13 @@
 
 		public ClanInfoResponseMapper()
         {
-			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotClanInfoResponse, AccountClanInfo>()
-							  .ForMember(dest => dest.ClanDescription, op => op.MapFrom(s => s.Description))
-                              .ForMember(dest => dest.ClanCreatedAt, op => op.MapFrom(s => s.CreatedAt))
-                              .ForMember(dest => dest.ClanId, op => op.MapFrom(s => s.ClanId))
-                              .ForMember(dest => dest.ClanLeaderName, op => op.MapFrom(s => s.LeaderName))
-                              .ForMember(dest => dest.ClanMotto, op => op.MapFrom(s => s.Motto))
-                              .ForMember(dest => dest.ClanName, op => op.MapFrom(s => s.Name))
-                              .ForMember(dest => dest.ClanTag, op => op.MapFrom(s => s.Tag))
-                              .ForMember(dest => dest.MembersCount, op => op.MapFrom(s => s.MembersCount))
-                                                        ));
+			_mapper = new Mapper(new MapperConfiguration(m =>
+				{
+					m.CreateMap<WotClanInfoResponse, AccountClanInfo>();
+					m.AddMemberConfiguration()
+						.AddName<PrePostfixName>(p => p.AddStrings(n => n.DestinationPrefixes, "Clan")); // Maps fields like s.Description to dest.ClanDescription
+				}
+			));
 
 		}
 

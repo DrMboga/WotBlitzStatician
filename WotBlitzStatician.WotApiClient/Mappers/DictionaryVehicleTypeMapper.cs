@@ -4,8 +4,9 @@
     using System.Collections.Generic;
     using AutoMapper;
     using WotBlitzStatician.Model;
+    using WotBlitzStatician.Model.MapperLogic;
 
-    internal class DictionaryVehicleTypeMapper : IMapper<KeyValuePair<string, string>, DictionaryVehicleType>
+	internal class DictionaryVehicleTypeMapper : IMapper<Dictionary<string, string>, List<DictionaryVehicleType>>
     {
 		private readonly IMapper _mapper;
 
@@ -13,15 +14,15 @@
         {
 			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<KeyValuePair<string, string>, DictionaryVehicleType>()
                               .ForMember(dest => dest.VehicleTypeId, op => op.MapFrom(s => s.Key))
-                                                         .ForMember(dest => dest.VehicleTypeName, op => op.MapFrom(svm => svm.Value))));
+                              .ForMember(dest => dest.VehicleTypeName, op => op.MapFrom(svm => svm.Value))));
         }
 
-        public DictionaryVehicleType Map(KeyValuePair<string, string> source)
+        public List<DictionaryVehicleType> Map(Dictionary<string, string> source)
         {
-            return _mapper.Map<KeyValuePair<string, string>, DictionaryVehicleType>(source);
+            return _mapper.Map<Dictionary<string, string>, List<DictionaryVehicleType>>(source);
         }
 
-        public DictionaryVehicleType Map(KeyValuePair<string, string> source, DictionaryVehicleType destination)
+        public List<DictionaryVehicleType> Map(Dictionary<string, string> source, List<DictionaryVehicleType> destination)
         {
             return _mapper.Map(source, destination);
         }

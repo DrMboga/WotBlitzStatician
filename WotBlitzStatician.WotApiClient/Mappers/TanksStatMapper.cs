@@ -1,20 +1,18 @@
 ﻿namespace WotBlitzStatician.WotApiClient.Mappers
 {
+	using System.Collections.Generic;
 	using AutoMapper;
 	using WotBlitzStatician.Model;
+	using WotBlitzStatician.Model.MapperLogic;
 	using WotBlitzStatician.WotApiClient.InternalModel;
 
-	internal class TanksStatMapper : IMapper<WotAccountTanksStatResponse, AccountTankStatistics>
+	internal class TanksStatMapper : IMapper<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>
 	{
 		private readonly IMapper _mapper;
 
 		public TanksStatMapper()
 		{
 			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotAccountTanksStatResponse, AccountTankStatistics>()
-				.ForMember(dest => dest.TankId, op => op.MapFrom(s => s.TankId))
-				.ForMember(dest => dest.BattleLifeTime, op => op.MapFrom(s => s.BattleLifeTime))
-				.ForMember(dest => dest.LastBattleTime, op => op.MapFrom(s => s.LastBattleTime))
-				.ForMember(dest => dest.MarkOfMastery, op => op.MapFrom(s => (int)s.MarkOfMastery))
 				.ForMember(dest => dest.Battles, op => op.MapFrom(s => s.All.Battles))
 				.ForMember(dest => dest.CapturePoints, op => op.MapFrom(s => s.All.CapturePoints))
 				.ForMember(dest => dest.DamageDealt, op => op.MapFrom(s => s.All.DamageDealt))
@@ -35,12 +33,12 @@
                                                         ));
 		}
 
-		public AccountTankStatistics Map(WotAccountTanksStatResponse source)
+		public List<AccountTankStatistics> Map(List<WotAccountTanksStatResponse> source)
 		{
-			return _mapper.Map<WotAccountTanksStatResponse, AccountTankStatistics>(source);
+			return _mapper.Map<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>(source);
 		}
 
-		public AccountTankStatistics Map(WotAccountTanksStatResponse source, AccountTankStatistics destination)
+		public List<AccountTankStatistics> Map(List<WotAccountTanksStatResponse> source, List<AccountTankStatistics> destination)
 		{
 			return _mapper.Map(source, destination);
 		}

@@ -2,6 +2,7 @@
 {
     using AutoMapper;
     using WotBlitzStatician.Model;
+    using WotBlitzStatician.Model.MapperLogic;
     using WotBlitzStatician.WotApiClient.InternalModel;
 
     internal class ClanAccountInfoMapper : IMapper<WotClansAccountinfoResponse, AccountClanInfo>
@@ -11,7 +12,6 @@
 		public ClanAccountInfoMapper()
         {
             _mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotClansAccountinfoResponse, AccountClanInfo>()
-                              .ForMember(dest => dest.AccountId, op => op.MapFrom(s => s.AccountId))
                               .ForMember(dest => dest.PlayerJoinedAt, op => op.MapFrom(s => s.JoinedAt))
                               .ForMember(dest => dest.PlayerRole, op => op.MapFrom(svm => svm.Role))
                                                         ));

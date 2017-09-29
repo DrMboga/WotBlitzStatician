@@ -2,6 +2,7 @@
 {
 	using AutoMapper;
 	using WotBlitzStatician.Model;
+	using WotBlitzStatician.Model.MapperLogic;
 	using WotBlitzStatician.WotApiClient.InternalModel;
 
 	internal class AccountInfoMapper : IMapper<WotAccountInfoResponse, AccountInfo>
@@ -11,11 +12,7 @@
 		public AccountInfoMapper()
 		{
             _mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotAccountInfoResponse, AccountInfo>()
-               .ForMember(dest => dest.AccountId, op => op.MapFrom(s => s.AccountId))
-               .ForMember(dest => dest.AccountCreatedAt, op => op.MapFrom(s => s.CreatedAt))
-               .ForMember(dest => dest.NickName, op => op.MapFrom(s => s.Nickname))
-               .ForMember(dest => dest.LastBattleTime, op => op.MapFrom(s => s.LastBattleTime))
-                                                         ));
+               .ForMember(dest => dest.AccountCreatedAt, op => op.MapFrom(s => s.CreatedAt))));
 		}
 
 		public AccountInfo Map(WotAccountInfoResponse source)

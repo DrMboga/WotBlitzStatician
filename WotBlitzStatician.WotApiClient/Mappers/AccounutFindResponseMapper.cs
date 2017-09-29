@@ -1,28 +1,27 @@
 ﻿namespace WotBlitzStatician.WotApiClient.Mappers
 {
+	using System.Collections.Generic;
 	using AutoMapper;
 	using WotBlitzStatician.Model;
+	using WotBlitzStatician.Model.MapperLogic;
 	using WotBlitzStatician.WotApiClient.InternalModel;
 
-	internal class AccounutFindResponseMapper : IMapper<WotAccountListResponse, AccountInfo>
+	internal class AccounutFindResponseMapper : IMapper<List<WotAccountListResponse>, List<AccountInfo>>
 	{
 		private readonly IMapper _mapper;
 
 		public AccounutFindResponseMapper()
 		{
-			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotAccountListResponse, AccountInfo>()
-				.ForMember(dest => dest.AccountId, op => op.MapFrom(s => s.AccountId))
-				.ForMember(dest => dest.NickName, op => op.MapFrom(s => s.Nickname))
-                                                        ));
+			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotAccountListResponse, AccountInfo>()));
 
 		}
 
-		public AccountInfo Map(WotAccountListResponse source)
+		public List<AccountInfo> Map(List<WotAccountListResponse> source)
 		{
-			return _mapper.Map<WotAccountListResponse, AccountInfo>(source);
+			return _mapper.Map<List<WotAccountListResponse>, List<AccountInfo>>(source);
 		}
 
-		public AccountInfo Map(WotAccountListResponse source, AccountInfo destination)
+		public List<AccountInfo> Map(List<WotAccountListResponse> source, List<AccountInfo> destination)
 		{
 			return _mapper.Map(source, destination);
 		}

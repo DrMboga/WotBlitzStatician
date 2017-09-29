@@ -3,8 +3,9 @@
     using System.Collections.Generic;
     using AutoMapper;
     using WotBlitzStatician.Model;
+    using WotBlitzStatician.Model.MapperLogic;
 
-    internal class DictionaryNationMapper : IMapper<KeyValuePair<string, string>, DictionaryNations>
+	internal class DictionaryNationMapper : IMapper<Dictionary<string, string>, List<DictionaryNations>>
     {
 		private readonly IMapper _mapper;
 
@@ -16,12 +17,12 @@
 
 		}
 
-        public DictionaryNations Map(KeyValuePair<string, string> source)
+        public List<DictionaryNations> Map(Dictionary<string, string> source)
         {
-            return _mapper.Map<KeyValuePair<string, string>, DictionaryNations>(source);
+            return _mapper.Map<Dictionary<string, string>, List<DictionaryNations>>(source);
         }
 
-        public DictionaryNations Map(KeyValuePair<string, string> source, DictionaryNations destination)
+        public List<DictionaryNations> Map(Dictionary<string, string> source, List<DictionaryNations> destination)
         {
             return _mapper.Map(source, destination);
         }
