@@ -36,7 +36,7 @@
 			return Effectivity(avgDamage, tier, avgFrags, avgSpot, avgCap, avgDef);
 		}
 
-		private static double Effectivity(double avgDamage, double tier, double avgFrags, double avgSpot, double avgCap,
+		public static double Effectivity(double avgDamage, double tier, double avgFrags, double avgSpot, double avgCap,
 			double avgDef)
 		{
 			double x = avgDamage * (10 / (tier + 2)) * (0.23 + 2 * tier / 100)

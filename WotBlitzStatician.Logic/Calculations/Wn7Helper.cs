@@ -5,6 +5,19 @@
 
 	public static class Wn7Helper
 	{
+		public static double CalculateWn7(long battles, double tier, double avdFrags, double avgDamage,
+			double avgSpot, double avgDef, double winRate)
+		{
+			double firstSummand = CalculateFirstSummand(tier, avdFrags);
+			double secondSummand = CalculateSecondSummand(tier, avgDamage);
+			double thirdSummand = CalculateThirdSummand(tier, avgSpot);
+			double fourthSummand = CalculateFourthSummand(avgDef);
+			double fifthSummand = CalculateFifthSumand(winRate);
+			double sixthSummand = CalculateSixthSummand(tier, battles);
+
+			return firstSummand + secondSummand + thirdSummand + fourthSummand + fifthSummand + sixthSummand;
+		}
+
 		public static double CalculateWn7(this AccountTankStatistics tank, double tier)
 		{
 			double avdFrags = (double) tank.Frags / tank.Battles;
@@ -13,14 +26,7 @@
 			double avgDef = (double) tank.DroppedCapturePoints / tank.Battles;
 			double winRate = (100d * (double) tank.Wins / tank.Battles); // - 48;
 
-			double firstSummand = CalculateFirstSummand(tier, avdFrags);
-			double secondSummand = CalculateSecondSummand(tier, avgDamage);
-			double thirdSummand = CalculateThirdSummand(tier, avgSpot);
-			double fourthSummand = CalculateFourthSummand(avgDef);
-			double fifthSummand = CalculateFifthSumand(winRate);
-			double sixthSummand = CalculateSixthSummand(tier, tank.Battles);
-
-			return firstSummand + secondSummand + thirdSummand + fourthSummand + fifthSummand + sixthSummand;
+			return CalculateWn7(tank.Battles, tier, avdFrags, avgDamage, avgSpot, avgDef, winRate);
 		}
 
 		public static double CalculateWn7(this AccountInfoStatistics account)
@@ -31,14 +37,7 @@
 			double avgDef = (double) account.DroppedCapturePoints / account.Battles;
 			double winRate = (100 * (double) account.Wins / account.Battles); // - 48;
 
-			double firstSummand = CalculateFirstSummand(account.AvgTier, avdFrags);
-			double secondSummand = CalculateSecondSummand(account.AvgTier, avgDamage);
-			double thirdSummand = CalculateThirdSummand(account.AvgTier, avgSpot);
-			double fourthSummand = CalculateFourthSummand(avgDef);
-			double fifthSummand = CalculateFifthSumand(winRate);
-			double sixthSummand = CalculateSixthSummand(account.AvgTier, account.Battles);
-
-			return firstSummand + secondSummand + thirdSummand + fourthSummand + fifthSummand + sixthSummand;
+			return CalculateWn7(account.Battles, account.AvgTier, avdFrags, avgDamage, avgSpot, avgDef, winRate);
 		}
 
 
