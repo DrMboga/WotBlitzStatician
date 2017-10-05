@@ -19,10 +19,17 @@
 						Статистика обновлена
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AccountInfoDelta.PresentUpdatedAt, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.UpdatedAtDelta, null)</small>
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.LastBattle.PresentValue, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.LastBattle.Delta, null)</small>
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AccountInfoDelta.PastUpdatedAt, null)
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.LastBattle.Interval, null)
+					</td>
+					<td>
+						<Form method="post" asp-action="DetailsWithDate" asp-controller="AccountInfo" >
+							@Html.TextBoxFor(m => m.PreLastUpdatedDate, "{0:dd.MM.yyyy}")
+							@Html.HiddenFor(m => m.AccountId)
+							<button class="btn-link">Обновить</button>
+						</Form>
 					</td>
 				</tr>
 				<tr>
@@ -30,10 +37,13 @@
 						Боёв
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.Battles, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.BattlesDelta, null)</small>
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Battles.PresentValue, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Battles.Delta, null)</small>
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AccountInfoDelta.PastBattles, null)
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Battles.Interval, null)
+					</td>
+					<td>
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Battles.PastValue, null)
 					</td>
 				</tr>
 				<tr>
@@ -41,10 +51,13 @@
 						Побед
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.Wins, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.WinsDelta, null) </small>
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Wins.PresentValue, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Wins.Delta, null) </small>
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AccountInfoDelta.PastWins, null)
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Wins.Interval, null)
+					</td>
+					<td>
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Wins.PastValue, null)
 					</td>
 				</tr>
 				<tr>
@@ -52,13 +65,17 @@
 						Winrate
 					</td>
 					<td>
-						<b style="color: @(Model.WinrateGrade.GetColorByGrade())">
-						@Html.DisplayFor(m => m.Winrate, null)% (@Html.DisplayFor(m => m.WinrateGrade, null))
-						</b> <small>@Html.DisplayFor(m => m.AccountInfoDelta.WinrateDelta, null) </small>
-						- @Html.DisplayFor(m => m.AccountInfoDelta.IntervalWinrate, null)%
+						<b style="color: @(Model.AccountInfoDelta.Statistics.Winrate.PresentValue.GetWinrateGrade().GetColorByGrade())">
+							@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Winrate.PresentValue, null)% (@Model.AccountInfoDelta.Statistics.Winrate.PresentValue.GetWinrateGrade())
+						</b> <small>@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Winrate.Delta, null) </small>
 					</td>
 					<td>
-						<b>@Html.DisplayFor(m => m.AccountInfoDelta.PastWinrate, null)%</b>
+						<b style="color: @(Model.AccountInfoDelta.Statistics.Winrate.Interval.GetWinrateGrade().GetColorByGrade())">
+							@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Winrate.Interval, null)%
+						</b>
+					</td>
+					<td>
+						<b>@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Winrate.PastValue, null)%</b>
 					</td>
 				</tr>
 				<tr>
@@ -66,12 +83,17 @@
 						Wn7
 					</td>
 					<td>
-						<b style="color: @(Model.Wn7Grade.GetColorByGrade())">
-							@Html.DisplayFor(m => m.Wn7, null) (@Html.DisplayFor(m => m.Wn7Grade, null))
-						</b> <small>@Html.DisplayFor(m => m.AccountInfoDelta.Wn7Delta, null)</small>
+						<b style="color: @(Model.AccountInfoDelta.Statistics.Wn7.PresentValue.GetWn7Grade().GetColorByGrade())">
+							@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Wn7.PresentValue, null) (@Model.AccountInfoDelta.Statistics.Wn7.PresentValue.GetWn7Grade())
+						</b> <small>@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Wn7.Delta, null)</small>
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AccountInfoDelta.PastWn7, null)
+						<b style="color: @(Model.AccountInfoDelta.Statistics.Wn7.Interval.GetWn7Grade().GetColorByGrade())">
+							@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Wn7.Interval, null)
+						</b>
+					</td>
+					<td>
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.Wn7.PastValue, null)
 					</td>
 				</tr>
 				<tr>
@@ -79,11 +101,13 @@
 						Средний урон
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AvgDamage, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.AvgDamageDelta, null) </small>
-						- @Html.DisplayFor(m => m.AccountInfoDelta.IntervalAvgDamage, null)
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.AvgDamage.PresentValue, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.AvgDamage.Delta, null) </small>
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AccountInfoDelta.PastAvgDamage, null)
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.AvgDamage.Interval, null)
+					</td>
+					<td>
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.AvgDamage.PastValue, null)
 					</td>
 				</tr>
 				<tr>
@@ -91,11 +115,13 @@
 						Средний опыт
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AvgXp, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.AvgXpDelta, null) </small>
-						- @Html.DisplayFor(m => m.AccountInfoDelta.IntervalAvgXp, null)
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.AvgXp.PresentValue, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.AvgXp.Delta, null) </small>
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AccountInfoDelta.PastAvgXp, null)
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.AvgXp.Interval, null)
+					</td>
+					<td>
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.AvgXp.PastValue, null)
 					</td>
 				</tr>
 				<tr>
@@ -103,23 +129,24 @@
 						Танкоуровень
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AvgTier, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.AvgTierDelta, null) </small>
+						@Html.DisplayFor(m => m.AccountInfoDelta.AvgTier.PresentValue, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.AvgTier.Delta, null) </small>
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AccountInfoDelta.PastAvgTier, null)
+						@Html.DisplayFor(m => m.AccountInfoDelta.AvgTier.Interval, null)
+					</td>
+					<td>
+						@Html.DisplayFor(m => m.AccountInfoDelta.AvgTier.PastValue, null)
 					</td>
 				</tr>
 			</table>
 		</td>
-		<td>
-			<table class="table">
-				@foreach (var tankId in Model.LastSessionTanks)
-				{
-					<tr><td>
-						@await Component.InvokeAsync("TankDelta", new { tankId = tankId, accountId = Model.AccountId, dateFrom = Model.PreLastUpdatedDate})
-					</td></tr>
-				}
-			</table>
-		</td>
 	</tr>
+</table>
+<table class="table">
+	@foreach (var tankDelta in Model.TanksDelta)
+	{
+		<tr><td>
+			@await Component.InvokeAsync("TankDelta", tankDelta)
+		</td></tr>
+	}
 </table>
