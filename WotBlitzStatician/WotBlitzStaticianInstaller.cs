@@ -5,6 +5,11 @@
 	using Microsoft.Extensions.Configuration;
 	using WotBlitzStatician.Data;
 	using WotBlitzStatician.Logic;
+	using WotBlitzStatician.Logic.Dto;
+	using WotBlitzStatician.Mappers;
+	using WotBlitzStatician.Model;
+	using WotBlitzStatician.Model.MapperLogic;
+	using WotBlitzStatician.ViewModel;
 	using WotBlitzStatician.WotApiClient;
 
 	public static class WotBlitzStaticianInstaller
@@ -14,7 +19,7 @@
 
 		public static void ConfigureWotBlitzStatician(this ContainerBuilder containerBuilder)
 		{
-            string connectionString = $"Data Source={Path.Combine(Directory.GetCurrentDirectory(), "Data/BlitzStatician.db")}";
+            string connectionString = $"Data Source={Path.Combine(Directory.GetCurrentDirectory(), "Data\\BlitzStatician.db")}";
 
 			var builder = new ConfigurationBuilder()
 				.SetBasePath(Directory.GetCurrentDirectory())
@@ -29,9 +34,21 @@
 			containerBuilder.RegisterInstance(appsettings).As<IWgApiConfiguration>();
 			containerBuilder.ConfigureWargamingApi();
 			containerBuilder.ConfigureDataAccessor(connectionString);
-            containerBuilder.RegisterType<BlitzStaticianDictionary>().As<IBlitzStaticianDictionary>().SingleInstance();
+			containerBuilder.RegisterType<BlitzStaticianDictionary>().As<IBlitzStaticianDictionary>().SingleInstance();
 			containerBuilder.RegisterType<BlitzStaticianLogic>().As<IBlitzStaticianLogic>();
             containerBuilder.RegisterType<BlitzStatitianDataAnalyser>().As<IBlitzStatitianDataAnalyser>();
+
+			ConfigureMappers(containerBuilder);
 		}
+
+		private static void ConfigureMappers(this ContainerBuilder containerBuilder)
+		{
+			containerBuilder.RegisterType<AccountInfoDeltaMapper>().As<IMapper<BlitzAccountInfoStatisticsDelta, AccountInfoDeltaViewModel>>();
+			containerBuilder.RegisterType<AccountInfoMapper>().As<IMapper<AccountInfo, AccountInfoViewModel>>();
+			containerBuilder.RegisterType<TankDeltaMapper>().As<IMapper<BlitzTankInfoDelta, TankDeltaViewModel>>();
+
+			containerBuilder.RegisterType<MapperHelper>().As<IMapperHelper>();
+		}
+
 	}
 }
