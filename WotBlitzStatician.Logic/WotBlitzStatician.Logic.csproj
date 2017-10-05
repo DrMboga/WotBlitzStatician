@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WotBlitzStatician.Data\WotBlitzStatician.Data.csproj" />
-    <ProjectReference Include="..\WotBlitzStatician.WotApiClient\WotBlitzStatician.WotApiClient.csproj" />
-    <ProjectReference Include="..\WotBlitzStatician.Model\WotBlitzStatician.Model.csproj" />
+    <PackageReference Include="AutoMapper" Version="6.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dto\" />
+    <ProjectReference Include="..\WotBlitzStatician.Data\WotBlitzStatician.Data.csproj" />
+    <ProjectReference Include="..\WotBlitzStatician.WotApiClient\WotBlitzStatician.WotApiClient.csproj" />
+    <ProjectReference Include="..\WotBlitzStatician.Model\WotBlitzStatician.Model.csproj" />
   </ItemGroup>
 </Project>

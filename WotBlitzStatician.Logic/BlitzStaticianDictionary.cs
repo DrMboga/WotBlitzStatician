@@ -30,11 +30,15 @@
 
 		public string GetMarkOfMasteryImageUrl(MarkOfMastery markOfMastery)
 		{
+			if (markOfMastery == MarkOfMastery.None)
+				return string.Empty;
 			return MarksInfo[markOfMastery].Image;
 		}
 
 		public string GetMarkOfMasteryBigImageUrl(MarkOfMastery markOfMastery)
 		{
+			if (markOfMastery == MarkOfMastery.None)
+				return string.Empty;
 			return MarksInfo[markOfMastery].ImageBig;
 		}
 
