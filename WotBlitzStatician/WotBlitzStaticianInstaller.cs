@@ -19,7 +19,7 @@
 
 		public static void ConfigureWotBlitzStatician(this ContainerBuilder containerBuilder)
 		{
-            string connectionString = $"Data Source={Path.Combine(Directory.GetCurrentDirectory(), "Data\\BlitzStatician.db")}";
+            string connectionString = $"Data Source={Path.Combine(Directory.GetCurrentDirectory(), "Data/BlitzStatician.db")}";
 
 			var builder = new ConfigurationBuilder()
 				.SetBasePath(Directory.GetCurrentDirectory())
