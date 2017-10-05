@@ -1,29 +1,27 @@
 ﻿namespace WotBlitzStatician.ViewComponents
 {
-	using System;
 	using System.Threading.Tasks;
 	using Microsoft.AspNetCore.Mvc;
-	using WotBlitzStatician.Logic;
-	using WotBlitzStatician.Mappers;
+	using WotBlitzStatician.Logic.Dto;
+	using WotBlitzStatician.Model.MapperLogic;
+	using WotBlitzStatician.ViewModel;
 
 	public class TankDelta : ViewComponent
 	{
-		private readonly IBlitzStatitianDataAnalyser _dataAnalyser;
+		private readonly IMapperHelper _mapper;
 
-		public TankDelta(IBlitzStatitianDataAnalyser dataAnalyser)
+		public TankDelta(IMapperHelper mapper)
 		{
-			_dataAnalyser = dataAnalyser;
+			_mapper = mapper;
 		}
 
-		public Task<IViewComponentResult> InvokeAsync(long tankId, long accountId, DateTime dateFrom)
+		public Task<IViewComponentResult> InvokeAsync(BlitzTankInfoDelta tankDelta)
 		{
-			var mapper = new TankDeltaMapper();
-			var tankDelta = _dataAnalyser.GeTankInfoDelta(accountId, tankId, dateFrom);
 			if (tankDelta == null)
 			{
-				return Task.FromResult<IViewComponentResult>(View("Unknown", tankId));
+				return Task.FromResult<IViewComponentResult>(View("Unknown", 0));
 			}
-			var viewModel = mapper.Map(tankDelta);
+			var viewModel = _mapper.Map<BlitzTankInfoDelta, TankDeltaViewModel> (tankDelta);
 
 			return Task.FromResult<IViewComponentResult>(View(viewModel));
 		}
