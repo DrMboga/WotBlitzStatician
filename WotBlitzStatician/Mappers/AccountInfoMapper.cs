@@ -15,7 +15,8 @@
 				m =>
 				{
 					m.CreateMap<AccountInfo, AccountInfoViewModel>();
-					m.CreateMap<AccountClanInfo, AccountClanInfoViewModel>();
+					m.CreateMap<AccountClanInfo, AccountClanInfoViewModel>()
+						.ForMember(d => d.JoinedAt, o => o.MapFrom(s => s.PlayerJoinedAt));
 				}));
 
 
