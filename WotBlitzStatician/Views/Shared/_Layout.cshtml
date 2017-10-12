@@ -21,7 +21,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-@*                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>*@
+                    @if (ViewData["AccountId"] != null && (long)ViewData["AccountId"] > 0)
+                    {
+                        <li><a asp-area="" asp-controller="AllTanks" asp-action="Details" asp-route-accountId="@ViewData["AccountId"]">Список танков</a></li>
+                    }
                     <li><a asp-area="" asp-controller="Home" asp-action="SearchPlayer">Поиск игроков</a></li>
                 </ul>
             </div>
