@@ -4,10 +4,10 @@
 <table width="100%">
 	<tr>
 		<td rowspan="2" width="124" height="73" valign="top">
-			<table style="background-image: url(../../img/flags/@(Model.Nation).png); background-repeat: no-repeat; background-size: 100% 100%;">
+			<table style="background-image: url(../../img/flags/@(Model.BlitzTankInfo.Nation).png); background-repeat: no-repeat; background-size: 100% 100%;">
 				<tr>
 					<td rowspan = "3" width="100" height="73">
-						<img src ="@Model.PreviewImageUrl" width="100%" height="100%"/>
+						<img src ="@Model.BlitzTankInfo.PreviewImageUrl" width="100%" height="100%"/>
 					</td>
 					<td width="24" height="24">
 					</td>
@@ -18,18 +18,18 @@
 				</tr>
 				<tr>
 					<td width="24" height="24">
-						<img src = "@Model.MarkOfMasteryImageUrl" width="100%" height="100%"/>
+						<img src = "@Model.BlitzTankInfo.MarkOfMasteryImageUrl" width="100%" height="100%"/>
 					</td>
 				</tr>
 			</table>
 		</td>
 		<td width="24" height="24" align="center">
-			<b>@Model.RomanTier</b>
+			<b>@Model.BlitzTankInfo.RomanTier</b>
 		</td>
 		<td>
-			<img src = "../../img/tank-type@(Model.IsPremium ? "-prem" : "")/@(Model.Type).png" width="24" height="24"/>
+			<img src = "../../img/tank-type@(Model.BlitzTankInfo.IsPremium ? "-prem" : "")/@(Model.BlitzTankInfo.Type).png" width="24" height="24"/>
 		</td>
-		<td> <b>@Html.DisplayFor(m => m.Name, null)</b></td>
+		<td> <b>@Html.DisplayFor(m => m.BlitzTankInfo.Name, null)</b></td>
 	</tr>
 	<tr>
 		<td colspan="3">
