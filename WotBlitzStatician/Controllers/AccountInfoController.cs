@@ -38,11 +38,16 @@
 		    viewModel.AccountInfoDelta = _mapper.Map<BlitzAccountInfoStatisticsDelta, AccountInfoDeltaViewModel>(delta);
 		    viewModel.TanksDelta = delta.TanksForPeriod.OrderByDescending(t => t.Statistics.LastBattle.PresentValue).ToList();
 
-			return View(viewModel);
+			return View("Details", viewModel);
 		}
 
 	    public async Task<IActionResult> DetailsWithDate(AccountInfoViewModel model)
 	    {
+	        if (!ModelState.IsValid)
+	        {
+                ModelState.Clear();
+	            return await Details(model.AccountId);
+	        }
 		    var accountInfo = await _blitzStaticianLogic.GetAccountStatistics(model.AccountId);
 
 		    var viewModel = _mapper.Map<AccountInfo, AccountInfoViewModel>(accountInfo);
@@ -53,6 +58,12 @@
 
 		    return View("Details", viewModel);
 		}
+
+        public async Task<IActionResult> RefreshDataFromWg(long accountId)
+        {
+            await _blitzStaticianLogic.LoadStatisticsFromWgAsync(accountId);
+            return await Details(accountId);
+        }
 
 	}
 }
