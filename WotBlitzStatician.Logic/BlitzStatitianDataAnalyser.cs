@@ -44,7 +44,7 @@
 			}
 
 	        decimal intervalTier = 0m;
-	        delta.TanksForPeriod.ForEach(t => intervalTier += (decimal)t.Tier);
+	        delta.TanksForPeriod.ForEach(t => intervalTier += t.BlitzTankInfo.Tier);
 	        intervalTier /= delta.TanksForPeriod.Count;
 
 			delta.AvgTier = new ValueDelta<decimal, decimal>((decimal)max.AvgTier, (decimal)min.AvgTier, (decimal)Math.Abs(max.AvgTier - min.AvgTier), intervalTier, min.AvgTier > max.AvgTier);
@@ -69,17 +69,7 @@
 			    return null;
 		    var delta = new BlitzTankInfoDelta
 		    {
-			    AccountId = max.AccountId,
-			    TankId = max.TankId,
-			    Name = max.VehicleInfo.Name,
-			    Tier = max.VehicleInfo.Tier,
-			    Nation = max.VehicleInfo.Nation,
-			    Type = max.VehicleInfo.Type,
-			    IsPremium = max.VehicleInfo.IsPremium,
-			    PreviewImageUrl = max.VehicleInfo.PreviewImageUrl,
-			    NormalImageUrl = max.VehicleInfo.NormalImageUrl,
-			    MarkOfMastery = max.MarkOfMastery,
-				MarkOfMasteryImageUrl = _blitzStaticianDictionary.GetMarkOfMasteryImageUrl(max.MarkOfMastery)
+                BlitzTankInfo = MapFromTankStatistics(max)
 		    };
 		    try
 		    {
@@ -91,5 +81,23 @@
 		    }
 			return delta;
 	    }
+
+        private BlitzTankInfoDto MapFromTankStatistics(AccountTankStatistics tankStat)
+        {
+            return new BlitzTankInfoDto
+            {
+                AccountId = tankStat.AccountId,
+                TankId = tankStat.TankId,
+                Name = tankStat.VehicleInfo.Name,
+                Tier = tankStat.VehicleInfo.Tier,
+                Nation = tankStat.VehicleInfo.Nation,
+                Type = tankStat.VehicleInfo.Type,
+                IsPremium = tankStat.VehicleInfo.IsPremium,
+                PreviewImageUrl = tankStat.VehicleInfo.PreviewImageUrl,
+                NormalImageUrl = tankStat.VehicleInfo.NormalImageUrl,
+                MarkOfMastery = tankStat.MarkOfMastery,
+                MarkOfMasteryImageUrl = _blitzStaticianDictionary.GetMarkOfMasteryImageUrl(tankStat.MarkOfMastery)
+            };
+        }
 	}
 }
