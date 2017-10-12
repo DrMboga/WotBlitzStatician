@@ -22,12 +22,12 @@
 		{
 			IMapper mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<AccountTankStatistics, StatisticsDto>()
 				.ForMember(d => d.LastBattle, o => o.MapFrom(s => s.LastBattleTime))
-				.ForMember(d => d.Tier, o => o.UseValue((double)delta.Tier))));
+				.ForMember(d => d.Tier, o => o.UseValue((double)delta.BlitzTankInfo.Tier))));
 
 			delta.Statistics = FillStatistics(
 				mapper.Map<AccountTankStatistics, StatisticsDto>(min),
 				mapper.Map<AccountTankStatistics, StatisticsDto>(max),
-				delta.Tier);
+				delta.BlitzTankInfo.Tier);
 		}
 
 		private static StatisticsDelta FillStatistics(StatisticsDto statMin, StatisticsDto statMax, decimal intervalTier)
