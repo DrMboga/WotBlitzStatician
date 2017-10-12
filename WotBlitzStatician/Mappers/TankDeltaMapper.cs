@@ -20,9 +20,10 @@
 				m.CreateMap<ValueDelta<decimal, decimal>, DecimalDeltaModel>()
 					.ForMember(d => d.Delta, o => o.ResolveUsing(s => $"{(s.IsNegative ? "-" : "+")}{s.Delta:N2}"));
 				m.CreateMap<StatisticsDelta, StatisticsViewModel>();
+				m.CreateMap<BlitzTankInfoDto, TankInfoVewModel> ()
+			        .ForMember(dest => dest.RomanTier, op => op.MapFrom(s => Convert.ToInt32(s.Tier).ToRomanNumeral()));
 
-				m.CreateMap<BlitzTankInfoDelta, TankDeltaViewModel>()
-					.ForMember(dest => dest.RomanTier, op => op.MapFrom(s => Convert.ToInt32(s.Tier).ToRomanNumeral()));
+			    m.CreateMap<BlitzTankInfoDelta, TankDeltaViewModel>();
 			}));
 
 		}
