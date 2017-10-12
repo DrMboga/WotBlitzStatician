@@ -5,7 +5,18 @@
 	var clanInfo = Model.AccountClanInfo == null ? "" : $"В клане [{Model.AccountClanInfo.ClanTag}] '{Model.AccountClanInfo.ClanName}' c {Model.AccountClanInfo.JoinedAt}";
 }
 
-<h2>@Model.NickName</h2>
+<table>
+    <tr>
+        <td>
+            <h2>@Model.NickName</h2>
+        </td>
+        <td style="padding-left: 100px">
+        <form asp-action="RefreshDataFromWg" asp-controller="AccountInfo" asp-route-accountId="@Model.AccountId">
+            <button class="btn"><img src="../../img/menu-logo.png"/>Обновить данные</button>
+        </form>
+        </td>
+    </tr>
+</table>
 <br/>
 <p>@clanInfo</p>
 <p>Последний бой @Html.DisplayFor(m => m.LastBattleTime, null)</p>
