@@ -30,7 +30,7 @@
 						Статистика обновлена
 					</td>
 					<td>
-						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.LastBattle.PresentValue, null) <small>@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.LastBattle.Delta, null)</small>
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.LastBattle.PresentValue, null)
 					</td>
 					<td>
 						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.LastBattle.Interval, null)
@@ -41,6 +41,20 @@
 							@Html.HiddenFor(m => m.AccountId)
 							<button class="btn-link">Обновить</button>
 						</Form>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Общее время в боях
+					</td>
+					<td>
+						@Html.DisplayFor(m => m.AccountInfoDelta.Statistics.BattleLifeTime.PresentValue, null)
+					</td>
+					<td>
+					  @Html.DisplayFor(m => m.AccountInfoDelta.Statistics.BattleLifeTime.Interval, null)
+					</td>
+					<td>
+					  @Html.DisplayFor(m => m.AccountInfoDelta.Statistics.BattleLifeTime.PastValue, null)
 					</td>
 				</tr>
 				<tr>
