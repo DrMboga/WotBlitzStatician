@@ -22,6 +22,9 @@
 		///</summary>
 		public DateTime UpdatedAt { get; set; }
 
+		[NotMapped]
+		public TimeSpan BattleLifeTime { get; set; }
+
 		///<summary>
 		///Очки захвата базы
 		///</summary>
