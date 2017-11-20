@@ -44,12 +44,20 @@
 			}
 
 	        decimal intervalTier = 0m;
-	        delta.TanksForPeriod.ForEach(t => intervalTier += t.BlitzTankInfo.Tier);
+			var battleLifeTimeDelta = new TimeSpan(0);
+	        delta.TanksForPeriod.ForEach(t =>
+	        {
+		        intervalTier += t.BlitzTankInfo.Tier;
+		        battleLifeTimeDelta += t.Statistics.BattleLifeTime.Delta;
+	        });
 	        intervalTier /= delta.TanksForPeriod.Count;
 
 			delta.AvgTier = new ValueDelta<decimal, decimal>((decimal)max.AvgTier, (decimal)min.AvgTier, (decimal)Math.Abs(max.AvgTier - min.AvgTier), intervalTier, min.AvgTier > max.AvgTier);
 
 			delta.FillStatistics(min, max, intervalTier);
+			// ToDo: temporary solution
+			delta.Statistics.BattleLifeTime = new ValueDelta<TimeSpan, TimeSpan>(new TimeSpan(0), new TimeSpan(0), battleLifeTimeDelta, battleLifeTimeDelta);
+
 			return delta;
         }
 
