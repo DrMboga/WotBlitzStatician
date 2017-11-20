@@ -36,6 +36,7 @@
 			{
 				Battles = GetLongDelta(statMin.Battles, statMax.Battles),
 				LastBattle = GetDateTimeDelta(statMin.LastBattle, statMax.LastBattle),
+				BattleLifeTime = GetTimeDelta(statMin.BattleLifeTime, statMax.BattleLifeTime),
 				Wins = GetLongDelta(statMin.Wins, statMax.Wins),
 				Winrate = GetWinrateDelta(statMin.Wins, statMin.Battles, statMax.Wins, statMax.Battles),
 				AvgDamage = GetAvgDelta(statMin.DamageDealt, statMin.Battles, statMax.DamageDealt, statMax.Battles),
@@ -55,6 +56,10 @@
 		private static ValueDelta<DateTime, TimeSpan> GetDateTimeDelta(DateTime min, DateTime max)
 		{
 			return new ValueDelta<DateTime, TimeSpan>(max, min, max - min, max - min);
+		}
+		private static ValueDelta<TimeSpan, TimeSpan> GetTimeDelta(TimeSpan min, TimeSpan max)
+		{
+			return new ValueDelta<TimeSpan, TimeSpan>(max, min, max - min, max - min);
 		}
 
 		private static ValueDelta<decimal, decimal> GetWinrateDelta(long minWins, long minBattles, long maxWins, long maxBattles)
