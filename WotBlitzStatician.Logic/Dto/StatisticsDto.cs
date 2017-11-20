@@ -6,6 +6,7 @@
 	{
 		public long Battles { get; set; }
 		public DateTime LastBattle { get; set; }
+		public TimeSpan BattleLifeTime { get; set; }
 		public long Wins { get; set; }
 		public long DamageDealt { get; set; }
 		public long Xp { get; set; }
