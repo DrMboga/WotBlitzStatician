@@ -41,7 +41,7 @@
 				<td width="16%" align="center">Wn7</td>
 				<td width="16%" align="center">Ср. урон</td>
 				<td width="16%" align="center">Ср. опыт</td>
-				<td width="20%" align="center">Посл. бой</td>
+				<td width="20%" align="center">Время в бою</td>
 			</tr>
 			</thead>
 				<tr>
@@ -66,7 +66,7 @@
 						@Html.DisplayFor(m => m.Statistics.AvgXp.PresentValue, null)<br /> <small>@Html.DisplayFor(m => m.Statistics.AvgXp.Delta, null)</small>
 					</td>
 					<td align="center">
-						@Html.DisplayFor(m => m.Statistics.LastBattle.PresentValue, null)<br /> <small>@Html.DisplayFor(m => m.Statistics.LastBattle.Delta, null)</small>
+						@Html.DisplayFor(m => m.Statistics.BattleLifeTime.PresentValue, null)<br /> <small>@Html.DisplayFor(m => m.Statistics.BattleLifeTime.Delta, null)</small>
 					</td>
 				</tr>
 				<tr>
@@ -90,7 +90,7 @@
 						@Html.DisplayFor(m => m.Statistics.AvgXp.Interval, null)
 					</td>
 					<td align="center">
-						@Html.DisplayFor(m => m.Statistics.LastBattle.Interval, null)
+					  @Html.DisplayFor(m => m.Statistics.LastBattle.PresentValue, null)
 					</td>
 				</tr>
 			</table>
