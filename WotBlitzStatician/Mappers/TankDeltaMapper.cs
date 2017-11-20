@@ -17,6 +17,7 @@
 			{
 				m.CreateMap<ValueDelta<long, long>, LongDeltaModel>();
 				m.CreateMap<ValueDelta<DateTime, TimeSpan>, DateDeltaModel>();
+				m.CreateMap<ValueDelta<TimeSpan, TimeSpan>, TimeDeltaModel>();
 				m.CreateMap<ValueDelta<decimal, decimal>, DecimalDeltaModel>()
 					.ForMember(d => d.Delta, o => o.ResolveUsing(s => $"{(s.IsNegative ? "-" : "+")}{s.Delta:N2}"));
 				m.CreateMap<StatisticsDelta, StatisticsViewModel>();
