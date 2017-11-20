@@ -7,6 +7,7 @@
 		public LongDeltaModel Battles { get; set; }
 
 		public DateDeltaModel LastBattle { get; set; }
+		public TimeDeltaModel BattleLifeTime { get; set; }
 		public LongDeltaModel Wins { get; set; }
 		public DecimalDeltaModel Winrate { get; set; }
 		public DecimalDeltaModel AvgDamage { get; set; }
