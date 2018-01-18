@@ -1,0 +1,1 @@
+https://api.wotblitz.ru/wotb/clans/accountinfo/?application_id=adc1387489cf9fc8d9a1d85dbd27763d&account_id=46512100&language=ru

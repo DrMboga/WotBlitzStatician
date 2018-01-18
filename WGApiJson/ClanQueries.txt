@@ -1,0 +1,2 @@
+https://api.wotblitz.ru/wotb/clans/glossary/?application_id=adc1387489cf9fc8d9a1d85dbd27763d&language=ru
+https://api.wotblitz.ru/wotb/clans/info/?application_id=adc1387489cf9fc8d9a1d85dbd27763d&clan_id=40493&extra=members&language=ru
