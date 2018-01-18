@@ -1,13 +1,10 @@
 ﻿namespace WotBlitzStatician.Model
 {
-	using System.ComponentModel.DataAnnotations;
-	 
-	public class VehicleEncyclopedia
+	 	public class VehicleEncyclopedia
 	{
 		///<summary>
 		///Идентификатор техники
 		///</summary>
-		[Key]
 		public long TankId { get; set; }
 
 		///<summary>

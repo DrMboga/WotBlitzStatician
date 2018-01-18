@@ -1,15 +1,11 @@
 ﻿namespace WotBlitzStatician.Model
 {
 	using System;
-	using System.ComponentModel.DataAnnotations;
-	using System.ComponentModel.DataAnnotations.Schema;
 	
 	public class AccountInfoPrivate
 	{
-		[Key]
 		public long AccountInfoPrivateId { get; set; }
 
-		[ForeignKey("AccountInfo")]
 		public long AccountId { get; set; }
 
 		///<summary>

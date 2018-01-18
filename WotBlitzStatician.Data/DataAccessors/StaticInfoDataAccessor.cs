@@ -3,102 +3,48 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using log4net;
-	using Microsoft.EntityFrameworkCore;
 	using WotBlitzStatician.Model;
 
 	public class StaticInfoDataAccessor : IStaticInfoDataAccessor
 	{
-		private static DateTime DefaultDate => new DateTime(1980, 3, 28);
-		private static readonly ILog _log = LogManager.GetLogger(typeof(StaticInfoDataAccessor));
-		private readonly IBlitzStaticianDataContextFactory _blitzStaticianDataContextFactory;
-
-		public StaticInfoDataAccessor(IBlitzStaticianDataContextFactory blitzStaticianDataContextFactory)
-		{
-			_blitzStaticianDataContextFactory = blitzStaticianDataContextFactory;
-		}
-
-
 		public DateTime GetStaticDataLastUpdateDate()
 		{
-			using (var context = _blitzStaticianDataContextFactory.CreateContext())
-			{
-				if (!context.DictionaryLanguage.Any())
-					return DefaultDate;
-				return context.DictionaryLanguage.First().LastUpdated;
-			}
+			throw new NotImplementedException();
 		}
 
 		public Dictionary<long, double> GetVehicleTires()
 		{
-			using (var context = _blitzStaticianDataContextFactory.CreateContext())
-			{
-				return context.VehicleEncyclopedia.Select(v => new { v.TankId, v.Tier }).ToDictionary(k => k.TankId, v => (double)v.Tier);
-			}
+			throw new NotImplementedException();
 		}
 
 		public AchievementOption[] GetMarksOfMastery()
 		{
-			using (var context = _blitzStaticianDataContextFactory.CreateContext())
-			{
-				return context.AchievementOption
-					.Where(o => o.AchievementId == "markOfMastery")
-					.OrderBy(o => o.AcievementOptionId)
-					.ToArray();
-			}
+			throw new NotImplementedException();
 		}
 
 		public void SaveLanguagesDictionary(List<DictionaryLanguage> languages)
 		{
-			using (var context = _blitzStaticianDataContextFactory.CreateContext())
-			{
-				context.Merge(context.DictionaryLanguage, languages);
-				context.SaveChanges();
-			}
+			throw new NotImplementedException();
 		}
 
 		public void SaveNationsDictionary(List<DictionaryNations> nations)
 		{
-			using (var context = _blitzStaticianDataContextFactory.CreateContext())
-			{
-				context.Merge(context.DictionaryNations, nations);
-				context.SaveChanges();
-			}
+			throw new NotImplementedException();
 		}
 
 		public void SaveVehicleTypesDictionary(List<DictionaryVehicleType> vehicleTypes)
 		{
-			using (var context = _blitzStaticianDataContextFactory.CreateContext())
-			{
-				context.Merge(context.DictionaryVehicleType, vehicleTypes);
-				context.SaveChanges();
-			}
+			throw new NotImplementedException();
 		}
 
 		public void SaveVehicleEncyclopedia(List<VehicleEncyclopedia> vehicles)
 		{
-			using (var context = _blitzStaticianDataContextFactory.CreateContext())
-			{
-				context.Merge(context.VehicleEncyclopedia, vehicles);
-				context.SaveChanges();
-			}
+			throw new NotImplementedException();
 		}
 
 		public void SaveAchievementsDictionary(List<Achievement> achievements)
 		{
-			var achievementOptions = new List<AchievementOption>();
-			achievements
-				.Where(a => a.Options != null).ToList()
-				.ForEach(a => achievementOptions.AddRange(a.Options));
-
-			using (var context = _blitzStaticianDataContextFactory.CreateContext())
-			{
-				context.Merge(context.Achievement, achievements);
-				context.Database.ExecuteSqlCommand("DELETE FROM AchievementOption");
-				context.Database.ExecuteSqlCommand("VACUUM");
-				context.AchievementOption.AddRange(achievementOptions);
-				context.SaveChanges();
-			}
+			throw new NotImplementedException();
 		}
 	}
 }

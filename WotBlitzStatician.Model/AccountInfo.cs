@@ -2,15 +2,12 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using System.ComponentModel.DataAnnotations;
-	using System.ComponentModel.DataAnnotations.Schema;
 	 
 	public class AccountInfo
 	{
 		///<summary>
 		///Идентификатор аккаунта игрока
 		///</summary>
-		[Key]
 		public long AccountId { get; set; }
 
 		///<summary>
@@ -33,19 +30,14 @@
 		/// </summary>
 		public bool IsLastSession { get; set; }
 
-		[NotMapped]
 		public AccountInfoPrivate AccountInfoPrivate { get; set; }
 
-		[NotMapped]
 		public AccountInfoStatistics AccountInfoStatistics { get; set; }
 		
-		[NotMapped]
 		public List<AccountInfoAchievment> Achievments { get; set; }
 
-		[NotMapped]
 		public List<AccountInfoAchievment> AchievmentsMaxSeries { get; set; }
 
-		[NotMapped]
 		public AccountClanInfo AccountClanInfo { get; set; }
 	}
 }

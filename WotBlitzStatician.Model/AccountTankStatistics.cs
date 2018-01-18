@@ -2,15 +2,11 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using System.ComponentModel.DataAnnotations;
-	using System.ComponentModel.DataAnnotations.Schema;
 	 
 	public class AccountTankStatistics
 	{
-		[Key]
 		public long AccountTankStatisticId { get; set; }
 
-		[ForeignKey("AccountInfo")]
 		public long AccountId { get; set; }
 
 		//[ForeignKey("StatisticsSlice")]
@@ -24,13 +20,10 @@
 		/// <summary>
 		/// Информация о танке
 		/// </summary>
-		[NotMapped]
 		public VehicleEncyclopedia VehicleInfo { get; set; }
 		
-		[NotMapped]
 		public List<AccountInfoTankAchievment> Achievments { get; set; }
 
-		[NotMapped]
 		public List<AccountInfoTankAchievment> AchievmentsMaxSeries { get; set; }
 
 		///<summary>

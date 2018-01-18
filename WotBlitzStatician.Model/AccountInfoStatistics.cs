@@ -1,15 +1,11 @@
 ﻿namespace WotBlitzStatician.Model
 {
 	using System;
-	using System.ComponentModel.DataAnnotations;
-	using System.ComponentModel.DataAnnotations.Schema;
 	
 	public class AccountInfoStatistics
 	{
-		[Key]
 		public long AccountInfoStatisticsId { get; set; }
 
-		[ForeignKey("AccountInfo")]
 		public long AccountId { get; set; }
 
 		///<summary>
@@ -22,7 +18,6 @@
 		///</summary>
 		public DateTime UpdatedAt { get; set; }
 
-		[NotMapped]
 		public TimeSpan BattleLifeTime { get; set; }
 
 		///<summary>
