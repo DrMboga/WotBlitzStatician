@@ -1,7 +1,8 @@
 ﻿namespace WotBlitzStatician.Model
 {
 	using System;
-	
+	using System.Collections.Generic;
+
 	public class AccountInfoPrivate
 	{
 		public long AccountInfoPrivateId { get; set; }

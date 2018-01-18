@@ -27,5 +27,7 @@
         public string ClanMotto { get; set; }
 
         public string ClanDescription { get; set; }
+
+		// ToDo: Clan members - direct call from API
     }
 }

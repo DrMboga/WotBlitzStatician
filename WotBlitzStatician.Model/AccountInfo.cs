@@ -25,10 +25,9 @@
 		/// </summary>
 		public DateTime? LastBattleTime { get; set; }
 
-		/// <summary>
-		/// Последним просматривался (куки)
-		/// </summary>
-		public bool IsLastSession { get; set; }
+		public string AccessToken { get; set; }
+
+		public DateTime? AccessTokenExpiration { get; set; }
 
 		public AccountInfoPrivate AccountInfoPrivate { get; set; }
 
@@ -39,5 +38,9 @@
 		public List<AccountInfoAchievment> AchievmentsMaxSeries { get; set; }
 
 		public AccountClanInfo AccountClanInfo { get; set; }
+
+		public List<FragListItem> FragsList { get; set; }
+
+		// ToDo: Friends list - directly from API
 	}
 }

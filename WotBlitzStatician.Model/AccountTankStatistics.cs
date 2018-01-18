@@ -9,9 +9,6 @@
 
 		public long AccountId { get; set; }
 
-		//[ForeignKey("StatisticsSlice")]
-		//public long StatisticsSliceId { get; set; }
-
 		///<summary>
 		///Идентификатор техники
 		///</summary>
@@ -25,6 +22,8 @@
 		public List<AccountInfoTankAchievment> Achievments { get; set; }
 
 		public List<AccountInfoTankAchievment> AchievmentsMaxSeries { get; set; }
+
+		public List<FragListItem> FragsList { get; set; }
 
 		///<summary>
 		///Общее время в боях в секундах
@@ -51,6 +50,8 @@
 		/// Признак нахождения машины в гараже
 		/// </summary>
 		public bool InGarage { get; set; }
+
+		public DateTime? InGarageUpdated { get; set; }
 
 		///<summary>
 		///Количество боёв
@@ -137,8 +138,8 @@
 		///</summary>
 		public long Xp { get; set; }
 
-		public double Effectivity { get; set; }
-
 		public double Wn7 { get; set; }
+
+		public double Wn8 { get; set; }
 	}
 }

@@ -76,7 +76,7 @@
             var vehicles = await _wgApiClient.GetWotEncyclopediaVehiclesAsync();
             var achievements = await _wgApiClient.GetAchievementsDictionaryAsync();
 
-            encyclopedia.DictionaryLanguages.ForEach(l => l.LastUpdated = DateTime.Now);
+            //encyclopedia.DictionaryLanguages.ForEach(l => l.LastUpdated = DateTime.Now);
 
 	        _staticInfoDataAccessor.SaveLanguagesDictionary(encyclopedia.DictionaryLanguages);
 	        _staticInfoDataAccessor.SaveNationsDictionary(encyclopedia.DictionaryNationses);
@@ -170,14 +170,15 @@
 
 			accountStat.AvgTier = accountStat.CalculateMiddleTier(tanksInfo, tankTires);
 			accountStat.Wn7 = accountStat.CalculateWn7();
-			accountStat.Effectivity = accountStat.CalculateEffectivity();
+			// ToDo: Wn8
+			//accountStat.Effectivity = accountStat.CalculateEffectivity();
 
 			foreach (var accountTankStatistic in tanksInfo)
 			{
 				if (!tankTires.ContainsKey(accountTankStatistic.TankId))
 					continue;
 				accountTankStatistic.Wn7 = accountTankStatistic.CalculateWn7(tankTires[accountTankStatistic.TankId]);
-				accountTankStatistic.Effectivity = accountTankStatistic.CalculateEffectivity(tankTires[accountTankStatistic.TankId]);
+				//accountTankStatistic.Effectivity = accountTankStatistic.CalculateEffectivity(tankTires[accountTankStatistic.TankId]);
 			}
 		}
 	}
