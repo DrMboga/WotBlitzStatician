@@ -47,7 +47,7 @@
 				if (account == null)
 					throw new ArgumentException($"Nick '{nick}' not found.", nameof(nick));
 				// Loading all account statistics
-				account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(account.AccountId);
+				account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(account.AccountId, string.Empty);
 				await LoadStatisticsFromWgAndSaveToDb(account);
 			}
 
@@ -97,7 +97,7 @@
 			{
 				// First time
 				// Loading all account statistics
-				accountInfo = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId);
+				accountInfo = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId, string.Empty);
 				await LoadStatisticsFromWgAndSaveToDb(accountInfo);
 
 			}
@@ -117,7 +117,7 @@
 		public async Task LoadStatisticsFromWgAsync(long accountId)
 		{
 			await CheckAndUpdateStaticData();
-			var account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId);
+			var account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId, string.Empty);
 			await LoadStatisticsFromWgAndSaveToDb(account);
 		}
 

@@ -44,6 +44,10 @@
 			_parameterNames[ParameterType.Search] = "search";
 			_parameterNames[ParameterType.AccountId] = "account_id";
             _parameterNames[ParameterType.ClanId] = "clan_id";
+            _parameterNames[ParameterType.AccesToken] = "access_token";
+            _parameterNames[ParameterType.Extra] = "extra";
+            _parameterNames[ParameterType.Fields] = "fields";
+            _parameterNames[ParameterType.TankId] = "tank_id";
 
 		}
 

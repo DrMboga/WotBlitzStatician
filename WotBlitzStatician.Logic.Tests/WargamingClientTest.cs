@@ -20,7 +20,7 @@
 
         private class TestWgApiConfiguration : IWgApiConfiguration
         {
-            public string ApplicationId { get; set; } = "demo";
+            public string ApplicationId { get; set; } = "adc1387489cf9fc8d9a1d85dbd27763d";
             public string BaseAddress { get; set; } = "https://api.wotblitz.ru/wotb/";
             public string Language { get; set; } = "ru";
             public Int32 DictionariesUpdateFrequencyInDays { get; set; } = 7;
@@ -28,6 +28,7 @@
 	        public IProxySettings ProxySettings { get; set; } = new TestProxySettings();
         }
 
+		private const string AccessToken = "c473efefe668be30dbca625562f637b9798aac43";
         private static readonly ILog _log = LogManager.GetLogger(typeof(WargamingClientTest));
         private readonly IContainer _container;
 
@@ -81,7 +82,7 @@
         public async Task TestAccountStat()
         {
             var wgApiClient = _container.Resolve<IWargamingApiClient>();
-            var accountInfo = await wgApiClient.GetAccountInfoAllStatisticsAsync(46512100);
+            var accountInfo = await wgApiClient.GetAccountInfoAllStatisticsAsync(46512100, AccessToken);
 
             Assert.NotNull(accountInfo);
             Assert.NotNull(accountInfo.AccountInfoStatistics);

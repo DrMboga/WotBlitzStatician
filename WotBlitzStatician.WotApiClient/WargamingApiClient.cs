@@ -48,16 +48,20 @@
 			return _mapper.Map<List<WotAccountListResponse>, List<AccountInfo>>(accountListResponse);
 		}
 
-		public async Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId)
+		public async Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId, string accessToken)
 		{
 			var webClient = new WebApiClient(_proxySettings);
 
 			var accountInfo = await webClient.GetResponse<Dictionary<string, WotAccountInfoResponse>>(
 				_requestBuilder.BaseAddress,
-				_requestBuilder.BuildRequestUrl(RequestType.AccountInfo, new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() }));
+				_requestBuilder.BuildRequestUrl(
+					RequestType.AccountInfo, 
+					new RequestParameter {ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() },
+					new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken }));
 
 			var accountInfoResponse = accountInfo[accountId.ToString()];
 
+			// ToDo: AccountInfo.FragsList, stat.Battlelifetime (private), Private, Friends
 			var accountInfoMapped = _mapper.Map<WotAccountInfoResponse, AccountInfo>(accountInfoResponse);
 
 			accountInfoMapped.AccountInfoStatistics = _mapper.Map<WotAccountInfoResponse, AccountInfoStatistics>(accountInfoResponse);
