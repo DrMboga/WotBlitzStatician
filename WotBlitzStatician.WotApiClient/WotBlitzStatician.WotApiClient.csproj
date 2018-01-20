@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <Folder Include="Internal\" />
-    <Folder Include="Mappers\" />
     <Folder Include="InternalModel\" />
     <Folder Include="DTO\" />
   </ItemGroup>

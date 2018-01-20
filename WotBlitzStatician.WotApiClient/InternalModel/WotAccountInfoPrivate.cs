@@ -16,31 +16,35 @@
 		///Время окончания блокировки аккаунта
 		///</summary>
 		[JsonProperty("ban_time")]
-		public int? BanTime { get; set; }
+		private int? _banTime;
+		public DateTime? BanTime => _banTime.ToDateTime();
 
 		///<summary>
 		///Общее время в бою до уничтожения в секундах
 		///</summary>
 		[JsonProperty("battle_life_time")]
-		public Int64? BattleLifeTime { get; set; }
+		private int? _battleLifeTime;
+		public TimeSpan? BattleLifeTime => _battleLifeTime.HasValue
+			? TimeSpan.FromSeconds(_battleLifeTime.Value)
+			: (TimeSpan?)null;
 
 		///<summary>
 		///Кредиты
 		///</summary>
 		[JsonProperty("credits")]
-		public Int64? Credits { get; set; }
+		public long? Credits { get; set; }
 
 		///<summary>
 		///Свободный опыт
 		///</summary>
 		[JsonProperty("free_xp")]
-		public Int64? FreeXp { get; set; }
+		public long? FreeXp { get; set; }
 
 		///<summary>
 		///Золото
 		///</summary>
 		[JsonProperty("gold")]
-		public Int64? Gold { get; set; }
+		public long? Gold { get; set; }
 
 		///<summary>
 		///Показывает, является ли аккаунт премиум аккаунтом
@@ -52,7 +56,8 @@
 		///Срок действия премиум аккаунта
 		///</summary>
 		[JsonProperty("premium_expires_at")]
-		public int? PremiumExpiresAt { get; set; }
+		private int? _premiumExpiresAt;
+		public DateTime? PremiumExpiresAt => _premiumExpiresAt.ToDateTime();
 
 		///<summary>
 		///Группы контактов.

@@ -30,7 +30,12 @@
 			// Common parameters
 			_requestParameters.ForEach(p => query.Append($"{_parameterNames[p.ParameterType]}={p.ParameterValue}&"));
 			// Method parameters
-			parameters?.ToList().ForEach(p => query.Append($"{_parameterNames[p.ParameterType]}={p.ParameterValue}&"));
+			parameters?.ToList().ForEach(p => {
+				if (!string.IsNullOrWhiteSpace(p.ParameterValue))
+				{
+					query.Append($"{_parameterNames[p.ParameterType]}={p.ParameterValue}&");
+				}
+			});
 			// Removing last ampersand
 			query.Remove(query.Length - 1, 1);
 

@@ -48,7 +48,7 @@
 			return _mapper.Map<List<WotAccountListResponse>, List<AccountInfo>>(accountListResponse);
 		}
 
-		public async Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId, string accessToken)
+		public async Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId, string accessToken, bool contactsIncluded = false)
 		{
 			var webClient = new WebApiClient(_proxySettings);
 
@@ -56,16 +56,19 @@
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(
 					RequestType.AccountInfo, 
-					new RequestParameter {ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() },
-					new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken }));
+					new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() },
+					new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken },
+					new RequestParameter { ParameterType = ParameterType.Extra, ParameterValue = contactsIncluded
+																				? "private.grouped_contacts"
+																				: string.Empty}));
 
 			var accountInfoResponse = accountInfo[accountId.ToString()];
 
-			// ToDo: AccountInfo.FragsList, stat.Battlelifetime (private), Private, Friends
 			var accountInfoMapped = _mapper.Map<WotAccountInfoResponse, AccountInfo>(accountInfoResponse);
 
+			// ToDo: Statistics.Frags, Private.GroupedContacts
 			accountInfoMapped.AccountInfoStatistics = _mapper.Map<WotAccountInfoResponse, AccountInfoStatistics>(accountInfoResponse);
-			// ToDo: Map PrivateInfo
+			accountInfoMapped.AccountInfoPrivate = _mapper.Map<WotAccountInfoResponse, AccountInfoPrivate>(accountInfoResponse);
 
 			return accountInfoMapped;
 		}

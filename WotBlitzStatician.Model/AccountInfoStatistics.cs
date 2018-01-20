@@ -18,8 +18,6 @@
 		///</summary>
 		public DateTime UpdatedAt { get; set; }
 
-		public TimeSpan BattleLifeTime { get; set; }
-
 		///<summary>
 		///Очки захвата базы
 		///</summary>

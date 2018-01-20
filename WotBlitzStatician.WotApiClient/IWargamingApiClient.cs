@@ -11,7 +11,7 @@
 
 		Task<List<AccountInfo>> FindAccountAsync(string nickName);
 
-		Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId, string accessToken);
+		Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId, string accessToken, bool contactsIncluded = false);
 
 		Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId);
 		

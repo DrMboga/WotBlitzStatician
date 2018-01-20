@@ -20,9 +20,9 @@
 		public DateTime? BanTime { get; set; }
 
 		///<summary>
-		///Общее время в бою до уничтожения в секундах
+		///Общее время в бою до уничтожения
 		///</summary>
-		public long BattleLifeTime { get; set; }
+		public TimeSpan BattleLifeTime { get; set; }
 
 		///<summary>
 		///Кредиты

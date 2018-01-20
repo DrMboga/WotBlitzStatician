@@ -82,7 +82,7 @@
         public async Task TestAccountStat()
         {
             var wgApiClient = _container.Resolve<IWargamingApiClient>();
-            var accountInfo = await wgApiClient.GetAccountInfoAllStatisticsAsync(46512100, AccessToken);
+            var accountInfo = await wgApiClient.GetAccountInfoAllStatisticsAsync(46512100, AccessToken, true);
 
             Assert.NotNull(accountInfo);
             Assert.NotNull(accountInfo.AccountInfoStatistics);
