@@ -138,10 +138,10 @@
 		        return;
 	        }
 
-			var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId);
+			var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId, string.Empty);
             var clanInfo = await _wgApiClient.GetAccountClanInfoAsync(accountInfo.AccountId);
             var accountAchievements = await _wgApiClient.GetAccountAchievementsAsync(accountInfo.AccountId);
-            var accountTankAchievements = await _wgApiClient.GetAccountTankAchievementsAsync(accountInfo.AccountId);
+            var accountTankAchievements = await _wgApiClient.GetAccountTankAchievementsAsync(accountInfo.AccountId, string.Empty);
 
             CalculateStatistitcs(accountInfo.AccountInfoStatistics, tanksInfo);
 
