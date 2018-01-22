@@ -1,6 +1,7 @@
 ﻿namespace WotBlitzStatician.WotApiClient.InternalModel
 {
 	using System;
+	using System.Collections.Generic;
 	using Newtonsoft.Json;
 	using WotBlitzStatician.Model;
 
@@ -27,6 +28,13 @@
 		///</summary>
 		public DateTime? LastBattleTime => _lastBattleTime.ToDateTime();
 
+		[JsonProperty("in_garage")]
+		public bool InGarage { get; set; }
+
+		[JsonProperty("in_garage_updated")]
+		private int? _inGarageUpdated;
+		public DateTime? InGarageUpdated => _inGarageUpdated.ToDateTime();
+
 		///<summary>
 		///Знаки классности:
 		///
@@ -51,6 +59,9 @@
 		///</summary>
 		[JsonProperty("all")]
 		public WotAccountTankstatsAll All { get; set; }
+
+		[JsonProperty("frags")]
+		public Dictionary<string, string> Frags { get; set; }
 
 	}
 }
