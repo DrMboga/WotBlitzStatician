@@ -47,7 +47,7 @@
 				if (account == null)
 					throw new ArgumentException($"Nick '{nick}' not found.", nameof(nick));
 				// Loading all account statistics
-				account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(account.AccountId);
+				account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(account.AccountId, string.Empty);
 				await LoadStatisticsFromWgAndSaveToDb(account);
 			}
 
@@ -76,7 +76,7 @@
             var vehicles = await _wgApiClient.GetWotEncyclopediaVehiclesAsync();
             var achievements = await _wgApiClient.GetAchievementsDictionaryAsync();
 
-            encyclopedia.DictionaryLanguages.ForEach(l => l.LastUpdated = DateTime.Now);
+            //encyclopedia.DictionaryLanguages.ForEach(l => l.LastUpdated = DateTime.Now);
 
 	        _staticInfoDataAccessor.SaveLanguagesDictionary(encyclopedia.DictionaryLanguages);
 	        _staticInfoDataAccessor.SaveNationsDictionary(encyclopedia.DictionaryNationses);
@@ -97,7 +97,7 @@
 			{
 				// First time
 				// Loading all account statistics
-				accountInfo = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId);
+				accountInfo = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId, string.Empty);
 				await LoadStatisticsFromWgAndSaveToDb(accountInfo);
 
 			}
@@ -117,7 +117,7 @@
 		public async Task LoadStatisticsFromWgAsync(long accountId)
 		{
 			await CheckAndUpdateStaticData();
-			var account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId);
+			var account = await _wgApiClient.GetAccountInfoAllStatisticsAsync(accountId, string.Empty);
 			await LoadStatisticsFromWgAndSaveToDb(account);
 		}
 
@@ -138,10 +138,10 @@
 		        return;
 	        }
 
-			var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId);
+			var tanksInfo = await _wgApiClient.GetTanksStatisticsAsync(accountInfo.AccountId, string.Empty);
             var clanInfo = await _wgApiClient.GetAccountClanInfoAsync(accountInfo.AccountId);
             var accountAchievements = await _wgApiClient.GetAccountAchievementsAsync(accountInfo.AccountId);
-            var accountTankAchievements = await _wgApiClient.GetAccountTankAchievementsAsync(accountInfo.AccountId);
+            var accountTankAchievements = await _wgApiClient.GetAccountTankAchievementsAsync(accountInfo.AccountId, string.Empty);
 
             CalculateStatistitcs(accountInfo.AccountInfoStatistics, tanksInfo);
 
@@ -170,14 +170,15 @@
 
 			accountStat.AvgTier = accountStat.CalculateMiddleTier(tanksInfo, tankTires);
 			accountStat.Wn7 = accountStat.CalculateWn7();
-			accountStat.Effectivity = accountStat.CalculateEffectivity();
+			// ToDo: Wn8
+			//accountStat.Effectivity = accountStat.CalculateEffectivity();
 
 			foreach (var accountTankStatistic in tanksInfo)
 			{
 				if (!tankTires.ContainsKey(accountTankStatistic.TankId))
 					continue;
 				accountTankStatistic.Wn7 = accountTankStatistic.CalculateWn7(tankTires[accountTankStatistic.TankId]);
-				accountTankStatistic.Effectivity = accountTankStatistic.CalculateEffectivity(tankTires[accountTankStatistic.TankId]);
+				//accountTankStatistic.Effectivity = accountTankStatistic.CalculateEffectivity(tankTires[accountTankStatistic.TankId]);
 			}
 		}
 	}
