@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json;
 using WotBlitzStatician.Model;
 using WotBlitzStatician.Model.MapperLogic;
 using WotBlitzStatician.WotApiClient.InternalModel;
@@ -14,7 +15,10 @@ namespace WotBlitzStatician.WotApiClient.Mappers
 			_mapper = new Mapper(new MapperConfiguration(
 				m =>
 				{
-					m.CreateMap<WotAccountInfoPrivate, AccountInfoPrivate>();
+					m.CreateMap<WotAccountInfoPrivate, AccountInfoPrivate>()
+						.ForMember(d => d.ContactsUngrouped, o => o.MapFrom(s => JsonConvert.SerializeObject(s.GroupedContacts.Ungrouped)))
+						.ForMember(d => d.ContactsBlocked, o => o.MapFrom(s => JsonConvert.SerializeObject(s.GroupedContacts.Blocked)))
+						.ForMember(d => d.ContactsGroups, o => o.MapFrom(s => JsonConvert.SerializeObject(s.GroupedContacts.Groups)));
 					m.CreateMap<WotAccountInfoResponse, AccountInfoPrivate>();
 				}));
 		}
