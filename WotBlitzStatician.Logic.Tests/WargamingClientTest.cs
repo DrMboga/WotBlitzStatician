@@ -94,7 +94,7 @@
         public async Task TestAccountTankStat()
         {
             var wgApiClient = _container.Resolve<IWargamingApiClient>();
-            var tanksStat = await wgApiClient.GetTanksStatisticsAsync(46512100);
+            var tanksStat = await wgApiClient.GetTanksStatisticsAsync(46512100, AccessToken);
 
             Assert.NotNull(tanksStat);
             Assert.True(tanksStat.Count > 0, "tanksStat count is 0");
@@ -180,7 +180,7 @@
 	    public async Task TestAccountTankAchievements()
 	    {
 			var wgApiClient = _container.Resolve<IWargamingApiClient>();
-		    var accountTankAchievements = await wgApiClient.GetAccountTankAchievementsAsync(46512100);
+		    var accountTankAchievements = await wgApiClient.GetAccountTankAchievementsAsync(46512100, AccessToken);
 
 		    var firstTank = accountTankAchievements.GroupBy(t => t.TankId, (key, a) => new {key, Achievements = a.ToList()}).First();
 
