@@ -3,7 +3,6 @@
 	using System.Collections.Generic;
 	using System.Threading.Tasks;
 	using WotBlitzStatician.Model;
-	using WotBlitzStatician.WotApiClient.DTO;
 
 	public interface IWargamingApiClient
 	{
@@ -15,7 +14,12 @@
 
 		Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId, string accessToken);
 		
-		Task<WotEncyclopediaInfo> GetStaticDictionariesAsync();
+		Task<(
+			List<DictionaryLanguage>, 
+			List<DictionaryNations>, 
+			List<DictionaryVehicleType>,
+			List<AchievementSection>,
+			List<DictionaryClanRole>)> GetStaticDictionariesAsync();
 
 		Task<AccountClanInfo> GetAccountClanInfoAsync(long accountId);
 

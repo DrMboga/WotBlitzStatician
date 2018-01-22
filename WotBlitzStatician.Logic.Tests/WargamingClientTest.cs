@@ -1,7 +1,8 @@
 ﻿namespace WotBlitzStatician.Logic.Tests
 {
     using System;
-    using System.Linq;
+	using System.Collections.Generic;
+	using System.Linq;
     using System.Threading.Tasks;
 	using Autofac;
     using log4net;
@@ -108,21 +109,26 @@
         public async Task TestStaticDictionary()
         {
             var wgApiClient = _container.Resolve<IWargamingApiClient>();
-            var staticDictionaies = await wgApiClient.GetStaticDictionariesAsync();
+			(var languages,
+			var nations,
+			var vehicleTypes,
+			var achievementSections,
+			var clanRoles) = await wgApiClient.GetStaticDictionariesAsync();
 
-            Assert.NotNull(staticDictionaies);
-            Assert.NotNull(staticDictionaies.DictionaryLanguages);
-            Assert.NotNull(staticDictionaies.DictionaryNationses);
-            Assert.NotNull(staticDictionaies.DictionaryVehicleTypes);
+			// ToDo: Clan roles + Tankopedia (another test)
 
-            _log.Debug($"DictionaryLanguages count is {staticDictionaies.DictionaryLanguages.Count()}");
-            _log.Debug($"DictionaryLanguages first Item '{staticDictionaies.DictionaryLanguages[0].LanguageId}' - '{staticDictionaies.DictionaryLanguages[0].LanguageName}'");
+            Assert.NotNull(languages);
+            Assert.NotNull(nations);
+            Assert.NotNull(vehicleTypes);
 
-			_log.Debug($"DictionaryNationses count is {staticDictionaies.DictionaryNationses.Count()}");
-            _log.Debug($"DictionaryNationses first Item '{staticDictionaies.DictionaryNationses[0].NationId}' - '{staticDictionaies.DictionaryNationses[0].NationName}'");
+            _log.Debug($"DictionaryLanguages count is {languages.Count()}");
+            _log.Debug($"DictionaryLanguages first Item '{languages[0].LanguageId}' - '{languages[0].LanguageName}'");
 
-			_log.Debug($"DictionaryVehicleTypes count is {staticDictionaies.DictionaryVehicleTypes.Count()}");
-            _log.Debug($"DictionaryVehicleTypes first Item '{staticDictionaies.DictionaryVehicleTypes[0].VehicleTypeId}' - '{staticDictionaies.DictionaryVehicleTypes[0].VehicleTypeName}'");
+			_log.Debug($"DictionaryNationses count is {nations.Count()}");
+            _log.Debug($"DictionaryNationses first Item '{nations[0].NationId}' - '{nations[0].NationName}'");
+
+			_log.Debug($"DictionaryVehicleTypes count is {vehicleTypes.Count()}");
+            _log.Debug($"DictionaryVehicleTypes first Item '{vehicleTypes[0].VehicleTypeId}' - '{vehicleTypes[0].VehicleTypeName}'");
         }
 
 		// dotnet test --filter FullyQualifiedName=WotBlitzStatician.Logic.Tests.WargamingClientTest.TestClanInfo
@@ -180,7 +186,8 @@
 	    public async Task TestAccountTankAchievements()
 	    {
 			var wgApiClient = _container.Resolve<IWargamingApiClient>();
-		    var accountTankAchievements = await wgApiClient.GetAccountTankAchievementsAsync(46512100, AccessToken);
+		    var accountTankAchievements = await wgApiClient.GetAccountTankAchievementsAsync(46512100, AccessToken,
+				new List<int> { 769, 1065, 1});
 
 		    var firstTank = accountTankAchievements.GroupBy(t => t.TankId, (key, a) => new {key, Achievements = a.ToList()}).First();
 

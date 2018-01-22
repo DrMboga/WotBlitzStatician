@@ -72,15 +72,19 @@
 
 		public async Task LoadStaticDataAndSaveToDb()
         {
-            var encyclopedia = await _wgApiClient.GetStaticDictionariesAsync();
+            (var languages,
+			var nations,
+			var vehicleTypes,
+			var achievementSections,
+			var clanRoles) = await _wgApiClient.GetStaticDictionariesAsync();
             var vehicles = await _wgApiClient.GetWotEncyclopediaVehiclesAsync();
             var achievements = await _wgApiClient.GetAchievementsDictionaryAsync();
 
             //encyclopedia.DictionaryLanguages.ForEach(l => l.LastUpdated = DateTime.Now);
 
-	        _staticInfoDataAccessor.SaveLanguagesDictionary(encyclopedia.DictionaryLanguages);
-	        _staticInfoDataAccessor.SaveNationsDictionary(encyclopedia.DictionaryNationses);
-	        _staticInfoDataAccessor.SaveVehicleTypesDictionary(encyclopedia.DictionaryVehicleTypes);
+	        _staticInfoDataAccessor.SaveLanguagesDictionary(languages);
+	        _staticInfoDataAccessor.SaveNationsDictionary(nations);
+	        _staticInfoDataAccessor.SaveVehicleTypesDictionary(vehicleTypes);
 	        _staticInfoDataAccessor.SaveVehicleEncyclopedia(vehicles);
 	        _staticInfoDataAccessor.SaveAchievementsDictionary(achievements);
         }

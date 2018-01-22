@@ -6,7 +6,6 @@
     using System.Threading.Tasks;
     using WotBlitzStatician.Model;
     using WotBlitzStatician.Model.MapperLogic;
-    using WotBlitzStatician.WotApiClient.DTO;
     using WotBlitzStatician.WotApiClient.InternalModel;
     using WotBlitzStatician.WotApiClient.RequestStringBuilder;
 
@@ -86,21 +85,27 @@
 			return _mapper.Map<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>(tanksStat[accountId.ToString()]);
 		}
 		
-		public async Task<WotEncyclopediaInfo> GetStaticDictionariesAsync()
+		public async Task<(
+			List<DictionaryLanguage>,
+			List<DictionaryNations>,
+			List<DictionaryVehicleType>,
+			List<AchievementSection>,
+			List<DictionaryClanRole>)> GetStaticDictionariesAsync()
 		{
 			var webClient = new WebApiClient(_proxySettings);
 			var encyclopedia = await webClient.GetResponse<WotEncyclopediaInfoResponse>(
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(RequestType.EncyclopediaInfo));
 
-			var responseInfo = new WotEncyclopediaInfo();
-			if (encyclopedia?.Languages == null) return responseInfo;
+			var languages = _mapper.Map<Dictionary<string, string>, List<DictionaryLanguage>>(encyclopedia.Languages);
+			var nations = _mapper.Map<Dictionary<string, string>, List<DictionaryNations>>(encyclopedia.VehicleNations);
+			var vehicleTypes = _mapper.Map<Dictionary<string, string>, List<DictionaryVehicleType>>(encyclopedia.VehicleTypes);
+			var AchievementSections = _mapper.Map<Dictionary<string, WotEncyclopediaInfoAchievement_section>, 
+				List<AchievementSection>>(encyclopedia.AchievementSections);
 
-			responseInfo.DictionaryLanguages = _mapper.Map<Dictionary<string, string>, List<DictionaryLanguage>>(encyclopedia.Languages);
-			responseInfo.DictionaryNationses = _mapper.Map<Dictionary<string, string>, List<DictionaryNations>>(encyclopedia.VehicleNations);
-			responseInfo.DictionaryVehicleTypes = _mapper.Map<Dictionary<string, string>, List<DictionaryVehicleType>>(encyclopedia.VehicleTypes);
+			// https://api.wotblitz.ru/wotb/clans/glossary/?application_id=adc1387489cf9fc8d9a1d85dbd27763d&language=ru
 
-            return responseInfo;
+			return (languages, nations, vehicleTypes, AchievementSections, null);
 		}
 
         public async Task<AccountClanInfo> GetAccountClanInfoAsync(long accountId)

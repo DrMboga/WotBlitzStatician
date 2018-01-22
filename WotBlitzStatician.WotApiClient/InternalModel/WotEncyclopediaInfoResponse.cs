@@ -1,5 +1,6 @@
 ﻿namespace WotBlitzStatician.WotApiClient.InternalModel
 {
+	using System;
 	using System.Collections.Generic;
 	using Newtonsoft.Json;
 
@@ -21,7 +22,8 @@
 		///Время обновления информации о технике в энциклопедии
 		///</summary>
 		[JsonProperty("tanks_updated_at")]
-		public int? TanksUpdatedAt { get; set; }
+		private int? _tanksUpdatedAt;
+		public DateTime? TanksUpdatedAt => _tanksUpdatedAt.ToDateTime();
 
 		///<summary>
 		///Возможные специальности экипажа
@@ -45,10 +47,10 @@
 		///Разделы наград
 		///</summary>
 		[JsonProperty("achievement_sections")]
-		public WotEncyclopediaInfoAchievement_sections AchievementSections { get; set; }
+		public Dictionary<string, WotEncyclopediaInfoAchievement_section> AchievementSections { get; set; }
 	}
 
-	internal class WotEncyclopediaInfoAchievement_sections
+	internal class WotEncyclopediaInfoAchievement_section
 	{
 
 		///<summary>
