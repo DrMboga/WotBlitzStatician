@@ -38,9 +38,5 @@
 		public List<AccountInfoAchievment> AchievmentsMaxSeries { get; set; }
 
 		public AccountClanInfo AccountClanInfo { get; set; }
-
-		public List<FragListItem> FragsList { get; set; }
-
-		// ToDo: Friends list - directly from API
 	}
 }

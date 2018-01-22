@@ -1,7 +1,8 @@
 ﻿namespace WotBlitzStatician.Model
 {
 	using System;
-	
+	using System.Collections.Generic;
+
 	public class AccountInfoStatistics
 	{
 		public long AccountInfoStatisticsId { get; set; }
@@ -122,5 +123,7 @@
 		/// Показатель Wn8
 		/// </summary>
 		public double Wn8 { get; set; }
+
+		public List<FragListItem> FragsList { get; set; }
 	}
 }

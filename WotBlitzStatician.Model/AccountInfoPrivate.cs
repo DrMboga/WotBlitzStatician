@@ -48,5 +48,11 @@
 		///Срок действия премиум аккаунта
 		///</summary>
 		public DateTime? PremiumExpiresAt { get; set; }
+
+		public string ContactsUngrouped { get; set; }
+
+		public string ContactsBlocked { get; set; }
+
+		public string ContactsGroups { get; set; }
 	}
 }
