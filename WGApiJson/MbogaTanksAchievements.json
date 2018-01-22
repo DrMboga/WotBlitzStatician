@@ -1,0 +1,161 @@
+{
+    "data": {
+        "90277267": [
+            {
+                "account_id": 90277267,
+                "achievements": {
+                    "armorPiercer": 1,
+                    "defender": 1,
+                    "ironMan": 2,
+                    "markOfMastery": 3,
+                    "medalKay": 4,
+                    "medalLavrinenko": 4,
+                    "titleSniper": 1
+                },
+                "max_series": {
+                    "armorPiercer": 41,
+                    "beasthunter": 0,
+                    "diehard": 1,
+                    "handOfDeath": 1,
+                    "invincible": 0,
+                    "jointVictory": 0,
+                    "medalKay": 1,
+                    "pattonValley": 0,
+                    "punisher": 0,
+                    "sinai": 0,
+                    "tankExpert": 0,
+                    "titleSniper": 61
+                },
+                "tank_id": 785
+            },
+            {
+                "account_id": 90277267,
+                "achievements": {
+                    "armorPiercer": 1,
+                    "markOfMastery": 2,
+                    "medalKay": 4,
+                    "supporter": 1,
+                    "titleSniper": 1
+                },
+                "max_series": {
+                    "armorPiercer": 27,
+                    "beasthunter": 0,
+                    "diehard": 1,
+                    "handOfDeath": 1,
+                    "invincible": 0,
+                    "jointVictory": 0,
+                    "medalKay": 1,
+                    "pattonValley": 0,
+                    "punisher": 0,
+                    "sinai": 0,
+                    "tankExpert": 0,
+                    "titleSniper": 28
+                },
+                "tank_id": 3089
+            },
+            {
+                "account_id": 90277267,
+                "achievements": {
+                    "armorPiercer": 1,
+                    "markOfMastery": 3,
+                    "titleSniper": 1
+                },
+                "max_series": {
+                    "armorPiercer": 10,
+                    "beasthunter": 0,
+                    "diehard": 1,
+                    "handOfDeath": 1,
+                    "invincible": 0,
+                    "jointVictory": 0,
+                    "medalKay": 0,
+                    "pattonValley": 0,
+                    "punisher": 0,
+                    "sinai": 0,
+                    "tankExpert": 0,
+                    "titleSniper": 22
+                },
+                "tank_id": 4609
+            },
+            {
+                "account_id": 90277267,
+                "achievements": {
+                    "armorPiercer": 1,
+                    "markOfMastery": 3,
+                    "medalKay": 4,
+                    "titleSniper": 1,
+                    "warrior": 1
+                },
+                "max_series": {
+                    "armorPiercer": 11,
+                    "beasthunter": 0,
+                    "diehard": 1,
+                    "handOfDeath": 2,
+                    "invincible": 0,
+                    "jointVictory": 0,
+                    "medalKay": 1,
+                    "pattonValley": 0,
+                    "punisher": 0,
+                    "sinai": 0,
+                    "tankExpert": 0,
+                    "titleSniper": 14
+                },
+                "tank_id": 3329
+            },
+            {
+                "account_id": 90277267,
+                "achievements": {
+                    "armorPiercer": 1,
+                    "defender": 1,
+                    "markOfMastery": 3,
+                    "medalCarius": 4,
+                    "medalKay": 4,
+                    "medalLavrinenko": 4,
+                    "medalLeClerc": 4,
+                    "supporter": 1,
+                    "titleSniper": 1
+                },
+                "max_series": {
+                    "armorPiercer": 23,
+                    "beasthunter": 0,
+                    "diehard": 1,
+                    "handOfDeath": 2,
+                    "invincible": 0,
+                    "jointVictory": 0,
+                    "medalKay": 2,
+                    "pattonValley": 0,
+                    "punisher": 0,
+                    "sinai": 0,
+                    "tankExpert": 0,
+                    "titleSniper": 33
+                },
+                "tank_id": 81
+            },
+            {
+                "account_id": 90277267,
+                "achievements": {
+                    "markOfMastery": 2,
+                    "medalLavrinenko": 4
+                },
+                "max_series": {
+                    "armorPiercer": 6,
+                    "beasthunter": 0,
+                    "diehard": 0,
+                    "handOfDeath": 1,
+                    "invincible": 0,
+                    "jointVictory": 0,
+                    "medalKay": 0,
+                    "pattonValley": 0,
+                    "punisher": 0,
+                    "sinai": 0,
+                    "tankExpert": 0,
+                    "titleSniper": 9
+                },
+                "tank_id": 8273
+            }
+        ]
+    },
+    "meta": {
+        "count": 1
+    },
+    "status": "ok"
+}

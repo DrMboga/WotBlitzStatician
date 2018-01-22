@@ -1,0 +1,41 @@
+{
+    "data": {
+        "90277267": {
+            "achievements": {
+                "armorPiercer": 1,
+                "cadet": 1,
+                "defender": 2,
+                "firstBlood": 1,
+                "firstVictory": 1,
+                "ironMan": 2,
+                "medalCarius": 4,
+                "medalKay": 4,
+                "medalKnispel": 4,
+                "medalLavrinenko": 4,
+                "medalLeClerc": 4,
+                "medalPoppel": 4,
+                "supporter": 2,
+                "titleSniper": 1,
+                "warrior": 1
+            },
+            "max_series": {
+                "armorPiercer": 41,
+                "beasthunter": 0,
+                "diehard": 1,
+                "handOfDeath": 2,
+                "invincible": 0,
+                "jointVictory": 0,
+                "medalKay": 5,
+                "pattonValley": 0,
+                "punisher": 0,
+                "sinai": 0,
+                "tankExpert": 0,
+                "titleSniper": 61
+            }
+        }
+    },
+    "meta": {
+        "count": 1
+    },
+    "status": "ok"
+}
