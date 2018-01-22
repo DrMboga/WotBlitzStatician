@@ -13,7 +13,7 @@
 
 		Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId, string accessToken, bool contactsIncluded = false);
 
-		Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId);
+		Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId, string accessToken);
 		
 		Task<WotEncyclopediaInfo> GetStaticDictionariesAsync();
 
@@ -23,6 +23,6 @@
 		
 		Task<List<AccountInfoAchievment>> GetAccountAchievementsAsync(long accountId);
 		
-		Task<List<AccountInfoTankAchievment>> GetAccountTankAchievementsAsync(long accountId);
+		Task<List<AccountInfoTankAchievment>> GetAccountTankAchievementsAsync(long accountId, string accessToken, List<int> tankIds = null);
 	}
 }

@@ -66,20 +66,22 @@
 
 			var accountInfoMapped = _mapper.Map<WotAccountInfoResponse, AccountInfo>(accountInfoResponse);
 
-			// ToDo: Statistics.Frags, Private.GroupedContacts
 			accountInfoMapped.AccountInfoStatistics = _mapper.Map<WotAccountInfoResponse, AccountInfoStatistics>(accountInfoResponse);
 			accountInfoMapped.AccountInfoPrivate = _mapper.Map<WotAccountInfoResponse, AccountInfoPrivate>(accountInfoResponse);
 
 			return accountInfoMapped;
 		}
 
-		public async Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId)
+		public async Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId, string accessToken)
 		{
 			var webClient = new WebApiClient(_proxySettings);
 
 			var tanksStat = await webClient.GetResponse<Dictionary<string, List<WotAccountTanksStatResponse>>>(
 				_requestBuilder.BaseAddress,
-				_requestBuilder.BuildRequestUrl(RequestType.TanksStat, new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() }));
+				_requestBuilder.BuildRequestUrl(
+					RequestType.TanksStat, 
+					new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() },
+					new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken }));
 
 			return _mapper.Map<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>(tanksStat[accountId.ToString()]);
 		}
@@ -193,18 +195,41 @@
 			return accountAchievementsInfo;
 		}
 
-		public async Task<List<AccountInfoTankAchievment>> GetAccountTankAchievementsAsync(long accountId)
+		public async Task<List<AccountInfoTankAchievment>> GetAccountTankAchievementsAsync(long accountId, string accessToken, List<int> tankIds = null)
+		{
+			var accountTankAchievements = new List<AccountInfoTankAchievment>();
+
+			if (tankIds == null || tankIds.Count <= 100)
+			{
+				await FillAchievements(accountId, accountTankAchievements, accessToken, tankIds);
+			}
+			else
+			{
+				for (int i = 0; i < tankIds.Count; i += 100)
+				{
+					int begin = i;
+					int count = i + 100 < tankIds.Count ? 100 : tankIds.Count - i;
+					await FillAchievements(accountId, accountTankAchievements, accessToken, tankIds.GetRange(begin, count));
+				}
+			}
+			return accountTankAchievements;
+		}
+
+		private async Task FillAchievements(long accountId, List<AccountInfoTankAchievment> accountTankAchievements, string accessToken, List<int> tankIds = null)
 		{
 			var webClient = new WebApiClient(_proxySettings);
 			var accountTankAchievementsResponse = await webClient.GetResponse<Dictionary<string, WotAccountTankAchievementResponse[]>>(
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(
 					RequestType.TanksAcievements,
-					new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() }));
+					new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() },
+					new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken },
+					new RequestParameter { ParameterType = ParameterType.TankId, ParameterValue = tankIds == null
+						? string.Empty
+						: string.Join(",", tankIds)
+					}));
 
 			var accountTanks = accountTankAchievementsResponse[accountId.ToString()];
-
-			var accountTankAchievements = new List<AccountInfoTankAchievment>();
 
 			foreach (var tank in accountTanks)
 			{
@@ -230,9 +255,6 @@
 						.ToList()
 				);
 			}
-
-			return accountTankAchievements;
-		}	
-	
-    }
+		}
+	}
 }
