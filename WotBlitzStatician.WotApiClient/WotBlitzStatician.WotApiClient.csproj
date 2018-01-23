@@ -17,6 +17,5 @@
 
   <ItemGroup>
     <Folder Include="Internal\" />
-    <Folder Include="InternalModel\" />
   </ItemGroup>
 </Project>

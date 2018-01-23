@@ -35,6 +35,7 @@
 			containerBuilder.RegisterType<DictionaryNationMapper>().As<IMapper<Dictionary<string, string>, List<DictionaryNations>>>();
 			containerBuilder.RegisterType<DictionaryVehicleTypeMapper>().As<IMapper<Dictionary<string, string>, List<DictionaryVehicleType>>>();
 			containerBuilder.RegisterType<DictionaryAchievementsSectionsMapper>().As<IMapper<Dictionary<string, WotEncyclopediaInfoAchievement_section>, List<AchievementSection>>>();
+			containerBuilder.RegisterType<DictionaryClanRolesMapper>().As<IMapper<Dictionary<string, string>, List<DictionaryClanRole>>>();
 			containerBuilder.RegisterType<TankopediaMapper>().As<IMapper<List<WotEncyclopediaVehiclesResponse>, List<VehicleEncyclopedia>>>();
 			containerBuilder.RegisterType<TanksStatMapper>().As<IMapper<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>>();
 

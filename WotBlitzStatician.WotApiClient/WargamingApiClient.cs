@@ -29,7 +29,11 @@
 
 			var tankopedia = await webClient.GetResponse<Dictionary<string, WotEncyclopediaVehiclesResponse>>(
 				_requestBuilder.BaseAddress,
-				_requestBuilder.BuildRequestUrl(RequestType.EncyclopediaVehicles));
+				_requestBuilder.BuildRequestUrl(RequestType.EncyclopediaVehicles,
+				new RequestParameter {
+					ParameterType = ParameterType.Fields,
+					ParameterValue = "tank_id,name,tier,nation,type,description,is_premium,cost,images"
+				}));
 			var allVehicles = tankopedia.Values.ToList();
 			allVehicles.AddMarkI();
 			allVehicles.AddHetzerKame();
@@ -103,9 +107,12 @@
 			var AchievementSections = _mapper.Map<Dictionary<string, WotEncyclopediaInfoAchievement_section>, 
 				List<AchievementSection>>(encyclopedia.AchievementSections);
 
-			// https://api.wotblitz.ru/wotb/clans/glossary/?application_id=adc1387489cf9fc8d9a1d85dbd27763d&language=ru
+			var clanGlossaryResponse = await webClient.GetResponse<WotClanGlossaryResponse>(
+				_requestBuilder.BaseAddress,
+				_requestBuilder.BuildRequestUrl(RequestType.ClanGlossary));
+			var clanGlossary = _mapper.Map<Dictionary<string, string>, List<DictionaryClanRole>>(clanGlossaryResponse.ClanRoles);
 
-			return (languages, nations, vehicleTypes, AchievementSections, null);
+			return (languages, nations, vehicleTypes, AchievementSections, clanGlossary);
 		}
 
         public async Task<AccountClanInfo> GetAccountClanInfoAsync(long accountId)

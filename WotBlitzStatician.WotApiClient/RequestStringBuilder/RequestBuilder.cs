@@ -63,6 +63,7 @@
 			_requestPaths[RequestType.AccountAchievements] = @"account/achievements/";
 			_requestPaths[RequestType.ClanAccountInfo] = @"clans/accountinfo/";
 			_requestPaths[RequestType.ClanInfo] = @"clans/info/";
+			_requestPaths[RequestType.ClanGlossary] = @"clans/glossary/";
 			_requestPaths[RequestType.TanksAcievements] = @"tanks/achievements/";
 			_requestPaths[RequestType.TanksStat] = @"tanks/stats/";
 			_requestPaths[RequestType.EncyclopediaAchievements] = @"encyclopedia/achievements/";

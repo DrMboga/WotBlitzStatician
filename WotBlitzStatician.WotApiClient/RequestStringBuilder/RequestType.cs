@@ -8,6 +8,7 @@
 
 		ClanAccountInfo,
 		ClanInfo,
+		ClanGlossary,
 
 		TanksAcievements,
 		TanksStat,
