@@ -29,8 +29,6 @@
 
 		public DateTime? AccessTokenExpiration { get; set; }
 
-		public AccountInfoPrivate AccountInfoPrivate { get; set; }
-
 		public AccountInfoStatistics AccountInfoStatistics { get; set; }
 		
 		public List<AccountInfoAchievment> Achievments { get; set; }
