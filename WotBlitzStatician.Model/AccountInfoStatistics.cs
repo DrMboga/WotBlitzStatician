@@ -125,5 +125,7 @@
 		public double Wn8 { get; set; }
 
 		public List<FragListItem> FragsList { get; set; }
+		
+		public AccountInfoPrivate AccountInfoPrivate { get; set; }
 	}
 }
