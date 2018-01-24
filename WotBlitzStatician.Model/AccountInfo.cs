@@ -29,7 +29,7 @@
 
 		public DateTime? AccessTokenExpiration { get; set; }
 
-		public AccountInfoStatistics AccountInfoStatistics { get; set; }
+		public List<AccountInfoStatistics> AccountInfoStatistics { get; set; }
 		
 		public List<AccountInfoAchievment> Achievments { get; set; }
 

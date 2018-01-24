@@ -59,7 +59,7 @@
         {
             var logic = _container.Resolve<IBlitzStaticianLogic>();
             var account = await logic.GetAccount("Dr_Mboga");
-            _log.Debug($"Got account {account.AccountId}. Updated at '{account.AccountInfoStatistics.UpdatedAt}'");
+            _log.Debug($"Got account {account.AccountId}. Updated at '{account.AccountInfoStatistics.Single().UpdatedAt}'");
         }
 
 		[Fact]

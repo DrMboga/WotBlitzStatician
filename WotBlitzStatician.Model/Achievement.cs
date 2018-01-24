@@ -12,7 +12,8 @@
         public string ImageBig { get; set; }
         public string Name { get; set; }
         public string Section { get; set; }
-        public long Order { get; set; }
+		public AchievementSection AchievementSection { get; set; }
+		public long Order { get; set; }
         public List<AchievementOption> Options { get; set; }
     }
 }

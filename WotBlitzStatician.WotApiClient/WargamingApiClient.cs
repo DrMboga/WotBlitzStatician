@@ -69,8 +69,10 @@
 
 			var accountInfoMapped = _mapper.Map<WotAccountInfoResponse, AccountInfo>(accountInfoResponse);
 
-			accountInfoMapped.AccountInfoStatistics = _mapper.Map<WotAccountInfoResponse, AccountInfoStatistics>(accountInfoResponse);
-			accountInfoMapped.AccountInfoPrivate = _mapper.Map<WotAccountInfoResponse, AccountInfoPrivate>(accountInfoResponse);
+			var statistics = _mapper.Map<WotAccountInfoResponse, AccountInfoStatistics>(accountInfoResponse);
+			statistics.AccountInfoPrivate = _mapper.Map<WotAccountInfoResponse, AccountInfoPrivate>(accountInfoResponse);
+
+			accountInfoMapped.AccountInfoStatistics = new List<AccountInfoStatistics> { statistics };
 
 			return accountInfoMapped;
 		}
@@ -165,7 +167,6 @@
 				foreach (var wotEncyclopediaAchievementsOption in achievementsresponseValue.Options)
 				{
 					var option = _mapper.Map<WotEncyclopediaAchievementsOptions, AchievementOption>(wotEncyclopediaAchievementsOption);
-					option.AchievementId = achievement.AchievementId;
 					achievement.Options.Add(option);
 				}
 			}

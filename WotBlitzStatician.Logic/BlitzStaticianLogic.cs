@@ -147,7 +147,7 @@
             var accountAchievements = await _wgApiClient.GetAccountAchievementsAsync(accountInfo.AccountId);
             var accountTankAchievements = await _wgApiClient.GetAccountTankAchievementsAsync(accountInfo.AccountId, string.Empty);
 
-            CalculateStatistitcs(accountInfo.AccountInfoStatistics, tanksInfo);
+            //CalculateStatistitcs(accountInfo.AccountInfoStatistics, tanksInfo);
 
 			// Filter tanksInfo by LastUpdateDate
 	        tanksInfo = tanksInfo.Where(t => t.LastBattleTime >= (lastBattle ?? DateTime.MinValue)).ToList();

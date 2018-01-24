@@ -88,7 +88,7 @@
             Assert.NotNull(accountInfo);
             Assert.NotNull(accountInfo.AccountInfoStatistics);
 
-            _log.Debug($"Got Account '{accountInfo.NickName}'. LastBattleTime '{accountInfo.LastBattleTime}'; Battles count {accountInfo.AccountInfoStatistics.Battles}");
+            _log.Debug($"Got Account '{accountInfo.NickName}'. LastBattleTime '{accountInfo.LastBattleTime}'; Battles count {accountInfo.AccountInfoStatistics.Single().Battles}");
         }
 
         [Fact]
@@ -157,8 +157,6 @@
             _log.Debug($"<TestAchievemntsDictionary> Got {achievements.Count} achievement Dictionaries");
 
             var firstWithNotNullOptions = achievements.First(a => a.Options != null);
-
-            Assert.True(firstWithNotNullOptions.Options.All(o => !string.IsNullOrWhiteSpace(o.AchievementId)));
 
             _log.Debug($"First achievement with option is: '{firstWithNotNullOptions.AchievementId}' - "
                 + $"'{firstWithNotNullOptions.Name}'; Description '{firstWithNotNullOptions.Description}';"

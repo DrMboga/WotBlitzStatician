@@ -9,6 +9,8 @@
 
 		public long AccountId { get; set; }
 
+		public AccountInfo AccountInfo { get; set; }
+
 		///<summary>
 		///Количество боёв
 		///</summary>
