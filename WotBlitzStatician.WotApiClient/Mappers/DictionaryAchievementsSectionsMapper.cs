@@ -17,7 +17,7 @@ namespace WotBlitzStatician.WotApiClient.Mappers
 				m =>
 				{
 					m.CreateMap<KeyValuePair<string, WotEncyclopediaInfoAchievement_section>, AchievementSection>()
-					.ForMember(dest => dest.SectionId, op => op.MapFrom(s => s.Key))
+					.ForMember(dest => dest.Section, op => op.MapFrom(s => s.Key))
 					.ForMember(dest => dest.SectionName, op => op.MapFrom(svm => svm.Value.Name))
 					.ForMember(dest => dest.Order, op => op.MapFrom(svm => svm.Value.Order));
 				  }));
