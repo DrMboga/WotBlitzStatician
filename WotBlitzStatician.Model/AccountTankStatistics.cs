@@ -19,9 +19,9 @@
 		/// </summary>
 		public VehicleEncyclopedia VehicleInfo { get; set; }
 		
-		public List<AccountInfoTankAchievment> Achievments { get; set; }
+		public List<AccountInfoTankAchievement> Achievements { get; set; }
 
-		public List<AccountInfoTankAchievment> AchievmentsMaxSeries { get; set; }
+		public List<AccountInfoTankAchievement> AchievementsMaxSeries { get; set; }
 
 		public List<FragListItem> FragsList { get; set; }
 

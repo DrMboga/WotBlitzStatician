@@ -9,6 +9,8 @@ namespace WotBlitzStatician.Data.TypeConfigurations
 		{
 			accountInfoEntity.HasKey(a => a.AccountId);
 			accountInfoEntity.HasIndex(a => a.LastBattleTime);
+			accountInfoEntity.Ignore(a => a.Achievements);
+			accountInfoEntity.Ignore(a => a.AchievementsMaxSeries);
 		}
 
 	}

@@ -16,7 +16,7 @@
 			throw new NotImplementedException();
 		}
 
-		public void SaveAccountTankAchievements(List<AccountInfoTankAchievment> accountInfoTankAchievments)
+		public void SaveAccountTankAchievements(List<AccountInfoTankAchievement> accountInfoTankAchievments)
 		{
 			throw new NotImplementedException();
 		}

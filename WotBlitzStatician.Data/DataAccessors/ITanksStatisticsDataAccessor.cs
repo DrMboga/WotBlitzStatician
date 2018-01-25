@@ -9,6 +9,6 @@
 
 		void SaveTanksStatistic(List<AccountTankStatistics> taksStat);
 
-		void SaveAccountTankAchievements(List<AccountInfoTankAchievment> accountInfoTankAchievments);
+		void SaveAccountTankAchievements(List<AccountInfoTankAchievement> accountInfoTankAchievments);
 	}
 }

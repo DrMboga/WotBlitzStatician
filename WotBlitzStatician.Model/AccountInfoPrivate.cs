@@ -9,6 +9,8 @@
 
 		public long AccountId { get; set; }
 
+		public AccountInfoStatistics AccountInfoStatistics{ get; set; }
+
 		///<summary>
 		///Информация о блокировке аккаунта
 		///</summary>

@@ -176,7 +176,7 @@
 		return achievements;
 	}
 	
-		public async Task<List<AccountInfoAchievment>> GetAccountAchievementsAsync(long accountId)
+		public async Task<List<AccountInfoAchievement>> GetAccountAchievementsAsync(long accountId)
 		{
 			var webClient = new WebApiClient(_proxySettings);
 			var accountAchievementsResponse = await webClient.GetResponse <Dictionary<string, WotAccountAchievementResponse>>(
@@ -188,7 +188,7 @@
 			var accountAchievements = accountAchievementsResponse[accountId.ToString()];
 
 			var accountAchievementsInfo = accountAchievements
-				.Achievements.Select(achievement => new AccountInfoAchievment
+				.Achievements.Select(achievement => new AccountInfoAchievement
 				{
 					AccountId = accountId,
 					AchievementId = achievement.Key,
@@ -196,7 +196,7 @@
 				}).ToList();
 
 			accountAchievementsInfo.AddRange(accountAchievements
-					.MaxSeries.Select(achievement => new AccountInfoAchievment
+					.MaxSeries.Select(achievement => new AccountInfoAchievement
 					{
 						AccountId = accountId,
 						AchievementId = achievement.Key,
@@ -208,9 +208,9 @@
 			return accountAchievementsInfo;
 		}
 
-		public async Task<List<AccountInfoTankAchievment>> GetAccountTankAchievementsAsync(long accountId, string accessToken, List<int> tankIds = null)
+		public async Task<List<AccountInfoTankAchievement>> GetAccountTankAchievementsAsync(long accountId, string accessToken, List<int> tankIds = null)
 		{
-			var accountTankAchievements = new List<AccountInfoTankAchievment>();
+			var accountTankAchievements = new List<AccountInfoTankAchievement>();
 
 			if (tankIds == null || tankIds.Count <= 100)
 			{
@@ -228,7 +228,7 @@
 			return accountTankAchievements;
 		}
 
-		private async Task FillAchievements(long accountId, List<AccountInfoTankAchievment> accountTankAchievements, string accessToken, List<int> tankIds = null)
+		private async Task FillAchievements(long accountId, List<AccountInfoTankAchievement> accountTankAchievements, string accessToken, List<int> tankIds = null)
 		{
 			var webClient = new WebApiClient(_proxySettings);
 			var accountTankAchievementsResponse = await webClient.GetResponse<Dictionary<string, WotAccountTankAchievementResponse[]>>(
@@ -247,7 +247,7 @@
 			foreach (var tank in accountTanks)
 			{
 				accountTankAchievements.AddRange(
-					tank.Achievements.Select(achievement => new AccountInfoTankAchievment
+					tank.Achievements.Select(achievement => new AccountInfoTankAchievement
 						{
 							TankId = tank.TankId.Value,
 							AccountId = accountId,
@@ -257,7 +257,7 @@
 						.ToList()
 				);
 				accountTankAchievements.AddRange(
-					tank.MaxSeries.Select(achievement => new AccountInfoTankAchievment
+					tank.MaxSeries.Select(achievement => new AccountInfoTankAchievement
 						{
 							TankId = tank.TankId.Value,
 							AccountId = accountId,

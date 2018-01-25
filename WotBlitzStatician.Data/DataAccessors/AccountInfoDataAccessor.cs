@@ -53,7 +53,7 @@
 			throw new NotImplementedException();
 		}
 
-		public void SaveAccountAchievements(List<AccountInfoAchievment> accountInfoAchievments)
+		public void SaveAccountAchievements(List<AccountInfoAchievement> accountInfoAchievments)
 		{
 			throw new NotImplementedException();
 		}

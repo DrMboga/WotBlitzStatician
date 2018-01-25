@@ -24,6 +24,6 @@
 
 		void SaveClanInfo(AccountClanInfo clanInfo);
 
-		void SaveAccountAchievements(List<AccountInfoAchievment> accountInfoAchievments);
+		void SaveAccountAchievements(List<AccountInfoAchievement> accountInfoAchievments);
 	}
 }

@@ -25,8 +25,8 @@
 
 		Task<List<Achievement>> GetAchievementsDictionaryAsync();
 		
-		Task<List<AccountInfoAchievment>> GetAccountAchievementsAsync(long accountId);
+		Task<List<AccountInfoAchievement>> GetAccountAchievementsAsync(long accountId);
 		
-		Task<List<AccountInfoTankAchievment>> GetAccountTankAchievementsAsync(long accountId, string accessToken, List<int> tankIds = null);
+		Task<List<AccountInfoTankAchievement>> GetAccountTankAchievementsAsync(long accountId, string accessToken, List<int> tankIds = null);
 	}
 }

@@ -31,9 +31,9 @@
 
 		public List<AccountInfoStatistics> AccountInfoStatistics { get; set; }
 		
-		public List<AccountInfoAchievment> Achievments { get; set; }
+		public List<AccountInfoAchievement> Achievements { get; set; }
 
-		public List<AccountInfoAchievment> AchievmentsMaxSeries { get; set; }
+		public List<AccountInfoAchievement> AchievementsMaxSeries { get; set; }
 
 		public AccountClanInfo AccountClanInfo { get; set; }
 	}

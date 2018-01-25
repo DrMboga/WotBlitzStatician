@@ -12,10 +12,10 @@ namespace WotBlitzStatician.Data
 
 		public DbSet<AccountClanInfo> AccountClanInfo { get; set; }
 		public DbSet<AccountInfo> AccountInfo { get; set; }
-		public DbSet<AccountInfoAchievment> AccountInfoAchievement { get; set; }
+		public DbSet<AccountInfoAchievement> AccountInfoAchievement { get; set; }
 		public DbSet<AccountInfoPrivate> AccountInfoPrivate { get; set; }
 		public DbSet<AccountInfoStatistics> AccountInfoStatistics { get; set; }
-		public DbSet<AccountInfoTankAchievment> AccountInfoTankAchievement { get; set; }
+		public DbSet<AccountInfoTankAchievement> AccountInfoTankAchievement { get; set; }
 		public DbSet<AccountTankStatistics> AccountTankStatistics { get; set; }
 		public DbSet<Achievement> Achievement { get; set; }
 		public DbSet<AchievementOption> AchievementOption { get; set; }
@@ -40,11 +40,12 @@ namespace WotBlitzStatician.Data
 			modelBuilder.Entity<AchievementOption>(e => e.HasKey(v => v.AcievementOptionId));
 			modelBuilder.Entity<Achievement>(AchievementTypeConfiguration.Configure);
 			modelBuilder.Entity<AccountInfo>(AccountInfoTypeConfiguration.Configure);
-			// Private - Stat 
-			// Frags - Stat
-			// ClanInfo - AccountInfo
-			// AccountInfoAchievement (x2?) - AccountInfo
-
+			modelBuilder.Entity<AccountInfoStatistics>(AccountInfoStatisticsTypeConfiguration.Configure);
+			modelBuilder.Entity<AccountInfoPrivate>(e => e.HasKey(v => v.AccountInfoPrivateId));
+			modelBuilder.Entity<AccountClanInfo>(e => e.HasKey(v => v.AccountClanInfoId));
+			modelBuilder.Entity<AccountInfoAchievement>(AccountInfoAchevementTypeConfiguration.Configure);
+			modelBuilder.Entity<AccountTankStatistics>(AccountTankStatisticsTypeConfiguration.Configure);
+			modelBuilder.Entity<AccountInfoTankAchievement>(TankAchievementTypeConfiguration.Configure);
 		}
 	}
 }

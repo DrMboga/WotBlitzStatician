@@ -140,7 +140,7 @@
 
             Assert.NotNull(accountClanInfo);
 
-            _log.Debug($"Got clan info for accountId {accountClanInfo.AccountId} - {accountClanInfo.PlayerRole};" 
+            _log.Debug($"Got clan info for accountId {accountClanInfo.AccountInfo.AccountId} - {accountClanInfo.PlayerRole};" 
                        + $" joined at {accountClanInfo.PlayerJoinedAt}; clan tag {accountClanInfo.ClanTag};" 
                        + $" members count {accountClanInfo.MembersCount}; leader is '{accountClanInfo.ClanLeaderName}'"
                        + $" clan id {accountClanInfo.ClanId}");
