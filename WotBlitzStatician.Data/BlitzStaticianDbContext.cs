@@ -4,7 +4,7 @@ using WotBlitzStatician.Model;
 
 namespace WotBlitzStatician.Data
 {
-    internal class BlitzStaticianDbContext : DbContext
+    public class BlitzStaticianDbContext : DbContext
 	{
 		public BlitzStaticianDbContext(DbContextOptions options) : base(options)
 		{

@@ -7,7 +7,6 @@ namespace WotBlitzStatician.Data.TypeConfigurations
     {
 		public static void Configure(EntityTypeBuilder<AccountInfoTankAchievement> achievementEntity)
 		{
-			achievementEntity.HasKey(a => a.AccountInfoAchievementId);
 			achievementEntity.HasIndex(a => new { a.AccountId, a.AchievementId, a.TankId });
 
 		}
