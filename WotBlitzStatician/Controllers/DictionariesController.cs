@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WotBlitzStatician.WotApiClient;
 
@@ -17,7 +18,7 @@ namespace WotBlitzStatician.Controllers
 
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<string>> Get()
         {
 			// GetStaticDictionariesAsync
             return new string[] { "value1", "value2" };
