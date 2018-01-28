@@ -1,15 +1,19 @@
-﻿using Autofac;
+﻿using System.Linq;
+using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician
 {
 	public class Startup
     {
+		private ServiceDescriptor _loggerFactoryServiceDescriptor;
+
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
@@ -23,8 +27,7 @@ namespace WotBlitzStatician
 		public void ConfigureServices(IServiceCollection services)
         {
 			services.AddMvc();
-
-
+			_loggerFactoryServiceDescriptor = services.FirstOrDefault(s => s.ServiceType == typeof(ILoggerFactory));
 		}
 
 		public void ConfigureContainer(ContainerBuilder builder)
@@ -35,6 +38,12 @@ namespace WotBlitzStatician
 			Configuration.GetSection("ProxySettings").Bind(wgApiConfig.ProxySettings);
 
 			// ToDo inject logger provider
+			if(_loggerFactoryServiceDescriptor != null)
+			{
+				// ToDo: Investigate
+				//builder.RegisterDecorator<>
+			}
+
 
 			builder.RegisterInstance<IWgApiConfiguration>(wgApiConfig);
 			builder.ConfigureWargamingApi();
