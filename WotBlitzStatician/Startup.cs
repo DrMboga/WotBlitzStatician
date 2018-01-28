@@ -34,6 +34,8 @@ namespace WotBlitzStatician
 			Configuration.GetSection("WgApi").Bind(wgApiConfig);
 			Configuration.GetSection("ProxySettings").Bind(wgApiConfig.ProxySettings);
 
+			// ToDo inject logger provider
+
 			builder.RegisterInstance<IWgApiConfiguration>(wgApiConfig);
 			builder.ConfigureWargamingApi();
 		}
