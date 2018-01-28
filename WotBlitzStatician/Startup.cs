@@ -45,7 +45,7 @@ namespace WotBlitzStatician
             {
                 app.UseDeveloperExceptionPage();
             }
-			// ToDo Add logging
+
 			app.UseMvc();
 		}
 	}

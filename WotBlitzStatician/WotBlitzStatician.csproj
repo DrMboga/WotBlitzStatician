@@ -11,12 +11,19 @@
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="NLog" Version="4.5.0-rc04" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\WotBlitzStatician.Logic\WotBlitzStatician.Logic.csproj" />
     <ProjectReference Include="..\WotBlitzStatician.Model\WotBlitzStatician.Model.csproj" />
     <ProjectReference Include="..\WotBlitzStatician.WotApiClient\WotBlitzStatician.WotApiClient.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

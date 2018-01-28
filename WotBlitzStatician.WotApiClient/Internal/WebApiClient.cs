@@ -5,19 +5,20 @@
 	using System.Net.Http;
 	using System.Net.Http.Headers;
 	using System.Threading.Tasks;
-    using log4net;
-    using Newtonsoft.Json;
+	using Microsoft.Extensions.Logging;
+	using Newtonsoft.Json;
 
 	internal class WebApiClient
 	{
-        private static readonly ILog _log = LogManager.GetLogger(typeof(WebApiClient));
+        private readonly ILogger<WebApiClient> _log;
 
 		private const string Guid = "fcdda45ba2a74c2f8cc8562bbfbb7a0a";
 		private readonly IProxySettings _proxySettings;
 
-		public WebApiClient(IProxySettings proxySettings)
+		public WebApiClient(IProxySettings proxySettings, ILogger<WebApiClient> logger)
 		{
 			_proxySettings = proxySettings;
+			_log = logger;
 		}
 
 		public async Task<TResponse> GetResponse<TResponse>(string baseAddress, string request)
@@ -40,7 +41,7 @@
 
 				var response = await client.GetAsync(request);
 
-                _log.Debug($"Request '{baseAddress}{request}' - Status: '{response.StatusCode}'");
+                _log.LogInformation($"Request '{baseAddress}{request}' - Status: '{response.StatusCode}'");
 
 				response.EnsureSuccessStatusCode();
 				var responseString = await response.Content.ReadAsStringAsync();
