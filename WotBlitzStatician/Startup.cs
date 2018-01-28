@@ -29,8 +29,12 @@ namespace WotBlitzStatician
 
 		public void ConfigureContainer(ContainerBuilder builder)
 		{
-			// ToDo: add configuration
-			var wgApiConfig = Configuration.GetValue<Appsettings>("WgApi");
+			var wgApiConfig = new Appsettings();
+			wgApiConfig.ProxySettings = new ProxySettings();
+			Configuration.GetSection("WgApi").Bind(wgApiConfig);
+			Configuration.GetSection("ProxySettings").Bind(wgApiConfig.ProxySettings);
+
+			builder.RegisterInstance<IWgApiConfiguration>(wgApiConfig);
 			builder.ConfigureWargamingApi();
 		}
 
@@ -41,7 +45,7 @@ namespace WotBlitzStatician
             {
                 app.UseDeveloperExceptionPage();
             }
-
+			// ToDo Add logging
 			app.UseMvc();
 		}
 	}

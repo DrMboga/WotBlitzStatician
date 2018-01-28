@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WotBlitzStatician.Model;
 using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician.Controllers
@@ -18,11 +19,17 @@ namespace WotBlitzStatician.Controllers
 
         // GET: api/<controller>
         [HttpGet]
-        public async Task<IEnumerable<string>> Get()
+        public async Task<IEnumerable<DictionaryLanguage>> Get()
         {
-			// GetStaticDictionariesAsync
-            return new string[] { "value1", "value2" };
-        }
+			(var languages,
+			var nations,
+			var vehicleTypes,
+			var achievementSections,
+			var clanRoles) = await _wgApi.GetStaticDictionariesAsync();
+
+			return languages;
+
+		}
 
     }
 }
