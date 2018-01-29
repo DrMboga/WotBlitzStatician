@@ -11,7 +11,6 @@
 			//	.As<IBlitzStaticianDataContextFactory>();
             containerBuilder.RegisterType<AccountInfoDataAccessor>().As<IAccountInfoDataAccessor>();
             containerBuilder.RegisterType<AnalyseDataAccessor>().As<IAnalyseDataAccessor>();
-            containerBuilder.RegisterType<StaticInfoDataAccessor>().As<IStaticInfoDataAccessor>();
             containerBuilder.RegisterType<TanksStatisticsDataAccessor>().As<ITanksStatisticsDataAccessor>();
 		}
     }

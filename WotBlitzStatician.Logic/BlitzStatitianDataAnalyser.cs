@@ -104,7 +104,8 @@
                 PreviewImageUrl = tankStat.VehicleInfo.PreviewImageUrl,
                 NormalImageUrl = tankStat.VehicleInfo.NormalImageUrl,
                 MarkOfMastery = tankStat.MarkOfMastery,
-                MarkOfMasteryImageUrl = _blitzStaticianDictionary.GetMarkOfMasteryImageUrl(tankStat.MarkOfMastery)
+				// ToDo: MarksInfoHelper
+                //MarkOfMasteryImageUrl = _blitzStaticianDictionary.GetMarkOfMasteryImageUrl(tankStat.MarkOfMastery)
             };
         }
 	}

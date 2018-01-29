@@ -12,19 +12,19 @@
 	public class BlitzStaticianLogic : IBlitzStaticianLogic
 	{
 		private readonly IAccountInfoDataAccessor _accountInfoDataAccessor;
-		private readonly IStaticInfoDataAccessor _staticInfoDataAccessor;
 		private readonly ITanksStatisticsDataAccessor _tanksStatisticsDataAccessor;
 		private readonly IWargamingApiClient _wgApiClient;
         private readonly IWgApiConfiguration _wgApiConfiguration;
 
 		public BlitzStaticianLogic(
             IWargamingApiClient wargamingApiClient,
-            IWgApiConfiguration wargamingApiConfiguration, IAccountInfoDataAccessor accountInfoDataAccessor, IStaticInfoDataAccessor staticInfoDataAccessor, ITanksStatisticsDataAccessor tanksStatisticsDataAccessor)
+            IWgApiConfiguration wargamingApiConfiguration, 
+			IAccountInfoDataAccessor accountInfoDataAccessor, 
+			ITanksStatisticsDataAccessor tanksStatisticsDataAccessor)
 		{
 			_wgApiClient = wargamingApiClient;
             _wgApiConfiguration = wargamingApiConfiguration;
 			_accountInfoDataAccessor = accountInfoDataAccessor;
-			_staticInfoDataAccessor = staticInfoDataAccessor;
 			_tanksStatisticsDataAccessor = tanksStatisticsDataAccessor;
 		}
 
@@ -59,32 +59,32 @@
 
 		private async Task CheckAndUpdateStaticData()
 		{
-			var lastStaticDictionariesUpdateDate = _staticInfoDataAccessor.GetStaticDataLastUpdateDate();
+			//var lastStaticDictionariesUpdateDate = _staticInfoDataAccessor.GetStaticDataLastUpdateDate();
 
-			if (Convert.ToInt32((DateTime.Now - lastStaticDictionariesUpdateDate).TotalDays) >=
-			    _wgApiConfiguration.DictionariesUpdateFrequencyInDays)
-			{
-				await LoadStaticDataAndSaveToDb();
-			}
+			//if (Convert.ToInt32((DateTime.Now - lastStaticDictionariesUpdateDate).TotalDays) >=
+			//    _wgApiConfiguration.DictionariesUpdateFrequencyInDays)
+			//{
+			//	await LoadStaticDataAndSaveToDb();
+			//}
 		}
 
 		public async Task LoadStaticDataAndSaveToDb()
         {
-            (var languages,
-			var nations,
-			var vehicleTypes,
-			var achievementSections,
-			var clanRoles) = await _wgApiClient.GetStaticDictionariesAsync();
-            var vehicles = await _wgApiClient.GetWotEncyclopediaVehiclesAsync();
-            var achievements = await _wgApiClient.GetAchievementsDictionaryAsync();
+   //         (var languages,
+			//var nations,
+			//var vehicleTypes,
+			//var achievementSections,
+			//var clanRoles) = await _wgApiClient.GetStaticDictionariesAsync();
+   //         var vehicles = await _wgApiClient.GetWotEncyclopediaVehiclesAsync();
+   //         var achievements = await _wgApiClient.GetAchievementsDictionaryAsync();
 
-            //encyclopedia.DictionaryLanguages.ForEach(l => l.LastUpdated = DateTime.Now);
+   //         //encyclopedia.DictionaryLanguages.ForEach(l => l.LastUpdated = DateTime.Now);
 
-	        _staticInfoDataAccessor.SaveLanguagesDictionary(languages);
-	        _staticInfoDataAccessor.SaveNationsDictionary(nations);
-	        _staticInfoDataAccessor.SaveVehicleTypesDictionary(vehicleTypes);
-	        _staticInfoDataAccessor.SaveVehicleEncyclopedia(vehicles);
-	        _staticInfoDataAccessor.SaveAchievementsDictionary(achievements);
+	  //      _staticInfoDataAccessor.SaveLanguagesDictionary(languages);
+	  //      _staticInfoDataAccessor.SaveNationsDictionary(nations);
+	  //      _staticInfoDataAccessor.SaveVehicleTypesDictionary(vehicleTypes);
+	  //      _staticInfoDataAccessor.SaveVehicleEncyclopedia(vehicles);
+	  //      _staticInfoDataAccessor.SaveAchievementsDictionary(achievements);
         }
 
 		public AccountInfoPrivate GetAccountPrivateStatistics(long accountId)
@@ -168,20 +168,20 @@
 
 		private void CalculateStatistitcs(AccountInfoStatistics accountStat, List<AccountTankStatistics> tanksInfo)
 		{
-			var tankTires = _staticInfoDataAccessor.GetVehicleTires();
+			//var tankTires = _staticInfoDataAccessor.GetVehicleTires();
 
-			accountStat.AvgTier = accountStat.CalculateMiddleTier(tanksInfo, tankTires);
-			accountStat.Wn7 = accountStat.CalculateWn7();
-			// ToDo: Wn8
-			//accountStat.Effectivity = accountStat.CalculateEffectivity();
+			//accountStat.AvgTier = accountStat.CalculateMiddleTier(tanksInfo, tankTires);
+			//accountStat.Wn7 = accountStat.CalculateWn7();
+			//// ToDo: Wn8
+			////accountStat.Effectivity = accountStat.CalculateEffectivity();
 
-			foreach (var accountTankStatistic in tanksInfo)
-			{
-				if (!tankTires.ContainsKey(accountTankStatistic.TankId))
-					continue;
-				accountTankStatistic.Wn7 = accountTankStatistic.CalculateWn7(tankTires[accountTankStatistic.TankId]);
-				//accountTankStatistic.Effectivity = accountTankStatistic.CalculateEffectivity(tankTires[accountTankStatistic.TankId]);
-			}
+			//foreach (var accountTankStatistic in tanksInfo)
+			//{
+			//	if (!tankTires.ContainsKey(accountTankStatistic.TankId))
+			//		continue;
+			//	accountTankStatistic.Wn7 = accountTankStatistic.CalculateWn7(tankTires[accountTankStatistic.TankId]);
+			//	//accountTankStatistic.Effectivity = accountTankStatistic.CalculateEffectivity(tankTires[accountTankStatistic.TankId]);
+			//}
 		}
 	}
 }

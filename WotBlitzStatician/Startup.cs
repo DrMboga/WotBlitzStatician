@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WotBlitzStatician.Logic;
 using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician
@@ -36,6 +37,8 @@ namespace WotBlitzStatician
 			builder.RegisterInstance<IProxySettings>(wgApiConfig.ProxySettings);
 			builder.RegisterInstance<IWgApiConfiguration>(wgApiConfig);
 			builder.ConfigureWargamingApi();
+			// ToDo: Register db
+			builder.ConfigureBlitzStaticianLogic();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

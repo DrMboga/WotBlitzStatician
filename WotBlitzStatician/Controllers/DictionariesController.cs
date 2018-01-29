@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using WotBlitzStatician.Model;
+using WotBlitzStatician.Logic;
 using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician.Controllers
@@ -11,29 +9,49 @@ namespace WotBlitzStatician.Controllers
     public class DictionariesController : Controller
     {
 		private readonly IWargamingApiClient _wgApi;
-		private readonly ILogger<DictionariesController> _logger;
+		private readonly IBlitzStaticianDictionary _blitzStatisticsDictionary;
 
-
-		public DictionariesController(IWargamingApiClient wgApi, ILogger<DictionariesController> logger)
+		public DictionariesController(IWargamingApiClient wgApi, IBlitzStaticianDictionary blitzStaticianDictionary)
 		{
 			_wgApi = wgApi;
-			_logger = logger;
+			_blitzStatisticsDictionary = blitzStaticianDictionary;
 		}
 
 
-        // GET: api/<controller>
-        [HttpGet]
-        public async Task<IEnumerable<DictionaryLanguage>> Get()
+        [HttpGet("SaveDictionaries")]
+        public async Task<IActionResult> SaveDictionaries()
         {
-			_logger.LogInformation("Hi from controller");
 			(var languages,
 			var nations,
 			var vehicleTypes,
 			var achievementSections,
 			var clanRoles) = await _wgApi.GetStaticDictionariesAsync();
 
-			return languages;
+			await _blitzStatisticsDictionary.SaveDictionaries(
+				languages,
+				nations,
+				vehicleTypes,
+				achievementSections,
+				clanRoles);
 
+			return Ok();
+
+		}
+
+		[HttpGet("SaveVehicles")]
+		public async Task<IActionResult> SaveVehicles()
+		{
+			var vehicles = await _wgApi.GetWotEncyclopediaVehiclesAsync();
+			await _blitzStatisticsDictionary.SaveVehicles(vehicles);
+			return Ok();
+		}
+
+		[HttpGet("SaveAchievements")]
+		public async Task<IActionResult> SaveAchievements()
+		{
+			var achievements = await _wgApi.GetAchievementsDictionaryAsync();
+			await _blitzStatisticsDictionary.SaveAchievements(achievements);
+			return Ok();
 		}
 
     }
