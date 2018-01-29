@@ -1,6 +1,6 @@
 ﻿namespace WotBlitzStatician.WotApiClient.RequestStringBuilder
 {
-	internal enum RequestType
+	public enum RequestType
 	{
 		AccountList,
 		AccountInfo,

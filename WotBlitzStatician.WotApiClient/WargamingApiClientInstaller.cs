@@ -2,6 +2,7 @@
 {
 	using System.Collections.Generic;
 	using Autofac;
+	using Microsoft.Extensions.Logging;
 	using WotBlitzStatician.Model;
 	using WotBlitzStatician.Model.MapperLogic;
 	using WotBlitzStatician.WotApiClient.InternalModel;
@@ -15,8 +16,8 @@
 			containerBuilder.ConfigureMappers();
 
 			containerBuilder.RegisterType<RequestBuilder>().As<IRequestBuilder>();
-			// Manually calling the internal constructor
-			containerBuilder.Register(c => new WargamingApiClient(c.Resolve<IRequestBuilder>(), c.Resolve<IWgApiConfiguration>().ProxySettings, c.Resolve<IMapperHelper>()))
+			containerBuilder.RegisterType<WebApiClient>();
+			containerBuilder.RegisterType<WargamingApiClient>()
 				.As<IWargamingApiClient>();
 
 		}

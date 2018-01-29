@@ -4,7 +4,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using WotBlitzStatician.Model;
+	using Microsoft.Extensions.Logging;
+	using WotBlitzStatician.Model;
     using WotBlitzStatician.Model.MapperLogic;
     using WotBlitzStatician.WotApiClient.InternalModel;
     using WotBlitzStatician.WotApiClient.RequestStringBuilder;
@@ -13,21 +14,22 @@
     public class WargamingApiClient : IWargamingApiClient
 	{
 		private readonly IRequestBuilder _requestBuilder;
-		private readonly IProxySettings _proxySettings;
 		private readonly IMapperHelper _mapper;
+		private readonly WebApiClient _webApiClient;
 
-		internal WargamingApiClient(IRequestBuilder requestBuilder, IProxySettings proxySettings, IMapperHelper mapper)
+		public WargamingApiClient(
+			IRequestBuilder requestBuilder, 
+			IMapperHelper mapper,
+			WebApiClient webApiClient)
 		{
 			_requestBuilder = requestBuilder;
-			_proxySettings = proxySettings;
 			_mapper = mapper;
+			_webApiClient = webApiClient;
 		}
 
 		public async Task<List<VehicleEncyclopedia>> GetWotEncyclopediaVehiclesAsync()
 		{
-			var webClient = new WebApiClient(_proxySettings, null);
-
-			var tankopedia = await webClient.GetResponse<Dictionary<string, WotEncyclopediaVehiclesResponse>>(
+			var tankopedia = await _webApiClient.GetResponse<Dictionary<string, WotEncyclopediaVehiclesResponse>>(
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(RequestType.EncyclopediaVehicles,
 				new RequestParameter {
@@ -43,8 +45,7 @@
 
 		public async Task<List<AccountInfo>> FindAccountAsync(string nickName)
 		{
-			var webClient = new WebApiClient(_proxySettings, null);
-			var accountListResponse = await webClient.GetResponse<List<WotAccountListResponse>>(
+			var accountListResponse = await _webApiClient.GetResponse<List<WotAccountListResponse>>(
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(RequestType.AccountList, new RequestParameter{ParameterType = ParameterType.Search, ParameterValue = nickName }));
 
@@ -53,9 +54,7 @@
 
 		public async Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId, string accessToken, bool contactsIncluded = false)
 		{
-			var webClient = new WebApiClient(_proxySettings, null);
-
-			var accountInfo = await webClient.GetResponse<Dictionary<string, WotAccountInfoResponse>>(
+			var accountInfo = await _webApiClient.GetResponse<Dictionary<string, WotAccountInfoResponse>>(
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(
 					RequestType.AccountInfo, 
@@ -79,9 +78,7 @@
 
 		public async Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId, string accessToken)
 		{
-			var webClient = new WebApiClient(_proxySettings, null);
-
-			var tanksStat = await webClient.GetResponse<Dictionary<string, List<WotAccountTanksStatResponse>>>(
+			var tanksStat = await _webApiClient.GetResponse<Dictionary<string, List<WotAccountTanksStatResponse>>>(
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(
 					RequestType.TanksStat, 
@@ -98,8 +95,7 @@
 			List<AchievementSection>,
 			List<DictionaryClanRole>)> GetStaticDictionariesAsync()
 		{
-			var webClient = new WebApiClient(_proxySettings, null);
-			var encyclopedia = await webClient.GetResponse<WotEncyclopediaInfoResponse>(
+			var encyclopedia = await _webApiClient.GetResponse<WotEncyclopediaInfoResponse>(
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(RequestType.EncyclopediaInfo));
 
@@ -109,7 +105,7 @@
 			var AchievementSections = _mapper.Map<Dictionary<string, WotEncyclopediaInfoAchievement_section>, 
 				List<AchievementSection>>(encyclopedia.AchievementSections);
 
-			var clanGlossaryResponse = await webClient.GetResponse<WotClanGlossaryResponse>(
+			var clanGlossaryResponse = await _webApiClient.GetResponse<WotClanGlossaryResponse>(
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(RequestType.ClanGlossary));
 			var clanGlossary = _mapper.Map<Dictionary<string, string>, List<DictionaryClanRole>>(clanGlossaryResponse.ClanRoles);
@@ -119,8 +115,7 @@
 
         public async Task<AccountClanInfo> GetAccountClanInfoAsync(long accountId)
         {
-            var webClient = new WebApiClient(_proxySettings, null);
-            var playerAccountInfoResponse = await webClient.GetResponse<Dictionary<string, WotClansAccountinfoResponse>>(
+            var playerAccountInfoResponse = await _webApiClient.GetResponse<Dictionary<string, WotClansAccountinfoResponse>>(
 	            _requestBuilder.BaseAddress,
 	            _requestBuilder.BuildRequestUrl(
 	                    RequestType.ClanAccountInfo,
@@ -137,7 +132,7 @@
 
             string clanId = playerAccountInfo.ClanId.Value.ToString();
 
-            var clanInfoResponse = await webClient.GetResponse<Dictionary<string, WotClanInfoResponse>>(
+            var clanInfoResponse = await _webApiClient.GetResponse<Dictionary<string, WotClanInfoResponse>>(
 			    _requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(
                     RequestType.ClanInfo,
@@ -151,8 +146,7 @@
 	
 	public async Task<List<Achievement>> GetAchievementsDictionaryAsync()
 	{
-		var webClient = new WebApiClient(_proxySettings, null);
-		var acievementsresponse = await webClient.GetResponse<Dictionary<string, WotEncyclopediaAchievementsResponse>>(
+		var acievementsresponse = await _webApiClient.GetResponse<Dictionary<string, WotEncyclopediaAchievementsResponse>>(
 			_requestBuilder.BaseAddress,
 			_requestBuilder.BuildRequestUrl(RequestType.EncyclopediaAchievements));
 
@@ -178,8 +172,7 @@
 	
 		public async Task<List<AccountInfoAchievement>> GetAccountAchievementsAsync(long accountId)
 		{
-			var webClient = new WebApiClient(_proxySettings, null);
-			var accountAchievementsResponse = await webClient.GetResponse <Dictionary<string, WotAccountAchievementResponse>>(
+			var accountAchievementsResponse = await _webApiClient.GetResponse <Dictionary<string, WotAccountAchievementResponse>>(
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(
 					RequestType.AccountAchievements,
@@ -230,8 +223,7 @@
 
 		private async Task FillAchievements(long accountId, List<AccountInfoTankAchievement> accountTankAchievements, string accessToken, List<int> tankIds = null)
 		{
-			var webClient = new WebApiClient(_proxySettings, null);
-			var accountTankAchievementsResponse = await webClient.GetResponse<Dictionary<string, WotAccountTankAchievementResponse[]>>(
+			var accountTankAchievementsResponse = await _webApiClient.GetResponse<Dictionary<string, WotAccountTankAchievementResponse[]>>(
 				_requestBuilder.BaseAddress,
 				_requestBuilder.BuildRequestUrl(
 					RequestType.TanksAcievements,

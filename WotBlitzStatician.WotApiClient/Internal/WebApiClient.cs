@@ -8,7 +8,7 @@
 	using Microsoft.Extensions.Logging;
 	using Newtonsoft.Json;
 
-	internal class WebApiClient
+	public class WebApiClient
 	{
         private readonly ILogger<WebApiClient> _log;
 
