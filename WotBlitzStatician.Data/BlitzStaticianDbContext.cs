@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using WotBlitzStatician.Data.TypeConfigurations;
 using WotBlitzStatician.Model;
 

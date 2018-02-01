@@ -41,7 +41,7 @@
 			var containerBuilder = new ContainerBuilder();
 			containerBuilder.RegisterType<TestWgApiConfiguration>().As<IWgApiConfiguration>();
 			containerBuilder.ConfigureWargamingApi();
-            containerBuilder.ConfigureDataAccessor(ConnectionString);
+            containerBuilder.ConfigureDataAccessor();
             containerBuilder.RegisterType<BlitzStaticianLogic>().As<IBlitzStaticianLogic>();
 
 			_container = containerBuilder.Build();

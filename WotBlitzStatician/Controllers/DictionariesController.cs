@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WotBlitzStatician.Logic;
+using WotBlitzStatician.Data.DataAccessors;
 using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician.Controllers

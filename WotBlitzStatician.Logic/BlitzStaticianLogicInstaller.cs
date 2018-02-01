@@ -6,8 +6,6 @@ namespace WotBlitzStatician.Logic
     {
 		public static void ConfigureBlitzStaticianLogic(this ContainerBuilder containerBuilder)
 		{
-			containerBuilder.RegisterType<BlitzStaticianDictionary>()
-				.As<IBlitzStaticianDictionary>();
 		}
 
 	}

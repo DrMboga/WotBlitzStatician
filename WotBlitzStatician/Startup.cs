@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WotBlitzStatician.Data;
 using WotBlitzStatician.Logic;
 using WotBlitzStatician.WotApiClient;
 
@@ -25,6 +26,7 @@ namespace WotBlitzStatician
 		public void ConfigureServices(IServiceCollection services)
         {
 			services.AddMvc();
+			services.AddBlitzStaticianDbContextPool(Configuration.GetConnectionString("BlitzStatician"));
 		}
 
 		public void ConfigureContainer(ContainerBuilder builder)
@@ -37,7 +39,7 @@ namespace WotBlitzStatician
 			builder.RegisterInstance<IProxySettings>(wgApiConfig.ProxySettings);
 			builder.RegisterInstance<IWgApiConfiguration>(wgApiConfig);
 			builder.ConfigureWargamingApi();
-			// ToDo: Register db
+			builder.ConfigureDataAccessor();
 			builder.ConfigureBlitzStaticianLogic();
 		}
 
