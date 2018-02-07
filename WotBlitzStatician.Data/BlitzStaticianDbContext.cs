@@ -7,9 +7,31 @@ namespace WotBlitzStatician.Data
 {
     public class BlitzStaticianDbContext : DbContext
 	{
+		private readonly bool _configureOutside;
+		private readonly string _connectionString;
+		private readonly ILoggerFactory _loggerFactory;
+
 		public BlitzStaticianDbContext(DbContextOptions options) : base(options)
 		{
+			_configureOutside = true;
 		}
+
+		public BlitzStaticianDbContext(string connectionString, ILoggerFactory loggerFactory)
+		{
+			_configureOutside = false;
+			_connectionString = connectionString;
+			_loggerFactory = loggerFactory;
+		}
+
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			if (_configureOutside)
+				return;
+			optionsBuilder.UseLoggerFactory(_loggerFactory);
+			optionsBuilder.UseSqlServer(_connectionString);
+		}
+
+
 
 		public DbSet<AccountClanInfo> AccountClanInfo { get; set; }
 		public DbSet<AccountInfo> AccountInfo { get; set; }

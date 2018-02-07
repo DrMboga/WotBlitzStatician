@@ -26,7 +26,6 @@ namespace WotBlitzStatician
 		public void ConfigureServices(IServiceCollection services)
         {
 			services.AddMvc();
-			services.AddBlitzStaticianDbContextPool(Configuration.GetConnectionString("BlitzStatician"));
 		}
 
 		public void ConfigureContainer(ContainerBuilder builder)
@@ -39,7 +38,7 @@ namespace WotBlitzStatician
 			builder.RegisterInstance<IProxySettings>(wgApiConfig.ProxySettings);
 			builder.RegisterInstance<IWgApiConfiguration>(wgApiConfig);
 			builder.ConfigureWargamingApi();
-			builder.ConfigureDataAccessor();
+			builder.ConfigureDataAccessor(Configuration.GetConnectionString("BlitzStatician"));
 			builder.ConfigureBlitzStaticianLogic();
 		}
 
