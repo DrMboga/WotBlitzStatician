@@ -1,23 +1,33 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using WotBlitzStatician.Model;
-
-namespace WotBlitzStatician.Data.DataAccessors
+﻿namespace WotBlitzStatician.Data.DataAccessors
 {
+	using System;
+	using System.Diagnostics;
+	using Microsoft.Extensions.Logging;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Threading.Tasks;
+	using Microsoft.EntityFrameworkCore;
+	using WotBlitzStatician.Model;
+
 	public class BlitzStaticianDictionary : IBlitzStaticianDictionary
 	{
-		private readonly BlitzStaticianDbContext _dbContext;
+		private readonly Func<BlitzStaticianDbContext> _getDbContext;
+		private readonly ILogger<BlitzStaticianDictionary> _logger;
 
-		public BlitzStaticianDictionary(BlitzStaticianDbContext dbContext)
+		public BlitzStaticianDictionary(Func<BlitzStaticianDbContext> getDbContext, ILogger<BlitzStaticianDictionary> logger)
 		{
-			_dbContext = dbContext;
+			_getDbContext = getDbContext;
+			_logger = logger;
 		}
 
-		public Task SaveAchievements(List<Achievement> achievements)
+		public async Task SaveAchievements(List<Achievement> achievements)
 		{
-			throw new System.NotImplementedException();
+			using (var dbContext = _getDbContext())
+			{
+				await MergeAchievements(dbContext, achievements);
+
+				dbContext.SaveChanges();
+			}
 		}
 
 		public async Task SaveDictionaries(
@@ -27,13 +37,16 @@ namespace WotBlitzStatician.Data.DataAccessors
 			List<AchievementSection> achievementSections, 
 			List<DictionaryClanRole> clanRoles)
 		{
-			await MergeLanguages(_dbContext, languages);
-			await MergeNations(_dbContext, natons);
-			await MergeVehicleType(_dbContext, vehicleTypes);
-			await MergeAchievementSection(_dbContext, achievementSections);
-			await MergeClanRoles(_dbContext, clanRoles);
+			using (var dbContext = _getDbContext())
+			{
+				await MergeLanguages(dbContext, languages);
+				await MergeNations(dbContext, natons);
+				await MergeVehicleType(dbContext, vehicleTypes);
+				await MergeAchievementSection(dbContext, achievementSections);
+				await MergeClanRoles(dbContext, clanRoles);
 
-			await _dbContext.SaveChangesAsync();
+				await dbContext.SaveChangesAsync();
+			}
 		}
 
 		public Task SaveVehicles(List<VehicleEncyclopedia> vehicles)
@@ -41,6 +54,8 @@ namespace WotBlitzStatician.Data.DataAccessors
 			throw new System.NotImplementedException();
 		}
 
+
+		// ToDo: Move to extensions
 		private static async Task MergeLanguages(BlitzStaticianDbContext dbContext, List<DictionaryLanguage> languages)
 		{
 			var langIds = languages.Select(l => l.LanguageId);
@@ -116,9 +131,10 @@ namespace WotBlitzStatician.Data.DataAccessors
 			});
 		}
 
-		private static async Task MergeClanRoles(BlitzStaticianDbContext dbContext, 
+		private async Task MergeClanRoles(BlitzStaticianDbContext dbContext, 
 			List<DictionaryClanRole> clanRoles)
 		{
+			var stopwatch = Stopwatch.StartNew();
 			var ids = clanRoles.Select(l => l.ClanRoleId);
 			var existing = await dbContext.DictionaryClanRole
 				.Where(l => ids.Contains(l.ClanRoleId))
@@ -133,6 +149,49 @@ namespace WotBlitzStatician.Data.DataAccessors
 					? EntityState.Modified
 					: EntityState.Added;
 			});
+			stopwatch.Stop();
+			_logger.LogInformation($"MergeClanRoles took '{stopwatch.ElapsedMilliseconds}' ms");
+		}
+
+		private async Task MergeClanRolesThirdWay(BlitzStaticianDbContext dbContext, 
+			List<DictionaryClanRole> clanRoles)
+		{
+			var stopwatch = Stopwatch.StartNew();
+			foreach (var dictionaryClanRole in clanRoles)
+			{
+				var exists = await dbContext.DictionaryClanRole.AnyAsync(r => r.ClanRoleId == dictionaryClanRole.ClanRoleId);
+				dbContext.DictionaryClanRole.Attach(dictionaryClanRole);
+				dbContext.Entry(dictionaryClanRole).State = exists
+					? EntityState.Modified
+					: EntityState.Added;
+			}
+			stopwatch.Stop();
+			_logger.LogInformation($"MergeClanRolesThirdWay took '{stopwatch.ElapsedMilliseconds}' ms");
+		}
+
+		private static async Task MergeAchievements(BlitzStaticianDbContext dbContext,
+			List<Achievement> achievements)
+		{
+			await DeleteAchievementOptions(dbContext);
+
+			var ids = achievements.Select(l => l.AchievementId);
+			var existing = await dbContext.Achievement
+				.Where(l => ids.Contains(l.AchievementId))
+				.Select(l => l.AchievementId)
+				.AsNoTracking()
+				.ToListAsync();
+
+			achievements.ForEach(l =>
+			{
+				dbContext.Achievement.Attach(l);
+				dbContext.Entry(l).State = existing.Contains(l.AchievementId)
+					? EntityState.Modified
+					: EntityState.Added;
+			});
+		}
+		private static async Task DeleteAchievementOptions(BlitzStaticianDbContext dbContext)
+		{
+			await dbContext.Database.ExecuteSqlCommandAsync("TRUNCATE TABLE wotb.AchievementOption");
 		}
 
 	}
