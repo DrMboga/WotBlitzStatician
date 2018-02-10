@@ -14,7 +14,7 @@ using WotBlitzStatician.Model;
 namespace WotBlitzStatician.Data.Migrations
 {
     [DbContext(typeof(BlitzStaticianDbContext))]
-    [Migration("20180126194955_Initial")]
+    [Migration("20180210210615_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -408,8 +408,7 @@ namespace WotBlitzStatician.Data.Migrations
 
             modelBuilder.Entity("WotBlitzStatician.Model.VehicleEncyclopedia", b =>
                 {
-                    b.Property<long>("TankId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<long>("TankId");
 
                     b.Property<string>("Description");
 

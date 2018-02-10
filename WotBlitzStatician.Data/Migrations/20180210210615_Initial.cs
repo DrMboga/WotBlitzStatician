@@ -201,8 +201,7 @@ namespace WotBlitzStatician.Data.Migrations
                 schema: "wotb",
                 columns: table => new
                 {
-                    TankId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    TankId = table.Column<long>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Tier = table.Column<long>(nullable: false),
                     Nation = table.Column<string>(nullable: true),

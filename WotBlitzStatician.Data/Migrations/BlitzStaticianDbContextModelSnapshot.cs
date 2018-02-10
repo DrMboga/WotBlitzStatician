@@ -407,8 +407,7 @@ namespace WotBlitzStatician.Data.Migrations
 
             modelBuilder.Entity("WotBlitzStatician.Model.VehicleEncyclopedia", b =>
                 {
-                    b.Property<long>("TankId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<long>("TankId");
 
                     b.Property<string>("Description");
 

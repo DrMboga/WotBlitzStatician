@@ -49,9 +49,13 @@
 			}
 		}
 
-		public Task SaveVehicles(List<VehicleEncyclopedia> vehicles)
+		public async Task SaveVehicles(List<VehicleEncyclopedia> vehicles)
 		{
-			throw new System.NotImplementedException();
+			using (var dbContext = _getDbContext())
+			{
+				await MergeVehicles(dbContext, vehicles);
+				await dbContext.SaveChangesAsync();
+			}
 		}
 
 
@@ -192,6 +196,24 @@
 		private static async Task DeleteAchievementOptions(BlitzStaticianDbContext dbContext)
 		{
 			await dbContext.Database.ExecuteSqlCommandAsync("TRUNCATE TABLE wotb.AchievementOption");
+		}
+
+		private static async Task MergeVehicles(BlitzStaticianDbContext dbContext,
+			List<VehicleEncyclopedia> vehicles)
+		{
+			var ids = vehicles.Select(l => l.TankId);
+			var existing = await dbContext.VehicleEncyclopedia
+				.Where(l => ids.Contains(l.TankId))
+				.Select(l => l.TankId)
+				.ToListAsync();
+
+			vehicles.ForEach(v =>
+			{
+				dbContext.VehicleEncyclopedia.Attach(v);
+				dbContext.Entry(v).State = existing.Contains(v.TankId)
+					? EntityState.Modified
+					: EntityState.Added;
+			});
 		}
 
 	}

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WotBlitzStatician.Model;
 
 namespace WotBlitzStatician.Data.TypeConfigurations
@@ -7,7 +8,10 @@ namespace WotBlitzStatician.Data.TypeConfigurations
     {
 		public static void Configure(EntityTypeBuilder<VehicleEncyclopedia> vehicleEncyclopediaEntity)
 		{
-			vehicleEncyclopediaEntity.HasKey(e => e.TankId);
+			vehicleEncyclopediaEntity.HasKey(v => v.TankId);
+			vehicleEncyclopediaEntity.Property(v => v.TankId)
+				.ValueGeneratedNever();
+				//.HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
 			vehicleEncyclopediaEntity.HasIndex(e => e.Tier);
 			vehicleEncyclopediaEntity.HasIndex(e => e.Type);
 			vehicleEncyclopediaEntity.HasIndex(e => e.Nation);
