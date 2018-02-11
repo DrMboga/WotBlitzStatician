@@ -11,7 +11,6 @@ namespace WotBlitzStatician.Data.TypeConfigurations
 			vehicleEncyclopediaEntity.HasKey(v => v.TankId);
 			vehicleEncyclopediaEntity.Property(v => v.TankId)
 				.ValueGeneratedNever();
-				//.HasDatabaseGeneratedOption(DatabaseGeneratedOption.None)
 			vehicleEncyclopediaEntity.HasIndex(e => e.Tier);
 			vehicleEncyclopediaEntity.HasIndex(e => e.Type);
 			vehicleEncyclopediaEntity.HasIndex(e => e.Nation);
