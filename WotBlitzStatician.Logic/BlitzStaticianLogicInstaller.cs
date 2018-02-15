@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using WotBlitzStatician.Logic.StatisticsCollectorOperations;
 
 namespace WotBlitzStatician.Logic
 {
@@ -6,6 +7,8 @@ namespace WotBlitzStatician.Logic
     {
 		public static void ConfigureBlitzStaticianLogic(this ContainerBuilder containerBuilder)
 		{
+			containerBuilder.RegisterType<StatisticsCollector>()
+				.As<IStatisticsCollector>();
 		}
 
 	}

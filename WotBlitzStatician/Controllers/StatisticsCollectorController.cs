@@ -1,16 +1,23 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WotBlitzStatician.Logic;
 
 namespace WotBlitzStatician.Controllers
 {
 	[Route("api/[controller]")]
 	public class StatisticsCollectorController : Controller
     {
+		private readonly IStatisticsCollector _statisticsCollector;
+
+		public StatisticsCollectorController(IStatisticsCollector statisticsCollector)
+		{
+			_statisticsCollector = statisticsCollector;
+		}
+
 		[HttpGet()]
 		public async Task<IActionResult> Index()
         {
-			// ToDo: Logic for read accounts info and get and save all statistics from WG 
-			// by operation tasks and flow
+			await _statisticsCollector.CollectAllStatistics();
 			return Ok();
 		}
 	}
