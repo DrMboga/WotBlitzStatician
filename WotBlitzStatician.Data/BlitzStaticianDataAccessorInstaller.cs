@@ -13,6 +13,7 @@
 				.InstancePerDependency();
 
             containerBuilder.RegisterType<BlitzStaticianDictionary>().As<IBlitzStaticianDictionary>();
+            containerBuilder.RegisterType<AccountDataAccessor>().As<IAccountDataAccessor>();
 		}
     }
 }

@@ -3,25 +3,35 @@
 namespace WotBlitzStatician.Logic.StatisticsCollectorOperations
 {
 	using Autofac;
+	using Microsoft.Extensions.Logging;
 	using WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations;
 
 	public class StatisticsCollector : IStatisticsCollector
 	{
+		private readonly ILogger<StatisticsCollector> _logger;
 		private readonly ILifetimeScope _childScope;
 		private readonly int _operationsCount;
 
-		public StatisticsCollector(ILifetimeScope lifetimeScope)
+		public StatisticsCollector(ILifetimeScope lifetimeScope, ILogger<StatisticsCollector> logger)
 		{
+			_logger = logger;
 			(_childScope, _operationsCount) = CreateOperationSteps(lifetimeScope);
 		}
 
 		public async Task CollectAllStatistics()
 		{
-			var operationContext = new StatisticsCollectorOperationContext();
+			var operationContext = new StatisticsCollectorOperationContext
+										{ OperationState = OperationState.Ok };
 			for (int i = 0; i < _operationsCount; i++)
 			{
 				var operation = _childScope.ResolveKeyed<IStatisticsCollectorOperation>(i);
 				await operation.Execute(operationContext);
+				if(operationContext.OperationState != OperationState.Ok)
+				{
+					_logger.LogWarning(
+						$"Operation '{operation.GetType()}' was terminate becaus of its state '{operationContext.OperationState}': {operationContext.OperationStateMessage}");
+					break;
+				}
 			}
 		}
 
