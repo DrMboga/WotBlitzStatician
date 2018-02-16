@@ -62,14 +62,13 @@ namespace WotBlitzStatician.Data.Migrations
 
             modelBuilder.Entity("WotBlitzStatician.Model.AccountInfo", b =>
                 {
-                    b.Property<long>("AccountId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<long>("AccountId");
 
                     b.Property<string>("AccessToken");
 
                     b.Property<DateTime?>("AccessTokenExpiration");
 
-                    b.Property<DateTime>("AccountCreatedAt");
+                    b.Property<DateTime?>("AccountCreatedAt");
 
                     b.Property<DateTime?>("LastBattleTime");
 

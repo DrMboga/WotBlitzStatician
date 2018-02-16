@@ -17,10 +17,9 @@ namespace WotBlitzStatician.Data.Migrations
                 schema: "wotb",
                 columns: table => new
                 {
-                    AccountId = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AccountId = table.Column<long>(nullable: false),
                     NickName = table.Column<string>(nullable: true),
-                    AccountCreatedAt = table.Column<DateTime>(nullable: false),
+                    AccountCreatedAt = table.Column<DateTime>(nullable: true),
                     LastBattleTime = table.Column<DateTime>(nullable: true),
                     AccessToken = table.Column<string>(nullable: true),
                     AccessTokenExpiration = table.Column<DateTime>(nullable: true)

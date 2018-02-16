@@ -18,7 +18,7 @@
 		///<summary>
 		///Дата создания аккаунта игрока
 		///</summary>
-		public DateTime AccountCreatedAt { get; set; }
+		public DateTime? AccountCreatedAt { get; set; }
 
 		/// <summary>
 		/// Время последнего боя

@@ -14,7 +14,7 @@ using WotBlitzStatician.Model;
 namespace WotBlitzStatician.Data.Migrations
 {
     [DbContext(typeof(BlitzStaticianDbContext))]
-    [Migration("20180210210615_Initial")]
+    [Migration("20180216202829_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,14 +63,13 @@ namespace WotBlitzStatician.Data.Migrations
 
             modelBuilder.Entity("WotBlitzStatician.Model.AccountInfo", b =>
                 {
-                    b.Property<long>("AccountId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<long>("AccountId");
 
                     b.Property<string>("AccessToken");
 
                     b.Property<DateTime?>("AccessTokenExpiration");
 
-                    b.Property<DateTime>("AccountCreatedAt");
+                    b.Property<DateTime?>("AccountCreatedAt");
 
                     b.Property<DateTime?>("LastBattleTime");
 
