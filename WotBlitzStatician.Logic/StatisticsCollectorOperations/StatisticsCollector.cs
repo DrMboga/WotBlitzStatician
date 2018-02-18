@@ -41,11 +41,13 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations
 			{
 				builder.RegisterType<ReadAccountInfosToCollect>()
 					.Keyed<IStatisticsCollectorOperation>(0);
+				builder.RegisterType<ProlongAccessTokenIfNeeded>()
+					.Keyed<IStatisticsCollectorOperation>(1);
 			});
 
 			// ToDo: Increase this number if adding new operation to scope.
 			// It's an autofac restriction - We can't iterate through IIndex<IStatisticsCollectorOperation, int>
-			int operationsCount = 1;
+			int operationsCount = 2;
 
 			return (childScope, operationsCount);
 		}
