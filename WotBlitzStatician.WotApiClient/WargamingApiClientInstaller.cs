@@ -39,6 +39,7 @@
 			containerBuilder.RegisterType<DictionaryClanRolesMapper>().As<IMapper<Dictionary<string, string>, List<DictionaryClanRole>>>();
 			containerBuilder.RegisterType<TankopediaMapper>().As<IMapper<List<WotEncyclopediaVehiclesResponse>, List<VehicleEncyclopedia>>>();
 			containerBuilder.RegisterType<TanksStatMapper>().As<IMapper<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>>();
+			containerBuilder.RegisterType<WotAuthProlongateResponseMapper>().As<IMapper<WotAuthProlongateResponse, AccountInfo>>();
 
 			containerBuilder.RegisterType<MapperHelper>().As<IMapperHelper>();
 		}

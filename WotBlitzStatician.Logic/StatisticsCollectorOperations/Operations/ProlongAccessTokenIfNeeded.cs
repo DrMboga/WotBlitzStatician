@@ -21,7 +21,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 			_accountDataAccessor = accountDataAccessor;
 		}
 
-		public Task Execute(StatisticsCollectorOperationContext operationContext)
+		public async Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
 			foreach(var accountInfo in operationContext
 				.Accounts
@@ -29,7 +29,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 						a.AccessTokenExpiration.HasValue && 
 						(DateTime.Today - a.AccessTokenExpiration.Value).TotalDays <= _daysBeforeExpire))
 			{
-				// Prolong acces token
+				var prolongation = await _wargamingApiClient.ProlongateAccount(accountInfo.AccessToken);
 				// Update database
 			}
 		}

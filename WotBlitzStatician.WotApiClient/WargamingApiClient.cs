@@ -261,5 +261,17 @@
 				);
 			}
 		}
+
+		public async Task<AccountInfo> ProlongateAccount( string accessToken)
+		{
+			var accountInfo = await _webApiClient.GetResponse<WotAuthProlongateResponse>(
+				_requestBuilder.WotBaseAddress,
+				_requestBuilder.BuildRequestUrl(
+					RequestType.Prolongate,
+					new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken }
+					));
+
+			return _mapper.Map<WotAuthProlongateResponse, AccountInfo>(accountInfo);
+		}
 	}
 }

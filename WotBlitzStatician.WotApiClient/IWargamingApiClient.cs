@@ -28,5 +28,7 @@
 		Task<List<AccountInfoAchievement>> GetAccountAchievementsAsync(long accountId);
 		
 		Task<List<AccountInfoTankAchievement>> GetAccountTankAchievementsAsync(long accountId, string accessToken, List<int> tankIds = null);
+
+		Task<AccountInfo> ProlongateAccount(string accessToken);
 	}
 }

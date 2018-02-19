@@ -8,6 +8,7 @@
 	internal class RequestBuilder : IRequestBuilder
 	{
 		private readonly Uri _baseUri;
+		private readonly Uri _wotBaseUri;
 		private readonly Dictionary<RequestType, string> _requestPaths = new Dictionary<RequestType, string>();
 		private readonly Dictionary<ParameterType, string> _parameterNames = new Dictionary<ParameterType, string>();
 		private readonly List<RequestParameter> _requestParameters = new List<RequestParameter>();
@@ -15,6 +16,7 @@
 		public RequestBuilder(IWgApiConfiguration configuration)
 		{
 			_baseUri = new Uri(configuration.BaseAddress);
+			_wotBaseUri = new Uri(configuration.WotBaseAddress);
 			FillRequestPathsDictionary();
 			FillParameterNamesDictionary();
 			_requestParameters.Add(new RequestParameter{ParameterType = ParameterType.ApplicationId, ParameterValue = configuration.ApplicationId});
@@ -22,6 +24,7 @@
 		}
 
 		public string BaseAddress => _baseUri.ToString();
+		public string WotBaseAddress => _wotBaseUri.ToString();
 
 		public string BuildRequestUrl(RequestType requestType, params RequestParameter[] parameters)
 		{
@@ -69,6 +72,7 @@
 			_requestPaths[RequestType.EncyclopediaAchievements] = @"encyclopedia/achievements/";
 			_requestPaths[RequestType.EncyclopediaInfo] = @"encyclopedia/info/";
 			_requestPaths[RequestType.EncyclopediaVehicles] = @"encyclopedia/vehicles/";
+			_requestPaths[RequestType.Prolongate] = @"auth/prolongate/";
 		}
 
 	}

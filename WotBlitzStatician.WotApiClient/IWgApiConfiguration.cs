@@ -8,7 +8,9 @@
 		string ApplicationId { get; set; }
 
 		string BaseAddress { get; set; }
-		
+
+		string WotBaseAddress { get; set; }
+
 		string Language { get; set; }
 		
 		int DictionariesUpdateFrequencyInDays { get; set; }

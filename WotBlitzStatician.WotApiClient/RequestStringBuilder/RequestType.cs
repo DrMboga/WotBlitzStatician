@@ -15,6 +15,8 @@
 
 		EncyclopediaAchievements,
 		EncyclopediaInfo,
-		EncyclopediaVehicles
+		EncyclopediaVehicles,
+
+		Prolongate
 	}
 }
