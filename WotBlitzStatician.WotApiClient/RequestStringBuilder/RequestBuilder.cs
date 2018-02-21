@@ -11,7 +11,7 @@
 		private readonly Uri _wotBaseUri;
 		private readonly Dictionary<RequestType, string> _requestPaths = new Dictionary<RequestType, string>();
 		private readonly Dictionary<ParameterType, string> _parameterNames = new Dictionary<ParameterType, string>();
-		private readonly List<RequestParameter> _requestParameters = new List<RequestParameter>();
+		private readonly List<RequestParameter> _defaultParameters = new List<RequestParameter>();
 
 		public RequestBuilder(IWgApiConfiguration configuration)
 		{
@@ -19,8 +19,8 @@
 			_wotBaseUri = new Uri(configuration.WotBaseAddress);
 			FillRequestPathsDictionary();
 			FillParameterNamesDictionary();
-			_requestParameters.Add(new RequestParameter{ParameterType = ParameterType.ApplicationId, ParameterValue = configuration.ApplicationId});
-			_requestParameters.Add(new RequestParameter{ParameterType = ParameterType.Language, ParameterValue = configuration.Language});
+			_defaultParameters.Add(new RequestParameter{ParameterType = ParameterType.ApplicationId, ParameterValue = configuration.ApplicationId});
+			_defaultParameters.Add(new RequestParameter{ParameterType = ParameterType.Language, ParameterValue = configuration.Language});
 		}
 
 		public string BaseAddress => _baseUri.ToString();
@@ -31,18 +31,27 @@
 			var query = new StringBuilder();
 
 			// Common parameters
-			_requestParameters.ForEach(p => query.Append($"{_parameterNames[p.ParameterType]}={p.ParameterValue}&"));
+			_defaultParameters
+				.Where(p => AddDefaultParametersRule(requestType, p))
+				.ToList()
+				.ForEach(p => query.Append($"{_parameterNames[p.ParameterType]}={p.ParameterValue}&"));
+
 			// Method parameters
-			parameters?.ToList().ForEach(p => {
-				if (!string.IsNullOrWhiteSpace(p.ParameterValue))
-				{
-					query.Append($"{_parameterNames[p.ParameterType]}={p.ParameterValue}&");
-				}
-			});
+			parameters?
+				.Where(p => !string.IsNullOrWhiteSpace(p.ParameterValue))
+				.ToList()
+				.ForEach(p => query.Append($"{_parameterNames[p.ParameterType]}={p.ParameterValue}&"));
 			// Removing last ampersand
 			query.Remove(query.Length - 1, 1);
 
 			return $"{_requestPaths[requestType]}?{query}";
+		}
+
+		private static bool AddDefaultParametersRule(RequestType requestType, RequestParameter requestParameter)
+		{
+			// Exclude Language parameter for Prolongate request type
+			return (requestType == RequestType.Prolongate && requestParameter.ParameterType != ParameterType.Language)
+			       || (requestType != RequestType.Prolongate);
 		}
 
 		private void FillParameterNamesDictionary()
