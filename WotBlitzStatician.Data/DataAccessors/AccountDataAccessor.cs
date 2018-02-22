@@ -22,5 +22,17 @@ namespace WotBlitzStatician.Data.DataAccessors
 				return await context.AccountInfo.AsNoTracking().ToListAsync();
 			}
 		}
+
+		public async Task SaveProlongedAccountAsync(long accountId, string accessToken, DateTime accesTokenExpiration)
+		{
+			using (var context = _getDbContext())
+			{
+				var accountInfo = await context.AccountInfo
+					.SingleAsync(a => a.AccountId == accountId);
+				accountInfo.AccessToken = accessToken;
+				accountInfo.AccessTokenExpiration = accesTokenExpiration;
+				await context.SaveChangesAsync();
+			}
+		}
 	}
 }

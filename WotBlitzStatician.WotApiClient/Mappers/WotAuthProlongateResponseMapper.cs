@@ -11,7 +11,9 @@ namespace WotBlitzStatician.WotApiClient.Mappers
 
 		public WotAuthProlongateResponseMapper()
 		{
-			_mapper = new Mapper(new MapperConfiguration(m => m.CreateMap<WotAuthProlongateResponse, AccountInfo>()
+			_mapper = new Mapper(
+				new MapperConfiguration(m => m.CreateMap<WotAuthProlongateResponse, AccountInfo>()
+				.ForMember(d => d.AccessTokenExpiration, r => r.MapFrom(s => s.ExpiresAt))
 			   ));
 		}
 

@@ -269,7 +269,8 @@
 				_requestBuilder.BuildRequestUrl(
 					RequestType.Prolongate,
 					new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken }
-					));
+					),
+				true);
 
 			return _mapper.Map<WotAuthProlongateResponse, AccountInfo>(accountInfo);
 		}

@@ -27,10 +27,15 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				.Accounts
 				.Where(a => 
 						a.AccessTokenExpiration.HasValue && 
-						(DateTime.Today - a.AccessTokenExpiration.Value).TotalDays <= _daysBeforeExpire))
+						(a.AccessTokenExpiration.Value - DateTime.Now).TotalDays <= _daysBeforeExpire))
 			{
 				var prolongation = await _wargamingApiClient.ProlongateAccount(accountInfo.AccessToken);
-				// Update database
+				accountInfo.AccessToken = prolongation.AccessToken;
+				accountInfo.AccessTokenExpiration = prolongation.AccessTokenExpiration;
+				await _accountDataAccessor.SaveProlongedAccountAsync(
+					accountInfo.AccountId,
+					accountInfo.AccessToken,
+					accountInfo.AccessTokenExpiration.Value);
 			}
 		}
 	}

@@ -4,6 +4,7 @@
 	using System.Net;
 	using System.Net.Http;
 	using System.Net.Http.Headers;
+	using System.Text;
 	using System.Threading.Tasks;
 	using Microsoft.Extensions.Logging;
 	using Newtonsoft.Json;
@@ -21,7 +22,7 @@
 			_log = logger;
 		}
 
-		public async Task<TResponse> GetResponse<TResponse>(string baseAddress, string request)
+		public async Task<TResponse> GetResponse<TResponse>(string baseAddress, string request, bool isPostNeeded = false)
 		{
 			var handler = new HttpClientHandler();
 			if (_proxySettings.UseProxy)
@@ -39,7 +40,19 @@
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-				var response = await client.GetAsync(request);
+				HttpResponseMessage response;
+				if(isPostNeeded)
+				{
+					// Create httpContent
+					var requestBody = GetBody(request);
+					var httpContent = new StringContent(requestBody, Encoding.UTF8, "application/x-www-form-urlencoded");
+
+					response = await client.PostAsync(request, httpContent);
+				}
+				else
+				{
+					response = await client.GetAsync(request);
+				}
 
                 _log.LogInformation($"Request '{baseAddress}{request}' - Status: '{response.StatusCode}'");
 
@@ -66,5 +79,9 @@
 			}
 		}
 
+		private string GetBody(string request)
+		{
+			return request.Substring(request.IndexOf('?') + 1);
+		}
 	}
 }
