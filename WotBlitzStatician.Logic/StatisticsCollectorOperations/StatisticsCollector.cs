@@ -4,6 +4,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations
 {
 	using Autofac;
 	using Microsoft.Extensions.Logging;
+	using WotBlitzStatician.Logic.StatisticsCollectorOperations.OperationContext;
 	using WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations;
 
 	public class StatisticsCollector : IStatisticsCollector
@@ -20,8 +21,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations
 
 		public async Task CollectAllStatistics()
 		{
-			var operationContext = new StatisticsCollectorOperationContext
-										{ OperationState = OperationState.Ok };
+			var operationContext = new StatisticsCollectorOperationContext();
 			for (int i = 0; i < _operationsCount; i++)
 			{
 				var operation = _childScope.ResolveKeyed<IStatisticsCollectorOperation>(i);
@@ -43,11 +43,15 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations
 					.Keyed<IStatisticsCollectorOperation>(0);
 				builder.RegisterType<ProlongAccessTokenIfNeeded>()
 					.Keyed<IStatisticsCollectorOperation>(1);
+				builder.RegisterType<GetAccountStatistics>()
+					.Keyed<IStatisticsCollectorOperation>(2);
+				builder.RegisterType<FilterByLastBattleTimeOperation>()
+					.Keyed<IStatisticsCollectorOperation>(3);
 			});
 
 			// ToDo: Increase this number if adding new operation to scope.
 			// It's an autofac restriction - We can't iterate through IIndex<IStatisticsCollectorOperation, int>
-			int operationsCount = 2;
+			int operationsCount = 4;
 
 			return (childScope, operationsCount);
 		}

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using WotBlitzStatician.Data.DataAccessors;
+using WotBlitzStatician.Logic.StatisticsCollectorOperations.OperationContext;
 
 namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 {
@@ -14,8 +15,13 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 
 		public async Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
-			operationContext.Accounts = await _accountDataAccessor.GetAllAccountsAsync();
-			if(operationContext.Accounts == null || operationContext.Accounts.Count == 0)
+			var accountsForProcess = await _accountDataAccessor.GetAllAccountsAsync();
+			foreach(var accountForProcess in accountsForProcess)
+			{
+				operationContext.Accounts.Add(new SatisticsCollectorAccountOperationContext
+				{ CurrentAccountInfo = accountForProcess });
+			}
+			if(operationContext.Accounts.Count == 0)
 			{
 				operationContext.OperationState = OperationState.NoDataFound;
 				operationContext.OperationStateMessage = "No accounts found";

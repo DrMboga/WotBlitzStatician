@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using WotBlitzStatician.Data.DataAccessors;
+using WotBlitzStatician.Logic.StatisticsCollectorOperations.OperationContext;
 using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
@@ -26,16 +27,16 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 			foreach(var accountInfo in operationContext
 				.Accounts
 				.Where(a => 
-						a.AccessTokenExpiration.HasValue && 
-						(a.AccessTokenExpiration.Value - DateTime.Now).TotalDays <= _daysBeforeExpire))
+						a.CurrentAccountInfo.AccessTokenExpiration.HasValue && 
+						(a.CurrentAccountInfo.AccessTokenExpiration.Value - DateTime.Now).TotalDays <= _daysBeforeExpire))
 			{
-				var prolongation = await _wargamingApiClient.ProlongateAccount(accountInfo.AccessToken);
-				accountInfo.AccessToken = prolongation.AccessToken;
-				accountInfo.AccessTokenExpiration = prolongation.AccessTokenExpiration;
+				var prolongation = await _wargamingApiClient.ProlongateAccount(accountInfo.CurrentAccountInfo.AccessToken);
+				accountInfo.CurrentAccountInfo.AccessToken = prolongation.AccessToken;
+				accountInfo.CurrentAccountInfo.AccessTokenExpiration = prolongation.AccessTokenExpiration;
 				await _accountDataAccessor.SaveProlongedAccountAsync(
-					accountInfo.AccountId,
-					accountInfo.AccessToken,
-					accountInfo.AccessTokenExpiration.Value);
+					accountInfo.CurrentAccountInfo.AccountId,
+					accountInfo.CurrentAccountInfo.AccessToken,
+					accountInfo.CurrentAccountInfo.AccessTokenExpiration.Value);
 			}
 		}
 	}
