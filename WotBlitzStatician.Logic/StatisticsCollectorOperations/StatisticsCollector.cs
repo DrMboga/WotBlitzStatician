@@ -47,11 +47,13 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations
 					.Keyed<IStatisticsCollectorOperation>(2);
 				builder.RegisterType<FilterByLastBattleTimeOperation>()
 					.Keyed<IStatisticsCollectorOperation>(3);
+				builder.RegisterType<CopyNewAccountDataOperation>()
+					.Keyed<IStatisticsCollectorOperation>(4);
 			});
 
 			// ToDo: Increase this number if adding new operation to scope.
 			// It's an autofac restriction - We can't iterate through IIndex<IStatisticsCollectorOperation, int>
-			int operationsCount = 4;
+			int operationsCount = 5;
 
 			return (childScope, operationsCount);
 		}

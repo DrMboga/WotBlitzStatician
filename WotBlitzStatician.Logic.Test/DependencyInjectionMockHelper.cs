@@ -3,6 +3,7 @@
 	using System.Threading.Tasks;
 	using Autofac;
 	using Microsoft.EntityFrameworkCore;
+	using Microsoft.Extensions.Logging;
 	using Moq;
 	using WotBlitzStatician.Data;
 	using WotBlitzStatician.Data.DataAccessors;
@@ -33,6 +34,15 @@
 			containerBuilder.RegisterType<BlitzStaticianDictionary>().As<IBlitzStaticianDictionary>();
 			containerBuilder.RegisterType<AccountDataAccessor>().As<IAccountDataAccessor>();
 
+			return containerBuilder;
+		}
+
+		public static ContainerBuilder AddLoggerMock<T>(this ContainerBuilder containerBuilder)
+		{
+			var logger = new Mock<ILogger<T>>();
+
+			containerBuilder.RegisterInstance(logger.Object).
+				As<ILogger<T>>();
 			return containerBuilder;
 		}
 	}

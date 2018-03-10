@@ -26,6 +26,7 @@ namespace WotBlitzStatician.Logic.Test
 
 		    containerBuilder.AddWargamingApiClientMock(_prolongatedAccountInfo)
 							.AddInMemoryDataBase()
+							.AddLoggerMock<ProlongAccessTokenIfNeeded>()
 							.RegisterType<ProlongAccessTokenIfNeeded>().AsSelf();
 
 		    _container = containerBuilder.Build();
@@ -49,19 +50,40 @@ namespace WotBlitzStatician.Logic.Test
 			Assert.Equal(_prolongatedAccountInfo.AccessTokenExpiration, newAccountInfofromDb.AccessTokenExpiration);
 	    }
 
-	    public void Dispose()
+		[Fact]
+		public async Task TestProlongExpiredAccessToken()
+		{
+			var operationContextWithExpiredAccessToken = new StatisticsCollectorOperationContext();
+			operationContextWithExpiredAccessToken.Accounts.Add(new SatisticsCollectorAccountOperationContext
+			{
+				CurrentAccountInfo = new AccountInfo
+				{
+					AccessToken = "ExpiredToken",
+					AccessTokenExpiration = DateTime.Now.AddDays(-1)
+				}
+			});
+			var prolongAccessTokenOperation = _container.Resolve<ProlongAccessTokenIfNeeded>();
+			await prolongAccessTokenOperation.Execute(operationContextWithExpiredAccessToken);
+
+			Assert.Equal(string.Empty,
+				operationContextWithExpiredAccessToken.Accounts.Single().CurrentAccountInfo.AccessToken);
+		}
+
+		public void Dispose()
 	    {
 		    _dbContext.Dispose();
 	    }
 
 	    private static StatisticsCollectorOperationContext PrepareOperationContextForProlongAccessToken()
 	    {
+			var rnd = new Random();
 			var operationContext = new StatisticsCollectorOperationContext();
 
 			operationContext.Accounts.Add(new SatisticsCollectorAccountOperationContext
 			{
 				CurrentAccountInfo = new AccountInfo
 				{
+					AccountId = rnd.Next(),
 					AccessToken = "OldAccessToken",
 					AccessTokenExpiration = DateTime.Now.AddDays(1)
 				}
