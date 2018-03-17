@@ -63,8 +63,8 @@
 			using (var dbContext = _getDbContext())
 			{
 				return await dbContext.VehicleEncyclopedia
-					.Select(v => new { v.TankId, Tier = Convert.ToDouble(v.Tier) })
-					.ToDictionaryAsync(s => s.TankId, s => s.Tier);
+					.Select(v => new { v.TankId, v.Tier })
+					.ToDictionaryAsync(s => s.TankId, s => Convert.ToDouble(s.Tier));
 			}
 		}
 
