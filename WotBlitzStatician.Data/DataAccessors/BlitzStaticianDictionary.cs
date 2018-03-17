@@ -58,6 +58,16 @@
 			}
 		}
 
+		public async Task<Dictionary<long, double>> GetVehiclesTires()
+		{
+			using (var dbContext = _getDbContext())
+			{
+				return await dbContext.VehicleEncyclopedia
+					.Select(v => new { v.TankId, Tier = Convert.ToDouble(v.Tier) })
+					.ToDictionaryAsync(s => s.TankId, s => s.Tier);
+			}
+		}
+
 
 		// ToDo: Move to extensions
 		private static async Task MergeLanguages(BlitzStaticianDbContext dbContext, List<DictionaryLanguage> languages)
@@ -215,6 +225,5 @@
 					: EntityState.Added;
 			});
 		}
-
 	}
 }

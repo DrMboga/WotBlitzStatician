@@ -15,5 +15,6 @@ namespace WotBlitzStatician.Data.DataAccessors
 		Task SaveVehicles(List<VehicleEncyclopedia> vehicles);
 		Task SaveAchievements(List<Achievement> achievements);
 
+		Task<Dictionary<long, double>> GetVehiclesTires();
 	}
 }

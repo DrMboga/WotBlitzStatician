@@ -51,11 +51,13 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations
 					.Keyed<IStatisticsCollectorOperation>(4);
 				builder.RegisterType<GetAllTanksStatisticsOperation>()
 					.Keyed<IStatisticsCollectorOperation>(5);
+				builder.RegisterType<CalculateMiddleTierOperation>()
+					.Keyed<IStatisticsCollectorOperation>(6);
 			});
 
 			// ToDo: Increase this number if adding new operation to scope.
 			// It's an autofac restriction - We can't iterate through IIndex<IStatisticsCollectorOperation, int>
-			int operationsCount = 6;
+			int operationsCount = 7;
 
 			return (childScope, operationsCount);
 		}
