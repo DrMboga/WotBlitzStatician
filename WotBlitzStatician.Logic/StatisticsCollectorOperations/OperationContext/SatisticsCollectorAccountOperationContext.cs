@@ -1,4 +1,5 @@
-﻿using WotBlitzStatician.Model;
+﻿using System.Collections.Generic;
+using WotBlitzStatician.Model;
 
 namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.OperationContext
 {
@@ -6,5 +7,6 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.OperationContext
     {
 		public AccountInfo CurrentAccountInfo { get; set; }
 		public AccountInfo WargamingAccountInfo { get; set; }
+		public List<AccountTankStatistics> AccountInfoTanks { get; set; }
 	}
 }

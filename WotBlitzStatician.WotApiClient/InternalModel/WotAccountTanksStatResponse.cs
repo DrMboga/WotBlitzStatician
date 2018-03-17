@@ -29,7 +29,7 @@
 		public DateTime? LastBattleTime => _lastBattleTime.ToDateTime();
 
 		[JsonProperty("in_garage")]
-		public bool InGarage { get; set; }
+		public bool? InGarage { get; set; }
 
 		[JsonProperty("in_garage_updated")]
 		private int? _inGarageUpdated;
