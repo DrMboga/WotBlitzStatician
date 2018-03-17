@@ -20,7 +20,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 			var tankTires = await _blitzStaticianDictionary.GetVehiclesTires();
 			foreach (var account in operationContext.Accounts)
 			{
-				account.CurrentAccountInfo.AccountInfoStatistics.Single()
+				account.WargamingAccountInfo.AccountInfoStatistics.Single()
 					.CalculateMiddleTier(account.AccountInfoTanks, tankTires);
 			}
 		}

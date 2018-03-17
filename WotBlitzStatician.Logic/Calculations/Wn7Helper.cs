@@ -18,7 +18,7 @@
 			return firstSummand + secondSummand + thirdSummand + fourthSummand + fifthSummand + sixthSummand;
 		}
 
-		public static double CalculateWn7(this AccountTankStatistics tank, double tier)
+		public static void CalculateWn7(this AccountTankStatistics tank, double tier)
 		{
 			double avdFrags = (double) tank.Frags / tank.Battles;
 			double avgDamage = (double) tank.DamageDealt / tank.Battles;
@@ -26,10 +26,10 @@
 			double avgDef = (double) tank.DroppedCapturePoints / tank.Battles;
 			double winRate = (100d * (double) tank.Wins / tank.Battles); // - 48;
 
-			return CalculateWn7(tank.Battles, tier, avdFrags, avgDamage, avgSpot, avgDef, winRate);
+			tank.Wn7 = CalculateWn7(tank.Battles, tier, avdFrags, avgDamage, avgSpot, avgDef, winRate);
 		}
 
-		public static double CalculateWn7(this AccountInfoStatistics account)
+		public static void CalculateWn7(this AccountInfoStatistics account)
 		{
 			double avdFrags = (double) account.Frags / account.Battles;
 			double avgDamage = (double) account.DamageDealt / account.Battles;
@@ -37,7 +37,7 @@
 			double avgDef = (double) account.DroppedCapturePoints / account.Battles;
 			double winRate = (100 * (double) account.Wins / account.Battles); // - 48;
 
-			return CalculateWn7(account.Battles, account.AvgTier, avdFrags, avgDamage, avgSpot, avgDef, winRate);
+			account.Wn7 = CalculateWn7(account.Battles, account.AvgTier, avdFrags, avgDamage, avgSpot, avgDef, winRate);
 		}
 
 
