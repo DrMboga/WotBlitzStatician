@@ -11,6 +11,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 			{
 				account.CurrentAccountInfo.LastBattleTime = account.WargamingAccountInfo.LastBattleTime;
 				account.CurrentAccountInfo.AccountInfoStatistics = account.WargamingAccountInfo.AccountInfoStatistics;
+				account.CurrentAccountInfo.AccountClanInfo = account.WargamingAccountInfo.AccountClanInfo;
 			}
 		}
 	}
