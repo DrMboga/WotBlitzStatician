@@ -63,12 +63,13 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations
 					.Keyed<IStatisticsCollectorOperation>(10);
 				builder.RegisterType<CopyNewAccountDataOperation>()
 					.Keyed<IStatisticsCollectorOperation>(11);
-				// SaveAllToDb
+				builder.RegisterType<SaveAllChangesOperation>()
+					.Keyed<IStatisticsCollectorOperation>(12);
 			});
 
 			// ToDo: Increase this number if adding new operation to scope.
 			// It's an autofac restriction - We can't iterate through IIndex<IStatisticsCollectorOperation, int>
-			int operationsCount = 12;
+			int operationsCount = 13;
 
 			return (childScope, operationsCount);
 		}

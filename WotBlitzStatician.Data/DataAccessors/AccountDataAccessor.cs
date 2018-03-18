@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using WotBlitzStatician.Model;
 
 namespace WotBlitzStatician.Data.DataAccessors
@@ -28,5 +29,11 @@ namespace WotBlitzStatician.Data.DataAccessors
 			accountInfo.AccessTokenExpiration = accesTokenExpiration;
 			await _dbContext.SaveChangesAsync();
 		}
+
+		public async Task<IDbContextTransaction> OpenTransactionAsync()
+		{
+			return await _dbContext.Database.BeginTransactionAsync();
+		}
+
 	}
 }
