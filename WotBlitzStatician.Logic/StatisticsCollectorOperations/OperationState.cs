@@ -3,6 +3,7 @@
 	public enum OperationState
     {
 		Ok,
-		NoDataFound
+		NoDataFound,
+		NoAccounts
     }
 }

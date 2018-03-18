@@ -21,6 +21,12 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 			{
 				operationContext.Accounts.Remove(acc);
 			}
+
+			if(operationContext.Accounts.Count == 0)
+			{
+				operationContext.OperationState = OperationState.NoAccounts;
+				operationContext.OperationStateMessage = "No accounts for process";
+			}
 		}
 	}
 }
