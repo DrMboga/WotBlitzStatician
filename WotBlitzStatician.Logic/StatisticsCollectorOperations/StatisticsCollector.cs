@@ -47,25 +47,27 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations
 					.Keyed<IStatisticsCollectorOperation>(2);
 				builder.RegisterType<FilterByLastBattleTimeOperation>()
 					.Keyed<IStatisticsCollectorOperation>(3);
-				// Get clan info
-				// GetAccounAchevements
-				builder.RegisterType<GetAllTanksStatisticsOperation>()
+				builder.RegisterType<GetAccointsClanInfoOperation>()
 					.Keyed<IStatisticsCollectorOperation>(4);
-				builder.RegisterType<CalculateMiddleTierOperation>()
+				builder.RegisterType<GetAccountsAchievementsOperation>()
 					.Keyed<IStatisticsCollectorOperation>(5);
-				builder.RegisterType<FilterTanksByLastSessionOperation>()
+				builder.RegisterType<GetAllTanksStatisticsOperation>()
 					.Keyed<IStatisticsCollectorOperation>(6);
-				builder.RegisterType<CalculateWn7Operation>()
+				builder.RegisterType<CalculateMiddleTierOperation>()
 					.Keyed<IStatisticsCollectorOperation>(7);
+				builder.RegisterType<FilterTanksByLastSessionOperation>()
+					.Keyed<IStatisticsCollectorOperation>(8);
+				builder.RegisterType<CalculateWn7Operation>()
+					.Keyed<IStatisticsCollectorOperation>(9);
 				// Get tanks achievements
 				builder.RegisterType<CopyNewAccountDataOperation>()
-					.Keyed<IStatisticsCollectorOperation>(8);
+					.Keyed<IStatisticsCollectorOperation>(10);
 				// SaveAllToDb
 			});
 
 			// ToDo: Increase this number if adding new operation to scope.
 			// It's an autofac restriction - We can't iterate through IIndex<IStatisticsCollectorOperation, int>
-			int operationsCount = 9;
+			int operationsCount = 11;
 
 			return (childScope, operationsCount);
 		}
