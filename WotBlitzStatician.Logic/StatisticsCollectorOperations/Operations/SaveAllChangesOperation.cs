@@ -20,13 +20,14 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				using (var transaction = await _accountDataAccessor.OpenTransactionAsync())
 				{
 					// Save account lastBattle
+					await _accountDataAccessor.SaveLastBattleInfoAsync(accountInfo.CurrentAccountInfo);
 					// Save account statistics + private data
 					// Save account clan info
 					// Save account acievements
 					// Save tanks statistics
 					// Save tanks achievements
 
-					transaction.Commit();
+					//transaction.Commit();
 				}
 			}
 		}

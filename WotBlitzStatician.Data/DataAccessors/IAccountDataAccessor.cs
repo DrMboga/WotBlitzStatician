@@ -13,5 +13,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 		Task SaveProlongedAccountAsync(long accountId, string accessToken, DateTime accesTokenExpiration);
 
 		Task<IDbContextTransaction> OpenTransactionAsync();
+
+		Task SaveLastBattleInfoAsync(AccountInfo accountInfo);
     }
 }

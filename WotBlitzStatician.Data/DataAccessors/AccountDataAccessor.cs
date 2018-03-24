@@ -35,5 +35,13 @@ namespace WotBlitzStatician.Data.DataAccessors
 			return await _dbContext.Database.BeginTransactionAsync();
 		}
 
+		public async Task SaveLastBattleInfoAsync(AccountInfo accountInfo)
+		{
+			var accountFromDb = await _dbContext.AccountInfo
+				.SingleAsync(a => a.AccountId == accountInfo.AccountId);
+			accountFromDb.AccountCreatedAt = accountInfo.AccountCreatedAt;
+			accountFromDb.LastBattleTime = accountInfo.LastBattleTime;
+			await _dbContext.SaveChangesAsync();
+		}
 	}
 }
