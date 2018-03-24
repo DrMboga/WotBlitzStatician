@@ -92,5 +92,41 @@ namespace WotBlitzStatician.Data.DataAccessors
 			}
 			await _dbContext.SaveChangesAsync();
 		}
+
+		// ToDo: Unit test this logic!!
+		public async Task SaveAccountClanInfoAsync(long accountId, AccountClanInfo accountClanInfo)
+		{
+			var existingClanInfo = await _dbContext.AccountClanInfo
+				.FirstOrDefaultAsync(c => c.AccountInfo.AccountId == accountId);
+			if(accountClanInfo == null || accountClanInfo.ClanId == 0)
+			{
+				// Account not in clan - delete clan info from DB
+				if (existingClanInfo != null)
+				{
+					_dbContext.Entry(existingClanInfo).State = EntityState.Deleted;
+					await _dbContext.SaveChangesAsync();
+				}
+				return;
+			}
+
+			accountClanInfo.AccountInfo = new AccountInfo { AccountId = accountId };
+			_dbContext.AccountInfo.Attach(accountClanInfo.AccountInfo);
+			if (existingClanInfo == null)
+			{
+				// Insert new clan info
+				_dbContext.AccountClanInfo.Add(accountClanInfo);
+				await _dbContext.SaveChangesAsync();
+				_dbContext.Entry(accountClanInfo.AccountInfo).State = EntityState.Detached;
+				return;
+			}
+
+			// Update clan info
+			_dbContext.Entry(existingClanInfo).State = EntityState.Detached;
+			accountClanInfo.AccountClanInfoId = existingClanInfo.AccountClanInfoId;
+			_dbContext.AccountClanInfo.Attach(accountClanInfo);
+			_dbContext.Entry(accountClanInfo).State = EntityState.Modified;
+			await _dbContext.SaveChangesAsync();
+			_dbContext.Entry(accountClanInfo.AccountInfo).State = EntityState.Detached;
+		}
 	}
 }
