@@ -117,7 +117,7 @@ namespace WotBlitzStatician.Data.Migrations
 
                     b.Property<DateTime?>("BanTime");
 
-                    b.Property<TimeSpan>("BattleLifeTime");
+                    b.Property<int>("BattleLifeTimeInSeconds");
 
                     b.Property<string>("ContactsBlocked");
 

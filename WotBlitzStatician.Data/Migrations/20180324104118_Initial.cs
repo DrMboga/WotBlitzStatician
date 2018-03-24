@@ -58,7 +58,7 @@ namespace WotBlitzStatician.Data.Migrations
                     AccountId = table.Column<long>(nullable: false),
                     BanInfo = table.Column<string>(nullable: true),
                     BanTime = table.Column<DateTime>(nullable: true),
-                    BattleLifeTime = table.Column<TimeSpan>(nullable: false),
+                    BattleLifeTimeInSeconds = table.Column<int>(nullable: false),
                     Credits = table.Column<long>(nullable: false),
                     FreeXp = table.Column<long>(nullable: false),
                     Gold = table.Column<long>(nullable: false),

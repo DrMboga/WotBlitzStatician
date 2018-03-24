@@ -23,10 +23,7 @@
 		///Общее время в бою до уничтожения в секундах
 		///</summary>
 		[JsonProperty("battle_life_time")]
-		private int? _battleLifeTime;
-		public TimeSpan? BattleLifeTime => _battleLifeTime.HasValue
-			? TimeSpan.FromSeconds(_battleLifeTime.Value)
-			: (TimeSpan?)null;
+		public int? BattleLifeTimeInSeconds { get; set; }
 
 		///<summary>
 		///Кредиты

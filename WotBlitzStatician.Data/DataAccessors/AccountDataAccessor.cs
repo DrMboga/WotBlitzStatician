@@ -43,5 +43,11 @@ namespace WotBlitzStatician.Data.DataAccessors
 			accountFromDb.LastBattleTime = accountInfo.LastBattleTime;
 			await _dbContext.SaveChangesAsync();
 		}
+
+		public async Task SaveAccountPrivateInfoAndStatisticsAsync(AccountInfoStatistics accountInfoStatistics)
+		{
+			_dbContext.AccountInfoStatistics.Add(accountInfoStatistics);
+			await _dbContext.SaveChangesAsync();
+		}
 	}
 }

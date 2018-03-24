@@ -14,7 +14,7 @@ using WotBlitzStatician.Model;
 namespace WotBlitzStatician.Data.Migrations
 {
     [DbContext(typeof(BlitzStaticianDbContext))]
-    [Migration("20180216202829_Initial")]
+    [Migration("20180324104118_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -118,7 +118,7 @@ namespace WotBlitzStatician.Data.Migrations
 
                     b.Property<DateTime?>("BanTime");
 
-                    b.Property<TimeSpan>("BattleLifeTime");
+                    b.Property<int>("BattleLifeTimeInSeconds");
 
                     b.Property<string>("ContactsBlocked");
 

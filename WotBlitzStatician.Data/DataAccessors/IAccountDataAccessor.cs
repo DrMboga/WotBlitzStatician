@@ -15,5 +15,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 		Task<IDbContextTransaction> OpenTransactionAsync();
 
 		Task SaveLastBattleInfoAsync(AccountInfo accountInfo);
+
+		Task SaveAccountPrivateInfoAndStatisticsAsync(AccountInfoStatistics accountInfoStatistics);
     }
 }

@@ -21,10 +21,11 @@
 		///</summary>
 		public DateTime? BanTime { get; set; }
 
+		public int BattleLifeTimeInSeconds { get; set; }
 		///<summary>
 		///Общее время в бою до уничтожения
 		///</summary>
-		public TimeSpan BattleLifeTime { get; set; }
+		public TimeSpan BattleLifeTime => TimeSpan.FromSeconds(BattleLifeTimeInSeconds);
 
 		///<summary>
 		///Кредиты

@@ -7,6 +7,9 @@ namespace WotBlitzStatician.Data.Migrations
 {
 	public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<BlitzStaticianDbContext>
 	{
+		// PM> Add-Migration InitialCreate
+		// PM> Update-Database
+
 		public BlitzStaticianDbContext CreateDbContext(string[] args)
 		{
 			var configuration = new ConfigurationBuilder()

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using WotBlitzStatician.Data.DataAccessors;
 using WotBlitzStatician.Logic.StatisticsCollectorOperations.OperationContext;
 
@@ -22,6 +23,10 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 					// Save account lastBattle
 					await _accountDataAccessor.SaveLastBattleInfoAsync(accountInfo.CurrentAccountInfo);
 					// Save account statistics + private data
+					await _accountDataAccessor.SaveAccountPrivateInfoAndStatisticsAsync(accountInfo
+																	.CurrentAccountInfo
+																	.AccountInfoStatistics
+																	.Single());
 					// Save account clan info
 					// Save account acievements
 					// Save tanks statistics
