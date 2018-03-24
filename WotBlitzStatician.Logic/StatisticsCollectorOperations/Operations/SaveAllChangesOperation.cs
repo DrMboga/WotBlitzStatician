@@ -27,6 +27,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 																	.CurrentAccountInfo
 																	.AccountInfoStatistics
 																	.Single());
+					// Merge AccountInfoStatistics.FragsList
 					// Save account clan info
 					// Save account acievements
 					// Save tanks statistics
