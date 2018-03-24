@@ -17,5 +17,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 		Task SaveLastBattleInfoAsync(AccountInfo accountInfo);
 
 		Task SaveAccountPrivateInfoAndStatisticsAsync(AccountInfoStatistics accountInfoStatistics);
+
+		Task MergeFragsAsync(List<FragListItem> frags);
     }
 }

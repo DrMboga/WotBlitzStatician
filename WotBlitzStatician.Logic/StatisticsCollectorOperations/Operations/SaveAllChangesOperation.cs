@@ -28,10 +28,16 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 																	.AccountInfoStatistics
 																	.Single());
 					// Merge AccountInfoStatistics.FragsList
+					await _accountDataAccessor.MergeFragsAsync(accountInfo
+																		.CurrentAccountInfo
+																		.AccountInfoStatistics
+																		.Single()
+																		.FragsList);
 					// Save account clan info
 					// Save account acievements
 					// Save tanks statistics
 					// Save tanks achievements
+					// Save frags by allTanks using MergeFragsAsync
 
 					//transaction.Commit();
 				}

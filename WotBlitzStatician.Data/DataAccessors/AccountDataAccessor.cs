@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -47,6 +48,48 @@ namespace WotBlitzStatician.Data.DataAccessors
 		public async Task SaveAccountPrivateInfoAndStatisticsAsync(AccountInfoStatistics accountInfoStatistics)
 		{
 			_dbContext.AccountInfoStatistics.Add(accountInfoStatistics);
+			await _dbContext.SaveChangesAsync();
+		}
+
+		public async Task MergeFragsAsync(List<FragListItem> frags)
+		{
+			if(frags == null || frags.Count == 0)
+			{
+				return;
+			}
+
+			var accountId = frags.First().AccountId;
+
+			bool fragsByAccount = frags.All(f => f.TankId == null);
+
+			List<FragListItem> existingFrags = null;
+			if(fragsByAccount)
+			{
+				existingFrags = await _dbContext.Frags
+					.Where(f => f.AccountId == accountId && f.TankId == null)
+					.ToListAsync();
+			}
+			else
+			{
+				existingFrags = await _dbContext.Frags
+					.Where(f => f.AccountId == accountId && f.TankId != null)
+					.ToListAsync();
+			}
+
+			foreach (var frag in frags)
+			{
+				var existing = existingFrags.FirstOrDefault(f =>
+								f.KilledTankId == frag.KilledTankId &&
+								((fragsByAccount) || (!fragsByAccount && f.TankId == frag.TankId)));
+				if (existing == null)
+				{
+					_dbContext.Frags.Add(frag);
+				}
+				else
+				{
+					existing.FragsCount = frag.FragsCount;
+				}
+			}
 			await _dbContext.SaveChangesAsync();
 		}
 	}
