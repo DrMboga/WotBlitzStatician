@@ -22,6 +22,14 @@ namespace WotBlitzStatician.Data.DataAccessors
 			return await _dbContext.AccountInfo.AsNoTracking().ToListAsync();
 		}
 
+		// ToDo: Check db query
+		public async Task<AccountClanInfo> GetAccountClanAsync(long accountId)
+		{
+			return await _dbContext.AccountClanInfo
+							.Where(a => a.AccountInfo.AccountId == accountId)
+							.FirstOrDefaultAsync();
+		}
+
 		public async Task SaveProlongedAccountAsync(long accountId, string accessToken, DateTime accesTokenExpiration)
 		{
 			var accountInfo = await _dbContext.AccountInfo
@@ -127,6 +135,11 @@ namespace WotBlitzStatician.Data.DataAccessors
 			_dbContext.Entry(accountClanInfo).State = EntityState.Modified;
 			await _dbContext.SaveChangesAsync();
 			_dbContext.Entry(accountClanInfo.AccountInfo).State = EntityState.Detached;
+		}
+
+		public Task SaveAccountClanHistory(AccountClanHistory accountClanHistory)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

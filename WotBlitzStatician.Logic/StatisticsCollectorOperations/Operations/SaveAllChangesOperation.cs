@@ -37,6 +37,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 					await _accountDataAccessor.SaveAccountClanInfoAsync(
 						accountInfo.CurrentAccountInfo.AccountId,
 						accountInfo.CurrentAccountInfo.AccountClanInfo);
+					// Save account clan history
 					// Save account acievements
 					// Save tanks statistics
 					// Save tanks achievements

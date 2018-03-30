@@ -24,6 +24,30 @@ namespace WotBlitzStatician.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.1.0-preview2-28184")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("WotBlitzStatician.Model.AccountClanHistory", b =>
+                {
+                    b.Property<long>("AccountClanHistoryId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("AccountId");
+
+                    b.Property<long?>("ClanId");
+
+                    b.Property<string>("ClanName");
+
+                    b.Property<string>("ClanTag");
+
+                    b.Property<DateTime>("PlayerJoinedAt");
+
+                    b.Property<string>("PlayerRole");
+
+                    b.HasKey("AccountClanHistoryId");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("AccountClanHistory");
+                });
+
             modelBuilder.Entity("WotBlitzStatician.Model.AccountClanInfo", b =>
                 {
                     b.Property<long>("AccountClanInfoId")

@@ -5,12 +5,31 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WotBlitzStatician.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
                 name: "wotb");
+
+            migrationBuilder.CreateTable(
+                name: "AccountClanHistory",
+                schema: "wotb",
+                columns: table => new
+                {
+                    AccountClanHistoryId = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AccountId = table.Column<long>(nullable: false),
+                    ClanId = table.Column<long>(nullable: true),
+                    PlayerJoinedAt = table.Column<DateTime>(nullable: false),
+                    ClanTag = table.Column<string>(nullable: true),
+                    ClanName = table.Column<string>(nullable: true),
+                    PlayerRole = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AccountClanHistory", x => x.AccountClanHistoryId);
+                });
 
             migrationBuilder.CreateTable(
                 name: "AccountInfo",
@@ -352,6 +371,12 @@ namespace WotBlitzStatician.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AccountClanHistory_AccountId",
+                schema: "wotb",
+                table: "AccountClanHistory",
+                column: "AccountId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AccountClanInfo_AccountInfoAccountId",
                 schema: "wotb",
                 table: "AccountClanInfo",
@@ -448,6 +473,10 @@ namespace WotBlitzStatician.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AccountClanHistory",
+                schema: "wotb");
+
             migrationBuilder.DropTable(
                 name: "AccountClanInfo",
                 schema: "wotb");

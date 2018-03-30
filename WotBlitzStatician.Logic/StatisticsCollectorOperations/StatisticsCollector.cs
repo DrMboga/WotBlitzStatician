@@ -47,29 +47,31 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations
 					.Keyed<IStatisticsCollectorOperation>(2);
 				builder.RegisterType<FilterByLastBattleTimeOperation>()
 					.Keyed<IStatisticsCollectorOperation>(3);
-				builder.RegisterType<GetAccointsClanInfoOperation>()
+				builder.RegisterType<GetAccountsClanInfoOperation>()
 					.Keyed<IStatisticsCollectorOperation>(4);
-				builder.RegisterType<GetAccountsAchievementsOperation>()
+				builder.RegisterType<CreateAccountClanHistoryOperation>()
 					.Keyed<IStatisticsCollectorOperation>(5);
-				builder.RegisterType<GetAllTanksStatisticsOperation>()
+				builder.RegisterType<GetAccountsAchievementsOperation>()
 					.Keyed<IStatisticsCollectorOperation>(6);
-				builder.RegisterType<CalculateMiddleTierOperation>()
+				builder.RegisterType<GetAllTanksStatisticsOperation>()
 					.Keyed<IStatisticsCollectorOperation>(7);
-				builder.RegisterType<FilterTanksByLastSessionOperation>()
+				builder.RegisterType<CalculateMiddleTierOperation>()
 					.Keyed<IStatisticsCollectorOperation>(8);
-				builder.RegisterType<CalculateWn7Operation>()
+				builder.RegisterType<FilterTanksByLastSessionOperation>()
 					.Keyed<IStatisticsCollectorOperation>(9);
-				builder.RegisterType<GetTanksAchievementsOperation>()
+				builder.RegisterType<CalculateWn7Operation>()
 					.Keyed<IStatisticsCollectorOperation>(10);
-				builder.RegisterType<CopyNewAccountDataOperation>()
+				builder.RegisterType<GetTanksAchievementsOperation>()
 					.Keyed<IStatisticsCollectorOperation>(11);
-				builder.RegisterType<SaveAllChangesOperation>()
+				builder.RegisterType<CopyNewAccountDataOperation>()
 					.Keyed<IStatisticsCollectorOperation>(12);
+				builder.RegisterType<SaveAllChangesOperation>()
+					.Keyed<IStatisticsCollectorOperation>(13);
 			});
 
 			// ToDo: Increase this number if adding new operation to scope.
 			// It's an autofac restriction - We can't iterate through IIndex<IStatisticsCollectorOperation, int>
-			int operationsCount = 13;
+			int operationsCount = 14;
 
 			return (childScope, operationsCount);
 		}

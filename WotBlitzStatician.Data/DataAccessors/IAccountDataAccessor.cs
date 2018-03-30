@@ -10,6 +10,8 @@ namespace WotBlitzStatician.Data.DataAccessors
     {
 		Task<List<AccountInfo>> GetAllAccountsAsync();
 
+		Task<AccountClanInfo> GetAccountClanAsync(long accountId);
+
 		Task SaveProlongedAccountAsync(long accountId, string accessToken, DateTime accesTokenExpiration);
 
 		Task<IDbContextTransaction> OpenTransactionAsync();
@@ -21,5 +23,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 		Task MergeFragsAsync(List<FragListItem> frags);
 
 		Task SaveAccountClanInfoAsync(long accountId, AccountClanInfo accountClanInfo);
+
+		Task SaveAccountClanHistory(AccountClanHistory accountClanHistory);
     }
 }

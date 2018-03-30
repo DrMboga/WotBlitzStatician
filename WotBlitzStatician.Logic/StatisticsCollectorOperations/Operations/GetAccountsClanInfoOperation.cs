@@ -4,11 +4,11 @@ using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 {
-	public class GetAccointsClanInfoOperation : IStatisticsCollectorOperation
+	public class GetAccountsClanInfoOperation : IStatisticsCollectorOperation
 	{
 		private readonly IWargamingApiClient _wargamingApiClient;
 
-		public GetAccointsClanInfoOperation(IWargamingApiClient wargamingApiClient)
+		public GetAccountsClanInfoOperation(IWargamingApiClient wargamingApiClient)
 		{
 			_wargamingApiClient = wargamingApiClient;
 		}
