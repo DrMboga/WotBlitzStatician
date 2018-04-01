@@ -25,6 +25,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 		public async Task<AccountClanInfo> GetAccountClanAsync(long accountId)
 		{
 			return await _dbContext.AccountClanInfo
+							.AsNoTracking()
 							.Where(a => a.AccountInfo.AccountId == accountId)
 							.FirstOrDefaultAsync();
 		}

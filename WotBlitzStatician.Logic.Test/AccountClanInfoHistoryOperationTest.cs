@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
+using Microsoft.EntityFrameworkCore;
 using WotBlitzStatician.Data;
 using WotBlitzStatician.Logic.StatisticsCollectorOperations.OperationContext;
 using WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations;
@@ -53,10 +54,11 @@ namespace WotBlitzStatician.Logic.Test
 					ClanId = databaseClanId,
 					PlayerRole = databasePlayerRole
 				};
-				// ToDo: think about account info relation
 				await _dbContext.AccountInfo.AddAsync(clanInfo.AccountInfo);
 				await _dbContext.AccountClanInfo.AddAsync(clanInfo);
 				await _dbContext.SaveChangesAsync();
+				_dbContext.Entry(clanInfo.AccountInfo).State = EntityState.Detached;
+				_dbContext.Entry(clanInfo).State = EntityState.Detached;
 			}
 			var operationContext = new StatisticsCollectorOperationContext
 			{
