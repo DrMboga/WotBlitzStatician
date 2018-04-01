@@ -53,7 +53,9 @@ namespace WotBlitzStatician.Logic.Test
 					ClanId = databaseClanId,
 					PlayerRole = databasePlayerRole
 				};
-				_dbContext.AccountClanInfo.Add(clanInfo);
+				// ToDo: think about account info relation
+				await _dbContext.AccountInfo.AddAsync(clanInfo.AccountInfo);
+				await _dbContext.AccountClanInfo.AddAsync(clanInfo);
 				await _dbContext.SaveChangesAsync();
 			}
 			var operationContext = new StatisticsCollectorOperationContext

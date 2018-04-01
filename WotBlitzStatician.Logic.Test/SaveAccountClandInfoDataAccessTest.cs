@@ -45,6 +45,7 @@ namespace WotBlitzStatician.Logic.Test
 					ClanId = dbClanId,
 					PlayerRole = dbPlayerRole
 				};
+				await _dbContext.AccountInfo.AddAsync(dbAccountClanInfo.AccountInfo);
 				await _dbContext.AccountClanInfo.AddAsync(dbAccountClanInfo);
 				await _dbContext.SaveChangesAsync();
 				_dbContext.Entry(dbAccountClanInfo.AccountInfo).State = EntityState.Detached;
