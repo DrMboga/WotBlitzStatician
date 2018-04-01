@@ -24,6 +24,6 @@ namespace WotBlitzStatician.Data.DataAccessors
 
 		Task SaveAccountClanInfoAsync(long accountId, AccountClanInfo accountClanInfo);
 
-		Task SaveAccountClanHistory(AccountClanHistory accountClanHistory);
+		Task SaveAccountClanHistoryAsync(AccountClanHistory accountClanHistory);
     }
 }

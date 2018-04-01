@@ -136,9 +136,10 @@ namespace WotBlitzStatician.Data.DataAccessors
 			_dbContext.Entry(accountClanInfo.AccountInfo).State = EntityState.Detached;
 		}
 
-		public Task SaveAccountClanHistory(AccountClanHistory accountClanHistory)
+		public async Task SaveAccountClanHistoryAsync(AccountClanHistory accountClanHistory)
 		{
-			throw new NotImplementedException();
+			await _dbContext.AccountClanHistory.AddAsync(accountClanHistory);
+			await _dbContext.SaveChangesAsync();
 		}
 	}
 }
