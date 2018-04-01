@@ -22,7 +22,6 @@ namespace WotBlitzStatician.Data.DataAccessors
 			return await _dbContext.AccountInfo.AsNoTracking().ToListAsync();
 		}
 
-		// ToDo: Check db query
 		public async Task<AccountClanInfo> GetAccountClanAsync(long accountId)
 		{
 			return await _dbContext.AccountClanInfo
@@ -101,7 +100,6 @@ namespace WotBlitzStatician.Data.DataAccessors
 			await _dbContext.SaveChangesAsync();
 		}
 
-		// ToDo: Unit test this logic!!
 		public async Task SaveAccountClanInfoAsync(long accountId, AccountClanInfo accountClanInfo)
 		{
 			var existingClanInfo = await _dbContext.AccountClanInfo

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using WotBlitzStatician.Data.DataAccessors;
 using WotBlitzStatician.Logic.StatisticsCollectorOperations.OperationContext;
 
@@ -28,7 +29,9 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 					return;
 				}
 
-				if(existingAccountClanInfo == null && accountInfo.WargamingAccountInfo.AccountClanInfo != null)
+				if(existingAccountClanInfo == null && 
+					accountInfo.WargamingAccountInfo.AccountClanInfo != null &&
+					accountInfo.WargamingAccountInfo.AccountClanInfo.ClanId != 0)
 				{
 					accountInfo.AccountClanHistory = new Model.AccountClanHistory
 					{
@@ -42,12 +45,38 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 					return;
 				}
 
-				// ToDo: Check if existing not null and current null
-				// If both not null and clan id is differ
-				// If both not null and player role is differ
+				if(existingAccountClanInfo != null &&
+					(accountInfo.WargamingAccountInfo.AccountClanInfo == null
+						|| accountInfo.WargamingAccountInfo.AccountClanInfo.ClanId == 0))
+				{
+					accountInfo.AccountClanHistory = new Model.AccountClanHistory
+					{
+						AccountId = accountInfo.CurrentAccountInfo.AccountId,
+						ClanId = null,
+						ClanName = null,
+						ClanTag = null,
+						PlayerJoinedAt = DateTime.Now,
+						PlayerRole = null
+					};
+					return;
+				}
 
-				// ToDo: unit test this logic with in-memory database and method GetAccountClanAsync
-				// ToDo: unit test SaveAccountClanInfoAsync with in-memery database
+				if (existingAccountClanInfo != null &&
+					accountInfo.WargamingAccountInfo.AccountClanInfo != null &&
+					accountInfo.WargamingAccountInfo.AccountClanInfo.ClanId != 0 &&
+					(existingAccountClanInfo.ClanId != accountInfo.WargamingAccountInfo.AccountClanInfo.ClanId
+						|| existingAccountClanInfo.PlayerRole != accountInfo.WargamingAccountInfo.AccountClanInfo.PlayerRole))
+				{
+					accountInfo.AccountClanHistory = new Model.AccountClanHistory
+					{
+						AccountId = accountInfo.CurrentAccountInfo.AccountId,
+						ClanId = accountInfo.WargamingAccountInfo.AccountClanInfo.ClanId,
+						ClanName = accountInfo.WargamingAccountInfo.AccountClanInfo.ClanName,
+						ClanTag = accountInfo.WargamingAccountInfo.AccountClanInfo.ClanTag,
+						PlayerJoinedAt = accountInfo.WargamingAccountInfo.AccountClanInfo.PlayerJoinedAt,
+						PlayerRole = accountInfo.WargamingAccountInfo.AccountClanInfo.PlayerRole
+					};
+				}
 			}
 		}
 	}
