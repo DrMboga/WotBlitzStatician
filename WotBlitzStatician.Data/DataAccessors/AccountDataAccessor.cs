@@ -55,7 +55,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 
 		public async Task SaveAccountPrivateInfoAndStatisticsAsync(AccountInfoStatistics accountInfoStatistics)
 		{
-			_dbContext.AccountInfoStatistics.Add(accountInfoStatistics);
+			await _dbContext.AccountInfoStatistics.AddAsync(accountInfoStatistics);
 			await _dbContext.SaveChangesAsync();
 		}
 
@@ -91,7 +91,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 								((fragsByAccount) || (!fragsByAccount && f.TankId == frag.TankId)));
 				if (existing == null)
 				{
-					_dbContext.Frags.Add(frag);
+					await _dbContext.Frags.AddAsync(frag);
 				}
 				else
 				{
@@ -121,7 +121,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 			if (existingClanInfo == null)
 			{
 				// Insert new clan info
-				_dbContext.AccountClanInfo.Add(accountClanInfo);
+				await _dbContext.AccountClanInfo.AddAsync(accountClanInfo);
 				await _dbContext.SaveChangesAsync();
 				_dbContext.Entry(accountClanInfo.AccountInfo).State = EntityState.Detached;
 				return;
@@ -139,6 +139,54 @@ namespace WotBlitzStatician.Data.DataAccessors
 		public async Task SaveAccountClanHistoryAsync(AccountClanHistory accountClanHistory)
 		{
 			await _dbContext.AccountClanHistory.AddAsync(accountClanHistory);
+			await _dbContext.SaveChangesAsync();
+		}
+
+		public async Task MergeAccountAchievementsAsync(long accountId, List<AccountInfoAchievement> achievements, List<AccountInfoAchievement> achievementsMaxSeries)
+		{
+			if(achievements == null || achievements.Count == 0)
+			{
+				return;
+			}
+			var existingAchevements = await _dbContext.AccountInfoAchievement
+				.Where(a => a.AccountId == accountId)
+				.ToListAsync();
+
+			foreach (var achievement in achievements)
+			{
+				var existing = existingAchevements
+					.FirstOrDefault(e => e.AchievementId == achievement.AchievementId && e.IsMaxSeries == false);
+				if(existing == null)
+				{
+					await _dbContext.AccountInfoAchievement.AddAsync(achievement);
+				}
+				else
+				{
+					existing.Count = achievement.Count;
+				}
+			}
+			if (achievementsMaxSeries != null)
+			{
+				foreach (var achievement in achievementsMaxSeries)
+				{
+					var existing = existingAchevements
+						.FirstOrDefault(e => e.AchievementId == achievement.AchievementId && e.IsMaxSeries == true);
+					if (existing == null)
+					{
+						await _dbContext.AccountInfoAchievement.AddAsync(achievement);
+					}
+					else
+					{
+						existing.Count = achievement.Count;
+					}
+				}
+			}
+			await _dbContext.SaveChangesAsync();
+		}
+
+		public async Task SaveTankStatisticsAsync(List<AccountTankStatistics> tankStatistics)
+		{
+			await _dbContext.AccountTankStatistics.AddRangeAsync(tankStatistics);
 			await _dbContext.SaveChangesAsync();
 		}
 	}

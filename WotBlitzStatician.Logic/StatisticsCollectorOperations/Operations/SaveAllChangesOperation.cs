@@ -43,7 +43,12 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 						await _accountDataAccessor.SaveAccountClanHistoryAsync(accountInfo.AccountClanHistory);
 					}
 					// Save account acievements
+					await _accountDataAccessor.MergeAccountAchievementsAsync(
+						accountInfo.CurrentAccountInfo.AccountId,
+						accountInfo.CurrentAccountInfo.Achievements,
+						accountInfo.CurrentAccountInfo.AchievementsMaxSeries);
 					// Save tanks statistics
+					await _accountDataAccessor.SaveTankStatisticsAsync(accountInfo.AccountInfoTanks);
 					// Save tanks achievements
 					// Save frags by allTanks using MergeFragsAsync
 

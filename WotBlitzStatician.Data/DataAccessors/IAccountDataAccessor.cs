@@ -25,5 +25,11 @@ namespace WotBlitzStatician.Data.DataAccessors
 		Task SaveAccountClanInfoAsync(long accountId, AccountClanInfo accountClanInfo);
 
 		Task SaveAccountClanHistoryAsync(AccountClanHistory accountClanHistory);
+
+		Task MergeAccountAchievementsAsync(long accountId, 
+			List<AccountInfoAchievement> achievements,
+			List<AccountInfoAchievement> achievementsMaxSeries);
+
+		Task SaveTankStatisticsAsync(List<AccountTankStatistics> tankStatistics);
     }
 }
