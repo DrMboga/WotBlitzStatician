@@ -31,5 +31,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 			List<AccountInfoAchievement> achievementsMaxSeries);
 
 		Task SaveTankStatisticsAsync(List<AccountTankStatistics> tankStatistics);
+
+		Task MergeAccountInfoTankAchievementsAsync(List<AccountTankStatistics> tanks);
     }
 }

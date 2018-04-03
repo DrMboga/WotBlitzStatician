@@ -189,5 +189,51 @@ namespace WotBlitzStatician.Data.DataAccessors
 			await _dbContext.AccountTankStatistics.AddRangeAsync(tankStatistics);
 			await _dbContext.SaveChangesAsync();
 		}
+
+		public async Task MergeAccountInfoTankAchievementsAsync(List<AccountTankStatistics> tanks)
+		{
+			long accountId = tanks.First().AccountId;
+			var tankIds = tanks.Select(t => t.TankId).ToList();
+			var existingTankAchievements = await _dbContext.AccountInfoTankAchievement
+				.Where(a => a.AccountId == accountId && tankIds.Contains(a.TankId))
+				.ToListAsync();
+			foreach (var tank in tanks)
+			{
+				foreach (var achievement in tank.Achievements)
+				{
+					var existing = existingTankAchievements
+						.FirstOrDefault(e => e.AchievementId == achievement.AchievementId 
+												&& e.TankId == tank.TankId
+												&& e.IsMaxSeries == false);
+					if (existing == null)
+					{
+						await _dbContext.AccountInfoTankAchievement.AddAsync(achievement);
+					}
+					else
+					{
+						existing.Count = achievement.Count;
+					}
+				}
+				if (tank.AchievementsMaxSeries != null)
+				{
+					foreach (var achievement in tank.AchievementsMaxSeries)
+					{
+						var existing = existingTankAchievements
+							.FirstOrDefault(e => e.AchievementId == achievement.AchievementId
+												&& e.TankId == tank.TankId
+												&& e.IsMaxSeries == true);
+						if (existing == null)
+						{
+							await _dbContext.AccountInfoTankAchievement.AddAsync(achievement);
+						}
+						else
+						{
+							existing.Count = achievement.Count;
+						}
+					}
+				}
+			}
+			await _dbContext.SaveChangesAsync();
+		}
 	}
 }

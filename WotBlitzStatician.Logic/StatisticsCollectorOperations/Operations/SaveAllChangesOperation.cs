@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using WotBlitzStatician.Data.DataAccessors;
 using WotBlitzStatician.Logic.StatisticsCollectorOperations.OperationContext;
+using WotBlitzStatician.Model;
 
 namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 {
@@ -50,9 +52,15 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 					// Save tanks statistics
 					await _accountDataAccessor.SaveTankStatisticsAsync(accountInfo.AccountInfoTanks);
 					// Save tanks achievements
-					// Save frags by allTanks using MergeFragsAsync
+					await _accountDataAccessor.MergeAccountInfoTankAchievementsAsync
+						(accountInfo.AccountInfoTanks);
 
-					//transaction.Commit();
+					// Save frags by allTanks using MergeFragsAsync
+					var tankFrags = new List<FragListItem>();
+					accountInfo.AccountInfoTanks.ForEach(t => tankFrags.AddRange(t.FragsList));
+					await _accountDataAccessor.MergeFragsAsync(tankFrags);
+
+					transaction.Commit();
 				}
 			}
 		}
