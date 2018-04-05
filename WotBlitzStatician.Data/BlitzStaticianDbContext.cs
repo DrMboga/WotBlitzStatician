@@ -66,7 +66,7 @@ namespace WotBlitzStatician.Data
 			modelBuilder.Entity<AccountInfo>(AccountInfoTypeConfiguration.Configure);
 			modelBuilder.Entity<AccountInfoStatistics>(AccountInfoStatisticsTypeConfiguration.Configure);
 			modelBuilder.Entity<AccountInfoPrivate>(PrivateAccountInfoTypeConfiguration.Configure);
-			modelBuilder.Entity<AccountClanInfo>(e => e.HasKey(v => v.AccountClanInfoId));
+			modelBuilder.Entity<AccountClanInfo>(AccountClanInfoTypeConfiguration.Configure);
 			modelBuilder.Entity<AccountClanHistory>(AccountClanHistoryTypeConfiguration.Configure);
 			modelBuilder.Entity<AccountInfoAchievement>(AccountInfoAchevementTypeConfiguration.Configure);
 			modelBuilder.Entity<AccountTankStatistics>(AccountTankStatisticsTypeConfiguration.Configure);

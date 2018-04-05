@@ -50,14 +50,12 @@ namespace WotBlitzStatician.Logic.Test
 			{
 				var clanInfo = new AccountClanInfo
 				{
-					AccountInfo = new AccountInfo { AccountId = accountId },
+					AccountId = accountId,
 					ClanId = databaseClanId,
 					PlayerRole = databasePlayerRole
 				};
-				await _dbContext.AccountInfo.AddAsync(clanInfo.AccountInfo);
 				await _dbContext.AccountClanInfo.AddAsync(clanInfo);
 				await _dbContext.SaveChangesAsync();
-				_dbContext.Entry(clanInfo.AccountInfo).State = EntityState.Detached;
 				_dbContext.Entry(clanInfo).State = EntityState.Detached;
 			}
 			var operationContext = new StatisticsCollectorOperationContext

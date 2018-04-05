@@ -53,7 +53,7 @@ namespace WotBlitzStatician.Data.Migrations
                     b.Property<long>("AccountClanInfoId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<long?>("AccountInfoAccountId");
+                    b.Property<long>("AccountId");
 
                     b.Property<DateTime>("ClanCreatedAt");
 
@@ -77,9 +77,10 @@ namespace WotBlitzStatician.Data.Migrations
 
                     b.HasKey("AccountClanInfoId");
 
-                    b.HasIndex("AccountInfoAccountId")
-                        .IsUnique()
-                        .HasFilter("[AccountInfoAccountId] IS NOT NULL");
+                    b.HasIndex("AccountId")
+                        .IsUnique();
+
+                    b.HasIndex("AccountId", "ClanId");
 
                     b.ToTable("AccountClanInfo");
                 });
@@ -478,9 +479,10 @@ namespace WotBlitzStatician.Data.Migrations
 
             modelBuilder.Entity("WotBlitzStatician.Model.AccountClanInfo", b =>
                 {
-                    b.HasOne("WotBlitzStatician.Model.AccountInfo", "AccountInfo")
+                    b.HasOne("WotBlitzStatician.Model.AccountInfo")
                         .WithOne("AccountClanInfo")
-                        .HasForeignKey("WotBlitzStatician.Model.AccountClanInfo", "AccountInfoAccountId");
+                        .HasForeignKey("WotBlitzStatician.Model.AccountClanInfo", "AccountId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WotBlitzStatician.Model.AccountInfoStatistics", b =>

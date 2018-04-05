@@ -26,7 +26,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 		{
 			return await _dbContext.AccountClanInfo
 							.AsNoTracking()
-							.Where(a => a.AccountInfo.AccountId == accountId)
+							.Where(a => a.AccountId == accountId)
 							.FirstOrDefaultAsync();
 		}
 
@@ -104,7 +104,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 		public async Task SaveAccountClanInfoAsync(long accountId, AccountClanInfo accountClanInfo)
 		{
 			var existingClanInfo = await _dbContext.AccountClanInfo
-				.FirstOrDefaultAsync(c => c.AccountInfo.AccountId == accountId);
+				.FirstOrDefaultAsync(c => c.AccountId == accountId);
 			if(accountClanInfo == null || accountClanInfo.ClanId == 0)
 			{
 				// Account not in clan - delete clan info from DB
@@ -130,7 +130,6 @@ namespace WotBlitzStatician.Data.DataAccessors
 			_dbContext.AccountClanInfo.Attach(accountClanInfo);
 			_dbContext.Entry(accountClanInfo).State = EntityState.Modified;
 			await _dbContext.SaveChangesAsync();
-			_dbContext.Entry(accountClanInfo.AccountInfo).State = EntityState.Detached;
 		}
 
 		public async Task SaveAccountClanHistoryAsync(AccountClanHistory accountClanHistory)

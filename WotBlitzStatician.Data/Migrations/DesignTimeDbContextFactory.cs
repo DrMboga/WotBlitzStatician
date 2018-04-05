@@ -9,6 +9,7 @@ namespace WotBlitzStatician.Data.Migrations
 	{
 		// PM> Add-Migration InitialCreate
 		// PM> Update-Database
+		// PM> Script-Migration
 
 		public BlitzStaticianDbContext CreateDbContext(string[] args)
 		{

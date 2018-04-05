@@ -243,7 +243,7 @@ namespace WotBlitzStatician.Data.Migrations
                 {
                     AccountClanInfoId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AccountInfoAccountId = table.Column<long>(nullable: true),
+                    AccountId = table.Column<long>(nullable: false),
                     ClanId = table.Column<long>(nullable: false),
                     PlayerJoinedAt = table.Column<DateTime>(nullable: false),
                     PlayerRole = table.Column<string>(nullable: true),
@@ -259,12 +259,12 @@ namespace WotBlitzStatician.Data.Migrations
                 {
                     table.PrimaryKey("PK_AccountClanInfo", x => x.AccountClanInfoId);
                     table.ForeignKey(
-                        name: "FK_AccountClanInfo_AccountInfo_AccountInfoAccountId",
-                        column: x => x.AccountInfoAccountId,
+                        name: "FK_AccountClanInfo_AccountInfo_AccountId",
+                        column: x => x.AccountId,
                         principalSchema: "wotb",
                         principalTable: "AccountInfo",
                         principalColumn: "AccountId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -377,12 +377,17 @@ namespace WotBlitzStatician.Data.Migrations
                 column: "AccountId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AccountClanInfo_AccountInfoAccountId",
+                name: "IX_AccountClanInfo_AccountId",
                 schema: "wotb",
                 table: "AccountClanInfo",
-                column: "AccountInfoAccountId",
-                unique: true,
-                filter: "[AccountInfoAccountId] IS NOT NULL");
+                column: "AccountId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AccountClanInfo_AccountId_ClanId",
+                schema: "wotb",
+                table: "AccountClanInfo",
+                columns: new[] { "AccountId", "ClanId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AccountInfo_LastBattleTime",

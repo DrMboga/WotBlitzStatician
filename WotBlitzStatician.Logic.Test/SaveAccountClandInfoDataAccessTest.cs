@@ -41,20 +41,18 @@ namespace WotBlitzStatician.Logic.Test
 			{
 				var dbAccountClanInfo = new AccountClanInfo
 				{
-					AccountInfo = new AccountInfo { AccountId = accountId },
+					AccountId = accountId,
 					ClanId = dbClanId,
 					PlayerRole = dbPlayerRole
 				};
-				await _dbContext.AccountInfo.AddAsync(dbAccountClanInfo.AccountInfo);
 				await _dbContext.AccountClanInfo.AddAsync(dbAccountClanInfo);
 				await _dbContext.SaveChangesAsync();
-				_dbContext.Entry(dbAccountClanInfo.AccountInfo).State = EntityState.Detached;
 				_dbContext.Entry(dbAccountClanInfo).State = EntityState.Detached;
 			}
 
 			var wgAccountClanInfo = new AccountClanInfo
 			{
-				AccountInfo = new AccountInfo { AccountId = accountId },
+				AccountId = accountId,
 				ClanId = wgClanId,
 				PlayerRole = wgPlayerRole
 			};
@@ -62,7 +60,7 @@ namespace WotBlitzStatician.Logic.Test
 			await accountDataAccessor.SaveAccountClanInfoAsync(accountId, wgAccountClanInfo);
 
 			var savedClanInfo = await _dbContext.AccountClanInfo
-				.SingleOrDefaultAsync(c => c.AccountInfo.AccountId == accountId);
+				.SingleOrDefaultAsync(c => c.AccountId == accountId);
 
 			if (wgClanId > 0)
 			{

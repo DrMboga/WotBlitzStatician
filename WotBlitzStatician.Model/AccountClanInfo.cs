@@ -6,9 +6,9 @@
     {
 		public long AccountClanInfoId { get; set; }
 
-		public AccountInfo AccountInfo { get; set; }
+		public long AccountId { get; set; }
 
-        public long ClanId { get; set; }
+		public long ClanId { get; set; }
 
         public DateTime PlayerJoinedAt { get; set; }
 
