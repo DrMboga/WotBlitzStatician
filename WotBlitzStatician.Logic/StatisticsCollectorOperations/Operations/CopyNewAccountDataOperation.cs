@@ -13,6 +13,10 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				account.CurrentAccountInfo.LastBattleTime = account.WargamingAccountInfo.LastBattleTime;
 				account.CurrentAccountInfo.AccountInfoStatistics = account.WargamingAccountInfo.AccountInfoStatistics;
 				account.CurrentAccountInfo.AccountClanInfo = account.WargamingAccountInfo.AccountClanInfo;
+				if (account.CurrentAccountInfo.AccountClanInfo != null)
+				{
+					account.CurrentAccountInfo.AccountClanInfo.AccountInfo = account.CurrentAccountInfo;
+				}
 				account.CurrentAccountInfo.Achievements = account.WargamingAccountInfo.Achievements;
 				account.CurrentAccountInfo.AchievementsMaxSeries = account.WargamingAccountInfo.AchievementsMaxSeries;
 			}
