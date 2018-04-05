@@ -116,14 +116,11 @@ namespace WotBlitzStatician.Data.DataAccessors
 				return;
 			}
 
-			accountClanInfo.AccountInfo = new AccountInfo { AccountId = accountId };
-			_dbContext.AccountInfo.Attach(accountClanInfo.AccountInfo);
 			if (existingClanInfo == null)
 			{
 				// Insert new clan info
 				await _dbContext.AccountClanInfo.AddAsync(accountClanInfo);
 				await _dbContext.SaveChangesAsync();
-				_dbContext.Entry(accountClanInfo.AccountInfo).State = EntityState.Detached;
 				return;
 			}
 
