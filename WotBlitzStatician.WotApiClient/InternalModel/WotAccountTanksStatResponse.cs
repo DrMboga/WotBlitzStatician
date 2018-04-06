@@ -14,12 +14,7 @@
 		public long? AccountId { get; set; }
 
 		[JsonProperty("battle_life_time")]
-		private int? _battleLifeTime;
-
-		///<summary>
-		///Общее время в боях в секундах
-		///</summary>
-		public TimeSpan? BattleLifeTime => _battleLifeTime.ToTimeSpan();
+		private int? BattleLifeTimeInSeconds { get; set; }
 
 		[JsonProperty("last_battle_time")]
 		private int? _lastBattleTime;

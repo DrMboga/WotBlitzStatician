@@ -101,7 +101,7 @@ namespace WotBlitzStatician.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AccountId = table.Column<long>(nullable: false),
                     TankId = table.Column<long>(nullable: false),
-                    BattleLifeTime = table.Column<TimeSpan>(nullable: false),
+                    BattleLifeTimeInSeconds = table.Column<int>(nullable: false),
                     LastBattleTime = table.Column<DateTime>(nullable: false),
                     MarkOfMastery = table.Column<int>(nullable: false),
                     InGarage = table.Column<bool>(nullable: false),

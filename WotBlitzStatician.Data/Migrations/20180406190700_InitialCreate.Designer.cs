@@ -14,7 +14,7 @@ using WotBlitzStatician.Model;
 namespace WotBlitzStatician.Data.Migrations
 {
     [DbContext(typeof(BlitzStaticianDbContext))]
-    [Migration("20180405192128_InitialCreate")]
+    [Migration("20180406190700_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -239,7 +239,7 @@ namespace WotBlitzStatician.Data.Migrations
 
                     b.Property<long>("AccountId");
 
-                    b.Property<TimeSpan>("BattleLifeTime");
+                    b.Property<int>("BattleLifeTimeInSeconds");
 
                     b.Property<long>("Battles");
 

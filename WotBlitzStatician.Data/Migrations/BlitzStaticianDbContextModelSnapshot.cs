@@ -238,7 +238,7 @@ namespace WotBlitzStatician.Data.Migrations
 
                     b.Property<long>("AccountId");
 
-                    b.Property<TimeSpan>("BattleLifeTime");
+                    b.Property<int>("BattleLifeTimeInSeconds");
 
                     b.Property<long>("Battles");
 
