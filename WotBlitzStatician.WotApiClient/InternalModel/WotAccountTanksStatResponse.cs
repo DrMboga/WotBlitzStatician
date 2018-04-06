@@ -14,7 +14,7 @@
 		public long? AccountId { get; set; }
 
 		[JsonProperty("battle_life_time")]
-		private int? BattleLifeTimeInSeconds { get; set; }
+		public int? BattleLifeTimeInSeconds { get; set; }
 
 		[JsonProperty("last_battle_time")]
 		private int? _lastBattleTime;

@@ -11,7 +11,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 			foreach (var account in operationContext.Accounts)
 			{
 				var tanksNotPlayedLastSession = account.AccountInfoTanks
-					.Where(t => t.LastBattleTime < account.CurrentAccountInfo.LastBattleTime)
+					.Where(t => t.LastBattleTime <= account.CurrentAccountInfo.LastBattleTime)
 					.ToList();
 				tanksNotPlayedLastSession.ForEach(t => account.AccountInfoTanks.Remove(t));
 			}
