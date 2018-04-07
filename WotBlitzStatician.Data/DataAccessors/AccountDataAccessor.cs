@@ -32,30 +32,17 @@ namespace WotBlitzStatician.Data.DataAccessors
 
 		public async Task<List<AccountTankStatistics>> GetActualTanksAsync(long accountId)
 		{
-			//// ToDo: Compiled query??
-			//var groupedTanks = await _dbContext.AccountTankStatistics
-			//					.AsNoTracking()
-			//					.Where(at => at.AccountId == accountId)
-			//					.GroupBy(tg => tg.TankId)
-			//					.Select(g => new
-			//					{
-			//						TankId = g.Key,
-			//						LastBattleTime = g.Max(v => v.LastBattleTime)
-			//					})
-			//					.ToListAsync();
+			var tanks = await _dbContext.PresentAccountTanks.AsNoTracking()
+				.Join(_dbContext.AccountTankStatistics.AsNoTracking(),
+					p => p.AccountTankStatisticId,
+					s => s.AccountTankStatisticId,
+					(pt, st) => new { pt.AccountId, TankStatistics = st }
+				)
+				.Where(p => p.AccountId == accountId)
+				.Select(q => q.TankStatistics)
+				.ToListAsync();
 
-
-			//var tanks = await _dbContext.AccountTankStatistics
-			//	.AsNoTracking()
-			//	.Where(t => t.AccountId == accountId)
-			//	.Join(groupedTanks,
-			//		st => new { st.TankId, st.LastBattleTime},
-			//		gt => new { gt.TankId, gt.LastBattleTime },
-			//		(j, gj) => j)
-			//	.ToListAsync();
-
-			//return tanks;
-			return null;
+			return tanks;
 		}
 
 		public async Task SaveProlongedAccountAsync(long accountId, string accessToken, DateTime accesTokenExpiration)
@@ -282,6 +269,22 @@ namespace WotBlitzStatician.Data.DataAccessors
 				{
 					existing.AccountTankStatisticId = presentAccountTank.AccountTankStatisticId;
 				}
+			}
+
+			await _dbContext.SaveChangesAsync();
+		}
+
+		public async Task UpdateInnGarageInfoAsync(List<AccountTankStatistics> tanks)
+		{
+			var tankStatIds = tanks.Select(pt => pt.AccountTankStatisticId).ToList();
+			var exitingList = await _dbContext.AccountTankStatistics.
+				Where(t => tankStatIds.Contains(t.AccountTankStatisticId))
+				.ToListAsync();
+			foreach (var existing in exitingList)
+			{
+				var tank = tanks.First(t => t.AccountTankStatisticId == existing.AccountTankStatisticId);
+				existing.InGarage = tank.InGarage;
+				existing.InGarageUpdated = tank.InGarageUpdated;
 			}
 
 			await _dbContext.SaveChangesAsync();
