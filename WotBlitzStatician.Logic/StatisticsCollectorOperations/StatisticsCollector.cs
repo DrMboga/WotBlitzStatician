@@ -57,21 +57,23 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations
 					.Keyed<IStatisticsCollectorOperation>(7);
 				builder.RegisterType<CalculateMiddleTierOperation>()
 					.Keyed<IStatisticsCollectorOperation>(8);
-				builder.RegisterType<FilterTanksByLastSessionOperation>()
+				builder.RegisterType<ActualizeInGarageInformation>()
 					.Keyed<IStatisticsCollectorOperation>(9);
-				builder.RegisterType<CalculateWn7Operation>()
+				builder.RegisterType<FilterTanksByLastSessionOperation>()
 					.Keyed<IStatisticsCollectorOperation>(10);
-				builder.RegisterType<GetTanksAchievementsOperation>()
+				builder.RegisterType<CalculateWn7Operation>()
 					.Keyed<IStatisticsCollectorOperation>(11);
-				builder.RegisterType<CopyNewAccountDataOperation>()
+				builder.RegisterType<GetTanksAchievementsOperation>()
 					.Keyed<IStatisticsCollectorOperation>(12);
-				builder.RegisterType<SaveAllChangesOperation>()
+				builder.RegisterType<CopyNewAccountDataOperation>()
 					.Keyed<IStatisticsCollectorOperation>(13);
+				builder.RegisterType<SaveAllChangesOperation>()
+					.Keyed<IStatisticsCollectorOperation>(14);
 			});
 
 			// ToDo: Increase this number if adding new operation to scope.
 			// It's an autofac restriction - We can't iterate through IIndex<IStatisticsCollectorOperation, int>
-			int operationsCount = 14;
+			int operationsCount = 15;
 
 			return (childScope, operationsCount);
 		}

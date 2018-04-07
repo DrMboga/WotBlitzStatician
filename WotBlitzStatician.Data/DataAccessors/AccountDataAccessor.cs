@@ -30,6 +30,34 @@ namespace WotBlitzStatician.Data.DataAccessors
 							.FirstOrDefaultAsync();
 		}
 
+		public async Task<List<AccountTankStatistics>> GetActualTanksAsync(long accountId)
+		{
+			//// ToDo: Compiled query??
+			//var groupedTanks = await _dbContext.AccountTankStatistics
+			//					.AsNoTracking()
+			//					.Where(at => at.AccountId == accountId)
+			//					.GroupBy(tg => tg.TankId)
+			//					.Select(g => new
+			//					{
+			//						TankId = g.Key,
+			//						LastBattleTime = g.Max(v => v.LastBattleTime)
+			//					})
+			//					.ToListAsync();
+
+
+			//var tanks = await _dbContext.AccountTankStatistics
+			//	.AsNoTracking()
+			//	.Where(t => t.AccountId == accountId)
+			//	.Join(groupedTanks,
+			//		st => new { st.TankId, st.LastBattleTime},
+			//		gt => new { gt.TankId, gt.LastBattleTime },
+			//		(j, gj) => j)
+			//	.ToListAsync();
+
+			//return tanks;
+			return null;
+		}
+
 		public async Task SaveProlongedAccountAsync(long accountId, string accessToken, DateTime accesTokenExpiration)
 		{
 			var accountInfo = await _dbContext.AccountInfo

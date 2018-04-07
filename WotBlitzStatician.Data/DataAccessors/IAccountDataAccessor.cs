@@ -12,6 +12,8 @@ namespace WotBlitzStatician.Data.DataAccessors
 
 		Task<AccountClanInfo> GetAccountClanAsync(long accountId);
 
+		Task<List<AccountTankStatistics>> GetActualTanksAsync(long accountId);
+
 		Task SaveProlongedAccountAsync(long accountId, string accessToken, DateTime accesTokenExpiration);
 
 		Task<IDbContextTransaction> OpenTransactionAsync();
