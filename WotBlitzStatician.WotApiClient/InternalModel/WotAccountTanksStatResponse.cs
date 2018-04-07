@@ -14,12 +14,7 @@
 		public long? AccountId { get; set; }
 
 		[JsonProperty("battle_life_time")]
-		private int? _battleLifeTime;
-
-		///<summary>
-		///Общее время в боях в секундах
-		///</summary>
-		public TimeSpan? BattleLifeTime => _battleLifeTime.ToTimeSpan();
+		public int? BattleLifeTimeInSeconds { get; set; }
 
 		[JsonProperty("last_battle_time")]
 		private int? _lastBattleTime;
@@ -29,7 +24,7 @@
 		public DateTime? LastBattleTime => _lastBattleTime.ToDateTime();
 
 		[JsonProperty("in_garage")]
-		public bool InGarage { get; set; }
+		public bool? InGarage { get; set; }
 
 		[JsonProperty("in_garage_updated")]
 		private int? _inGarageUpdated;

@@ -4,23 +4,25 @@
 	using System.Net;
 	using System.Net.Http;
 	using System.Net.Http.Headers;
+	using System.Text;
 	using System.Threading.Tasks;
-    using log4net;
-    using Newtonsoft.Json;
+	using Microsoft.Extensions.Logging;
+	using Newtonsoft.Json;
 
-	internal class WebApiClient
+	public class WebApiClient
 	{
-        private static readonly ILog _log = LogManager.GetLogger(typeof(WebApiClient));
+        private readonly ILogger<WebApiClient> _log;
 
 		private const string Guid = "fcdda45ba2a74c2f8cc8562bbfbb7a0a";
 		private readonly IProxySettings _proxySettings;
 
-		public WebApiClient(IProxySettings proxySettings)
+		public WebApiClient(IProxySettings proxySettings, ILogger<WebApiClient> logger)
 		{
 			_proxySettings = proxySettings;
+			_log = logger;
 		}
 
-		public async Task<TResponse> GetResponse<TResponse>(string baseAddress, string request)
+		public async Task<TResponse> GetResponse<TResponse>(string baseAddress, string request, bool isPostNeeded = false)
 		{
 			var handler = new HttpClientHandler();
 			if (_proxySettings.UseProxy)
@@ -38,9 +40,21 @@
 				client.DefaultRequestHeaders.Accept.Clear();
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-				var response = await client.GetAsync(request);
+				HttpResponseMessage response;
+				if(isPostNeeded)
+				{
+					// Create httpContent
+					var requestBody = GetBody(request);
+					var httpContent = new StringContent(requestBody, Encoding.UTF8, "application/x-www-form-urlencoded");
 
-                _log.Debug($"Request '{baseAddress}{request}' - Status: '{response.StatusCode}'");
+					response = await client.PostAsync(request, httpContent);
+				}
+				else
+				{
+					response = await client.GetAsync(request);
+				}
+
+                _log.LogInformation($"Request '{baseAddress}{request}' - Status: '{response.StatusCode}'");
 
 				response.EnsureSuccessStatusCode();
 				var responseString = await response.Content.ReadAsStringAsync();
@@ -65,5 +79,9 @@
 			}
 		}
 
+		private string GetBody(string request)
+		{
+			return request.Substring(request.IndexOf('?') + 1);
+		}
 	}
 }

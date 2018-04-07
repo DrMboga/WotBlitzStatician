@@ -1,16 +1,15 @@
 ﻿namespace WotBlitzStatician.Model
 {
 	using System;
-	using System.ComponentModel.DataAnnotations;
-	using System.ComponentModel.DataAnnotations.Schema;
-	
+	using System.Collections.Generic;
+
 	public class AccountInfoPrivate
 	{
-		[Key]
 		public long AccountInfoPrivateId { get; set; }
 
-		[ForeignKey("AccountInfo")]
 		public long AccountId { get; set; }
+
+		public AccountInfoStatistics AccountInfoStatistics{ get; set; }
 
 		///<summary>
 		///Информация о блокировке аккаунта
@@ -22,10 +21,11 @@
 		///</summary>
 		public DateTime? BanTime { get; set; }
 
+		public int BattleLifeTimeInSeconds { get; set; }
 		///<summary>
-		///Общее время в бою до уничтожения в секундах
+		///Общее время в бою до уничтожения
 		///</summary>
-		public long BattleLifeTime { get; set; }
+		public TimeSpan BattleLifeTime => TimeSpan.FromSeconds(BattleLifeTimeInSeconds);
 
 		///<summary>
 		///Кредиты
@@ -51,5 +51,11 @@
 		///Срок действия премиум аккаунта
 		///</summary>
 		public DateTime? PremiumExpiresAt { get; set; }
+
+		public string ContactsUngrouped { get; set; }
+
+		public string ContactsBlocked { get; set; }
+
+		public string ContactsGroups { get; set; }
 	}
 }

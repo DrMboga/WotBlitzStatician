@@ -1,17 +1,17 @@
-﻿namespace WotBlitzStatician
-{
-	using System;
-	using System.Net;
-	using System.Threading.Tasks;
-	using Microsoft.AspNetCore.Builder;
-	using Microsoft.AspNetCore.Http;
-	using Microsoft.Extensions.Logging;
-	using Newtonsoft.Json;
+﻿using System;
+using System.Net;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
+namespace WotBlitzStatician
+{
 	public class ErrorHandlerMiddleware
-	{
+    {
 		private readonly RequestDelegate _next;
-		private readonly ILogger _logger;
+		private readonly ILogger<ErrorHandlerMiddleware> _logger;
 
 		public ErrorHandlerMiddleware(RequestDelegate next, ILogger<ErrorHandlerMiddleware> logger)
 		{
@@ -19,15 +19,15 @@
 			_logger = logger;
 		}
 
-		public async Task Invoke(HttpContext context /* other scoped dependencies */)
+		public async Task InvokeAsync(HttpContext context)
 		{
 			try
 			{
 				await _next(context);
 			}
-			catch (Exception ex)
+			catch (Exception e)
 			{
-				await HandleExceptionAsync(context, ex, _logger);
+				await HandleExceptionAsync(context, e, _logger);
 			}
 		}
 
@@ -42,6 +42,7 @@
 			context.Response.StatusCode = (int)code;
 			return context.Response.WriteAsync(result);
 		}
+
 	}
 
 	public static class ErrorHandlerMiddlewareExtensions

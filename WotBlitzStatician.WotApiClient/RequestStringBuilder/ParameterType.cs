@@ -6,6 +6,10 @@
 		ApplicationId,
 		Search,
 		AccountId,
-        ClanId
+        ClanId,
+		AccesToken,
+		Extra,
+		Fields,
+		TankId
 	}
 }

@@ -1,45 +1,54 @@
-﻿namespace WotBlitzStatician
+﻿using System.Linq;
+using Autofac;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using WotBlitzStatician.Data;
+using WotBlitzStatician.Logic;
+using WotBlitzStatician.WotApiClient;
+
+namespace WotBlitzStatician
 {
-	using System;
-	using Autofac;
-	using Autofac.Extensions.DependencyInjection;
-	using Microsoft.AspNetCore.Builder;
-	using Microsoft.AspNetCore.Hosting;
-	using Microsoft.Extensions.DependencyInjection;
-	using Microsoft.Extensions.Logging;
-	using WotBlitzStatician.Log4net;
-
 	public class Startup
-	{
-
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+    {
+		public Startup(IConfiguration configuration)
 		{
-			services.AddLogging();
-			services.AddMvc();
-
-			var containerBuilder = new ContainerBuilder();
-			containerBuilder.ConfigureWotBlitzStatician();
-			containerBuilder.Populate(services);
-			var container = containerBuilder.Build();
-			return new AutofacServiceProvider(container);
+			Configuration = configuration;
 		}
 
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+		public IConfiguration Configuration { get; }
+
+
+		// This method gets called by the runtime. Use this method to add services to the container.
+		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+		public void ConfigureServices(IServiceCollection services)
+        {
+			services.AddMvc();
+		}
+
+		public void ConfigureContainer(ContainerBuilder builder)
 		{
-			loggerFactory.AddLog4Net();
+			var wgApiConfig = new Appsettings();
+			wgApiConfig.ProxySettings = new ProxySettings();
+			Configuration.GetSection("WgApi").Bind(wgApiConfig);
+			Configuration.GetSection("ProxySettings").Bind(wgApiConfig.ProxySettings);
+
+			builder.RegisterInstance<IProxySettings>(wgApiConfig.ProxySettings);
+			builder.RegisterInstance<IWgApiConfiguration>(wgApiConfig);
+			builder.ConfigureWargamingApi();
+			builder.ConfigureDataAccessor(Configuration.GetConnectionString("BlitzStatician"));
+			builder.ConfigureBlitzStaticianLogic();
+		}
+
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
 
 			app.UseErrorHandler();
-			//			app.UseDeveloperExceptionPage();
 
-			//			app.UseMvcWithDefaultRoute();
-			app.UseStaticFiles();
-
-			app.UseMvc(routes =>
-			{
-				routes.MapRoute(
-					name: "default",
-					template: "{controller=Home}/{action=Index}/{id?}");
-			});
+			app.UseMvc();
 		}
 	}
 }

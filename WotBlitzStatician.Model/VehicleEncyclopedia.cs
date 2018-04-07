@@ -1,13 +1,10 @@
 ﻿namespace WotBlitzStatician.Model
 {
-	using System.ComponentModel.DataAnnotations;
-	 
-	public class VehicleEncyclopedia
+	 	public class VehicleEncyclopedia
 	{
 		///<summary>
 		///Идентификатор техники
 		///</summary>
-		[Key]
 		public long TankId { get; set; }
 
 		///<summary>
@@ -36,11 +33,6 @@
 		public string Description { get; set; }
 
 		///<summary>
-		///Показывает, является ли техника подарочной
-		///</summary>
-		public bool IsGift { get; set; }
-
-		///<summary>
 		///Показывает, является ли техника премиум техникой
 		///</summary>
 		public bool IsPremium { get; set; }
@@ -54,16 +46,6 @@
 		///Стоимость в золоте
 		///</summary>
 		public long PriceGold { get; set; }
-
-		///<summary>
-		///Сокращённое название техники
-		///</summary>
-		public string ShortName { get; set; }
-
-		///<summary>
-		///Тег техники
-		///</summary>
-		public string Tag { get; set; }
 
 		/// <summary>
 		/// Path to the png file

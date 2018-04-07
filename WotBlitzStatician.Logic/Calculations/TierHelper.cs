@@ -5,7 +5,7 @@
 
 	public static class TierHelper
 	{
-		public static double CalculateMiddleTier(this AccountInfoStatistics account, IList<AccountTankStatistics> allTanks, Dictionary<long, double> tankTires)
+		public static void CalculateMiddleTier(this AccountInfoStatistics account, IList<AccountTankStatistics> allTanks, Dictionary<long, double> tankTires)
 		{
 			double x = 0d;
 			foreach (var tank in allTanks)
@@ -17,7 +17,7 @@
 			}
 			if (account.Battles > 0)
 				x /= account.Battles;
-			return x;
+			account.AvgTier = x;
 		}
 	}
 }

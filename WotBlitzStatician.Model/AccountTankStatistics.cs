@@ -2,19 +2,12 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using System.ComponentModel.DataAnnotations;
-	using System.ComponentModel.DataAnnotations.Schema;
 	 
 	public class AccountTankStatistics
 	{
-		[Key]
 		public long AccountTankStatisticId { get; set; }
 
-		[ForeignKey("AccountInfo")]
 		public long AccountId { get; set; }
-
-		//[ForeignKey("StatisticsSlice")]
-		//public long StatisticsSliceId { get; set; }
 
 		///<summary>
 		///Идентификатор техники
@@ -24,19 +17,19 @@
 		/// <summary>
 		/// Информация о танке
 		/// </summary>
-		[NotMapped]
 		public VehicleEncyclopedia VehicleInfo { get; set; }
 		
-		[NotMapped]
-		public List<AccountInfoTankAchievment> Achievments { get; set; }
+		public List<AccountInfoTankAchievement> Achievements { get; set; }
 
-		[NotMapped]
-		public List<AccountInfoTankAchievment> AchievmentsMaxSeries { get; set; }
+		public List<AccountInfoTankAchievement> AchievementsMaxSeries { get; set; }
 
+		public List<FragListItem> FragsList { get; set; }
+
+		public int BattleLifeTimeInSeconds { get; set; }
 		///<summary>
-		///Общее время в боях в секундах
+		///Общее время в бою до уничтожения
 		///</summary>
-		public TimeSpan BattleLifeTime { get; set; }
+		public TimeSpan BattleLifeTime => TimeSpan.FromSeconds(BattleLifeTimeInSeconds);
 
 		///<summary>
 		///Время последнего боя
@@ -58,6 +51,8 @@
 		/// Признак нахождения машины в гараже
 		/// </summary>
 		public bool InGarage { get; set; }
+
+		public DateTime? InGarageUpdated { get; set; }
 
 		///<summary>
 		///Количество боёв
@@ -144,8 +139,8 @@
 		///</summary>
 		public long Xp { get; set; }
 
-		public double Effectivity { get; set; }
-
 		public double Wn7 { get; set; }
+
+		public double Wn8 { get; set; }
 	}
 }

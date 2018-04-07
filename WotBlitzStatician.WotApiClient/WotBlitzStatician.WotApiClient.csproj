@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
-    <PackageReference Include="AutoMapper" Version="6.1.0" />
-    <PackageReference Include="Autofac" Version="4.6.0" />
-    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1-beta3" />
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="Autofac" Version="4.6.2" />
   </ItemGroup>
    
   <ItemGroup>
@@ -17,8 +17,5 @@
 
   <ItemGroup>
     <Folder Include="Internal\" />
-    <Folder Include="Mappers\" />
-    <Folder Include="InternalModel\" />
-    <Folder Include="DTO\" />
   </ItemGroup>
 </Project>

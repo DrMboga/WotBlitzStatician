@@ -2,15 +2,12 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using System.ComponentModel.DataAnnotations;
-	using System.ComponentModel.DataAnnotations.Schema;
 	 
 	public class AccountInfo
 	{
 		///<summary>
 		///Идентификатор аккаунта игрока
 		///</summary>
-		[Key]
 		public long AccountId { get; set; }
 
 		///<summary>
@@ -21,31 +18,23 @@
 		///<summary>
 		///Дата создания аккаунта игрока
 		///</summary>
-		public DateTime AccountCreatedAt { get; set; }
+		public DateTime? AccountCreatedAt { get; set; }
 
 		/// <summary>
 		/// Время последнего боя
 		/// </summary>
 		public DateTime? LastBattleTime { get; set; }
 
-		/// <summary>
-		/// Последним просматривался (куки)
-		/// </summary>
-		public bool IsLastSession { get; set; }
+		public string AccessToken { get; set; }
 
-		[NotMapped]
-		public AccountInfoPrivate AccountInfoPrivate { get; set; }
+		public DateTime? AccessTokenExpiration { get; set; }
 
-		[NotMapped]
-		public AccountInfoStatistics AccountInfoStatistics { get; set; }
+		public List<AccountInfoStatistics> AccountInfoStatistics { get; set; }
 		
-		[NotMapped]
-		public List<AccountInfoAchievment> Achievments { get; set; }
+		public List<AccountInfoAchievement> Achievements { get; set; }
 
-		[NotMapped]
-		public List<AccountInfoAchievment> AchievmentsMaxSeries { get; set; }
+		public List<AccountInfoAchievement> AchievementsMaxSeries { get; set; }
 
-		[NotMapped]
 		public AccountClanInfo AccountClanInfo { get; set; }
 	}
 }

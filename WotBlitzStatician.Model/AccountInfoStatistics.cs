@@ -1,16 +1,15 @@
 ﻿namespace WotBlitzStatician.Model
 {
 	using System;
-	using System.ComponentModel.DataAnnotations;
-	using System.ComponentModel.DataAnnotations.Schema;
-	
+	using System.Collections.Generic;
+
 	public class AccountInfoStatistics
 	{
-		[Key]
 		public long AccountInfoStatisticsId { get; set; }
 
-		[ForeignKey("AccountInfo")]
 		public long AccountId { get; set; }
+
+		public AccountInfo AccountInfo { get; set; }
 
 		///<summary>
 		///Количество боёв
@@ -21,9 +20,6 @@
 		///Дата обновления информации об игроке
 		///</summary>
 		public DateTime UpdatedAt { get; set; }
-
-		[NotMapped]
-		public TimeSpan BattleLifeTime { get; set; }
 
 		///<summary>
 		///Очки захвата базы
@@ -121,13 +117,17 @@
 		public double AvgTier { get; set; }
 
 		/// <summary>
-		/// Показатель эффективности
-		/// </summary>
-		public double Effectivity { get; set; }
-
-		/// <summary>
 		/// Показатель Wn7
 		/// </summary>
 		public double Wn7 { get; set; }
+
+		/// <summary>
+		/// Показатель Wn8
+		/// </summary>
+		public double Wn8 { get; set; }
+
+		public List<FragListItem> FragsList { get; set; }
+		
+		public AccountInfoPrivate AccountInfoPrivate { get; set; }
 	}
 }

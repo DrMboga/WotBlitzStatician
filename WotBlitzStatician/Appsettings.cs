@@ -1,10 +1,12 @@
-﻿namespace WotBlitzStatician
+﻿using WotBlitzStatician.WotApiClient;
+
+namespace WotBlitzStatician
 {
-	using WotBlitzStatician.WotApiClient;
 	public class Appsettings : IWgApiConfiguration
 	{
 		public string ApplicationId { get; set; }
 		public string BaseAddress { get; set; }
+		public string WotBaseAddress { get; set; }
 		public string Language { get; set; }
 		public int DictionariesUpdateFrequencyInDays { get; set; }
 		public IProxySettings ProxySettings { get; set; }

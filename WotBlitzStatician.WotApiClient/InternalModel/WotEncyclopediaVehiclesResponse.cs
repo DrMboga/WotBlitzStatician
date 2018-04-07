@@ -74,12 +74,12 @@
 		[JsonProperty("price_gold")]
 		public long? PriceGold { get; set; }
 
+		///<summary>
+		///Список значений стоимости исследования в виде пар:
+		///</summary>
 		[JsonProperty("cost")]
 		public Dictionary<string, string> Cost { get; set; }
 
-		///<summary>
-		///Список значений стоимости исследования в виде пар:
-		///
 		///идентификатор родительской техники
 		///стоимость исследованния в опыте
 		///</summary>
