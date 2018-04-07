@@ -52,7 +52,15 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 					// Save tanks statistics
 					await _accountDataAccessor.SaveTankStatisticsAsync(accountInfo.AccountInfoTanks);
 					// Save PresentTanksList
-
+					var prestTanks = new List<PresentAccountTanks>();
+					accountInfo.AccountInfoTanks
+						.ForEach(t => prestTanks.Add(new PresentAccountTanks
+						{
+							AccountId = t.AccountId,
+							TankId = t.TankId,
+							AccountTankStatisticId = t.AccountTankStatisticId
+						}));
+					await _accountDataAccessor.MergePresentAccountTanksInfoAsync(prestTanks);
 
 					// Save tanks achievements
 					await _accountDataAccessor.MergeAccountInfoTankAchievementsAsync
