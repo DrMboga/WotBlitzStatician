@@ -215,6 +215,22 @@ namespace WotBlitzStatician.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PresentAccountTanks",
+                schema: "wotb",
+                columns: table => new
+                {
+                    PresentAccountTankId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AccountId = table.Column<long>(nullable: false),
+                    TankId = table.Column<long>(nullable: false),
+                    AccountTankStatisticId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PresentAccountTanks", x => x.PresentAccountTankId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "VehicleEncyclopedia",
                 schema: "wotb",
                 columns: table => new
@@ -458,6 +474,18 @@ namespace WotBlitzStatician.Data.Migrations
                 columns: new[] { "AccountId", "KilledTankId", "TankId" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_PresentAccountTanks_AccountTankStatisticId",
+                schema: "wotb",
+                table: "PresentAccountTanks",
+                column: "AccountTankStatisticId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PresentAccountTanks_TankId_AccountTankStatisticId",
+                schema: "wotb",
+                table: "PresentAccountTanks",
+                columns: new[] { "TankId", "AccountTankStatisticId" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_VehicleEncyclopedia_Nation",
                 schema: "wotb",
                 table: "VehicleEncyclopedia",
@@ -520,6 +548,10 @@ namespace WotBlitzStatician.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Frags",
+                schema: "wotb");
+
+            migrationBuilder.DropTable(
+                name: "PresentAccountTanks",
                 schema: "wotb");
 
             migrationBuilder.DropTable(

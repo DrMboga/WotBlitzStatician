@@ -14,7 +14,7 @@ using WotBlitzStatician.Model;
 namespace WotBlitzStatician.Data.Migrations
 {
     [DbContext(typeof(BlitzStaticianDbContext))]
-    [Migration("20180406190700_InitialCreate")]
+    [Migration("20180407140922_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -428,6 +428,26 @@ namespace WotBlitzStatician.Data.Migrations
                     b.HasIndex("AccountId", "KilledTankId", "TankId");
 
                     b.ToTable("Frags");
+                });
+
+            modelBuilder.Entity("WotBlitzStatician.Model.PresentAccountTanks", b =>
+                {
+                    b.Property<int>("PresentAccountTankId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("AccountId");
+
+                    b.Property<long>("AccountTankStatisticId");
+
+                    b.Property<long>("TankId");
+
+                    b.HasKey("PresentAccountTankId");
+
+                    b.HasIndex("AccountTankStatisticId");
+
+                    b.HasIndex("TankId", "AccountTankStatisticId");
+
+                    b.ToTable("PresentAccountTanks");
                 });
 
             modelBuilder.Entity("WotBlitzStatician.Model.VehicleEncyclopedia", b =>

@@ -41,6 +41,7 @@ namespace WotBlitzStatician.Data
 		public DbSet<AccountInfoStatistics> AccountInfoStatistics { get; set; }
 		public DbSet<AccountInfoTankAchievement> AccountInfoTankAchievement { get; set; }
 		public DbSet<AccountTankStatistics> AccountTankStatistics { get; set; }
+		public DbSet<PresentAccountTanks> PresentAccountTanks { get; set; }
 		public DbSet<Achievement> Achievement { get; set; }
 		public DbSet<AchievementOption> AchievementOption { get; set; }
 		public DbSet<AchievementSection> AchievementSection { get; set; }
@@ -70,6 +71,7 @@ namespace WotBlitzStatician.Data
 			modelBuilder.Entity<AccountClanHistory>(AccountClanHistoryTypeConfiguration.Configure);
 			modelBuilder.Entity<AccountInfoAchievement>(AccountInfoAchevementTypeConfiguration.Configure);
 			modelBuilder.Entity<AccountTankStatistics>(AccountTankStatisticsTypeConfiguration.Configure);
+			modelBuilder.Entity<PresentAccountTanks>(PresentAccountTanksTypeConfiguration.Configure);
 			modelBuilder.Entity<AccountInfoTankAchievement>(TankAchievementTypeConfiguration.Configure);
 		}
 	}

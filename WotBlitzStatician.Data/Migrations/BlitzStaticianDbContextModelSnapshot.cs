@@ -429,6 +429,26 @@ namespace WotBlitzStatician.Data.Migrations
                     b.ToTable("Frags");
                 });
 
+            modelBuilder.Entity("WotBlitzStatician.Model.PresentAccountTanks", b =>
+                {
+                    b.Property<int>("PresentAccountTankId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("AccountId");
+
+                    b.Property<long>("AccountTankStatisticId");
+
+                    b.Property<long>("TankId");
+
+                    b.HasKey("PresentAccountTankId");
+
+                    b.HasIndex("AccountTankStatisticId");
+
+                    b.HasIndex("TankId", "AccountTankStatisticId");
+
+                    b.ToTable("PresentAccountTanks");
+                });
+
             modelBuilder.Entity("WotBlitzStatician.Model.VehicleEncyclopedia", b =>
                 {
                     b.Property<long>("TankId");

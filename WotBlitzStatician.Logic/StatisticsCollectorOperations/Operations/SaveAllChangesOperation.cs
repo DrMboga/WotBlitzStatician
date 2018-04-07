@@ -51,6 +51,9 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 						accountInfo.CurrentAccountInfo.AchievementsMaxSeries);
 					// Save tanks statistics
 					await _accountDataAccessor.SaveTankStatisticsAsync(accountInfo.AccountInfoTanks);
+					// Save PresentTanksList
+
+
 					// Save tanks achievements
 					await _accountDataAccessor.MergeAccountInfoTankAchievementsAsync
 						(accountInfo.AccountInfoTanks);

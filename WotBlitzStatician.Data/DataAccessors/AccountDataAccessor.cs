@@ -259,5 +259,32 @@ namespace WotBlitzStatician.Data.DataAccessors
 			}
 			await _dbContext.SaveChangesAsync();
 		}
+
+		public async Task MergePresentAccountTanksInfoAsync(List<PresentAccountTanks> presentAccountTanks)
+		{
+			long accountId = presentAccountTanks.First().AccountId;
+			var tankIds = presentAccountTanks.Select(pt => pt.TankId).ToList();
+			var exitingList = await _dbContext.PresentAccountTanks.
+				Where(pat => pat.AccountId == accountId
+							&& tankIds.Contains(pat.TankId))
+				.ToListAsync();
+			foreach (var presentAccountTank in presentAccountTanks)
+			{
+				var existing = exitingList
+								.FirstOrDefault(e => e.TankId == presentAccountTank.TankId
+													&& e.AccountId == presentAccountTank.AccountId);
+
+				if(existing == null)
+				{
+					_dbContext.PresentAccountTanks.Add(presentAccountTank);
+				}
+				else
+				{
+					existing.AccountTankStatisticId = presentAccountTank.AccountTankStatisticId;
+				}
+			}
+
+			await _dbContext.SaveChangesAsync();
+		}
 	}
 }
