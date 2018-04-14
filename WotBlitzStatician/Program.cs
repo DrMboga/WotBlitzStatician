@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using WotBlitzStatician.NLogProvider;
 using Autofac.Extensions.DependencyInjection;
-
 
 namespace WotBlitzStatician
 {
@@ -15,9 +14,9 @@ namespace WotBlitzStatician
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-				.UseNLog("NLog.config")
-				.ConfigureServices(services => services.AddAutofac())
-				.UseStartup<Startup>()
+                .UseNLog("NLog.config")
+                .ConfigureServices(services => services.AddAutofac())
+                .UseStartup<Startup>()
                 .Build();
     }
 }
