@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppModuleShared } from './app.shared.module';
 import { AppComponent } from './components/app/app.component';
 
-import { AccountsInfoService } from './accounts-info-service';
-
 @NgModule({
     bootstrap: [ AppComponent ],
     imports: [
@@ -12,9 +10,8 @@ import { AccountsInfoService } from './accounts-info-service';
         AppModuleShared
     ],
     providers: [
-		{ provide: 'BASE_URL', useFactory: getBaseUrl },
-		AccountsInfoService
-    ]
+		{ provide: 'BASE_URL', useFactory: getBaseUrl }
+	]
 })
 export class AppModule {
 }
