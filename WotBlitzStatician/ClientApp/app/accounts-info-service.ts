@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Injectable, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 //import { Observable } from "rxjs/Observable";
 //import "rxjs/add/observable/from";
@@ -6,18 +6,16 @@ import { AccountInfo } from "./Model/account-info";
 
 @Injectable()
 export class AccountsInfoService {
-	private dummyInfo: AccountInfo[] = [
-		{ AccountId: 20, NickName: "Petya" },
-		{ AccountId: 25, NickName: "Vasya" }
-	];
+	private accountInfo: AccountInfo[]; 
 
-	//constructor(http: Http) { }
+	constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
+		http.get(baseUrl + 'api/AccountInfo').subscribe(result => {
+			this.accountInfo = result.json() as AccountInfo[];
+		}, error => console.error(error));
+	}
 
 	getAccounts(): AccountInfo[] {
-		//http.get(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
-		//	this.forecasts = result.json() as WeatherForecast[];
-		//}, error => console.error(error));
-		return this.dummyInfo;
+		return this.accountInfo;
 	}
 
 

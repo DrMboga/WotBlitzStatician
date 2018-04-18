@@ -7,14 +7,14 @@
 				<span class='icon-bar'></span>
 				<span class='icon-bar'></span>
 			</button>
-			<a class='navbar-brand' [routerLink]="['/home']">WotBlitzStatician</a>
+			<a class='navbar-brand' [routerLink]="['/home']">WotBlitzStatician {{AccountId}}</a>
 		</div>
         <div class='clearfix'></div>
 		<div class="navbar-form">
 			<select class="form-control" [value]="AccountId"
 					(change)="changeAccountId($event.target.value)">
-				<option *ngFor="let account of accounts" value="{{account.AccountId}}">
-					{{account.NickName}}
+				<option *ngFor="let account of accounts" value="{{account.accountId}}">
+					{{account.nickName}}
 				</option>
 			</select>
 		</div>

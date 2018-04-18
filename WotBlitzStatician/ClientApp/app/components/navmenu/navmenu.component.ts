@@ -10,7 +10,6 @@ import { AccountsInfoService } from '../../accounts-info-service';
 })
 export class NavMenuComponent {
 	constructor(private accountInfoService: AccountsInfoService) {
-		this.AccountId = 25;
 	}
 
 	public AccountId: number;
