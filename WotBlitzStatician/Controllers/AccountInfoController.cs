@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WotBlitzStatician.Data.DataAccessors;
 using WotBlitzStatician.Model;
 
 namespace WotBlitzStatician.Controllers
@@ -8,16 +10,19 @@ namespace WotBlitzStatician.Controllers
 	[Route("api/[controller]")]
     public class AccountInfoController : Controller
     {
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<AccountInfo> Get()
+		private readonly IAccountDataAccessor _accountDataAccessor;
+
+		public AccountInfoController(IAccountDataAccessor accountDataAccessor)
+		{
+			_accountDataAccessor = accountDataAccessor;
+		}
+
+		// GET: api/<controller>
+		[HttpGet]
+        public async Task<IEnumerable<AccountInfo>> Get()
         {
-            return new [] 
-			{
-				new AccountInfo {AccountId = 20, NickName="Account 20", LastBattleTime = DateTime.Now.AddHours(-3)},
-				new AccountInfo {AccountId = 25, NickName="Account 25", LastBattleTime = DateTime.Now.AddHours(-2)}
-			};
-        }
+			return await _accountDataAccessor.GetAllAccountsAsync();
+		}
 
         // GET api/<controller>/5
         [HttpGet("{id}")]

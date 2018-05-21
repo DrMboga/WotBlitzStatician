@@ -9,9 +9,9 @@ export class AccountsInfoService {
 	private accountInfo: AccountInfo[]; 
 
 	constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
-		http.get(baseUrl + 'api/AccountInfo').subscribe(result => {
-			this.accountInfo = result.json() as AccountInfo[];
-		}, error => console.error(error));
+		//http.get(baseUrl + 'api/AccountInfo').subscribe(result => {
+		//	this.accountInfo = result.json() as AccountInfo[];
+		//}, error => console.error(error));
 	}
 
 	getAccounts(): AccountInfo[] {

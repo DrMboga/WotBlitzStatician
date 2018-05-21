@@ -19,7 +19,9 @@ namespace WotBlitzStatician.Data.DataAccessors
 
 		public async Task<List<AccountInfo>> GetAllAccountsAsync()
 		{
-			return await _dbContext.AccountInfo.AsNoTracking().ToListAsync();
+			return await _dbContext.AccountInfo.AsNoTracking()
+				.OrderByDescending(a => a.LastBattleTime)
+				.ToListAsync();
 		}
 
 		public async Task<AccountClanInfo> GetAccountClanAsync(long accountId)

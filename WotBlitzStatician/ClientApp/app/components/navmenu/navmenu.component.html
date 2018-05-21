@@ -7,24 +7,22 @@
 				<span class='icon-bar'></span>
 				<span class='icon-bar'></span>
 			</button>
-			<a class='navbar-brand' [routerLink]="['/home']">WotBlitzStatician {{AccountId}}</a>
-		</div>
-        <div class='clearfix'></div>
-		<div class="navbar-form">
-			<select class="form-control" [value]="AccountId"
-					(change)="changeAccountId($event.target.value)">
-				<option *ngFor="let account of accounts" value="{{account.accountId}}">
-					{{account.nickName}}
-				</option>
-			</select>
+			<a class='navbar-brand' [routerLink]="['/home']">WotBlitzStatician {{currentAccountId}}</a>
+			<div class="navbar-form">
+				<select class="form-control" [(ngModel)]="currentAccountId">
+					<option *ngFor="let acc of accounts" [ngValue]="acc.accountId">
+						{{acc.nickName}} - {{acc.lastBattleTime | date:'dd.MM.yyyy HH:mm'}}
+					</option>
+				</select>
+			</div>
 		</div>
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse'>
             <ul class='nav navbar-nav'>
                 <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/home']">
-                        <span class='glyphicon glyphicon-home'></span> Home
-                    </a>
+					<a [routerLink]="['/home']">
+						<span class='glyphicon glyphicon-user'></span> {{getAccountName()}}
+					</a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/counter']">
