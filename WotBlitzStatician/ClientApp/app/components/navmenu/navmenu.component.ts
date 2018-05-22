@@ -26,7 +26,6 @@ export class NavMenuComponent {
 	}
 
 	public getAccountName(): string {
-		// ToDo: get from accounts array by 
-		return "yeah";
+		return this.accounts.filter((a: AccountInfo) => { return a.accountId === this.currentAccountId })[0].nickName;
 	}
 }
