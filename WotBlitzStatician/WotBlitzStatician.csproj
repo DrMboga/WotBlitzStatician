@@ -37,11 +37,13 @@
   <ItemGroup>
     <None Remove="ClientApp\app\accounts-info-service.ts" />
     <None Remove="ClientApp\app\Model\account-info.ts" />
+    <None Remove="ClientApp\app\Model\account-state.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\accounts-info-service.ts" />
     <TypeScriptCompile Include="ClientApp\app\Model\account-info.ts" />
+    <TypeScriptCompile Include="ClientApp\app\Model\account-state.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

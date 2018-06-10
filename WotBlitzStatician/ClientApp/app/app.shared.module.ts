@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { Subject } from "rxjs/Subject";
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -11,6 +12,8 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 
 import { AccountsInfoService } from './accounts-info-service';
+import { AccountState, ACCOUNT_STATE } from './Model/account-state';
+
 
 @NgModule({
     declarations: [
@@ -33,7 +36,9 @@ import { AccountsInfoService } from './accounts-info-service';
         ])
 	],
 	providers: [
-		AccountsInfoService
+		AccountsInfoService,
+		{ provide: ACCOUNT_STATE, useValue: new Subject<AccountState>() }
+		
 	]
 })
 export class AppModuleShared {
