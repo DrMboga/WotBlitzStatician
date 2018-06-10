@@ -1,9 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { AccountInfo } from '../../Model/account-info';
 import { AccountsInfoService } from '../../accounts-info-service';
-
-import { Http } from '@angular/http';
 
 @Component({
 	selector: 'nav-menu',
@@ -11,21 +9,15 @@ import { Http } from '@angular/http';
 	styleUrls: ['./navmenu.component.css']
 })
 export class NavMenuComponent {
-	public accounts: AccountInfo[];
-	public currentAccountId: number;
+	public accounts: AccountInfo[] = new Array<AccountInfo>();
+	public accountName: string = "None"
 
-	// ToDo: Recreate via AccountsInfoService module
-	constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
-		// ToDo: why 2 times?
-		http.get(baseUrl + 'api/AccountInfo').subscribe(result => {
-			this.accounts = result.json() as AccountInfo[];
+	constructor(private accountsInfoService: AccountsInfoService) {
+		this.accountsInfoService.getAccounts().subscribe(data => {
+			this.accounts = data;
 			if (this.accounts.length > 0) {
-				this.currentAccountId = this.accounts[0].accountId;
+				this.accountName = this.accounts[0].nickName;
 			}
-		}, error => console.error(error));
-	}
-
-	public getAccountName(): string {
-		return this.accounts.filter((a: AccountInfo) => { return a.accountId === this.currentAccountId })[0].nickName;
+		});
 	}
 }

@@ -7,7 +7,7 @@
 				<span class='icon-bar'></span>
 				<span class='icon-bar'></span>
 			</button>
-			<a class='navbar-brand' data-toggle="collapse" href="#collapseAccounts" role="button" aria-expanded="false" aria-controls="collapseAccounts">WotBlitzStatician {{currentAccountId}}</a>
+			<a class='navbar-brand' data-toggle="collapse" href="#collapseAccounts" role="button" aria-expanded="false" aria-controls="collapseAccounts">WotBlitzStatician</a>
 			<div class="collapse" id="collapseAccounts">
 				<select class="form-control" [(ngModel)]="currentAccountId">
 					<option *ngFor="let acc of accounts" [ngValue]="acc.accountId">
@@ -21,7 +21,7 @@
             <ul class='nav navbar-nav'>
                 <li [routerLinkActive]="['link-active']">
 					<a [routerLink]="['/home']">
-						<span class='glyphicon glyphicon-user'></span> {{getAccountName()}}
+						<span class='glyphicon glyphicon-user'></span> {{accountName}}
 					</a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
