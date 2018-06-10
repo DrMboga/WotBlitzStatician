@@ -10,12 +10,15 @@ import { AccountsInfoService } from '../../accounts-info-service';
 })
 export class NavMenuComponent {
 	public accounts: AccountInfo[] = new Array<AccountInfo>();
+	public currentAccountId: number = 0;
 	public accountName: string = "None"
 
 	constructor(private accountsInfoService: AccountsInfoService) {
 		this.accountsInfoService.getAccounts().subscribe(data => {
 			this.accounts = data;
 			if (this.accounts.length > 0) {
+				// ToDo: Change to method and raise event
+				this.currentAccountId = this.accounts[0].accountId;
 				this.accountName = this.accounts[0].nickName;
 			}
 		});
