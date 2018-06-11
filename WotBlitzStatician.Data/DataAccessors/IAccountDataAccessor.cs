@@ -10,6 +10,8 @@ namespace WotBlitzStatician.Data.DataAccessors
     {
 		Task<List<AccountInfo>> GetAllAccountsAsync();
 
+		Task<AccountInfo> GetActualAccountInfo(long accountId);
+
 		Task<AccountClanInfo> GetAccountClanAsync(long accountId);
 
 		Task<List<AccountTankStatistics>> GetActualTanksAsync(long accountId);

@@ -26,10 +26,16 @@ namespace WotBlitzStatician.Controllers
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public AccountInfo Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-			return
-				new AccountInfo { AccountId = id, NickName = $"Account {id}", LastBattleTime = DateTime.Now.AddHours(-2) };
+			var account = await _accountDataAccessor.GetActualAccountInfo(id);
+
+			if(account == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(account);
 		}
     }
 }

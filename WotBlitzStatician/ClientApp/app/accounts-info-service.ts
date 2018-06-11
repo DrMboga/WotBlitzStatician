@@ -14,4 +14,9 @@ export class AccountsInfoService {
 		return this.http.get(this.baseUrl + 'api/AccountInfo').map(response => response.json());
 	}
 
+	getAccount(accountId: number): Observable<AccountInfo> {
+		return this.http.get(this.baseUrl + 'api/AccountInfo/' + accountId)
+			.map(response => response.json());
+	}
+
 }

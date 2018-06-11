@@ -24,6 +24,26 @@ namespace WotBlitzStatician.Data.DataAccessors
 				.ToListAsync();
 		}
 
+		public async Task<AccountInfo> GetActualAccountInfo(long accountId)
+		{
+			var accountjoinedInfo = await _dbContext.AccountInfoStatistics
+				.Include(s => s.AccountInfoPrivate) // ToDo: include doesn't work!
+				.Join(_dbContext.AccountInfo,
+					s => s.AccountId,
+					a => a.AccountId,
+					(s, a) => new { AccountInfo = a, Statistics = s })
+				.OrderByDescending(j => j.Statistics.UpdatedAt)
+				.Take(1)
+				.FirstOrDefaultAsync(a => a.AccountInfo.AccountId == accountId);
+			if(accountjoinedInfo == null)
+			{
+				return null;
+			}
+			var accountInfo = accountjoinedInfo.AccountInfo;
+			accountInfo.AccountInfoStatistics = new List<AccountInfoStatistics> { accountjoinedInfo.Statistics };
+			return accountInfo;
+		}
+
 		public async Task<AccountClanInfo> GetAccountClanAsync(long accountId)
 		{
 			return await _dbContext.AccountClanInfo
