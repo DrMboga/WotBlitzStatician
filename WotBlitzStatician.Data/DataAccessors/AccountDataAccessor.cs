@@ -26,22 +26,40 @@ namespace WotBlitzStatician.Data.DataAccessors
 
 		public async Task<AccountInfo> GetActualAccountInfo(long accountId)
 		{
-			var accountjoinedInfo = await _dbContext.AccountInfoStatistics
-				.Include(s => s.AccountInfoPrivate) // ToDo: include doesn't work!
-				.Join(_dbContext.AccountInfo,
-					s => s.AccountId,
-					a => a.AccountId,
-					(s, a) => new { AccountInfo = a, Statistics = s })
-				.OrderByDescending(j => j.Statistics.UpdatedAt)
-				.Take(1)
-				.FirstOrDefaultAsync(a => a.AccountInfo.AccountId == accountId);
-			if(accountjoinedInfo == null)
+			var accountInfo = await _dbContext.AccountInfo.AsNoTracking()
+				.FirstOrDefaultAsync(a => a.AccountId == accountId);
+			// ToDo: ClanInfo
+
+			if (accountInfo == null)
 			{
 				return null;
 			}
-			var accountInfo = accountjoinedInfo.AccountInfo;
-			accountInfo.AccountInfoStatistics = new List<AccountInfoStatistics> { accountjoinedInfo.Statistics };
+
+			accountInfo.AccountInfoStatistics = await _dbContext.AccountInfoStatistics
+				.Include(s => s.AccountInfoPrivate)
+				.OrderByDescending(s => s.UpdatedAt)
+				.Where(s => s.AccountId == accountId)
+				.Take(1)
+				.ToListAsync();
+
 			return accountInfo;
+
+			//var accountjoinedInfo = await _dbContext.AccountInfoStatistics
+			//	.Include(s => s.AccountInfoPrivate) // ToDo: include doesn't work!
+			//	.Join(_dbContext.AccountInfo,
+			//		s => s.AccountId,
+			//		a => a.AccountId,
+			//		(s, a) => new { AccountInfo = a, Statistics = s })
+			//	.OrderByDescending(j => j.Statistics.UpdatedAt)
+			//	.Take(1)
+			//	.FirstOrDefaultAsync(a => a.AccountInfo.AccountId == accountId);
+			//if(accountjoinedInfo == null)
+			//{
+			//	return null;
+			//}
+			//var accountInfo = accountjoinedInfo.AccountInfo;
+			//accountInfo.AccountInfoStatistics = new List<AccountInfoStatistics> { accountjoinedInfo.Statistics };
+			//return accountInfo;
 		}
 
 		public async Task<AccountClanInfo> GetAccountClanAsync(long accountId)
