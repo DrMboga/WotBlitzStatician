@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

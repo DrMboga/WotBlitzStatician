@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -7,35 +7,35 @@ using WotBlitzStatician.Model;
 
 namespace WotBlitzStatician.Controllers
 {
-	[Route("api/[controller]")]
-    public class AccountInfoController : Controller
+  [Route("api/[controller]")]
+  public class AccountInfoController : Controller
+  {
+    private readonly IAccountDataAccessor _accountDataAccessor;
+
+    public AccountInfoController(IAccountDataAccessor accountDataAccessor)
     {
-		private readonly IAccountDataAccessor _accountDataAccessor;
-
-		public AccountInfoController(IAccountDataAccessor accountDataAccessor)
-		{
-			_accountDataAccessor = accountDataAccessor;
-		}
-
-		// GET: api/<controller>
-		[HttpGet]
-        public async Task<IEnumerable<AccountInfo>> Get()
-        {
-			return await _accountDataAccessor.GetAllAccountsAsync();
-		}
-
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
-			var account = await _accountDataAccessor.GetActualAccountInfo(id);
-
-			if(account == null)
-			{
-				return NotFound();
-			}
-
-			return Ok(account);
-		}
+      _accountDataAccessor = accountDataAccessor;
     }
+
+    // GET: api/<controller>
+    [HttpGet]
+    public async Task<IEnumerable<AccountInfo>> Get()
+    {
+      return await _accountDataAccessor.GetAllAccountsAsync();
+    }
+
+    // GET api/<controller>/5
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Get(int id)
+    {
+      var account = await _accountDataAccessor.GetActualAccountInfo(id);
+
+      if (account == null)
+      {
+        return NotFound();
+      }
+
+      return Ok(account);
+    }
+  }
 }

@@ -10,3 +10,34 @@ obj/
 *.dbmdl
 *.jfm
 *.vspscc
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/WotBlitzStatician/dist
+/WotBlitzStatician/dist-server
+/WotBlitzStatician/tmp
+/WotBlitzStatician/out-tsc
+
+# dependencies
+/WotBlitzStatician/node_modules
+
+# misc
+/WotBlitzStatician/.sass-cache
+/WotBlitzStatician/connect.lock
+/WotBlitzStatician/coverage
+/WotBlitzStatician/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/WotBlitzStatician/typings
+/WotBlitzStatician/wwwroot
+
+# e2e
+/WotBlitzStatician/e2e/*.js
+/WotBlitzStatician/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+
