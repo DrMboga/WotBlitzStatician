@@ -52,7 +52,7 @@ namespace WotBlitzStatician
 		{
 
 			app.UseErrorHandler();
-
+			app.UseStaticFiles();
 			app.UseMvc();
 		}
 	}
