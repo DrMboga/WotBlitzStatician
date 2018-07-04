@@ -23,7 +23,12 @@
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "bootstrap": "3.3.7",
+    "reflect-metadata": "0.1.8",
+    "classlist.js": "1.1.20150312",
+    "systemjs": "0.19.40",
+    "intl": "1.2.4"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.4",

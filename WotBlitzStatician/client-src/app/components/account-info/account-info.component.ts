@@ -1,12 +1,12 @@
-import { Component, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-account-info',
+  templateUrl: './account-info.component.html',
+  styleUrls: ['./account-info.component.css']
 })
-export class AppComponent {
+export class AccountInfoComponent implements OnInit {
   title = 'app';
   public accounts: any;
 
@@ -15,4 +15,8 @@ export class AppComponent {
       this.accounts = result.json();
     }, error => console.error(error));
   }
+
+  ngOnInit() {
+  }
+
 }

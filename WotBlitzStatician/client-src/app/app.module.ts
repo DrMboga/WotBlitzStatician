@@ -2,17 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
-
-import { AppComponent } from './app.component';
-
+import { AppComponent } from './components/app/app.component';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
-    AppComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    ComponentsModule
   ],
   providers: [
     { provide: 'BASE_URL', useFactory: getBaseUrl }
