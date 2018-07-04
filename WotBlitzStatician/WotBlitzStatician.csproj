@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="ng build — aot" />
+    <Exec Command="ng build — aot --delete-output-path=false" />
   </Target>
 
 </Project>
