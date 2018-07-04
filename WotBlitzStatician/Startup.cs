@@ -12,7 +12,9 @@ using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician
 {
-	public class Startup
+  using Microsoft.AspNetCore.Routing;
+
+  public class Startup
 	{
 		public Startup(IConfiguration configuration)
 		{
@@ -53,7 +55,12 @@ namespace WotBlitzStatician
 
 			app.UseErrorHandler();
 			app.UseStaticFiles();
-			app.UseMvc();
+			app.UseMvc(routes =>
+			  {
+			    routes.MapRoute("default", "{controller}/{action}");
+			    routes.MapRoute("Spa", "{*url}", defaults: new {controller = "Home", action = "Spa"});
+			  }
+			);
 		}
 	}
 }
