@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './components/app/app.component';
 import { ComponentsModule } from './components/components.module';
+import { ServicesModule } from './services/services.module';
 
 @NgModule({
   declarations: [
@@ -11,15 +12,12 @@ import { ComponentsModule } from './components/components.module';
   imports: [
     BrowserModule,
     HttpModule,
-    ComponentsModule
+    ComponentsModule,
+    ServicesModule
   ],
   providers: [
-    { provide: 'BASE_URL', useFactory: getBaseUrl }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-export function getBaseUrl() {
-  return document.getElementsByTagName('base')[0].href;
-}
