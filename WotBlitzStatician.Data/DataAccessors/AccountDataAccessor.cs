@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using WotBlitzStatician.Model;
+using WotBlitzStatician.Model.Dto;
 
 namespace WotBlitzStatician.Data.DataAccessors
 {
@@ -24,42 +25,51 @@ namespace WotBlitzStatician.Data.DataAccessors
 				.ToListAsync();
 		}
 
-		public async Task<AccountInfo> GetActualAccountInfo(long accountId)
+		public async Task<AccountInfoDto> GetActualAccountInfo(long accountId)
 		{
 			var accountInfo = await _dbContext.AccountInfo.AsNoTracking()
-				.FirstOrDefaultAsync(a => a.AccountId == accountId);
-			// ToDo: ClanInfo
+				.Where(a => a.AccountId == accountId)
+				.Select(a => new AccountInfoDto {
+								AccountId = a.AccountId,
+								NickName = a.NickName,
+								AccountCreatedAt = a.AccountCreatedAt.Value,
+								LastBattleTime = a.LastBattleTime.Value})
+				.FirstOrDefaultAsync();
 
 			if (accountInfo == null)
 			{
 				return null;
 			}
 
-			accountInfo.AccountInfoStatistics = await _dbContext.AccountInfoStatistics
+			accountInfo.PlayerClanInfo = await _dbContext.AccountClanInfo.AsNoTracking()
+				.Join(_dbContext.DictionaryClanRole, c => c.PlayerRole, r => r.ClanRoleId,
+				(c, r) => new { c.AccountId,
+					ClanInfo = new PlayerClanInfoDto {
+						ClanId = c.ClanId,
+						PlayerJoinedAt = c.PlayerJoinedAt,
+						PlayerRole = r.RoleName,
+						ClanTag = c.ClanTag,
+						ClanName = c.ClanName,
+						ClanMotto = c.ClanMotto,
+						ClanDescription = c.ClanDescription
+					}
+				})
+				.Where(c => c.AccountId == accountId)
+				.Select(j => j.ClanInfo)
+				.FirstOrDefaultAsync();
+				
+
+			// ToDo: mapper
+			//accountInfo.PlayerStatistics
+			var statistics = await _dbContext.AccountInfoStatistics
 				.Include(s => s.AccountInfoPrivate)
 				.OrderByDescending(s => s.UpdatedAt)
 				.Where(s => s.AccountId == accountId)
 				.Take(1)
-				.ToListAsync();
+				.FirstOrDefaultAsync();
 
+			// Achievements - сделав DTO и приплюсовав туда же статистику по мастерам
 			return accountInfo;
-
-			//var accountjoinedInfo = await _dbContext.AccountInfoStatistics
-			//	.Include(s => s.AccountInfoPrivate) // ToDo: include doesn't work!
-			//	.Join(_dbContext.AccountInfo,
-			//		s => s.AccountId,
-			//		a => a.AccountId,
-			//		(s, a) => new { AccountInfo = a, Statistics = s })
-			//	.OrderByDescending(j => j.Statistics.UpdatedAt)
-			//	.Take(1)
-			//	.FirstOrDefaultAsync(a => a.AccountInfo.AccountId == accountId);
-			//if(accountjoinedInfo == null)
-			//{
-			//	return null;
-			//}
-			//var accountInfo = accountjoinedInfo.AccountInfo;
-			//accountInfo.AccountInfoStatistics = new List<AccountInfoStatistics> { accountjoinedInfo.Statistics };
-			//return accountInfo;
 		}
 
 		public async Task<AccountClanInfo> GetAccountClanAsync(long accountId)

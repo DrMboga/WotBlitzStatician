@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Storage;
 using WotBlitzStatician.Model;
+using WotBlitzStatician.Model.Dto;
 
 namespace WotBlitzStatician.Data.DataAccessors
 {
@@ -10,7 +11,7 @@ namespace WotBlitzStatician.Data.DataAccessors
     {
 		Task<List<AccountInfo>> GetAllAccountsAsync();
 
-		Task<AccountInfo> GetActualAccountInfo(long accountId);
+		Task<AccountInfoDto> GetActualAccountInfo(long accountId);
 
 		Task<AccountClanInfo> GetAccountClanAsync(long accountId);
 
