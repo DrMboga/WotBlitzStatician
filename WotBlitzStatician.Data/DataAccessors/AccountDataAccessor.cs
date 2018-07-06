@@ -69,6 +69,16 @@ namespace WotBlitzStatician.Data.DataAccessors
 				.FirstOrDefaultAsync();
 
 			// Achievements - сделав DTO и приплюсовав туда же статистику по мастерам
+			/*
+SELECT s.[Order], s.SectionName, a.Name, a.Description, aa.Count, aa.IsMaxSeries, a.Image
+FROM wotb.AccountInfoAchievement aa
+	INNER JOIN wotb.Achievement a ON aa.AchievementId = a.AchievementId
+	INNER JOIN wotb.AchievementSection s ON a.Section = s.Section
+WHERE aa.AccountId = 90277267 and aa.TankId IS NULL
+ORDER BY s.[Order] 
+
+			+ AchievementOption вручную
+			 */
 			return accountInfo;
 		}
 
