@@ -20,13 +20,13 @@
     <div class='navbar-collapse collapse'>
       <ul class='nav navbar-nav'>
         <li [routerLinkActive]="['link-active']">
-          <a [routerLink]="['/account']">
+          <a [routerLink]="['/account', currentAccountId]">
             <span class='glyphicon glyphicon-user'></span> {{accountName}}
           </a>
         </li>
         <li [routerLinkActive]="['link-active']">
-          <a [routerLink]="['/tanks']">
-            <span class='glyphicon glyphicon-screenshot'></span> Tanks
+          <a [routerLink]="['/tanks', currentAccountId]">
+            <span class='glyphicon glyphicon-tent'></span> Tanks
           </a>
         </li>
       </ul>

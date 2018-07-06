@@ -19,7 +19,8 @@ import { AccountTanksComponent } from './account-tanks/account-tanks.component';
     RouterModule.forRoot([
       { path: '', redirectTo: 'account', pathMatch: 'full' },
       { path: 'account', component: AccountInfoComponent },
-      { path: 'tanks', component: AccountTanksComponent },
+      { path: 'account/:accountId', component: AccountInfoComponent },
+      { path: 'tanks/:accountId', component: AccountTanksComponent },
       { path: '**', redirectTo: 'account' }
     ])
   ],

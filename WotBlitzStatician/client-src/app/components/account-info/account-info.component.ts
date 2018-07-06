@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { Http } from '@angular/http';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-account-info',
@@ -7,13 +7,13 @@ import { Http } from '@angular/http';
   styleUrls: ['./account-info.component.css']
 })
 export class AccountInfoComponent implements OnInit {
-  title = 'app';
-  public accounts: any;
+  public accountId: number = 0;
 
-  constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
-    http.get(baseUrl + 'api/AccountInfo').subscribe(result => {
-      this.accounts = result.json();
-    }, error => console.error(error));
+  constructor(activeRoute: ActivatedRoute) {
+    let id = activeRoute.snapshot.params["accountId"];
+    if (id != null) {
+      this.accountId = id;
+    }
   }
 
   ngOnInit() {

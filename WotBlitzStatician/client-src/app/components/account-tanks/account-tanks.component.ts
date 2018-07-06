@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
+
 
 @Component({
   selector: 'app-account-tanks',
@@ -6,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account-tanks.component.css']
 })
 export class AccountTanksComponent implements OnInit {
+  public accountId: number = 0;
 
-  constructor() { }
+  constructor(activeRoute: ActivatedRoute) {
+    let id = activeRoute.snapshot.params["accountId"];
+    if (id != null) {
+      this.accountId = id;
+    }
+  }
 
   ngOnInit() {
   }
