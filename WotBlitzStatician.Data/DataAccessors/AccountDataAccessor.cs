@@ -6,16 +6,22 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using WotBlitzStatician.Model;
 using WotBlitzStatician.Model.Dto;
+using WotBlitzStatician.Model.MapperLogic;
 
 namespace WotBlitzStatician.Data.DataAccessors
 {
 	public class AccountDataAccessor : IAccountDataAccessor
 	{
 		private readonly BlitzStaticianDbContext _dbContext;
+		private readonly IMapper<AccountInfoStatistics, PlayerStatDto> _playerStatMapper;
 
-		public AccountDataAccessor(BlitzStaticianDbContext dbContext)
+		public AccountDataAccessor(
+			BlitzStaticianDbContext dbContext,
+			IMapper<AccountInfoStatistics, PlayerStatDto> playerStatMapper
+			)
 		{
 			_dbContext = dbContext;
+			_playerStatMapper = playerStatMapper;
 		}
 
 		public async Task<List<AccountInfo>> GetAllAccountsAsync()
@@ -59,14 +65,46 @@ namespace WotBlitzStatician.Data.DataAccessors
 				.FirstOrDefaultAsync();
 				
 
-			// ToDo: mapper
-			//accountInfo.PlayerStatistics
 			var statistics = await _dbContext.AccountInfoStatistics
 				.Include(s => s.AccountInfoPrivate)
 				.OrderByDescending(s => s.UpdatedAt)
 				.Where(s => s.AccountId == accountId)
 				.Take(1)
 				.FirstOrDefaultAsync();
+
+			accountInfo.PlayerStatistics = _playerStatMapper.Map(statistics);
+
+			// Tanks Info
+			var tanksInfo = await _dbContext.VehicleEncyclopedia.AsNoTracking()
+				.Where(v => (new long[] {
+								accountInfo.PlayerStatistics.MaxFragsTankId,
+								accountInfo.PlayerStatistics.MaxXpTankId })
+								.Contains(v.TankId))
+				.Join(_dbContext.DictionaryNation, v => v.Nation, n => n.NationId,
+						(v, n) => new { Vehicle = v, n.NationName })
+				.Join(_dbContext.DictionaryVehicleType, v => v.Vehicle.Type, t => t.VehicleTypeId,
+						(v, t) => new { v.Vehicle, v.NationName, t.VehicleTypeName })
+				.Select(j => new
+				{
+					j.Vehicle.TankId,
+					TankInfo = $"{j.Vehicle.Name} ({j.Vehicle.Tier} lvl; {j.NationName}; {j.VehicleTypeName})"
+				})
+				.ToListAsync();
+
+			if(tanksInfo.Exists(t => t.TankId == accountInfo.PlayerStatistics.MaxFragsTankId))
+			{
+				accountInfo.PlayerStatistics.MaxFragsTankInfo = tanksInfo
+				.First(t => t.TankId == accountInfo.PlayerStatistics.MaxFragsTankId)
+				.TankInfo;
+			}
+
+			if (tanksInfo.Exists(t => t.TankId == accountInfo.PlayerStatistics.MaxXpTankId))
+			{
+				accountInfo.PlayerStatistics.MaxXpTankInfo = tanksInfo
+				.First(t => t.TankId == accountInfo.PlayerStatistics.MaxXpTankId)
+				.TankInfo;
+			}
+
 
 			// Achievements - сделав DTO и приплюсовав туда же статистику по мастерам
 			/*
