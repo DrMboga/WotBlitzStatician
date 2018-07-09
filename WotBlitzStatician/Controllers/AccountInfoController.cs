@@ -11,10 +11,17 @@ namespace WotBlitzStatician.Controllers
   public class AccountInfoController : Controller
   {
     private readonly IAccountDataAccessor _accountDataAccessor;
+    private readonly IClanInfoDataAccessor _clanInfoDataAccessor;
+    private readonly IAchievementsDataAccessor _achievementsDataAccessor;
 
-    public AccountInfoController(IAccountDataAccessor accountDataAccessor)
+    public AccountInfoController(
+      IAccountDataAccessor accountDataAccessor,
+      IClanInfoDataAccessor clanInfoDataAccessor,
+      IAchievementsDataAccessor achievementsDataAccessor)
     {
       _accountDataAccessor = accountDataAccessor;
+      _clanInfoDataAccessor = clanInfoDataAccessor;
+      _achievementsDataAccessor = achievementsDataAccessor;
     }
 
     // GET: api/<controller>
@@ -34,6 +41,9 @@ namespace WotBlitzStatician.Controllers
       {
         return NotFound();
       }
+
+      account.PlayerClanInfo = await _clanInfoDataAccessor.GetClanInfo(id);
+      account.Achievements = await _achievementsDataAccessor.GetAccountAchievements(id);
 
       return Ok(account);
     }

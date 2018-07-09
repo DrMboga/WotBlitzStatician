@@ -19,6 +19,8 @@
 
             containerBuilder.RegisterType<BlitzStaticianDictionary>().As<IBlitzStaticianDictionary>();
             containerBuilder.RegisterType<AccountDataAccessor>().As<IAccountDataAccessor>();
+			containerBuilder.RegisterType<ClanInfoDataAccessor>().As<IClanInfoDataAccessor>();
+			containerBuilder.RegisterType<AchievementsDataAccessor>().As<IAchievementsDataAccessor>();
 		}
 
 		private static void ConfigureMappers(this ContainerBuilder containerBuilder)
