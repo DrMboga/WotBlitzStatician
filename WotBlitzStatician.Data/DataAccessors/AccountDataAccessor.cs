@@ -108,6 +108,33 @@ namespace WotBlitzStatician.Data.DataAccessors
 			}
 
 			// ToDo: Tanks/Mastery info
+			/*
+SELECT *
+FROM wotb.AchievementOption AS ao
+WHERE ao.AchievementId = 'markOfMastery'
+
+SELECT COUNT (pat.TankId) tanks, COUNT(ats2.TankId) mastery, COUNT(ats3.TankId) mastery1, COUNT(ats4.TankId) mastery2, COUNT(ats5.TankId) mastery3
+FROM wotb.PresentAccountTanks AS pat
+	INNER JOIN wotb.AccountTankStatistics AS ats ON ats.AccountTankStatisticId = pat.AccountTankStatisticId
+	LEFT JOIN wotb.AccountTankStatistics AS ats2 ON ats2.AccountTankStatisticId = pat.AccountTankStatisticId AND ats2.MarkOfMastery = 4
+	LEFT JOIN wotb.AccountTankStatistics AS ats3 ON ats3.AccountTankStatisticId = pat.AccountTankStatisticId AND ats3.MarkOfMastery = 3
+	LEFT JOIN wotb.AccountTankStatistics AS ats4 ON ats4.AccountTankStatisticId = pat.AccountTankStatisticId AND ats4.MarkOfMastery = 2
+	LEFT JOIN wotb.AccountTankStatistics AS ats5 ON ats5.AccountTankStatisticId = pat.AccountTankStatisticId AND ats5.MarkOfMastery = 1
+WHERE pat.AccountId = 90277267
+			 */
+			var tanksMastery = await _dbContext.PresentAccountTanks.AsNoTracking()
+				.Where(t => t.AccountId == accountId)
+				.GroupJoin(_dbContext.AccountTankStatistics, p => p.AccountTankStatisticId, t => t.AccountTankStatisticId,
+					(t, m) => new {Tank = t, Master = m})
+				.SelectMany(m => m.Master.Where(tm => tm.MarkOfMastery == MarkOfMastery.Master).DefaultIfEmpty(),
+					(a, b) => new {a, b})
+				.ToListAsync();
+				
+//			context.Periods.GroupJoin(context.Facts, p => p.id, f => f.periodid, (p, fg) => new {p, fg})
+//				.SelectMany(@t => fg.Where(f => f.otherid == 17).DefaultIfEmpty(), 
+//					(@t, fgi) => new {@t, fgi})
+//				.Where(@t => p.companyid == 100)
+//				.Select(@t => f.value)
 
 			// ToDo: Create Achievement data accessor
 			/*
