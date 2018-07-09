@@ -47,6 +47,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 				return null;
 			}
 
+			// ToDo: Create clan info data accessor
 			accountInfo.PlayerClanInfo = await _dbContext.AccountClanInfo.AsNoTracking()
 				.Join(_dbContext.DictionaryClanRole, c => c.PlayerRole, r => r.ClanRoleId,
 				(c, r) => new { c.AccountId,
@@ -74,6 +75,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 
 			accountInfo.PlayerStatistics = _playerStatMapper.Map(statistics);
 
+			// ToDo: Create tanks info data accessor
 			// Tanks Info
 			var tanksInfo = await _dbContext.VehicleEncyclopedia.AsNoTracking()
 				.Where(v => (new long[] {
@@ -105,18 +107,58 @@ namespace WotBlitzStatician.Data.DataAccessors
 				.TankInfo;
 			}
 
+			// ToDo: Tanks/Mastery info
 
-			// Achievements - сделав DTO и приплюсовав туда же статистику по мастерам
+			// ToDo: Create Achievement data accessor
 			/*
-SELECT s.[Order], s.SectionName, a.Name, a.Description, aa.Count, aa.IsMaxSeries, a.Image
+SELECT s.[Order], s.Section, s.SectionName, a.[Order], a.Name, a.Description, aa.Count, aa.IsMaxSeries, a.Image, ao.[Image] AS AoImage
 FROM wotb.AccountInfoAchievement aa
-	INNER JOIN wotb.Achievement a ON aa.AchievementId = a.AchievementId
-	INNER JOIN wotb.AchievementSection s ON a.Section = s.Section
-WHERE aa.AccountId = 90277267 and aa.TankId IS NULL
-ORDER BY s.[Order] 
+INNER JOIN wotb.Achievement a ON aa.AchievementId = a.AchievementId
+INNER JOIN wotb.AchievementSection s ON a.Section = s.Section
+LEFT JOIN (SELECT wotb.AchievementOption.AchievementId,
+		  wotb.AchievementOption.[Image],
+		  CONVERT(INT, LEFT(RIGHT([Image],5), 1)) AS Grade
+	 FROM wotb.AchievementOption) ao ON ao.AchievementId = aa.AchievementId AND aa.[Count] = ao.Grade
+WHERE aa.AccountId = 90277267 and aa.TankId IS NULL AND aa.IsMaxSeries = 0
+ORDER BY s.[Order], a.[Order] 
+ */
+			// ToDo: AccountInfoAchievement is a base class and query includes both discrimitators. That's why here is this hack with shadow property
+			var achievements = await _dbContext.AccountInfoAchievement.AsNoTracking()
+				.Where(a => EF.Property<string>(a, "Discriminator") == "AccountInfoAchievement" && a.AccountId == accountId && a.IsMaxSeries == false)
+				.Join(_dbContext.Achievement, aa => aa.AchievementId, a => a.AchievementId,
+					(aa, a) => new {AccountInfoAchievement = aa, Achievement = a})
+				.Join(_dbContext.AchievementSection, j1 => j1.Achievement.Section, s => s.Section,
+					(j1, s) => new {j1.AccountInfoAchievement, j1.Achievement, AchievementSection = s})
+				.Select(j2 => new AchievementDto
+				{
+					AchievementId = j2.AccountInfoAchievement.AchievementId,
+					Section = j2.AchievementSection.Section,
+					SectionName = j2.AchievementSection.SectionName,
+					Order = j2.Achievement.Order,
+					Name = j2.Achievement.Name,
+					Description = $"{j2.Achievement.Description}{(j2.Achievement.Condition != null ? Environment.NewLine + j2.Achievement.Condition: string.Empty)}",
+					Count = j2.AccountInfoAchievement.Count,
+					Image = j2.Achievement.Image
+				})
+				.ToListAsync();
 
-			+ AchievementOption вручную
-			 */
+			// ToDo: Too many database queries. Think about some kind of views or dictionary caches
+			var ao = await _dbContext.AchievementOption.AsNoTracking()
+				.Select(o => new {o.Achievement.AchievementId, o.Image})
+				.ToListAsync();
+
+			achievements.ForEach(a =>
+			{
+				if (ao.Exists(o => o.AchievementId == a.AchievementId))
+				{
+					// Count of achievement in this case means the level of achivement option.
+					// And there is no other way to know the level of achievement option, only find the level number in image name
+					a.Image = ao.FirstOrDefault(o => o.AchievementId == a.AchievementId && o.Image.Contains($"{a.Count}"))?.Image;
+				}
+			});
+
+			accountInfo.Achievements = achievements;
+
 			return accountInfo;
 		}
 
