@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WotBlitzStatician.Model.Dto
 {
+
 	public class AccountInfoDto
     {
 		public long AccountId { get; set; }
@@ -15,5 +17,7 @@ namespace WotBlitzStatician.Model.Dto
 		public PlayerClanInfoDto PlayerClanInfo { get; set; }
 
 		public PlayerStatDto PlayerStatistics { get; set; }
+
+		public List<AchievementDto> Achievements { get; set; }
 	}
 }
