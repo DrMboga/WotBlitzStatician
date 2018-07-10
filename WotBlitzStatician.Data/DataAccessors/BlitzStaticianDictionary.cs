@@ -68,6 +68,22 @@
 			}
 		}
 
+		public async Task<List<string>> GetAllImages()
+		{
+			using (var dbContext = _getDbContext())
+			{
+				return await dbContext.Achievement.AsNoTracking()
+					.Where(a => a.Image != null)
+					.Select(a => a.Image)
+					.Union(dbContext.AchievementOption.AsNoTracking()
+						.Where(o => o.Image != null)
+						.Select(o => o.Image))
+					.Union(dbContext.VehicleEncyclopedia.AsNoTracking()
+						.Where(v => v.PreviewImageUrl != null)
+						.Select(v => v.PreviewImageUrl))
+					.ToListAsync();
+			}
+		}
 
 		// ToDo: Move to extensions
 		private static async Task MergeLanguages(BlitzStaticianDbContext dbContext, List<DictionaryLanguage> languages)

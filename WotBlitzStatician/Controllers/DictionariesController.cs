@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WotBlitzStatician.Data.DataAccessors;
@@ -54,5 +55,14 @@ namespace WotBlitzStatician.Controllers
       return Ok();
     }
 
+    [HttpGet("DownloadAllImages")]
+    public async Task<IActionResult> DownloadAllImages()
+    {
+      var allImages = await _blitzStatisticsDictionary.GetAllImages();
+
+      ImagesDownloader.DowloadImagesFromWg(new List<string> { allImages[305], allImages[387] });
+
+      return Ok();
+    }
   }
 }

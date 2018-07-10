@@ -1,4 +1,6 @@
-﻿namespace WotBlitzStatician.Model.Dto
+﻿using WotBlitzStatician.Model.Common;
+
+namespace WotBlitzStatician.Model.Dto
 {
 	public class AchievementDto
 	{
@@ -10,6 +12,7 @@
 		public string Description { get; set; }
 		public int Count { get; set; }
 		public string Image { get; set; }
+		public string LocalImage => Image.MakeImagePathLocal();
 
 	}
 }
