@@ -19,5 +19,7 @@ namespace WotBlitzStatician.Model.Dto
 		public PlayerStatDto PlayerStatistics { get; set; }
 
 		public List<AchievementDto> Achievements { get; set; }
+
+	    public List<AccountMasteryInfoDto> AccountMasteryInfo { get; set; }
 	}
 }
