@@ -55,63 +55,6 @@ namespace WotBlitzStatician.Data.DataAccessors
 				.FirstOrDefaultAsync();
 
 			accountInfo.PlayerStatistics = _playerStatMapper.Map(statistics);
-
-			// ToDo: Create tanks info data accessor
-			// Tanks Info
-			var tanksInfo = await _dbContext.VehicleEncyclopedia.AsNoTracking()
-				.Where(v => (new long[] {
-								accountInfo.PlayerStatistics.MaxFragsTankId,
-								accountInfo.PlayerStatistics.MaxXpTankId })
-								.Contains(v.TankId))
-				.Join(_dbContext.DictionaryNation, v => v.Nation, n => n.NationId,
-						(v, n) => new { Vehicle = v, n.NationName })
-				.Join(_dbContext.DictionaryVehicleType, v => v.Vehicle.Type, t => t.VehicleTypeId,
-						(v, t) => new { v.Vehicle, v.NationName, t.VehicleTypeName })
-				.Select(j => new
-				{
-					j.Vehicle.TankId,
-					TankInfo = $"{j.Vehicle.Name} ({j.Vehicle.Tier} lvl; {j.NationName}; {j.VehicleTypeName})"
-				})
-				.ToListAsync();
-
-			if(tanksInfo.Exists(t => t.TankId == accountInfo.PlayerStatistics.MaxFragsTankId))
-			{
-				accountInfo.PlayerStatistics.MaxFragsTankInfo = tanksInfo
-				.First(t => t.TankId == accountInfo.PlayerStatistics.MaxFragsTankId)
-				.TankInfo;
-			}
-
-			if (tanksInfo.Exists(t => t.TankId == accountInfo.PlayerStatistics.MaxXpTankId))
-			{
-				accountInfo.PlayerStatistics.MaxXpTankInfo = tanksInfo
-				.First(t => t.TankId == accountInfo.PlayerStatistics.MaxXpTankId)
-				.TankInfo;
-			}
-
-			// ToDo: Tanks/Mastery info
-			/*
-SELECT *
-FROM wotb.AchievementOption AS ao
-WHERE ao.AchievementId = 'markOfMastery'
-
-SELECT COUNT (pat.TankId) tanks, COUNT(ats2.TankId) mastery, COUNT(ats3.TankId) mastery1, COUNT(ats4.TankId) mastery2, COUNT(ats5.TankId) mastery3
-FROM wotb.PresentAccountTanks AS pat
-	INNER JOIN wotb.AccountTankStatistics AS ats ON ats.AccountTankStatisticId = pat.AccountTankStatisticId
-	LEFT JOIN wotb.AccountTankStatistics AS ats2 ON ats2.AccountTankStatisticId = pat.AccountTankStatisticId AND ats2.MarkOfMastery = 4
-	LEFT JOIN wotb.AccountTankStatistics AS ats3 ON ats3.AccountTankStatisticId = pat.AccountTankStatisticId AND ats3.MarkOfMastery = 3
-	LEFT JOIN wotb.AccountTankStatistics AS ats4 ON ats4.AccountTankStatisticId = pat.AccountTankStatisticId AND ats4.MarkOfMastery = 2
-	LEFT JOIN wotb.AccountTankStatistics AS ats5 ON ats5.AccountTankStatisticId = pat.AccountTankStatisticId AND ats5.MarkOfMastery = 1
-WHERE pat.AccountId = 90277267
-			 */
-
-			//var aa = _dbContext.Query<AccountInfoDto>().FromSql("")
-			var tanksMastery = await _dbContext.PresentAccountTanks.AsNoTracking()
-				.Where(t => t.AccountId == accountId)
-				.GroupJoin(_dbContext.AccountTankStatistics, p => p.AccountTankStatisticId, t => t.AccountTankStatisticId,
-					(t, m) => new {Tank = t, Master = m})
-				.SelectMany(m => m.Master.Where(tm => tm.MarkOfMastery == MarkOfMastery.Master).DefaultIfEmpty(),
-					(a, b) => new {a, b})
-				.ToListAsync();
 				
 			return accountInfo;
 		}

@@ -21,6 +21,7 @@
             containerBuilder.RegisterType<AccountDataAccessor>().As<IAccountDataAccessor>();
 			containerBuilder.RegisterType<ClanInfoDataAccessor>().As<IClanInfoDataAccessor>();
 			containerBuilder.RegisterType<AchievementsDataAccessor>().As<IAchievementsDataAccessor>();
+			containerBuilder.RegisterType<AccountsTankInfoDataAccessor>().As<IAccountsTankInfoDataAccessor>();
 		}
 
 		private static void ConfigureMappers(this ContainerBuilder containerBuilder)
