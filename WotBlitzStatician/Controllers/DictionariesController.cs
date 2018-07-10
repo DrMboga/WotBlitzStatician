@@ -60,7 +60,7 @@ namespace WotBlitzStatician.Controllers
     {
       var allImages = await _blitzStatisticsDictionary.GetAllImages();
 
-      ImagesDownloader.DowloadImagesFromWg(new List<string> { allImages[305], allImages[387] });
+      ImagesDownloader.DowloadImagesFromWg(allImages);
 
       return Ok();
     }
