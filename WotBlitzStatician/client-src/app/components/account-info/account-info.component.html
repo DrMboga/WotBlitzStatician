@@ -2,48 +2,49 @@
 <h2>
   <span class='glyphicon glyphicon-user'></span> {{account.nickName}} <span *ngIf="account.playerClanInfo">[{{account.playerClanInfo.clanTag}}]</span>
 </h2>
+<div>
+  <span class='glyphicon glyphicon-time'></span> Создан: {{account.accountCreatedAt|date:"short"}}
+</div>
 <div *ngIf="account.playerClanInfo">
   {{account.playerClanInfo.playerRole}} в клане [{{account.playerClanInfo.clanTag}}] - '{{account.playerClanInfo.clanName}}' c {{account.playerClanInfo.playerJoinedAt|date:"short"}}
 </div>
 <div class='container-fluid'>
   <div class="row">
-    <div class="col-sm-2 col-xs-5">
-      <div class="m-a-3 info-box">
-        <h2>{{account.playerStatistics.battles|number}}</h2>
-        <span class='glyphicon glyphicon-flash'></span>Боёв
+    <div class="col-sm-2" title="Количество боёв">
+      <div class="info-box">
+        <h3><small><span class='glyphicon glyphicon-flash'></span></small> {{account.playerStatistics.battles|number}}</h3>
       </div>
       <!--<strong><span style="color:green;" wfd-id="2967">+0,1</span></strong>-->
     </div>
-    <div class="col-sm-2 col-xs-5">
-      <div class="m-a-3 info-box">
-        <h2 class="m-t-3">{{account.playerStatistics.winRate|percent:'2.2-2'}}</h2>
-        <span class='glyphicon glyphicon-flag'></span> Побед
+    <div class="col-sm-2" title="Процент побед">
+      <div class="info-box">
+        <h3><small><span class='glyphicon glyphicon-flag'></span></small> {{account.playerStatistics.winRate|percent:'2.2-2'}}</h3>
       </div>
     </div>
-    <div class="col-sm-2 col-xs-5">
-      <div class="m-a-3 info-box">
-        <h2 class="m-t-3">{{account.playerStatistics.wn7|number:'3.0-0'}}</h2>
-        <span class='glyphicon glyphicon-random'></span> Wn7
+    <div class="col-sm-2" title="Wn7">
+      <div class="info-box">
+        <h3><small><b>Wn7</b></small> {{account.playerStatistics.wn7|number:'3.0-0'}}</h3>
       </div>
     </div>
-    <div class="col-sm-2 col-xs-5">
-      <div class="m-a-3 info-box">
-        <h2 class="m-t-3">{{account.playerStatistics.avgDamage|number:'3.0-0'}}</h2>
-        <span class='glyphicon glyphicon-screenshot'></span> Средний урон
+    <div class="col-sm-2" title="Средний урон">
+      <div class="info-box">
+        <h3><small><span class='glyphicon glyphicon-screenshot'></span></small> {{account.playerStatistics.avgDamage|number:'3.0-0'}}</h3>
       </div>
     </div>
-    <div class="col-sm-2 col-xs-5">
-      <div class="m-a-3 info-box">
-        <h2 class="m-t-3">{{account.playerStatistics.avgXp|number:'3.0-0'}}</h2>
-        <span class='glyphicon glyphicon-star-empty'></span> Средний опыт
+    <div class="col-sm-2" title="Средний опыт">
+      <div class="info-box">
+        <h3><small><span class='glyphicon glyphicon-star-empty'></span></small> {{account.playerStatistics.avgXp|number:'3.0-0'}}</h3>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 m-a-2 small-info-box">
+      <span class='glyphicon glyphicon-time'></span> Последний бой: {{account.lastBattleTime|date:"short"}}
     </div>
   </div>
   <div class='row'>
     <div class='col-sm-7' id="statistics">
-      <table class="table">
-
-      </table>
+      <table class="table"></table>
     </div>
     <div class='col-sm-5' id="achievements">
     </div>
