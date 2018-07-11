@@ -1,4 +1,4 @@
-﻿using WotBlitzStatician.WotApiClient;
+using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician
 {
@@ -15,8 +15,9 @@ namespace WotBlitzStatician
 	public class ProxySettings : IProxySettings
 	{
 		public bool UseProxy { get; set; }
-		public string Domain { get; set; }
+	  public string ProxyAddress { get; set; }
+	  public string Domain { get; set; }
 		public string User { get; set; }
 		public string PwdHash { get; set; }
-	}
+  }
 }

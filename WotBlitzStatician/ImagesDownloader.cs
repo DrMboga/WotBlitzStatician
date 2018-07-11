@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using WotBlitzStatician.Model.Common;
+using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician
 {
   internal static class ImagesDownloader
   {
-    public static void DowloadImagesFromWg(List<string> wgImageUrls)
+    public static void DowloadImagesFromWg(this IWargamingApiClient wargamingApiClient, List<string> wgImageUrls)
     {
       foreach (var wgImageUrl in wgImageUrls)
       {
@@ -18,10 +19,7 @@ namespace WotBlitzStatician
         string filePath = Path.Combine(Directory.GetCurrentDirectory(), imgLocalPath);
         if (!File.Exists(filePath))
         {
-          using (var webClient = new WebClient())
-          {
-            webClient.DownloadFileAsync(new Uri(wgImageUrl), filePath);
-          }
+          wargamingApiClient.DownloadFile(wgImageUrl, filePath);
         }
       }
     }
