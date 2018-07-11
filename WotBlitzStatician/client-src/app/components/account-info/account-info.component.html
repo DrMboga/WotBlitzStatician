@@ -1,8 +1,51 @@
 
-<h1>
-  Welcome!
-</h1>
-<h2>Account: </h2>
-<div>
-  {{account|json}}
+<h2>
+  <span class='glyphicon glyphicon-user'></span> {{account.nickName}} <span *ngIf="account.playerClanInfo">[{{account.playerClanInfo.clanTag}}]</span>
+</h2>
+<div *ngIf="account.playerClanInfo">
+  {{account.playerClanInfo.playerRole}} в клане [{{account.playerClanInfo.clanTag}}] - '{{account.playerClanInfo.clanName}}' c {{account.playerClanInfo.playerJoinedAt|date:"short"}}
+</div>
+<div class='container-fluid'>
+  <div class="row">
+    <div class="col-sm-2 col-xs-5">
+      <div class="m-a-3 info-box">
+        <h2>{{account.playerStatistics.battles|number}}</h2>
+        <span class='glyphicon glyphicon-flash'></span>Боёв
+      </div>
+      <!--<strong><span style="color:green;" wfd-id="2967">+0,1</span></strong>-->
+    </div>
+    <div class="col-sm-2 col-xs-5">
+      <div class="m-a-3 info-box">
+        <h2 class="m-t-3">{{account.playerStatistics.winRate|percent:'2.2-2'}}</h2>
+        <span class='glyphicon glyphicon-flag'></span> Побед
+      </div>
+    </div>
+    <div class="col-sm-2 col-xs-5">
+      <div class="m-a-3 info-box">
+        <h2 class="m-t-3">{{account.playerStatistics.wn7|number:'3.0-0'}}</h2>
+        <span class='glyphicon glyphicon-random'></span> Wn7
+      </div>
+    </div>
+    <div class="col-sm-2 col-xs-5">
+      <div class="m-a-3 info-box">
+        <h2 class="m-t-3">{{account.playerStatistics.avgDamage|number:'3.0-0'}}</h2>
+        <span class='glyphicon glyphicon-screenshot'></span> Средний урон
+      </div>
+    </div>
+    <div class="col-sm-2 col-xs-5">
+      <div class="m-a-3 info-box">
+        <h2 class="m-t-3">{{account.playerStatistics.avgXp|number:'3.0-0'}}</h2>
+        <span class='glyphicon glyphicon-star-empty'></span> Средний опыт
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-7' id="statistics">
+      <table class="table">
+
+      </table>
+    </div>
+    <div class='col-sm-5' id="achievements">
+    </div>
+  </div>
 </div>
