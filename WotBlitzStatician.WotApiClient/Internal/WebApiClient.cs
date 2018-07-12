@@ -85,7 +85,7 @@
 			{
 				if (_proxySettings.UseProxy)
 				{
-					var proxy = new WebProxy("", true);
+					var proxy = new WebProxy(_proxySettings.ProxyAddress, true);
 					proxy.Credentials = new NetworkCredential(
 						_proxySettings.User,
 						_proxySettings.PwdHash.DecryptString(Guid),
