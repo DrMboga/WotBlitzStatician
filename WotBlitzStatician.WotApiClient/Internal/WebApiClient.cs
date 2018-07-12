@@ -85,7 +85,7 @@
 			{
 				if (_proxySettings.UseProxy)
 				{
-					var proxy = new WebProxy("hqproxy.avp.ru:8080", true);
+					var proxy = new WebProxy("", true);
 					proxy.Credentials = new NetworkCredential(
 						_proxySettings.User,
 						_proxySettings.PwdHash.DecryptString(Guid),
