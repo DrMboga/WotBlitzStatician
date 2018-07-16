@@ -31,7 +31,7 @@
         <h3><small><span class='glyphicon glyphicon-screenshot'></span></small> {{account.playerStatistics.avgDamage|number:'3.0-0'}}</h3>
       </div>
     </div>
-    <div class="col-sm-2" title="Средний опыт">
+    <div class="col-sm-2" title="Средний опыт. Максимальный {{account.playerStatistics.maxXp|number}} - {{account.playerStatistics.maxXpTankInfo}}">
       <div class="info-box">
         <h3><small><span class='glyphicon glyphicon-star-empty'></span></small> {{account.playerStatistics.avgXp|number:'3.0-0'}}</h3>
       </div>
@@ -51,6 +51,16 @@
   <div class='row'>
     <div class='col-sm-7' id="statistics">
       <table class="table">
+        <tr>
+          <td colspan="2">
+            <div class="row">
+              <div class="col-sm-2" *ngFor="let mastery of account.accountMasteryInfo">
+                <img class="mastery-image" src="{{mastery.localImage}}" title="{{mastery.description}}" />
+                {{mastery.tanksCount}}/{{mastery.allTanksCount}} ({{mastery.masteryTanksRatio|percent}})
+              </div>
+            </div>
+          </td>
+        </tr>
         <tr>
           <td>Побед:</td>
           <td>{{account.playerStatistics.wins|number}} / {{account.playerStatistics.battles|number}}</td>
@@ -83,10 +93,10 @@
           <td>Свободный опыт: </td>
           <td>{{account.playerStatistics.freeXp|number}}</td>
         </tr>
-        <tr *ngIf="account.playerStatistics.isPremium">
+        <!--<tr *ngIf="account.playerStatistics.isPremium">
           <td>Премиум аккаунт до: </td>
           <td>{{account.playerStatistics.premiumExpiresAt|date:"short"}}</td>
-        </tr>
+        </tr>-->
       </table>
     </div>
     <div class='col-sm-5' id="achievements">
