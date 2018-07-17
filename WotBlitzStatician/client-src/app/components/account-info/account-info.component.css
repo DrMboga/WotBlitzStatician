@@ -25,3 +25,8 @@
   width: 30px;
   height: 30px;
 }
+
+.achievement-td {
+  alignment: center;
+  width: 50px;
+}
