@@ -64,39 +64,39 @@
           </td>
         </tr>
         <tr>
-          <td>Побед:</td>
+          <th>Побед:</th>
           <td>{{account.playerStatistics.wins|number}} / {{account.playerStatistics.battles|number}}</td>
         </tr>
         <tr>
-          <td>Поражений:</td>
+          <th>Поражений:</th>
           <td>{{account.playerStatistics.losses|number}} / {{account.playerStatistics.battles|number}}</td>
         </tr>
         <tr>
-          <td>Фраги ( > 8 lvl):</td>
+          <th>Фраги ( > 8 lvl):</th>
           <td>{{account.playerStatistics.frags|number}} ({{account.playerStatistics.frags8P|number}})</td>
         </tr>
         <tr>
-          <td>Фрагов за бой макс:</td>
+          <th>Фрагов за бой макс:</th>
           <td>{{account.playerStatistics.maxFrags}} - {{account.playerStatistics.maxFragsTankInfo}}</td>
         </tr>
         <tr>
-          <td>Максимальный опыт: </td>
+          <th>Максимальный опыт: </th>
           <td>{{account.playerStatistics.maxXp|number}} - {{account.playerStatistics.maxXpTankInfo}}</td>
         </tr>
         <tr>
-          <td>Золото: </td>
+          <th>Золото: </th>
           <td>{{account.playerStatistics.gold|number}}</td>
         </tr>
         <tr>
-          <td>Кредиты: </td>
+          <th>Кредиты: </th>
           <td>{{account.playerStatistics.credits|number}}</td>
         </tr>
         <tr>
-          <td>Свободный опыт: </td>
+          <th>Свободный опыт: </th>
           <td>{{account.playerStatistics.freeXp|number}}</td>
         </tr>
         <tr *ngIf="account.playerStatistics.isPremium">
-          <td>Премиум аккаунт до: </td>
+          <th>Премиум аккаунт до: </th>
           <td>{{account.playerStatistics.premiumExpiresAt|date:"short"}}</td>
         </tr>
       </table>
@@ -105,12 +105,38 @@
       <table>
         <tr>
           <td>
+            Эпичные награды
+            <table class="table">
+              <tr>
+                <td *ngFor="let eAchievement of epicAchievements" class="achievement-td">
+                  <img src="{{eAchievement.localImage}}" title="{{eAchievement.name}}&#13;{{eAchievement.description}}" /><br />
+                  {{eAchievement.count}}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
             Герой Битвы
             <table class="table">
               <tr>
                 <td *ngFor="let achievement of battleAchievements" class="achievement-td">
-                  <img src="{{achievement.localImage}}" title="{{achievement.name}}" /><br />
+                  <img src="{{achievement.localImage}}" title="{{achievement.name}}&#13;{{achievement.description}}" /><br />
                   {{achievement.count}}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Взводные награды
+            <table class="table">
+              <tr>
+                <td *ngFor="let pAchievement of platoonAchievements" class="achievement-td">
+                  <img src="{{pAchievement.localImage}}" title="{{pAchievement.name}}&#13;{{pAchievement.description}}" /><br />
+                  {{pAchievement.count}}
                 </td>
               </tr>
             </table>
