@@ -9,6 +9,7 @@ import { AppComponent } from './app/app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { AccountTanksComponent } from './account-tanks/account-tanks.component';
+import { AccountAchievementsComponent } from './account-achievements/account-achievements.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AccountTanksComponent } from './account-tanks/account-tanks.component';
     AppComponent,
     NavMenuComponent,
     AccountInfoComponent,
-    AccountTanksComponent
+    AccountTanksComponent,
+    AccountAchievementsComponent
   ],
   exports: [
     AppComponent,

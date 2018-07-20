@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WotBlitzStatician.Model.Common;
 using WotBlitzStatician.Model.Dto;
 
 namespace WotBlitzStatician.Data.DataAccessors
@@ -29,7 +30,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 				.Select(j => new
 				{
 					j.Vehicle.TankId,
-					TankInfo = $"{j.Vehicle.Name} ({j.Vehicle.Tier} lvl; {j.NationName}; {j.VehicleTypeName})"
+					TankInfo = $"{j.Vehicle.Name} ({((int)j.Vehicle.Tier).ToRomanNumeral()}; {j.NationName}; {j.VehicleTypeName})"
 				})
 				.ToListAsync();
 
