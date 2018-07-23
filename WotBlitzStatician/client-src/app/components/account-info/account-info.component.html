@@ -102,47 +102,7 @@
       </table>
     </div>
     <div class='col-sm-5' id="achievements">
-      <table>
-        <tr>
-          <td>
-            Эпичные награды
-            <table class="table">
-              <tr>
-                <td *ngFor="let eAchievement of epicAchievements" class="achievement-td">
-                  <img src="{{eAchievement.localImage}}" title="{{eAchievement.name}}&#13;{{eAchievement.description}}" /><br />
-                  {{eAchievement.count}}
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Герой Битвы
-            <table class="table">
-              <tr>
-                <td *ngFor="let achievement of battleAchievements" class="achievement-td">
-                  <img src="{{achievement.localImage}}" title="{{achievement.name}}&#13;{{achievement.description}}" /><br />
-                  {{achievement.count}}
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Взводные награды
-            <table class="table">
-              <tr>
-                <td *ngFor="let pAchievement of platoonAchievements" class="achievement-td">
-                  <img src="{{pAchievement.localImage}}" title="{{pAchievement.name}}&#13;{{pAchievement.description}}" /><br />
-                  {{pAchievement.count}}
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+      <account-achievements [achievements]="achievements"></account-achievements>
     </div>
   </div>
 </div>

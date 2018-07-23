@@ -10,9 +10,7 @@ import { AccountInfoService } from '../../services/account-info.service';
 })
 export class AccountInfoComponent implements OnInit {
   public account: any;
-  public battleAchievements: any[];
-  public epicAchievements: any[];
-  public platoonAchievements: any[];
+  public achievements: any[];
 
   constructor(private accountsInfoService: AccountInfoService,
     activeRoute: ActivatedRoute) {
@@ -20,12 +18,7 @@ export class AccountInfoComponent implements OnInit {
     if (id != null) {
       this.accountsInfoService.getAccount(id).subscribe(data => {
         this.account = data;
-        this.battleAchievements = this.account.achievements.filter(
-          achievement => achievement.section === 'battle');
-        this.epicAchievements = this.account.achievements.filter(
-          achievement => achievement.section === 'epic');
-        this.platoonAchievements = this.account.achievements.filter(
-          achievement => achievement.section === 'platoon');
+        this.achievements = this.account.achievements;
       }, error => console.error(error));
     }
   }
