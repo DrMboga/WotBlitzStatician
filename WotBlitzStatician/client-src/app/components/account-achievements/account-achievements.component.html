@@ -1,6 +1,44 @@
-<p>
-  account-achievements works!
-</p>
-<p>battleAchievements: {{battleAchievements.length}}</p>
-<p>epicAchievements: {{epicAchievements.length}}</p>
-<p>platoonAchievements: {{platoonAchievements.length}}</p>
+<div class="container-fluid">
+    <div class="row" *ngIf="epicAchievements.length > 0">
+      <h4>{{epicAchievements[0].sectionName}}</h4>
+      <div *ngFor="let epic of epicAchievements" class="col-sm-2">
+        <img src="{{epic.localImage}}" title="{{epic.name}}&#13;{{epic.description}}" />
+        {{epic.count}}
+      </div>
+    </div>
+    <div class="row" *ngIf="platoonAchievements.length > 0">
+      <h4>{{platoonAchievements[0].sectionName}}</h4>
+      <div *ngFor="let platoon of platoonAchievements" class="col-sm-2">
+        <img src="{{platoon.localImage}}" title="{{platoon.name}}&#13;{{platoon.description}}" />
+        {{platoon.count}}
+      </div>
+    </div>
+    <div class="row" *ngIf="battleAchievements.length > 0">
+      <h4>{{battleAchievements[0].sectionName}}</h4>
+      <div *ngFor="let battle of battleAchievements" class="col-sm-2">
+        <img src="{{battle.localImage}}" title="{{battle.name}}&#13;{{battle.description}}" />
+        {{battle.count}}
+      </div>
+    </div>
+    <div class="row" *ngIf="titleAchievements.length > 0">
+      <h4>{{titleAchievements[0].sectionName}}</h4>
+      <div *ngFor="let title of titleAchievements" class="col-sm-2">
+        <img src="{{title.localImage}}" title="{{title.name}}&#13;{{title.description}}" />
+        {{title.count}}
+      </div>
+    </div>
+    <div class="row" *ngIf="commemorativeAchievements.length > 0">
+      <h4>{{commemorativeAchievements[0].sectionName}}</h4>
+      <div *ngFor="let com of commemorativeAchievements" class="col-sm-2">
+        <img src="{{com.localImage}}" title="{{com.name}}&#13;{{com.description}}" />
+        {{com.count}}
+      </div>
+    </div>
+    <div class="row" *ngIf="stepAchievements.length > 0">
+      <h4>{{stepAchievements[0].sectionName}}</h4>
+      <div *ngFor="let step of stepAchievements" class="col-sm-2">
+        <img src="{{step.localImage}}" title="{{step.name}}&#13;{{step.description}}" />
+        {{step.count}}
+      </div>
+    </div>
+</div>

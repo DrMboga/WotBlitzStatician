@@ -13,6 +13,9 @@ export class AccountAchievementsComponent implements OnInit {
   public battleAchievements: any[];
   public epicAchievements: any[];
   public platoonAchievements: any[];
+  public titleAchievements: any[];
+  public commemorativeAchievements: any[];
+  public stepAchievements: any[];
 
 
   constructor() { }
@@ -24,6 +27,12 @@ export class AccountAchievementsComponent implements OnInit {
       achievement => achievement.section === 'epic');
     this.platoonAchievements = this.achievements.filter(
       achievement => achievement.section === 'platoon');
+    this.titleAchievements = this.achievements.filter(
+      achievement => achievement.section === 'title');
+    this.commemorativeAchievements = this.achievements.filter(
+      achievement => achievement.section === 'commemorative');
+    this.stepAchievements = this.achievements.filter(
+      achievement => achievement.section === 'step');
 
   }
 
