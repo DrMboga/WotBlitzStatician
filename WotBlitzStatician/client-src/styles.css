@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+.scale-very-bad {
+  color: #000000
+}
+
+.scale-bad {
+  color: #cd3333
+}
+
+.scale-below-average {
+  color: #d77900
+}
+
+.scale-average {
+  color: #d7b600
+}
+
+.scale-good {
+  color: #6d9521
+}
+
+.scale-very-good {
+  color: #4c762e
+}
+
+.scale-great {
+  color: #4a92b7
+}
+
+.scale-unicum {
+  color: #83579d
+}
+
+.scale-super-unicum {
+  color: #5a3175
+}
