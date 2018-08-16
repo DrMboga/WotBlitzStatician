@@ -16,12 +16,12 @@
       </div>
       <!--<strong><span style="color:green;" wfd-id="2967">+0,1</span></strong>-->
     </div>
-    <div class="col-sm-2" title="Процент побед">
+    <div class="col-sm-3" title="Процент побед">
       <div class="info-box" [appBlitzColorScale]="account.playerStatistics.winRate">
         <h3><small><span class='glyphicon glyphicon-flag'></span></small> {{account.playerStatistics.winRate|percent:'2.2-2'}}</h3>
       </div>
     </div>
-    <div class="col-sm-2" title="Wn7">
+    <div class="col-sm-3" title="Wn7">
       <div class="info-box"  [appBlitzColorScale]="account.playerStatistics.wn7">
         <h3><small><b>Wn7</b></small> {{account.playerStatistics.wn7|number:'3.0-0'}}</h3>
       </div>
@@ -38,10 +38,10 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-3 small-info-box">
+    <div class="col-sm-4 small-info-box">
       <span class='glyphicon glyphicon-time'></span> Последний бой: {{account.lastBattleTime|date:"short"}}
     </div>
-    <div class="col-sm-3 small-info-box">
+    <div class="col-sm-4 small-info-box">
       <span class='glyphicon glyphicon-time'></span> Время в боях: {{account.playerStatistics.battleLifeTyme}}
     </div>
     <div class="col-sm-3 small-info-box">
@@ -49,7 +49,7 @@
     </div>
   </div>
   <div class='row'>
-    <div class='col-sm-5' id="statistics">
+    <div class='col-sm-6' id="statistics">
       <table class="table">
         <tr>
           <td colspan="2">
@@ -101,7 +101,7 @@
         </tr>
       </table>
     </div>
-    <div class='col-sm-5' id="achievements">
+    <div class='col-sm-6' id="achievements">
       <account-achievements [achievements]="achievements"></account-achievements>
     </div>
   </div>
