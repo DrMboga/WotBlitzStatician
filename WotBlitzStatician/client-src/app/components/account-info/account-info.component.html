@@ -17,12 +17,12 @@
       <!--<strong><span style="color:green;" wfd-id="2967">+0,1</span></strong>-->
     </div>
     <div class="col-sm-2" title="Процент побед">
-      <div class="info-box">
+      <div class="info-box" [appBlitzColorScale]="account.playerStatistics.winRate">
         <h3><small><span class='glyphicon glyphicon-flag'></span></small> {{account.playerStatistics.winRate|percent:'2.2-2'}}</h3>
       </div>
     </div>
     <div class="col-sm-2" title="Wn7">
-      <div class="info-box">
+      <div class="info-box"  [appBlitzColorScale]="account.playerStatistics.wn7">
         <h3><small><b>Wn7</b></small> {{account.playerStatistics.wn7|number:'3.0-0'}}</h3>
       </div>
     </div>

@@ -10,6 +10,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { AccountTanksComponent } from './account-tanks/account-tanks.component';
 import { AccountAchievementsComponent } from './account-achievements/account-achievements.component';
+import { BlitzColorScaleDirective } from './blitz-color-scale.directive';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AccountAchievementsComponent } from './account-achievements/account-ach
     NavMenuComponent,
     AccountInfoComponent,
     AccountTanksComponent,
-    AccountAchievementsComponent
+    AccountAchievementsComponent,
+    BlitzColorScaleDirective
   ],
   exports: [
     AppComponent,
