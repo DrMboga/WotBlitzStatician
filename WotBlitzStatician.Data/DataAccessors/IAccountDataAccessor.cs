@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Storage;
 using WotBlitzStatician.Model;
+using WotBlitzStatician.Model.Dto;
 
 namespace WotBlitzStatician.Data.DataAccessors
 {
 	public interface IAccountDataAccessor
     {
 		Task<List<AccountInfo>> GetAllAccountsAsync();
+
+		Task<AccountInfoDto> GetActualAccountInfo(long accountId);
 
 		Task<AccountClanInfo> GetAccountClanAsync(long accountId);
 

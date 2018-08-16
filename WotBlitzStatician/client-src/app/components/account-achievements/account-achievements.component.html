@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row" *ngIf="epicAchievements.length > 0">
+      <h4>{{epicAchievements[0].sectionName}}</h4>
+      <div *ngFor="let epic of epicAchievements" class="column">
+        <img src="{{epic.localImage}}" title="{{epic.name}}&#13;{{epic.description}}" /><br />
+        {{epic.count}}
+      </div>
+    </div>
+    <div class="row" *ngIf="platoonAchievements.length > 0">
+      <h4>{{platoonAchievements[0].sectionName}}</h4>
+      <div *ngFor="let platoon of platoonAchievements" class="column">
+        <img src="{{platoon.localImage}}" title="{{platoon.name}}&#13;{{platoon.description}}" /><br />
+        {{platoon.count}}
+      </div>
+    </div>
+    <div class="row" *ngIf="battleAchievements.length > 0">
+      <h4>{{battleAchievements[0].sectionName}}</h4>
+      <div *ngFor="let battle of battleAchievements" class="column">
+        <img src="{{battle.localImage}}" title="{{battle.name}}&#13;{{battle.description}}" /><br />
+        {{battle.count}}
+      </div>
+    </div>
+    <div class="row" *ngIf="titleAchievements.length > 0">
+      <h4>{{titleAchievements[0].sectionName}}</h4>
+      <div *ngFor="let title of titleAchievements" class="column">
+        <img src="{{title.localImage}}" title="{{title.name}}&#13;{{title.description}}" /><br />
+        {{title.count}}
+      </div>
+    </div>
+    <div class="row" *ngIf="commemorativeAchievements.length > 0">
+      <h4>{{commemorativeAchievements[0].sectionName}}</h4>
+      <div *ngFor="let com of commemorativeAchievements" class="column">
+        <img src="{{com.localImage}}" title="{{com.name}}&#13;{{com.description}}" /><br />
+        {{com.count}}
+      </div>
+    </div>
+    <div class="row" *ngIf="stepAchievements.length > 0">
+      <h4>{{stepAchievements[0].sectionName}}</h4>
+      <div *ngFor="let step of stepAchievements" class="column">
+        <img src="{{step.localImage}}" title="{{step.name}}&#13;{{step.description}}" /><br />
+        {{step.count}}
+      </div>
+    </div>
+</div>

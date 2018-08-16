@@ -5,21 +5,58 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using WotBlitzStatician.Model;
+using WotBlitzStatician.Model.Dto;
+using WotBlitzStatician.Model.MapperLogic;
 
 namespace WotBlitzStatician.Data.DataAccessors
 {
 	public class AccountDataAccessor : IAccountDataAccessor
 	{
 		private readonly BlitzStaticianDbContext _dbContext;
+		private readonly IMapper<AccountInfoStatistics, PlayerStatDto> _playerStatMapper;
 
-		public AccountDataAccessor(BlitzStaticianDbContext dbContext)
+		public AccountDataAccessor(
+			BlitzStaticianDbContext dbContext,
+			IMapper<AccountInfoStatistics, PlayerStatDto> playerStatMapper
+			)
 		{
 			_dbContext = dbContext;
+			_playerStatMapper = playerStatMapper;
 		}
 
 		public async Task<List<AccountInfo>> GetAllAccountsAsync()
 		{
-			return await _dbContext.AccountInfo.AsNoTracking().ToListAsync();
+			return await _dbContext.AccountInfo.AsNoTracking()
+				.OrderByDescending(a => a.LastBattleTime)
+				.ToListAsync();
+		}
+
+		public async Task<AccountInfoDto> GetActualAccountInfo(long accountId)
+		{
+			var accountInfo = await _dbContext.AccountInfo.AsNoTracking()
+				.Where(a => a.AccountId == accountId)
+				.Select(a => new AccountInfoDto {
+								AccountId = a.AccountId,
+								NickName = a.NickName,
+								AccountCreatedAt = a.AccountCreatedAt.Value,
+								LastBattleTime = a.LastBattleTime.Value})
+				.FirstOrDefaultAsync();
+
+			if (accountInfo == null)
+			{
+				return null;
+			}				
+
+			var statistics = await _dbContext.AccountInfoStatistics
+				.Include(s => s.AccountInfoPrivate)
+				.OrderByDescending(s => s.UpdatedAt)
+				.Where(s => s.AccountId == accountId)
+				.Take(1)
+				.FirstOrDefaultAsync();
+
+			accountInfo.PlayerStatistics = _playerStatMapper.Map(statistics);
+				
+			return accountInfo;
 		}
 
 		public async Task<AccountClanInfo> GetAccountClanAsync(long accountId)

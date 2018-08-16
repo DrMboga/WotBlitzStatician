@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using WotBlitzStatician.Data.TypeConfigurations;
 using WotBlitzStatician.Model;
+using WotBlitzStatician.Model.Dto;
 
 namespace WotBlitzStatician.Data
 {
@@ -73,6 +74,10 @@ namespace WotBlitzStatician.Data
 			modelBuilder.Entity<AccountTankStatistics>(AccountTankStatisticsTypeConfiguration.Configure);
 			modelBuilder.Entity<PresentAccountTanks>(PresentAccountTanksTypeConfiguration.Configure);
 			modelBuilder.Entity<AccountInfoTankAchievement>(TankAchievementTypeConfiguration.Configure);
+
+			modelBuilder.Query<AchievementDto>().ToTable("DummyAchievemntsView");
+			modelBuilder.Query<AccountMasteryInfoDto>().ToTable("DummyAccountMasteryView")
+				.Ignore(m => m.AllTanksCount);
 		}
 	}
 }

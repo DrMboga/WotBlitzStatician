@@ -1,0 +1,108 @@
+
+<h2>
+  <span class='glyphicon glyphicon-user'></span> {{account.nickName}} <span *ngIf="account.playerClanInfo">[{{account.playerClanInfo.clanTag}}]</span>
+</h2>
+<div class="row">
+  <span class='glyphicon glyphicon-time'></span> Создан: {{account.accountCreatedAt|date:"short"}}
+</div>
+<div *ngIf="account.playerClanInfo" class="row">
+  {{account.playerClanInfo.playerRole}} в клане [{{account.playerClanInfo.clanTag}}] - '{{account.playerClanInfo.clanName}}' c {{account.playerClanInfo.playerJoinedAt|date:"short"}}
+</div>
+<div class='container-fluid'>
+  <div class="row">
+    <div class="col-sm-2" title="Количество боёв">
+      <div class="info-box">
+        <h3><small><span class='glyphicon glyphicon-flash'></span></small> {{account.playerStatistics.battles|number}}</h3>
+      </div>
+      <!--<strong><span style="color:green;" wfd-id="2967">+0,1</span></strong>-->
+    </div>
+    <div class="col-sm-3" title="Процент побед">
+      <div class="info-box" [appBlitzColorScale]="account.playerStatistics.winRate">
+        <h3><small><span class='glyphicon glyphicon-flag'></span></small> {{account.playerStatistics.winRate|percent:'2.2-2'}}</h3>
+      </div>
+    </div>
+    <div class="col-sm-3" title="Wn7">
+      <div class="info-box"  [appBlitzColorScale]="account.playerStatistics.wn7">
+        <h3><small><b>Wn7</b></small> {{account.playerStatistics.wn7|number:'3.0-0'}}</h3>
+      </div>
+    </div>
+    <div class="col-sm-2" title="Средний урон">
+      <div class="info-box">
+        <h3><small><span class='glyphicon glyphicon-screenshot'></span></small> {{account.playerStatistics.avgDamage|number:'3.0-0'}}</h3>
+      </div>
+    </div>
+    <div class="col-sm-2" title="Средний опыт. Максимальный {{account.playerStatistics.maxXp|number}} - {{account.playerStatistics.maxXpTankInfo}}">
+      <div class="info-box">
+        <h3><small><span class='glyphicon glyphicon-star-empty'></span></small> {{account.playerStatistics.avgXp|number:'3.0-0'}}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 small-info-box">
+      <span class='glyphicon glyphicon-time'></span> Последний бой: {{account.lastBattleTime|date:"short"}}
+    </div>
+    <div class="col-sm-4 small-info-box">
+      <span class='glyphicon glyphicon-time'></span> Время в боях: {{account.playerStatistics.battleLifeTyme}}
+    </div>
+    <div class="col-sm-3 small-info-box">
+      Танкоуровень: {{account.playerStatistics.avgTier|number:'1.2-2'}}
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-6' id="statistics">
+      <table class="table">
+        <tr>
+          <td colspan="2">
+            <table>
+              <tr>
+                <td *ngFor="let mastery of account.accountMasteryInfo">
+                  <img class="mastery-image" src="{{mastery.localImage}}" title="{{mastery.description}}"/>
+                  {{mastery.tanksCount}}/{{mastery.allTanksCount}} ({{mastery.masteryTanksRatio|percent}})
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <th>Побед:</th>
+          <td>{{account.playerStatistics.wins|number}} / {{account.playerStatistics.battles|number}}</td>
+        </tr>
+        <tr>
+          <th>Поражений:</th>
+          <td>{{account.playerStatistics.losses|number}} / {{account.playerStatistics.battles|number}}</td>
+        </tr>
+        <tr>
+          <th>Фраги ( > 8 lvl):</th>
+          <td>{{account.playerStatistics.frags|number}} ({{account.playerStatistics.frags8P|number}})</td>
+        </tr>
+        <tr>
+          <th>Фрагов за бой макс:</th>
+          <td>{{account.playerStatistics.maxFrags}} - {{account.playerStatistics.maxFragsTankInfo}}</td>
+        </tr>
+        <tr>
+          <th>Максимальный опыт: </th>
+          <td>{{account.playerStatistics.maxXp|number}} - {{account.playerStatistics.maxXpTankInfo}}</td>
+        </tr>
+        <tr>
+          <th>Золото: </th>
+          <td>{{account.playerStatistics.gold|number}}</td>
+        </tr>
+        <tr>
+          <th>Кредиты: </th>
+          <td>{{account.playerStatistics.credits|number}}</td>
+        </tr>
+        <tr>
+          <th>Свободный опыт: </th>
+          <td>{{account.playerStatistics.freeXp|number}}</td>
+        </tr>
+        <tr *ngIf="account.playerStatistics.isPremium">
+          <th>Премиум аккаунт до: </th>
+          <td>{{account.playerStatistics.premiumExpiresAt|date:"short"}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class='col-sm-6' id="achievements">
+      <account-achievements [achievements]="achievements"></account-achievements>
+    </div>
+  </div>
+</div>

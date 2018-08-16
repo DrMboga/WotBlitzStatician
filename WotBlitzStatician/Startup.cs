@@ -1,18 +1,21 @@
-﻿using System.Linq;
+using System.Linq;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using WotBlitzStatician.Data;
 using WotBlitzStatician.Logic;
 using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician
 {
-	public class Startup
-    {
+  using Microsoft.AspNetCore.Routing;
+
+  public class Startup
+	{
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
@@ -24,8 +27,12 @@ namespace WotBlitzStatician
 		// This method gets called by the runtime. Use this method to add services to the container.
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
-        {
-			services.AddMvc();
+		{
+			services.AddMvc()
+				.AddJsonOptions(options =>
+				{
+					options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+				});
 		}
 
 		public void ConfigureContainer(ContainerBuilder builder)
@@ -44,11 +51,16 @@ namespace WotBlitzStatician
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
+		{
 
 			app.UseErrorHandler();
-
-			app.UseMvc();
+			app.UseStaticFiles();
+			app.UseMvc(routes =>
+			  {
+			    routes.MapRoute("default", "{controller}/{action}");
+			    routes.MapRoute("Spa", "{*url}", defaults: new {controller = "Home", action = "Spa"});
+			  }
+			);
 		}
 	}
 }

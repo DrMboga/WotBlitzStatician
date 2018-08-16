@@ -79,6 +79,30 @@
 			}
 		}
 
+		public void DownloadFile(string uri, string fileName)
+		{
+			using (var webClient = new WebClient())
+			{
+				if (_proxySettings.UseProxy)
+				{
+					var proxy = new WebProxy(_proxySettings.ProxyAddress, true);
+					proxy.Credentials = new NetworkCredential(
+						_proxySettings.User,
+						_proxySettings.PwdHash.DecryptString(Guid),
+						_proxySettings.Domain);
+					webClient.Proxy = proxy;
+				}
+				try
+				{
+					webClient.DownloadFile(new Uri(uri), fileName);
+				}
+				catch(WebException e)
+				{
+					// do nothing
+				}
+			}
+		}
+
 		private string GetBody(string request)
 		{
 			return request.Substring(request.IndexOf('?') + 1);

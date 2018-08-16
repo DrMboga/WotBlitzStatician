@@ -30,5 +30,7 @@
 		Task<List<AccountInfoTankAchievement>> GetAccountTankAchievementsAsync(long accountId, string accessToken, List<int> tankIds = null);
 
 		Task<AccountInfo> ProlongateAccount(string accessToken);
+
+		void DownloadFile(string uri, string fileName);
 	}
 }

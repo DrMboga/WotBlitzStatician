@@ -274,5 +274,10 @@
 
 			return _mapper.Map<WotAuthProlongateResponse, AccountInfo>(accountInfo);
 		}
+
+		public void DownloadFile(string uri, string fileName)
+		{
+			_webApiClient.DownloadFile(uri, fileName);
+		}
 	}
 }
