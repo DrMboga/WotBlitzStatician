@@ -5,25 +5,25 @@ namespace WotBlitzStatician.Model.Dto
 {
 	public class AccountTankInfoDto
     {
-		public long AccountTankStatisticId { get; set; }
+		public long TankAccountTankStatisticId { get; set; }
 
-		public long AccountId { get; set; }
+		public long TankAccountId { get; set; }
 
 		///<summary>
 		///Идентификатор техники
 		///</summary>
-		public long TankId { get; set; }
+		public long TankTankId { get; set; }
 
-		public int BattleLifeTimeInSeconds { get; set; }
+		public int TankBattleLifeTimeInSeconds { get; set; }
 		///<summary>
 		///Общее время в бою до уничтожения
 		///</summary>
-		public TimeSpan BattleLifeTime => TimeSpan.FromSeconds(BattleLifeTimeInSeconds);
+		public TimeSpan BattleLifeTime => TimeSpan.FromSeconds(TankBattleLifeTimeInSeconds);
 
 		///<summary>
 		///Время последнего боя
 		///</summary>
-		public DateTime LastBattleTime { get; set; }
+		public DateTime TankLastBattleTime { get; set; }
 
 		///<summary>
 		///Знаки классности:
@@ -34,108 +34,108 @@ namespace WotBlitzStatician.Model.Dto
 		///3 — 1 степень
 		///4 — Мастер
 		///</summary>
-		public MarkOfMastery MarkOfMastery { get; set; }
+		public MarkOfMastery TankMarkOfMastery { get; set; }
 
 		/// <summary>
 		/// Признак нахождения машины в гараже
 		/// </summary>
-		public bool InGarage { get; set; }
+		public bool TankInGarage { get; set; }
 
-		public DateTime? InGarageUpdated { get; set; }
+		public DateTime? TankInGarageUpdated { get; set; }
 
 		///<summary>
 		///Количество боёв
 		///</summary>
-		public long Battles { get; set; }
+		public long TankBattles { get; set; }
 
 		///<summary>
 		///Очки захвата базы
 		///</summary>
-		public long CapturePoints { get; set; }
+		public long TankCapturePoints { get; set; }
 
 		///<summary>
 		///Нанесённый урон
 		///</summary>
-		public long DamageDealt { get; set; }
+		public long TankDamageDealt { get; set; }
 
 		///<summary>
 		///Полученный урон
 		///</summary>
-		public long DamageReceived { get; set; }
+		public long TankDamageReceived { get; set; }
 
 		///<summary>
 		///Очки защиты базы
 		///</summary>
-		public long DroppedCapturePoints { get; set; }
+		public long TankDroppedCapturePoints { get; set; }
 
 		///<summary>
 		///Количество уничтоженной техники
 		///</summary>
-		public long Frags { get; set; }
+		public long TankFrags { get; set; }
 
 		///<summary>
 		///Количество уничтоженной техники (уровень >=8)
 		///</summary>
-		public long Frags8P { get; set; }
+		public long TankFrags8P { get; set; }
 
 		///<summary>
 		///Количество попаданий
 		///</summary>
-		public long Hits { get; set; }
+		public long TankHits { get; set; }
 
 		///<summary>
 		///Количество поражений
 		///</summary>
-		public long Losses { get; set; }
+		public long TankLosses { get; set; }
 
 		///<summary>
 		///Максимум уничтожено за бой
 		///</summary>
-		public long MaxFrags { get; set; }
+		public long TankMaxFrags { get; set; }
 
 		///<summary>
 		///Максимальный опыт за бой
 		///</summary>
-		public long MaxXp { get; set; }
+		public long TankMaxXp { get; set; }
 
 		///<summary>
 		///Произведено выстрелов
 		///</summary>
-		public long Shots { get; set; }
+		public long TankShots { get; set; }
 
 		///<summary>
 		///Количество обнаруженной техники
 		///</summary>
-		public long Spotted { get; set; }
+		public long TankSpotted { get; set; }
 
 		///<summary>
 		///Выжил в боях
 		///</summary>
-		public long SurvivedBattles { get; set; }
+		public long TankSurvivedBattles { get; set; }
 
 		///<summary>
 		///Выжил в боях и победил
 		///</summary>
-		public long WinAndSurvived { get; set; }
+		public long TankWinAndSurvived { get; set; }
 
 		///<summary>
 		///Количество побед
 		///</summary>
-		public long Wins { get; set; }
+		public long TankWins { get; set; }
 
 		///<summary>
 		///Суммарный опыт
 		///</summary>
-		public long Xp { get; set; }
+		public long TankXp { get; set; }
 
-		public double Wn7 { get; set; }
+		public double TankWn7 { get; set; }
 
-		public double Wn8 { get; set; }
+		public double TankWn8 { get; set; }
 
-		public decimal WinRate { get { return (decimal)Wins / Battles; } }
-		public decimal AvgDamage { get { return (decimal)DamageDealt / Battles; } }
-		public decimal AvgXp { get { return (decimal)Xp / Battles; } }
-		public decimal SurvivalRate { get { return (decimal)SurvivedBattles / Battles; } }
+		public decimal WinRate { get { return (decimal)TankWins / TankBattles; } }
+		public decimal AvgDamage { get { return (decimal)TankDamageDealt / TankBattles; } }
+		public decimal AvgXp { get { return (decimal)TankXp / TankBattles; } }
+		public decimal SurvivalRate { get { return (decimal)TankSurvivedBattles / TankBattles; } }
 
 		public string MasteryImage { get; set; }
 		public string MasteryLocalImage => MasteryImage.MakeImagePathLocal();
@@ -143,43 +143,43 @@ namespace WotBlitzStatician.Model.Dto
 		///<summary>
 		///Название техники
 		///</summary>
-		public string NankName { get; set; }
+		public string VehicleName { get; set; }
 
 		///<summary>
 		///Уровень
 		///</summary>
-		public int TankTier { get; set; }
+		public int VehicleTier { get; set; }
 
-	    public string TankTierRoman => TankTier.ToRomanNumeral();
+	    public string TankTierRoman { get; set; }
 
 		///<summary>
 		///Нация
 		///</summary>
-		public string TankNation { get; set; }
+		public string VehicleNation { get; set; }
 
 		///<summary>
 		///Тип техники
 		///</summary>
-		public string TankType { get; set; }
+		public string VehicleType { get; set; }
 
 		///<summary>
 		///Показывает, является ли техника премиум техникой
 		///</summary>
-		public bool TankIsPremium { get; set; }
+		public bool VehicleIsPremium { get; set; }
 
 		/// <summary>
 		/// Path to the png file
 		/// </summary>
-		public string PreviewImageUrl { get; set; }
+		public string VehiclePreviewImageUrl { get; set; }
 
-		public string PreviewLocalImage => PreviewImageUrl.MakeImagePathLocal();
+	    public string PreviewLocalImage { get; set; }
 
-		/// <summary>
+	    /// <summary>
 		/// Path to the png file
 		/// </summary>
-		public string NormalImageUrl { get; set; }
+		public string VehicleNormalImageUrl { get; set; }
 
-		public string NormalLocalImage => NormalImageUrl.MakeImagePathLocal();
+		public string NormalLocalImage { get; set; }
 
 
 	}
