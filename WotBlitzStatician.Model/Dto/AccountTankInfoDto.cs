@@ -148,9 +148,9 @@ namespace WotBlitzStatician.Model.Dto
 		///<summary>
 		///Уровень
 		///</summary>
-		public long TankTier { get; set; }
+		public int TankTier { get; set; }
 
-		public string TankTierRoman { get; set; }
+	    public string TankTierRoman => TankTier.ToRomanNumeral();
 
 		///<summary>
 		///Нация
