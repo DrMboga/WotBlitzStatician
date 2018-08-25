@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WotBlitzStatician.Data.Mappers;
+using WotBlitzStatician.Model;
 using WotBlitzStatician.Model.Common;
 using WotBlitzStatician.Model.Dto;
 
@@ -66,6 +68,39 @@ GROUP BY ats.MarkOfMastery, md.[Image], md.[Description]
 			accountMasteryInfo.ForEach(m => m.AllTanksCount = allTanksCount);
 
 			return accountMasteryInfo;
+		}
+
+		public IQueryable<AccountTankInfoDto> GetTanksInfoQuery(long accountId)
+		{
+			var masteryImages = GetMasteryImages();
+			var mapper = new AccountTanksInfoDtoMapper(masteryImages);
+
+			return mapper.ProjectTo(
+			  _dbContext.PresentAccountTanks.AsNoTracking()
+			 .Where(pt => pt.AccountId == accountId)
+			 .Join(_dbContext.AccountTankStatistics.AsNoTracking(), pt => pt.AccountTankStatisticId,
+			   ts => ts.AccountTankStatisticId,
+			   (pt, st) => st)
+			 .Join(_dbContext.VehicleEncyclopedia.AsNoTracking(), st => st.TankId, v => v.TankId,
+			   (st, v) => new { AccountTankStatistic = st, VehicleInfo = v })
+			 .Select(j => new AccountTanksStatisticsTuple { Tank = j.AccountTankStatistic, Vehicle = j.VehicleInfo })
+			 );
+
+		}
+
+		private Dictionary<MarkOfMastery, string> GetMasteryImages()
+		{
+			var masteryImages = _dbContext.AchievementOption.AsNoTracking()
+			  .Where(a => a.Achievement.AchievementId == "markOfMastery")
+			  .Select(o => o.Image).ToList();
+			var imagesDic = new Dictionary<MarkOfMastery, string>();
+
+			foreach (var mastery in Enum.GetValues(typeof(MarkOfMastery)).Cast<MarkOfMastery>())
+			{
+				imagesDic[mastery] = masteryImages.FirstOrDefault(i => i.ToLower().EndsWith($"{(int)mastery}.png"));
+			}
+
+			return imagesDic;
 		}
 
 	}

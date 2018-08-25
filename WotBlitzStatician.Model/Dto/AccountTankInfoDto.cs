@@ -132,13 +132,13 @@ namespace WotBlitzStatician.Model.Dto
 
 		public double TankWn8 { get; set; }
 
-		public decimal WinRate { get { return (decimal)TankWins / TankBattles; } }
-		public decimal AvgDamage { get { return (decimal)TankDamageDealt / TankBattles; } }
-		public decimal AvgXp { get { return (decimal)TankXp / TankBattles; } }
-		public decimal SurvivalRate { get { return (decimal)TankSurvivedBattles / TankBattles; } }
+		public decimal WinRate { get { return (decimal)TankWins / TankBattles; } set { } }
+		public decimal AvgDamage { get { return (decimal)TankDamageDealt / TankBattles; } set { } }
+		public decimal AvgXp { get { return (decimal)TankXp / TankBattles; } set { } }
+		public decimal SurvivalRate { get { return (decimal)TankSurvivedBattles / TankBattles; } set { } }
 
 		public string MasteryImage { get; set; }
-		public string MasteryLocalImage => MasteryImage.MakeImagePathLocal();
+		public string MasteryLocalImage { get; set; }
 
 		///<summary>
 		///Название техники
