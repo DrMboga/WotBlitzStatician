@@ -1,7 +1,83 @@
-<p>
-  account-tanks works!
-</p>
-{{accountId}}
 <div>
-  <img src="img/uploaded/vehicles/hd_thumbnail/G106_PzKpfwPanther_AusfF.png" />
+  <table class="table">
+    <thead>
+      <tr>
+        <th (click)="sortColumn = 'TankMarkOfMastery'; sortAscending = !sortAscending; sortTanks();">
+          M
+          <span *ngIf="sortColumn == 'TankMarkOfMastery' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'TankMarkOfMastery' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+        <th (click)="sortColumn = 'VehicleType'; sortAscending = !sortAscending; sortTanks();">
+          Type
+          <span *ngIf="sortColumn == 'VehicleType' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'VehicleType' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+        <th (click)="sortColumn = 'VehicleTier'; sortAscending = !sortAscending; sortTanks();">
+          Tier
+          <span *ngIf="sortColumn == 'VehicleTier' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'VehicleTier' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+        <th (click)="sortColumn = 'VehicleNation'; sortAscending = !sortAscending; sortTanks();">
+          Nation
+          <span *ngIf="sortColumn == 'VehicleNation' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'VehicleNation' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+        <th>
+          Tank
+        </th>
+        <th (click)="sortColumn = 'TankBattles'; sortAscending = !sortAscending; sortTanks();">
+          Battles
+          <span *ngIf="sortColumn == 'TankBattles' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'TankBattles' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+        <th (click)="sortColumn = 'WinRate'; sortAscending = !sortAscending; sortTanks();">
+          Winrate
+          <span *ngIf="sortColumn == 'WinRate' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'WinRate' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+        <th (click)="sortColumn = 'TankWn7'; sortAscending = !sortAscending; sortTanks();">
+          Wn7
+          <span *ngIf="sortColumn == 'TankWn7' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'TankWn7' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+        <th (click)="sortColumn = 'AvgDamage'; sortAscending = !sortAscending; sortTanks();">
+          Avg dmg
+          <span *ngIf="sortColumn == 'AvgDamage' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'AvgDamage' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+        <th (click)="sortColumn = 'AvgXp'; sortAscending = !sortAscending; sortTanks();">
+          Avg xp
+          <span *ngIf="sortColumn == 'AvgXp' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'AvgXp' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+        <th (click)="sortColumn = 'TankLastBattleTime'; sortAscending = !sortAscending; sortTanks();">
+          LastBattle
+          <span *ngIf="sortColumn == 'TankLastBattleTime' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'TankLastBattleTime' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+        <th (click)="sortColumn = 'TankInGarage'; sortAscending = !sortAscending; sortTanks();">
+          Garage
+          <span *ngIf="sortColumn == 'TankInGarage' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'TankInGarage' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tank of tanks">
+        <td><img src="{{tank.MasteryLocalImage}}" class="mastery-image" /></td>
+        <td><img [ngClass]="'tank-type-' + tank.VehicleType + (tank.VehicleIsPremium ? '-prem' : '')" /></td>
+        <td><b>{{tank.TankTierRoman}}</b></td>
+        <td><img [ngClass]="'flag-' + tank.VehicleNation" /></td>
+        <td>{{tank.VehicleName}}</td>
+        <td>{{tank.TankBattles}}</td>
+        <td>{{tank.WinRate|percent:'2.2-2'}}</td>
+        <td>{{tank.TankWn7|number:'3.0-0'}}</td>
+        <td>{{tank.AvgDamage|number:'3.0-0'}}</td>
+        <td>{{tank.AvgXp|number:'3.0-0'}}</td>
+        <td>{{tank.TankLastBattleTime|date:"short"}}</td>
+        <td><span *ngIf="tank.TankInGarage" class="glyphicon glyphicon-home"></span></td>
+      </tr>
+    </tbody>
+
+  </table>
 </div>

@@ -20,4 +20,9 @@ export class AccountInfoService {
       .map(response => response.json());
   }
 
+  getDataByQuery(dataQuery: string): Observable<any> {
+    return this.http.get(this.baseUrl + dataQuery)
+      .map(response => response.json());
+  }
+
 }
