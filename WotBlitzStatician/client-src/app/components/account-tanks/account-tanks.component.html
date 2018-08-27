@@ -64,7 +64,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let tank of tanks">
-        <td><img src="{{tank.MasteryLocalImage}}" class="mastery-image" /></td>
+        <td><img *ngIf="tank.MasteryLocalImage" src="{{tank.MasteryLocalImage}}" class="mastery-image" /></td>
         <td><img [ngClass]="'tank-type-' + tank.VehicleType + (tank.VehicleIsPremium ? '-prem' : '')" /></td>
         <td><b>{{tank.TankTierRoman}}</b></td>
         <td><img [ngClass]="'flag-' + tank.VehicleNation" /></td>
