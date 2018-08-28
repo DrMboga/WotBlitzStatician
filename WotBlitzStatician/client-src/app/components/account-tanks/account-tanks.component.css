@@ -3,6 +3,18 @@
   height: 25px;
 }
 
+.tank-image {
+  height: 25px;
+}
+
+.tanks-table {
+  background: #fffdf4;
+}
+
+th {
+  margin-left: 10px;
+}
+
 .tank-type-AT-SPG {
   width: 25px;
   height: 25px;

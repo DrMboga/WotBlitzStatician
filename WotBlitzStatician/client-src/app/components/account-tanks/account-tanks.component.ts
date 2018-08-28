@@ -3,6 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 
 import { AccountInfoService } from '../../services/account-info.service';
 import { AccountTanksFilter } from "./account-tanks-filter";
+import { AccountTanksFooter } from "./account-tanks-footer";
+
 
 @Component({
   selector: 'app-account-tanks',
@@ -15,10 +17,13 @@ export class AccountTanksComponent implements OnInit {
   public tanks: any[];
   public sortColumn: string;
   public sortAscending: boolean;
+  public tableFooter: AccountTanksFooter;
 
   constructor(private accountsInfoService: AccountInfoService,
     activeRoute: ActivatedRoute) {
     this.filter = new AccountTanksFilter();
+    this.tableFooter = new AccountTanksFooter();
+
     this.sortColumn = 'TankLastBattleTime';
     this.sortAscending = false;
 
@@ -29,12 +34,16 @@ export class AccountTanksComponent implements OnInit {
       this.filter.accountId = this.accountId;
       this.filter.inGarage = true;
 
-      this.accountsInfoService.getDataByQuery(this.filter.getFilterQuery()).subscribe(data => {
-        this.tanks = data.value;
-        this.sortTanks();
-      }, error => console.error(error));
-
+      this.queryData();
     }
+  }
+
+  queryData() {
+    this.accountsInfoService.getDataByQuery(this.filter.getFilterQuery()).subscribe(data => {
+      this.tanks = data.value;
+      this.sortTanks();
+      this.calculateFooter();
+    }, error => console.error(error));
   }
 
   sortTanks() {
@@ -47,6 +56,29 @@ export class AccountTanksComponent implements OnInit {
     if (!this.sortAscending) {
       this.tanks.reverse();
     }
+  }
+
+  calculateFooter() {
+    let battlesSum: number = 0;
+    let winsSum: number = 0;
+    let wn7Sum: number = 0;
+    let damageSum: number = 0;
+    let xpSum: number = 0;
+    let avgTierSum: number = 0;
+    for (let tank of this.tanks) {
+      battlesSum += tank.TankBattles;
+      winsSum += tank.WinRate;
+      wn7Sum += tank.TankWn7;
+      damageSum += tank.AvgDamage;
+      xpSum += tank.AvgXp;
+      avgTierSum += tank.VehicleTier;
+    }
+    this.tableFooter.battlesSum = battlesSum;
+    this.tableFooter.avgWinrate = winsSum / this.tanks.length;
+    this.tableFooter.avgWn7 = wn7Sum / this.tanks.length;
+    this.tableFooter.avgDamage = damageSum / this.tanks.length;
+    this.tableFooter.avgXp = xpSum / this.tanks.length;
+    this.tableFooter.avgTier = avgTierSum / this.tanks.length;
   }
 
   ngOnInit() {
