@@ -1,4 +1,32 @@
 <div class="tanks-table">
+  <div class="btn-group btn-group-toggle">
+    <label [ngClass]="'btn btn-primary' + (tier.isSelected ? ' active' : '')" *ngFor="let tier of filter.tires">
+      <input type="checkbox" class="checkbox-empty" autocomplete="off" [(ngModel)]="tier.isSelected">{{tier.itemName}}
+    </label>
+  </div>
+  <div class="btn-group btn-group-toggle">
+    <label [ngClass]="'btn btn-primary' + (vehicleType.isSelected ? ' active' : '')" *ngFor="let vehicleType of filter.vehicleTypes">
+      <input type="checkbox" class="checkbox-empty" autocomplete="off" [(ngModel)]="vehicleType.isSelected"><img [ngClass]="'tank-type-' + vehicleType.itemName" />
+    </label>
+  </div>
+  <div class="btn-group btn-group-toggle">
+    <label [ngClass]="'btn btn-primary' + (nation.isSelected ? ' active' : '')" *ngFor="let nation of filter.nations">
+      <input type="checkbox" class="checkbox-empty" autocomplete="off" [(ngModel)]="nation.isSelected"><img [ngClass]="'flag-' + nation.itemName" />
+    </label>
+  </div>
+  <div class="btn-group btn-group-toggle">
+    <label [ngClass]="'btn btn-primary' + (filter.inGarage ? ' active' : '')">
+      <input type="checkbox" autocomplete="off" [(ngModel)]="filter.inGarage" class="checkbox-empty"><span class="glyphicon glyphicon-home"></span>
+    </label>
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon">Min battles</span>
+    <input type="text" class="form-control" id="minBattles" [(ngModel)]="filter.minBattles" placeholder="100">
+  </div>
+
+    {{filter|json}}
+  </div>
+<div class="tanks-table">
   <table class="table">
     <thead>
       <tr>
