@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 export class AccountTanksFilter {
   accountId: number;
   inGarage: boolean;
@@ -7,16 +8,74 @@ export class AccountTanksFilter {
   dataFrom: Date;
   minBattles: number;
 
-  constructor() {
+  constructor(private datePipe: DatePipe) {
     this.fillNations();
     this.fillTires();
     this.fillVehicleTypes();
   }
 
+  /*
+  api/TanksInfo(90277267)?$filter=TankInGarage eq true
+  api/TanksInfo(90277267)?$filter=VehicleTier in (8, 9) and VehicleType in ('heavyTank')
+  api/TanksInfo(90277267)?$filter=VehicleType in ('heavyTank', 'mediumTank')
+  api/TanksInfo(90277267)?$filter=VehicleNation in ('ussr')
+  api/TanksInfo(90277267)?$filter=TankBattles gt 100
+  api/TanksInfo(90277267)?$filter=TankLastBattleTime gt 2018-09-04T00:00:00.00Z
+  */
   getFilterQuery(): string {
-    return 'api/TanksInfo(' + this.accountId + ')?$filter=TankInGarage eq ' + this.inGarage;
-  }
+    let query = 'api/TanksInfo(' + this.accountId + ')';
+    let filters: string[] = new Array();
+    if (this.inGarage) {
+      filters.push('TankInGarage eq true');
+    }
 
+    if (this.tires.some(t => t.isSelected)) {
+      let tierQuery = 'VehicleTier in (';
+      let tiresFilterRow: string[] = new Array();
+      for (let tier of this.tires.filter(t => t.isSelected)) {
+        tiresFilterRow.push(tier.itemValue);
+      }
+      tierQuery = tierQuery.concat(tiresFilterRow.join(', '));
+      tierQuery = tierQuery.concat(')');
+      filters.push(tierQuery);
+    }
+
+    if (this.vehicleTypes.some(t => t.isSelected)) {
+      let vehicleQuery = 'VehicleType in (';
+      let vehiclesFilterRow: string[] = new Array();
+      for (let vehicle of this.vehicleTypes.filter(t => t.isSelected)) {
+        vehiclesFilterRow.push("'" + vehicle.itemValue + "'");
+      }
+      vehicleQuery = vehicleQuery.concat(vehiclesFilterRow.join(', '));
+      vehicleQuery = vehicleQuery.concat(')');
+      filters.push(vehicleQuery);
+    }
+
+    if (this.nations.some(t => t.isSelected)) {
+      let nationQuery = 'VehicleNation in (';
+      let nationsFilterRow: string[] = new Array();
+      for (let nation of this.nations.filter(t => t.isSelected)) {
+        nationsFilterRow.push("'" + nation.itemValue + "'");
+      }
+      nationQuery = nationQuery.concat(nationsFilterRow.join(', '));
+      nationQuery = nationQuery.concat(')');
+      filters.push(nationQuery);
+    }
+
+    if (this.minBattles > 0) {
+      filters.push('TankBattles gt ' + this.minBattles);
+    }
+
+    if (this.dataFrom) {
+      filters.push('TankLastBattleTime gt ' + this.datePipe.transform(this.dataFrom, 'yyyy-MM-ddTHH:mm:ss.ss') + 'Z');
+    }
+
+    if (filters.length > 0) {
+      query = query.concat('?$filter=');
+      query = query.concat(filters.join(' and '));
+    }
+    return query;
+  }
   // ToDo: Use dictionary wotb.DictionaryNation
   private fillNations() {
     this.nations = [

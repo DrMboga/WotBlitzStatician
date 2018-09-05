@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID} from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { DatePipe } from '@angular/common';
 
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
@@ -21,6 +22,7 @@ registerLocaleData(localeRu);
     ServicesModule
   ],
   providers: [
+    DatePipe,
     { provide: LOCALE_ID, useValue: 'ru' }
   ],
   bootstrap: [AppComponent]
