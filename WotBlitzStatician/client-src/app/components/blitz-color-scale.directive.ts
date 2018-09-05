@@ -18,9 +18,9 @@ export class BlitzColorScaleDirective {
       { scaleMinValue: 0.54, scaleMaxValue: 0.5599, scaleClass: "scale-very-good" },
       { scaleMinValue: 0.56, scaleMaxValue: 0.5999, scaleClass: "scale-great" },
       { scaleMinValue: 0.60, scaleMaxValue: 0.6499, scaleClass: "scale-unicum" },
-      { scaleMinValue: 0.65, scaleMaxValue: 0.1, scaleClass: "scale-super-unicum" },
+      { scaleMinValue: 0.65, scaleMaxValue: 1, scaleClass: "scale-super-unicum" },
       /*Wn7*/
-      { scaleMinValue: 0, scaleMaxValue: 500, scaleClass: "scale-very-bad" },
+      { scaleMinValue: 1.1, scaleMaxValue: 500, scaleClass: "scale-very-bad" },
       { scaleMinValue: 500, scaleMaxValue: 699, scaleClass: "scale-bad" },
       { scaleMinValue: 700, scaleMaxValue: 899, scaleClass: "scale-below-average" },
       { scaleMinValue: 900, scaleMaxValue: 1099, scaleClass: "scale-average" },

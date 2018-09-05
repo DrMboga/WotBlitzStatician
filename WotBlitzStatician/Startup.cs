@@ -12,7 +12,9 @@ using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician
 {
+  using Microsoft.AspNet.OData.Extensions;
   using Microsoft.AspNetCore.Routing;
+  using WotBlitzStatician.OdataConfiguration;
 
   public class Startup
 	{
@@ -56,10 +58,11 @@ namespace WotBlitzStatician
 			app.UseErrorHandler();
 			app.UseStaticFiles();
 			app.UseMvc(routes =>
-			  {
-			    routes.MapRoute("default", "{controller}/{action}");
-			    routes.MapRoute("Spa", "{*url}", defaults: new {controller = "Home", action = "Spa"});
-			  }
+              {
+                routes.MapRoute("default", "{controller}/{action}");
+                routes.MapODataServiceRoute("odata", "api", OdataModelsConfiguration.GetEdmModel());
+                routes.MapRoute("Spa", "{*url}", defaults: new { controller = "Home", action = "Spa" });
+              }
 			);
 		}
 	}
