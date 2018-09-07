@@ -42,5 +42,7 @@ namespace WotBlitzStatician.Data.DataAccessors
 		Task MergePresentAccountTanksInfoAsync(List<PresentAccountTanks> presentAccountTanks);
 
 		Task UpdateInnGarageInfoAsync(List<AccountTankStatistics> tanks);
-    }
+
+		Task<List<PlayerStatHistoryDto>> GetAccountStatHistory(long accountId, DateTime dateFrom);
+	}
 }

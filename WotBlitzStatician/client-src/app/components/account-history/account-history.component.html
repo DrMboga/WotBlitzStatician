@@ -1,0 +1,8 @@
+<form class="form-inline" (ngSubmit)="loadHistory()">
+  <div class="form-group">
+    <label for="dateFrom">Дата с:</label>
+    <input type="date" class="form-control" id="dateFrom" [(ngModel)]="dateFrom" [ngModelOptions]="{standalone: true}">
+  </div>
+  <button type="submit" class="btn btn-default">Показать историю</button>
+</form>
+{{accountHistory|json}}

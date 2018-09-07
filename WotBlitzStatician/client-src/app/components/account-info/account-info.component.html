@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="col-sm-3" title="Wn7">
-      <div class="info-box"  [appBlitzColorScale]="account.playerStatistics.wn7">
+      <div class="info-box" [appBlitzColorScale]="account.playerStatistics.wn7">
         <h3><small><b>Wn7</b></small> {{account.playerStatistics.wn7|number:'3.0-0'}}</h3>
       </div>
     </div>
@@ -48,6 +48,20 @@
       Танкоуровень: {{account.playerStatistics.avgTier|number:'1.2-2'}}
     </div>
   </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseHistory"  aria-expanded="false"  aria-controls="collapseHistory">
+          История
+        </button>
+      </h5>
+    </div>
+    <div id="collapseHistory" class="collapse">
+      <div class="panel-body">
+        <account-history [accountId]="account.accountId"></account-history>
+      </div>
+    </div>
+  </div>
   <div class='row'>
     <div class='col-sm-6' id="statistics">
       <table class="table">
@@ -56,7 +70,7 @@
             <table>
               <tr>
                 <td *ngFor="let mastery of account.accountMasteryInfo">
-                  <img class="mastery-image" src="{{mastery.localImage}}" title="{{mastery.description}}"/>
+                  <img class="mastery-image" src="{{mastery.localImage}}" title="{{mastery.description}}" />
                   {{mastery.tanksCount}}/{{mastery.allTanksCount}} ({{mastery.masteryTanksRatio|percent}})
                 </td>
               </tr>
