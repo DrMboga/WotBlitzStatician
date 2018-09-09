@@ -12,18 +12,20 @@ export class AccountHistoryComponent implements OnInit {
   @Input("accountId")
   public accountId: number;
   public dateFrom: Date;
-  public accountHistory: any;
+  public accountHistory: any[];
 
   constructor(private accountsInfoService: AccountInfoService) {
-    this.dateFrom = new Date();
   }
 
   ngOnInit() {
+      let now = new Date();
+      now.setMonth(now.getMonth() - 1);
+      this.dateFrom = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   }
 
   loadHistory() {
     this.accountsInfoService.getAccountStatHistory(this.accountId, this.dateFrom).subscribe(data => {
-      this.accountHistory = data;
+      this.accountHistory = data as any[];
     }, error => console.error(error));
   }
 }
