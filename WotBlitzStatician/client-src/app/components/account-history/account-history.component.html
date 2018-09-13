@@ -5,5 +5,115 @@
   </div>
   <button type="submit" class="btn btn-default">Показать историю</button>
 </form>
-{{dateFrom}}
-{{accountHistory|json}}
+<div class="row">
+  <div class="col-sm-6" id="historyWinRateChart">
+    <div *ngIf="winRateChart">
+      <canvas id="winRateCanvas">{{ winRateChart }}</canvas>
+    </div>
+  </div>
+  <div class="col-sm-6" id="historyWn7Chart">
+    <div *ngIf="wn7Chart">
+      <canvas id="wn7Canvas">{{ wn7Chart }}</canvas>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6" id="historyAvgDamageChart">
+    <div *ngIf="avgDamageChart">
+      <canvas id="avgDmgCanvas">{{ avgDamageChart }}</canvas>
+    </div>
+  </div>
+  <div class="col-sm-6" id="historyXpChart">
+    <div *ngIf="avgXpChart">
+      <canvas id="avgXpCanvas">{{ avgXpChart }}</canvas>
+    </div>
+  </div>
+</div>
+<div class="row" id="historyTable">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          <span class='glyphicon glyphicon-time'></span>
+        </th>
+        <th>
+          <span class='glyphicon glyphicon-flash'></span>
+        </th>
+        <th>
+          <span class='glyphicon glyphicon-flag'></span>
+        </th>
+        <th>
+          Wn7
+        </th>
+        <th>
+          <span class='glyphicon glyphicon-screenshot'></span>
+        </th>
+        <th>
+          <span class='glyphicon glyphicon-star-empty'></span>
+        </th>
+        <th>
+          <span class='glyphicon glyphicon-heart-empty'></span>
+        </th>
+        <th>
+          C
+        </th>
+        <th>
+          G
+        </th>
+        <th>
+          <span class='glyphicon glyphicon-star'></span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ac of accountHistory">
+        <td>
+          {{ac.updatedAt|date:"short"}}
+        </td>
+        <td>
+          {{ac.battles|number}} <small class="positive-diff">+{{ac.battlesDiff}}</small>
+        </td>
+        <td>
+          {{ac.winRate|percent:'2.2-2'}} <small [ngClass]="{'positive-diff': ac.winRateDiff >= 0, 'negative-diff': ac.winRateDiff < 0}">
+            <span *ngIf="ac.winRateDiff > 0">+</span>{{ac.winRateDiff|percent:'2.2-2'}}
+          </small>
+        </td>
+        <td>
+          {{ac.wn7|number:'3.0-0'}} <small [ngClass]="{'positive-diff': ac.wn7Diff >= 0, 'negative-diff': ac.wn7Diff < 0}">
+            <span *ngIf="ac.wn7Diff > 0">+</span>{{ac.wn7Diff}}
+          </small>
+        </td>
+        <td>
+          {{ac.avgDamage|number:'3.0-0'}} <small [ngClass]="{'positive-diff': ac.avgDamageDiff >= 0, 'negative-diff': ac.avgDamageDiff < 0}">
+            <span *ngIf="ac.avgDamageDiff > 0">+</span>{{ac.avgDamageDiff}}
+          </small>
+        </td>
+        <td>
+          {{ac.avgXp|number:'3.0-0'}} <small [ngClass]="{'positive-diff': ac.avgXpDiff >= 0, 'negative-diff': ac.avgXpDiff < 0}">
+            <span *ngIf="ac.avgXpDiff > 0">+</span>{{ac.avgXpDiff}}
+          </small>
+        </td>
+        <td>
+          {{ac.survivalRate|percent:'2.2-2'}} <small [ngClass]="{'positive-diff': ac.survivalRateDiff >= 0, 'negative-diff': ac.survivalRateDiff < 0}">
+            <span *ngIf="ac.survivalRateDiff > 0">+</span>{{ac.survivalRateDiff|percent:'2.2-2'}}
+          </small>
+        </td>
+        <td>
+          {{ac.credits|number}} <small [ngClass]="{'positive-diff': ac.creditsDiff >= 0, 'negative-diff': ac.creditsDiff < 0}">
+            <span *ngIf="ac.creditsDiff > 0">+</span>{{ac.creditsDiff|number}}
+          </small>
+        </td>
+        <td>
+          {{ac.gold|number}} <small [ngClass]="{'positive-diff': ac.goldDiff >= 0, 'negative-diff': ac.goldDiff < 0}">
+              <span *ngIf="ac.goldDiff > 0">+</span>{{ac.goldDiff|number}}
+            </small>
+        </td>
+        <td>
+          {{ac.freeXp|number}} <small [ngClass]="{'positive-diff': ac.freeXpDiff >= 0, 'negative-diff': ac.freeXpDiff < 0}">
+            <span *ngIf="ac.freeXpDiff > 0">+</span>{{ac.freeXpDiff|number}}
+          </small>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,58 +1,34 @@
-<form class="form-horizontal" (ngSubmit)="queryData()">
-  <div class="form-group row">
-    <label for="tiersToggle" class="col-sm-2 col-form-label">Уровни</label>
-    <div class="col-sm-8">
-      <div class="btn-group btn-group-toggle" id="tiersToggle">
-        <label [ngClass]="'btn btn-primary' + (tier.isSelected ? ' active' : '')" *ngFor="let tier of filter.tires">
-          <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="tier.isSelected">{{tier.itemName}}
-        </label>
-      </div>
+<form (ngSubmit)="queryData()">
+  <div class="form-row form-inline">
+    <div class="btn-group btn-group-toggle" id="tiersToggle" title="Уровни танков">
+      <label [ngClass]="'btn btn-primary' + (tier.isSelected ? ' active' : '')" *ngFor="let tier of filter.tires">
+        <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="tier.isSelected">{{tier.itemName}}
+      </label>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="vehicleTypesToggle" class="col-sm-2 col-form-label">Техника</label>
-    <div class="col-sm-8">
-      <div class="btn-group btn-group-toggle" id="vehicleTypesToggle">
-        <label [ngClass]="'btn btn-primary' + (vehicleType.isSelected ? ' active' : '')" *ngFor="let vehicleType of filter.vehicleTypes">
-          <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="vehicleType.isSelected"><img [ngClass]="'tank-type-' + vehicleType.itemName" />
-        </label>
-      </div>
+    <div class="btn-group btn-group-toggle" id="inGarageToggle" title="В гараже">
+      <label [ngClass]="'btn btn-primary' + (filter.inGarage ? ' active' : '')">
+        <input type="checkbox" [ngModelOptions]="{standalone: true}" autocomplete="off" [(ngModel)]="filter.inGarage" class="checkbox-empty"><span class="glyphicon glyphicon-home"></span>
+      </label>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="nationsToggle" class="col-sm-2 col-form-label">Нации</label>
-    <div class="col-sm-8">
-      <div class="btn-group btn-group-toggle" id="nationsToggle">
-        <label [ngClass]="'btn btn-primary' + (nation.isSelected ? ' active' : '')" *ngFor="let nation of filter.nations">
-          <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="nation.isSelected"><img [ngClass]="'flag-' + nation.itemName" />
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inGarageToggle" class="col-sm-2 col-form-label">Ангар</label>
-    <div class="col-sm-8">
-      <div class="btn-group btn-group-toggle" id="inGarageToggle">
-        <label [ngClass]="'btn btn-primary' + (filter.inGarage ? ' active' : '')">
-          <input type="checkbox" [ngModelOptions]="{standalone: true}" autocomplete="off" [(ngModel)]="filter.inGarage" class="checkbox-empty"><span class="glyphicon glyphicon-home"></span>
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="minBattles" class="col-sm-2 col-form-label">Боев с</label>
-    <div class="col-sm-8">
+    <div class="input-group mb-2 mr-sm-2" title="Боев >">
       <input type="number" [ngModelOptions]="{standalone: true}" class="form-control" id="minBattles" [(ngModel)]="filter.minBattles" placeholder="100">
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="dateFrom" class="col-sm-2 col-form-label">Период с</label>
-    <div class="col-sm-8">
+    <div class="input-group mb-2 mr-sm-2" title="Последний бой с:">
       <input type="date" [ngModelOptions]="{standalone: true}" class="form-control" id="dateFrom" [(ngModel)]="filter.dataFrom">
     </div>
   </div>
-  <div class="form-group row">
-    <button class="btn btn-default" type="submit">
+  <div class="form-row">
+    <div class="btn-group btn-group-toggle" id="vehicleTypesToggle" title="Типы танков">
+      <label [ngClass]="'btn btn-primary' + (vehicleType.isSelected ? ' active' : '')" *ngFor="let vehicleType of filter.vehicleTypes">
+        <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="vehicleType.isSelected"><img [ngClass]="'tank-type-' + vehicleType.itemName" />
+      </label>
+    </div>
+    <div class="btn-group btn-group-toggle" id="nationsToggle" title="Нации">
+      <label [ngClass]="'btn btn-primary' + (nation.isSelected ? ' active' : '')" *ngFor="let nation of filter.nations">
+        <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="nation.isSelected"><img [ngClass]="'flag-' + nation.itemName" />
+      </label>
+    </div>
+    <button class="btn btn-default" type="submit" title="Применить фильтр">
       <i class="glyphicon glyphicon-search"></i>
     </button>
   </div>
@@ -100,6 +76,11 @@
           <span *ngIf="sortColumn == 'AvgDamage' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
           <span *ngIf="sortColumn == 'AvgDamage' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
         </th>
+        <th (click)="sortColumn = 'SurvivalRate'; sortAscending = !sortAscending; sortTanks();">
+          <span class='glyphicon glyphicon-heart-empty'></span>
+          <span *ngIf="sortColumn == 'SurvivalRate' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+          <span *ngIf="sortColumn == 'SurvivalRate' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>
         <th (click)="sortColumn = 'AvgXp'; sortAscending = !sortAscending; sortTanks();">
           <span class='glyphicon glyphicon-star-empty'></span>
           <span *ngIf="sortColumn == 'AvgXp' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
@@ -127,6 +108,7 @@
         <td [appBlitzColorScale]="tank.TankWn7">{{tank.TankWn7|number:'3.0-0'}}</td>
         <td>{{tank.AvgDamage|number:'3.0-0'}}</td>
         <td>{{tank.AvgXp|number:'3.0-0'}}</td>
+        <td>{{tank.SurvivalRate|percent:'2.2-2'}}</td>
         <td>{{tank.TankLastBattleTime|date:"short"}}</td>
         <td><span *ngIf="tank.TankInGarage" class="glyphicon glyphicon-home"></span></td>
       </tr>
@@ -142,6 +124,7 @@
         <th [appBlitzColorScale]="tableFooter.avgWn7">{{tableFooter.avgWn7|number:'3.0-0'}}</th>
         <th>{{tableFooter.avgDamage|number:'3.0-0'}}</th>
         <th>{{tableFooter.avgXp|number:'3.0-0'}}</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>

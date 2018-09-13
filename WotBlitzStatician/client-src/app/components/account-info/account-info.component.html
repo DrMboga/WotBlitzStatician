@@ -98,6 +98,10 @@
           <td>{{account.playerStatistics.maxXp|number}} - {{account.playerStatistics.maxXpTankInfo}}</td>
         </tr>
         <tr>
+          <th>Выжил <span class='glyphicon glyphicon-heart-empty'></span>:</th>
+          <td>{{account.playerStatistics.survivalRate|percent:'2.2-2'}}</td>
+        </tr>
+        <tr>
           <th>Золото: </th>
           <td>{{account.playerStatistics.gold|number}}</td>
         </tr>
