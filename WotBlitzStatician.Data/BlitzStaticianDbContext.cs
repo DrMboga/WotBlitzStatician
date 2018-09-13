@@ -78,6 +78,7 @@ namespace WotBlitzStatician.Data
 			modelBuilder.Query<AchievementDto>().ToTable("DummyAchievemntsView");
 			modelBuilder.Query<AccountMasteryInfoDto>().ToTable("DummyAccountMasteryView")
 				.Ignore(m => m.AllTanksCount);
+			modelBuilder.Query<PlayerStatHistoryDto>().ToTable("DummyPlayerStatHistoryView");
 		}
 	}
 }

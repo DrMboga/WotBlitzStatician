@@ -71,5 +71,13 @@ namespace WotBlitzStatician.Controllers
 
       return Ok(account);
     }
+
+    // api/AccountInfo/AccountStatHistory/90277267?dateFrom=2018-08-07
+    [HttpGet("AccountStatHistory/{accountId}")]
+    public async Task<IActionResult> GetAccountStatHistory(long accountId, [FromQuery] DateTime dateFrom)
+    {
+      var playerHistory = await _accountDataAccessor.GetAccountStatHistory(accountId, dateFrom);
+      return Ok(playerHistory);
+    }
   }
 }
