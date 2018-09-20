@@ -31,7 +31,7 @@ export class AccountInfoService {
 
     getAccountStatHistory(accountId: number, dateFrom: Date): Observable<any> {
         let datefromString = this.datePipe.transform(dateFrom, 'yyyy-MM-dd');
-        return this.http.get(`${this.baseUrl}/api/AccountInfo/AccountStatHistory/${accountId}?dateFrom=${datefromString}`)
+        return this.http.get(`${this.baseUrl}api/AccountInfo/AccountStatHistory/${accountId}?dateFrom=${datefromString}`)
       .map(response => response.json());
   }
 
