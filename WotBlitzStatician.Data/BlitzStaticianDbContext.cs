@@ -75,10 +75,10 @@ namespace WotBlitzStatician.Data
 			modelBuilder.Entity<PresentAccountTanks>(PresentAccountTanksTypeConfiguration.Configure);
 			modelBuilder.Entity<AccountInfoTankAchievement>(TankAchievementTypeConfiguration.Configure);
 
-			modelBuilder.Query<AchievementDto>().ToTable("DummyAchievemntsView");
-			modelBuilder.Query<AccountMasteryInfoDto>().ToTable("DummyAccountMasteryView")
+			modelBuilder.Query<AchievementDto>().ToView("DummyAchievemntsView");
+			modelBuilder.Query<AccountMasteryInfoDto>().ToView("DummyAccountMasteryView")
 				.Ignore(m => m.AllTanksCount);
-			modelBuilder.Query<PlayerStatHistoryDto>().ToTable("DummyPlayerStatHistoryView");
+			modelBuilder.Query<PlayerStatHistoryDto>().ToView("DummyPlayerStatHistoryView");
 		}
 	}
 }

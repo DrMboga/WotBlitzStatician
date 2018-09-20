@@ -31,6 +31,7 @@ obj/
 npm-debug.log
 yarn-error.log
 testem.log
+package-lock.json
 /WotBlitzStatician/typings
 /WotBlitzStatician/wwwroot
 

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
 	<TypeScriptCompilerBlocked>true</TypeScriptCompilerBlocked>
   </PropertyGroup>
 
@@ -11,11 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.0.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
-    <PackageReference Include="NLog" Version="4.5.0-rc04" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />
+    <PackageReference Include="NLog" Version="4.5.10" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,8 +30,8 @@
     </Content>
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="ng build — aot --delete-output-path=false" />
-  </Target>
+<!--   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="ng build —*-aot -*-delete-output-path=false" />
+  </Target> -->
 
 </Project>
