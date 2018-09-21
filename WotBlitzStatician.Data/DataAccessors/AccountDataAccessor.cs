@@ -14,11 +14,11 @@ namespace WotBlitzStatician.Data.DataAccessors
 	public class AccountDataAccessor : IAccountDataAccessor
 	{
 		private readonly BlitzStaticianDbContext _dbContext;
-		private readonly IMapper<AccountInfoStatistics, PlayerStatDto> _playerStatMapper;
+		private readonly IQueryableMapper<AccountInfoStatistics, PlayerStatDto> _playerStatMapper;
 
 		public AccountDataAccessor(
 			BlitzStaticianDbContext dbContext,
-			IMapper<AccountInfoStatistics, PlayerStatDto> playerStatMapper
+			IQueryableMapper<AccountInfoStatistics, PlayerStatDto> playerStatMapper
 			)
 		{
 			_dbContext = dbContext;
@@ -48,24 +48,17 @@ namespace WotBlitzStatician.Data.DataAccessors
 				return null;
 			}				
 
-			var statistics = await _dbContext.AccountInfoStatistics
+			var statistics = await _playerStatMapper.ProjectTo(
+			 _dbContext.AccountInfoStatistics
 				.Include(s => s.AccountInfoPrivate)
 				.OrderByDescending(s => s.UpdatedAt)
 				.Where(s => s.AccountId == accountId)
-				.Take(1)
+				.Take(1))
 				.FirstOrDefaultAsync();
 
-			accountInfo.PlayerStatistics = _playerStatMapper.Map(statistics);
+			accountInfo.PlayerStatistics = statistics;
 				
 			return accountInfo;
-		}
-
-		public async Task<AccountClanInfo> GetAccountClanAsync(long accountId)
-		{
-			return await _dbContext.AccountClanInfo
-							.AsNoTracking()
-							.Where(a => a.AccountId == accountId)
-							.FirstOrDefaultAsync();
 		}
 
 		public async Task<List<AccountTankStatistics>> GetActualTanksAsync(long accountId)

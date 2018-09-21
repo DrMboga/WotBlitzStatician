@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WotBlitzStatician.Model;
 using WotBlitzStatician.Model.Dto;
 
 namespace WotBlitzStatician.Data.DataAccessors
@@ -38,5 +39,14 @@ namespace WotBlitzStatician.Data.DataAccessors
 				.Select(j => j.ClanInfo)
 				.FirstOrDefaultAsync();
 		}
+
+		public async Task<AccountClanInfo> GetAccountClanAsync(long accountId)
+		{
+			return await _dbContext.AccountClanInfo
+							.AsNoTracking()
+							.Where(a => a.AccountId == accountId)
+							.FirstOrDefaultAsync();
+		}
+
 	}
 }

@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using System;
+using System.Linq;
 using WotBlitzStatician.Model;
 using WotBlitzStatician.Model.Dto;
 using WotBlitzStatician.Model.MapperLogic;
 
 namespace WotBlitzStatician.Data.Mappers
 {
-	public class PlayerStatisticsDtoMapper : IMapper<AccountInfoStatistics, PlayerStatDto>
+	public class PlayerStatisticsDtoMapper : IQueryableMapper<AccountInfoStatistics, PlayerStatDto>
 	{
 		private readonly IMapper _mapper;
 
@@ -41,6 +43,11 @@ namespace WotBlitzStatician.Data.Mappers
 				));
 		}
 
+        public IQueryable<PlayerStatDto> ProjectTo(IQueryable<AccountInfoStatistics> source)
+        {
+			return source.ProjectTo<PlayerStatDto>(_mapper.ConfigurationProvider);
+        }
+
 		public PlayerStatDto Map(AccountInfoStatistics source)
 		{
 			return _mapper.Map<AccountInfoStatistics, PlayerStatDto>(source);
@@ -50,5 +57,5 @@ namespace WotBlitzStatician.Data.Mappers
 		{
 			return _mapper.Map(source, destination);
 		}
-	}
+    }
 }
