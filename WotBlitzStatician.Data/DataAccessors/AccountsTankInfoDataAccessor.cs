@@ -70,6 +70,44 @@ GROUP BY ats.MarkOfMastery, md.[Image], md.[Description]
 			return accountMasteryInfo;
 		}
 
+        public async Task<List<AccountTankInfoDto>> GetAllTanksByAchievement(long accountId, string achievementId)
+        {
+			var masteryImages = GetMasteryImages();
+			var mapper = new AccountTanksInfoDtoMapper(masteryImages);
+
+			return await mapper.ProjectTo(
+				_dbContext.PresentAccountTanks.AsNoTracking()
+				.Join(_dbContext.AccountTankStatistics.AsNoTracking(), pt => pt.AccountTankStatisticId,
+					ts => ts.AccountTankStatisticId, (pt, st) => st)
+				.Join(_dbContext.VehicleEncyclopedia.AsNoTracking(), st => st.TankId, v => v.TankId,
+					(st, v) => new { AccountTankStatistic = st, VehicleInfo = v })
+				.Join(_dbContext.AccountInfoTankAchievement.AsNoTracking(), 
+					j => new {j.AccountTankStatistic.AccountId, j.AccountTankStatistic.TankId},
+					a => new {a.AccountId, a.TankId},
+					(l, r) => new {l.AccountTankStatistic, l.VehicleInfo, r.AchievementId})
+				.Where(j => j.AccountTankStatistic.AccountId == accountId && j.AchievementId == achievementId)
+				.Select(j => new AccountTanksStatisticsTuple { Tank = j.AccountTankStatistic, Vehicle = j.VehicleInfo })
+				)
+				.ToListAsync();
+        }
+
+        public async Task<List<AccountTankInfoDto>> GetAllTanksByMastery(long accountId, MarkOfMastery markOfMastery)
+        {
+			var masteryImages = GetMasteryImages();
+			var mapper = new AccountTanksInfoDtoMapper(masteryImages);
+
+			return await mapper.ProjectTo(
+				_dbContext.PresentAccountTanks.AsNoTracking()
+				.Join(_dbContext.AccountTankStatistics.AsNoTracking(), pt => pt.AccountTankStatisticId,
+					ts => ts.AccountTankStatisticId, (pt, st) => st)
+				.Join(_dbContext.VehicleEncyclopedia.AsNoTracking(), st => st.TankId, v => v.TankId,
+					(st, v) => new { AccountTankStatistic = st, VehicleInfo = v })
+				.Where(j => j.AccountTankStatistic.AccountId == accountId && j.AccountTankStatistic.MarkOfMastery == markOfMastery)
+				.Select(j => new AccountTanksStatisticsTuple { Tank = j.AccountTankStatistic, Vehicle = j.VehicleInfo })
+				)
+				.ToListAsync();
+        }
+
 		public IQueryable<AccountTankInfoDto> GetTanksInfoQuery(long accountId)
 		{
 			var masteryImages = GetMasteryImages();
@@ -102,6 +140,5 @@ GROUP BY ats.MarkOfMastery, md.[Image], md.[Description]
 
 			return imagesDic;
 		}
-
-	}
+    }
 }
