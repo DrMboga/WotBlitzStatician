@@ -41,6 +41,10 @@ export class AccountAchievementsComponent implements OnInit {
   }
 
   getTanksByAchievement() {
+    if(this.clickedAchievement.isAchievementOption){
+      this.tanksByAchievement = null;
+      return;
+    }
     this.accountsInfoService.getTanksByAchievement(this.accountId, this.clickedAchievement.achievementId)
     .subscribe(data => {this.tanksByAchievement = data as any[]}, error => console.error(error));
   }

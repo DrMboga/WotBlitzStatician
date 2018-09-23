@@ -13,6 +13,6 @@ namespace WotBlitzStatician.Model.Dto
 		public int Count { get; set; }
 		public string Image { get; set; }
 		public string LocalImage => Image.MakeImagePathLocal();
-
+		public bool IsAchievementOption{ get; set; }
 	}
 }

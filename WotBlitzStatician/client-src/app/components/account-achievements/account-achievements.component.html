@@ -14,26 +14,32 @@
         data-toggle="modal" data-target="#exampleModalCenter"
         (click)="clickedAchievement = platoon; getTanksByAchievement();">
         <img src="{{platoon.localImage}}" title="{{platoon.name}}&#13;{{platoon.description}}" /><br />
-        {{platoon.count}}
+        <span *ngIf="platoon.isAchievementOption===false">{{platoon.count}}</span>
       </div>
     </div>
     <div class="row" *ngIf="battleAchievements.length > 0">
       <h4>{{battleAchievements[0].sectionName}}</h4>
-      <div *ngFor="let battle of battleAchievements" class="column">
+      <div *ngFor="let battle of battleAchievements" class="column"
+        data-toggle="modal" data-target="#exampleModalCenter"
+        (click)="clickedAchievement = battle; getTanksByAchievement();">
         <img src="{{battle.localImage}}" title="{{battle.name}}&#13;{{battle.description}}" /><br />
         {{battle.count}}
       </div>
     </div>
     <div class="row" *ngIf="titleAchievements.length > 0">
       <h4>{{titleAchievements[0].sectionName}}</h4>
-      <div *ngFor="let title of titleAchievements" class="column">
+      <div *ngFor="let title of titleAchievements" class="column"
+        data-toggle="modal" data-target="#exampleModalCenter"
+        (click)="clickedAchievement = title; getTanksByAchievement();">
         <img src="{{title.localImage}}" title="{{title.name}}&#13;{{title.description}}" /><br />
         {{title.count}}
       </div>
     </div>
     <div class="row" *ngIf="commemorativeAchievements.length > 0">
       <h4>{{commemorativeAchievements[0].sectionName}}</h4>
-      <div *ngFor="let com of commemorativeAchievements" class="column">
+      <div *ngFor="let com of commemorativeAchievements" class="column"
+        data-toggle="modal" data-target="#exampleModalCenter"
+        (click)="clickedAchievement = com; getTanksByAchievement();">
         <img src="{{com.localImage}}" title="{{com.name}}&#13;{{com.description}}" /><br />
         {{com.count}}
       </div>
@@ -42,7 +48,7 @@
       <h4>{{stepAchievements[0].sectionName}}</h4>
       <div *ngFor="let step of stepAchievements" class="column">
         <img src="{{step.localImage}}" title="{{step.name}}&#13;{{step.description}}" /><br />
-        {{step.count}}
+        <span *ngIf="step.isAchievementOption===false">{{step.count}}</span>
       </div>
     </div>
 </div>
@@ -60,10 +66,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <img src="img/uploaded/vehicles/hd_thumbnail/E-100.png" /><br/>
-          {{accountId}}; {{clickedAchievement.achievementId}}
-          <div *ngFor="let tank of tanksByAchievement">{{tank.vehicleName}}</div>
-          ToDo: Create new tanks list item component and iterate it here!
+          <tank-card *ngFor="let tank of tanksByAchievement" [tankInfo]="tank"></tank-card>
         </div>
         <div class="modal-footer">
         </div>
