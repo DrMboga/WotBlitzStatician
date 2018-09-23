@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AccountInfoService } from '../../services/account-info.service';
 
 @Component({
   selector: 'account-achievements',
@@ -9,6 +10,8 @@ export class AccountAchievementsComponent implements OnInit {
 
   @Input("achievements")
   public achievements: any[];
+  @Input("accountId")
+  public accountId: number;
 
   public battleAchievements: any[];
   public epicAchievements: any[];
@@ -17,8 +20,10 @@ export class AccountAchievementsComponent implements OnInit {
   public commemorativeAchievements: any[];
   public stepAchievements: any[];
 
+  public clickedAchievement: any;
+  public tanksByAchievement: any[];
 
-  constructor() { }
+  constructor(private accountsInfoService: AccountInfoService) { }
 
   ngOnInit() {
     this.battleAchievements = this.achievements.filter(
@@ -33,7 +38,10 @@ export class AccountAchievementsComponent implements OnInit {
       achievement => achievement.section === 'commemorative');
     this.stepAchievements = this.achievements.filter(
       achievement => achievement.section === 'step');
-
   }
 
+  getTanksByAchievement() {
+    this.accountsInfoService.getTanksByAchievement(this.accountId, this.clickedAchievement.achievementId)
+    .subscribe(data => {this.tanksByAchievement = data as any[]}, error => console.error(error));
+  }
 }

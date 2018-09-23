@@ -1,14 +1,18 @@
 <div class="container-fluid">
     <div class="row" *ngIf="epicAchievements.length > 0">
       <h4>{{epicAchievements[0].sectionName}}</h4>
-      <div *ngFor="let epic of epicAchievements" class="column">
+      <div *ngFor="let epic of epicAchievements" class="column"
+          data-toggle="modal" data-target="#exampleModalCenter"
+          (click)="clickedAchievement = epic; getTanksByAchievement();">
         <img src="{{epic.localImage}}" title="{{epic.name}}&#13;{{epic.description}}" /><br />
         {{epic.count}}
       </div>
     </div>
     <div class="row" *ngIf="platoonAchievements.length > 0">
       <h4>{{platoonAchievements[0].sectionName}}</h4>
-      <div *ngFor="let platoon of platoonAchievements" class="column">
+      <div *ngFor="let platoon of platoonAchievements" class="column"
+        data-toggle="modal" data-target="#exampleModalCenter"
+        (click)="clickedAchievement = platoon; getTanksByAchievement();">
         <img src="{{platoon.localImage}}" title="{{platoon.name}}&#13;{{platoon.description}}" /><br />
         {{platoon.count}}
       </div>
@@ -42,3 +46,27 @@
       </div>
     </div>
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" 
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="{{clickedAchievement.localImage}}" title="{{clickedAchievement.name}}&#13;{{clickedAchievement.description}}" />
+          {{clickedAchievement.name}}:
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="img/uploaded/vehicles/hd_thumbnail/E-100.png" /><br/>
+          {{accountId}}; {{clickedAchievement.achievementId}}
+          <div *ngFor="let tank of tanksByAchievement">{{tank.vehicleName}}</div>
+          ToDo: Create new tanks list item component and iterate it here!
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
