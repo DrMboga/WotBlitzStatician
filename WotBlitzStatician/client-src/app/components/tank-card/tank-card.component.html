@@ -1,3 +1,32 @@
-<div>
-    {{tankInfo.vehicleName}}
+<div class="row tank-card-stat-item">
+    <img [ngClass]="'flag-' + tankInfo.vehicleNation" />
+    <img [ngClass]="'tank-type-' + tankInfo.vehicleType + (tankInfo.vehicleIsPremium ? '-prem' : '')" />
+    <b>{{tankInfo.tankTierRoman}}</b>
+    <img *ngIf="tankInfo.masteryLocalImage" src="{{tankInfo.masteryLocalImage}}" class="mastery-image" />
+    <b>{{tankInfo.vehicleName}}</b>
+</div>
+<div class="row">
+    <div class="col-sm-5">
+        <img src="{{tankInfo.previewLocalImage}}" width="100%" />
+    </div>
+    <div class="col-sm-6">
+        <div class="tank-card-stat-item">
+            <span class='glyphicon glyphicon-flash'></span> {{tankInfo.tankBattles|number}}
+        </div>
+        <div class="tank-card-stat-item" [appBlitzColorScale]="tankInfo.winRate">
+            <span class='glyphicon glyphicon-flag'></span> {{tankInfo.winRate|percent:'2.2-2'}}
+        </div>
+        <div class="tank-card-stat-item" [appBlitzColorScale]="tankInfo.tankWn7">
+            Wn7 {{tankInfo.tankWn7|number:'3.0-0'}}
+        </div>
+        <div class="tank-card-stat-item">
+            <span class='glyphicon glyphicon-screenshot'></span> {{tankInfo.avgDamage|number:'3.0-0'}}
+        </div>
+        <div class="tank-card-stat-item">
+            <span class='glyphicon glyphicon-star-empty'></span> {{tankInfo.avgXp|number:'3.0-0'}}
+        </div>
+        <div class="tank-card-stat-item">
+            <span class='glyphicon glyphicon-heart-empty'></span> {{tankInfo.survivalRate|percent:'2.2-2'}}
+        </div>
+    </div>
 </div>
