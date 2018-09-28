@@ -7,3 +7,9 @@
     font-size: large;
     text-align: left;
 }
+
+.fixed_sixe_auto-margin {
+    margin-right:auto;
+    margin-left:auto;
+    width: 370px;
+  }
