@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
 	<TypeScriptCompilerBlocked>true</TypeScriptCompilerBlocked>
+  <UserSecretsId>BlitzStatician-122-33-44-55</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

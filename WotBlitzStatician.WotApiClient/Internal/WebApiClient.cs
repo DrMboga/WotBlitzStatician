@@ -27,10 +27,12 @@
 			var handler = new HttpClientHandler();
 			if (_proxySettings.UseProxy)
 			{
-				handler.DefaultProxyCredentials = new NetworkCredential(
+				var proxy = new WebProxy(_proxySettings.ProxyAddress, true);
+				proxy.Credentials = new NetworkCredential(
 					_proxySettings.User,
 					_proxySettings.PwdHash.DecryptString(Guid),
 					_proxySettings.Domain);
+				handler.Proxy = proxy;
 			}
 
 			using (handler)
