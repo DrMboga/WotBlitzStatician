@@ -8,10 +8,15 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 	public class CreateAccountClanHistoryOperation : IStatisticsCollectorOperation
 	{
 		private readonly IAccountDataAccessor _accountDataAccessor;
+		private readonly IClanInfoDataAccessor _clanInfoDataAccessor;
 
-		public CreateAccountClanHistoryOperation(IAccountDataAccessor accountDataAccessor)
+		public CreateAccountClanHistoryOperation(
+			IAccountDataAccessor accountDataAccessor,
+			IClanInfoDataAccessor clanInfoDataAccessor
+			)
 		{
 			_accountDataAccessor = accountDataAccessor;
+			_clanInfoDataAccessor = clanInfoDataAccessor;
 		}
 
 		public async Task Execute(StatisticsCollectorOperationContext operationContext)
@@ -19,7 +24,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 			foreach (var accountInfo in operationContext.Accounts)
 			{
 				accountInfo.AccountClanHistory = null;
-				var existingAccountClanInfo = await _accountDataAccessor
+				var existingAccountClanInfo = await _clanInfoDataAccessor
 					.GetAccountClanAsync(accountInfo.CurrentAccountInfo.AccountId);
 
 				if(existingAccountClanInfo == null && 

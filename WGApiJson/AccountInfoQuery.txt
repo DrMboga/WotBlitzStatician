@@ -1,1 +1,0 @@
-https://api.wotblitz.ru/wotb/account/info/?application_id=adc1387489cf9fc8d9a1d85dbd27763d&account_id=46512100&access_token=c473efefe668be30dbca625562f637b9798aac43&extra=private.grouped_contacts&language=ru

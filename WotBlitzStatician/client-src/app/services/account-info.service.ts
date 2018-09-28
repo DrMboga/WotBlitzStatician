@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { Http } from '@angular/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 
@@ -10,29 +10,40 @@ import { AccountInfo } from '../model/account-info';
 export class AccountInfoService {
 
     constructor(
-        private http: Http,
+        private http: HttpClient,
         @Inject('BASE_URL') private baseUrl: string,
         private datePipe: DatePipe) {
     }
 
   getAccounts(): Observable<AccountInfo[]> {
-    return this.http.get(`${this.baseUrl}api/AccountInfo`).map(response => response.json());
+    return this.http.get<AccountInfo[]>(`${this.baseUrl}api/AccountInfo`);
   }
 
   getAccount(accountId: number): Observable<AccountInfo> {
-    return this.http.get(`${this.baseUrl}api/AccountInfo/${accountId}`)
-      .map(response => response.json());
+    return this.http.get<AccountInfo>(`${this.baseUrl}api/AccountInfo/${accountId}`);
   }
 
   getDataByQuery(dataQuery: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}${dataQuery}`)
-      .map(response => response.json());
+    return this.http.get<any>(`${this.baseUrl}${dataQuery}`);
   }
 
-    getAccountStatHistory(accountId: number, dateFrom: Date): Observable<any> {
+  getAccountStatHistory(accountId: number, dateFrom: Date): Observable<any> {
         let datefromString = this.datePipe.transform(dateFrom, 'yyyy-MM-dd');
-        return this.http.get(`${this.baseUrl}/api/AccountInfo/AccountStatHistory/${accountId}?dateFrom=${datefromString}`)
-      .map(response => response.json());
+        let params = new HttpParams()
+          .set('dateFrom', datefromString)
+        return this.http.get<any>(`${this.baseUrl}api/AccountInfo/AccountStatHistory/${accountId}`, { params });
+  }
+
+  getTanksByAchievement(accountId: number, achievementId: string): Observable<any> {
+    let params = new HttpParams()
+      .set('achievementId', achievementId)
+    return this.http.get<any>(`${this.baseUrl}api/TanksStat/TanksByAchievement/${accountId}`, { params });
+  }
+
+  getTanksByMastery(accountId: number, rankOfMastery: string): Observable<any> {
+    let params = new HttpParams()
+      .set('markOfMastery', rankOfMastery)
+    return this.http.get<any>(`${this.baseUrl}api/TanksStat/TanksByMastery/${accountId}`, { params });
   }
 
 }

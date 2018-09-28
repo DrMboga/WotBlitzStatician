@@ -76,15 +76,15 @@
           <span *ngIf="sortColumn == 'AvgDamage' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
           <span *ngIf="sortColumn == 'AvgDamage' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
         </th>
+        <th (click)="sortColumn = 'AvgXp'; sortAscending = !sortAscending; sortTanks();">
+            <span class='glyphicon glyphicon-star-empty'></span>
+            <span *ngIf="sortColumn == 'AvgXp' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
+            <span *ngIf="sortColumn == 'AvgXp' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+        </th>  
         <th (click)="sortColumn = 'SurvivalRate'; sortAscending = !sortAscending; sortTanks();">
           <span class='glyphicon glyphicon-heart-empty'></span>
           <span *ngIf="sortColumn == 'SurvivalRate' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
           <span *ngIf="sortColumn == 'SurvivalRate' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
-        </th>
-        <th (click)="sortColumn = 'AvgXp'; sortAscending = !sortAscending; sortTanks();">
-          <span class='glyphicon glyphicon-star-empty'></span>
-          <span *ngIf="sortColumn == 'AvgXp' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-          <span *ngIf="sortColumn == 'AvgXp' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
         </th>
         <th (click)="sortColumn = 'TankLastBattleTime'; sortAscending = !sortAscending; sortTanks();">
           <span class='glyphicon glyphicon-time'></span>

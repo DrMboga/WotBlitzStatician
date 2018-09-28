@@ -28,7 +28,8 @@ namespace WotBlitzStatician.Data.DataAccessors
 	a.[Name],
 	[Description] = a.[Description] + CASE WHEN a.Condition IS NULL THEN '' ELSE CHAR(13) + a.Condition END,
 	aa.[Count],
-	[Image] = CASE WHEN ao.[Image] IS NOT NULL THEN ao.[Image] ELSE a.[Image] END
+	[Image] = CASE WHEN ao.[Image] IS NOT NULL THEN ao.[Image] ELSE a.[Image] END,
+	IsAchievementOption = CONVERT(BIT, CASE WHEN ao.[Image] IS NOT NULL THEN 1 ELSE 0 END)
 FROM wotb.AccountInfoAchievement aa
 	INNER JOIN wotb.Achievement a ON aa.AchievementId = a.AchievementId
 	INNER JOIN wotb.AchievementSection s ON a.Section = s.Section

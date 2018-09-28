@@ -26,7 +26,7 @@
 
 		private static void ConfigureMappers(this ContainerBuilder containerBuilder)
 		{
-			containerBuilder.RegisterType<PlayerStatisticsDtoMapper>().As<IMapper<AccountInfoStatistics, PlayerStatDto>>();
+			containerBuilder.RegisterType<PlayerStatisticsDtoMapper>().As<IQueryableMapper<AccountInfoStatistics, PlayerStatDto>>();
 		}
 
 	}

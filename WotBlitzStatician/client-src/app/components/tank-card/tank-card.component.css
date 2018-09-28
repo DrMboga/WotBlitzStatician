@@ -1,0 +1,15 @@
+.mastery-image {
+    width: 25px;
+    height: 25px;
+  }
+
+.tank-card-stat-item{
+    font-size: large;
+    text-align: left;
+}
+
+.fixed_sixe_auto-margin {
+    margin-right:auto;
+    margin-left:auto;
+    width: 370px;
+  }

@@ -12,6 +12,7 @@ import { AccountTanksComponent } from './account-tanks/account-tanks.component';
 import { AccountAchievementsComponent } from './account-achievements/account-achievements.component';
 import { BlitzColorScaleDirective } from './blitz-color-scale.directive';
 import { AccountHistoryComponent } from './account-history/account-history.component';
+import { TankCardComponent } from './tank-card/tank-card.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AccountHistoryComponent } from './account-history/account-history.compo
     AccountTanksComponent,
     AccountAchievementsComponent,
     BlitzColorScaleDirective,
-    AccountHistoryComponent
+    AccountHistoryComponent,
+    TankCardComponent
   ],
   exports: [
     AppComponent,

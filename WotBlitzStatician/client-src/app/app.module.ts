@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID} from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 
 import { registerLocaleData } from '@angular/common';
@@ -17,7 +17,7 @@ registerLocaleData(localeRu);
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     ComponentsModule,
     ServicesModule
   ],

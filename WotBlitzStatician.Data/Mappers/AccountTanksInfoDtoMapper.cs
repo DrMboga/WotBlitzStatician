@@ -10,7 +10,7 @@ using WotBlitzStatician.Model.MapperLogic;
 
 namespace WotBlitzStatician.Data.Mappers
 {
-	public class AccountTanksInfoDtoMapper : IMapper<AccountTanksStatisticsTuple, AccountTankInfoDto>
+	public class AccountTanksInfoDtoMapper : IQueryableMapper<AccountTanksStatisticsTuple, AccountTankInfoDto>
 	{
 		private readonly IMapper _mapper;
 

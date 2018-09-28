@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WotBlitzStatician.Model;
 using WotBlitzStatician.Model.Dto;
 
 namespace WotBlitzStatician.Data.DataAccessors
@@ -10,5 +11,8 @@ namespace WotBlitzStatician.Data.DataAccessors
 		Task<List<(long tankId, string tankInfo)>> GetStringTankInfos(long[] tankIds);
 		Task<List<AccountMasteryInfoDto>> GetAccountMasteryInfo(long accountId);
 		IQueryable<AccountTankInfoDto> GetTanksInfoQuery(long accountId);
+
+		Task<List<AccountTankInfoDto>> GetAllTanksByAchievement(long accountId, string achievementId);
+		Task<List<AccountTankInfoDto>> GetAllTanksByMastery(long accountId, MarkOfMastery markOfMastery);
 	}
 }
