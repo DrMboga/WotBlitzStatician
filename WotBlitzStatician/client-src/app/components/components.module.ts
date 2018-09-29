@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppComponent } from './app/app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -13,6 +14,8 @@ import { AccountAchievementsComponent } from './account-achievements/account-ach
 import { BlitzColorScaleDirective } from './blitz-color-scale.directive';
 import { AccountHistoryComponent } from './account-history/account-history.component';
 import { TankCardComponent } from './tank-card/tank-card.component';
+import { AccountGlobalInfo } from './account-global-info';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -22,9 +25,8 @@ import { TankCardComponent } from './tank-card/tank-card.component';
     CommonModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'account', pathMatch: 'full' },
-      { path: 'account', component: AccountInfoComponent },
-      { path: 'account/:accountId', component: AccountInfoComponent },
-      { path: 'tanks/:accountId', component: AccountTanksComponent },
+      { path: 'account', component: AccountInfoComponent, canActivate: [AuthGuard] },
+      { path: 'tanks', component: AccountTanksComponent, canActivate: [AuthGuard] },
       { path: '**', redirectTo: 'account' }
     ])
   ],
@@ -41,6 +43,11 @@ import { TankCardComponent } from './tank-card/tank-card.component';
   exports: [
     AppComponent,
     NavMenuComponent
+  ],
+  providers: [
+    {provide: AccountGlobalInfo, useValue: {accountId: 0, accountNick: 'User'} },
+    AuthGuard,
+    CookieService
   ]
 })
 export class ComponentsModule { }

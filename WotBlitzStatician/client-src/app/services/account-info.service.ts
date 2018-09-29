@@ -14,7 +14,7 @@ export class AccountInfoService {
         @Inject('BASE_URL') private baseUrl: string,
         private datePipe: DatePipe) {
     }
-
+  
   getAccounts(): Observable<AccountInfo[]> {
     return this.http.get<AccountInfo[]>(`${this.baseUrl}api/AccountInfo`);
   }

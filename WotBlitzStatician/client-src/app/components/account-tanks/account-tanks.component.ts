@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import { AccountInfoService } from '../../services/account-info.service';
 import { AccountTanksFilter } from "./account-tanks-filter";
 import { AccountTanksFooter } from "./account-tanks-footer";
+import { AccountGlobalInfo } from '../account-global-info';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class AccountTanksComponent implements OnInit {
   public tableFooter: AccountTanksFooter;
 
   constructor(private accountsInfoService: AccountInfoService,
-    activeRoute: ActivatedRoute,
+    public accountGlobalInfo: AccountGlobalInfo,
     datePipe: DatePipe) {
     this.filter = new AccountTanksFilter(datePipe);
     this.tableFooter = new AccountTanksFooter();
@@ -29,7 +30,7 @@ export class AccountTanksComponent implements OnInit {
     this.sortColumn = 'TankLastBattleTime';
     this.sortAscending = false;
 
-    let id = activeRoute.snapshot.params["accountId"];
+    let id = accountGlobalInfo.accountId;
     if (id != null) {
       this.accountId = id;
 

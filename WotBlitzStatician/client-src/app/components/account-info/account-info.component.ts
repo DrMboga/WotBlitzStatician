@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
 import { AccountInfoService } from '../../services/account-info.service';
+import { AccountGlobalInfo } from '../account-global-info';
 
 @Component({
   selector: 'app-account-info',
@@ -13,8 +14,8 @@ export class AccountInfoComponent implements OnInit {
   public achievements: any[];
 
   constructor(private accountsInfoService: AccountInfoService,
-    activeRoute: ActivatedRoute) {
-    let id = activeRoute.snapshot.params["accountId"];
+    public accountGlobalInfo: AccountGlobalInfo) {
+    let id = accountGlobalInfo.accountId;
     if (id != null) {
       this.accountsInfoService.getAccount(id).subscribe(data => {
         this.account = data;
