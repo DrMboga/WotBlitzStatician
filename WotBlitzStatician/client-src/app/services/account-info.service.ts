@@ -46,4 +46,9 @@ export class AccountInfoService {
     return this.http.get<any>(`${this.baseUrl}api/TanksStat/TanksByMastery/${accountId}`, { params });
   }
 
+// api/AccountInfo/ShortAccountInfo/46512100
+  getShortAccountInfo(accountId: number) : Observable<AccountInfo> {
+    return this.http.get<AccountInfo>(`${this.baseUrl}api/AccountInfo/ShortAccountInfo/${accountId}`)
+            .map(d => d as AccountInfo);
+  }
 }

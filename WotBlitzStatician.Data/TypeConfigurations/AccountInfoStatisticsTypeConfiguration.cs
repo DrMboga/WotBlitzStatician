@@ -16,8 +16,7 @@ namespace WotBlitzStatician.Data.TypeConfigurations
 			accountInfoStatEntity
 				.HasOne(s => s.AccountInfoPrivate)
 				.WithOne(p => p.AccountInfoStatistics)
-				.HasForeignKey<AccountInfoPrivate>(p => p.AccountInfoPrivateId);
-
+				.HasForeignKey<AccountInfoStatistics>(p => p.AccountInfoPrivateId);
 		}
 	}
 }

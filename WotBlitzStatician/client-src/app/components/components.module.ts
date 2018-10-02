@@ -14,8 +14,10 @@ import { AccountAchievementsComponent } from './account-achievements/account-ach
 import { BlitzColorScaleDirective } from './blitz-color-scale.directive';
 import { AccountHistoryComponent } from './account-history/account-history.component';
 import { TankCardComponent } from './tank-card/tank-card.component';
-import { AccountGlobalInfo } from './account-global-info';
+import { AccountGlobalInfo, GLOBAL_ACCOUNT_STATE } from './account-global-info';
 import { AuthGuard } from './auth.guard';
+import { SplashScreenComponent } from './splash-screen/splash-screen.component';
+import { Subject } from 'rxjs/Subject';
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { AuthGuard } from './auth.guard';
       { path: '', redirectTo: 'account', pathMatch: 'full' },
       { path: 'account', component: AccountInfoComponent, canActivate: [AuthGuard] },
       { path: 'tanks', component: AccountTanksComponent, canActivate: [AuthGuard] },
+      { path: 'splash-screen', component: SplashScreenComponent },
       { path: '**', redirectTo: 'account' }
     ])
   ],
@@ -38,14 +41,16 @@ import { AuthGuard } from './auth.guard';
     AccountAchievementsComponent,
     BlitzColorScaleDirective,
     AccountHistoryComponent,
-    TankCardComponent
+    TankCardComponent,
+    SplashScreenComponent
   ],
   exports: [
     AppComponent,
     NavMenuComponent
   ],
   providers: [
-    {provide: AccountGlobalInfo, useValue: {accountId: 0, accountNick: 'User'} },
+    {provide: AccountGlobalInfo, useValue: new AccountGlobalInfo(0, 'User') },
+    {provide: GLOBAL_ACCOUNT_STATE, useValue: new Subject<AccountGlobalInfo>()},
     AuthGuard,
     CookieService
   ]

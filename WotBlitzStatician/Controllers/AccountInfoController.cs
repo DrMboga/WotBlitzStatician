@@ -79,5 +79,16 @@ namespace WotBlitzStatician.Controllers
       var playerHistory = await _accountDataAccessor.GetAccountStatHistory(accountId, dateFrom);
       return Ok(playerHistory);
     }
+
+    [HttpGet("ShortAccountInfo/{accountId}")]
+    public async Task<IActionResult> GetShortAccountInfo(long accountId)
+    {
+      var shortAccount = await _accountDataAccessor.GetShortAccountInfo(accountId);
+      if(shortAccount == null)
+      {
+        return NotFound();
+      }
+      return Ok(shortAccount);
+    }
   }
 }

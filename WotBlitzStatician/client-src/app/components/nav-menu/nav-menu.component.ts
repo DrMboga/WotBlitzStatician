@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from "@angular/router";
 
-import { AccountInfo } from '../../model/account-info';
-import { AccountInfoService } from '../../services/account-info.service';
-import { AccountGlobalInfo } from '../account-global-info';
+import { AccountGlobalInfo, GLOBAL_ACCOUNT_STATE } from '../account-global-info';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'nav-menu',
@@ -11,19 +10,21 @@ import { AccountGlobalInfo } from '../account-global-info';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit {
-  constructor(public accountGlobalInfo: AccountGlobalInfo,
-              private router: Router) {
+  public accountId: number;
+  public accountNick: string;
+
+  constructor(@Inject(GLOBAL_ACCOUNT_STATE) private accountStateChange : Observable<AccountGlobalInfo>,
+              public accountGlobalInfo: AccountGlobalInfo) {
   }
 
   ngOnInit() {
-  }
+    // ToDo: Refresh nav menu!!!
+    
+    // this.accountStateChange.subscribe(newAccountState => {
+    //   this.accountId = newAccountState.accountId;
+    //   this.accountNick = newAccountState.accountNick;
+    //   console.log('newAccountState', newAccountState.accountId);
+    // });
 
-/*   set currentAccountId(newAccountId: number) {
-    this._currentAccountId = newAccountId;
-    var account = this.accounts.find(a => a.accountId == newAccountId)!;
-    this.accountName = account.nickName;
-    // raise event
-    this.router.navigateByUrl("/account/" + newAccountId);
   }
- */
 }

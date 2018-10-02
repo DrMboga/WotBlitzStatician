@@ -379,5 +379,12 @@ FROM AccountHistory AS cur
 			  .FromSql(achievementsSql, accountIdParameter, dateFromParameter)
 			  .ToListAsync();
 		}
-	}
+
+        public async Task<AccountInfo> GetShortAccountInfo(long accountId)
+        {
+            return await _dbContext.AccountInfo.AsNoTracking()
+				.Where(a => a.AccountId == accountId)
+				.FirstOrDefaultAsync();
+        }
+    }
 }

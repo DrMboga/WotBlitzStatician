@@ -129,5 +129,7 @@
 		public List<FragListItem> FragsList { get; set; }
 		
 		public AccountInfoPrivate AccountInfoPrivate { get; set; }
+
+		public long AccountInfoPrivateId { get; set; }
 	}
 }

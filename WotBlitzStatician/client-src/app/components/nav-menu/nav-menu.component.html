@@ -11,7 +11,7 @@
     </div>
     <div class='clearfix'></div>
     <div class='navbar-collapse collapse'>
-      <ul class='nav navbar-nav'>
+      <ul class='nav navbar-nav' *ngIf="accountGlobalInfo.accountId > 0">
         <li [routerLinkActive]="['link-active']">
           <a [routerLink]="['/account']">
             <span class='glyphicon glyphicon-user'></span> {{accountGlobalInfo.accountNick}}
