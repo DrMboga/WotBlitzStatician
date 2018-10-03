@@ -17,22 +17,25 @@ export class SplashScreenComponent implements OnInit {
     private cookieService: CookieService,
     private accountsInfoService: AccountInfoService) { 
 
+      // ToDo: parse query parameters if any - redirect from wg auth
+
       let accountIdFromCookie = this.getAccountIdFromCookie();
       if(accountIdFromCookie > 0){
-        
         this.accountsInfoService.getShortAccountInfo(accountIdFromCookie)
           .subscribe(a => {
-            // ToDo: check if accountId valid (method get account info by Id, then check if token is not expired)
-            this.accountGlobalInfo.accountId = a.accountId;
-            this.accountGlobalInfo.accountNick = a.nickName;  
-            this.router.navigate(['/']);
+            if(a != null){
+              let now = new Date();
+              let tokenExpiration = new Date(a.accessTokenExpiration);
+              if(now.getTime() <= tokenExpiration.getTime()){
+                this.accountGlobalInfo.accountId = a.accountId;
+                this.accountGlobalInfo.accountNick = a.nickName;  
+                this.router.navigate(['/']);
+              }
+          }
+            this.redirectToWargamingLogin();
           });
       }
-
-      // ToDo: if account id is not in the cookie or token expired - redirect to wg auth
-      // then save the auth data to db - method post by AccountInfo entity
-      // then save new account ud in the cookie: // this.cookieService.set(this.accountIdCookieName, '46512100');
-
+      this.redirectToWargamingLogin();
     }
 
   ngOnInit() {
@@ -43,6 +46,10 @@ export class SplashScreenComponent implements OnInit {
       return +this.cookieService.get(this.accountIdCookieName);
     }
     return 0;
+  }
+
+  private redirectToWargamingLogin(){
+    // ToDo: get wg auth url from service, plus redirect url
   }
 
 }
