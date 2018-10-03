@@ -1,9 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountGlobalInfo, GLOBAL_ACCOUNT_STATE } from '../account-global-info';
+import { AccountGlobalInfo } from '../account-global-info';
 import { CookieService } from 'ngx-cookie-service';
 import { AccountInfoService } from '../../services/account-info.service';
-import { Observer } from 'rxjs/Observer';
 
 @Component({
   selector: 'splash-screen',
@@ -16,8 +15,7 @@ export class SplashScreenComponent implements OnInit {
   constructor(private router: Router,
     private accountGlobalInfo: AccountGlobalInfo,
     private cookieService: CookieService,
-    private accountsInfoService: AccountInfoService,
-    @Inject(GLOBAL_ACCOUNT_STATE) accountStateChanged: Observer<AccountGlobalInfo>) { 
+    private accountsInfoService: AccountInfoService) { 
 
       let accountIdFromCookie = this.getAccountIdFromCookie();
       if(accountIdFromCookie > 0){
@@ -27,8 +25,6 @@ export class SplashScreenComponent implements OnInit {
             // ToDo: check if accountId valid (method get account info by Id, then check if token is not expired)
             this.accountGlobalInfo.accountId = a.accountId;
             this.accountGlobalInfo.accountNick = a.nickName;  
-            // Event to nav menu
-            accountStateChanged.next(this.accountGlobalInfo);
             this.router.navigate(['/']);
           });
       }

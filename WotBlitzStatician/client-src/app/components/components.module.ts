@@ -14,10 +14,9 @@ import { AccountAchievementsComponent } from './account-achievements/account-ach
 import { BlitzColorScaleDirective } from './blitz-color-scale.directive';
 import { AccountHistoryComponent } from './account-history/account-history.component';
 import { TankCardComponent } from './tank-card/tank-card.component';
-import { AccountGlobalInfo, GLOBAL_ACCOUNT_STATE } from './account-global-info';
+import { AccountGlobalInfo } from './account-global-info';
 import { AuthGuard } from './auth.guard';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
-import { Subject } from 'rxjs/Subject';
 
 
 @NgModule({
@@ -50,7 +49,6 @@ import { Subject } from 'rxjs/Subject';
   ],
   providers: [
     {provide: AccountGlobalInfo, useValue: new AccountGlobalInfo(0, 'User') },
-    {provide: GLOBAL_ACCOUNT_STATE, useValue: new Subject<AccountGlobalInfo>()},
     AuthGuard,
     CookieService
   ]

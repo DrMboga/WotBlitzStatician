@@ -1,4 +1,4 @@
-import { Injectable, InjectionToken } from "@angular/core";
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class AccountGlobalInfo {
@@ -6,5 +6,3 @@ export class AccountGlobalInfo {
         public accountId: number,
         public accountNick: string){}
 }
-
-export const GLOBAL_ACCOUNT_STATE = new InjectionToken<string>('global_account_state');

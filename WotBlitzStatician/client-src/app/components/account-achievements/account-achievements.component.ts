@@ -20,9 +20,6 @@ export class AccountAchievementsComponent implements OnInit {
   public commemorativeAchievements: any[];
   public stepAchievements: any[];
 
-  public clickedAchievement: any;
-  public tanksByAchievement: any[];
-
   constructor(private accountsInfoService: AccountInfoService) { }
 
   ngOnInit() {
@@ -38,14 +35,5 @@ export class AccountAchievementsComponent implements OnInit {
       achievement => achievement.section === 'commemorative');
     this.stepAchievements = this.achievements.filter(
       achievement => achievement.section === 'step');
-  }
-
-  getTanksByAchievement() {
-    if(this.clickedAchievement.isAchievementOption){
-      this.tanksByAchievement = null;
-      return;
-    }
-    this.accountsInfoService.getTanksByAchievement(this.accountId, this.clickedAchievement.achievementId)
-    .subscribe(data => {this.tanksByAchievement = data as any[]}, error => console.error(error));
   }
 }
