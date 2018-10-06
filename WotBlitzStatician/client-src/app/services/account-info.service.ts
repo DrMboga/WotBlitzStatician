@@ -51,4 +51,11 @@ export class AccountInfoService {
     return this.http.get<AccountInfo>(`${this.baseUrl}api/AccountInfo/ShortAccountInfo/${accountId}`)
             .map(d => d as AccountInfo);
   }
+
+  // api/WgRequests/Authentication
+  getAuthenticationRequest(redirectUrl: string) : Observable<string> {
+    let params = new HttpParams()
+      .set('redirectUrl', redirectUrl);
+    return this.http.get<string>(`${this.baseUrl}api/WgRequests/Authentication`, { params: params });
+  }
 }

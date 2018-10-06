@@ -50,8 +50,9 @@
 		private static bool AddDefaultParametersRule(RequestType requestType, RequestParameter requestParameter)
 		{
 			// Exclude Language parameter for Prolongate request type
-			return (requestType == RequestType.Prolongate && requestParameter.ParameterType != ParameterType.Language)
-			       || (requestType != RequestType.Prolongate);
+			return ((requestType == RequestType.Prolongate || requestType == RequestType.Login) 
+						&& requestParameter.ParameterType != ParameterType.Language)
+			       || (requestType != RequestType.Prolongate && requestType != RequestType.Login);
 		}
 
 		private void FillParameterNamesDictionary()
@@ -65,7 +66,7 @@
             _parameterNames[ParameterType.Extra] = "extra";
             _parameterNames[ParameterType.Fields] = "fields";
             _parameterNames[ParameterType.TankId] = "tank_id";
-
+			_parameterNames[ParameterType.RedirectUri] = "redirect_uri";
 		}
 
 		private void FillRequestPathsDictionary()
@@ -82,6 +83,7 @@
 			_requestPaths[RequestType.EncyclopediaInfo] = @"encyclopedia/info/";
 			_requestPaths[RequestType.EncyclopediaVehicles] = @"encyclopedia/vehicles/";
 			_requestPaths[RequestType.Prolongate] = @"auth/prolongate/";
+			_requestPaths[RequestType.Login] = @"auth/login/";
 		}
 
 	}

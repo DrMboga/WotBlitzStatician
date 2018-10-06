@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountGlobalInfo } from '../account-global-info';
 import { CookieService } from 'ngx-cookie-service';
@@ -15,7 +15,8 @@ export class SplashScreenComponent implements OnInit {
   constructor(private router: Router,
     private accountGlobalInfo: AccountGlobalInfo,
     private cookieService: CookieService,
-    private accountsInfoService: AccountInfoService) { 
+    private accountsInfoService: AccountInfoService,
+    @Inject('BASE_URL') private baseUrl: string) { 
 
       // ToDo: parse query parameters if any - redirect from wg auth
 
@@ -49,7 +50,11 @@ export class SplashScreenComponent implements OnInit {
   }
 
   private redirectToWargamingLogin(){
-    // ToDo: get wg auth url from service, plus redirect url
+    this.accountsInfoService.getAuthenticationRequest(`${this.baseUrl}splash-screen`).subscribe(
+      authRequest => {
+        // ToDo: redirect to authRequest
+      });
+    
   }
 
 }

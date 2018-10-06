@@ -1,24 +1,31 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WotBlitzStatician.WotApiClient;
+using WotBlitzStatician.WotApiClient.RequestStringBuilder;
 
 namespace WotBlitzStatician.Controllers
 {
     [Route("api/[controller]")]
     public class WgRequestsController : Controller
     {
-        private readonly IWgApiConfiguration _appSettings;
+        private readonly IRequestBuilder _requestBuilder;
 
-        public WgRequestsController(IWgApiConfiguration appsettings)
+        public WgRequestsController(IRequestBuilder requestBuilder)
         {
-            _appSettings = appsettings;
+            _requestBuilder = requestBuilder;
         }
 
         [HttpGet("Authentication")]
-        public IActionResult GetAuthenticationRequest()
+        public IActionResult GetAuthenticationRequest([FromQuery] string redirectUrl)
         {
-            // https://api.worldoftanks.ru/wot/auth/login/?application_id=e6bb7a6cd1b7da3ca5697f97072d2176&redirect_uri=http://localhost:58249/account/90277267
-            return Ok($"{_appSettings.WotBaseAddress}auth/login/?application_id={_appSettings.ApplicationId}");
+			string requestUrl =	_requestBuilder.BuildRequestUrl(
+					RequestType.Login,
+					new RequestParameter { ParameterType = ParameterType.RedirectUri, ParameterValue = redirectUrl }
+					);
+
+            var authUrl = new Uri($"{_requestBuilder.WotBaseAddress}{requestUrl}");
+            return Ok(authUrl);
         }
     }
 }
