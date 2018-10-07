@@ -13,6 +13,7 @@ import { AccountInfo } from '../../model/account-info';
 export class SplashScreenComponent implements OnInit {
   private readonly accountIdCookieName: string = 'AccountId';
 
+  public showButtons: boolean = false;
   public wgAuthResponse: any;
 
   constructor(private router: Router,
@@ -52,7 +53,11 @@ export class SplashScreenComponent implements OnInit {
               this.router.navigate(['/']);
             }
         }
-        });
+        this.showButtons = true;
+      });
+    }
+    else{
+      this.showButtons = true;
     }
   }
 
