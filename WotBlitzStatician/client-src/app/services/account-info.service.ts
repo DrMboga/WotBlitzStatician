@@ -1,10 +1,16 @@
 import { Injectable, Inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 
 import { AccountInfo } from '../model/account-info';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
 
 @Injectable()
 export class AccountInfoService {
@@ -57,5 +63,11 @@ export class AccountInfoService {
     let params = new HttpParams()
       .set('redirectUrl', redirectUrl);
     return this.http.get<string>(`${this.baseUrl}api/WgRequests/Authentication`, { params: params });
+  }
+
+  putNewAccountInfo(accountInfo: AccountInfo){
+    console.log('accountId', accountInfo.accountId);
+    this.http.put<AccountInfo>(`${this.baseUrl}api/AccountInfo/${accountInfo.accountId}`, 
+                                accountInfo, httpOptions)
   }
 }

@@ -90,5 +90,12 @@ namespace WotBlitzStatician.Controllers
       }
       return Ok(shortAccount);
     }
+
+    [HttpPut("{accountId}")]
+    public IActionResult UpdateAccountInfo(long accountId, AccountInfo accountInfo)
+    {
+      
+      return NoContent();
+    }
   }
 }

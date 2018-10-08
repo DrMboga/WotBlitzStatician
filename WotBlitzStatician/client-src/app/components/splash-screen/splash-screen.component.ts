@@ -71,11 +71,16 @@ export class SplashScreenComponent implements OnInit {
   private saveAccountInfoAndEnter() {
     this.accountGlobalInfo.accountId = this.wgAuthResponse.account_id;
     this.accountGlobalInfo.accountNick = this.wgAuthResponse.nickname;
-    let accessToken: string = this.wgAuthResponse.access_token;
-    let accessTokenExpiration: Date = new Date(+this.wgAuthResponse.expires_at * 1000);
-    console.log('accessToken', accessToken);
-    console.log('accessTokenExpiration', accessTokenExpiration);
-    // ToDo: Make method to save AccountInfo
+    let accountInfo: AccountInfo = {
+      accountId: this.accountGlobalInfo.accountId,
+      nickName: this.accountGlobalInfo.accountNick,
+      lastBattleTime: null,
+      accountCreatedAt: null,
+      accessToken: this.wgAuthResponse.access_token,
+      accessTokenExpiration: new Date(+this.wgAuthResponse.expires_at * 1000)
+    };
+
+    this.accountsInfoService.putNewAccountInfo(accountInfo);
 
     // Saving new accountId to cookie
     this.cookieService.set(this.accountIdCookieName, this.accountGlobalInfo.accountId.toString())
