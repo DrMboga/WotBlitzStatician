@@ -92,9 +92,10 @@ namespace WotBlitzStatician.Controllers
     }
 
     [HttpPut("{accountId}")]
-    public IActionResult UpdateAccountInfo(long accountId, AccountInfo accountInfo)
+    public async Task<IActionResult> UpdateAccountInfo(long accountId, [FromBody]AccountInfo accountInfo)
     {
-      
+      await _accountDataAccessor.SaveProlongedAccountAsync(accountInfo.AccountId, accountInfo.AccessToken, accountInfo.AccessTokenExpiration.Value);
+
       return NoContent();
     }
   }

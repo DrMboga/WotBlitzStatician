@@ -29,6 +29,7 @@ export class SplashScreenComponent implements OnInit {
           if (params.hasOwnProperty('status') && params.status === 'ok') {
             this.wgAuthResponse = params;
             this.saveAccountInfoAndEnter();
+            this.showButtons=false;
           }
           else{
             this.checkCookieAndWgLogin();
@@ -53,6 +54,11 @@ export class SplashScreenComponent implements OnInit {
               this.router.navigate(['/']);
             }
         }
+        this.showButtons = true;
+      },
+      error => {
+        // ToDo: check 404 error and make post instead of put
+        console.error(error);
         this.showButtons = true;
       });
     }
@@ -80,7 +86,9 @@ export class SplashScreenComponent implements OnInit {
       accessTokenExpiration: new Date(+this.wgAuthResponse.expires_at * 1000)
     };
 
-    this.accountsInfoService.putNewAccountInfo(accountInfo);
+    // ToDo: Analyze whether this is new account or existing. And make post or put
+    this.accountsInfoService.putNewAccountInfo(accountInfo)
+          .subscribe(()=>{}, error => console.error(error));
 
     // Saving new accountId to cookie
     this.cookieService.set(this.accountIdCookieName, this.accountGlobalInfo.accountId.toString())

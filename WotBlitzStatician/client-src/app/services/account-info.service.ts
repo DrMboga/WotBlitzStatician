@@ -1,7 +1,9 @@
 import { Injectable, Inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
+import { catchError } from 'rxjs/operators';
+// import { throwError } from 'rxjs';
 import "rxjs/add/operator/map";
 
 import { AccountInfo } from '../model/account-info';
@@ -65,9 +67,28 @@ export class AccountInfoService {
     return this.http.get<string>(`${this.baseUrl}api/WgRequests/Authentication`, { params: params });
   }
 
-  putNewAccountInfo(accountInfo: AccountInfo){
-    console.log('accountId', accountInfo.accountId);
-    this.http.put<AccountInfo>(`${this.baseUrl}api/AccountInfo/${accountInfo.accountId}`, 
-                                accountInfo, httpOptions)
+  putNewAccountInfo(accountInfo: AccountInfo) : Observable<{}>{
+    console.log('account:', accountInfo.nickName, accountInfo.accessToken);
+    return this.http.put<AccountInfo>(`${this.baseUrl}api/AccountInfo/${accountInfo.accountId}`, 
+                                accountInfo, httpOptions);
+                                // .pipe(
+                                //   catchError(this.handleError('putNewAccountInfo', accountInfo))
+                                //);
   }
-}
+
+/*   private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.');
+  };
+ */}
