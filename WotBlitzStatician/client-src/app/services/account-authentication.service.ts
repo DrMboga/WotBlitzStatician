@@ -17,41 +17,41 @@ export class AccountAuthenticationService {
     private cookieService: CookieService,
     private accountGlobalInfo: AccountGlobalInfo,
     private accountsInfoService: AccountInfoService
-    ) { }
+  ) { }
 
-  public parseWargamingAuthResponse(params: any){
+  public parseWargamingAuthResponse(params: any) {
     if (params.hasOwnProperty('status') && params.status === 'ok') {
       this.wgAuthResponse = params;
       this.saveAccountInfoAndEnter();
-      this.showButtons=false;
+      this.showButtons = false;
     }
-    else{
+    else {
       this.checkCookieAndWgLogin();
     }
   }
 
-  public checkCookieAndWgLogin(){
+  public checkCookieAndWgLogin() {
     let accountIdFromCookie = this.getAccountIdFromCookie();
-    if(accountIdFromCookie > 0){
+    if (accountIdFromCookie > 0) {
       this.accountsInfoService.getShortAccountInfo(accountIdFromCookie)
         .subscribe(a => {
-          if(a != null){
+          if (a != null) {
             let now = new Date();
             let tokenExpiration = new Date(a.accessTokenExpiration);
-            if(now.getTime() <= tokenExpiration.getTime()){
+            if (now.getTime() <= tokenExpiration.getTime()) {
               this.accountGlobalInfo.accountId = a.accountId;
-              this.accountGlobalInfo.accountNick = a.nickName;  
+              this.accountGlobalInfo.accountNick = a.nickName;
               this.router.navigate(['/']);
             }
-        }
-        this.showButtons = true;
-      },
-      error => {
-        console.error(error);
-        this.showButtons = true;
-      });
+          }
+          this.showButtons = true;
+        },
+          error => {
+            console.error(error);
+            this.showButtons = true;
+          });
     }
-    else{
+    else {
       this.showButtons = true;
     }
   }
@@ -69,7 +69,7 @@ export class AccountAuthenticationService {
     };
 
     this.accountsInfoService.putNewAccountInfo(accountInfo)
-          .subscribe(()=>{}, error => console.error(error));
+      .subscribe(() => { }, error => console.error(error));
 
     // Saving new accountId to cookie
     this.cookieService.set(this.accountIdCookieName, this.accountGlobalInfo.accountId.toString())
@@ -80,8 +80,8 @@ export class AccountAuthenticationService {
     this.router.navigate(['/']);
   }
 
-  public getAccountIdFromCookie() : number {
-    if(this.cookieService.check(this.accountIdCookieName)) {
+  public getAccountIdFromCookie(): number {
+    if (this.cookieService.check(this.accountIdCookieName)) {
       return +this.cookieService.get(this.accountIdCookieName);
     }
     return 0;
