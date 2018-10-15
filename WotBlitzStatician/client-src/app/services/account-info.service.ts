@@ -68,12 +68,19 @@ export class AccountInfoService {
   }
 
   putNewAccountInfo(accountInfo: AccountInfo) : Observable<{}>{
-    console.log('account:', accountInfo.nickName, accountInfo.accessToken);
     return this.http.put<AccountInfo>(`${this.baseUrl}api/AccountInfo/${accountInfo.accountId}`, 
                                 accountInfo, httpOptions);
                                 // .pipe(
                                 //   catchError(this.handleError('putNewAccountInfo', accountInfo))
                                 //);
+  }
+
+  downloadDictionariesAndImages() : Observable<{}> {
+    return this.http.get(`${this.baseUrl}api/Dictionaries/LoadDictionariesAndPicturesIfNeeded`)
+  }
+
+  saveAllAccountInfo(accountId: number): Observable<{}> {
+    return this.http.get(`${this.baseUrl}api/StatisticsCollector/${accountId}`);
   }
 
 /*   private handleError(error: HttpErrorResponse) {

@@ -11,6 +11,7 @@ export class AccountAuthenticationService {
 
   public showButtons: boolean = false;
   public wgAuthResponse: any;
+  public status: string;
 
   constructor(
     private router: Router,
@@ -68,16 +69,28 @@ export class AccountAuthenticationService {
       accessTokenExpiration: new Date(+this.wgAuthResponse.expires_at * 1000)
     };
 
+    this.status = 'Saving new account';
     this.accountsInfoService.putNewAccountInfo(accountInfo)
       .subscribe(() => { }, error => console.error(error));
 
     // Saving new accountId to cookie
     this.cookieService.set(this.accountIdCookieName, this.accountGlobalInfo.accountId.toString())
 
-    // ToDo: 1. Check if dictionaries are empty, and then load dictionaries (write status string on screen)
-    // 2. Load info from WG by account
-
-    this.router.navigate(['/']);
+    this.status = 'Getting nessesary dictionaries and other data';
+    // 1. Check if dictionaries are empty, and then load dictionaries
+    this.accountsInfoService.downloadDictionariesAndImages().subscribe(
+      () => {
+        this.status = `Getting ${accountInfo.nickName} statistics`;
+        // 2. Load info from WG by account
+        this.accountsInfoService.saveAllAccountInfo(accountInfo.accountId).subscribe(
+          () => {
+            this.router.navigate(['/']);
+          },
+          error => console.error('Account saving error', error)
+        );
+      },
+      error => console.error('Dictionaries error', error)
+    )
   }
 
   public getAccountIdFromCookie(): number {

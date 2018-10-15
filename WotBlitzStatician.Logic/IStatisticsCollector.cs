@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using WotBlitzStatician.Logic.StatisticsCollectorOperations;
 
 namespace WotBlitzStatician.Logic
 {
-	public interface IStatisticsCollector : IDisposable
+    public interface IStatisticsCollector : IDisposable
     {
-		Task CollectAllStatistics();
+        int OperationsCount { get; }
+        IStatisticsCollectorOperation GetOperation(int index);
     }
 }

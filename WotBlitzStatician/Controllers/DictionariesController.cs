@@ -18,6 +18,19 @@ namespace WotBlitzStatician.Controllers
       _blitzStatisticsDictionary = blitzStaticianDictionary;
     }
 
+    [HttpGet("LoadDictionariesAndPicturesIfNeeded")]
+    public async Task<IActionResult> LoadAllDictionariesIfNeeded()
+    {
+      var someDictionaryData = await _blitzStatisticsDictionary.GetVehiclesTires();
+      if (someDictionaryData == null || someDictionaryData.Count == 0)
+      {
+        await SaveDictionaries();
+        await SaveVehicles();
+        await SaveAchievements();
+        await DownloadAllImages();
+      }
+      return Ok();
+    }
 
     [HttpGet("SaveDictionaries")]
     public async Task<IActionResult> SaveDictionaries()
