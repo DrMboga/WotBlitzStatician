@@ -71,26 +71,24 @@ export class AccountAuthenticationService {
 
     this.status = 'Saving new account';
     this.accountsInfoService.putNewAccountInfo(accountInfo)
-      .subscribe(() => { }, error => console.error(error));
+      .subscribe(() => { 
+        this.cookieService.set(this.accountIdCookieName, this.accountGlobalInfo.accountId.toString());
+        // Saving new accountId to cookie
+        this.SaveAccountInfo(accountInfo);
+      }, error => console.error(error));
 
-    // Saving new accountId to cookie
-    this.cookieService.set(this.accountIdCookieName, this.accountGlobalInfo.accountId.toString())
+  }
 
+  private SaveAccountInfo(accountInfo: AccountInfo) {
     this.status = 'Getting nessesary dictionaries and other data';
     // 1. Check if dictionaries are empty, and then load dictionaries
-    this.accountsInfoService.downloadDictionariesAndImages().subscribe(
-      () => {
-        this.status = `Getting ${accountInfo.nickName} statistics`;
-        // 2. Load info from WG by account
-        this.accountsInfoService.saveAllAccountInfo(accountInfo.accountId).subscribe(
-          () => {
-            this.router.navigate(['/']);
-          },
-          error => console.error('Account saving error', error)
-        );
-      },
-      error => console.error('Dictionaries error', error)
-    )
+    this.accountsInfoService.downloadDictionariesAndImages().subscribe(() => {
+      this.status = `Getting ${accountInfo.nickName} statistics`;
+      // 2. Load info from WG by account
+      this.accountsInfoService.saveAllAccountInfo(accountInfo.accountId).subscribe(() => {
+        this.router.navigate(['/']);
+      }, error => console.error('Account saving error', error));
+    }, error => console.error('Dictionaries error', error));
   }
 
   public getAccountIdFromCookie(): number {
