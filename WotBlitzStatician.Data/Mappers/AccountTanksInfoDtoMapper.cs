@@ -14,7 +14,7 @@ namespace WotBlitzStatician.Data.Mappers
 	{
 		private readonly IMapper _mapper;
 
-		public AccountTanksInfoDtoMapper(Dictionary<MarkOfMastery, string> masteryImages)
+		public AccountTanksInfoDtoMapper()
 		{
 			_mapper = new Mapper(new MapperConfiguration(m =>
 			  m.CreateMap<AccountTanksStatisticsTuple, AccountTankInfoDto>()
@@ -22,8 +22,6 @@ namespace WotBlitzStatician.Data.Mappers
 				.ForMember(d => d.TankTierRoman, o => o.MapFrom(s => Convert.ToInt32(s.Vehicle.Tier).ToRomanNumeral()))
 				.ForMember(d => d.PreviewLocalImage, o => o.MapFrom(s => s.Vehicle.PreviewImageUrl.MakeImagePathLocal()))
 				.ForMember(d => d.NormalLocalImage, o => o.MapFrom(s => s.Vehicle.NormalImageUrl.MakeImagePathLocal()))
-				.ForMember(d => d.MasteryImage, o => o.MapFrom(s => masteryImages[s.Tank.MarkOfMastery]))
-				.ForMember(d => d.MasteryLocalImage, o => o.MapFrom(s => masteryImages[s.Tank.MarkOfMastery].MakeImagePathLocal()))
 			));
 		}
 

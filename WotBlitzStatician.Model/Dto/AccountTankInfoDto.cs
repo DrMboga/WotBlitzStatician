@@ -137,9 +137,6 @@ namespace WotBlitzStatician.Model.Dto
 		public decimal AvgXp { get { return (decimal)TankXp / TankBattles; } set { } }
 		public decimal SurvivalRate { get { return (decimal)TankSurvivedBattles / TankBattles; } set { } }
 
-		public string MasteryImage { get; set; }
-		public string MasteryLocalImage { get; set; }
-
 		///<summary>
 		///Название техники
 		///</summary>

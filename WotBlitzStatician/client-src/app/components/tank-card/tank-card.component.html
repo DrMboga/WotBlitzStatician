@@ -2,7 +2,7 @@
     <img [ngClass]="'flag-' + tankInfo.vehicleNation" />
     <img [ngClass]="'tank-type-' + tankInfo.vehicleType + (tankInfo.vehicleIsPremium ? '-prem' : '')" />
     <b>{{tankInfo.tankTierRoman}}</b>
-    <img *ngIf="tankInfo.masteryLocalImage" src="{{tankInfo.masteryLocalImage}}" class="mastery-image" />
+    <img *ngIf="tankInfo.tankMarkOfMastery != 'None'" [ngClass]="'mastery-' + tankInfo.tankMarkOfMastery" />
     <b>{{tankInfo.vehicleName}}</b>
 </div>
 <div class="row fixed_sixe_auto-margin">

@@ -1,4 +1,3 @@
-
 <h2>
   <span class='glyphicon glyphicon-user'></span> {{account.nickName}} <span *ngIf="account.playerClanInfo">[{{account.playerClanInfo.clanTag}}]</span>
 </h2>
@@ -6,7 +5,8 @@
   <span class='glyphicon glyphicon-time'></span> Создан: {{account.accountCreatedAt|date:"short"}}
 </div>
 <div *ngIf="account.playerClanInfo" class="row">
-  {{account.playerClanInfo.playerRole}} в клане [{{account.playerClanInfo.clanTag}}] - '{{account.playerClanInfo.clanName}}' c {{account.playerClanInfo.playerJoinedAt|date:"short"}}
+  {{account.playerClanInfo.playerRole}} в клане [{{account.playerClanInfo.clanTag}}] -
+  '{{account.playerClanInfo.clanName}}' c {{account.playerClanInfo.playerJoinedAt|date:"short"}}
 </div>
 <div class='container-fluid'>
   <div class="row">
@@ -18,7 +18,8 @@
     </div>
     <div class="col-sm-3" title="Процент побед">
       <div class="info-box" [appBlitzColorScale]="account.playerStatistics.winRate">
-        <h3><small><span class='glyphicon glyphicon-flag'></span></small> {{account.playerStatistics.winRate|percent:'2.2-2'}}</h3>
+        <h3><small><span class='glyphicon glyphicon-flag'></span></small>
+          {{account.playerStatistics.winRate|percent:'2.2-2'}}</h3>
       </div>
     </div>
     <div class="col-sm-3" title="Wn7">
@@ -28,12 +29,14 @@
     </div>
     <div class="col-sm-2" title="Средний урон">
       <div class="info-box">
-        <h3><small><span class='glyphicon glyphicon-screenshot'></span></small> {{account.playerStatistics.avgDamage|number:'3.0-0'}}</h3>
+        <h3><small><span class='glyphicon glyphicon-screenshot'></span></small>
+          {{account.playerStatistics.avgDamage|number:'3.0-0'}}</h3>
       </div>
     </div>
     <div class="col-sm-2" title="Средний опыт. Максимальный {{account.playerStatistics.maxXp|number}} - {{account.playerStatistics.maxXpTankInfo}}">
       <div class="info-box">
-        <h3><small><span class='glyphicon glyphicon-star-empty'></span></small> {{account.playerStatistics.avgXp|number:'3.0-0'}}</h3>
+        <h3><small><span class='glyphicon glyphicon-star-empty'></span></small>
+          {{account.playerStatistics.avgXp|number:'3.0-0'}}</h3>
       </div>
     </div>
   </div>
@@ -51,7 +54,8 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseHistory"  aria-expanded="false"  aria-controls="collapseHistory">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="false"
+          aria-controls="collapseHistory">
           История
         </button>
       </h5>
@@ -70,7 +74,7 @@
             <table>
               <tr>
                 <td *ngFor="let mastery of account.accountMasteryInfo">
-                  <img class="mastery-image" src="{{mastery.localImage}}" title="{{mastery.description}}" />
+                  <img [ngClass]="'mastery-' + mastery.markOfMastery" />
                   {{mastery.tanksCount}}/{{mastery.allTanksCount}} ({{mastery.masteryTanksRatio|percent}})
                 </td>
               </tr>

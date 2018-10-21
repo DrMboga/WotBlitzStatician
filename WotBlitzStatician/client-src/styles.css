@@ -130,3 +130,27 @@
   height: 25px;
   content: url("assets/img/flags/ussr.png")
 }
+
+.mastery-1, .mastery-Rank3 {
+  width: 30px;
+  height: 30px;
+  content: url("assets/img/mastery/rank3.png")
+}
+
+.mastery-2, .mastery-Rank2 {
+  width: 30px;
+  height: 30px;
+  content: url("assets/img/mastery/rank2.png")
+}
+
+.mastery-3, .mastery-Rank1 {
+  width: 30px;
+  height: 30px;
+  content: url("assets/img/mastery/rank1.png")
+}
+
+.mastery-4, .mastery-Master {
+  width: 30px;
+  height: 30px;
+  content: url("assets/img/mastery/master.png")
+}

@@ -46,34 +46,21 @@ namespace WotBlitzStatician.Data.DataAccessors
 			int allTanksCount = await _dbContext.PresentAccountTanks.AsNoTracking()
 										.Where(t => t.AccountId == accountId)
 										.CountAsync();
-			string accountMasteryInfosSql =
-				@"
-SELECT 
-	ats.MarkOfMastery, 
-	COUNT(ats.AccountTankStatisticId) AS TanksCount, 
-	md.[Image], 
-	md.[Description]
-FROM wotb.PresentAccountTanks AS pat
-	INNER JOIN wotb.AccountTankStatistics AS ats ON ats.AccountTankStatisticId = pat.AccountTankStatisticId
-	INNER JOIN (SELECT CONVERT(INT, LEFT(RIGHT(ao.[Image],5), 1)) AS MarkOfMastery, ao.[Image], ao.[Description]
-				FROM wotb.AchievementOption AS ao
-				WHERE ao.AchievementId = 'markOfMastery') md ON md.MarkOfMastery = ats.MarkOfMastery
-WHERE pat.AccountId = @accountId
-GROUP BY ats.MarkOfMastery, md.[Image], md.[Description]
-";
-			var accountIdParameter = new SqlParameter("@accountId", accountId);
-			var accountMasteryInfo = await _dbContext.Query<AccountMasteryInfoDto>()
-				.FromSql(accountMasteryInfosSql, accountIdParameter)
+
+			var accountMasteryInfo = await _dbContext.PresentAccountTanks.AsNoTracking()
+				.Where(p => p.AccountId == accountId)
+				.Join(_dbContext.AccountTankStatistics.AsNoTracking(), p => p.AccountTankStatisticId,
+					s => s.AccountTankStatisticId, (p, s) => s)
+				.GroupBy(s => s.MarkOfMastery)
+				.Select(g => new AccountMasteryInfoDto {MarkOfMastery = g.Key, TanksCount = g.Count(), AllTanksCount = allTanksCount})
 				.ToListAsync();
-			accountMasteryInfo.ForEach(m => m.AllTanksCount = allTanksCount);
 
 			return accountMasteryInfo;
 		}
 
         public async Task<List<AccountTankInfoDto>> GetAllTanksByAchievement(long accountId, string achievementId)
         {
-			var masteryImages = GetMasteryImages();
-			var mapper = new AccountTanksInfoDtoMapper(masteryImages);
+			var mapper = new AccountTanksInfoDtoMapper();
 
 			return await mapper.ProjectTo(
 				_dbContext.PresentAccountTanks.AsNoTracking()
@@ -93,8 +80,7 @@ GROUP BY ats.MarkOfMastery, md.[Image], md.[Description]
 
         public async Task<List<AccountTankInfoDto>> GetAllTanksByMastery(long accountId, MarkOfMastery markOfMastery)
         {
-			var masteryImages = GetMasteryImages();
-			var mapper = new AccountTanksInfoDtoMapper(masteryImages);
+			var mapper = new AccountTanksInfoDtoMapper();
 
 			return await mapper.ProjectTo(
 				_dbContext.PresentAccountTanks.AsNoTracking()
@@ -110,8 +96,7 @@ GROUP BY ats.MarkOfMastery, md.[Image], md.[Description]
 
 		public IQueryable<AccountTankInfoDto> GetTanksInfoQuery(long accountId)
 		{
-			var masteryImages = GetMasteryImages();
-			var mapper = new AccountTanksInfoDtoMapper(masteryImages);
+			var mapper = new AccountTanksInfoDtoMapper();
 
 			return mapper.ProjectTo(
 			  _dbContext.PresentAccountTanks.AsNoTracking()
@@ -124,21 +109,6 @@ GROUP BY ats.MarkOfMastery, md.[Image], md.[Description]
 			 .Select(j => new AccountTanksStatisticsTuple { Tank = j.AccountTankStatistic, Vehicle = j.VehicleInfo })
 			 );
 
-		}
-
-		private Dictionary<MarkOfMastery, string> GetMasteryImages()
-		{
-			var masteryImages = _dbContext.AchievementOption.AsNoTracking()
-			  .Where(a => a.Achievement.AchievementId == "markOfMastery")
-			  .Select(o => o.Image).ToList();
-			var imagesDic = new Dictionary<MarkOfMastery, string>();
-
-			foreach (var mastery in Enum.GetValues(typeof(MarkOfMastery)).Cast<MarkOfMastery>())
-			{
-				imagesDic[mastery] = masteryImages.FirstOrDefault(i => i.ToLower().EndsWith($"{(int)mastery}.png"));
-			}
-
-			return imagesDic;
 		}
     }
 }
