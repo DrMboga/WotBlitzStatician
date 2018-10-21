@@ -1,10 +1,9 @@
 import { Injectable, Inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from "rxjs/Observable";
-import { catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 // import { throwError } from 'rxjs';
-import "rxjs/add/operator/map";
 
 import { AccountInfo } from '../model/account-info';
 
@@ -56,8 +55,7 @@ export class AccountInfoService {
 
 // api/AccountInfo/ShortAccountInfo/46512100
   getShortAccountInfo(accountId: number) : Observable<AccountInfo> {
-    return this.http.get<AccountInfo>(`${this.baseUrl}api/AccountInfo/ShortAccountInfo/${accountId}`)
-            .map(d => d as AccountInfo);
+    return this.http.get<AccountInfo>(`${this.baseUrl}api/AccountInfo/ShortAccountInfo/${accountId}`);
   }
 
   // api/WgRequests/Authentication
