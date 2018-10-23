@@ -1,8 +1,8 @@
 <h2>
-  <span class='glyphicon glyphicon-user'></span> {{account.nickName}} <span *ngIf="account.playerClanInfo">[{{account.playerClanInfo.clanTag}}]</span>
+  <fa-icon icon="user"></fa-icon> {{account.nickName}} <span *ngIf="account.playerClanInfo">[{{account.playerClanInfo.clanTag}}]</span>
 </h2>
 <div class="row">
-  <span class='glyphicon glyphicon-time'></span> Создан: {{account.accountCreatedAt|date:"short"}}
+  <fa-icon icon="clock" ></fa-icon> Создан: {{account.accountCreatedAt|date:"short"}}
 </div>
 <div *ngIf="account.playerClanInfo" class="row">
   {{account.playerClanInfo.playerRole}} в клане [{{account.playerClanInfo.clanTag}}] -

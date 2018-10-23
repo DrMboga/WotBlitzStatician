@@ -17,13 +17,14 @@ import { TankCardComponent } from './tank-card/tank-card.component';
 import { AccountGlobalInfo } from './account-global-info';
 import { AuthGuard } from './auth.guard';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
-
+import { IconsModule } from './icons.module';
 
 @NgModule({
   imports: [
     FormsModule,
     BrowserModule,
     CommonModule,
+    IconsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'account', pathMatch: 'full' },
       { path: 'account', component: AccountInfoComponent, canActivate: [AuthGuard] },
