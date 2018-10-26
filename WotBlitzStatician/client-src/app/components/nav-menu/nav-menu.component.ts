@@ -8,9 +8,6 @@ import { AccountGlobalInfo } from '../account-global-info';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit {
-  public accountId: number;
-  public accountNick: string;
-
   constructor(public accountGlobalInfo: AccountGlobalInfo) {
   }
 

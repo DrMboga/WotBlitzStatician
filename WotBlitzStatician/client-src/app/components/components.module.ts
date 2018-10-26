@@ -49,7 +49,7 @@ import { IconsModule } from './icons.module';
     NavMenuComponent
   ],
   providers: [
-    {provide: AccountGlobalInfo, useValue: new AccountGlobalInfo(0, 'User') },
+    {provide: AccountGlobalInfo, useValue: new AccountGlobalInfo(0, 'WotBlitzStatician') },
     AuthGuard,
     CookieService
   ]
