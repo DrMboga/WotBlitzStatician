@@ -5,7 +5,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser, faGamepad, faFlag, 
         faSkullCrossbones, faSearch,
-        faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+        faSignInAlt, faSignOutAlt, faCross,
+        faCalculator, faDonate, faCoins,
+        faStarHalfAlt, faJedi } from '@fortawesome/free-solid-svg-icons';
 import { faClock, faStar, faHeart } from '@fortawesome/free-regular-svg-icons';
  
 // Add an icon to the library for convenient access in other components
@@ -18,7 +20,13 @@ library.add(faUser,
             faHeart,
             faSearch,
             faSignInAlt,
-            faSignOutAlt);
+            faSignOutAlt,
+            faCross,
+            faCalculator,
+            faDonate,
+            faCoins,
+            faStarHalfAlt,
+            faJedi);
 
 @NgModule({
   imports: [
