@@ -1,13 +1,13 @@
 <form (ngSubmit)="queryData()">
   <div class="form-row form-inline">
     <div class="btn-group btn-group-toggle" id="tiersToggle" title="Уровни танков">
-      <label [ngClass]="'btn btn-primary' + (tier.isSelected ? ' active' : '')" *ngFor="let tier of filter.tires">
+      <label [ngClass]="'btn btn-light' + (tier.isSelected ? ' active' : '')" *ngFor="let tier of filter.tires">
         <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="tier.isSelected">{{tier.itemName}}
       </label>
     </div>
     <div class="btn-group btn-group-toggle" id="inGarageToggle" title="В гараже">
-      <label [ngClass]="'btn btn-primary' + (filter.inGarage ? ' active' : '')">
-        <input type="checkbox" [ngModelOptions]="{standalone: true}" autocomplete="off" [(ngModel)]="filter.inGarage" class="checkbox-empty"><span class="glyphicon glyphicon-home"></span>
+      <label [ngClass]="'btn btn-light' + (filter.inGarage ? ' active' : '')">
+        <input type="checkbox" [ngModelOptions]="{standalone: true}" autocomplete="off" [(ngModel)]="filter.inGarage" class="checkbox-empty"><fa-icon icon="warehouse"></fa-icon>
       </label>
     </div>
     <div class="input-group mb-2 mr-sm-2" title="Боев >">
@@ -19,17 +19,17 @@
   </div>
   <div class="form-row">
     <div class="btn-group btn-group-toggle" id="vehicleTypesToggle" title="Типы танков">
-      <label [ngClass]="'btn btn-primary' + (vehicleType.isSelected ? ' active' : '')" *ngFor="let vehicleType of filter.vehicleTypes">
+      <label [ngClass]="'btn btn-light' + (vehicleType.isSelected ? ' active' : '')" *ngFor="let vehicleType of filter.vehicleTypes">
         <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="vehicleType.isSelected"><img [ngClass]="'tank-type-' + vehicleType.itemName" />
       </label>
     </div>
     <div class="btn-group btn-group-toggle" id="nationsToggle" title="Нации">
-      <label [ngClass]="'btn btn-primary' + (nation.isSelected ? ' active' : '')" *ngFor="let nation of filter.nations">
+      <label [ngClass]="'btn btn-light' + (nation.isSelected ? ' active' : '')" *ngFor="let nation of filter.nations">
         <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="nation.isSelected"><img [ngClass]="'flag-' + nation.itemName" />
       </label>
     </div>
-    <button class="btn btn-default" type="submit" title="Применить фильтр">
-      <i class="glyphicon glyphicon-search"></i>
+    <button class="btn btn-light" type="submit" title="Применить фильтр">
+      <fa-icon icon="search"></fa-icon>
     </button>
   </div>
 </form>

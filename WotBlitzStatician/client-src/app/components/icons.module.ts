@@ -7,7 +7,8 @@ import { faUser, faGamepad, faFlag,
         faSkullCrossbones, faSearch,
         faSignInAlt, faSignOutAlt, faCross,
         faCalculator, faDonate, faCoins,
-        faStarHalfAlt, faJedi } from '@fortawesome/free-solid-svg-icons';
+        faStarHalfAlt, faJedi,
+        faCampground, faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { faClock, faStar, faHeart } from '@fortawesome/free-regular-svg-icons';
  
 // Add an icon to the library for convenient access in other components
@@ -26,7 +27,9 @@ library.add(faUser,
             faDonate,
             faCoins,
             faStarHalfAlt,
-            faJedi);
+            faJedi,
+            faCampground,
+            faWarehouse);
 
 @NgModule({
   imports: [
