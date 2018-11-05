@@ -86,5 +86,4 @@ export class AccountTanksComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
