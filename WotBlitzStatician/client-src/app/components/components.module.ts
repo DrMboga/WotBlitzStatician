@@ -29,6 +29,8 @@ import { IconsModule } from './icons.module';
       { path: '', redirectTo: 'account', pathMatch: 'full' },
       { path: 'account', component: AccountInfoComponent, canActivate: [AuthGuard] },
       { path: 'tanks', component: AccountTanksComponent, canActivate: [AuthGuard] },
+      { path: 'account-achievements', component: AccountAchievementsComponent, canActivate: [AuthGuard] },
+      { path: 'account-history', component: AccountHistoryComponent, canActivate: [AuthGuard] },
       { path: 'splash-screen', component: SplashScreenComponent },
       { path: '**', redirectTo: 'account' }
     ])

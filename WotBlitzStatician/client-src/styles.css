@@ -62,25 +62,25 @@
 .tank-type-AT-SPG-prem {
   width: 25px;
   height: 25px;
-  content: url("assets/img/tank-type-prem/AT-SPG.png");
+  content: url("assets/img/tank-type-prem/prem-AT-SPG.png");
 }
 
 .tank-type-heavyTank-prem {
   width: 25px;
   height: 25px;
-  content: url("assets/img/tank-type-prem/heavyTank.png");
+  content: url("assets/img/tank-type-prem/prem-heavyTank.png");
 }
 
 .tank-type-lightTank-prem {
   width: 25px;
   height: 25px;
-  content: url("assets/img/tank-type-prem/lightTank.png");
+  content: url("assets/img/tank-type-prem/prem-lightTank.png");
 }
 
 .tank-type-mediumTank-prem {
   width: 25px;
   height: 25px;
-  content: url("assets/img/tank-type-prem/mediumTank.png");
+  content: url("assets/img/tank-type-prem/prem-mediumTank.png");
 }
 
 .flag-china {

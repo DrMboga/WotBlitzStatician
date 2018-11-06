@@ -11,7 +11,7 @@
       </div>
     </div>
     <h2 class="text-center display-3 pt-4 pb-4">{{account.nickName}} <span *ngIf="account.playerClanInfo" class="text-muted">[{{account.playerClanInfo.clanTag}}]</span></h2>
-    <div class="text-muted text-center pb-3">
+    <div class="text-muted text-center pb-3" *ngIf="account.playerStatistics.gold">
         <fa-icon icon="donate" size="xs"></fa-icon> <small> Золото:</small> {{account.playerStatistics.gold|number}} | 
         <fa-icon icon="coins" size="xs"></fa-icon> <small> Кредиты:</small> {{account.playerStatistics.credits|number}} |  
         <fa-icon icon="star-half-alt" size="xs"></fa-icon> <small> Свободный опыт:</small> {{account.playerStatistics.freeXp|number}} | 

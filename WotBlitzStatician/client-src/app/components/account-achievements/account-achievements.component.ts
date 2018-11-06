@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AccountInfoService } from '../../services/account-info.service';
+import { AccountGlobalInfo } from '../account-global-info';
 
 @Component({
   selector: 'account-achievements',
@@ -8,10 +9,7 @@ import { AccountInfoService } from '../../services/account-info.service';
 })
 export class AccountAchievementsComponent implements OnInit {
 
-  @Input("achievements")
   public achievements: any[];
-  @Input("accountId")
-  public accountId: number;
 
   public battleAchievements: any[];
   public epicAchievements: any[];
@@ -20,7 +18,8 @@ export class AccountAchievementsComponent implements OnInit {
   public commemorativeAchievements: any[];
   public stepAchievements: any[];
 
-  constructor(private accountsInfoService: AccountInfoService) { }
+  constructor(private accountsInfoService: AccountInfoService,
+    public accountGlobalInfo: AccountGlobalInfo) { }
 
   ngOnInit() {
     this.battleAchievements = this.achievements.filter(

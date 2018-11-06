@@ -3,6 +3,7 @@ import { Chart } from 'chart.js';
 import { DatePipe } from '@angular/common';
 
 import { AccountInfoService } from '../../services/account-info.service';
+import { AccountGlobalInfo } from '../account-global-info';
 
 @Component({
     selector: 'account-history',
@@ -11,8 +12,6 @@ import { AccountInfoService } from '../../services/account-info.service';
 })
 export class AccountHistoryComponent implements OnInit {
 
-    @Input("accountId")
-    public accountId: number;
     public dateFrom: Date;
     public accountHistory: any[];
 
@@ -28,6 +27,7 @@ export class AccountHistoryComponent implements OnInit {
     public avgXpChart = [];
 
     constructor(private accountsInfoService: AccountInfoService,
+        public accountGlobalInfo: AccountGlobalInfo,
         private datePipe: DatePipe) {
     }
 
@@ -38,7 +38,7 @@ export class AccountHistoryComponent implements OnInit {
     }
 
     loadHistory() {
-        this.accountsInfoService.getAccountStatHistory(this.accountId, this.dateFrom).subscribe(data => {
+        this.accountsInfoService.getAccountStatHistory(this.accountGlobalInfo.accountId, this.dateFrom).subscribe(data => {
             this.accountHistory = data as any[];
             this.dates = this.accountHistory.map(h => this.datePipe.transform(h.updatedAt, 'shortDate')).reverse();
             this.winRates = this.accountHistory.map(h => h.winRate * 100).reverse();
