@@ -58,6 +58,12 @@ export class AccountInfoService {
     return this.http.get<AccountInfo>(`${this.baseUrl}api/AccountInfo/ShortAccountInfo/${accountId}`);
   }
 
+  // api/AccountInfo/Achievements/46512100
+  getAccountAchievements(accountId: number) : Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}api/AccountInfo/Achievements/${accountId}`);
+  }
+
+
   // api/WgRequests/Authentication
   getAuthenticationRequest(redirectUrl: string) : Observable<string> {
     let params = new HttpParams()

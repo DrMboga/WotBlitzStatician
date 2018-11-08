@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WotBlitzStatician.Data.DataAccessors;
 using WotBlitzStatician.Model;
+using WotBlitzStatician.Model.Dto;
 
 namespace WotBlitzStatician.Controllers
 {
@@ -47,7 +48,6 @@ namespace WotBlitzStatician.Controllers
             }
 
             account.PlayerClanInfo = await _clanInfoDataAccessor.GetClanInfo(id);
-            account.Achievements = await _achievementsDataAccessor.GetAccountAchievements(id);
 
             var tanksInfos = await _accountsTankInfoDataAccessor.GetStringTankInfos(new long[] {
                                 account.PlayerStatistics.MaxFragsTankId,
@@ -89,6 +89,17 @@ namespace WotBlitzStatician.Controllers
                 return NotFound();
             }
             return Ok(shortAccount);
+        }
+
+        [HttpGet("Achievements/{accountId}")]
+        public async Task<IActionResult> GetAccountAchievements(long accountId)
+        {
+            var achievements = await _achievementsDataAccessor.GetAccountAchievements(accountId);
+            if (achievements == null || achievements.Count == 0)
+            {
+                return NotFound();
+            }
+            return Ok(achievements);
         }
 
         [HttpPut("{accountId}")]

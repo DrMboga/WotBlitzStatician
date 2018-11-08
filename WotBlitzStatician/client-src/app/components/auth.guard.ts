@@ -11,7 +11,10 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      return true;
+      //////
+      this.accountGlobalInfo.accountId = 90277267;
+      this.accountGlobalInfo.accountNick = 'Mboga';
+      //////
 
       if(this.accountGlobalInfo.accountId > 0) {
         return true;
