@@ -38,12 +38,6 @@ export class AccountHistoryComponent implements OnInit {
 
         /////
         this.accountHistory = JSON.parse(this.dataString);
-        this.dates = this.accountHistory.map(h => this.datePipe.transform(h.updatedAt, 'shortDate')).reverse();
-        this.winRates = this.accountHistory.map(h => h.winRate * 100).reverse();
-        this.wn7Data = this.accountHistory.map(h => h.wn7).reverse();
-        this.avgDamageData = this.accountHistory.map(h => h.avgDamage).reverse();
-        this.avgXpData = this.accountHistory.map(h => h.avgXp).reverse();
-        this.createCharts();
         /////
     }
 
