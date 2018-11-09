@@ -1,7 +1,8 @@
 <form class="form-inline" (ngSubmit)="loadHistory()">
   <div class="form-group">
     <label for="dateFrom">Дата с:</label>
-    <input type="date" class="form-control" id="dateFrom" [ngModel]="dateFrom|date:'yyyy-MM-dd'" (ngModelChange)="dateFrom = $event" [ngModelOptions]="{standalone: true}">
+    <input type="date" class="form-control" id="dateFrom" [ngModel]="dateFrom|date:'yyyy-MM-dd'" (ngModelChange)="dateFrom = $event"
+      [ngModelOptions]="{standalone: true}">
   </div>
   <button type="submit" class="btn btn-default">Показать историю</button>
 </form>
@@ -29,39 +30,39 @@
     </div>
   </div>
 </div>
-<div class="row" id="historyTable">
-  <table class="table">
-    <thead>
+<div id="historyTable">
+  <table class="table table-hover table-sm table-bordered">
+    <thead class="text-center">
       <tr>
         <th>
-          <span class='glyphicon glyphicon-time'></span>
+          <fa-icon [icon]="['far', 'clock']"></fa-icon>
         </th>
         <th>
-          <span class='glyphicon glyphicon-flash'></span>
+          <fa-icon icon="gamepad"></fa-icon>
         </th>
         <th>
-          <span class='glyphicon glyphicon-flag'></span>
+          <fa-icon icon="flag"></fa-icon>
         </th>
         <th>
-          Wn7
+          <fa-icon icon="calculator" size="xs"></fa-icon> Wn7
         </th>
         <th>
-          <span class='glyphicon glyphicon-screenshot'></span>
+          <fa-icon icon="skull-crossbones"></fa-icon>
         </th>
         <th>
-          <span class='glyphicon glyphicon-star-empty'></span>
+          <fa-icon [icon]="['far', 'star']"></fa-icon>
         </th>
         <th>
-          <span class='glyphicon glyphicon-heart-empty'></span>
+          <fa-icon [icon]="['far', 'heart']"></fa-icon>
         </th>
         <th>
-          C
+          <fa-icon icon="coins"></fa-icon>
         </th>
         <th>
-          G
+          <fa-icon icon="donate"></fa-icon>
         </th>
         <th>
-          <span class='glyphicon glyphicon-star'></span>
+          <fa-icon icon="star-half-alt"></fa-icon>
         </th>
       </tr>
     </thead>
@@ -105,8 +106,8 @@
         </td>
         <td>
           {{ac.gold|number}} <small [ngClass]="{'positive-diff': ac.goldDiff >= 0, 'negative-diff': ac.goldDiff < 0}">
-              <span *ngIf="ac.goldDiff > 0">+</span>{{ac.goldDiff|number}}
-            </small>
+            <span *ngIf="ac.goldDiff > 0">+</span>{{ac.goldDiff|number}}
+          </small>
         </td>
         <td>
           {{ac.freeXp|number}} <small [ngClass]="{'positive-diff': ac.freeXpDiff >= 0, 'negative-diff': ac.freeXpDiff < 0}">
