@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AccountInfoService } from '../../services/account-info.service';
 import { AccountAuthenticationService } from '../../services/account-authentication.service';
 
 @Component({
@@ -11,9 +10,7 @@ import { AccountAuthenticationService } from '../../services/account-authenticat
 export class SplashScreenComponent implements OnInit {
   constructor(
     activeRoute: ActivatedRoute,
-    private accountAuthService: AccountAuthenticationService,
-    private accountsInfoService: AccountInfoService,
-    @Inject('BASE_URL') private baseUrl: string) { 
+    private accountAuthService: AccountAuthenticationService) { 
 
       // Parse query parameters if any - redirect from wg auth
       activeRoute.queryParams.subscribe(
@@ -23,14 +20,4 @@ export class SplashScreenComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  private redirectToWargamingLogin(){
-    this.accountsInfoService.getAuthenticationRequest(`${this.baseUrl}splash-screen`).subscribe(
-      authRequest => {
-        // Redirect to authRequest
-        window.location.href = authRequest;
-      });
-    
-  }
-
 }

@@ -98,4 +98,10 @@ export class AccountAuthenticationService {
     return 0;
   }
 
+  public dropCookie() {
+    if (this.cookieService.check(this.accountIdCookieName)){
+      this.cookieService.delete(this.accountIdCookieName);
+    }
+  }
+
 }
