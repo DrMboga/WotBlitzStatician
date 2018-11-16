@@ -12,8 +12,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WotBlitzStatician.Logic", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WotBlitzStatician", "WotBlitzStatician\WotBlitzStatician.csproj", "{BA0C6D5B-7D14-4D1E-8283-8F7895D9FD1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WotBlitzStatician.Logic.Test", "WotBlitzStatician.Logic.Test\WotBlitzStatician.Logic.Test.csproj", "{27AFBCF6-E37B-4701-9AC3-4235C8458549}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

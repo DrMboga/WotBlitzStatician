@@ -10,7 +10,7 @@ import { AccountAuthenticationService } from '../../services/account-authenticat
 export class SplashScreenComponent implements OnInit {
   constructor(
     activeRoute: ActivatedRoute,
-    private accountAuthService: AccountAuthenticationService) { 
+    public accountAuthService: AccountAuthenticationService) { 
 
       // Parse query parameters if any - redirect from wg auth
       activeRoute.queryParams.subscribe(

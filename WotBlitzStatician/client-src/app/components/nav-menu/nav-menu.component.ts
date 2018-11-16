@@ -21,7 +21,7 @@ export class NavMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  private logInLogOff(){
+  public logInLogOff(){
     if(this.accountGlobalInfo.accountId === 0){
       this.accountsInfoService.getAuthenticationRequest(`${this.baseUrl}splash-screen`).subscribe(
         authRequest => {

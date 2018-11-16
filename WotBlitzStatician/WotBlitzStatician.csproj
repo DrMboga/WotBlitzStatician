@@ -31,8 +31,8 @@
     </Content>
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="ng build --delete-output-path=false" />
-  </Target>
+  <!-- <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="ng build -*-delete-output-path=false" />
+  </Target> -->
 
 </Project>
