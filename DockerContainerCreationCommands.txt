@@ -1,0 +1,13 @@
+
+cd WotBlitzStatician
+ng build --prod
+cd ..
+
+docker-compose build
+docker-compose up
+
+# In case of creating migrationsByScript
+cd WotBlitzStatician.Data/
+dotnet ef migrations script > ../migration.sql
+cd..
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'MyStaticianDocker!@' -I migration.sql

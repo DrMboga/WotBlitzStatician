@@ -390,6 +390,9 @@ FROM AccountHistory AS cur
 
         public async Task<AccountInfo> GetShortAccountInfo(long accountId)
         {
+            // This is the first method called from UI. Database may not exist
+            _dbContext.Database.Migrate();
+
             return await _dbContext.AccountInfo.AsNoTracking()
                 .Where(a => a.AccountId == accountId)
                 .FirstOrDefaultAsync();

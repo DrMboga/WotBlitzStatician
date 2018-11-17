@@ -21,9 +21,6 @@ RUN dotnet publish -c Release -o out
 
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
 WORKDIR /app
-COPY entrypoint.sh ./entrypoint.sh
 COPY --from=build /app/WotBlitzStatician/out ./
 EXPOSE 80/tcp
 ENTRYPOINT ["dotnet", "WotBlitzStatician.dll"]
-# RUN chmod +x ./entrypoint.sh
-# CMD /bin/bash ./entrypoint.sh
