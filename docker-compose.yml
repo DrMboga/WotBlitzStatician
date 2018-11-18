@@ -13,3 +13,8 @@ services:
         environment:
             SA_PASSWORD: "MyStaticianDocker!@"
             ACCEPT_EULA: "Y"
+        volumes:
+            - "blitzStatPersist:/var/lib/mssql"
+            
+volumes:
+  blitzStatPersist:
