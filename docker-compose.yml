@@ -14,7 +14,7 @@ services:
             SA_PASSWORD: "MyStaticianDocker!@"
             ACCEPT_EULA: "Y"
         volumes:
-            - "blitzStatPersist:/var/lib/mssql"
-            
+            - "sqlvolume:/var/opt/mssql"
+
 volumes:
-  blitzStatPersist:
+  sqlvolume:
