@@ -13,34 +13,30 @@ namespace WotBlitzStatician.Controllers
     public class AccountInfoController : Controller
     {
         private readonly IAccountDataAccessor _accountDataAccessor;
+        private readonly IAccountInfoViewDataAccessor _accountInfoViewDataAccessor;
         private readonly IClanInfoDataAccessor _clanInfoDataAccessor;
         private readonly IAchievementsDataAccessor _achievementsDataAccessor;
         private readonly IAccountsTankInfoDataAccessor _accountsTankInfoDataAccessor;
 
         public AccountInfoController(
           IAccountDataAccessor accountDataAccessor,
+          IAccountInfoViewDataAccessor accountInfoViewDataAccessor,
           IClanInfoDataAccessor clanInfoDataAccessor,
           IAchievementsDataAccessor achievementsDataAccessor,
           IAccountsTankInfoDataAccessor accountsTankInfoDataAccessor)
         {
             _accountDataAccessor = accountDataAccessor;
+            _accountInfoViewDataAccessor = accountInfoViewDataAccessor;
             _clanInfoDataAccessor = clanInfoDataAccessor;
             _achievementsDataAccessor = achievementsDataAccessor;
             _accountsTankInfoDataAccessor = accountsTankInfoDataAccessor;
-        }
-
-        // GET: api/<controller>
-        [HttpGet]
-        public async Task<IEnumerable<AccountInfo>> Get()
-        {
-            return await _accountDataAccessor.GetAllAccountsAsync();
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var account = await _accountDataAccessor.GetActualAccountInfo(id);
+            var account = await _accountInfoViewDataAccessor.GetActualAccountInfo(id);
 
             if (account == null)
             {
@@ -76,7 +72,7 @@ namespace WotBlitzStatician.Controllers
         [HttpGet("AccountStatHistory/{accountId}")]
         public async Task<IActionResult> GetAccountStatHistory(long accountId, [FromQuery] DateTime dateFrom)
         {
-            var playerHistory = await _accountDataAccessor.GetAccountStatHistory(accountId, dateFrom);
+            var playerHistory = await _accountInfoViewDataAccessor.GetAccountStatHistory(accountId, dateFrom);
             return Ok(playerHistory);
         }
 

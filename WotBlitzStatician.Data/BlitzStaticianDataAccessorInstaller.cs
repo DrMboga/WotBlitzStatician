@@ -3,7 +3,8 @@
 	using Autofac;
 	using Microsoft.Extensions.Logging;
 	using WotBlitzStatician.Data.DataAccessors;
-	using WotBlitzStatician.Data.Mappers;
+    using WotBlitzStatician.Data.DataAccessors.Impl;
+    using WotBlitzStatician.Data.Mappers;
 	using WotBlitzStatician.Model;
 	using WotBlitzStatician.Model.Dto;
 	using WotBlitzStatician.Model.MapperLogic;
@@ -22,6 +23,7 @@
 			containerBuilder.RegisterType<ClanInfoDataAccessor>().As<IClanInfoDataAccessor>();
 			containerBuilder.RegisterType<AchievementsDataAccessor>().As<IAchievementsDataAccessor>();
 			containerBuilder.RegisterType<AccountsTankInfoDataAccessor>().As<IAccountsTankInfoDataAccessor>();
+			containerBuilder.RegisterType<AccountInfoViewDataAccessor>().As<IAccountInfoViewDataAccessor>();
 		}
 
 		private static void ConfigureMappers(this ContainerBuilder containerBuilder)

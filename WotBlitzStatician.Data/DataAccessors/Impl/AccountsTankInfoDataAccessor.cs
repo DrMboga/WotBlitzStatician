@@ -10,7 +10,7 @@ using WotBlitzStatician.Model;
 using WotBlitzStatician.Model.Common;
 using WotBlitzStatician.Model.Dto;
 
-namespace WotBlitzStatician.Data.DataAccessors
+namespace WotBlitzStatician.Data.DataAccessors.Impl
 {
 	public class AccountsTankInfoDataAccessor : IAccountsTankInfoDataAccessor
 	{

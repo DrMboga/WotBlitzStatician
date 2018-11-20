@@ -21,6 +21,7 @@ namespace WotBlitzStatician.Controllers
     [HttpGet("LoadDictionariesAndPicturesIfNeeded")]
     public async Task<IActionResult> LoadAllDictionariesIfNeeded()
     {
+      _blitzStatisticsDictionary.CreateDatabase();
       var someDictionaryData = await _blitzStatisticsDictionary.GetVehiclesTires();
       if (someDictionaryData == null || someDictionaryData.Count == 0)
       {

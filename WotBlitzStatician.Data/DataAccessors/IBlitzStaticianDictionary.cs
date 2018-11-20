@@ -6,6 +6,8 @@ namespace WotBlitzStatician.Data.DataAccessors
 {
     public interface IBlitzStaticianDictionary
     {
+		void CreateDatabase();
+
 		Task SaveDictionaries(
 			List<DictionaryLanguage> languages,
 			List<DictionaryNations> natons,

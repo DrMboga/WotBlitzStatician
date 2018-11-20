@@ -13,8 +13,6 @@ namespace WotBlitzStatician.Data.DataAccessors
 
         Task<AccountInfo> GetShortAccountInfo(long accountId);
 
-        Task<AccountInfoDto> GetActualAccountInfo(long accountId);
-
         Task<List<AccountTankStatistics>> GetActualTanksAsync(long accountId);
 
         Task SaveProlongedAccountAsync(long accountId, string accessToken, DateTime accesTokenExpiration);
@@ -44,7 +42,5 @@ namespace WotBlitzStatician.Data.DataAccessors
         Task MergePresentAccountTanksInfoAsync(List<PresentAccountTanks> presentAccountTanks);
 
         Task UpdateInnGarageInfoAsync(List<AccountTankStatistics> tanks);
-
-        Task<List<PlayerStatHistoryDto>> GetAccountStatHistory(long accountId, DateTime dateFrom);
     }
 }

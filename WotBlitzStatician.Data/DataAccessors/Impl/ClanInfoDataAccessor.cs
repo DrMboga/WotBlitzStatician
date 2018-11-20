@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using WotBlitzStatician.Model;
 using WotBlitzStatician.Model.Dto;
 
-namespace WotBlitzStatician.Data.DataAccessors
+namespace WotBlitzStatician.Data.DataAccessors.Impl
 {
 	public class ClanInfoDataAccessor : IClanInfoDataAccessor
 	{

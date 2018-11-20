@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WotBlitzStatician.Model.Dto;
 
-namespace WotBlitzStatician.Data.DataAccessors
+namespace WotBlitzStatician.Data.DataAccessors.Impl
 {
 	public class AchievementsDataAccessor : IAchievementsDataAccessor
 	{
