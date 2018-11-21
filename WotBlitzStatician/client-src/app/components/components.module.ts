@@ -11,13 +11,14 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { AccountTanksComponent } from './account-tanks/account-tanks.component';
 import { AccountAchievementsComponent } from './account-achievements/account-achievements.component';
-import { BlitzColorScaleDirective } from './blitz-color-scale.directive';
+import { BlitzColorScaleDirective } from './pipes/blitz-color-scale.directive';
 import { AccountHistoryComponent } from './account-history/account-history.component';
 import { TankCardComponent } from './tank-card/tank-card.component';
 import { AccountGlobalInfo } from './account-global-info';
 import { AuthGuard } from './auth.guard';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { IconsModule } from './icons.module';
+import { RomanNumberPipe } from './pipes/roman-number.pipe';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { IconsModule } from './icons.module';
     BlitzColorScaleDirective,
     AccountHistoryComponent,
     TankCardComponent,
-    SplashScreenComponent
+    SplashScreenComponent,
+    RomanNumberPipe
   ],
   exports: [
     AppComponent,
