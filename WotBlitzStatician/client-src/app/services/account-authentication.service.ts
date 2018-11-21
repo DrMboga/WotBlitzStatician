@@ -86,6 +86,7 @@ export class AccountAuthenticationService {
       this.status = `Getting ${accountInfo.nickName} statistics`;
       // 2. Load info from WG by account
       this.accountsInfoService.saveAllAccountInfo(accountInfo.accountId).subscribe(() => {
+        this.status = '';
         this.router.navigate(['/']);
       }, error => console.error('Account saving error', error));
     }, error => console.error('Dictionaries error', error));
