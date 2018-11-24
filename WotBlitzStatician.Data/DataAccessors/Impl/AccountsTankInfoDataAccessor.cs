@@ -82,7 +82,7 @@ namespace WotBlitzStatician.Data.DataAccessors.Impl
 				response[i] = new AccountTankByAchievementDto{
 					TankInfo = mapper.Map(tanks[i].Tuple),
 					AchievementId = achievementId,
-					AchievementsCount = tanks.Count
+					AchievementsCount = tanks[i].AchievementsCount
 				};
 			}
 			return response;

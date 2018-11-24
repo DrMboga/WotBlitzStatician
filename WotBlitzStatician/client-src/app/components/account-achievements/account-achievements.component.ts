@@ -18,27 +18,46 @@ export class AccountAchievementsComponent implements OnInit {
   public commemorativeAchievements: any[];
   public stepAchievements: any[];
 
+  public clickedAchievement: any;
+  public tanksByAchievement: any[];
+
   constructor(private accountsInfoService: AccountInfoService,
-    public accountGlobalInfo: AccountGlobalInfo) { 
-      this.accountsInfoService.getAccountAchievements(this.accountGlobalInfo.accountId).subscribe(
-        data => {
-          this.achievements = data as any[];
-          this.battleAchievements = this.achievements.filter(
-            achievement => achievement.section === 'battle');
-          this.epicAchievements = this.achievements.filter(
-            achievement => achievement.section === 'epic');
-          this.platoonAchievements = this.achievements.filter(
-            achievement => achievement.section === 'platoon');
-          this.titleAchievements = this.achievements.filter(
-            achievement => achievement.section === 'title');
-          this.commemorativeAchievements = this.achievements.filter(
-            achievement => achievement.section === 'commemorative');
-          this.stepAchievements = this.achievements.filter(
-            achievement => achievement.section === 'step');
-      
-        }, error => console.error(error));
-    }
+    public accountGlobalInfo: AccountGlobalInfo) {
+    this.accountsInfoService.getAccountAchievements(this.accountGlobalInfo.accountId).subscribe(
+      data => {
+        this.achievements = data as any[];
+        this.battleAchievements = this.achievements.filter(
+          achievement => achievement.section === 'battle');
+        this.epicAchievements = this.achievements.filter(
+          achievement => achievement.section === 'epic');
+        this.platoonAchievements = this.achievements.filter(
+          achievement => achievement.section === 'platoon');
+        this.titleAchievements = this.achievements.filter(
+          achievement => achievement.section === 'title');
+        this.commemorativeAchievements = this.achievements.filter(
+          achievement => achievement.section === 'commemorative');
+        this.stepAchievements = this.achievements.filter(
+          achievement => achievement.section === 'step');
+
+      }, error => console.error(error));
+  }
 
   ngOnInit() {
+  }
+
+  getTanksByAchievement() {
+    if (this.clickedAchievement.isAchievementOption) {
+      this.tanksByAchievement = null;
+      return;
+    }
+    this.accountsInfoService.getTanksByAchievement(this.accountGlobalInfo.accountId, this.clickedAchievement.achievementId)
+      .subscribe(data => { 
+        this.tanksByAchievement = data as any[];
+        this.tanksByAchievement.sort((left, right): number => {
+          if (left["achievementsCount"] < right["achievementsCount"]) return 11;
+          if (left["achievementsCount"] > right["achievementsCount"]) return -1;
+          return 0;
+        });
+      }, error => console.error(error));
   }
 }
