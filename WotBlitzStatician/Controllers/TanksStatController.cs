@@ -24,14 +24,5 @@ namespace WotBlitzStatician.Controllers
             var tanks = await _accountsTankInfoDataAccessor.GetAllTanksByAchievement(accountId, achievementId);
             return Ok(tanks);
         }
-
-        // api/TanksStat/TanksByMastery/90277267?markOfMastery=Rank1
-        [HttpGet("TanksByMastery/{accountId}")]
-        public async Task<IActionResult> GetTanksByMastery(long accountId, [FromQuery] MarkOfMastery markOfMastery)
-        {
-            var tanks = await _accountsTankInfoDataAccessor.GetAllTanksByMastery(accountId, markOfMastery);
-            return Ok(tanks);
-        }
-
     }
 }

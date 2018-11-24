@@ -58,12 +58,11 @@ namespace WotBlitzStatician.Data.DataAccessors.Impl
 			return accountMasteryInfo;
 		}
 
-        public async Task<List<AccountTankInfoDto>> GetAllTanksByAchievement(long accountId, string achievementId)
+        public async Task<AccountTankByAchievementDto[]> GetAllTanksByAchievement(long accountId, string achievementId)
         {
 			var mapper = new AccountTanksInfoDtoMapper();
 
-			return await mapper.ProjectTo(
-				_dbContext.PresentAccountTanks.AsNoTracking()
+			var tanks = await _dbContext.PresentAccountTanks.AsNoTracking()
 				.Join(_dbContext.AccountTankStatistics.AsNoTracking(), pt => pt.AccountTankStatisticId,
 					ts => ts.AccountTankStatisticId, (pt, st) => st)
 				.Join(_dbContext.VehicleEncyclopedia.AsNoTracking(), st => st.TankId, v => v.TankId,
@@ -71,27 +70,22 @@ namespace WotBlitzStatician.Data.DataAccessors.Impl
 				.Join(_dbContext.AccountInfoTankAchievement.AsNoTracking(), 
 					j => new {j.AccountTankStatistic.AccountId, j.AccountTankStatistic.TankId},
 					a => new {a.AccountId, a.TankId},
-					(l, r) => new {l.AccountTankStatistic, l.VehicleInfo, r.AchievementId})
+					(l, r) => new {l.AccountTankStatistic, l.VehicleInfo, r.AchievementId, r.Count})
 				.Where(j => j.AccountTankStatistic.AccountId == accountId && j.AchievementId == achievementId)
-				.Select(j => new AccountTanksStatisticsTuple { Tank = j.AccountTankStatistic, Vehicle = j.VehicleInfo })
-				)
+				.Select(j => new { Tuple = new AccountTanksStatisticsTuple{Tank = j.AccountTankStatistic, Vehicle = j.VehicleInfo}, AchievementsCount = j.Count })
 				.ToListAsync();
-        }
+			
+			var response = new AccountTankByAchievementDto[tanks.Count];
 
-        public async Task<List<AccountTankInfoDto>> GetAllTanksByMastery(long accountId, MarkOfMastery markOfMastery)
-        {
-			var mapper = new AccountTanksInfoDtoMapper();
-
-			return await mapper.ProjectTo(
-				_dbContext.PresentAccountTanks.AsNoTracking()
-				.Join(_dbContext.AccountTankStatistics.AsNoTracking(), pt => pt.AccountTankStatisticId,
-					ts => ts.AccountTankStatisticId, (pt, st) => st)
-				.Join(_dbContext.VehicleEncyclopedia.AsNoTracking(), st => st.TankId, v => v.TankId,
-					(st, v) => new { AccountTankStatistic = st, VehicleInfo = v })
-				.Where(j => j.AccountTankStatistic.AccountId == accountId && j.AccountTankStatistic.MarkOfMastery == markOfMastery)
-				.Select(j => new AccountTanksStatisticsTuple { Tank = j.AccountTankStatistic, Vehicle = j.VehicleInfo })
-				)
-				.ToListAsync();
+			for (int i = 0; i < tanks.Count; i++)
+			{
+				response[i] = new AccountTankByAchievementDto{
+					TankInfo = mapper.Map(tanks[i].Tuple),
+					AchievementId = achievementId,
+					AchievementsCount = tanks.Count
+				};
+			}
+			return response;
         }
 
 		public IQueryable<AccountTankInfoDto> GetTanksInfoQuery(long accountId)
