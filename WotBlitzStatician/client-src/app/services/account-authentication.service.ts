@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 import { AccountGlobalInfo } from '../components/account-global-info';
 import { AccountInfoService } from './account-info.service';
 import { AccountInfo } from '../model/account-info';
+import { WgAuthResponse } from '../model/wg-auth-response';
 
 @Injectable()
 export class AccountAuthenticationService {
   private readonly accountIdCookieName: string = 'AccountId';
 
   public showButtons: boolean = false;
-  public wgAuthResponse: any;
   public status: string;
 
   constructor(
@@ -20,10 +20,10 @@ export class AccountAuthenticationService {
     private accountsInfoService: AccountInfoService
   ) { }
 
-  public parseWargamingAuthResponse(params: any) {
-    if (params.hasOwnProperty('status') && params.status === 'ok') {
-      this.wgAuthResponse = params;
-      this.saveAccountInfoAndEnter();
+  public parseWargamingAuthResponse(response: WgAuthResponse) {
+    console.log('Serialized response', response);
+    if (response.status === 'ok') {
+      this.saveAccountInfoAndEnter(response);
       this.showButtons = false;
     }
     else {
@@ -57,16 +57,16 @@ export class AccountAuthenticationService {
     }
   }
 
-  public saveAccountInfoAndEnter() {
-    this.accountGlobalInfo.accountId = this.wgAuthResponse.account_id;
-    this.accountGlobalInfo.accountNick = this.wgAuthResponse.nickname;
+  public saveAccountInfoAndEnter(wgAuthResponse: WgAuthResponse) {
+    this.accountGlobalInfo.accountId = wgAuthResponse.account_id;
+    this.accountGlobalInfo.accountNick = wgAuthResponse.nickname;
     let accountInfo: AccountInfo = {
       accountId: this.accountGlobalInfo.accountId,
       nickName: this.accountGlobalInfo.accountNick,
       lastBattleTime: null,
       accountCreatedAt: null,
-      accessToken: this.wgAuthResponse.access_token,
-      accessTokenExpiration: new Date(+this.wgAuthResponse.expires_at * 1000)
+      accessToken: wgAuthResponse.access_token,
+      accessTokenExpiration: new Date(+wgAuthResponse.expires_at * 1000)
     };
 
     this.status = 'Saving new account';

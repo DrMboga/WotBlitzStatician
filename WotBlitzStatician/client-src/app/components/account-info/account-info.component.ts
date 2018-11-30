@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { AccountInfoService } from '../../services/account-info.service';
 import { AccountGlobalInfo } from '../account-global-info';
+import { AccountInfoDto } from '../../model/account-info-dto';
+import { AccountMasteryInfo } from '../../model/account-mastery-info';
 
 @Component({
   selector: 'app-account-info',
@@ -9,12 +11,11 @@ import { AccountGlobalInfo } from '../account-global-info';
   styleUrls: ['./account-info.component.css']
 })
 export class AccountInfoComponent implements OnInit {
-  public account: any;
-  public achievements: any[];
-  public mastery: any;
-  public rank1: any;
-  public rank2: any;
-  public rank3: any;
+  public account: AccountInfoDto;
+  public mastery: AccountMasteryInfo;
+  public rank1: AccountMasteryInfo;
+  public rank2: AccountMasteryInfo;
+  public rank3: AccountMasteryInfo;
 
   constructor(private accountsInfoService: AccountInfoService,
     public accountGlobalInfo: AccountGlobalInfo) {
@@ -22,7 +23,6 @@ export class AccountInfoComponent implements OnInit {
     if (id != null) {
       this.accountsInfoService.getAccount(id).subscribe(data => {
         this.account = data;
-        this.achievements = this.account.achievements;
         this.mastery = this.account.accountMasteryInfo.find(m => m.markOfMastery === 4);
         this.rank3 = this.account.accountMasteryInfo.find(m => m.markOfMastery === 3);
         this.rank2 = this.account.accountMasteryInfo.find(m => m.markOfMastery === 2);

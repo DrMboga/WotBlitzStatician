@@ -2,10 +2,11 @@ import { Injectable, Inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, filter, catchError, mergeMap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 import { AccountInfo } from '../model/account-info';
+import { AccountInfoDto } from '../model/account-info-dto';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,8 +23,8 @@ export class AccountInfoService {
         private datePipe: DatePipe) {
     }
   
-  getAccount(accountId: number): Observable<AccountInfo> {
-    return this.http.get<AccountInfo>(`${this.baseUrl}api/AccountInfo/${accountId}`)
+  getAccount(accountId: number): Observable<AccountInfoDto> {
+    return this.http.get<AccountInfoDto>(`${this.baseUrl}api/AccountInfo/${accountId}`)
     .pipe(catchError(this.handleError));
   }
 
