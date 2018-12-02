@@ -1,4 +1,4 @@
-import { PlayerClanInfo } from "./player-clan_info";
+import { PlayerClanInfo } from "./player-clan-info";
 import { PlayerStatistics } from "./player-statistics";
 import { AccountMasteryInfo } from "./account-mastery-info";
 

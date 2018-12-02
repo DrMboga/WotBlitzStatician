@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
 import { DatePipe } from '@angular/common';
 
 import { AccountInfoService } from '../../services/account-info.service';
 import { AccountTanksFilter } from "./account-tanks-filter";
 import { AccountTanksFooter } from "./account-tanks-footer";
 import { AccountGlobalInfo } from '../account-global-info';
+import { TankStatisticDto } from '../../model/tank-statistic-dto';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { AccountGlobalInfo } from '../account-global-info';
 export class AccountTanksComponent implements OnInit {
   public accountId: number = 0;
   public filter: AccountTanksFilter;
-  public tanks: any[];
+  public tanks: TankStatisticDto[];
   public sortColumn: string;
   public sortAscending: boolean;
   public tableFooter: AccountTanksFooter;
@@ -42,8 +42,8 @@ export class AccountTanksComponent implements OnInit {
   }
 
   queryData() {
-    this.accountsInfoService.getDataByQuery(this.filter.getFilterQuery()).subscribe(data => {
-      this.tanks = data.value;
+    this.accountsInfoService.getTanksDataByQuery(this.filter.getFilterQuery()).subscribe(data => {
+      this.tanks = data;
       this.sortTanks();
       this.calculateFooter();
     }, error => console.error(error));

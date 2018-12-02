@@ -2,11 +2,12 @@ import { Injectable, Inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 import { AccountInfo } from '../model/account-info';
 import { AccountInfoDto } from '../model/account-info-dto';
+import { TankStatisticDto } from '../model/tank-statistic-dto';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -28,9 +29,12 @@ export class AccountInfoService {
     .pipe(catchError(this.handleError));
   }
 
-  getDataByQuery(dataQuery: string): Observable<any> {
+  getTanksDataByQuery(dataQuery: string): Observable<TankStatisticDto[]> {
     return this.http.get<any>(`${this.baseUrl}${dataQuery}`)
-    .pipe(catchError(this.handleError));
+          .pipe(
+            map(d => d.value as TankStatisticDto[]),
+            catchError(this.handleError)
+            );
   }
 
   getAccountStatHistory(accountId: number, dateFrom: Date): Observable<any> {
