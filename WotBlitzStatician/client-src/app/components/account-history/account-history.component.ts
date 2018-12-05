@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 
 import { AccountInfoService } from '../../services/account-info.service';
 import { AccountGlobalInfo } from '../account-global-info';
+import { AccountStatHistoryDto } from '../../model/account-stat-history-dto';
 
 @Component({
     selector: 'account-history',
@@ -13,7 +14,7 @@ import { AccountGlobalInfo } from '../account-global-info';
 export class AccountHistoryComponent implements OnInit {
 
     public dateFrom: Date;
-    public accountHistory: any[];
+    public accountHistory: AccountStatHistoryDto[];
 
     public dates: string[];
     public winRates: number[];
@@ -39,7 +40,7 @@ export class AccountHistoryComponent implements OnInit {
 
     loadHistory() {
         this.accountsInfoService.getAccountStatHistory(this.accountGlobalInfo.accountId, this.dateFrom).subscribe(data => {
-            this.accountHistory = data as any[];
+            this.accountHistory = data;
             this.dates = this.accountHistory.map(h => this.datePipe.transform(h.updatedAt, 'shortDate')).reverse();
             this.winRates = this.accountHistory.map(h => h.winRate * 100).reverse();
             this.wn7Data = this.accountHistory.map(h => h.wn7).reverse();

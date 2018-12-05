@@ -8,6 +8,9 @@ import { throwError } from 'rxjs';
 import { AccountInfo } from '../model/account-info';
 import { AccountInfoDto } from '../model/account-info-dto';
 import { TankStatisticDto } from '../model/tank-statistic-dto';
+import { AccountStatHistoryDto } from '../model/account-stat-history-dto';
+import { TankByAchievementDto } from '../model/tank-by-achievement-dto';
+import { AccountAchievementDto } from '../model/account-achievement-dto';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -37,25 +40,25 @@ export class AccountInfoService {
             );
   }
 
-  getAccountStatHistory(accountId: number, dateFrom: Date): Observable<any> {
+  getAccountStatHistory(accountId: number, dateFrom: Date): Observable<AccountStatHistoryDto[]> {
         let datefromString = this.datePipe.transform(dateFrom, 'yyyy-MM-dd');
         let params = new HttpParams()
           .set('dateFrom', datefromString)
-        return this.http.get<any>(`${this.baseUrl}api/AccountInfo/AccountStatHistory/${accountId}`, { params })
+        return this.http.get<AccountStatHistoryDto[]>(`${this.baseUrl}api/AccountInfo/AccountStatHistory/${accountId}`, { params })
         .pipe(catchError(this.handleError));
   }
 
-  getTanksByAchievement(accountId: number, achievementId: string): Observable<any> {
+  getTanksByAchievement(accountId: number, achievementId: string): Observable<TankByAchievementDto[]> {
     let params = new HttpParams()
       .set('achievementId', achievementId)
-    return this.http.get<any>(`${this.baseUrl}api/TanksStat/TanksByAchievement/${accountId}`, { params })
+    return this.http.get<TankByAchievementDto[]>(`${this.baseUrl}api/TanksStat/TanksByAchievement/${accountId}`, { params })
     .pipe(catchError(this.handleError));
   }
 
-  getTanksByMastery(accountId: number, rankOfMastery: string): Observable<any> {
+  getTanksByMastery(accountId: number, rankOfMastery: string): Observable<TankByAchievementDto[]> {
     let params = new HttpParams()
       .set('markOfMastery', rankOfMastery)
-    return this.http.get<any>(`${this.baseUrl}api/TanksStat/TanksByMastery/${accountId}`, { params })
+    return this.http.get<TankByAchievementDto[]>(`${this.baseUrl}api/TanksStat/TanksByMastery/${accountId}`, { params })
     .pipe(catchError(this.handleError));
   }
 
@@ -66,8 +69,8 @@ export class AccountInfoService {
   }
 
   // api/AccountInfo/Achievements/46512100
-  getAccountAchievements(accountId: number) : Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}api/AccountInfo/Achievements/${accountId}`)
+  getAccountAchievements(accountId: number) : Observable<AccountAchievementDto[]> {
+    return this.http.get<AccountAchievementDto[]>(`${this.baseUrl}api/AccountInfo/Achievements/${accountId}`)
                     .pipe(catchError(this.handleError));
   }
 

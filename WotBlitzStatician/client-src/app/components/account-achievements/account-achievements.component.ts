@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AccountInfoService } from '../../services/account-info.service';
 import { AccountGlobalInfo } from '../account-global-info';
+import { TankByAchievementDto } from '../../model/tank-by-achievement-dto';
+import { AccountAchievementDto } from '../../model/account-achievement-dto';
 
 @Component({
   selector: 'account-achievements',
@@ -9,23 +11,23 @@ import { AccountGlobalInfo } from '../account-global-info';
 })
 export class AccountAchievementsComponent implements OnInit {
 
-  public achievements: any[];
+  public achievements: AccountAchievementDto[];
 
-  public battleAchievements: any[];
-  public epicAchievements: any[];
-  public platoonAchievements: any[];
-  public titleAchievements: any[];
-  public commemorativeAchievements: any[];
-  public stepAchievements: any[];
+  public battleAchievements: AccountAchievementDto[];
+  public epicAchievements: AccountAchievementDto[];
+  public platoonAchievements: AccountAchievementDto[];
+  public titleAchievements: AccountAchievementDto[];
+  public commemorativeAchievements: AccountAchievementDto[];
+  public stepAchievements: AccountAchievementDto[];
 
-  public clickedAchievement: any;
-  public tanksByAchievement: any[];
+  public clickedAchievement: AccountAchievementDto;
+  public tanksByAchievement: TankByAchievementDto[];
 
   constructor(private accountsInfoService: AccountInfoService,
     public accountGlobalInfo: AccountGlobalInfo) {
     this.accountsInfoService.getAccountAchievements(this.accountGlobalInfo.accountId).subscribe(
       data => {
-        this.achievements = data as any[];
+        this.achievements = data;
         this.battleAchievements = this.achievements.filter(
           achievement => achievement.section === 'battle');
         this.epicAchievements = this.achievements.filter(
@@ -52,10 +54,10 @@ export class AccountAchievementsComponent implements OnInit {
     }
     this.accountsInfoService.getTanksByAchievement(this.accountGlobalInfo.accountId, this.clickedAchievement.achievementId)
       .subscribe(data => { 
-        this.tanksByAchievement = data as any[];
+        this.tanksByAchievement = data;
         this.tanksByAchievement.sort((left, right): number => {
-          if (left["achievementsCount"] < right["achievementsCount"]) return 11;
-          if (left["achievementsCount"] > right["achievementsCount"]) return -1;
+          if (left.achievementsCount < right.achievementsCount) return 11;
+          if (left.achievementsCount > right.achievementsCount) return -1;
           return 0;
         });
       }, error => console.error(error));
