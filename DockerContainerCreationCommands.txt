@@ -3,6 +3,9 @@ docker run -v $(pwd):/var/www -w "/var/www" node npm run build
 docker run -p 8080:3000 -v $(pwd):/var/www -w "/var/www" node npm run
 
 docker run -v $(pwd):/var/www -w "/var/www" node npm run build -- --output-path=./dist/out
+
+# attach
+docker exec -i -t 665b4a1e17b6 /bin/bash
 ---------------------------------
 docker pull [image name]
 docker images
