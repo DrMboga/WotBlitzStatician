@@ -1,4 +1,63 @@
+docker run -v $(pwd):/var/www -w "/var/www" node npm install
+docker run -v $(pwd):/var/www -w "/var/www" node npm run build
+docker run -p 8080:3000 -v $(pwd):/var/www -w "/var/www" node npm run
 
+docker run -v $(pwd):/var/www -w "/var/www" node npm run build -- --output-path=./dist/out
+---------------------------------
+docker pull [image name]
+docker images
+docker rmi [image id]
+
+docker run [-d] [image name]
+docker ps -a
+docker inspect [container name]
+docker rm [container id]
+
+# ports and volumes
+docker run -p 8080:3000 -v /var/www [image name]
+
+# volume with current directiory working dir node image and npm start
+docker run -p 8080:3000 -v $(pwd):/var/www -w "/var/www" node npm start
+
+# [-it] - interactive mode
+docker run -it -p 8080:80 -v $(pwd):/app -w "/app" microsoft/aspnetcore-build /bin/bash
+    dotnet restore
+    ...
+    exit
+
+
+# Build a container
+docker build -f Dockerfile -t mboga/WotBlitzStaticianWeb .
+
+---------------------------------
+docker-compose build
+docker-compose up [-d]
+docker-compose logs
+docker-compose ps
+docker-compose stop
+docker-compose start
+docker-compose rm
+#stop and remove all containers
+docker-compose down 
+
+#stop and remove all containers images and volumes
+docker-compose down --rmi all --volumes
+
+# builds only one service
+docker-compose build [service name]
+
+# recreate only one service without dependencies
+docker-compose up --no-deps [service name]
+
+---------------------------------
+docker-machine ls
+docker-machine start [machine name]
+docker-machine stop [machine name]
+docker-machine env [machine name]
+docker-machine ip [machine name]
+docker-machine status [machine name]
+
+---------------------------------
 cd WotBlitzStatician
 ng build --prod
 cd ..
