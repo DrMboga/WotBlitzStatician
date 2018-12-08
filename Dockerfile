@@ -19,24 +19,27 @@ RUN npm run build -- --output-path=./dist/out
 FROM microsoft/dotnet:2.1-sdk AS netcore-build
 WORKDIR /app
 
-# copy csproj and restore as distinct layers
-COPY *.sln .
+COPY WotBlitzStatician.sln .
 COPY WotBlitzStatician.Model/*.csproj ./WotBlitzStatician.Model/
 COPY WotBlitzStatician.WotApiClient/*.csproj ./WotBlitzStatician.WotApiClient/
 COPY WotBlitzStatician.Data/*.csproj ./WotBlitzStatician.Data/
 COPY WotBlitzStatician.Logic/*.csproj ./WotBlitzStatician.Logic/
 COPY WotBlitzStatician/*.csproj ./WotBlitzStatician/
+COPY WotBlitzStatician.Logic.Test/*.csproj ./WotBlitzStatician.Logic.Test/
 RUN dotnet restore
 
-# copy everything else and build app
 COPY WotBlitzStatician.Model/. ./WotBlitzStatician.Model/
 COPY WotBlitzStatician.WotApiClient/. ./WotBlitzStatician.WotApiClient/
 COPY WotBlitzStatician.Data/. ./WotBlitzStatician.Data/
 COPY WotBlitzStatician.Logic/. ./WotBlitzStatician.Logic/
+COPY WotBlitzStatician.Logic.Test/*.csproj ./WotBlitzStatician.Logic.Test/
 COPY WotBlitzStatician/. ./WotBlitzStatician/
-# ToDo: Database restore ?
-# ToDo: Unit tests
 
+# Unit tests (not working - not found any xunit test)
+WORKDIR /app/WotBlitzStatician.Logic.Test
+RUN dotnet test
+
+# Finally publish in prod mode
 WORKDIR /app/WotBlitzStatician
 RUN dotnet publish -c Release -o out
 

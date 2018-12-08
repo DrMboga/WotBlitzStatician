@@ -1,3 +1,8 @@
+docker-compose build
+docker-compose up -d
+curl http://localhost:8000/api/Dictionaries/LoadDictionariesAndPicturesIfNeeded
+
+---------------------------------
 docker run -v $(pwd):/var/www -w "/var/www" node npm install
 docker run -v $(pwd):/var/www -w "/var/www" node npm run build
 docker run -p 8080:3000 -v $(pwd):/var/www -w "/var/www" node npm run

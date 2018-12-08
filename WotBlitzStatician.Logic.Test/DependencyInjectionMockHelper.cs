@@ -7,6 +7,7 @@
 	using Moq;
 	using WotBlitzStatician.Data;
 	using WotBlitzStatician.Data.DataAccessors;
+	using WotBlitzStatician.Data.DataAccessors.Impl;
 	using WotBlitzStatician.Model;
 	using WotBlitzStatician.WotApiClient;
 

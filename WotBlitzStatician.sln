@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -11,6 +11,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WotBlitzStatician.Logic", "WotBlitzStatician.Logic\WotBlitzStatician.Logic.csproj", "{70704092-149F-4D72-A73E-6733CE725999}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WotBlitzStatician", "WotBlitzStatician\WotBlitzStatician.csproj", "{BA0C6D5B-7D14-4D1E-8283-8F7895D9FD1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WotBlitzStatician.Logic.Test", "WotBlitzStatician.Logic.Test\WotBlitzStatician.Logic.Test.csproj", "{01A31D3B-DEA4-4217-A2CA-1F95AB5CD2B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{27AFBCF6-E37B-4701-9AC3-4235C8458549}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27AFBCF6-E37B-4701-9AC3-4235C8458549}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27AFBCF6-E37B-4701-9AC3-4235C8458549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01A31D3B-DEA4-4217-A2CA-1F95AB5CD2B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01A31D3B-DEA4-4217-A2CA-1F95AB5CD2B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01A31D3B-DEA4-4217-A2CA-1F95AB5CD2B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01A31D3B-DEA4-4217-A2CA-1F95AB5CD2B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
