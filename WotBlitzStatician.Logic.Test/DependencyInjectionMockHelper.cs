@@ -32,8 +32,12 @@
 			var context = new BlitzStaticianDbContext(options);
 
 			containerBuilder.RegisterInstance(context).As<BlitzStaticianDbContext>().ExternallyOwned();
-			containerBuilder.RegisterType<BlitzStaticianDictionary>().As<IBlitzStaticianDictionary>();
-			containerBuilder.RegisterType<AccountDataAccessor>().As<IAccountDataAccessor>();
+            containerBuilder.RegisterType<BlitzStaticianDictionary>().As<IBlitzStaticianDictionary>();
+            containerBuilder.RegisterType<AccountDataAccessor>().As<IAccountDataAccessor>();
+			containerBuilder.RegisterType<ClanInfoDataAccessor>().As<IClanInfoDataAccessor>();
+			containerBuilder.RegisterType<AchievementsDataAccessor>().As<IAchievementsDataAccessor>();
+			containerBuilder.RegisterType<AccountsTankInfoDataAccessor>().As<IAccountsTankInfoDataAccessor>();
+			containerBuilder.RegisterType<AccountInfoViewDataAccessor>().As<IAccountInfoViewDataAccessor>();
 
 			return containerBuilder;
 		}
