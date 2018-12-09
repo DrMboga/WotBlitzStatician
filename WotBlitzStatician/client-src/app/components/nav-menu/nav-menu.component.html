@@ -1,5 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" [routerLink]="['/']">{{accountGlobalInfo.accountNick}}</a>
+    <button class="btn btn-dark my-2 my-sm-0" 
+            title="Обновить статистику" 
+            style="margin-left: 2px; margin-right: 2px" 
+            [disabled]="!refreshEnabled"
+            (click)="refreshStat()">
+      <fa-icon icon="sync"></fa-icon>
+    </button>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

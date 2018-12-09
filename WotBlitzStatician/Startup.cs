@@ -57,6 +57,10 @@ namespace WotBlitzStatician
 
 			app.UseErrorHandler();
 			app.UseStaticFiles();
+			app.UseCors(builder =>
+				builder.WithOrigins("http://localhost:4200")
+					.AllowAnyHeader()
+					.AllowAnyMethod());
 			app.UseMvc(routes =>
               {
                 routes.MapRoute("default", "{controller}/{action}");

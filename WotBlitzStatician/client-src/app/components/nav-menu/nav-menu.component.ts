@@ -11,6 +11,8 @@ import { AccountAuthenticationService } from '../../services/account-authenticat
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit {
+  public refreshEnabled: boolean = true;
+
   constructor(public accountGlobalInfo: AccountGlobalInfo,
     private accountsInfoService: AccountInfoService,
     @Inject('BASE_URL') private baseUrl: string,
@@ -19,6 +21,19 @@ export class NavMenuComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  public refreshStat(){
+    if(this.accountGlobalInfo.accountId === 0){
+      return;
+    }
+    this.refreshEnabled = false;
+    this.accountsInfoService.saveAllAccountInfo(this.accountGlobalInfo.accountId).subscribe(
+      () => {
+        this.refreshEnabled = true;
+        this.router.navigate(['/']);
+      }
+    )
   }
 
   public logInLogOff(){
