@@ -97,7 +97,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let tank of tanks">
+      <tr *ngFor="let tank of tanks; trackBy: trackByTankId">
         <td><img *ngIf="tank.TankMarkOfMastery != 'None'" [ngClass]="'mastery-' + tank.TankMarkOfMastery" /></td>
         <td><img [ngClass]="'tank-type-' + tank.VehicleType + (tank.VehicleIsPremium ? '-prem' : '')" /></td>
         <td><b>{{tank.TankTierRoman}}</b></td>

@@ -84,6 +84,10 @@ export class AccountTanksComponent implements OnInit {
     this.tableFooter.avgTier = avgTierSum / this.tanks.length;
   }
 
+  trackByTankId(index: number, item: TankStatisticDto){
+    return item.TankTankId;
+  }
+
   ngOnInit() {
   }
 }
