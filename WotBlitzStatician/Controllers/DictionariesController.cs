@@ -22,23 +22,17 @@ namespace WotBlitzStatician.Controllers
     [HttpGet("LoadDictionariesAndPicturesIfNeeded")]
     public async Task<IActionResult> LoadAllDictionariesIfNeeded()
     {
-      var operationLog = new StringBuilder();
       _blitzStatisticsDictionary.CreateDatabase();
-      operationLog.AppendLine("Database created");
 
       var someDictionaryData = await _blitzStatisticsDictionary.GetVehiclesTires();
       if (someDictionaryData == null || someDictionaryData.Count == 0)
       {
         await SaveDictionaries();
-        operationLog.AppendLine("Dictionaries saves");
         await SaveVehicles();
-        operationLog.AppendLine("Vehicles saves");
         await SaveAchievements();
-        operationLog.AppendLine("Achievements saves");
         await DownloadAllImages();
-        operationLog.AppendLine("Images cached");
       }
-      return Ok(operationLog.ToString());
+      return Ok();
     }
 
     [HttpGet("SaveDictionaries")]

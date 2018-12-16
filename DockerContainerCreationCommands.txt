@@ -2,6 +2,17 @@ docker-compose build
 docker-compose up -d
 curl http://localhost:8000/api/Dictionaries/LoadDictionariesAndPicturesIfNeeded
 
+docker logs --timestamps --follow 0f72 > d:\Mike\Develop\container.log
+docker-compose up > d:\Mike\Develop\DockerCompose.log
+---------------------------------
+# Develop machine sql server
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=DevSql123!" -p 1438:1433 --name DevDb -d --restart always microsoft/mssql-server-linux
+192.168.1.85,1438
+---------------------------------
+# reatart policy
+--restart always
+---------------------------------
+# ng build --delete-output-path=false
 ---------------------------------
 docker run -v $(pwd):/var/www -w "/var/www" node npm install
 docker run -v $(pwd):/var/www -w "/var/www" node npm run build
