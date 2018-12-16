@@ -48,7 +48,8 @@ export class AccountAchievementsComponent implements OnInit {
   }
 
   getTanksByAchievement() {
-    if (this.clickedAchievement.isAchievementOption) {
+    if (this.clickedAchievement.isAchievementOption
+        || (this.clickedAchievement.section === 'battle' && this.clickedAchievement.achievementId.includes('Mastery'))) {
       this.tanksByAchievement = null;
       return;
     }
