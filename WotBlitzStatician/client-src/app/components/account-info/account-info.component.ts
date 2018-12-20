@@ -4,6 +4,7 @@ import { AccountInfoService } from '../../services/account-info.service';
 import { AccountGlobalInfo } from '../account-global-info';
 import { AccountInfoDto } from '../../model/account-info-dto';
 import { AccountMasteryInfo } from '../../model/account-mastery-info';
+import { PlayerPrivateInfo } from '../../model/player-private-info';
 
 @Component({
   selector: 'app-account-info',
@@ -16,6 +17,7 @@ export class AccountInfoComponent implements OnInit {
   public rank1: AccountMasteryInfo;
   public rank2: AccountMasteryInfo;
   public rank3: AccountMasteryInfo;
+  public playerPrivateInfo: PlayerPrivateInfo;
 
   constructor(private accountsInfoService: AccountInfoService,
     public accountGlobalInfo: AccountGlobalInfo) {
@@ -28,6 +30,9 @@ export class AccountInfoComponent implements OnInit {
         this.rank2 = this.account.accountMasteryInfo.find(m => m.markOfMastery === 2);
         this.rank1 = this.account.accountMasteryInfo.find(m => m.markOfMastery === 1);
       }, error => console.error(error));
+      this.accountsInfoService.getPlayerPrivateInfo(id).subscribe(data =>
+        this.playerPrivateInfo = data,
+        error => console.error(error));
     }
   }
 

@@ -32,5 +32,7 @@
 		Task<AccountInfo> ProlongateAccount(string accessToken);
 
 		void DownloadFile(string uri, string fileName);
+
+		Task<PlayerPrivateInfoDto> GetAccountPrivateInfo(long accountId, string accessToken);
 	}
 }

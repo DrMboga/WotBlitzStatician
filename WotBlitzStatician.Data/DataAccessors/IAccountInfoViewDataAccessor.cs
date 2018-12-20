@@ -9,6 +9,6 @@ namespace WotBlitzStatician.Data.DataAccessors
     {
         Task<AccountInfoDto> GetActualAccountInfo(long accountId);
         Task<List<PlayerStatHistoryDto>> GetAccountStatHistory(long accountId, DateTime dateFrom);
-
+        Task<string> GetAccountAccessToken(long accountId);
     }
 }

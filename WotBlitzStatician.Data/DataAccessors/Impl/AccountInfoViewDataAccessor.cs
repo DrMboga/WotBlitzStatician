@@ -115,5 +115,12 @@ FROM AccountHistory AS cur
               .ToListAsync();
         }
 
+        public async Task<string> GetAccountAccessToken(long accountId)
+        {
+            return await _dbContext.AccountInfo.AsNoTracking()
+                    .Where(a => a.AccountId == accountId)
+                    .Select(a => a.AccessToken)
+                    .FirstOrDefaultAsync();
+        }
     }
 }

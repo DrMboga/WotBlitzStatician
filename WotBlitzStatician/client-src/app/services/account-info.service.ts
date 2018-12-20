@@ -11,6 +11,7 @@ import { TankStatisticDto } from '../model/tank-statistic-dto';
 import { AccountStatHistoryDto } from '../model/account-stat-history-dto';
 import { TankByAchievementDto } from '../model/tank-by-achievement-dto';
 import { AccountAchievementDto } from '../model/account-achievement-dto';
+import { PlayerPrivateInfo } from '../model/player-private-info';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -97,6 +98,11 @@ export class AccountInfoService {
   saveAllAccountInfo(accountId: number): Observable<{}> {
     return this.http.get(`${this.baseUrl}api/StatisticsCollector/${accountId}`)
                     .pipe(catchError(this.handleError));
+  }
+
+  getPlayerPrivateInfo(accountId: number): Observable<PlayerPrivateInfo> {
+    return this.http.get<PlayerPrivateInfo>(`${this.baseUrl}api/WgRequests/AccountPrivateInfo/${accountId}`)
+    .pipe(catchError(this.handleError));
   }
 
    private handleError(error: HttpErrorResponse) {

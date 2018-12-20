@@ -27,11 +27,4 @@ export interface PlayerStatistics{
     survivedBattles: number;
     winAndSurvived: number;
     xp: number;
-    battleLifeTimeInSeconds: number;
-    battleLifeTyme: string;
-    credits: number;
-    freeXp: number;
-    gold: number;
-    isPremium: boolean;
-    premiumExpiresAt: Date;
 }
