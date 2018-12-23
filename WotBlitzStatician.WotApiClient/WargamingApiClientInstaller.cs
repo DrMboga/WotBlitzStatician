@@ -40,6 +40,8 @@
 			containerBuilder.RegisterType<TankopediaMapper>().As<IMapper<List<WotEncyclopediaVehiclesResponse>, List<VehicleEncyclopedia>>>();
 			containerBuilder.RegisterType<TanksStatMapper>().As<IMapper<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>>();
 			containerBuilder.RegisterType<WotAuthProlongateResponseMapper>().As<IMapper<WotAuthProlongateResponse, AccountInfo>>();
+			containerBuilder.RegisterType<PlayerPrivateInfoMapper>().As<IMapper<WotAccountInfoPrivate, PlayerPrivateInfoDto>>();
+
 
 			containerBuilder.RegisterType<MapperHelper>().As<IMapperHelper>();
 		}

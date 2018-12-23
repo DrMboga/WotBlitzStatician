@@ -50,6 +50,7 @@ namespace WotBlitzStatician.Controllers
             }
             try
             {
+                // ToDo: caching!!!
                 var privateInfo = await _wargamingApiClient.GetAccountPrivateInfo(accountId, accessToken);
                 return Ok(privateInfo);
             }

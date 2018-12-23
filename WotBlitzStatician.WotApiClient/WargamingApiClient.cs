@@ -93,9 +93,23 @@
             return _mapper.Map<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>(tanksStat[accountId.ToString()]);
         }
 
-		public Task<PlayerPrivateInfoDto> GetAccountPrivateInfo(long accountId, string accessToken)
+		public async Task<PlayerPrivateInfoDto> GetAccountPrivateInfo(long accountId, string accessToken)
         {
-            throw new NotImplementedException();
+            var accountInfo = await _webApiClient.GetResponse<Dictionary<string, WotAccountInfoResponse>>(
+                _requestBuilder.BaseAddress,
+                _requestBuilder.BuildRequestUrl(
+                    RequestType.AccountInfo,
+                    new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString()},
+                    new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken },
+                    new RequestParameter
+                    {
+                        ParameterType = ParameterType.Fields,
+                        ParameterValue = "private"
+                    }
+                )
+            );
+            var accountInfoResponse = accountInfo[accountId.ToString()];
+            return _mapper.Map<WotAccountInfoPrivate, PlayerPrivateInfoDto>(accountInfoResponse.Private);
         }
 
         public async Task<(
