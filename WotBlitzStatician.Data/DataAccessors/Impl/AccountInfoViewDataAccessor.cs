@@ -45,7 +45,6 @@ namespace WotBlitzStatician.Data.DataAccessors.Impl
 
             var statistics = await _playerStatMapper.ProjectTo(
              _dbContext.AccountInfoStatistics
-                .Include(s => s.AccountInfoPrivate)
                 .OrderByDescending(s => s.UpdatedAt)
                 .Where(s => s.AccountId == accountId)
                 .Take(1))
