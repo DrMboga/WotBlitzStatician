@@ -70,12 +70,8 @@ WITH AccountHistory AS
     CONVERT(decimal(19,2), ais.Wins)/CONVERT(decimal(19,2), ais.Battles)WinRate,
       ais.DamageDealt/ais.Battles AvgDamage,
       ais.Xp/ais.Battles AvgXp,
-      CONVERT(decimal(19,2), ais.SurvivedBattles)/CONVERT(decimal(19,2), ais.Battles) SurvivalRate,
-    aip.Credits,
-    aip.FreeXp, 
-    aip.Gold
+      CONVERT(decimal(19,2), ais.SurvivedBattles)/CONVERT(decimal(19,2), ais.Battles) SurvivalRate
   FROM wotb.AccountInfoStatistics AS ais
-    INNER JOIN wotb.AccountInfoPrivate AS aip ON aip.AccountInfoPrivateId = ais.AccountInfoPrivateId
   WHERE ais.AccountId = @accountId
     AND ais.UpdatedAt >= @dateFrom
 )
@@ -96,13 +92,7 @@ SELECT
   cur.AvgXp,
   cur.AvgXp - prev.AvgXp AvgXpDiff,
   cur.SurvivalRate,
-  cur.SurvivalRate - prev.SurvivalRate SurvivalRateDiff,
-  cur.Credits,
-  cur.Credits - prev.Credits CreditsDiff,
-  cur.FreeXp,
-  cur.FreeXp - prev.FreeXp FreeXpDiff,
-  cur.Gold,
-  cur.Gold - prev.Gold GoldDiff
+  cur.SurvivalRate - prev.SurvivalRate SurvivalRateDiff
 FROM AccountHistory AS cur
   LEFT JOIN AccountHistory AS prev ON cur.RowNumber = prev.RowNumber - 1
 ";

@@ -15,10 +15,4 @@ export interface AccountStatHistoryDto{
     avgXpDiff: number;
     survivalRate: number;
     survivalRateDiff: number;
-    credits: number;
-    creditsDiff: number;
-    freeXp: number;
-    freeXpDiff: number;
-    gold: number;
-    goldDiff: number;
 }

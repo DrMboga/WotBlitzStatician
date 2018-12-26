@@ -55,15 +55,6 @@
         <th>
           <fa-icon [icon]="['far', 'heart']"></fa-icon>
         </th>
-        <th>
-          <fa-icon icon="coins"></fa-icon>
-        </th>
-        <th>
-          <fa-icon icon="donate"></fa-icon>
-        </th>
-        <th>
-          <fa-icon icon="star-half-alt"></fa-icon>
-        </th>
       </tr>
     </thead>
     <tbody>
@@ -97,21 +88,6 @@
         <td>
           {{ac.survivalRate|percent:'2.2-2'}} <small [ngClass]="{'positive-diff': ac.survivalRateDiff >= 0, 'negative-diff': ac.survivalRateDiff < 0}">
             <span *ngIf="ac.survivalRateDiff > 0">+</span>{{ac.survivalRateDiff|percent:'2.2-2'}}
-          </small>
-        </td>
-        <td>
-          {{ac.credits|number}} <small [ngClass]="{'positive-diff': ac.creditsDiff >= 0, 'negative-diff': ac.creditsDiff < 0}">
-            <span *ngIf="ac.creditsDiff > 0">+</span>{{ac.creditsDiff|number}}
-          </small>
-        </td>
-        <td>
-          {{ac.gold|number}} <small [ngClass]="{'positive-diff': ac.goldDiff >= 0, 'negative-diff': ac.goldDiff < 0}">
-            <span *ngIf="ac.goldDiff > 0">+</span>{{ac.goldDiff|number}}
-          </small>
-        </td>
-        <td>
-          {{ac.freeXp|number}} <small [ngClass]="{'positive-diff': ac.freeXpDiff >= 0, 'negative-diff': ac.freeXpDiff < 0}">
-            <span *ngIf="ac.freeXpDiff > 0">+</span>{{ac.freeXpDiff|number}}
           </small>
         </td>
       </tr>
