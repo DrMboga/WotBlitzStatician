@@ -1,4 +1,7 @@
-﻿namespace WotBlitzStatician.WotApiClient
+﻿using System.Runtime.CompilerServices;
+
+[assembly:InternalsVisibleTo("WotBlitzStatician.Logic.Test")]
+namespace WotBlitzStatician.WotApiClient
 {
     using System;
     using System.Collections.Generic;
