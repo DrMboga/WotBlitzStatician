@@ -50,7 +50,7 @@ namespace WotBlitzStatician.Logic.Test
             string accessToken = "TestAccessToken";
 
             string expectedQuery =
-            $"account/info/?application_id={_configuration.ApplicationId}&language={_configuration.Language}&account_id={accountId}&access_token={accessToken}";
+            $"account/info/?application_id={_configuration.ApplicationId}&language={_configuration.Language}&account_id={accountId}&access_token={accessToken}&fields=-private";
 
             string request = _requestBuilder.BuildRequestUrl(
                     RequestType.AccountInfo,
@@ -58,8 +58,8 @@ namespace WotBlitzStatician.Logic.Test
                     new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken },
                     new RequestParameter
                     {
-                        ParameterType = ParameterType.Extra,
-                        ParameterValue = string.Empty
+                        ParameterType = ParameterType.Fields,
+                        ParameterValue = "-private"
                     });
             Assert.Equal(expectedQuery, request);
         }
@@ -87,7 +87,7 @@ namespace WotBlitzStatician.Logic.Test
             string accessToken = "TestAccessToken";
 
             string expectedQuery =
-            $"account/info/?application_id={_configuration.ApplicationId}&language={_configuration.Language}&account_id={accountId}&access_token={accessToken}&fields=private";
+            $"account/info/?application_id={_configuration.ApplicationId}&language={_configuration.Language}&account_id={accountId}&access_token={accessToken}&extra=private.grouped_contacts&fields=private";
 
             string request = 
                 _requestBuilder.BuildRequestUrl(
@@ -95,6 +95,11 @@ namespace WotBlitzStatician.Logic.Test
                     new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString()},
                     new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken },
                     new RequestParameter
+                    {
+                        ParameterType = ParameterType.Extra,
+                        ParameterValue = "private.grouped_contacts"
+                    },
+                   new RequestParameter
                     {
                         ParameterType = ParameterType.Fields,
                         ParameterValue = "private"

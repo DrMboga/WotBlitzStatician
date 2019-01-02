@@ -10,7 +10,7 @@
 
 		Task<List<AccountInfo>> FindAccountAsync(string nickName);
 
-		Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId, string accessToken, bool contactsIncluded = false);
+		Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId, string accessToken);
 
 		Task<List<AccountTankStatistics>> GetTanksStatisticsAsync(long accountId, string accessToken);
 		

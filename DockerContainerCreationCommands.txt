@@ -9,6 +9,8 @@ docker-compose up > d:\Mike\Develop\DockerCompose.log
 docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=DevSql123!" -p 1438:1433 --name DevDb -d --restart always microsoft/mssql-server-linux
 192.168.1.85,1438
 ---------------------------------
+dotnet user-secrets --id 'BlitzStatician-122-33-44-55' set 'ConnectionStrings:BlitzStatician' 'Data Source=172.20.10.2,1438;Initial Catalog=BlitzStatician;Integrated Security=False;User Id=SA;Password=DevSql123!'
+---------------------------------
 # reatart policy
 --restart always
 ---------------------------------

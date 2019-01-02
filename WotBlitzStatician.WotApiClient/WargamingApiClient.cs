@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly:InternalsVisibleTo("WotBlitzStatician.Logic.Test")]
+[assembly: InternalsVisibleTo("WotBlitzStatician.Logic.Test")]
 namespace WotBlitzStatician.WotApiClient
 {
     using System;
@@ -56,7 +56,7 @@ namespace WotBlitzStatician.WotApiClient
             return _mapper.Map<List<WotAccountListResponse>, List<AccountInfo>>(accountListResponse);
         }
 
-        public async Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId, string accessToken, bool contactsIncluded = false)
+        public async Task<AccountInfo> GetAccountInfoAllStatisticsAsync(long accountId, string accessToken)
         {
             var accountInfo = await _webApiClient.GetResponse<Dictionary<string, WotAccountInfoResponse>>(
                 _requestBuilder.BaseAddress,
@@ -66,10 +66,8 @@ namespace WotBlitzStatician.WotApiClient
                     new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken },
                     new RequestParameter
                     {
-                        ParameterType = ParameterType.Extra,
-                        ParameterValue = contactsIncluded
-                                                                                ? "private.grouped_contacts"
-                                                                                : string.Empty
+                        ParameterType = ParameterType.Fields,
+                        ParameterValue = "-private"
                     }));
 
             var accountInfoResponse = accountInfo[accountId.ToString()];
@@ -96,14 +94,19 @@ namespace WotBlitzStatician.WotApiClient
             return _mapper.Map<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>(tanksStat[accountId.ToString()]);
         }
 
-		public async Task<PlayerPrivateInfoDto> GetAccountPrivateInfo(long accountId, string accessToken)
+        public async Task<PlayerPrivateInfoDto> GetAccountPrivateInfo(long accountId, string accessToken)
         {
             var accountInfo = await _webApiClient.GetResponse<Dictionary<string, WotAccountInfoResponse>>(
                 _requestBuilder.BaseAddress,
                 _requestBuilder.BuildRequestUrl(
                     RequestType.AccountInfo,
-                    new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString()},
+                    new RequestParameter { ParameterType = ParameterType.AccountId, ParameterValue = accountId.ToString() },
                     new RequestParameter { ParameterType = ParameterType.AccesToken, ParameterValue = accessToken },
+                    new RequestParameter
+                    {
+                        ParameterType = ParameterType.Extra,
+                        ParameterValue = "private.grouped_contacts"
+                    },
                     new RequestParameter
                     {
                         ParameterType = ParameterType.Fields,
