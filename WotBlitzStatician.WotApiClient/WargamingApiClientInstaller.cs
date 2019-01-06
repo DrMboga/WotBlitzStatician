@@ -26,7 +26,6 @@
 		{
 			containerBuilder.RegisterType<AccountInfoMapper>().As<IMapper<WotAccountInfoResponse, AccountInfo>>();
 			containerBuilder.RegisterType<AccountInfoStatisticsMapper>().As<IMapper<WotAccountInfoResponse, AccountInfoStatistics>>();
-			containerBuilder.RegisterType<AccountInfoPrivateMapper>().As<IMapper<WotAccountInfoResponse, AccountInfoPrivate>>();
 			containerBuilder.RegisterType<AccounutFindResponseMapper>().As<IMapper<List<WotAccountListResponse>, List<AccountInfo>>>();
 			containerBuilder.RegisterType<ClanAccountInfoMapper>().As<IMapper<WotClansAccountinfoResponse, AccountClanInfo>>();
 			containerBuilder.RegisterType<ClanInfoResponseMapper>().As<IMapper<WotClanInfoResponse, AccountClanInfo>>();

@@ -75,7 +75,6 @@ namespace WotBlitzStatician.WotApiClient
             var accountInfoMapped = _mapper.Map<WotAccountInfoResponse, AccountInfo>(accountInfoResponse);
 
             var statistics = _mapper.Map<WotAccountInfoResponse, AccountInfoStatistics>(accountInfoResponse);
-            statistics.AccountInfoPrivate = _mapper.Map<WotAccountInfoResponse, AccountInfoPrivate>(accountInfoResponse);
 
             accountInfoMapped.AccountInfoStatistics = new List<AccountInfoStatistics> { statistics };
 
