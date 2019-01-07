@@ -20,6 +20,9 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
             wgApiClientMock.Setup(c => c.GetAccountInfoAllStatisticsAsync(It.IsAny<long>(), It.IsAny<string>()))
                 .ReturnsAsync(dataStubs.WargamingAccountInfo);
 
+            wgApiClientMock.Setup(c => c.GetAccountClanInfoAsync(It.IsAny<long>()))
+                .ReturnsAsync(dataStubs.AccountClanInfo);
+
 
 			containerBuilder.RegisterInstance(wgApiClientMock.Object).As<IWargamingApiClient>();
         }

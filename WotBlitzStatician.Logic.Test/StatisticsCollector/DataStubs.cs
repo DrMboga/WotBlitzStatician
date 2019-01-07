@@ -54,15 +54,32 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
             }
         };
 
+        private readonly AccountClanInfo _accountClanInfo = new AccountClanInfo
+        {
+            AccountId = AccountId,
+            ClanId = 40493,
+            PlayerJoinedAt = DateTime.Now.AddMonths(-5),
+            PlayerRole = "executive_officer",
+            ClanCreatedAt = new DateTime(2016, 5, 2),
+            ClanLeaderName = "TestClanLeader",
+            MembersCount = 45,
+            ClanTag = "TTT",
+            ClanName = "TestClan name",
+            ClanMotto = "TestClan motto",
+            ClanDescription = "TestClan description"
+        };
+
         public DataStubs()
         {
             AccountInfo = _accountInfo;
             WargamingAccountInfo = _wgAccountInfo;
             WargamingAccountInfo.AccountInfoStatistics = new List<AccountInfoStatistics> { _accountInfoStatistics };
+            AccountClanInfo = _accountClanInfo;
         }
         public AccountInfo AccountInfo { get; }
 
         public AccountInfo WargamingAccountInfo { get; }
 
+        public AccountClanInfo AccountClanInfo { get; }
     }
 }
