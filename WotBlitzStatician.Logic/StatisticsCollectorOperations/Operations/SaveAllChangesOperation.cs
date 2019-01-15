@@ -25,7 +25,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 					// Save account lastBattle
 					await _accountDataAccessor.SaveLastBattleInfoAsync(accountInfo.CurrentAccountInfo);
 					// Save account statistics + private data
-					await _accountDataAccessor.SaveAccountPrivateInfoAndStatisticsAsync(accountInfo
+					await _accountDataAccessor.SaveAccountStatisticsAsync(accountInfo
 																	.CurrentAccountInfo
 																	.AccountInfoStatistics
 																	.Single());
@@ -68,7 +68,10 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 
 					// Save frags by allTanks using MergeFragsAsync
 					var tankFrags = new List<FragListItem>();
-					accountInfo.AccountInfoTanks.ForEach(t => tankFrags.AddRange(t.FragsList));
+					foreach (var tank in accountInfo.AccountInfoTanks.Where(t => t.FragsList != null))
+					{
+            tankFrags.AddRange(tank.FragsList);
+          }
 					await _accountDataAccessor.MergeFragsAsync(tankFrags);
 
 					transaction.Commit();

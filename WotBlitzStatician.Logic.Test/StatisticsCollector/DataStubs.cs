@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Newtonsoft.Json;
 using WotBlitzStatician.Model;
 
 namespace WotBlitzStatician.Logic.Test.StatisticsCollector
@@ -7,79 +10,111 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
     public class DataStubs
     {
         private const long AccountId = 16;
-        private readonly AccountInfo _accountInfo = new AccountInfo
-        {
-            AccountId = AccountId,
-            NickName = "TestAccountNick",
-            LastBattleTime = DateTime.Now.AddHours(-2),
-            AccessToken = "TestAccessToken",
-            AccessTokenExpiration = DateTime.Now.AddDays(1)
-        };
 
-        private readonly AccountInfo _wgAccountInfo = new AccountInfo
+        private readonly string _fixtureFolder;
+        public DataStubs(
+            DateTime accountCreatedAt,
+            DateTime dbLastBattleTime,
+            DateTime dbAccessTokenExp,
+            DateTime wgLastBattleTime
+        )
         {
-            AccountId = AccountId,
-            NickName = "TestAccountNick",
-            LastBattleTime = DateTime.Now.AddHours(-1),
-            AccountCreatedAt = DateTime.Now.AddMonths(-6)
-        };
+            // ToDo: CreateFixtures, read fixtures here and change all accountId
+            // VehiclesEncyclopedia, AccountInfo, WgAccountInf + AccountInfoStatistics + frags, 
+            // clanInfo, AccountAchievements, TanksStat, TanksStatAchievements
+            _fixtureFolder = Path.Combine(Directory.GetCurrentDirectory(), "StatisticsCollector\\Fixtures");
+            Vehicles = ReadFixture<VehicleEncyclopedia[]>("VehicleEncyclopedia.json");
 
-        private readonly AccountInfoStatistics _accountInfoStatistics = new AccountInfoStatistics
-        {
-            AccountId = AccountId,
-            Battles = 5000,
-            UpdatedAt = DateTime.Now.AddHours(-2),
-            CapturePoints = 2100,
-            DamageDealt = 6000000,
-            DamageReceived = 5000000,
-            DroppedCapturePoints = 4000,
-            Frags = 4500,
-            Frags8P = 1500,
-            Hits = 40000,
-            Losses = 2000,
-            MaxFrags = 6,
-            MaxFragsTankId = 58881,
-            MaxXp = 2000,
-            MaxXpTankId = 6657,
-            Shots = 45000,
-            Spotted = 1500,
-            SurvivedBattles = 1000,
-            WinAndSurvived = 800,
-            Wins = 2950,
-            Xp = 3500000,
-            FragsList = new List<FragListItem>
-            {
-                new FragListItem {KilledTankId = 58881, FragsCount = 66, AccountId = AccountId},
-                new FragListItem {KilledTankId = 6657, FragsCount = 62, AccountId = AccountId}
-            }
-        };
+            var clan = ReadFixture<AccountClanInfo>("AccountClanInfo.json");
+            clan.AccountId = AccountId;
 
-        private readonly AccountClanInfo _accountClanInfo = new AccountClanInfo
-        {
-            AccountId = AccountId,
-            ClanId = 40493,
-            PlayerJoinedAt = DateTime.Now.AddMonths(-5),
-            PlayerRole = "executive_officer",
-            ClanCreatedAt = new DateTime(2016, 5, 2),
-            ClanLeaderName = "TestClanLeader",
-            MembersCount = 45,
-            ClanTag = "TTT",
-            ClanName = "TestClan name",
-            ClanMotto = "TestClan motto",
-            ClanDescription = "TestClan description"
-        };
+            var (accountInfoAchievemnts, accountTanksAchievements) = ReadAchievementsStat();
 
-        public DataStubs()
-        {
-            AccountInfo = _accountInfo;
-            WargamingAccountInfo = _wgAccountInfo;
-            WargamingAccountInfo.AccountInfoStatistics = new List<AccountInfoStatistics> { _accountInfoStatistics };
-            AccountClanInfo = _accountClanInfo;
+            AccountInfo = ReadDbAccountInfo(dbLastBattleTime, dbAccessTokenExp);
+            WargamingAccountInfo = ReadWgAccountInfo(accountCreatedAt, wgLastBattleTime);
+            AccountClanInfo = clan;
+            AccountInfoAchievements = accountInfoAchievemnts;
+            AccountInfoTankAchievements = accountTanksAchievements;
+            AccountTanksStatistics = ReadAccountInfoTanks(wgLastBattleTime);
         }
+
+        public VehicleEncyclopedia[] Vehicles { get; }
+
         public AccountInfo AccountInfo { get; }
 
         public AccountInfo WargamingAccountInfo { get; }
 
         public AccountClanInfo AccountClanInfo { get; }
+
+        public List<AccountInfoAchievement> AccountInfoAchievements { get; }
+
+        public List<AccountInfoTankAchievement> AccountInfoTankAchievements { get; }
+
+        public List<AccountTankStatistics> AccountTanksStatistics { get; }
+
+        private AccountInfo ReadDbAccountInfo(
+            DateTime dbLastBattleTime,
+            DateTime dbAccessTokenExp
+        )
+        {
+            var accountInfo = ReadFixture<AccountInfo>("DbAccountInfo.json");
+            accountInfo.AccountId = AccountId;
+            accountInfo.LastBattleTime = dbLastBattleTime;
+            accountInfo.AccessTokenExpiration = dbAccessTokenExp;
+            return accountInfo;
+        }
+
+        private AccountInfo ReadWgAccountInfo(
+            DateTime accountCreatedAt,
+            DateTime wgLastBattleTime
+        )
+        {
+            var wgAccountInfo = ReadFixture<AccountInfo>("WgAccountInfo.json");
+            wgAccountInfo.AccountId = AccountId;
+            wgAccountInfo.AccountCreatedAt = accountCreatedAt;
+            wgAccountInfo.LastBattleTime = wgLastBattleTime;
+            var stat = wgAccountInfo.AccountInfoStatistics.Single();
+            stat.AccountId = AccountId;
+            stat.UpdatedAt = wgLastBattleTime.AddMinutes(5);
+            stat.FragsList.ForEach(f => f.AccountId = AccountId);
+            return wgAccountInfo;
+        }
+
+        private (List<AccountInfoAchievement>, List<AccountInfoTankAchievement>) ReadAchievementsStat()
+        {
+            var allAchevements = ReadFixture<List<AccountInfoTankAchievement>>("AccountInfoAchievements.json");
+            allAchevements.ForEach(a => a.AccountId = AccountId);
+            int accountAchievementsCount = allAchevements.Where(a => a.TankId == 0).Count();
+            var accountInfoAchievements = new List<AccountInfoAchievement>();
+            for (int i = 0; i < accountAchievementsCount; i++)
+            {
+                accountInfoAchievements.Add(allAchevements[i] as AccountInfoAchievement);
+            }
+            var tanksInfoAchivements = allAchevements.Where(a => a.TankId != 0).ToList();
+            return (accountInfoAchievements, tanksInfoAchivements);
+        }
+
+        private List<AccountTankStatistics> ReadAccountInfoTanks(DateTime wgLastBattleTime)
+        {
+            var accountTanks = ReadFixture<List<AccountTankStatistics>>("AccountTanksStatistics.json");
+            foreach (var accountTank in accountTanks)
+            {
+                accountTank.AccountId = AccountId;
+                accountTank.Wn7 = 0;
+                accountTank.LastBattleTime = wgLastBattleTime;
+            }
+            return accountTanks;
+        }
+
+        private T ReadFixture<T>(string fixtureFileName) where T : class
+        {
+            string fixturePath = Path.Combine(_fixtureFolder, fixtureFileName);
+            if(!File.Exists(fixturePath))
+            {
+                throw new ApplicationException($"Fixture doesn't exist '{fixtureFileName}'");
+            }
+            string fixtureJson = File.ReadAllText(fixturePath);
+            return JsonConvert.DeserializeObject<T>(fixtureJson);
+        }
     }
 }

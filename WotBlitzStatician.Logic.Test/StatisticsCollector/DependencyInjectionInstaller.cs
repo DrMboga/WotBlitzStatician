@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
 using Moq;
+using WotBlitzStatician.Data.DataAccessors.Impl;
 using WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations;
 using WotBlitzStatician.Model;
 using WotBlitzStatician.WotApiClient;
@@ -23,6 +24,15 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
             wgApiClientMock.Setup(c => c.GetAccountClanInfoAsync(It.IsAny<long>()))
                 .ReturnsAsync(dataStubs.AccountClanInfo);
 
+            wgApiClientMock.Setup(c => c.GetAccountAchievementsAsync(It.IsAny<long>()))
+                .ReturnsAsync(dataStubs.AccountInfoAchievements);
+
+            wgApiClientMock.Setup(c => c.GetTanksStatisticsAsync(It.IsAny<long>(), It.IsAny<string>()))
+                .ReturnsAsync(dataStubs.AccountTanksStatistics);
+
+            wgApiClientMock.Setup(c => c.GetAccountTankAchievementsAsync(It.IsAny<long>(), It.IsAny<string>(), It.IsAny<List<int>>()))
+                .ReturnsAsync(dataStubs.AccountInfoTankAchievements);
+
 
 			containerBuilder.RegisterInstance(wgApiClientMock.Object).As<IWargamingApiClient>();
         }
@@ -31,6 +41,7 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
         {
             containerBuilder.AddLoggerMock<StatisticsCollectorEngine>();
             containerBuilder.AddLoggerMock<ProlongAccessTokenIfNeeded>();
+            containerBuilder.AddLoggerMock<BlitzStaticianDictionary>();
 
         }
     }
