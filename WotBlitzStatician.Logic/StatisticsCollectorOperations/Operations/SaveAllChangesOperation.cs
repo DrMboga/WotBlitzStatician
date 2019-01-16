@@ -24,7 +24,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				{
 					// Save account lastBattle
 					await _accountDataAccessor.SaveLastBattleInfoAsync(accountInfo.CurrentAccountInfo);
-					// Save account statistics + private data
+					// Save account statistics
 					await _accountDataAccessor.SaveAccountStatisticsAsync(accountInfo
 																	.CurrentAccountInfo
 																	.AccountInfoStatistics

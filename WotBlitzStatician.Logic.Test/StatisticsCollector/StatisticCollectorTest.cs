@@ -32,7 +32,7 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
       var containerBuilder = new ContainerBuilder();
 
       containerBuilder.SetupLoggerMocks();
-      containerBuilder.AddInMemoryDataBase();
+      containerBuilder.AddInMemoryDataBase(output);
       containerBuilder.ConfigureBlitzStaticianLogic();
       containerBuilder.SetupWargamingApiMockDependencies(_dataStubs);
 
@@ -48,13 +48,42 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
     {
       SetInitialData();
 
-      var accounts = _dbContext.AccountInfo.AsNoTracking().ToList();
-      _output.WriteLine($"-Accounts count {accounts.Count}");
-
       await _statisticsCollectorEngine.Collect(
                 _statisticsCollectorFactory.CreateCollector(_dataStubs.AccountInfo.AccountId));
 
-        // ToDo: Asserts
+      var accounts = _dbContext.AccountInfo.AsNoTracking().ToList();
+      Assert.NotNull(accounts);
+      Assert.Equal(1, accounts.Count);
+      Assert.Equal(_dataStubs.WargamingAccountInfo.AccountId, accounts.Single().AccountId);
+      Assert.Equal(_dataStubs.WargamingAccountInfo.LastBattleTime, accounts.Single().LastBattleTime);
+      Assert.Equal(_dataStubs.AccountInfo.AccessTokenExpiration, accounts.Single().AccessTokenExpiration);
+
+      var accountStat = _dbContext.AccountInfoStatistics.AsNoTracking().ToList();
+      Assert.NotNull(accountStat);
+      Assert.Equal(1, accountStat.Count);
+      var wgStat = _dataStubs.WargamingAccountInfo.AccountInfoStatistics.Single();
+      Assert.Equal(wgStat.AccountId, accountStat.Single().AccountId);
+      Assert.Equal(wgStat.Battles, accountStat.Single().Battles);
+      Assert.Equal(wgStat.UpdatedAt, accountStat.Single().UpdatedAt);
+
+      var accountFrags = _dbContext.Frags.AsNoTracking().Where(f => f.TankId == null).ToList();
+      Assert.NotNull(accountFrags);
+      Assert.Equal(wgStat.FragsList.Count, accountFrags.Count);
+
+      var clanInfo = _dbContext.AccountClanInfo.AsNoTracking().ToList();
+      Assert.NotNull(clanInfo);
+      Assert.Equal(1, clanInfo.Count);
+      Assert.Equal(_dataStubs.AccountClanInfo.AccountId, clanInfo.Single().AccountId);
+      Assert.Equal(_dataStubs.AccountClanInfo.ClanTag, clanInfo.Single().ClanTag);
+
+      var clanHistory = _dbContext.AccountClanHistory.AsNoTracking().ToList();
+      Assert.NotNull(clanHistory);
+      Assert.Equal(1, clanHistory.Count);
+      Assert.Equal(_dataStubs.AccountClanInfo.AccountId, clanHistory.Single().AccountId);
+      Assert.Equal(_dataStubs.AccountClanInfo.ClanTag, clanHistory.Single().ClanTag);
+
+      
+
     }
 
     [Fact]
@@ -66,6 +95,13 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
       _dbContext.AccountInfo.Add(_dataStubs.AccountInfo);
 
       _dbContext.SaveChanges();
+
+      var accounts = _dbContext.AccountInfo.AsNoTracking().ToList();
+      Assert.NotNull(accounts);
+      Assert.Equal(1, accounts.Count);
+      Assert.Equal(_dataStubs.AccountInfo.AccountId, accounts.Single().AccountId);
+      Assert.Equal(_dataStubs.AccountInfo.LastBattleTime, accounts.Single().LastBattleTime);
+
     }
 
     public void Dispose()

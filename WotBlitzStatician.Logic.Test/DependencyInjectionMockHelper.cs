@@ -11,6 +11,7 @@
   using WotBlitzStatician.Data.DataAccessors.Impl;
   using WotBlitzStatician.Model;
   using WotBlitzStatician.WotApiClient;
+  using Xunit.Abstractions;
 
   public static class DependencyInjectionMockHelper
   {
@@ -25,10 +26,11 @@
       return containerBuilder;
     }
 
-    public static ContainerBuilder AddInMemoryDataBase(this ContainerBuilder containerBuilder)
+    public static ContainerBuilder AddInMemoryDataBase(this ContainerBuilder containerBuilder, ITestOutputHelper testsOutput = null)
     {
       var options = new DbContextOptionsBuilder<BlitzStaticianDbContext>()
         .UseInMemoryDatabase("BlitzStatician")
+        // .UseLoggerFactory()  ToDo: Implement logger factory based on ITestOutputHelper
         .Options;
       var context = new BlitzStaticianDbContext(options);
 
