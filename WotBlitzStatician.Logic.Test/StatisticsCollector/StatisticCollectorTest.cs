@@ -82,7 +82,20 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
       Assert.Equal(_dataStubs.AccountClanInfo.AccountId, clanHistory.Single().AccountId);
       Assert.Equal(_dataStubs.AccountClanInfo.ClanTag, clanHistory.Single().ClanTag);
 
-      
+      var accounAchievemnts = _dbContext.AccountInfoTankAchievement.AsNoTracking().ToList();
+      Assert.NotNull(accounAchievemnts);
+      Assert.Equal(_dataStubs.AccountInfoAchievements.Count, accounAchievemnts.Where(a => a.TankId == 0).ToList().Count);
+      Assert.Equal(_dataStubs.AccountInfoTankAchievements.Count, accounAchievemnts.Where(a => a.TankId > 0).ToList().Count);
+
+
+      var tanksStat = _dbContext.PresentAccountTanks.AsNoTracking()
+                  .Join(_dbContext.AccountTankStatistics,
+                      p => p.AccountTankStatisticId,
+                      t => t.AccountTankStatisticId,
+                      (p, t) => new { AccountTankStatistics = t })
+                  .ToList();
+      Assert.NotNull(tanksStat);
+      Assert.Equal(_dataStubs.AccountTanksStatistics.Count, tanksStat.Count);
 
     }
 
