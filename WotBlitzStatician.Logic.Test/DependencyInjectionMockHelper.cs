@@ -26,18 +26,22 @@
       return containerBuilder;
     }
 
-    public static ContainerBuilder AddInMemoryDataBase(this ContainerBuilder containerBuilder, ITestOutputHelper testsOutput = null)
+    public static ContainerBuilder AddInMemoryDataBase(this ContainerBuilder containerBuilder, ILoggerFactory loggerFactory = null)
     {
-      var options = new DbContextOptionsBuilder<BlitzStaticianDbContext>()
-        .UseInMemoryDatabase("BlitzStatician")
-        // .UseLoggerFactory()  ToDo: Implement logger factory based on ITestOutputHelper
-        .Options;
-      var context = new BlitzStaticianDbContext(options);
+      var dbContextBuilder = new DbContextOptionsBuilder<BlitzStaticianDbContext>()
+              .UseInMemoryDatabase("BlitzStatician");
 
-      #pragma warning disable CS0618
+      if (loggerFactory != null)
+      {
+        dbContextBuilder.UseLoggerFactory(loggerFactory);
+      }
+
+      var context = new BlitzStaticianDbContext(dbContextBuilder.Options);
+
+#pragma warning disable CS0618
       var dummyTran = new Mock<IDbContextTransaction>();
       var accountDataAccessor = new AccountDataAccessor(context, dummyTran.Object);
-      #pragma warning restore CS0618
+#pragma warning restore CS0618
 
       containerBuilder.RegisterInstance(context).As<BlitzStaticianDbContext>().ExternallyOwned();
       containerBuilder.RegisterType<BlitzStaticianDictionary>().As<IBlitzStaticianDictionary>();

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Microsoft.EntityFrameworkCore;
 using WotBlitzStatician.Data;
+using WotBlitzStatician.Logic.Test.Logging;
 using WotBlitzStatician.Model;
 using Xunit;
 using Xunit.Abstractions;
@@ -31,8 +32,10 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
 
       var containerBuilder = new ContainerBuilder();
 
+      var loggerFactory = TestOutputLoggerFactory.CreateLoggerFactory(output);
+
       containerBuilder.SetupLoggerMocks();
-      containerBuilder.AddInMemoryDataBase(output);
+      containerBuilder.AddInMemoryDataBase(loggerFactory);
       containerBuilder.ConfigureBlitzStaticianLogic();
       containerBuilder.SetupWargamingApiMockDependencies(_dataStubs);
 
