@@ -34,7 +34,7 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
 
       var loggerFactory = TestOutputLoggerFactory.CreateLoggerFactory(output);
 
-      containerBuilder.SetupLoggerMocks();
+      containerBuilder.SetupLogger(loggerFactory);
       containerBuilder.AddInMemoryDataBase(loggerFactory);
       containerBuilder.ConfigureBlitzStaticianLogic();
       containerBuilder.SetupWargamingApiMockDependencies(_dataStubs);
