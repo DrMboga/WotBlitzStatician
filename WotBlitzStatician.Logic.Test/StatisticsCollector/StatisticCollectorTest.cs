@@ -56,14 +56,14 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
 
       var accounts = _dbContext.AccountInfo.AsNoTracking().ToList();
       Assert.NotNull(accounts);
-      Assert.Equal(1, accounts.Count);
+      Assert.Single(accounts);
       Assert.Equal(_dataStubs.WargamingAccountInfo.AccountId, accounts.Single().AccountId);
       Assert.Equal(_dataStubs.WargamingAccountInfo.LastBattleTime, accounts.Single().LastBattleTime);
       Assert.Equal(_dataStubs.AccountInfo.AccessTokenExpiration, accounts.Single().AccessTokenExpiration);
 
       var accountStat = _dbContext.AccountInfoStatistics.AsNoTracking().ToList();
       Assert.NotNull(accountStat);
-      Assert.Equal(1, accountStat.Count);
+      Assert.Single(accountStat);
       var wgStat = _dataStubs.WargamingAccountInfo.AccountInfoStatistics.Single();
       Assert.Equal(wgStat.AccountId, accountStat.Single().AccountId);
       Assert.Equal(wgStat.Battles, accountStat.Single().Battles);
@@ -75,13 +75,13 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
 
       var clanInfo = _dbContext.AccountClanInfo.AsNoTracking().ToList();
       Assert.NotNull(clanInfo);
-      Assert.Equal(1, clanInfo.Count);
+      Assert.Single(clanInfo);
       Assert.Equal(_dataStubs.AccountClanInfo.AccountId, clanInfo.Single().AccountId);
       Assert.Equal(_dataStubs.AccountClanInfo.ClanTag, clanInfo.Single().ClanTag);
 
       var clanHistory = _dbContext.AccountClanHistory.AsNoTracking().ToList();
       Assert.NotNull(clanHistory);
-      Assert.Equal(1, clanHistory.Count);
+      Assert.Single(clanHistory);
       Assert.Equal(_dataStubs.AccountClanInfo.AccountId, clanHistory.Single().AccountId);
       Assert.Equal(_dataStubs.AccountClanInfo.ClanTag, clanHistory.Single().ClanTag);
 
