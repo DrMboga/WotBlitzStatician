@@ -38,7 +38,7 @@ namespace WotBlitzStatician.WotApiClient
                 new RequestParameter
                 {
                     ParameterType = ParameterType.Fields,
-                    ParameterValue = "tank_id,name,tier,nation,type,description,is_premium,cost,images"
+                    ParameterValue = "tank_id,name,tier,nation,type,description,is_premium,cost,images,next_tanks"
                 }));
             var allVehicles = tankopedia.Values.ToList();
             allVehicles.AddMarkI();

@@ -56,5 +56,10 @@
 		/// Path to the png file
 		/// </summary>
 		public string NormalImageUrl { get; set; }
+
+		/// <summary>
+		/// Serialized list of key-value pairs - tankId:xp cost
+		/// </summary>
+		public string NextTanksList { get; set; }
 	}
 }
