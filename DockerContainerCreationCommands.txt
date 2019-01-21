@@ -14,7 +14,9 @@ dotnet user-secrets --id 'BlitzStatician-122-33-44-55' set 'ConnectionStrings:Bl
 # reatart policy
 --restart always
 ---------------------------------
-# ng build --delete-output-path=false
+ng build --delete-output-path=false
+dotnet build
+ng serve --configuration=debug
 ---------------------------------
 docker run -v $(pwd):/var/www -w "/var/www" node npm install
 docker run -v $(pwd):/var/www -w "/var/www" node npm run build
