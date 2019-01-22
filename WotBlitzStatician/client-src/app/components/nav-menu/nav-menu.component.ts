@@ -12,7 +12,7 @@ import { AccountAuthenticationService } from '../../services/account-authenticat
 })
 export class NavMenuComponent implements OnInit {
 
-  public refreshEnabled: boolean = true;
+  public refreshEnabled = true;
 
   constructor(public accountGlobalInfo: AccountGlobalInfo,
     private accountsInfoService: AccountInfoService,
@@ -25,7 +25,7 @@ export class NavMenuComponent implements OnInit {
   }
 
   public refreshStat() {
-    if(this.accountGlobalInfo.accountId === 0){
+    if (this.accountGlobalInfo.accountId === 0) {
       return;
     }
     this.refreshEnabled = false;
@@ -34,18 +34,17 @@ export class NavMenuComponent implements OnInit {
         this.refreshEnabled = true;
         this.accountGlobalInfo.EmitAccountInfoChanged();
       }
-    )
+    );
   }
 
-  public logInLogOff(){
-    if(this.accountGlobalInfo.accountId === 0){
+  public logInLogOff() {
+    if (this.accountGlobalInfo.accountId === 0) {
       this.accountsInfoService.getAuthenticationRequest(`${this.baseUrl}splash-screen`).subscribe(
         authRequest => {
           // Redirect to authRequest
           window.location.href = authRequest;
       });
-    }
-    else {
+    } else {
       this.accountAuthService.dropCookie();
       this.accountGlobalInfo.accountId = 0;
       this.accountGlobalInfo.accountNick = 'WotBlitzStatician';

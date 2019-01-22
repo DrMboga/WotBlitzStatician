@@ -25,11 +25,11 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
     public accountGlobalInfo: AccountGlobalInfo) {
     this.refreshAccountInfo();
     this.subscription = accountGlobalInfo.accountInfoChanged.asObservable().subscribe(() =>
-      this.refreshAccountInfo())
+      this.refreshAccountInfo());
   }
 
   private refreshAccountInfo() {
-    let id = this.accountGlobalInfo.accountId;
+    const id = this.accountGlobalInfo.accountId;
     if (id != null) {
       this.accountsInfoService.getAccount(id).subscribe(data => {
         this.account = data;
