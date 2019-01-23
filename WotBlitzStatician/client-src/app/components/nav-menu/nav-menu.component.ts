@@ -6,7 +6,7 @@ import { AccountInfoService } from '../../services/account-info.service';
 import { AccountAuthenticationService } from '../../services/account-authentication.service';
 
 @Component({
-  selector: 'nav-menu',
+  selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css']
 })

@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      if(this.accountGlobalInfo.accountId > 0) {
+      if (this.accountGlobalInfo.accountId > 0) {
         return true;
       }
       // ToDo: Redirect to splash screen
