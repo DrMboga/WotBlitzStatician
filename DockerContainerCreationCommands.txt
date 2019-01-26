@@ -1,6 +1,7 @@
 docker-compose build
 docker-compose up -d
 curl http://localhost:8000/api/Dictionaries/LoadDictionariesAndPicturesIfNeeded
+curl http://localhost:8000/api/Dictionaries/DownloadAllImages
 
 docker logs --timestamps --follow 0f72 > d:\Mike\Develop\container.log
 docker-compose up > d:\Mike\Develop\DockerCompose.log

@@ -42,10 +42,6 @@ export class AccountHistoryComponent implements OnInit {
     // const context = canvas.getContext('winRateCanvas');
 
     // context.clearRect(0, 0, canvas.width, canvas.height);
-
-    this.winRateChart = null;
-    this.dates = null;
-    this.winRates = null;
     this.accountsInfoService
       .getAccountStatHistory(this.accountGlobalInfo.accountId, this.dateFrom)
       .subscribe(
