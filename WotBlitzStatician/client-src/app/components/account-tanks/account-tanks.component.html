@@ -1,13 +1,13 @@
 <form (ngSubmit)="queryData()">
   <div class="form-row form-inline">
     <div class="btn-group btn-group-toggle" id="tiersToggle" title="Уровни танков">
-      <label [ngClass]="'btn btn-primary' + (tier.isSelected ? ' active' : '')" *ngFor="let tier of filter.tires">
+      <label [ngClass]="'btn btn-light' + (tier.isSelected ? ' active' : '')" *ngFor="let tier of filter.tires">
         <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="tier.isSelected">{{tier.itemName}}
       </label>
     </div>
     <div class="btn-group btn-group-toggle" id="inGarageToggle" title="В гараже">
-      <label [ngClass]="'btn btn-primary' + (filter.inGarage ? ' active' : '')">
-        <input type="checkbox" [ngModelOptions]="{standalone: true}" autocomplete="off" [(ngModel)]="filter.inGarage" class="checkbox-empty"><span class="glyphicon glyphicon-home"></span>
+      <label [ngClass]="'btn btn-light' + (filter.inGarage ? ' active' : '')">
+        <input type="checkbox" [ngModelOptions]="{standalone: true}" autocomplete="off" [(ngModel)]="filter.inGarage" class="checkbox-empty"><fa-icon icon="warehouse"></fa-icon>
       </label>
     </div>
     <div class="input-group mb-2 mr-sm-2" title="Боев >">
@@ -19,17 +19,17 @@
   </div>
   <div class="form-row">
     <div class="btn-group btn-group-toggle" id="vehicleTypesToggle" title="Типы танков">
-      <label [ngClass]="'btn btn-primary' + (vehicleType.isSelected ? ' active' : '')" *ngFor="let vehicleType of filter.vehicleTypes">
+      <label [ngClass]="'btn btn-light' + (vehicleType.isSelected ? ' active' : '')" *ngFor="let vehicleType of filter.vehicleTypes">
         <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="vehicleType.isSelected"><img [ngClass]="'tank-type-' + vehicleType.itemName" />
       </label>
     </div>
     <div class="btn-group btn-group-toggle" id="nationsToggle" title="Нации">
-      <label [ngClass]="'btn btn-primary' + (nation.isSelected ? ' active' : '')" *ngFor="let nation of filter.nations">
+      <label [ngClass]="'btn btn-light' + (nation.isSelected ? ' active' : '')" *ngFor="let nation of filter.nations">
         <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="nation.isSelected"><img [ngClass]="'flag-' + nation.itemName" />
       </label>
     </div>
-    <button class="btn btn-default" type="submit" title="Применить фильтр">
-      <i class="glyphicon glyphicon-search"></i>
+    <button class="btn btn-light" type="submit" title="Применить фильтр">
+      <fa-icon icon="search"></fa-icon>
     </button>
   </div>
 </form>
@@ -38,67 +38,67 @@
     <thead>
       <tr>
         <th (click)="sortColumn = 'TankMarkOfMastery'; sortAscending = !sortAscending; sortTanks();">
-          <span *ngIf="sortColumn == 'TankMarkOfMastery' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-          <span *ngIf="sortColumn == 'TankMarkOfMastery' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+          <fa-icon *ngIf="sortColumn == 'TankMarkOfMastery' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankMarkOfMastery' && sortAscending" icon="angle-up"></fa-icon>
         </th>
         <th (click)="sortColumn = 'VehicleType'; sortAscending = !sortAscending; sortTanks();">
-          <span *ngIf="sortColumn == 'VehicleType' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-          <span *ngIf="sortColumn == 'VehicleType' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+          <fa-icon *ngIf="sortColumn == 'VehicleType' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'VehicleType' && sortAscending" icon="angle-up"></fa-icon>
         </th>
         <th (click)="sortColumn = 'VehicleTier'; sortAscending = !sortAscending; sortTanks();">
-          <span *ngIf="sortColumn == 'VehicleTier' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-          <span *ngIf="sortColumn == 'VehicleTier' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+          <fa-icon *ngIf="sortColumn == 'VehicleTier' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'VehicleTier' && sortAscending" icon="angle-up"></fa-icon>
         </th>
         <th (click)="sortColumn = 'VehicleNation'; sortAscending = !sortAscending; sortTanks();">
-          <span *ngIf="sortColumn == 'VehicleNation' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-          <span *ngIf="sortColumn == 'VehicleNation' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+          <fa-icon *ngIf="sortColumn == 'VehicleNation' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'VehicleNation' && sortAscending" icon="angle-up"></fa-icon>
         </th>
         <th>
           Tank
         </th>
         <th (click)="sortColumn = 'TankBattles'; sortAscending = !sortAscending; sortTanks();">
-          <span class='glyphicon glyphicon-flash'></span>
-          <span *ngIf="sortColumn == 'TankBattles' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-          <span *ngIf="sortColumn == 'TankBattles' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+          <fa-icon icon="gamepad"></fa-icon> 
+          <fa-icon *ngIf="sortColumn == 'TankBattles' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankBattles' && sortAscending" icon="angle-up"></fa-icon>
         </th>
         <th (click)="sortColumn = 'WinRate'; sortAscending = !sortAscending; sortTanks();">
-          <span class='glyphicon glyphicon-flag'></span>
-          <span *ngIf="sortColumn == 'WinRate' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-          <span *ngIf="sortColumn == 'WinRate' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+          <fa-icon icon="flag"></fa-icon>  
+          <fa-icon *ngIf="sortColumn == 'WinRate' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'WinRate' && sortAscending" icon="angle-up"></fa-icon>
         </th>
         <th (click)="sortColumn = 'TankWn7'; sortAscending = !sortAscending; sortTanks();">
-          Wn7
-          <span *ngIf="sortColumn == 'TankWn7' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-          <span *ngIf="sortColumn == 'TankWn7' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+          <fa-icon icon="calculator" size="xs"></fa-icon> Wn7
+          <fa-icon *ngIf="sortColumn == 'TankWn7' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankWn7' && sortAscending" icon="angle-up"></fa-icon>
         </th>
         <th (click)="sortColumn = 'AvgDamage'; sortAscending = !sortAscending; sortTanks();">
-          <span class='glyphicon glyphicon-screenshot'></span>
-          <span *ngIf="sortColumn == 'AvgDamage' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-          <span *ngIf="sortColumn == 'AvgDamage' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+          <fa-icon icon="skull-crossbones"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'AvgDamage' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'AvgDamage' && sortAscending" icon="angle-up"></fa-icon>
         </th>
         <th (click)="sortColumn = 'AvgXp'; sortAscending = !sortAscending; sortTanks();">
-            <span class='glyphicon glyphicon-star-empty'></span>
-            <span *ngIf="sortColumn == 'AvgXp' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-            <span *ngIf="sortColumn == 'AvgXp' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+          <fa-icon [icon]="['far', 'star']"></fa-icon> 
+          <fa-icon *ngIf="sortColumn == 'AvgXp' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'AvgXp' && sortAscending" icon="angle-up"></fa-icon>
         </th>  
         <th (click)="sortColumn = 'SurvivalRate'; sortAscending = !sortAscending; sortTanks();">
-          <span class='glyphicon glyphicon-heart-empty'></span>
-          <span *ngIf="sortColumn == 'SurvivalRate' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-          <span *ngIf="sortColumn == 'SurvivalRate' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+          <fa-icon [icon]="['far', 'heart']"></fa-icon> 
+          <fa-icon *ngIf="sortColumn == 'SurvivalRate' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'SurvivalRate' && sortAscending" icon="angle-up"></fa-icon>
         </th>
         <th (click)="sortColumn = 'TankLastBattleTime'; sortAscending = !sortAscending; sortTanks();">
-          <span class='glyphicon glyphicon-time'></span>
-          <span *ngIf="sortColumn == 'TankLastBattleTime' && !sortAscending" class="glyphicon glyphicon-triangle-bottom"></span>
-          <span *ngIf="sortColumn == 'TankLastBattleTime' && sortAscending" class="glyphicon glyphicon-triangle-top"></span>
+          <fa-icon [icon]="['far', 'clock']"></fa-icon> 
+          <fa-icon *ngIf="sortColumn == 'TankLastBattleTime' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankLastBattleTime' && sortAscending" icon="angle-up"></fa-icon>
         </th>
         <th>
-          <span class="glyphicon glyphicon-home"></span>
+          <fa-icon icon="warehouse"></fa-icon>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let tank of tanks">
-        <td><img *ngIf="tank.MasteryLocalImage" src="{{tank.MasteryLocalImage}}" class="mastery-image" /></td>
+      <tr *ngFor="let tank of tanks; trackBy: trackByTankId">
+        <td><img *ngIf="tank.TankMarkOfMastery != 'None'" [ngClass]="'mastery-' + tank.TankMarkOfMastery" /></td>
         <td><img [ngClass]="'tank-type-' + tank.VehicleType + (tank.VehicleIsPremium ? '-prem' : '')" /></td>
         <td><b>{{tank.TankTierRoman}}</b></td>
         <td><img [ngClass]="'flag-' + tank.VehicleNation" /></td>
@@ -110,7 +110,7 @@
         <td>{{tank.AvgXp|number:'3.0-0'}}</td>
         <td>{{tank.SurvivalRate|percent:'2.2-2'}}</td>
         <td>{{tank.TankLastBattleTime|date:"short"}}</td>
-        <td><span *ngIf="tank.TankInGarage" class="glyphicon glyphicon-home"></span></td>
+        <td><fa-icon *ngIf="tank.TankInGarage" icon="warehouse" size="xs"></fa-icon></td>
       </tr>
     </tbody>
     <tfoot>

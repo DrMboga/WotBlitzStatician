@@ -1,0 +1,8 @@
+{
+    "AccountId": 0,
+    "NickName": "TestAccountNick",
+    "AccountCreatedAt": "2018-01-20T11:17:35",
+    "LastBattleTime": "2019-01-02T21:40:12",
+    "AccessToken": "TestAccessToken",
+    "AccessTokenExpiration": "2019-01-16T19:00:54"
+}

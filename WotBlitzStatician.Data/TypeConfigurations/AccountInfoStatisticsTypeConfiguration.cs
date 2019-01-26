@@ -13,11 +13,6 @@ namespace WotBlitzStatician.Data.TypeConfigurations
 				.WithMany(a => a.AccountInfoStatistics)
 				.HasForeignKey(s => s.AccountId);
 			accountInfoStatEntity.Ignore(s => s.FragsList);
-			accountInfoStatEntity
-				.HasOne(s => s.AccountInfoPrivate)
-				.WithOne(p => p.AccountInfoStatistics)
-				.HasForeignKey<AccountInfoPrivate>(p => p.AccountInfoPrivateId);
-
 		}
 	}
 }

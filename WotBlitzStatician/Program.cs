@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using WotBlitzStatician.NLogProvider;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNet.OData.Extensions;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace WotBlitzStatician
 {
-	public class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
@@ -15,11 +16,16 @@ namespace WotBlitzStatician
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseNLog("NLog.config")
+                .ConfigureLogging((hostingContext, logging) =>
+                {
+                    logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                    logging.AddConsole();
+                })
                 .ConfigureServices(services =>
                 {
-                  services.AddAutofac();
-                  services.AddOData();
+                    services.AddCors();
+                    services.AddAutofac();
+                    services.AddOData();
                 })
                 .UseStartup<Startup>()
                 .Build();

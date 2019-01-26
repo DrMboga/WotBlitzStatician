@@ -6,6 +6,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 {
 	public class FilterTanksByLastSessionOperation : IStatisticsCollectorOperation
 	{
+		#pragma warning disable CS1998
 		public async Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
 			foreach (var account in operationContext.Accounts)
@@ -16,5 +17,6 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				tanksNotPlayedLastSession.ForEach(t => account.AccountInfoTanks.Remove(t));
 			}
 		}
+		#pragma warning restore CS1998
 	}
 }

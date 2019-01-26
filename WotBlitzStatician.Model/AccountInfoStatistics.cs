@@ -121,13 +121,8 @@
 		/// </summary>
 		public double Wn7 { get; set; }
 
-		/// <summary>
-		/// Показатель Wn8
-		/// </summary>
-		public double Wn8 { get; set; }
-
 		public List<FragListItem> FragsList { get; set; }
 		
-		public AccountInfoPrivate AccountInfoPrivate { get; set; }
+		public long AccountInfoPrivateId { get; set; }
 	}
 }

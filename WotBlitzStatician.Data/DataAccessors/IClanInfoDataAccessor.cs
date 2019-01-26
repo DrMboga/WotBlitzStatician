@@ -4,11 +4,11 @@ using WotBlitzStatician.Model.Dto;
 
 namespace WotBlitzStatician.Data.DataAccessors
 {
-	public interface IClanInfoDataAccessor
+    public interface IClanInfoDataAccessor
     {
-		  Task<PlayerClanInfoDto> GetClanInfo(long accountId);
+        Task<PlayerClanInfoDto> GetClanInfo(long accountId);
 
-      Task<AccountClanInfo> GetAccountClanAsync(long accountId);
+        Task<AccountClanInfo> GetAccountClanAsync(long accountId);
 
     }
 }

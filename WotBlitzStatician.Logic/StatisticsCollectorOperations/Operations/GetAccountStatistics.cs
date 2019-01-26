@@ -19,8 +19,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 			{
 				var accountInfoFromWg = await _wargamingApiClient.GetAccountInfoAllStatisticsAsync(
 					accountInfo.CurrentAccountInfo.AccountId,
-					accountInfo.CurrentAccountInfo.AccessToken,
-					true);
+					accountInfo.CurrentAccountInfo.AccessToken);
 				accountInfo.WargamingAccountInfo = accountInfoFromWg;
 			}
 		}

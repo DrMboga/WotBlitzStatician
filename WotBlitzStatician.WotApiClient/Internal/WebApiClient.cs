@@ -98,7 +98,7 @@
 				{
 					webClient.DownloadFile(new Uri(uri), fileName);
 				}
-				catch(WebException e)
+				catch(WebException)
 				{
 					// do nothing
 				}

@@ -10,6 +10,7 @@
 		AccesToken,
 		Extra,
 		Fields,
-		TankId
+		TankId,
+		RedirectUri
 	}
 }

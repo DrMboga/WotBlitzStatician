@@ -7,40 +7,40 @@ using WotBlitzStatician.Model.Dto;
 
 namespace WotBlitzStatician.Data.DataAccessors
 {
-	public interface IAccountDataAccessor
+    public interface IAccountDataAccessor
     {
-		Task<List<AccountInfo>> GetAllAccountsAsync();
+        Task<List<AccountInfo>> GetAllAccountsAsync();
 
-		Task<AccountInfoDto> GetActualAccountInfo(long accountId);
+        Task<AccountInfo> GetShortAccountInfo(long accountId);
 
-		Task<List<AccountTankStatistics>> GetActualTanksAsync(long accountId);
+        Task<List<AccountTankStatistics>> GetActualTanksAsync(long accountId);
 
-		Task SaveProlongedAccountAsync(long accountId, string accessToken, DateTime accesTokenExpiration);
+        Task SaveProlongedAccountAsync(long accountId, string accessToken, DateTime accesTokenExpiration);
 
-		Task<IDbContextTransaction> OpenTransactionAsync();
+        Task InsertAccountAuthInfoAsync(AccountInfo accountInfo);
 
-		Task SaveLastBattleInfoAsync(AccountInfo accountInfo);
+        Task<IDbContextTransaction> OpenTransactionAsync();
 
-		Task SaveAccountPrivateInfoAndStatisticsAsync(AccountInfoStatistics accountInfoStatistics);
+        Task SaveLastBattleInfoAsync(AccountInfo accountInfo);
 
-		Task MergeFragsAsync(List<FragListItem> frags);
+        Task SaveAccountStatisticsAsync(AccountInfoStatistics accountInfoStatistics);
 
-		Task SaveAccountClanInfoAsync(long accountId, AccountClanInfo accountClanInfo);
+        Task MergeFragsAsync(List<FragListItem> frags);
 
-		Task SaveAccountClanHistoryAsync(AccountClanHistory accountClanHistory);
+        Task SaveAccountClanInfoAsync(long accountId, AccountClanInfo accountClanInfo);
 
-		Task MergeAccountAchievementsAsync(long accountId, 
-			List<AccountInfoAchievement> achievements,
-			List<AccountInfoAchievement> achievementsMaxSeries);
+        Task SaveAccountClanHistoryAsync(AccountClanHistory accountClanHistory);
 
-		Task SaveTankStatisticsAsync(List<AccountTankStatistics> tankStatistics);
+        Task MergeAccountAchievementsAsync(long accountId,
+            List<AccountInfoAchievement> achievements,
+            List<AccountInfoAchievement> achievementsMaxSeries);
 
-		Task MergeAccountInfoTankAchievementsAsync(List<AccountTankStatistics> tanks);
+        Task SaveTankStatisticsAsync(List<AccountTankStatistics> tankStatistics);
 
-		Task MergePresentAccountTanksInfoAsync(List<PresentAccountTanks> presentAccountTanks);
+        Task MergeAccountInfoTankAchievementsAsync(List<AccountTankStatistics> tanks);
 
-		Task UpdateInnGarageInfoAsync(List<AccountTankStatistics> tanks);
+        Task MergePresentAccountTanksInfoAsync(List<PresentAccountTanks> presentAccountTanks);
 
-		Task<List<PlayerStatHistoryDto>> GetAccountStatHistory(long accountId, DateTime dateFrom);
-	}
+        Task UpdateInnGarageInfoAsync(List<AccountTankStatistics> tanks);
+    }
 }

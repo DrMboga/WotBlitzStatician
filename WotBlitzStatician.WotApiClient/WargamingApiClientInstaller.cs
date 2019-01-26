@@ -26,7 +26,6 @@
 		{
 			containerBuilder.RegisterType<AccountInfoMapper>().As<IMapper<WotAccountInfoResponse, AccountInfo>>();
 			containerBuilder.RegisterType<AccountInfoStatisticsMapper>().As<IMapper<WotAccountInfoResponse, AccountInfoStatistics>>();
-			containerBuilder.RegisterType<AccountInfoPrivateMapper>().As<IMapper<WotAccountInfoResponse, AccountInfoPrivate>>();
 			containerBuilder.RegisterType<AccounutFindResponseMapper>().As<IMapper<List<WotAccountListResponse>, List<AccountInfo>>>();
 			containerBuilder.RegisterType<ClanAccountInfoMapper>().As<IMapper<WotClansAccountinfoResponse, AccountClanInfo>>();
 			containerBuilder.RegisterType<ClanInfoResponseMapper>().As<IMapper<WotClanInfoResponse, AccountClanInfo>>();
@@ -40,6 +39,8 @@
 			containerBuilder.RegisterType<TankopediaMapper>().As<IMapper<List<WotEncyclopediaVehiclesResponse>, List<VehicleEncyclopedia>>>();
 			containerBuilder.RegisterType<TanksStatMapper>().As<IMapper<List<WotAccountTanksStatResponse>, List<AccountTankStatistics>>>();
 			containerBuilder.RegisterType<WotAuthProlongateResponseMapper>().As<IMapper<WotAuthProlongateResponse, AccountInfo>>();
+			containerBuilder.RegisterType<PlayerPrivateInfoMapper>().As<IMapper<WotAccountInfoPrivate, PlayerPrivateInfoDto>>();
+
 
 			containerBuilder.RegisterType<MapperHelper>().As<IMapperHelper>();
 		}

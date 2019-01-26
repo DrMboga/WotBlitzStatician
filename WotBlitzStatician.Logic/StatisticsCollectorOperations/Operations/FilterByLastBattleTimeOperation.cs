@@ -6,6 +6,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 {
 	public class FilterByLastBattleTimeOperation : IStatisticsCollectorOperation
 	{
+		#pragma warning disable CS1998
 		public async Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
 			var accountsToRemove = new List<SatisticsCollectorAccountOperationContext>();
@@ -28,5 +29,6 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				operationContext.OperationStateMessage = "No accounts for process";
 			}
 		}
+		#pragma warning restore CS1998
 	}
 }

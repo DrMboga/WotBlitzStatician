@@ -1,35 +1,30 @@
-<div class='main-nav'>
-  <div class='navbar navbar-inverse'>
-    <div class='navbar-header'>
-      <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
-        <span class='sr-only'>Toggle navigation</span>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-      </button>
-      <a class='navbar-brand' data-toggle="collapse" href="#collapseAccounts" role="button" aria-expanded="false" aria-controls="collapseAccounts">WotBlitzStatician</a>
-      <div class="collapse" id="collapseAccounts">
-        <select class="form-control" [(ngModel)]="currentAccountId">
-          <option *ngFor="let acc of accounts" [ngValue]="acc.accountId">
-            {{acc.nickName}} - {{acc.lastBattleTime | date:'dd.MM.yyyy HH:mm'}}
-          </option>
-        </select>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]="['/']">{{accountGlobalInfo.accountNick}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav mr-auto" *ngIf="accountGlobalInfo.accountId > 0">
+        <button class="btn btn-dark my-2 my-sm-0 text-sm-left" 
+            title="Обновить статистику" 
+            [disabled]="!refreshEnabled"
+            (click)="refreshStat()">
+          <fa-icon icon="sync"></fa-icon>
+        </button>
+        <a class="nav-item nav-link" [routerLinkActive]="['active']" [routerLink]="['/account']">Статистика</a>
+        <a class="nav-item nav-link" [routerLinkActive]="['active']" [routerLink]="['/account-achievements']">Достижения</a>
+        <a class="nav-item nav-link" [routerLinkActive]="['active']" [routerLink]="['/account-history']">История</a>
+        <a class="nav-item nav-link" [routerLinkActive]="['active']" [routerLink]="['/tanks']">Танки</a>
       </div>
+      <div class="navbar-nav mr-auto" *ngIf="accountGlobalInfo.accountId === 0"></div>
+
+      <button class="btn btn-dark my-2 my-sm-0" title="Wargaming ID" style="margin-left: 2px; margin-right: 2px" (click)="logInLogOff()">
+          <span *ngIf="accountGlobalInfo.accountId === 0">WG.ID <fa-icon icon="sign-in-alt"></fa-icon></span> 
+          <span *ngIf="accountGlobalInfo.accountId > 0">{{accountGlobalInfo.accountNick}} <fa-icon icon="sign-out-alt"></fa-icon></span> 
+      </button>
+      <form class="form-inline">
+          <input class="form-control mr-sm-1" type="search" placeholder="Поиск по нику" aria-label="Search">
+          <button class="btn btn-dark my-2 my-sm-0" type="submit"><fa-icon icon="search" size="xs"></fa-icon></button>
+      </form>
     </div>
-    <div class='clearfix'></div>
-    <div class='navbar-collapse collapse'>
-      <ul class='nav navbar-nav'>
-        <li [routerLinkActive]="['link-active']">
-          <a [routerLink]="['/account', currentAccountId]">
-            <span class='glyphicon glyphicon-user'></span> {{accountName}}
-          </a>
-        </li>
-        <li [routerLinkActive]="['link-active']">
-          <a [routerLink]="['/tanks', currentAccountId]">
-            <span class='glyphicon glyphicon-tent'></span> Tanks
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+</nav>

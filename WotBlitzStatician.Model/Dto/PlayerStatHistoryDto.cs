@@ -23,12 +23,5 @@ namespace WotBlitzStatician.Model.Dto
 		public long? AvgXpDiff { get; set; }
 		public decimal SurvivalRate { get; set; }
 		public decimal? SurvivalRateDiff { get; set; }
-
-		public long Credits { get; set; }
-		public long? CreditsDiff { get; set; }
-		public long FreeXp { get; set; }
-		public long? FreeXpDiff { get; set; }
-		public long Gold { get; set; }
-		public long? GoldDiff { get; set; }
 	}
 }

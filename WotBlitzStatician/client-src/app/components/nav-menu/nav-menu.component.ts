@@ -1,41 +1,54 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Component, OnInit, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { AccountInfo } from '../../model/account-info';
+import { AccountGlobalInfo } from '../account-global-info';
 import { AccountInfoService } from '../../services/account-info.service';
+import { AccountAuthenticationService } from '../../services/account-authentication.service';
 
 @Component({
-  selector: 'nav-menu',
+  selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent implements OnInit {
-  public accounts: AccountInfo[] = new Array<AccountInfo>();
-  public _currentAccountId: number = 0;
-  public accountName: string = "None"
 
-  constructor(private accountsInfoService: AccountInfoService,
-              private router: Router) {
-    this.accountsInfoService.getAccounts().subscribe(data => {
-      this.accounts = data;
-      if (this.accounts.length > 0) {
-        this.currentAccountId = this.accounts[0].accountId;
-      }
-    }, error => console.error(error));
+  public refreshEnabled = true;
+
+  constructor(public accountGlobalInfo: AccountGlobalInfo,
+    private accountsInfoService: AccountInfoService,
+    @Inject('BASE_URL') private baseUrl: string,
+    private accountAuthService: AccountAuthenticationService,
+    private router: Router) {
   }
 
   ngOnInit() {
   }
 
-  get currentAccountId(): number {
-    return this._currentAccountId;
+  public refreshStat() {
+    if (this.accountGlobalInfo.accountId === 0) {
+      return;
+    }
+    this.refreshEnabled = false;
+    this.accountsInfoService.saveAllAccountInfo(this.accountGlobalInfo.accountId).subscribe(
+      () => {
+        this.refreshEnabled = true;
+        this.accountGlobalInfo.EmitAccountInfoChanged();
+      }
+    );
   }
 
-  set currentAccountId(newAccountId: number) {
-    this._currentAccountId = newAccountId;
-    var account = this.accounts.find(a => a.accountId == newAccountId)!;
-    this.accountName = account.nickName;
-    // raise event
-    this.router.navigateByUrl("/account/" + newAccountId);
+  public logInLogOff() {
+    if (this.accountGlobalInfo.accountId === 0) {
+      this.accountsInfoService.getAuthenticationRequest(`${this.baseUrl}splash-screen`).subscribe(
+        authRequest => {
+          // Redirect to authRequest
+          window.location.href = authRequest;
+      });
+    } else {
+      this.accountAuthService.dropCookie();
+      this.accountGlobalInfo.accountId = 0;
+      this.accountGlobalInfo.accountNick = 'WotBlitzStatician';
+      this.router.navigate(['/splash-screen']);
+    }
   }
 }

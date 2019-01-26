@@ -12,7 +12,6 @@ namespace WotBlitzStatician.Data.DataAccessors
 		Task<List<AccountMasteryInfoDto>> GetAccountMasteryInfo(long accountId);
 		IQueryable<AccountTankInfoDto> GetTanksInfoQuery(long accountId);
 
-		Task<List<AccountTankInfoDto>> GetAllTanksByAchievement(long accountId, string achievementId);
-		Task<List<AccountTankInfoDto>> GetAllTanksByMastery(long accountId, MarkOfMastery markOfMastery);
+		Task<AccountTankByAchievementDto[]> GetAllTanksByAchievement(long accountId, string achievementId);
 	}
 }

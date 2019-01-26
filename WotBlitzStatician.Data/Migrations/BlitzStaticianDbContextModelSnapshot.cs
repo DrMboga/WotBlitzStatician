@@ -3,13 +3,8 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
-using Microsoft.EntityFrameworkCore.ValueGeneration;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WotBlitzStatician.Data;
-using WotBlitzStatician.Model;
 
 namespace WotBlitzStatician.Data.Migrations
 {
@@ -21,13 +16,15 @@ namespace WotBlitzStatician.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("wotb")
-                .HasAnnotation("ProductVersion", "2.1.0-preview2-28184")
+                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("WotBlitzStatician.Model.AccountClanHistory", b =>
                 {
                     b.Property<long>("AccountClanHistoryId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("AccountId");
 
@@ -51,7 +48,8 @@ namespace WotBlitzStatician.Data.Migrations
             modelBuilder.Entity("WotBlitzStatician.Model.AccountClanInfo", b =>
                 {
                     b.Property<long>("AccountClanInfoId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("AccountId");
 
@@ -109,7 +107,8 @@ namespace WotBlitzStatician.Data.Migrations
             modelBuilder.Entity("WotBlitzStatician.Model.AccountInfoAchievement", b =>
                 {
                     b.Property<long>("AccountInfoAchievementId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("AccountId");
 
@@ -131,48 +130,15 @@ namespace WotBlitzStatician.Data.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("AccountInfoAchievement");
                 });
 
-            modelBuilder.Entity("WotBlitzStatician.Model.AccountInfoPrivate", b =>
-                {
-                    b.Property<long>("AccountInfoPrivateId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<long>("AccountId");
-
-                    b.Property<string>("BanInfo");
-
-                    b.Property<DateTime?>("BanTime");
-
-                    b.Property<int>("BattleLifeTimeInSeconds");
-
-                    b.Property<string>("ContactsBlocked");
-
-                    b.Property<string>("ContactsGroups");
-
-                    b.Property<string>("ContactsUngrouped");
-
-                    b.Property<long>("Credits");
-
-                    b.Property<long>("FreeXp");
-
-                    b.Property<long>("Gold");
-
-                    b.Property<bool>("IsPremium");
-
-                    b.Property<DateTime?>("PremiumExpiresAt");
-
-                    b.HasKey("AccountInfoPrivateId");
-
-                    b.ToTable("AccountInfoPrivate");
-                });
-
             modelBuilder.Entity("WotBlitzStatician.Model.AccountInfoStatistics", b =>
                 {
                     b.Property<long>("AccountInfoStatisticsId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("AccountId");
 
-                    b.Property<long?>("AccountInfoPrivateId");
+                    b.Property<long>("AccountInfoPrivateId");
 
                     b.Property<double>("AvgTier");
 
@@ -216,17 +182,11 @@ namespace WotBlitzStatician.Data.Migrations
 
                     b.Property<double>("Wn7");
 
-                    b.Property<double>("Wn8");
-
                     b.Property<long>("Xp");
 
                     b.HasKey("AccountInfoStatisticsId");
 
                     b.HasIndex("AccountId");
-
-                    b.HasIndex("AccountInfoPrivateId")
-                        .IsUnique()
-                        .HasFilter("[AccountInfoPrivateId] IS NOT NULL");
 
                     b.ToTable("AccountInfoStatistics");
                 });
@@ -234,7 +194,8 @@ namespace WotBlitzStatician.Data.Migrations
             modelBuilder.Entity("WotBlitzStatician.Model.AccountTankStatistics", b =>
                 {
                     b.Property<long>("AccountTankStatisticId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("AccountId");
 
@@ -284,8 +245,6 @@ namespace WotBlitzStatician.Data.Migrations
 
                     b.Property<double>("Wn7");
 
-                    b.Property<double>("Wn8");
-
                     b.Property<long>("Xp");
 
                     b.HasKey("AccountTankStatisticId");
@@ -326,7 +285,8 @@ namespace WotBlitzStatician.Data.Migrations
             modelBuilder.Entity("WotBlitzStatician.Model.AchievementOption", b =>
                 {
                     b.Property<int>("AcievementOptionId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AchievementId");
 
@@ -410,7 +370,8 @@ namespace WotBlitzStatician.Data.Migrations
             modelBuilder.Entity("WotBlitzStatician.Model.FragListItem", b =>
                 {
                     b.Property<int>("FragListItemId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("AccountId");
 
@@ -432,7 +393,8 @@ namespace WotBlitzStatician.Data.Migrations
             modelBuilder.Entity("WotBlitzStatician.Model.PresentAccountTanks", b =>
                 {
                     b.Property<int>("PresentAccountTankId")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("AccountId");
 
@@ -460,6 +422,8 @@ namespace WotBlitzStatician.Data.Migrations
                     b.Property<string>("Name");
 
                     b.Property<string>("Nation");
+
+                    b.Property<string>("NextTanksList");
 
                     b.Property<string>("NormalImageUrl");
 
@@ -511,10 +475,6 @@ namespace WotBlitzStatician.Data.Migrations
                         .WithMany("AccountInfoStatistics")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WotBlitzStatician.Model.AccountInfoPrivate", "AccountInfoPrivate")
-                        .WithOne("AccountInfoStatistics")
-                        .HasForeignKey("WotBlitzStatician.Model.AccountInfoStatistics", "AccountInfoPrivateId");
                 });
 
             modelBuilder.Entity("WotBlitzStatician.Model.Achievement", b =>

@@ -34,13 +34,5 @@ namespace WotBlitzStatician.Model.Dto
 		public long SurvivedBattles { get; set; }
 		public long WinAndSurvived { get; set; }
 		public long Xp { get; set; }
-
-		public int? BattleLifeTimeInSeconds { get; set; }
-	    public TimeSpan BattleLifeTyme => BattleLifeTimeInSeconds.HasValue ? TimeSpan.FromSeconds(BattleLifeTimeInSeconds.Value) : TimeSpan.Zero;
-	    public long? Credits { get; set; }
-		public long? FreeXp { get; set; }
-		public long? Gold { get; set; }
-		public bool? IsPremium { get; set; }
-		public DateTime? PremiumExpiresAt { get; set; }
 	}
 }

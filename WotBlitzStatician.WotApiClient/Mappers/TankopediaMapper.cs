@@ -2,7 +2,8 @@
 {
 	using System.Collections.Generic;
 	using AutoMapper;
-	using WotBlitzStatician.Model;
+  using Newtonsoft.Json;
+  using WotBlitzStatician.Model;
 	using WotBlitzStatician.Model.MapperLogic;
 	using WotBlitzStatician.WotApiClient.InternalModel;
 
@@ -17,6 +18,7 @@
                 .ForMember(dest => dest.PriceGold, op => op.MapFrom(s => s.Cost["price_gold"]))
                 .ForMember(dest => dest.PreviewImageUrl, op => op.MapFrom(s => s.Images["preview"]))
                 .ForMember(dest => dest.NormalImageUrl, op => op.MapFrom(s => s.Images["normal"]))
+				.ForMember(dest => dest.NextTanksList, op => op.MapFrom(s => JsonConvert.SerializeObject(s.NextTanks)))
                                                         ));
 
         }

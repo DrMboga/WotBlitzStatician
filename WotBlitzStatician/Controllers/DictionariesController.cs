@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WotBlitzStatician.Data.DataAccessors;
@@ -18,6 +19,21 @@ namespace WotBlitzStatician.Controllers
       _blitzStatisticsDictionary = blitzStaticianDictionary;
     }
 
+    [HttpGet("LoadDictionariesAndPicturesIfNeeded")]
+    public async Task<IActionResult> LoadAllDictionariesIfNeeded()
+    {
+      _blitzStatisticsDictionary.CreateDatabase();
+
+      var someDictionaryData = await _blitzStatisticsDictionary.GetVehiclesTires();
+      if (someDictionaryData == null || someDictionaryData.Count == 0)
+      {
+        await SaveDictionaries();
+        await SaveVehicles();
+        await SaveAchievements();
+        await DownloadAllImages();
+      }
+      return Ok();
+    }
 
     [HttpGet("SaveDictionaries")]
     public async Task<IActionResult> SaveDictionaries()

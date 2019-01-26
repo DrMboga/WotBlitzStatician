@@ -1,0 +1,95 @@
+docker-compose build
+docker-compose up -d
+curl http://localhost:8000/api/Dictionaries/LoadDictionariesAndPicturesIfNeeded
+
+docker logs --timestamps --follow 0f72 > d:\Mike\Develop\container.log
+docker-compose up > d:\Mike\Develop\DockerCompose.log
+---------------------------------
+# Develop machine sql server
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=DevSql123!" -p 1438:1433 --name DevDb -d --restart always microsoft/mssql-server-linux
+192.168.1.85,1438
+---------------------------------
+dotnet user-secrets --id 'BlitzStatician-122-33-44-55' set 'ConnectionStrings:BlitzStatician' 'Data Source=172.20.10.2,1438;Initial Catalog=BlitzStatician;Integrated Security=False;User Id=SA;Password=DevSql123!'
+---------------------------------
+# reatart policy
+--restart always
+---------------------------------
+ng build --delete-output-path=false
+dotnet build
+ng serve --configuration=debug
+---------------------------------
+docker run -v $(pwd):/var/www -w "/var/www" node npm install
+docker run -v $(pwd):/var/www -w "/var/www" node npm run build
+docker run -p 8080:3000 -v $(pwd):/var/www -w "/var/www" node npm run
+
+docker run -v $(pwd):/var/www -w "/var/www" node npm run build -- --output-path=./dist/out
+
+# attach
+docker exec -i -t 665b4a1e17b6 /bin/bash
+---------------------------------
+docker pull [image name]
+docker images
+docker rmi [image id]
+
+docker run [-d] [image name]
+docker ps -a
+docker inspect [container name]
+docker rm [container id]
+
+# ports and volumes
+docker run -p 8080:3000 -v /var/www [image name]
+
+# volume with current directiory working dir node image and npm start
+docker run -p 8080:3000 -v $(pwd):/var/www -w "/var/www" node npm start
+
+# [-it] - interactive mode
+docker run -it -p 8080:80 -v $(pwd):/app -w "/app" microsoft/aspnetcore-build /bin/bash
+    dotnet restore
+    ...
+    exit
+
+
+# Build a container
+docker build -f Dockerfile -t mboga/WotBlitzStaticianWeb .
+
+---------------------------------
+docker-compose build
+docker-compose up [-d]
+docker-compose logs
+docker-compose ps
+docker-compose stop
+docker-compose start
+docker-compose rm
+#stop and remove all containers
+docker-compose down 
+
+#stop and remove all containers images and volumes
+docker-compose down --rmi all --volumes
+
+# builds only one service
+docker-compose build [service name]
+
+# recreate only one service without dependencies
+docker-compose up --no-deps [service name]
+
+---------------------------------
+docker-machine ls
+docker-machine start [machine name]
+docker-machine stop [machine name]
+docker-machine env [machine name]
+docker-machine ip [machine name]
+docker-machine status [machine name]
+
+---------------------------------
+cd WotBlitzStatician
+ng build --prod
+cd ..
+
+docker-compose build
+docker-compose up
+
+# In case of creating migrationsByScript
+cd WotBlitzStatician.Data/
+dotnet ef migrations script > ../migration.sql
+cd..
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'MyStaticianDocker!@' -I migration.sql

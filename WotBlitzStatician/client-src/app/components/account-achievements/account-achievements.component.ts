@@ -1,51 +1,105 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { AccountInfoService } from '../../services/account-info.service';
+import { AccountGlobalInfo } from '../account-global-info';
+import { TankByAchievementDto } from '../../model/tank-by-achievement-dto';
+import { AccountAchievementDto } from '../../model/account-achievement-dto';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'account-achievements',
+  selector: 'app-account-achievements',
   templateUrl: './account-achievements.component.html',
   styleUrls: ['./account-achievements.component.css']
 })
-export class AccountAchievementsComponent implements OnInit {
+export class AccountAchievementsComponent implements OnInit, OnDestroy {
+  public achievements: AccountAchievementDto[];
 
-  @Input("achievements")
-  public achievements: any[];
-  @Input("accountId")
-  public accountId: number;
+  public battleAchievements: AccountAchievementDto[];
+  public epicAchievements: AccountAchievementDto[];
+  public platoonAchievements: AccountAchievementDto[];
+  public titleAchievements: AccountAchievementDto[];
+  public commemorativeAchievements: AccountAchievementDto[];
+  public stepAchievements: AccountAchievementDto[];
 
-  public battleAchievements: any[];
-  public epicAchievements: any[];
-  public platoonAchievements: any[];
-  public titleAchievements: any[];
-  public commemorativeAchievements: any[];
-  public stepAchievements: any[];
+  public clickedAchievement: AccountAchievementDto;
+  public tanksByAchievement: TankByAchievementDto[];
 
-  public clickedAchievement: any;
-  public tanksByAchievement: any[];
+  subscription: Subscription;
 
-  constructor(private accountsInfoService: AccountInfoService) { }
-
-  ngOnInit() {
-    this.battleAchievements = this.achievements.filter(
-      achievement => achievement.section === 'battle');
-    this.epicAchievements = this.achievements.filter(
-      achievement => achievement.section === 'epic');
-    this.platoonAchievements = this.achievements.filter(
-      achievement => achievement.section === 'platoon');
-    this.titleAchievements = this.achievements.filter(
-      achievement => achievement.section === 'title');
-    this.commemorativeAchievements = this.achievements.filter(
-      achievement => achievement.section === 'commemorative');
-    this.stepAchievements = this.achievements.filter(
-      achievement => achievement.section === 'step');
+  constructor(
+    private accountsInfoService: AccountInfoService,
+    public accountGlobalInfo: AccountGlobalInfo
+  ) {
+    this.RefreshAchievements();
+    this.subscription = accountGlobalInfo.accountInfoChanged
+      .asObservable()
+      .subscribe(() => this.RefreshAchievements());
   }
 
+  private RefreshAchievements() {
+    this.accountsInfoService
+      .getAccountAchievements(this.accountGlobalInfo.accountId)
+      .subscribe(
+        data => {
+          this.achievements = data;
+          this.battleAchievements = this.achievements.filter(
+            achievement => achievement.section === 'battle'
+          );
+          this.epicAchievements = this.achievements.filter(
+            achievement => achievement.section === 'epic'
+          );
+          this.platoonAchievements = this.achievements.filter(
+            achievement => achievement.section === 'platoon'
+          );
+          this.titleAchievements = this.achievements.filter(
+            achievement => achievement.section === 'title'
+          );
+          this.commemorativeAchievements = this.achievements.filter(
+            achievement => achievement.section === 'commemorative'
+          );
+          this.stepAchievements = this.achievements.filter(
+            achievement => achievement.section === 'step'
+          );
+        },
+        error => console.error(error)
+      );
+  }
+
+  ngOnInit() {}
+
   getTanksByAchievement() {
-    if(this.clickedAchievement.isAchievementOption){
+    if (
+      this.clickedAchievement.isAchievementOption ||
+      (this.clickedAchievement.section === 'battle' &&
+        this.clickedAchievement.achievementId.includes('Mastery'))
+    ) {
       this.tanksByAchievement = null;
       return;
     }
-    this.accountsInfoService.getTanksByAchievement(this.accountId, this.clickedAchievement.achievementId)
-    .subscribe(data => {this.tanksByAchievement = data as any[]}, error => console.error(error));
+    this.accountsInfoService
+      .getTanksByAchievement(
+        this.accountGlobalInfo.accountId,
+        this.clickedAchievement.achievementId
+      )
+      .subscribe(
+        data => {
+          this.tanksByAchievement = data;
+          this.tanksByAchievement.sort(
+            (left, right): number => {
+              if (left.achievementsCount < right.achievementsCount) {
+                return 11;
+              }
+              if (left.achievementsCount > right.achievementsCount) {
+                return -1;
+              }
+              return 0;
+            }
+          );
+        },
+        error => console.error(error)
+      );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

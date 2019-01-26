@@ -140,7 +140,5 @@
 		public long Xp { get; set; }
 
 		public double Wn7 { get; set; }
-
-		public double Wn8 { get; set; }
 	}
 }

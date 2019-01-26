@@ -17,6 +17,7 @@
 		EncyclopediaInfo,
 		EncyclopediaVehicles,
 
-		Prolongate
+		Prolongate,
+		Login
 	}
 }
