@@ -19,6 +19,7 @@ import { AuthGuard } from './auth.guard';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { IconsModule } from './icons.module';
 import { RomanNumberPipe } from './pipes/roman-number.pipe';
+import { AccountHistoryChartService } from './account-history/account-history-chart-service';
 
 @NgModule({
   imports: [
@@ -55,7 +56,8 @@ import { RomanNumberPipe } from './pipes/roman-number.pipe';
   providers: [
     {provide: AccountGlobalInfo, useValue: new AccountGlobalInfo(0, 'WotBlitzStatician') },
     AuthGuard,
-    CookieService
+    CookieService,
+    AccountHistoryChartService
   ]
 })
 export class ComponentsModule { }

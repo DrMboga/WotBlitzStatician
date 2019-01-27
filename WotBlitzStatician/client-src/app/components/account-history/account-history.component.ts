@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Chart } from 'chart.js';
-import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 import { AccountInfoService } from '../../services/account-info.service';
 import { AccountGlobalInfo } from '../account-global-info';
 import { AccountStatHistoryDto } from '../../model/account-stat-history-dto';
+import { AccountHistoryChartService } from './account-history-chart-service';
 
 @Component({
   selector: 'app-account-history',
@@ -29,7 +28,7 @@ export class AccountHistoryComponent implements OnInit {
   constructor(
     private accountsInfoService: AccountInfoService,
     public accountGlobalInfo: AccountGlobalInfo,
-    private datePipe: DatePipe
+    private chartService: AccountHistoryChartService
   ) {}
 
   ngOnInit() {
@@ -47,17 +46,6 @@ export class AccountHistoryComponent implements OnInit {
       .subscribe(
         data => {
           this.accountHistory = data;
-          this.dates = this.accountHistory
-            .map(h => this.datePipe.transform(h.updatedAt, 'shortDate'))
-            .reverse();
-          this.winRates = this.accountHistory
-            .map(h => h.winRate * 100)
-            .reverse();
-          this.wn7Data = this.accountHistory.map(h => h.wn7).reverse();
-          this.avgDamageData = this.accountHistory
-            .map(h => h.avgDamage)
-            .reverse();
-          this.avgXpData = this.accountHistory.map(h => h.avgXp).reverse();
           this.createCharts();
         },
         error => console.error(error)
@@ -65,82 +53,32 @@ export class AccountHistoryComponent implements OnInit {
   }
 
   createCharts() {
-    const commonOptions = {
-      legend: {
-        display: true
-      },
-      scales: {
-        xAxes: [
-          {
-            display: true
-          }
-        ],
-        yAxes: [
-          {
-            display: true
-          }
-        ]
-      }
-    };
-    this.winRateChart = new Chart('winRateCanvas', {
-      type: 'line',
-      data: {
-        labels: this.dates,
-        datasets: [
-          {
-            label: 'WinRate',
-            data: this.winRates,
-            borderColor: '#3cba9f',
-            fill: false
-          }
-        ]
-      },
-      options: commonOptions
-    });
-    this.wn7Chart = new Chart('wn7Canvas', {
-      type: 'line',
-      data: {
-        labels: this.dates,
-        datasets: [
-          {
-            label: 'Wn7',
-            data: this.wn7Data,
-            borderColor: '#ffcc00',
-            fill: false
-          }
-        ]
-      },
-      options: commonOptions
-    });
-    this.avgDamageChart = new Chart('avgDmgCanvas', {
-      type: 'line',
-      data: {
-        labels: this.dates,
-        datasets: [
-          {
-            label: 'Avg Damage',
-            data: this.avgDamageData,
-            borderColor: '#0090ff',
-            fill: false
-          }
-        ]
-      },
-      options: commonOptions
-    });
-    this.avgXpChart = new Chart('avgXpCanvas', {
-      type: 'line',
-      data: {
-        labels: this.dates,
-        datasets: [
-          {
-            label: 'Avg Xp',
-            data: this.avgXpData,
-            borderColor: '#ff0043',
-            fill: false
-          }
-        ]
-      },
-      options: commonOptions
-    });
+    this.winRateChart = this.chartService.createLineChart(
+      this.chartService.createWinRatesChartData(this.accountHistory),
+      'winRateCanvas',
+      'WinRate',
+      '#3cba9f'
+    );
+
+    this.wn7Chart = this.chartService.createLineChart(
+      this.chartService.createWn7ChartData(this.accountHistory),
+      'wn7Canvas',
+      'Wn7',
+      '#ffcc00'
+    );
+
+    this.avgDamageChart = this.chartService.createLineChart(
+      this.chartService.createAvgDamageChartData(this.accountHistory),
+      'avgDmgCanvas',
+      'Avg Damage',
+      '#0090ff'
+    );
+
+    this.avgDamageChart = this.chartService.createLineChart(
+      this.chartService.createAvgXpChartData(this.accountHistory),
+      'avgXpCanvas',
+      'Avg Xp',
+      '#ff0043'
+    );
   }
 }
