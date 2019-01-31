@@ -8,6 +8,25 @@ import { Chart } from 'chart.js';
 export class AccountHistoryChartService {
   constructor(private datePipe: DatePipe) {}
 
+  public rarefyArray<T>(array: T[]): T[] {
+    const rareIndex: number = array.length / 30 < 1 ? 1 : Math.round((array.length / 30));
+
+    if (rareIndex === 1) {
+      return array;
+    }
+
+    const retCount = Math.round(array.length / rareIndex) + 1;
+    const returningArray: T[] = new Array(retCount);
+    let iterator = 0;
+
+    for (let i = 0; i < array.length; i += rareIndex) {
+      returningArray[iterator] = array[i];
+      iterator++;
+    }
+
+    return returningArray;
+  }
+
   public createWinRatesChartData(
     accountStatHystory: AccountStatHistoryDto[]
   ): ChartItem[] {

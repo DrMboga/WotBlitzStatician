@@ -13,12 +13,7 @@ import { AccountHistoryChartService } from './account-history-chart-service';
 export class AccountHistoryComponent implements OnInit {
   public dateFrom: Date;
   public accountHistory: AccountStatHistoryDto[];
-
-  public dates: string[];
-  public winRates: number[];
-  public wn7Data: number[];
-  public avgDamageData: number[];
-  public avgXpData: number[];
+  public rareAccountHistory: AccountStatHistoryDto[];
 
   public winRateChart = [];
   public wn7Chart = [];
@@ -46,6 +41,7 @@ export class AccountHistoryComponent implements OnInit {
       .subscribe(
         data => {
           this.accountHistory = data;
+          this.rareAccountHistory = this.chartService.rarefyArray(this.accountHistory);
           this.createCharts();
         },
         error => console.error(error)
@@ -54,28 +50,28 @@ export class AccountHistoryComponent implements OnInit {
 
   createCharts() {
     this.winRateChart = this.chartService.createLineChart(
-      this.chartService.createWinRatesChartData(this.accountHistory),
+      this.chartService.createWinRatesChartData(this.rareAccountHistory),
       'winRateCanvas',
       'WinRate',
       '#3cba9f'
     );
 
     this.wn7Chart = this.chartService.createLineChart(
-      this.chartService.createWn7ChartData(this.accountHistory),
+      this.chartService.createWn7ChartData(this.rareAccountHistory),
       'wn7Canvas',
       'Wn7',
       '#ffcc00'
     );
 
     this.avgDamageChart = this.chartService.createLineChart(
-      this.chartService.createAvgDamageChartData(this.accountHistory),
+      this.chartService.createAvgDamageChartData(this.rareAccountHistory),
       'avgDmgCanvas',
       'Avg Damage',
       '#0090ff'
     );
 
     this.avgDamageChart = this.chartService.createLineChart(
-      this.chartService.createAvgXpChartData(this.accountHistory),
+      this.chartService.createAvgXpChartData(this.rareAccountHistory),
       'avgXpCanvas',
       'Avg Xp',
       '#ff0043'
