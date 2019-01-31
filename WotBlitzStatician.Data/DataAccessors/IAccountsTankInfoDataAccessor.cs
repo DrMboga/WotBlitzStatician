@@ -6,12 +6,14 @@ using WotBlitzStatician.Model.Dto;
 
 namespace WotBlitzStatician.Data.DataAccessors
 {
-	public interface IAccountsTankInfoDataAccessor
-    {
-		Task<List<(long tankId, string tankInfo)>> GetStringTankInfos(long[] tankIds);
-		Task<List<AccountMasteryInfoDto>> GetAccountMasteryInfo(long accountId);
-		IQueryable<AccountTankInfoDto> GetTanksInfoQuery(long accountId);
+  public interface IAccountsTankInfoDataAccessor
+  {
+    Task<List<(long tankId, string tankInfo)>> GetStringTankInfos(long[] tankIds);
+    Task<List<AccountMasteryInfoDto>> GetAccountMasteryInfo(long accountId);
+    IQueryable<AccountTankInfoDto> GetTanksInfoQuery(long accountId);
 
-		Task<AccountTankByAchievementDto[]> GetAllTanksByAchievement(long accountId, string achievementId);
-	}
+    Task<AccountTankByAchievementDto[]> GetAllTanksByAchievement(long accountId, string achievementId);
+
+    Task<List<AccountTanksInfoAggregationDto>> GetAggregatedAccountTanksInfo(long accountId);
+  }
 }
