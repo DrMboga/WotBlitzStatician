@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountInfoService } from '../../services/account-info.service';
 import { AccountGlobalInfo } from '../account-global-info';
 import { AccountStatHistoryDto } from '../../model/account-stat-history-dto';
-import { AccountHistoryChartService } from './account-history-chart-service';
+import { AccountHistoryChartService } from './account-history-chart.service';
 
 @Component({
   selector: 'app-account-history',
