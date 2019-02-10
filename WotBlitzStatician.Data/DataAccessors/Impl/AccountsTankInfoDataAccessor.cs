@@ -117,6 +117,7 @@ namespace WotBlitzStatician.Data.DataAccessors.Impl
               .Join(_dbContext.DictionaryVehicleType.AsNoTracking(), j2 => j2.Vehicle.Type, t => t.VehicleTypeId,
                   (j2, t) => new {j2.AccountId, j2.Statistics, j2.Vehicle, j2.NationName, t.VehicleTypeName })
 							.Where(j3 => j3.AccountId == accountId)
+							.OrderBy(j3 => j3.Vehicle.Tier)
 							.Select(j3 => new AccountTanksInfoAggregationDto
 							{
 								InGarage = j3.Statistics.InGarage,
