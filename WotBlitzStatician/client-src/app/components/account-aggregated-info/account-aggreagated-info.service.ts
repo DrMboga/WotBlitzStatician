@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { AccountTanksInfoAggregatedDto } from '../../model/account-tanks-info-aggregated-dto';
-import { Chart } from 'chart.js';
 import { RomanNumberPipe } from '../pipes/roman-number.pipe';
 
 @Injectable()
@@ -51,7 +50,8 @@ export class AccountAggregatedInfoService {
       this.setOrAddValue(winsByPremium, prem, dataElement.wins);
     });
 
-    const persentageAvg = (value, battles) => Math.round((10000 * value) / battles) / 100;
+    const persentageAvg = (value, battles) =>
+      Math.round((10000 * value) / battles) / 100;
     this.createAvgsCollection(
       winsByType,
       this.battlesByType,
@@ -76,77 +76,6 @@ export class AccountAggregatedInfoService {
       this.winRateByPremium,
       persentageAvg
     );
-  }
-
-  public createDoughnutChart(
-    data: Map<string, number>,
-    canvasName: string
-  ): Chart {
-    const colorsPool = ['#36a2eb', '#cc65fe', '#ffce56', '#ff6384'];
-
-    const commonOptions = Chart.defaults.doughnut;
-    const labels: string[] = new Array();
-    const ys: number[] = new Array();
-    const colors: string[] = new Array();
-
-    let colorsIterator = 0;
-
-    data.forEach(function(value, key) {
-      labels.push(key);
-      ys.push(value);
-      colors.push(colorsPool[colorsIterator]);
-      colorsIterator++;
-      if (colorsIterator === colorsPool.length) {
-        colorsIterator = 0;
-      }
-    });
-
-    return new Chart(canvasName, {
-      type: 'doughnut',
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            data: ys,
-            backgroundColor: colors
-          }
-        ]
-      },
-      options: commonOptions
-    });
-  }
-
-  public createBarChart(
-    data: Map<string, number>,
-    canvasName: string,
-    color: string,
-    label: string
-  ): Chart {
-    const commonOptions = Chart.defaults.bar;
-    const labels: string[] = new Array();
-    const ys: number[] = new Array();
-    const colors: string[] = new Array();
-
-    data.forEach(function(value, key) {
-      labels.push(key);
-      ys.push(value);
-      colors.push(color);
-    });
-
-    return new Chart(canvasName, {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            data: ys,
-            backgroundColor: colors,
-            label: label
-          }
-        ]
-      },
-      options: commonOptions
-    });
   }
 
   private setOrAddValue(

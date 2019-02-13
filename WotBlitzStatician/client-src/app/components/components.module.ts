@@ -22,6 +22,7 @@ import { RomanNumberPipe } from './pipes/roman-number.pipe';
 import { AccountHistoryChartService } from './account-history/account-history-chart.service';
 import { AccountAggregatedInfoComponent } from './account-aggregated-info/account-aggreagated-info.component';
 import { AccountAggregatedInfoService } from './account-aggregated-info/account-aggreagated-info.service';
+import { ChartRowComponent } from './account-aggregated-info/chartRow/chart-row.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { AccountAggregatedInfoService } from './account-aggregated-info/account-
     TankCardComponent,
     SplashScreenComponent,
     RomanNumberPipe,
-    AccountAggregatedInfoComponent
+    AccountAggregatedInfoComponent,
+    ChartRowComponent
   ],
   exports: [
     AppComponent,

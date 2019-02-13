@@ -1,0 +1,15 @@
+<div class="text-center">{{chartRow.caption}}:</div>
+<div class="row">
+  <div class="col-sm-3">
+    <canvas [attr.id]="'dataByTypeCanvas-' + chartRow.id" >{{ dataByTypeChart }}</canvas>
+  </div>
+  <div class="col-sm-3">
+    <canvas [attr.id]="'dataByTierCanvas-' + chartRow.id">{{ dataByTierChart }}</canvas>
+  </div>
+  <div class="col-sm-3">
+    <canvas [attr.id]="'dataByNationCanvas-' + chartRow.id">{{ dataByNationChart }}</canvas>
+  </div>
+  <div class="col-sm-3">
+    <canvas [attr.id]="'dataBypremiumCanvas-' + chartRow.id">{{ dataByPremiumChart }}</canvas>
+  </div>
+</div>

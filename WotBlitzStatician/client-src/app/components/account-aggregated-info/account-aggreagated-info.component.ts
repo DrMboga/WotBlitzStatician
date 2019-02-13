@@ -3,27 +3,23 @@ import { AccountInfoService } from '../../services/account-info.service';
 import { AccountGlobalInfo } from '../account-global-info';
 import { AccountAggregatedInfoService } from './account-aggreagated-info.service';
 import { Subscription } from 'rxjs';
+import { ChartRowData } from './chart-row-data';
 
 @Component({
   selector: 'app-account-aggregated-info',
   templateUrl: 'account-aggreagated-info.component.html'
 })
 export class AccountAggregatedInfoComponent implements OnInit, OnDestroy {
-  public battlesByTypeChart = [];
-  public battlesByTierChart = [];
-  public battlesByNationChart = [];
-  public battlesByPremiumChart = [];
-  public winrateByTypeChart = [];
-  public winrateByTierChart = [];
-  public winrateByNationChart = [];
-  public winrateByPremiumChart = [];
-  subscription: Subscription;
+  private subscription: Subscription;
+
+  public charts: ChartRowData[];
 
   constructor(
     private accountsInfoService: AccountInfoService,
     private accountAggregatedInfoService: AccountAggregatedInfoService,
     public accountGlobalInfo: AccountGlobalInfo
   ) {
+    this.charts = [];
     this.readData();
     this.subscription = accountGlobalInfo.accountInfoChanged
       .asObservable()
@@ -31,6 +27,7 @@ export class AccountAggregatedInfoComponent implements OnInit, OnDestroy {
   }
 
   readData() {
+    this.charts = [];
     this.accountsInfoService
       .getAggregatedAccountTanksInfo(this.accountGlobalInfo.accountId)
       .subscribe(data => {
@@ -40,52 +37,24 @@ export class AccountAggregatedInfoComponent implements OnInit, OnDestroy {
   }
 
   constructCharts() {
-    console.log('ЛТ', this.accountAggregatedInfoService.winRateByType.get('ЛТ'));
-    this.accountAggregatedInfoService.createBarChart(
-      this.accountAggregatedInfoService.battlesByType,
-      'battlesByTypeCanvas',
-      '#36a2eb',
-      'По типам танков'
-    );
-    this.accountAggregatedInfoService.createBarChart(
-      this.accountAggregatedInfoService.battlesByTier,
-      'battlesByTierCanvas',
-      '#ffcc00',
-      'По уровням'
-    );
-    this.accountAggregatedInfoService.createBarChart(
-      this.accountAggregatedInfoService.battlesByNation,
-      'battlesByNationCanvas',
-      '#ff6384',
-      'По нациям'
-    );
-    this.accountAggregatedInfoService.createDoughnutChart(
-      this.accountAggregatedInfoService.battlesByPremium,
-      'battlesBypremiumCanvas'
-    );
-
-    this.accountAggregatedInfoService.createBarChart(
-      this.accountAggregatedInfoService.winRateByType,
-      'winrateByTypeCanvas',
-      '#36a2eb',
-      'По типам танков'
-    );
-    this.accountAggregatedInfoService.createBarChart(
-      this.accountAggregatedInfoService.winRateByTier,
-      'winrateByTierCanvas',
-      '#ffcc00',
-      'По уровням'
-    );
-    this.accountAggregatedInfoService.createBarChart(
-      this.accountAggregatedInfoService.winRateByNation,
-      'winrateByNationCanvas',
-      '#ff6384',
-      'По нациям'
-    );
-    this.accountAggregatedInfoService.createDoughnutChart(
-      this.accountAggregatedInfoService.winRateByPremium,
-      'winrateBypremiumCanvas'
-    );
+    this.charts = [
+      {
+        id: 'battles',
+        caption: 'Количество боёв',
+        dataByType: this.accountAggregatedInfoService.battlesByType,
+        dataByTier: this.accountAggregatedInfoService.battlesByTier,
+        dataByNation: this.accountAggregatedInfoService.battlesByNation,
+        dataByPremium: this.accountAggregatedInfoService.battlesByPremium
+      },
+      {
+        id: 'win',
+        caption: 'Процент побед',
+        dataByType: this.accountAggregatedInfoService.winRateByType,
+        dataByTier: this.accountAggregatedInfoService.winRateByTier,
+        dataByNation: this.accountAggregatedInfoService.winRateByNation,
+        dataByPremium: this.accountAggregatedInfoService.winRateByPremium
+      },
+    ];
   }
 
   ngOnInit() {}
