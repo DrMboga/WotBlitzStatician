@@ -1,10 +1,7 @@
-import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ChartRowData } from '../chart-row-data';
 
 import { Chart } from 'chart.js';
-
-import { Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-chart-row',
@@ -19,7 +16,7 @@ export class ChartRowComponent implements OnInit, AfterViewInit {
   public dataByNationChart = [];
   public dataByPremiumChart = [];
 
-  constructor(@Inject(DOCUMENT) private document) {}
+  constructor(private changeDetector: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     // const el = this.document.getElementById(`dataByTierCanvas-${this.chartRow.id}`);
@@ -51,6 +48,8 @@ export class ChartRowComponent implements OnInit, AfterViewInit {
       this.chartRow.dataByPremium,
       `dataBypremiumCanvas-${this.chartRow.id}`
     );
+
+    this.changeDetector.detectChanges();
   }
 
   ngOnInit() {
