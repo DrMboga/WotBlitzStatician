@@ -54,6 +54,14 @@ export class AccountAggregatedInfoComponent implements OnInit, OnDestroy {
         dataByNation: this.accountAggregatedInfoService.winRateByNation,
         dataByPremium: this.accountAggregatedInfoService.winRateByPremium
       },
+      {
+        id: 'wn7',
+        caption: 'Wn7',
+        dataByType: this.accountAggregatedInfoService.wn7RateByType,
+        dataByTier: this.accountAggregatedInfoService.wn7RateByTier,
+        dataByNation: this.accountAggregatedInfoService.wn7RateByNation,
+        dataByPremium: this.accountAggregatedInfoService.wn7RateByPremium
+      },
     ];
   }
 

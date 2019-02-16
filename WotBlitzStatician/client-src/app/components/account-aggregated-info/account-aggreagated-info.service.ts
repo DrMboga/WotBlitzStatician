@@ -15,6 +15,11 @@ export class AccountAggregatedInfoService {
   public winRateByNation: Map<string, number>;
   public winRateByPremium: Map<string, number>;
 
+  public wn7RateByTier: Map<string, number>;
+  public wn7RateByType: Map<string, number>;
+  public wn7RateByNation: Map<string, number>;
+  public wn7RateByPremium: Map<string, number>;
+
   constructor(private romanNumPipe: RomanNumberPipe) {}
 
   aggregateAccountTnksInfo(dataToAggregate: AccountTanksInfoAggregatedDto[]) {
@@ -26,37 +31,69 @@ export class AccountAggregatedInfoService {
     this.winRateByTier = new Map<string, number>();
     this.winRateByNation = new Map<string, number>();
     this.winRateByPremium = new Map<string, number>();
+    this.wn7RateByType = new Map<string, number>();
+    this.wn7RateByTier = new Map<string, number>();
+    this.wn7RateByNation = new Map<string, number>();
+    this.wn7RateByPremium = new Map<string, number>();
+
+    const tanksByType = new Map<string, number>();
+    const tanksByTier = new Map<string, number>();
+    const tanksByNation = new Map<string, number>();
+    const tanksByPremium = new Map<string, number>();
 
     const winsByType = new Map<string, number>();
     const winsByTier = new Map<string, number>();
     const winsByNation = new Map<string, number>();
     const winsByPremium = new Map<string, number>();
 
+    const wn7ByType = new Map<string, number>();
+    const wn7ByTier = new Map<string, number>();
+    const wn7ByNation = new Map<string, number>();
+    const wn7ByPremium = new Map<string, number>();
+
     dataToAggregate.forEach(dataElement => {
       const tankType = this.transformtypeName(dataElement.type);
       this.setOrAddValue(this.battlesByType, tankType, dataElement.battles);
       this.setOrAddValue(winsByType, tankType, dataElement.wins);
+      this.setOrAddValue(wn7ByType, tankType, dataElement.wn7);
+      this.setOrAddValue(tanksByType, tankType, 1);
 
       const tier = this.romanNumPipe.transform(dataElement.tier);
       this.setOrAddValue(this.battlesByTier, tier, dataElement.battles);
       this.setOrAddValue(winsByTier, tier, dataElement.wins);
+      this.setOrAddValue(wn7ByTier, tier, dataElement.wn7);
+      this.setOrAddValue(tanksByTier, tier, 1);
 
       const nation = this.transformNation(dataElement.nation);
       this.setOrAddValue(this.battlesByNation, nation, dataElement.battles);
       this.setOrAddValue(winsByNation, nation, dataElement.wins);
+      this.setOrAddValue(wn7ByNation, nation, dataElement.wn7);
+      this.setOrAddValue(tanksByNation, nation, 1);
 
       const prem: string = dataElement.isPremium ? 'Премиум' : 'Исследуемая';
       this.setOrAddValue(this.battlesByPremium, prem, dataElement.battles);
       this.setOrAddValue(winsByPremium, prem, dataElement.wins);
+      this.setOrAddValue(wn7ByPremium, prem, dataElement.wn7);
+      this.setOrAddValue(tanksByPremium, prem, 1);
     });
 
     const persentageAvg = (value, battles) =>
       Math.round((10000 * value) / battles) / 100;
+
+    const wn7Avg = (value, battles) =>
+      Math.round((100 * value) / battles) / 100;
+
     this.createAvgsCollection(
       winsByType,
       this.battlesByType,
       this.winRateByType,
       persentageAvg
+    );
+    this.createAvgsCollection(
+      wn7ByType,
+      tanksByType,
+      this.wn7RateByType,
+      wn7Avg
     );
     this.createAvgsCollection(
       winsByTier,
@@ -65,16 +102,34 @@ export class AccountAggregatedInfoService {
       persentageAvg
     );
     this.createAvgsCollection(
+      wn7ByTier,
+      tanksByTier,
+      this.wn7RateByTier,
+      wn7Avg
+    );
+    this.createAvgsCollection(
       winsByNation,
       this.battlesByNation,
       this.winRateByNation,
       persentageAvg
     );
     this.createAvgsCollection(
+      wn7ByNation,
+      tanksByNation,
+      this.wn7RateByNation,
+      wn7Avg
+    );
+    this.createAvgsCollection(
       winsByPremium,
       this.battlesByPremium,
       this.winRateByPremium,
       persentageAvg
+    );
+    this.createAvgsCollection(
+      wn7ByPremium,
+      tanksByPremium,
+      this.wn7RateByPremium,
+      wn7Avg
     );
   }
 

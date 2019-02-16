@@ -19,9 +19,6 @@ export class ChartRowComponent implements OnInit, AfterViewInit {
   constructor(private changeDetector: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
-    // const el = this.document.getElementById(`dataByTierCanvas-${this.chartRow.id}`);
-    // console.log('el afterView', el);
-
     const blue = '#36a2eb';
     const green = '#55d6ba';
     const orange = '#ddb454';
