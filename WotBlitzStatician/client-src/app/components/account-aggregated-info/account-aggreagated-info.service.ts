@@ -20,6 +20,16 @@ export class AccountAggregatedInfoService {
   public wn7RateByNation: Map<string, number>;
   public wn7RateByPremium: Map<string, number>;
 
+  public dmgByTier: Map<string, number>;
+  public dmgByType: Map<string, number>;
+  public dmgByNation: Map<string, number>;
+  public dmgByPremium: Map<string, number>;
+
+  public masteryByTier: Map<string, number>;
+  public masteryByType: Map<string, number>;
+  public masteryByNation: Map<string, number>;
+  public masteryByPremium: Map<string, number>;
+
   constructor(private romanNumPipe: RomanNumberPipe) {}
 
   aggregateAccountTnksInfo(dataToAggregate: AccountTanksInfoAggregatedDto[]) {
@@ -35,6 +45,14 @@ export class AccountAggregatedInfoService {
     this.wn7RateByTier = new Map<string, number>();
     this.wn7RateByNation = new Map<string, number>();
     this.wn7RateByPremium = new Map<string, number>();
+    this.dmgByType = new Map<string, number>();
+    this.dmgByTier = new Map<string, number>();
+    this.dmgByNation = new Map<string, number>();
+    this.dmgByPremium = new Map<string, number>();
+    this.masteryByType = new Map<string, number>();
+    this.masteryByTier = new Map<string, number>();
+    this.masteryByNation = new Map<string, number>();
+    this.masteryByPremium = new Map<string, number>();
 
     const tanksByType = new Map<string, number>();
     const tanksByTier = new Map<string, number>();
@@ -51,30 +69,59 @@ export class AccountAggregatedInfoService {
     const wn7ByNation = new Map<string, number>();
     const wn7ByPremium = new Map<string, number>();
 
+    const dmgSumByType = new Map<string, number>();
+    const dmgSumByTier = new Map<string, number>();
+    const dmgSumByNation = new Map<string, number>();
+    const dmgSumByPremium = new Map<string, number>();
+
     dataToAggregate.forEach(dataElement => {
       const tankType = this.transformtypeName(dataElement.type);
       this.setOrAddValue(this.battlesByType, tankType, dataElement.battles);
       this.setOrAddValue(winsByType, tankType, dataElement.wins);
       this.setOrAddValue(wn7ByType, tankType, dataElement.wn7);
       this.setOrAddValue(tanksByType, tankType, 1);
+      this.setOrAddValue(dmgSumByType, tankType, dataElement.damageDealt);
+      this.setOrAddValue(
+        this.masteryByType,
+        tankType,
+        this.transformMastery(dataElement.markOfMastery)
+      );
 
       const tier = this.romanNumPipe.transform(dataElement.tier);
       this.setOrAddValue(this.battlesByTier, tier, dataElement.battles);
       this.setOrAddValue(winsByTier, tier, dataElement.wins);
       this.setOrAddValue(wn7ByTier, tier, dataElement.wn7);
       this.setOrAddValue(tanksByTier, tier, 1);
+      this.setOrAddValue(dmgSumByTier, tier, dataElement.damageDealt);
+      this.setOrAddValue(
+        this.masteryByTier,
+        tier,
+        this.transformMastery(dataElement.markOfMastery)
+      );
 
       const nation = this.transformNation(dataElement.nation);
       this.setOrAddValue(this.battlesByNation, nation, dataElement.battles);
       this.setOrAddValue(winsByNation, nation, dataElement.wins);
       this.setOrAddValue(wn7ByNation, nation, dataElement.wn7);
       this.setOrAddValue(tanksByNation, nation, 1);
+      this.setOrAddValue(dmgSumByNation, nation, dataElement.damageDealt);
+      this.setOrAddValue(
+        this.masteryByNation,
+        nation,
+        this.transformMastery(dataElement.markOfMastery)
+      );
 
       const prem: string = dataElement.isPremium ? 'Премиум' : 'Исследуемая';
       this.setOrAddValue(this.battlesByPremium, prem, dataElement.battles);
       this.setOrAddValue(winsByPremium, prem, dataElement.wins);
       this.setOrAddValue(wn7ByPremium, prem, dataElement.wn7);
       this.setOrAddValue(tanksByPremium, prem, 1);
+      this.setOrAddValue(dmgSumByPremium, prem, dataElement.damageDealt);
+      this.setOrAddValue(
+        this.masteryByPremium,
+        prem,
+        this.transformMastery(dataElement.markOfMastery)
+      );
     });
 
     const persentageAvg = (value, battles) =>
@@ -96,6 +143,12 @@ export class AccountAggregatedInfoService {
       wn7Avg
     );
     this.createAvgsCollection(
+      dmgSumByType,
+      this.battlesByType,
+      this.dmgByType,
+      wn7Avg
+    );
+    this.createAvgsCollection(
       winsByTier,
       this.battlesByTier,
       this.winRateByTier,
@@ -105,6 +158,12 @@ export class AccountAggregatedInfoService {
       wn7ByTier,
       tanksByTier,
       this.wn7RateByTier,
+      wn7Avg
+    );
+    this.createAvgsCollection(
+      dmgSumByTier,
+      this.battlesByTier,
+      this.dmgByTier,
       wn7Avg
     );
     this.createAvgsCollection(
@@ -120,6 +179,12 @@ export class AccountAggregatedInfoService {
       wn7Avg
     );
     this.createAvgsCollection(
+      dmgSumByNation,
+      this.battlesByNation,
+      this.dmgByNation,
+      wn7Avg
+    );
+    this.createAvgsCollection(
       winsByPremium,
       this.battlesByPremium,
       this.winRateByPremium,
@@ -129,6 +194,12 @@ export class AccountAggregatedInfoService {
       wn7ByPremium,
       tanksByPremium,
       this.wn7RateByPremium,
+      wn7Avg
+    );
+    this.createAvgsCollection(
+      dmgSumByPremium,
+      this.battlesByPremium,
+      this.dmgByPremium,
       wn7Avg
     );
   }
@@ -181,6 +252,13 @@ export class AccountAggregatedInfoService {
       default:
         return '';
     }
+  }
+
+  private transformMastery(markOfMastery: number) {
+    if (markOfMastery === 4) {
+      return 1;
+    }
+    return 0;
   }
 
   private createAvgsCollection(
