@@ -35,7 +35,8 @@ namespace WotBlitzStatician
 				.AddJsonOptions(options =>
 				{
 					options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-				});
+          options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+        });
 		}
 
 		public void ConfigureContainer(ContainerBuilder builder)

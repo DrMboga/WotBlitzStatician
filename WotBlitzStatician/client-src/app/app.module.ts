@@ -9,6 +9,7 @@ import localeRu from '@angular/common/locales/ru';
 import { AppComponent } from './components/app/app.component';
 import { ComponentsModule } from './components/components.module';
 import { ServicesModule } from './services/services.module';
+import { RomanNumberPipe } from './components/pipes/roman-number.pipe';
 
 registerLocaleData(localeRu);
 
@@ -23,7 +24,8 @@ registerLocaleData(localeRu);
   ],
   providers: [
     DatePipe,
-    { provide: LOCALE_ID, useValue: 'ru' }
+    { provide: LOCALE_ID, useValue: 'ru' },
+    RomanNumberPipe
   ],
   bootstrap: [AppComponent]
 })

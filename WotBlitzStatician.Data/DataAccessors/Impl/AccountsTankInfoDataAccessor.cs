@@ -104,5 +104,38 @@ namespace WotBlitzStatician.Data.DataAccessors.Impl
 			 );
 
 		}
+
+    public async Task<List<AccountTanksInfoAggregationDto>> GetAggregatedAccountTanksInfo(long accountId)
+    {
+      return await _dbContext.PresentAccountTanks.AsNoTracking()
+              .Join(_dbContext.AccountTankStatistics.AsNoTracking(), p => p.AccountTankStatisticId, s => s.AccountTankStatisticId,
+                      (p, s) => new { p.AccountId, s.TankId, Statistics = s })
+              .Join(_dbContext.VehicleEncyclopedia.AsNoTracking(), j => j.TankId, v => v.TankId,
+                  (j, v) => new { j.AccountId, j.Statistics, Vehicle = v })
+              .Join(_dbContext.DictionaryNation.AsNoTracking(), j1 => j1.Vehicle.Nation, n => n.NationId,
+                  (j1, n) => new { j1.AccountId, j1.Statistics, j1.Vehicle, n.NationName })
+              .Join(_dbContext.DictionaryVehicleType.AsNoTracking(), j2 => j2.Vehicle.Type, t => t.VehicleTypeId,
+                  (j2, t) => new {j2.AccountId, j2.Statistics, j2.Vehicle, j2.NationName, t.VehicleTypeName })
+							.Where(j3 => j3.AccountId == accountId)
+							.OrderBy(j3 => j3.Vehicle.Tier)
+							.Select(j3 => new AccountTanksInfoAggregationDto
+							{
+								InGarage = j3.Statistics.InGarage,
+								Battles = j3.Statistics.Battles,
+								Wins = j3.Statistics.Wins,
+								DamageDealt = j3.Statistics.DamageDealt,
+								MarkOfMastery = j3.Statistics.MarkOfMastery,
+								Wn7 = j3.Statistics.Wn7,
+								Tier = j3.Vehicle.Tier,
+								Nation = j3.Vehicle.Nation,
+								NationName = j3.NationName,
+								Type = j3.Vehicle.Type,
+								TypeName = j3.VehicleTypeName,
+								IsPremium = j3.Vehicle.IsPremium
+							})
+              .ToListAsync();
+
+
     }
+  }
 }

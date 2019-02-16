@@ -6,6 +6,7 @@ services:
             - "8000:80"
         depends_on:
             - db
+        restart: always
     db:
         image: "microsoft/mssql-server-linux"
         ports:
@@ -15,6 +16,7 @@ services:
             ACCEPT_EULA: "Y"
         volumes:
             - "sqlvolume:/var/opt/mssql"
+        restart: always
 
 volumes:
   sqlvolume:

@@ -19,6 +19,10 @@ import { AuthGuard } from './auth.guard';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { IconsModule } from './icons.module';
 import { RomanNumberPipe } from './pipes/roman-number.pipe';
+import { AccountHistoryChartService } from './account-history/account-history-chart.service';
+import { AccountAggregatedInfoComponent } from './account-aggregated-info/account-aggreagated-info.component';
+import { AccountAggregatedInfoService } from './account-aggregated-info/account-aggreagated-info.service';
+import { ChartRowComponent } from './account-aggregated-info/chartRow/chart-row.component';
 
 @NgModule({
   imports: [
@@ -46,7 +50,9 @@ import { RomanNumberPipe } from './pipes/roman-number.pipe';
     AccountHistoryComponent,
     TankCardComponent,
     SplashScreenComponent,
-    RomanNumberPipe
+    RomanNumberPipe,
+    AccountAggregatedInfoComponent,
+    ChartRowComponent
   ],
   exports: [
     AppComponent,
@@ -55,7 +61,9 @@ import { RomanNumberPipe } from './pipes/roman-number.pipe';
   providers: [
     {provide: AccountGlobalInfo, useValue: new AccountGlobalInfo(0, 'WotBlitzStatician') },
     AuthGuard,
-    CookieService
+    CookieService,
+    AccountHistoryChartService,
+    AccountAggregatedInfoService
   ]
 })
 export class ComponentsModule { }
