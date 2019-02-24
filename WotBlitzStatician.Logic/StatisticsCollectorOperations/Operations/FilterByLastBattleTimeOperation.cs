@@ -9,7 +9,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 		#pragma warning disable CS1998
 		public async Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
-			var accountsToRemove = new List<SatisticsCollectorAccountOperationContext>();
+      operationContext.OperationStateMessage = string.Empty;
+      var accountsToRemove = new List<SatisticsCollectorAccountOperationContext>();
 			foreach (var accountOperationContext in operationContext.Accounts)
 			{
 				if(accountOperationContext.WargamingAccountInfo.LastBattleTime <= 
@@ -17,7 +18,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				{
 					accountsToRemove.Add(accountOperationContext);
 				}
-			}
+        operationContext.OperationStateMessage += $"Filtering account '{accountOperationContext.CurrentAccountInfo.AccountId}' by last battle '{accountOperationContext.CurrentAccountInfo.LastBattleTime}'; ";
+      }
 			foreach (var acc in accountsToRemove)
 			{
 				operationContext.Accounts.Remove(acc);
@@ -26,8 +28,12 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 			if(operationContext.Accounts.Count == 0)
 			{
 				operationContext.OperationState = OperationState.NoAccounts;
-				operationContext.OperationStateMessage = "No accounts for process";
+				operationContext.OperationStateMessage += "No accounts for process";
 			}
+			else
+			{
+        operationContext.OperationStateMessage += $"Remained {operationContext.Accounts.Count} accounts for process";
+      }
 		}
 		#pragma warning restore CS1998
 	}

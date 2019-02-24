@@ -15,11 +15,13 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 
 		public async Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
-			foreach (var accountInfo in operationContext.Accounts)
+      operationContext.OperationStateMessage = string.Empty;
+      foreach (var accountInfo in operationContext.Accounts)
 			{
 				accountInfo.WargamingAccountInfo.AccountClanInfo = await _wargamingApiClient.GetAccountClanInfoAsync(
 					accountInfo.CurrentAccountInfo.AccountId);
-			}
+        operationContext.OperationStateMessage += $"Got clan info {(accountInfo.WargamingAccountInfo.AccountClanInfo == null ? "null" : accountInfo.WargamingAccountInfo.AccountClanInfo.ClanTag)} for account {accountInfo.CurrentAccountInfo.AccountId}; ";
+      }
 		}
 	}
 }

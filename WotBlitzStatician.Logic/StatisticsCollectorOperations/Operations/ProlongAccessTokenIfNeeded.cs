@@ -28,7 +28,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 
 		public async Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
-			foreach(var accountInfo in operationContext
+      operationContext.OperationStateMessage = string.Empty;
+      foreach(var accountInfo in operationContext
 				.Accounts
 				.Where(a => 
 						a.CurrentAccountInfo.AccessTokenExpiration.HasValue && 
@@ -47,7 +48,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 					accountInfo.CurrentAccountInfo.AccountId,
 					accountInfo.CurrentAccountInfo.AccessToken,
 					accountInfo.CurrentAccountInfo.AccessTokenExpiration.Value);
-			}
-		}
+        operationContext.OperationStateMessage += $"Saved new token for account {accountInfo.CurrentAccountInfo.AccountId} until 'accountInfo.CurrentAccountInfo.AccessTokenExpiration.Value'; ";
+      }
+    }
 	}
 }

@@ -38,7 +38,10 @@ export class AccountTanksComponent implements OnInit, OnDestroy {
       this.accountId = id;
 
       this.filter.accountId = this.accountId;
-      this.filter.inGarage = true;
+      this.filter.inGarage = false;
+      const now = new Date();
+      now.setMonth(now.getMonth() - 1);
+      this.filter.dataFrom = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
       this.queryData();
     }

@@ -17,7 +17,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 
 		public async Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
-			foreach (var accountInfo in operationContext.Accounts)
+      operationContext.OperationStateMessage = string.Empty;
+      foreach (var accountInfo in operationContext.Accounts)
 			{
 				var tankIds = accountInfo.AccountInfoTanks
 					.Select(t => Convert.ToInt32(t.TankId))
@@ -35,7 +36,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 						.Where(a => a.TankId == tank.TankId && a.IsMaxSeries == true)
 						.ToList();
 				}
-			}
+        operationContext.OperationStateMessage += $"Got {allAchievements.Count} from WG for account {accountInfo.CurrentAccountInfo.AccountId}; ";
+      }
 		}
 	}
 }

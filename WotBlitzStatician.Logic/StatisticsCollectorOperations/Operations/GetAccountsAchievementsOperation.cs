@@ -17,7 +17,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 
 		public async Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
-			foreach (var accountInfo in operationContext.Accounts)
+      operationContext.OperationStateMessage = string.Empty;
+      foreach (var accountInfo in operationContext.Accounts)
 			{
 				var accountInfoAchievements = await _wargamingApiClient.GetAccountAchievementsAsync(
 					accountInfo.CurrentAccountInfo.AccountId);
@@ -27,7 +28,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				accountInfo.WargamingAccountInfo.AchievementsMaxSeries = accountInfoAchievements
 					.Where(a => a.IsMaxSeries == true)
 					.ToList();
-			}
+        operationContext.OperationStateMessage += $"Got {accountInfoAchievements.Count} achievements for account {accountInfo.CurrentAccountInfo.AccountId}; ";
+      }
 		}
 	}
 }
