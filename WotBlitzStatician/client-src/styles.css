@@ -35,6 +35,51 @@
   color: #5a3175
 }
 
+.scale-very-bad-inverse {
+  background-color: #000000;
+  color: white;
+}
+
+.scale-bad-inverse {
+  background-color: #cd3333;
+  color: white;
+}
+
+.scale-below-average-inverse {
+  background-color: #d77900;
+  color: white;
+}
+
+.scale-average-inverse {
+  background-color: #d7b600;
+  color: white;
+}
+
+.scale-good-inverse {
+  background-color: #6d9521;
+  color: white;
+}
+
+.scale-very-good-inverse {
+  background-color: #4c762e;
+  color: white;
+}
+
+.scale-great-inverse {
+  background-color: #4a92b7;
+  color: white;
+}
+
+.scale-unicum-inverse {
+  background-color: #83579d;
+  color: white;
+}
+
+.scale-super-unicum-inverse {
+  background-color: #5a3175;
+  color: white;
+}
+
 .tank-type-AT-SPG {
   width: 25px;
   height: 25px;

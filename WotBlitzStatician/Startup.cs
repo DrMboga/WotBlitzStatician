@@ -35,7 +35,8 @@ namespace WotBlitzStatician
 				.AddJsonOptions(options =>
 				{
 					options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-          options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+          // 2019-02-17T14:36:24Z
+          options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
         });
 		}
 

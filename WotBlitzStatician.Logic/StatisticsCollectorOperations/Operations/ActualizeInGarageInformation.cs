@@ -18,7 +18,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 
 		public async Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
-			foreach (var accountInfo in operationContext.Accounts)
+      operationContext.OperationStateMessage = string.Empty;
+      foreach (var accountInfo in operationContext.Accounts)
 			{
 				if(string.IsNullOrEmpty(accountInfo.CurrentAccountInfo.AccessToken))
 				{
@@ -49,7 +50,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				if (changedGarageInfoList.Count > 0)
 				{
 					await _accountDataAccessor.UpdateInnGarageInfoAsync(changedGarageInfoList);
-				}
+          operationContext.OperationStateMessage += "Updated {changedGarageInfoList.Count} tanks in garage info for account {accountInfo.CurrentAccountInfo.AccountId}; ";
+        }
 			}
 		}
 	}

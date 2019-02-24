@@ -26,6 +26,10 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				operationContext.OperationState = OperationState.NoDataFound;
 				operationContext.OperationStateMessage = "No accounts found";
 			}
+			else
+			{
+        operationContext.OperationStateMessage = $"Found in DB {accountsForProcess.Count} acconts for process";
+      }
 		}
 	}
 }

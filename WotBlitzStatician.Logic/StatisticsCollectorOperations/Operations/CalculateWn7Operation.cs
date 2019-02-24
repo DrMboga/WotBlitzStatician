@@ -31,6 +31,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 						t.CalculateWn7(tankTires[t.TankId]);
 				});
 			}
-		}
+      operationContext.OperationStateMessage = $"Calculated Wn7 for {operationContext.Accounts.Count} accounts and their tanks";
+    }
 	}
 }

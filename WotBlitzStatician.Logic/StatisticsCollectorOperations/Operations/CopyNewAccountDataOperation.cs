@@ -8,7 +8,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 		#pragma warning disable CS1998
 		public async Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
-			foreach (var account in operationContext.Accounts)
+      operationContext.OperationStateMessage = string.Empty;
+      foreach (var account in operationContext.Accounts)
 			{
 				account.CurrentAccountInfo.AccountCreatedAt = account.WargamingAccountInfo.AccountCreatedAt;
 				account.CurrentAccountInfo.LastBattleTime = account.WargamingAccountInfo.LastBattleTime;
@@ -20,7 +21,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				}
 				account.CurrentAccountInfo.Achievements = account.WargamingAccountInfo.Achievements;
 				account.CurrentAccountInfo.AchievementsMaxSeries = account.WargamingAccountInfo.AchievementsMaxSeries;
-			}
+        operationContext.OperationStateMessage += $"Copied WG info to current account info for account {account.CurrentAccountInfo.AccountId}; ";
+      }
 		}
 		#pragma warning restore CS1998
 
