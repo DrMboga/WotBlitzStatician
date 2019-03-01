@@ -12,65 +12,86 @@ using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician
 {
+  using System.Text;
   using Microsoft.AspNet.OData.Extensions;
+  using Microsoft.AspNetCore.Authentication.JwtBearer;
   using Microsoft.AspNetCore.Routing;
+  using Microsoft.IdentityModel.Tokens;
   using WotBlitzStatician.OdataConfiguration;
 
   public class Startup
-	{
-		public Startup(IConfiguration configuration)
-		{
-			Configuration = configuration;
-		}
+  {
+    public Startup(IConfiguration configuration)
+    {
+      Configuration = configuration;
+    }
 
-		public IConfiguration Configuration { get; }
+    public IConfiguration Configuration { get; }
 
 
-		// This method gets called by the runtime. Use this method to add services to the container.
-		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-		public void ConfigureServices(IServiceCollection services)
-		{
-			services.AddMemoryCache();
-			services.AddMvc()
-				.AddJsonOptions(options =>
-				{
-					options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+    // This method gets called by the runtime. Use this method to add services to the container.
+    // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+    public void ConfigureServices(IServiceCollection services)
+    {
+      services.AddMemoryCache();
+      services.AddMvc()
+        .AddJsonOptions(options =>
+        {
+          options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
           // 2019-02-17T14:36:24Z
           options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
         });
-		}
 
-		public void ConfigureContainer(ContainerBuilder builder)
-		{
-			var wgApiConfig = new Appsettings();
-			wgApiConfig.ProxySettings = new ProxySettings();
-			Configuration.GetSection("WgApi").Bind(wgApiConfig);
-			Configuration.GetSection("ProxySettings").Bind(wgApiConfig.ProxySettings);
+      // configure jwt authentication
+      services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+           .AddJwtBearer(options =>
+           {
+             options.TokenValidationParameters = new TokenValidationParameters
+             {
+               ValidateIssuer = true,
+               ValidateAudience = true,
+               ValidateLifetime = true,
+               ValidateIssuerSigningKey = true,
+               ValidIssuer = "WotBlitzStatician.com",
+               ValidAudience = "WotBlitzStatician.com",
+               IssuerSigningKey = new SymmetricSecurityKey(
+                  Encoding.UTF8.GetBytes("fuck yeah the big fucking symmetric key")) // (appSettings.Secret);
+             };
+           });
+    }
 
-			builder.RegisterInstance<IProxySettings>(wgApiConfig.ProxySettings);
-			builder.RegisterInstance<IWgApiConfiguration>(wgApiConfig);
-			builder.ConfigureWargamingApi();
-			builder.ConfigureDataAccessor(Configuration.GetConnectionString("BlitzStatician"));
-			builder.ConfigureBlitzStaticianLogic();
-		}
+    public void ConfigureContainer(ContainerBuilder builder)
+    {
+      var wgApiConfig = new Appsettings();
+      wgApiConfig.ProxySettings = new ProxySettings();
+      Configuration.GetSection("WgApi").Bind(wgApiConfig);
+      Configuration.GetSection("ProxySettings").Bind(wgApiConfig.ProxySettings);
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-		{
+      builder.RegisterInstance<IProxySettings>(wgApiConfig.ProxySettings);
+      builder.RegisterInstance<IWgApiConfiguration>(wgApiConfig);
+      builder.ConfigureWargamingApi();
+      builder.ConfigureDataAccessor(Configuration.GetConnectionString("BlitzStatician"));
+      builder.ConfigureBlitzStaticianLogic();
+    }
 
-			app.UseErrorHandler();
-			app.UseStaticFiles();
-			app.UseCors(builder =>
-				builder.WithOrigins("http://localhost:4200")
-					.AllowAnyHeader()
-					.AllowAnyMethod());
-			app.UseMvc(routes =>
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+
+      app.UseErrorHandler();
+      app.UseStaticFiles();
+      app.UseCors(builder =>
+        builder.WithOrigins("http://localhost:4200")
+          .AllowAnyHeader()
+          .AllowAnyMethod());
+      app.UseAuthentication();
+      app.UseMvc(routes =>
               {
                 routes.MapRoute("default", "{controller}/{action}");
                 routes.MapODataServiceRoute("odata", "api", OdataModelsConfiguration.GetEdmModel());
                 routes.MapRoute("Spa", "{*url}", defaults: new { controller = "Home", action = "Spa" });
               }
-			);
-		}
-	}
+      );
+    }
+  }
 }

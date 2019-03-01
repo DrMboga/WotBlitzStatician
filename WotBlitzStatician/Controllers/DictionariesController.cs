@@ -1,12 +1,18 @@
+using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using WotBlitzStatician.Data.DataAccessors;
 using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   public class DictionariesController : Controller
   {
@@ -79,6 +85,34 @@ namespace WotBlitzStatician.Controllers
       _wgApi.DowloadImagesFromWg(allImages);
 
       return Ok();
+    }
+
+    [AllowAnonymous]
+    [HttpPost("Authenticate")]
+    public IActionResult Authenticate()
+    {
+
+      // ToDo: use login and password
+      string secret = "fuck yeah the big fucking symmetric key"; // (appSettings.Secret);
+      // generate jwt token
+      var claims = new[]
+      {
+            new Claim(ClaimTypes.Name, "adminUser")
+        };
+
+      var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
+      var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+      var token = new JwtSecurityToken(
+          issuer: "WotBlitzStatician.com",
+          audience: "WotBlitzStatician.com",
+          claims: claims,
+          expires: DateTime.Now.AddMinutes(30),
+          signingCredentials: creds);
+
+      string jwtToken = new JwtSecurityTokenHandler().WriteToken(token);
+
+      return Ok(jwtToken);
     }
   }
 }
