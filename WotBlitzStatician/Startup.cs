@@ -17,6 +17,7 @@ namespace WotBlitzStatician
   using Microsoft.AspNetCore.Authentication.JwtBearer;
   using Microsoft.AspNetCore.Routing;
   using Microsoft.IdentityModel.Tokens;
+  using WotBlitzStatician.JwtSecurity;
   using WotBlitzStatician.OdataConfiguration;
 
   public class Startup
@@ -43,6 +44,7 @@ namespace WotBlitzStatician
         });
 
       // configure jwt authentication
+      string secret = Configuration.GetSection("SecurityConfiguration").Get<SecurityConfiguration>().Secret;
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
            .AddJwtBearer(options =>
            {
@@ -54,8 +56,7 @@ namespace WotBlitzStatician
                ValidateIssuerSigningKey = true,
                ValidIssuer = "WotBlitzStatician.com",
                ValidAudience = "WotBlitzStatician.com",
-               IssuerSigningKey = new SymmetricSecurityKey(
-                  Encoding.UTF8.GetBytes("fuck yeah the big fucking symmetric key")) // (appSettings.Secret);
+               IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret))
              };
            });
     }
@@ -64,11 +65,15 @@ namespace WotBlitzStatician
     {
       var wgApiConfig = new Appsettings();
       wgApiConfig.ProxySettings = new ProxySettings();
+      wgApiConfig.SecurityConfiguration = new SecurityConfiguration();
       Configuration.GetSection("WgApi").Bind(wgApiConfig);
       Configuration.GetSection("ProxySettings").Bind(wgApiConfig.ProxySettings);
+      Configuration.GetSection("SecurityConfiguration").Bind(wgApiConfig.SecurityConfiguration);
 
       builder.RegisterInstance<IProxySettings>(wgApiConfig.ProxySettings);
       builder.RegisterInstance<IWgApiConfiguration>(wgApiConfig);
+      builder.RegisterInstance<ISecurityConfiguration>(wgApiConfig.SecurityConfiguration);
+      builder.RegisterType<SecurityService>().As<ISecurityServise>();
       builder.ConfigureWargamingApi();
       builder.ConfigureDataAccessor(Configuration.GetConnectionString("BlitzStatician"));
       builder.ConfigureBlitzStaticianLogic();

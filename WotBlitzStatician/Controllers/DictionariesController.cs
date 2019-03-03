@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using WotBlitzStatician.Data.DataAccessors;
+using WotBlitzStatician.JwtSecurity;
 using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician.Controllers
@@ -18,11 +13,15 @@ namespace WotBlitzStatician.Controllers
   {
     private readonly IWargamingApiClient _wgApi;
     private readonly IBlitzStaticianDictionary _blitzStatisticsDictionary;
+    private readonly ISecurityServise _securityService;
 
-    public DictionariesController(IWargamingApiClient wgApi, IBlitzStaticianDictionary blitzStaticianDictionary)
+    public DictionariesController(IWargamingApiClient wgApi,
+        IBlitzStaticianDictionary blitzStaticianDictionary,
+        ISecurityServise securityServise)
     {
       _wgApi = wgApi;
       _blitzStatisticsDictionary = blitzStaticianDictionary;
+      _securityService = securityServise;
     }
 
     [HttpGet("LoadDictionariesAndPicturesIfNeeded")]
@@ -89,30 +88,9 @@ namespace WotBlitzStatician.Controllers
 
     [AllowAnonymous]
     [HttpPost("Authenticate")]
-    public IActionResult Authenticate()
+    public IActionResult Authenticate([FromBody] string secureWord)
     {
-
-      // ToDo: use login and password
-      string secret = "fuck yeah the big fucking symmetric key"; // (appSettings.Secret);
-      // generate jwt token
-      var claims = new[]
-      {
-            new Claim(ClaimTypes.Name, "adminUser")
-        };
-
-      var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
-      var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-      var token = new JwtSecurityToken(
-          issuer: "WotBlitzStatician.com",
-          audience: "WotBlitzStatician.com",
-          claims: claims,
-          expires: DateTime.Now.AddMinutes(30),
-          signingCredentials: creds);
-
-      string jwtToken = new JwtSecurityTokenHandler().WriteToken(token);
-
-      return Ok(jwtToken);
+      return Ok(_securityService.Authenticate(secureWord));
     }
   }
 }

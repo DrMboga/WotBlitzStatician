@@ -1,3 +1,4 @@
+using WotBlitzStatician.JwtSecurity;
 using WotBlitzStatician.WotApiClient;
 
 namespace WotBlitzStatician
@@ -10,6 +11,8 @@ namespace WotBlitzStatician
 		public string Language { get; set; }
 		public int DictionariesUpdateFrequencyInDays { get; set; }
 		public IProxySettings ProxySettings { get; set; }
+
+    public ISecurityConfiguration SecurityConfiguration { get; set; }
 	}
 
 	public class ProxySettings : IProxySettings
@@ -19,5 +22,11 @@ namespace WotBlitzStatician
 	  public string Domain { get; set; }
 		public string User { get; set; }
 		public string PwdHash { get; set; }
+  }
+
+  public class SecurityConfiguration : ISecurityConfiguration
+  {
+    public string Secret { get; set; }
+    public string SecureWord { get; set; }
   }
 }
