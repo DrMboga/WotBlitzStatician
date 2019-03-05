@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using WotBlitzStatician.Data.DataAccessors;
 using WotBlitzStatician.JwtSecurity;
 using WotBlitzStatician.WotApiClient;
@@ -11,14 +13,21 @@ namespace WotBlitzStatician.Controllers
   [Route("api/[controller]")]
   public class DictionariesController : Controller
   {
+    private readonly ILogger<DictionariesController> _logger;
+    private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly IWargamingApiClient _wgApi;
     private readonly IBlitzStaticianDictionary _blitzStatisticsDictionary;
     private readonly ISecurityServise _securityService;
 
-    public DictionariesController(IWargamingApiClient wgApi,
+    public DictionariesController(
+        ILogger<DictionariesController> logger,
+        IHttpContextAccessor httpContextAccessor,
+        IWargamingApiClient wgApi,
         IBlitzStaticianDictionary blitzStaticianDictionary,
         ISecurityServise securityServise)
     {
+      _logger = logger;
+      _httpContextAccessor = httpContextAccessor;
       _wgApi = wgApi;
       _blitzStatisticsDictionary = blitzStaticianDictionary;
       _securityService = securityServise;
@@ -90,7 +99,17 @@ namespace WotBlitzStatician.Controllers
     [HttpPost("Authenticate")]
     public IActionResult Authenticate([FromBody] string secureWord)
     {
-      return Ok(_securityService.Authenticate(secureWord));
+      var token = _securityService.Authenticate(secureWord);
+      var remoteIpAddress = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress;
+      if (string.IsNullOrEmpty(token))
+      {
+        _logger.LogWarning($"Authentication denied for reqest from ip '{remoteIpAddress}'");
+      }
+      else
+      {
+        _logger.LogInformation($"Authentication granted for request from ip '{remoteIpAddress}'");
+      }
+      return Ok(token);
     }
   }
 }
