@@ -24,6 +24,12 @@ namespace WotBlitzStatician.Data.DataAccessors.Impl
       });
 
       replicationData.AccountInfoStatistics = _dbContext.AccountInfoStatistics.AsNoTracking().ToList();
+      replicationData.AccountClanHistory = _dbContext.AccountClanHistory.AsNoTracking().ToList();
+      replicationData.AccountClanInfo = _dbContext.AccountClanInfo.AsNoTracking().ToList();
+      replicationData.AccountInfoAcievements = _dbContext.AccountInfoAchievement.AsNoTracking().ToList();
+      replicationData.AccountTanksStatistics = _dbContext.AccountTankStatistics.AsNoTracking().ToList();
+      replicationData.PresentAccountTanks = _dbContext.PresentAccountTanks.AsNoTracking().ToList();
+      replicationData.Frags = _dbContext.Frags.AsNoTracking().ToList();
 
       return replicationData;
     }

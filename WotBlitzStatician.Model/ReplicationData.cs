@@ -6,5 +6,11 @@ namespace WotBlitzStatician.Model
     {
         public List<AccountInfo> AccountInfo { get; set; }
         public List<AccountInfoStatistics> AccountInfoStatistics { get; set; }
-    }
+        public List<AccountClanHistory> AccountClanHistory { get; set; }
+        public List<AccountClanInfo> AccountClanInfo { get; set; }
+        public List<AccountInfoAchievement> AccountInfoAcievements { get; set; }
+        public List<AccountTankStatistics> AccountTanksStatistics { get; set; }
+        public List<PresentAccountTanks> PresentAccountTanks { get; set; }
+        public List<FragListItem> Frags { get; set; }
+  }
 }
