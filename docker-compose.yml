@@ -4,6 +4,10 @@ services:
         build: .
         ports:
             - "8000:80"
+        environment: 
+            - WgApi:ApplicationId=Demo
+            - SecurityConfiguration:secret=Demo
+            - SecurityConfiguration:secureWord=Demo
         depends_on:
             - db
         restart: always
