@@ -24,6 +24,7 @@
 			containerBuilder.RegisterType<AchievementsDataAccessor>().As<IAchievementsDataAccessor>();
 			containerBuilder.RegisterType<AccountsTankInfoDataAccessor>().As<IAccountsTankInfoDataAccessor>();
 			containerBuilder.RegisterType<AccountInfoViewDataAccessor>().As<IAccountInfoViewDataAccessor>();
+			containerBuilder.RegisterType<ReplicationDataAccessor>().As<IReplicationDataAccessor>();
 		}
 
 		private static void ConfigureMappers(this ContainerBuilder containerBuilder)

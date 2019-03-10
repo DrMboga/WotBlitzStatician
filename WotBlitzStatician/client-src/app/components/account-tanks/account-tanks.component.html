@@ -56,42 +56,47 @@
         <th>
           Tank
         </th>
-        <th (click)="sortColumn = 'TankBattles'; sortAscending = !sortAscending; sortTanks();">
+        <th (click)="sortColumn = 'TankBattles'; sortAscending = !sortAscending; sortTanks();" title="Количество боёв">
           <fa-icon icon="gamepad"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'TankBattles' && !sortAscending" icon="angle-down"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'TankBattles' && sortAscending" icon="angle-up"></fa-icon>
         </th>
-        <th (click)="sortColumn = 'WinRate'; sortAscending = !sortAscending; sortTanks();" class="text-center">
+        <th (click)="sortColumn = 'WinRate'; sortAscending = !sortAscending; sortTanks();" class="text-center" title="Процент побед">
           <fa-icon icon="flag"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'WinRate' && !sortAscending" icon="angle-down"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'WinRate' && sortAscending" icon="angle-up"></fa-icon>
         </th>
-        <th (click)="sortColumn = 'TankWn7'; sortAscending = !sortAscending; sortTanks();" class="text-center">
+        <th (click)="sortColumn = 'TankWn7'; sortAscending = !sortAscending; sortTanks();" class="text-center" title="Wn7">
           <fa-icon icon="calculator" size="xs"></fa-icon> Wn7
           <fa-icon *ngIf="sortColumn == 'TankWn7' && !sortAscending" icon="angle-down"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'TankWn7' && sortAscending" icon="angle-up"></fa-icon>
         </th>
-        <th (click)="sortColumn = 'AvgDamage'; sortAscending = !sortAscending; sortTanks();">
+        <th (click)="sortColumn = 'AvgDamage'; sortAscending = !sortAscending; sortTanks();" title="Средний урон">
           <fa-icon icon="skull-crossbones"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'AvgDamage' && !sortAscending" icon="angle-down"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'AvgDamage' && sortAscending" icon="angle-up"></fa-icon>
         </th>
-        <th (click)="sortColumn = 'AvgXp'; sortAscending = !sortAscending; sortTanks();">
+        <th (click)="sortColumn = 'AvgXp'; sortAscending = !sortAscending; sortTanks();" title="Средний опыт">
           <fa-icon [icon]="['far', 'star']"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'AvgXp' && !sortAscending" icon="angle-down"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'AvgXp' && sortAscending" icon="angle-up"></fa-icon>
         </th>
-        <th (click)="sortColumn = 'SurvivalRate'; sortAscending = !sortAscending; sortTanks();">
+        <th (click)="sortColumn = 'TankMaxXp'; sortAscending = !sortAscending; sortTanks();" title="Максимальный опыт">
+          <fa-icon icon="star-half-alt"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankMaxXp' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankMaxXp' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th (click)="sortColumn = 'SurvivalRate'; sortAscending = !sortAscending; sortTanks();" title="Выживаемость">
           <fa-icon [icon]="['far', 'heart']"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'SurvivalRate' && !sortAscending" icon="angle-down"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'SurvivalRate' && sortAscending" icon="angle-up"></fa-icon>
         </th>
-        <th (click)="sortColumn = 'TankLastBattleTime'; sortAscending = !sortAscending; sortTanks();">
+        <th (click)="sortColumn = 'TankLastBattleTime'; sortAscending = !sortAscending; sortTanks();" title="Последний бой">
           <fa-icon [icon]="['far', 'clock']"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'TankLastBattleTime' && !sortAscending" icon="angle-down"></fa-icon>
           <fa-icon *ngIf="sortColumn == 'TankLastBattleTime' && sortAscending" icon="angle-up"></fa-icon>
         </th>
-        <th>
+        <th title="В гараже">
           <fa-icon icon="warehouse"></fa-icon>
         </th>
       </tr>
@@ -112,6 +117,7 @@
         </td>
         <td>{{tank.AvgDamage|number:'3.0-0'}}</td>
         <td>{{tank.AvgXp|number:'3.0-0'}}</td>
+        <td>{{tank.TankMaxXp|number:'3.0-0'}}</td>
         <td>{{tank.SurvivalRate|percent:'2.2-2'}}</td>
         <td>{{tank.TankLastBattleTime|date:"short"}}</td>
         <td><fa-icon icon="warehouse" size="xs" [ngStyle]="{'opacity': (tank.TankInGarage ? '1' : '0.5')}"></fa-icon> {{tank.TankInGarageUpdated|date:"short"}}</td>
@@ -128,6 +134,7 @@
         <th [appBlitzColorScale]="tableFooter.avgWn7"  inverse="true">{{tableFooter.avgWn7|number:'3.0-0'}}</th>
         <th>{{tableFooter.avgDamage|number:'3.0-0'}}</th>
         <th>{{tableFooter.avgXp|number:'3.0-0'}}</th>
+        <th></th>
         <th></th>
         <th></th>
         <th></th>
