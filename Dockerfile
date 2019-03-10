@@ -45,6 +45,8 @@ RUN dotnet publish -c Release -o out
 
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
 ENV WgApi:ApplicationId=Demo
+ENV SecurityConfiguration:secret=Demo
+ENV SecurityConfiguration:secureWord=Demo
 WORKDIR /app
 COPY --from=netcore-build /app/WotBlitzStatician/out ./
 COPY --from=angular-build /app/dist/out ./wwwroot/
