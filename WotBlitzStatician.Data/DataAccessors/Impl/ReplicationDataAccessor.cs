@@ -32,7 +32,12 @@ namespace WotBlitzStatician.Data.DataAccessors.Impl
       replicationData.AccountInfoStatistics = _dbContext.AccountInfoStatistics.AsNoTracking().ToList();
       replicationData.AccountClanHistory = _dbContext.AccountClanHistory.AsNoTracking().ToList();
       replicationData.AccountClanInfo = _dbContext.AccountClanInfo.AsNoTracking().ToList();
-      replicationData.AccountInfoAcievements = _dbContext.AccountInfoAchievement.AsNoTracking().ToList();
+      replicationData.AccountInfoAchievements = _dbContext.AccountInfoAchievement.AsNoTracking()
+        .Where(a => EF.Property<string>(a, "Discriminator") == "AccountInfoAchievement")
+        .ToList();
+      replicationData.AccountInfoTankAchievements = _dbContext.AccountInfoTankAchievement.AsNoTracking()
+        .Where(a => EF.Property<string>(a, "Discriminator") == "AccountInfoTankAchievement")
+        .ToList();
       replicationData.AccountTanksStatistics = _dbContext.AccountTankStatistics.AsNoTracking().ToList();
       replicationData.PresentAccountTanks = _dbContext.PresentAccountTanks.AsNoTracking().ToList();
       replicationData.Frags = _dbContext.Frags.AsNoTracking().ToList();
@@ -52,7 +57,8 @@ namespace WotBlitzStatician.Data.DataAccessors.Impl
       replicationData.AccountInfoStatistics.ForEach(s => s.AccountInfoStatisticsId = 0);
       replicationData.AccountClanHistory.ForEach(h => h.AccountClanHistoryId = 0);
       replicationData.AccountClanInfo.ForEach(c => c.AccountClanInfoId = 0);
-      replicationData.AccountInfoAcievements.ForEach(c => c.AccountInfoAchievementId = 0);
+      replicationData.AccountInfoAchievements.ForEach(c => c.AccountInfoAchievementId = 0);
+      replicationData.AccountInfoTankAchievements.ForEach(c => c.AccountInfoAchievementId = 0);
       replicationData.Frags.ForEach(f => f.FragListItemId = 0);
       replicationData.PresentAccountTanks.ForEach(t =>
       {
@@ -77,7 +83,8 @@ namespace WotBlitzStatician.Data.DataAccessors.Impl
         _dbContext.AccountInfoStatistics.AddRange(replicationData.AccountInfoStatistics);
         _dbContext.AccountClanHistory.AddRange(replicationData.AccountClanHistory);
         _dbContext.AccountClanInfo.AddRange(replicationData.AccountClanInfo);
-        _dbContext.AccountInfoAchievement.AddRange(replicationData.AccountInfoAcievements);
+        _dbContext.AccountInfoAchievement.AddRange(replicationData.AccountInfoAchievements);
+        _dbContext.AccountInfoTankAchievement.AddRange(replicationData.AccountInfoTankAchievements);
         _dbContext.Frags.AddRange(replicationData.Frags);
         _dbContext.AccountTankStatistics.AddRange(replicationData.AccountTanksStatistics);
 
