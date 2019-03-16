@@ -16,5 +16,7 @@
 		int DictionariesUpdateFrequencyInDays { get; set; }
 
 		IProxySettings ProxySettings { get; set; }
+
+		int HttpTimeoutInMinutes { get; set; }	
 	}
 }
