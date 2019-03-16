@@ -45,6 +45,7 @@ RUN dotnet publish -c Release -o out
 
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
 ENV WgApi:ApplicationId=Demo
+ENV WgApi:HttpTimeoutInMinutes=2
 ENV SecurityConfiguration:secret=Demo
 ENV SecurityConfiguration:secureWord=Demo
 WORKDIR /app
