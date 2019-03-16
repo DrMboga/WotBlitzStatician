@@ -13,7 +13,9 @@ namespace WotBlitzStatician
 		public IProxySettings ProxySettings { get; set; }
 
     public ISecurityConfiguration SecurityConfiguration { get; set; }
-	}
+
+    public int HttpTimeoutInMinutes { get; set; }
+  }
 
 	public class ProxySettings : IProxySettings
 	{
