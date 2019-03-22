@@ -21,31 +21,55 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
   public playerPrivateInfo: PlayerPrivateInfo;
   subscription: Subscription;
 
-  constructor(private accountsInfoService: AccountInfoService,
-    public accountGlobalInfo: AccountGlobalInfo) {
+  constructor(
+    private accountsInfoService: AccountInfoService,
+    public accountGlobalInfo: AccountGlobalInfo
+  ) {
     this.refreshAccountInfo();
-    this.subscription = accountGlobalInfo.accountInfoChanged.asObservable().subscribe(() =>
-      this.refreshAccountInfo());
+    this.subscription = accountGlobalInfo.accountInfoChanged
+      .asObservable()
+      .subscribe(() => this.refreshAccountInfo());
   }
 
   private refreshAccountInfo() {
     const id = this.accountGlobalInfo.accountId;
     if (id != null) {
-      this.accountsInfoService.getAccount(id).subscribe(data => {
-        this.account = data;
-        this.mastery = this.account.accountMasteryInfo.find(m => m.markOfMastery === 4);
-        this.rank3 = this.account.accountMasteryInfo.find(m => m.markOfMastery === 3);
-        this.rank2 = this.account.accountMasteryInfo.find(m => m.markOfMastery === 2);
-        this.rank1 = this.account.accountMasteryInfo.find(m => m.markOfMastery === 1);
-      }, error => console.error(error));
-      this.accountsInfoService.getPlayerPrivateInfo(id).subscribe(data => this.playerPrivateInfo = data, error => console.error(error));
+      this.accountsInfoService.getAccount(id).subscribe(
+        data => {
+          this.account = data;
+          this.mastery = this.GetMasteryInfo(this.account.accountMasteryInfo, 4);
+          this.rank3 = this.GetMasteryInfo(this.account.accountMasteryInfo, 3);
+          this.rank2 = this.GetMasteryInfo(this.account.accountMasteryInfo, 2);
+          this.rank1 = this.GetMasteryInfo(this.account.accountMasteryInfo, 1);
+        },
+        error => console.error(error)
+      );
+      this.accountsInfoService
+        .getPlayerPrivateInfo(id)
+        .subscribe(
+          data => (this.playerPrivateInfo = data),
+          error => console.error(error)
+        );
     }
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  private GetMasteryInfo(
+    masters: AccountMasteryInfo[],
+    markOfMastery: number
+  ): AccountMasteryInfo {
+    let masteryInfo: AccountMasteryInfo = masters.find(
+      m => m.markOfMastery === markOfMastery
+    );
+    if (masteryInfo == null) {
+      const tanksCount = masters.length === 0 ? 0 : masters[0].allTanksCount;
+      masteryInfo = { markOfMastery: markOfMastery, tanksCount: 0, allTanksCount: tanksCount, masteryTanksRatio: 0};
+    }
+    return masteryInfo;
   }
 }
