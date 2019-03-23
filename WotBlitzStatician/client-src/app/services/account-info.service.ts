@@ -158,6 +158,16 @@ export class AccountInfoService {
       .pipe(catchError(this.handleError));
   }
 
+  findAccounts(
+    accountNickTemplate: string
+  ): Observable<AccountInfo[]> {
+    return this.http
+      .get<AccountInfo[]>(
+        `${this.baseUrl}api/WgRequests/FindAccounts/${accountNickTemplate}`
+      )
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

@@ -5,8 +5,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav mr-auto" *ngIf="accountGlobalInfo.accountId > 0">
-        <button class="btn btn-dark my-2 my-sm-0 text-sm-left" 
-            title="Обновить статистику" 
+        <button class="btn btn-dark my-2 my-sm-0 text-sm-left"
+            title="Обновить статистику"
             [disabled]="!refreshEnabled"
             (click)="refreshStat()">
           <fa-icon icon="sync"></fa-icon>
@@ -19,12 +19,12 @@
       <div class="navbar-nav mr-auto" *ngIf="accountGlobalInfo.accountId === 0"></div>
 
       <button class="btn btn-dark my-2 my-sm-0" title="Wargaming ID" style="margin-left: 2px; margin-right: 2px" (click)="logInLogOff()">
-          <span *ngIf="accountGlobalInfo.accountId === 0">WG.ID <fa-icon icon="sign-in-alt"></fa-icon></span> 
-          <span *ngIf="accountGlobalInfo.accountId > 0">{{accountGlobalInfo.accountNick}} <fa-icon icon="sign-out-alt"></fa-icon></span> 
+          <span *ngIf="accountGlobalInfo.accountId === 0">WG.ID <fa-icon icon="sign-in-alt"></fa-icon></span>
+          <span *ngIf="accountGlobalInfo.accountId > 0">{{accountGlobalInfo.accountNick}} <fa-icon icon="sign-out-alt"></fa-icon></span>
       </button>
       <form class="form-inline">
-          <input class="form-control mr-sm-1" type="search" placeholder="Поиск по нику" aria-label="Search">
-          <button class="btn btn-dark my-2 my-sm-0" type="submit"><fa-icon icon="search" size="xs"></fa-icon></button>
+          <input class="form-control mr-sm-1" type="search" placeholder="Поиск по нику" aria-label="Search" [(ngModel)]="searchString" [ngModelOptions]="{standalone: true}">
+          <button class="btn btn-dark my-2 my-sm-0" type="submit" (click)="searchAccounts()"><fa-icon icon="search" size="xs"></fa-icon></button>
       </form>
     </div>
 </nav>
