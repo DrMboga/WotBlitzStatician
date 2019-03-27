@@ -23,6 +23,7 @@ import { AccountHistoryChartService } from './account-history/account-history-ch
 import { AccountAggregatedInfoComponent } from './account-aggregated-info/account-aggreagated-info.component';
 import { AccountAggregatedInfoService } from './account-aggregated-info/account-aggreagated-info.service';
 import { ChartRowComponent } from './account-aggregated-info/chartRow/chart-row.component';
+import { AccountSearchComponent } from './account-search/account-search.component';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { ChartRowComponent } from './account-aggregated-info/chartRow/chart-row.
     SplashScreenComponent,
     RomanNumberPipe,
     AccountAggregatedInfoComponent,
-    ChartRowComponent
+    ChartRowComponent,
+    AccountSearchComponent
   ],
   exports: [
     AppComponent,

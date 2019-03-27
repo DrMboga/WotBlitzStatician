@@ -22,9 +22,6 @@
           <span *ngIf="accountGlobalInfo.accountId === 0">WG.ID <fa-icon icon="sign-in-alt"></fa-icon></span>
           <span *ngIf="accountGlobalInfo.accountId > 0">{{accountGlobalInfo.accountNick}} <fa-icon icon="sign-out-alt"></fa-icon></span>
       </button>
-      <form class="form-inline">
-          <input class="form-control mr-sm-1" type="search" placeholder="Поиск по нику" aria-label="Search" [(ngModel)]="searchString" [ngModelOptions]="{standalone: true}">
-          <button class="btn btn-dark my-2 my-sm-0" type="submit" (click)="searchAccounts()"><fa-icon icon="search" size="xs"></fa-icon></button>
-      </form>
+      <app-account-search></app-account-search>
     </div>
 </nav>

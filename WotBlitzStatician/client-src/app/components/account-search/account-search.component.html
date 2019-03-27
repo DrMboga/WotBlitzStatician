@@ -1,0 +1,30 @@
+<form class="form-inline">
+  <div class="dropdown">
+    <input
+      class="form-control mr-sm-1"
+      type="search"
+      placeholder="Поиск по нику"
+      aria-label="Search"
+      [(ngModel)]="searchString"
+      [ngModelOptions]="{ standalone: true }"
+      id="search-input"
+    />
+
+    <button
+      class="btn btn-dark dropdown-toggle my-2 my-sm-0"
+      type="button"
+      id="search-dropdown"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="true"
+      (click)="searchAccounts()"
+    >
+      <fa-icon icon="search" size="xs"></fa-icon>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="search-input">
+      <a class="dropdown-item" (click)="selectAccount(account.accountId)" *ngFor="let account of foundAccounts">{{
+        account.nickName
+      }}</a>
+    </div>
+  </div>
+</form>

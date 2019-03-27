@@ -13,7 +13,6 @@ import { AccountAuthenticationService } from '../../services/account-authenticat
 export class NavMenuComponent implements OnInit {
 
   public refreshEnabled = true;
-  public searchString: string;
 
   constructor(public accountGlobalInfo: AccountGlobalInfo,
     private accountsInfoService: AccountInfoService,
@@ -51,13 +50,5 @@ export class NavMenuComponent implements OnInit {
       this.accountGlobalInfo.accountNick = 'WotBlitzStatician';
       this.router.navigate(['/splash-screen']);
     }
-  }
-
-  public searchAccounts() {
-    if (this.searchString.length < 4) {
-      return;
-    }
-    // ToDo: Ceate Service - Find accounts. If one - event for reading and filling account data. If many - dropdown
-    this.searchString = '';
   }
 }
