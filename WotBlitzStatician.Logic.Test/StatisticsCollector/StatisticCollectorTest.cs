@@ -118,9 +118,8 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
       Assert.NotNull(guestAccountInfo.AccountInfo.PlayerClanInfo);
       Assert.NotNull(guestAccountInfo.Tanks);
       Assert.Equal(_dataStubs.AccountTanksStatistics.Count, guestAccountInfo.Tanks.Count);
+      Assert.NotNull(guestAccountInfo.Achievements);
 
-      // Achievements
-      // TankAchievements
     }
 
     [Fact]

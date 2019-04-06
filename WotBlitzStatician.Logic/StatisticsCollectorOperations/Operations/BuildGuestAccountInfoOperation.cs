@@ -65,7 +65,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
       _guestAccountInfo.AccountInfo.PlayerClanInfo = _clanInfoMapper.Map<AccountClanInfo, PlayerClanInfoDto>(accountInfoFromWg.WargamingAccountInfo.AccountClanInfo);
 
       _guestAccountInfo.Tanks = GetTanks(accountInfoFromWg.AccountInfoTanks);
-
+      _guestAccountInfo.Achievements = GetAccountAchievements(accountInfoFromWg.WargamingAccountInfo.Achievements);
     }
 
     private async Task GetMaxXpAndFragsTanksInfo()
@@ -112,6 +112,34 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
           Vehicle = vehicles.SingleOrDefault(v => v.TankId == tank.TankId)
         };
         result.Add(_tanksMapper.Map<AccountTanksStatisticsTuple, AccountTankInfoDto>(tuple));
+      }
+      return result;
+    }
+
+    private List<AchievementDto> GetAccountAchievements(List<AccountInfoAchievement> achievements)
+    {
+      var result = new List<AchievementDto>();
+      var dictionaryAchievements = _dictionaryDataAccessor.GetAchievements(achievements.Select(a => a.AchievementId).ToList()).GetAwaiter().GetResult();
+      var achievementsSections = _dictionaryDataAccessor.GetAchievementSections().GetAwaiter().GetResult();
+      foreach (var accountAchievement in achievements)
+      {
+        var dictionaryAchievement = dictionaryAchievements.SingleOrDefault(a => a.AchievementId == accountAchievement.AchievementId);
+        if(dictionaryAchievement == null)
+        {
+          continue;
+        }
+        result.Add(new AchievementDto
+        {
+          AchievementId = accountAchievement.AchievementId,
+          Section = dictionaryAchievement.Section,
+          SectionName = achievementsSections.SingleOrDefault()?.SectionName,
+          Order = dictionaryAchievement.Order,
+          Name = dictionaryAchievement.Name,
+          Description = dictionaryAchievement.Description,
+          Count = accountAchievement.Count,
+          Image = dictionaryAchievement.Image,
+          IsAchievementOption = string.IsNullOrEmpty(dictionaryAchievement.Image)
+        });
       }
       return result;
     }

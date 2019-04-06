@@ -24,5 +24,9 @@ namespace WotBlitzStatician.Data.DataAccessors
     Task<string> GetClanRole(string clanRoleId);
 
     Task<List<VehicleEncyclopedia>> GetVehicles(List<long> tankId);
+
+    Task<List<Achievement>> GetAchievements(List<string> acievementIds);
+
+    Task<List<AchievementSection>> GetAchievementSections();
   }
 }

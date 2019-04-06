@@ -7,5 +7,7 @@ namespace WotBlitzStatician.Model.Dto
         public AccountInfoDto AccountInfo { get; set; }
 
         public List<AccountTankInfoDto> Tanks { get; set; }
+
+        public List<AchievementDto> Achievements { get; set; }
     }
 }
