@@ -75,5 +75,20 @@
                     .Select(v => v.PreviewImageUrl))
                 .ToListAsync();
         }
+
+    public async Task<string> GetClanRole(string clanRoleId)
+    {
+      return await _dbContext.DictionaryClanRole.AsNoTracking()
+                    .Where(d => d.ClanRoleId == clanRoleId)
+                    .Select(d => d.RoleName)
+                    .FirstOrDefaultAsync();
     }
+
+    public async Task<List<VehicleEncyclopedia>> GetVehicles(List<long> tankId)
+    {
+      return await _dbContext.VehicleEncyclopedia.AsNoTracking()
+                    .Where(v => tankId.Contains(v.TankId))
+                    .ToListAsync();
+    }
+  }
 }

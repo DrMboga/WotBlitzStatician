@@ -27,10 +27,11 @@ export class AccountSearchComponent implements OnInit {
       },
       error => console.error(error)
     );
-    // this.searchString = '';
+
   }
 
   public selectAccount(accountId: number) {
+    this.searchString = '';
     console.log('Selected', accountId);
   }
 

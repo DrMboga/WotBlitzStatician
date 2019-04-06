@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using WotBlitzStatician.Data;
 using WotBlitzStatician.Logic.Test.Logging;
 using WotBlitzStatician.Model;
+using WotBlitzStatician.Model.Dto;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -100,6 +101,26 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
       Assert.NotNull(tanksStat);
       Assert.Equal(_dataStubs.AccountTanksStatistics.Count, tanksStat.Count);
 
+    }
+
+    [Fact]
+    public async Task TestGuestAccountGetter()
+    {
+      SetInitialData();
+      var guestAccountInfo = new GuestAccountInfo();
+      await _statisticsCollectorEngine.Collect(
+          _statisticsCollectorFactory.CreateCollector(_dataStubs.AccountInfo.AccountId, guestAccountInfo));
+
+      Assert.NotNull(guestAccountInfo.AccountInfo);
+      Assert.NotNull(guestAccountInfo.AccountInfo.PlayerStatistics);
+      Assert.NotNull(guestAccountInfo.AccountInfo.AccountMasteryInfo);
+      Assert.Equal(4, guestAccountInfo.AccountInfo.AccountMasteryInfo.Count());
+      Assert.NotNull(guestAccountInfo.AccountInfo.PlayerClanInfo);
+      Assert.NotNull(guestAccountInfo.Tanks);
+      Assert.Equal(_dataStubs.AccountTanksStatistics.Count, guestAccountInfo.Tanks.Count);
+
+      // Achievements
+      // TankAchievements
     }
 
     [Fact]

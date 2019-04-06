@@ -1,0 +1,120 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using WotBlitzStatician.Data.DataAccessors;
+using WotBlitzStatician.Data.Mappers;
+using WotBlitzStatician.Logic.StatisticsCollectorOperations.OperationContext;
+using WotBlitzStatician.Model;
+using WotBlitzStatician.Model.Common;
+using WotBlitzStatician.Model.Dto;
+
+namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
+{
+  public class BuildGuestAccountInfoOperation : IStatisticsCollectorOperation
+  {
+    private readonly GuestAccountInfo _guestAccountInfo;
+    private readonly IMapper _playerStatDtoMapper;
+    private readonly IMapper _clanInfoMapper;
+    private readonly IMapper _tanksMapper;
+
+    private readonly IAccountsTankInfoDataAccessor _accountsTankInfoDataAccessor;
+    private readonly IBlitzStaticianDictionary _dictionaryDataAccessor;
+
+
+    public BuildGuestAccountInfoOperation(GuestAccountInfo guestAccountInfo,
+            IAccountsTankInfoDataAccessor dataAccessor,
+            IBlitzStaticianDictionary dictionayDataAccessor)
+    {
+      _guestAccountInfo = guestAccountInfo;
+      _accountsTankInfoDataAccessor = dataAccessor;
+      _dictionaryDataAccessor = dictionayDataAccessor;
+      _playerStatDtoMapper = new Mapper(new MapperConfiguration(m =>
+            m.CreateMap<AccountInfoStatistics, PlayerStatDto>()));
+      _clanInfoMapper = new Mapper(new MapperConfiguration(m =>
+            m.CreateMap<AccountClanInfo, PlayerClanInfoDto>()
+                .ForMember(d => d.PlayerRole, o => o.MapFrom(s => _dictionaryDataAccessor.GetClanRole(s.PlayerRole).GetAwaiter().GetResult()))));
+
+      _tanksMapper = new Mapper(new MapperConfiguration(m =>
+            m.CreateMap<AccountTanksStatisticsTuple, AccountTankInfoDto>()
+            .ForMember(d => d.VehicleTier, o => o.MapFrom(s => Convert.ToInt32(s.Vehicle.Tier)))
+            .ForMember(d => d.TankTierRoman, o => o.MapFrom(s => Convert.ToInt32(s.Vehicle.Tier).ToRomanNumeral()))
+            .ForMember(d => d.PreviewLocalImage, o => o.MapFrom(s => s.Vehicle.PreviewImageUrl.MakeImagePathLocal()))
+            .ForMember(d => d.NormalLocalImage, o => o.MapFrom(s => s.Vehicle.NormalImageUrl.MakeImagePathLocal()))
+            ));
+    }
+
+    public async Task Execute(StatisticsCollectorOperationContext operationContext)
+    {
+      var accountInfoFromWg = operationContext.Accounts.Single();
+
+      _guestAccountInfo.AccountInfo = new AccountInfoDto
+      {
+        AccountId = accountInfoFromWg.WargamingAccountInfo.AccountId,
+        NickName = accountInfoFromWg.WargamingAccountInfo.NickName,
+        AccountCreatedAt = accountInfoFromWg.WargamingAccountInfo.AccountCreatedAt.Value,
+        LastBattleTime = accountInfoFromWg.WargamingAccountInfo.LastBattleTime.Value
+      };
+
+      _guestAccountInfo.AccountInfo.PlayerStatistics =
+                _playerStatDtoMapper.Map<AccountInfoStatistics, PlayerStatDto>(accountInfoFromWg.WargamingAccountInfo.AccountInfoStatistics.Single());
+
+      await GetMaxXpAndFragsTanksInfo();
+      GetAccountMasteryInfo(accountInfoFromWg.AccountInfoTanks);
+      _guestAccountInfo.AccountInfo.PlayerClanInfo = _clanInfoMapper.Map<AccountClanInfo, PlayerClanInfoDto>(accountInfoFromWg.WargamingAccountInfo.AccountClanInfo);
+
+      _guestAccountInfo.Tanks = GetTanks(accountInfoFromWg.AccountInfoTanks);
+
+    }
+
+    private async Task GetMaxXpAndFragsTanksInfo()
+    {
+      var tanksInfos = await _accountsTankInfoDataAccessor.GetStringTankInfos(new long[] {
+                                _guestAccountInfo.AccountInfo.PlayerStatistics.MaxFragsTankId,
+                                _guestAccountInfo.AccountInfo.PlayerStatistics.MaxXpTankId });
+
+      if (tanksInfos.Exists(t => t.tankId == _guestAccountInfo.AccountInfo.PlayerStatistics.MaxFragsTankId))
+      {
+        _guestAccountInfo.AccountInfo.PlayerStatistics.MaxFragsTankInfo = tanksInfos
+        .First(t => t.tankId == _guestAccountInfo.AccountInfo.PlayerStatistics.MaxFragsTankId)
+        .tankInfo;
+      }
+
+      if (tanksInfos.Exists(t => t.tankId == _guestAccountInfo.AccountInfo.PlayerStatistics.MaxXpTankId))
+      {
+        _guestAccountInfo.AccountInfo.PlayerStatistics.MaxXpTankInfo = tanksInfos
+        .First(t => t.tankId == _guestAccountInfo.AccountInfo.PlayerStatistics.MaxXpTankId)
+        .tankInfo;
+      }
+    }
+
+    private void GetAccountMasteryInfo(List<AccountTankStatistics> tanks)
+    {
+      var allTanksCount = tanks.Count();
+      _guestAccountInfo.AccountInfo.AccountMasteryInfo = new List<AccountMasteryInfoDto>{
+          new AccountMasteryInfoDto {MarkOfMastery = MarkOfMastery.Master, AllTanksCount = allTanksCount, TanksCount = tanks.Where(t => t.MarkOfMastery == MarkOfMastery.Master).Count()},
+          new AccountMasteryInfoDto {MarkOfMastery = MarkOfMastery.Rank1, AllTanksCount = allTanksCount, TanksCount = tanks.Where(t => t.MarkOfMastery == MarkOfMastery.Rank1).Count()},
+          new AccountMasteryInfoDto {MarkOfMastery = MarkOfMastery.Rank2, AllTanksCount = allTanksCount, TanksCount = tanks.Where(t => t.MarkOfMastery == MarkOfMastery.Rank2).Count()},
+          new AccountMasteryInfoDto {MarkOfMastery = MarkOfMastery.Rank3, AllTanksCount = allTanksCount, TanksCount = tanks.Where(t => t.MarkOfMastery == MarkOfMastery.Rank3).Count()},
+      };
+    }
+
+    private List<AccountTankInfoDto> GetTanks(List<AccountTankStatistics> tanks)
+    {
+      var result = new List<AccountTankInfoDto>();
+      var vehicles = _dictionaryDataAccessor.GetVehicles(tanks.Select(t => t.TankId).ToList()).GetAwaiter().GetResult();
+      foreach (var tank in tanks)
+      {
+        var tuple = new AccountTanksStatisticsTuple
+        {
+          Tank = tank,
+          Vehicle = vehicles.SingleOrDefault(v => v.TankId == tank.TankId)
+        };
+        result.Add(_tanksMapper.Map<AccountTanksStatisticsTuple, AccountTankInfoDto>(tuple));
+      }
+      return result;
+    }
+
+  }
+}
