@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { AccountInfoService } from '../../services/account-info.service';
 import { AccountGlobalInfo } from '../account-global-info';
 import { AccountInfoDto } from '../../model/account-info-dto';
 import { AccountMasteryInfo } from '../../model/account-mastery-info';
 import { PlayerPrivateInfo } from '../../model/player-private-info';
 import { Subscription } from 'rxjs';
+import { AccountsService } from '../../services/accounts.service';
 
 @Component({
   selector: 'app-account-info',
@@ -22,7 +22,7 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   constructor(
-    private accountsInfoService: AccountInfoService,
+    private accountService: AccountsService,
     public accountGlobalInfo: AccountGlobalInfo
   ) {
     this.refreshAccountInfo();
@@ -34,7 +34,7 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
   private refreshAccountInfo() {
     const id = this.accountGlobalInfo.accountId;
     if (id != null) {
-      this.accountsInfoService.getAccount(id).subscribe(
+      this.accountService.getAccount(id).subscribe(
         data => {
           this.account = data;
           this.mastery = this.GetMasteryInfo(this.account.accountMasteryInfo, 4);
@@ -44,7 +44,7 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
         },
         error => console.error(error)
       );
-      this.accountsInfoService
+      this.accountService
         .getPlayerPrivateInfo(id)
         .subscribe(
           data => (this.playerPrivateInfo = data),

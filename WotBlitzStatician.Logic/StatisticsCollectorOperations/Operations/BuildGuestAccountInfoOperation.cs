@@ -132,7 +132,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
         {
           AchievementId = accountAchievement.AchievementId,
           Section = dictionaryAchievement.Section,
-          SectionName = achievementsSections.SingleOrDefault()?.SectionName,
+          SectionName = achievementsSections.SingleOrDefault(s => s.Section == dictionaryAchievement.Section)?.SectionName,
           Order = dictionaryAchievement.Order,
           Name = dictionaryAchievement.Name,
           Description = dictionaryAchievement.Description,

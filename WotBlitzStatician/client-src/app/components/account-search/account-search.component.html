@@ -22,7 +22,7 @@
       <fa-icon icon="search" size="xs"></fa-icon>
     </button>
     <div class="dropdown-menu" aria-labelledby="search-input">
-      <a class="dropdown-item" (click)="selectAccount(account.accountId)" *ngFor="let account of foundAccounts">{{
+      <a class="dropdown-item" (click)="selectAccount(account)" *ngFor="let account of foundAccounts">{{
         account.nickName
       }}</a>
     </div>

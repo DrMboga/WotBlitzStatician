@@ -5,6 +5,7 @@ import { AccountGlobalInfo } from '../components/account-global-info';
 import { AccountInfoService } from './account-info.service';
 import { AccountInfo } from '../model/account-info';
 import { WgAuthResponse } from '../model/wg-auth-response';
+import { BlitzStaticianService } from './blitz-statician.service';
 
 @Injectable()
 export class AccountAuthenticationService {
@@ -17,7 +18,8 @@ export class AccountAuthenticationService {
     private router: Router,
     private cookieService: CookieService,
     private accountGlobalInfo: AccountGlobalInfo,
-    private accountsInfoService: AccountInfoService
+    private accountsInfoService: AccountInfoService,
+    private blitzStaticianService: BlitzStaticianService
   ) {}
 
   public parseWargamingAuthResponse(response: WgAuthResponse) {
@@ -61,6 +63,7 @@ export class AccountAuthenticationService {
   public saveAccountInfoAndEnter(wgAuthResponse: WgAuthResponse) {
     this.accountGlobalInfo.accountId = wgAuthResponse.account_id;
     this.accountGlobalInfo.accountNick = wgAuthResponse.nickname;
+    this.accountGlobalInfo.isGuestAccount = false;
     const accountInfo: AccountInfo = {
       accountId: this.accountGlobalInfo.accountId,
       nickName: this.accountGlobalInfo.accountNick,
@@ -71,7 +74,7 @@ export class AccountAuthenticationService {
     };
 
     this.status = 'Saving new account';
-    this.accountsInfoService.putNewAccountInfo(accountInfo).subscribe(
+    this.blitzStaticianService.putNewAccountInfo(accountInfo).subscribe(
       () => {
         this.cookieService.set(
           this.accountIdCookieName,
@@ -87,7 +90,7 @@ export class AccountAuthenticationService {
   private SaveAccountInfo(accountInfo: AccountInfo) {
     this.status = 'Getting nessesary dictionaries and other data';
     // 2. Load info from WG by account
-    this.accountsInfoService
+    this.blitzStaticianService
       .saveAllAccountInfo(accountInfo.accountId)
       .subscribe(
         () => {

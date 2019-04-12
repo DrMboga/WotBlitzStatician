@@ -19,12 +19,6 @@ import { AccountAchievementDto } from '../model/account-achievement-dto';
 import { PlayerPrivateInfo } from '../model/player-private-info';
 import { AccountTanksInfoAggregatedDto } from '../model/account-tanks-info-aggregated-dto';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-};
-
 @Injectable()
 export class AccountInfoService {
   constructor(
@@ -106,64 +100,12 @@ export class AccountInfoService {
       .pipe(catchError(this.handleError));
   }
 
-  // api/WgRequests/Authentication
-  getAuthenticationRequest(redirectUrl: string): Observable<string> {
-    const params = new HttpParams().set('redirectUrl', redirectUrl);
-    return this.http
-      .get<string>(`${this.baseUrl}api/WgRequests/Authentication`, {
-        params: params
-      })
-      .pipe(catchError(this.handleError));
-  }
-
-  putNewAccountInfo(accountInfo: AccountInfo): Observable<{}> {
-    return this.http
-      .put<AccountInfo>(
-        `${this.baseUrl}api/AccountInfo/${accountInfo.accountId}`,
-        accountInfo,
-        httpOptions
-      )
-      .pipe(catchError(this.handleError));
-  }
-
-  downloadDictionariesAndImages(): Observable<{}> {
-    return this.http
-      .get(
-        `${this.baseUrl}api/Dictionaries/LoadDictionariesAndPicturesIfNeeded`
-      )
-      .pipe(catchError(this.handleError));
-  }
-
-  saveAllAccountInfo(accountId: number): Observable<{}> {
-    return this.http
-      .get(`${this.baseUrl}api/StatisticsCollector/${accountId}`)
-      .pipe(catchError(this.handleError));
-  }
-
-  getPlayerPrivateInfo(accountId: number): Observable<PlayerPrivateInfo> {
-    return this.http
-      .get<PlayerPrivateInfo>(
-        `${this.baseUrl}api/WgRequests/AccountPrivateInfo/${accountId}`
-      )
-      .pipe(catchError(this.handleError));
-  }
-
   getAggregatedAccountTanksInfo(
     accountId: number
   ): Observable<AccountTanksInfoAggregatedDto[]> {
     return this.http
       .get<AccountTanksInfoAggregatedDto[]>(
         `${this.baseUrl}api/TanksStat/AggregatedAccountTanksInfo/${accountId}`
-      )
-      .pipe(catchError(this.handleError));
-  }
-
-  findAccounts(
-    accountNickTemplate: string
-  ): Observable<AccountInfo[]> {
-    return this.http
-      .get<AccountInfo[]>(
-        `${this.baseUrl}api/WgRequests/FindAccounts/${accountNickTemplate}`
       )
       .pipe(catchError(this.handleError));
   }

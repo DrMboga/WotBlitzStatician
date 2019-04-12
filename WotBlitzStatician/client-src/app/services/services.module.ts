@@ -5,6 +5,8 @@ import { AccountInfoService } from './account-info.service';
 import { AccountAuthenticationService } from './account-authentication.service';
 
 import { environment } from '../../environments/environment';
+import { AccountsService } from './accounts.service';
+import { BlitzStaticianService } from './blitz-statician.service';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import { environment } from '../../environments/environment';
     {
       provide: 'BASE_URL', useFactory: getBaseUrl
     },
-    AccountAuthenticationService
+    AccountAuthenticationService,
+    AccountsService,
+    BlitzStaticianService
   ]
 })
 export class ServicesModule { }

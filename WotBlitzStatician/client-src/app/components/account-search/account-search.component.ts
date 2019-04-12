@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountInfo } from '../../model/account-info';
-import { AccountInfoService } from '../../services/account-info.service';
+import { AccountGlobalInfo } from '../account-global-info';
+import { BlitzStaticianService } from '../../services/blitz-statician.service';
 
 @Component({
   selector: 'app-account-search',
@@ -11,7 +12,8 @@ export class AccountSearchComponent implements OnInit {
   public searchString: string;
   public foundAccounts: AccountInfo[];
 
-  constructor(private accountsInfoService: AccountInfoService) { }
+  constructor(private blitzStatician: BlitzStaticianService,
+              private accountGlobalInfo: AccountGlobalInfo) { }
 
   ngOnInit() {
   }
@@ -21,7 +23,7 @@ export class AccountSearchComponent implements OnInit {
       return;
     }
 
-    this.accountsInfoService.findAccounts(this.searchString).subscribe(
+    this.blitzStatician.findAccounts(this.searchString).subscribe(
       data => {
         this.foundAccounts = data;
       },
@@ -30,9 +32,17 @@ export class AccountSearchComponent implements OnInit {
 
   }
 
-  public selectAccount(accountId: number) {
+  public selectAccount(account: AccountInfo) {
     this.searchString = '';
-    console.log('Selected', accountId);
+    this.blitzStatician.putGuestAccountToCache(account.accountId).subscribe(() => {
+      this.accountGlobalInfo.isGuestAccount = true;
+      this.accountGlobalInfo.accountId = account.accountId;
+      this.accountGlobalInfo.accountNick = account.nickName;
+      // ToDo: logoff
+      // ToDo: hide private info
+      // ToDo: getting rid of square brackets and clan info if there is no clan
+      this.accountGlobalInfo.EmitAccountInfoChanged();
+    });
   }
 
 }
