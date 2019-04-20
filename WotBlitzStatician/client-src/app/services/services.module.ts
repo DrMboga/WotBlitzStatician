@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 
-import { AccountInfoService } from './account-info.service';
-import { AccountAuthenticationService } from './account-authentication.service';
+// import { AccountInfoService } from '../shared/services/account-info.service';
+// import { AccountAuthenticationService } from '../shared/services/account-authentication.service';
 
 import { environment } from '../../environments/environment';
-import { AccountsService } from './accounts.service';
-import { BlitzStaticianService } from './blitz-statician.service';
+// import { AccountsService } from '../account-info/accounts.service';
+// import { BlitzStaticianService } from '../shared/services/blitz-statician.service';
 
+// ToDo: Obsolete
 @NgModule({
   imports: [
-    CommonModule
   ],
   declarations: [],
   providers: [
-    AccountInfoService,
-    {
-      provide: 'BASE_URL', useFactory: getBaseUrl
-    },
-    AccountAuthenticationService,
-    AccountsService,
-    BlitzStaticianService
+    // AccountInfoService,
+    // {
+    //   provide: 'BASE_URL', useFactory: getBaseUrl
+    // },
+    // AccountAuthenticationService,
+    // AccountsService,
+    // BlitzStaticianService
   ]
 })
 export class ServicesModule { }
