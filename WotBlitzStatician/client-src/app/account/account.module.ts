@@ -7,13 +7,15 @@ import { SharedComponentModule } from '../shared/shared-component.module';
 import { ChartRowComponent } from './account-aggregated-info/chartRow/chart-row.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AccountRoutesModule } from './account.routes';
+import { AccountGlobalInfo } from '../shared/account-global-info';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-
+    AccountRoutesModule,
     SharedComponentModule
   ],
   exports: [
@@ -24,6 +26,8 @@ import { FormsModule } from '@angular/forms';
     ChartRowComponent
   ],
   providers: [
+    {provide: AccountGlobalInfo, useValue: new AccountGlobalInfo(90277267, 'DummyAccount') }, // ToDo: Change dummy data later
+
     AccountsService,
     AccountAggregatedInfoService,
   ],

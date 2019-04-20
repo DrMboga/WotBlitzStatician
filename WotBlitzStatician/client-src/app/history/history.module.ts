@@ -4,11 +4,13 @@ import { AccountHistoryChartService } from './account-history/account-history-ch
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedComponentModule } from '../shared/shared-component.module';
+import { HistoryRoutesModule } from './history.routes';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    HistoryRoutesModule,
     SharedComponentModule
   ],
   exports: [],

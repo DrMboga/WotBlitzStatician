@@ -15,10 +15,6 @@ import { BlitzStaticianService } from './shared/services/blitz-statician.service
 import { AccountAuthenticationService } from './shared/services/account-authentication.service';
 import { AccountInfoService } from './shared/services/account-info.service';
 import { FormsModule } from '@angular/forms';
-import { AccountModule } from './account/account.module';
-import { AchievementsModule } from './achievements/achievements.module';
-import { HistoryModule } from './history/history.module';
-import { TanksModule } from './tanks/tanks.module';
 import { CookieService } from 'ngx-cookie-service';
 import { SharedComponentModule } from './shared/shared-component.module';
 import { NavMenuComponent } from './home/nav-menu/nav-menu.component';
@@ -43,11 +39,6 @@ registerLocaleData(localeRu);
     SharedComponentModule,
     AppRoutingModule,
     HttpClientModule,
-// ToDo: Move when lazy
-    AccountModule,
-    AchievementsModule,
-    HistoryModule,
-    TanksModule
   ],
   providers: [
     DatePipe,
