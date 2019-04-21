@@ -5,11 +5,13 @@ import { DatePipe, CommonModule } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { AppComponent } from './app.component';
 import { getBaseUrl } from './services/services.module';
 import { RomanNumberPipe } from './shared/pipes/roman-number.pipe';
 import { AppRoutingModule } from './app-routing.module';
-import { AccountGlobalInfo } from './shared/account-global-info';
 import { AuthGuard } from './auth.guard';
 import { BlitzStaticianService } from './shared/services/blitz-statician.service';
 import { AccountAuthenticationService } from './shared/services/account-authentication.service';
@@ -39,12 +41,19 @@ registerLocaleData(localeRu);
     SharedComponentModule,
     AppRoutingModule,
     HttpClientModule,
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      name: 'WotblitzStatician App DevTools',
+      maxAge: 25,
+      // logOnly: environment.production,
+    }),
+
   ],
   providers: [
     DatePipe,
     { provide: LOCALE_ID, useValue: 'ru' },
     RomanNumberPipe,
-    {provide: AccountGlobalInfo, useValue: new AccountGlobalInfo(90277267, 'DummyAccount') }, // ToDo: Change dummy data later
+    // {provide: AccountGlobalInfo, useValue: new AccountGlobalInfo(90277267, 'DummyAccount') }, // ToDo: Change dummy data later
     AuthGuard,
     CookieService,
     BlitzStaticianService,

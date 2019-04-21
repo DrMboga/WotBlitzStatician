@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { AccountGlobalInfo } from '../account-global-info';
 import { AccountInfoService } from './account-info.service';
 import { AccountInfo } from '../../model/account-info';
 import { WgAuthResponse } from '../../model/wg-auth-response';
@@ -17,7 +16,6 @@ export class AccountAuthenticationService {
   constructor(
     private router: Router,
     private cookieService: CookieService,
-    private accountGlobalInfo: AccountGlobalInfo,
     private accountsInfoService: AccountInfoService,
     private blitzStaticianService: BlitzStaticianService
   ) {}
@@ -33,58 +31,58 @@ export class AccountAuthenticationService {
   }
 
   public checkCookieAndWgLogin() {
-    const accountIdFromCookie = this.getAccountIdFromCookie();
-    if (accountIdFromCookie > 0) {
-      this.accountsInfoService
-        .getShortAccountInfo(accountIdFromCookie)
-        .subscribe(
-          a => {
-            if (a != null) {
-              const now = new Date();
-              const tokenExpiration = new Date(a.accessTokenExpiration);
-              if (now.getTime() <= tokenExpiration.getTime()) {
-                this.accountGlobalInfo.accountId = a.accountId;
-                this.accountGlobalInfo.accountNick = a.nickName;
-                this.router.navigate(['/']);
-              }
-            }
-            this.showButtons = true;
-          },
-          error => {
-            console.error(error);
-            this.showButtons = true;
-          }
-        );
-    } else {
-      this.showButtons = true;
-    }
+    // const accountIdFromCookie = this.getAccountIdFromCookie();
+    // if (accountIdFromCookie > 0) {
+    //   this.accountsInfoService
+    //     .getShortAccountInfo(accountIdFromCookie)
+    //     .subscribe(
+    //       a => {
+    //         if (a != null) {
+    //           const now = new Date();
+    //           const tokenExpiration = new Date(a.accessTokenExpiration);
+    //           if (now.getTime() <= tokenExpiration.getTime()) {
+    //             this.accountGlobalInfo.accountId = a.accountId;
+    //             this.accountGlobalInfo.accountNick = a.nickName;
+    //             this.router.navigate(['/']);
+    //           }
+    //         }
+    //         this.showButtons = true;
+    //       },
+    //       error => {
+    //         console.error(error);
+    //         this.showButtons = true;
+    //       }
+    //     );
+    // } else {
+    //   this.showButtons = true;
+    // }
   }
 
   public saveAccountInfoAndEnter(wgAuthResponse: WgAuthResponse) {
-    this.accountGlobalInfo.accountId = wgAuthResponse.account_id;
-    this.accountGlobalInfo.accountNick = wgAuthResponse.nickname;
-    this.accountGlobalInfo.isGuestAccount = false;
-    const accountInfo: AccountInfo = {
-      accountId: this.accountGlobalInfo.accountId,
-      nickName: this.accountGlobalInfo.accountNick,
-      lastBattleTime: null,
-      accountCreatedAt: null,
-      accessToken: wgAuthResponse.access_token,
-      accessTokenExpiration: new Date(+wgAuthResponse.expires_at * 1000)
-    };
+    // this.accountGlobalInfo.accountId = wgAuthResponse.account_id;
+    // this.accountGlobalInfo.accountNick = wgAuthResponse.nickname;
+    // this.accountGlobalInfo.isGuestAccount = false;
+    // const accountInfo: AccountInfo = {
+    //   accountId: this.accountGlobalInfo.accountId,
+    //   nickName: this.accountGlobalInfo.accountNick,
+    //   lastBattleTime: null,
+    //   accountCreatedAt: null,
+    //   accessToken: wgAuthResponse.access_token,
+    //   accessTokenExpiration: new Date(+wgAuthResponse.expires_at * 1000)
+    // };
 
-    this.status = 'Saving new account';
-    this.blitzStaticianService.putNewAccountInfo(accountInfo).subscribe(
-      () => {
-        this.cookieService.set(
-          this.accountIdCookieName,
-          this.accountGlobalInfo.accountId.toString()
-        );
-        // Saving new accountId to cookie
-        this.SaveAccountInfo(accountInfo);
-      },
-      error => console.error(error)
-    );
+    // this.status = 'Saving new account';
+    // this.blitzStaticianService.putNewAccountInfo(accountInfo).subscribe(
+    //   () => {
+    //     this.cookieService.set(
+    //       this.accountIdCookieName,
+    //       this.accountGlobalInfo.accountId.toString()
+    //     );
+    //     // Saving new accountId to cookie
+    //     this.SaveAccountInfo(accountInfo);
+    //   },
+    //   error => console.error(error)
+    // );
   }
 
   private SaveAccountInfo(accountInfo: AccountInfo) {

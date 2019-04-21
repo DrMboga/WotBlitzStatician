@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AccountGlobalInfo } from '../../shared/account-global-info';
 import { AccountAuthenticationService } from '../../shared/services/account-authentication.service';
 import { BlitzStaticianService } from '../../shared/services/blitz-statician.service';
 
@@ -14,7 +13,7 @@ export class NavMenuComponent implements OnInit {
 
   public refreshEnabled = true;
 
-  constructor(public accountGlobalInfo: AccountGlobalInfo,
+  constructor(
     private blitzStaticianService: BlitzStaticianService,
     @Inject('BASE_URL') private baseUrl: string,
     private accountAuthService: AccountAuthenticationService,
@@ -25,30 +24,30 @@ export class NavMenuComponent implements OnInit {
   }
 
   public refreshStat() {
-    if (this.accountGlobalInfo.accountId === 0) {
-      return;
-    }
-    this.refreshEnabled = false;
-    this.blitzStaticianService.saveAllAccountInfo(this.accountGlobalInfo.accountId).subscribe(
-      () => {
-        this.refreshEnabled = true;
-        this.accountGlobalInfo.EmitAccountInfoChanged();
-      }
-    );
+    // if (this.accountGlobalInfo.accountId === 0) {
+    //   return;
+    // }
+    // this.refreshEnabled = false;
+    // this.blitzStaticianService.saveAllAccountInfo(this.accountGlobalInfo.accountId).subscribe(
+    //   () => {
+    //     this.refreshEnabled = true;
+    //     this.accountGlobalInfo.EmitAccountInfoChanged();
+    //   }
+    // );
   }
 
   public logInLogOff() {
-    if (this.accountGlobalInfo.accountId === 0) {
-      this.blitzStaticianService.getAuthenticationRequest(`${this.baseUrl}splash-screen`).subscribe(
-        authRequest => {
-          // Redirect to authRequest
-          window.location.href = authRequest;
-      });
-    } else {
-      this.accountAuthService.dropCookie();
-      this.accountGlobalInfo.accountId = 0;
-      this.accountGlobalInfo.accountNick = 'WotBlitzStatician';
-      this.router.navigate(['/splash-screen']);
-    }
+    // if (this.accountGlobalInfo.accountId === 0) {
+    //   this.blitzStaticianService.getAuthenticationRequest(`${this.baseUrl}splash-screen`).subscribe(
+    //     authRequest => {
+    //       // Redirect to authRequest
+    //       window.location.href = authRequest;
+    //   });
+    // } else {
+    //   this.accountAuthService.dropCookie();
+    //   this.accountGlobalInfo.accountId = 0;
+    //   this.accountGlobalInfo.accountNick = 'WotBlitzStatician';
+    //   this.router.navigate(['/splash-screen']);
+    // }
   }
 }

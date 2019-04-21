@@ -4,7 +4,6 @@ import { DatePipe } from '@angular/common';
 import { AccountInfoService } from '../../shared/services/account-info.service';
 import { AccountTanksFilter } from './account-tanks-filter';
 import { AccountTanksFooter } from './account-tanks-footer';
-import { AccountGlobalInfo } from '../../shared/account-global-info';
 import { TankStatisticDto } from '../../model/tank-statistic-dto';
 import { Subscription } from 'rxjs';
 
@@ -24,7 +23,6 @@ export class AccountTanksComponent implements OnInit, OnDestroy {
 
   constructor(
     private accountsInfoService: AccountInfoService,
-    public accountGlobalInfo: AccountGlobalInfo,
     datePipe: DatePipe
   ) {
     this.filter = new AccountTanksFilter(datePipe);
@@ -33,21 +31,21 @@ export class AccountTanksComponent implements OnInit, OnDestroy {
     this.sortColumn = 'TankLastBattleTime';
     this.sortAscending = false;
 
-    const id = accountGlobalInfo.accountId;
-    if (id != null) {
-      this.accountId = id;
+    // const id = accountGlobalInfo.accountId;
+    // if (id != null) {
+    //   this.accountId = id;
 
-      this.filter.accountId = this.accountId;
-      this.filter.inGarage = false;
-      const now = new Date();
-      now.setMonth(now.getMonth() - 1);
-      this.filter.dataFrom = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    //   this.filter.accountId = this.accountId;
+    //   this.filter.inGarage = false;
+    //   const now = new Date();
+    //   now.setMonth(now.getMonth() - 1);
+    //   this.filter.dataFrom = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-      this.queryData();
-    }
-    this.subscription = this.accountGlobalInfo.accountInfoChanged
-      .asObservable()
-      .subscribe(() => this.queryData());
+    //   this.queryData();
+    // }
+    // this.subscription = this.accountGlobalInfo.accountInfoChanged
+    //   .asObservable()
+    //   .subscribe(() => this.queryData());
   }
 
   queryData() {

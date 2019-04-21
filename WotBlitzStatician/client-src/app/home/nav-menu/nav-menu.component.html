@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" [routerLink]="['/']">{{accountGlobalInfo.accountNick}}</a>
+    <a class="navbar-brand" [routerLink]="['/']">ToDo: state</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav mr-auto" *ngIf="accountGlobalInfo.accountId > 0">
+      <div class="navbar-nav mr-auto">
         <button class="btn btn-dark my-2 my-sm-0 text-sm-left"
             title="Обновить статистику"
             [disabled]="!refreshEnabled"
@@ -16,11 +16,12 @@
         <a class="nav-item nav-link" [routerLinkActive]="['active']" [routerLink]="['/account-history']">История</a>
         <a class="nav-item nav-link" [routerLinkActive]="['active']" [routerLink]="['/tanks']">Танки</a>
       </div>
-      <div class="navbar-nav mr-auto" *ngIf="accountGlobalInfo.accountId === 0"></div>
+      <!-- <div class="navbar-nav mr-auto" *ngIf="accountGlobalInfo.accountId === 0"></div> -->
 
       <button class="btn btn-dark my-2 my-sm-0" title="Wargaming ID" style="margin-left: 2px; margin-right: 2px" (click)="logInLogOff()">
-          <span *ngIf="accountGlobalInfo.accountId === 0">WG.ID <fa-icon icon="sign-in-alt"></fa-icon></span>
-          <span *ngIf="accountGlobalInfo.accountId > 0">{{accountGlobalInfo.accountNick}} <fa-icon icon="sign-out-alt"></fa-icon></span>
+          <!-- <span *ngIf="accountGlobalInfo.accountId === 0">WG.ID <fa-icon icon="sign-in-alt"></fa-icon></span>
+          <span *ngIf="accountGlobalInfo.accountId > 0">{{accountGlobalInfo.accountNick}} <fa-icon icon="sign-out-alt"></fa-icon></span> -->
+          <span>ToDo: state<fa-icon icon="sign-out-alt"></fa-icon></span>
       </button>
       <app-account-search></app-account-search>
     </div>

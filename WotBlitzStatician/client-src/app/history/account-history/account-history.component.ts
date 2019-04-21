@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AccountInfoService } from '../../shared/services/account-info.service';
-import { AccountGlobalInfo } from '../../shared/account-global-info';
 import { AccountStatHistoryDto } from '../../model/account-stat-history-dto';
 import { AccountHistoryChartService } from './account-history-chart.service';
 
@@ -22,7 +21,6 @@ export class AccountHistoryComponent implements OnInit {
 
   constructor(
     private accountsInfoService: AccountInfoService,
-    public accountGlobalInfo: AccountGlobalInfo,
     private chartService: AccountHistoryChartService
   ) {}
 
@@ -33,19 +31,16 @@ export class AccountHistoryComponent implements OnInit {
   }
 
   loadHistory() {
-    // const context = canvas.getContext('winRateCanvas');
-
-    // context.clearRect(0, 0, canvas.width, canvas.height);
-    this.accountsInfoService
-      .getAccountStatHistory(this.accountGlobalInfo.accountId, this.dateFrom)
-      .subscribe(
-        data => {
-          this.accountHistory = data;
-          this.rareAccountHistory = this.chartService.rarefyArray(this.accountHistory);
-          this.createCharts();
-        },
-        error => console.error(error)
-      );
+    // this.accountsInfoService
+    //   .getAccountStatHistory(this.accountGlobalInfo.accountId, this.dateFrom)
+    //   .subscribe(
+    //     data => {
+    //       this.accountHistory = data;
+    //       this.rareAccountHistory = this.chartService.rarefyArray(this.accountHistory);
+    //       this.createCharts();
+    //     },
+    //     error => console.error(error)
+    //   );
   }
 
   createCharts() {

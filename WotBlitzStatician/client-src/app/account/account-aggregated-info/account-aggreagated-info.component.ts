@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AccountInfoService } from '../../shared/services/account-info.service';
-import { AccountGlobalInfo } from '../../shared/account-global-info';
 import { AccountAggregatedInfoService } from './account-aggreagated-info.service';
 import { Subscription } from 'rxjs';
 import { ChartRowData } from './chart-row-data';
@@ -16,24 +15,23 @@ export class AccountAggregatedInfoComponent implements OnInit, OnDestroy {
 
   constructor(
     private accountsInfoService: AccountInfoService,
-    private accountAggregatedInfoService: AccountAggregatedInfoService,
-    public accountGlobalInfo: AccountGlobalInfo
+    private accountAggregatedInfoService: AccountAggregatedInfoService
   ) {
     this.charts = [];
     this.readData();
-    this.subscription = accountGlobalInfo.accountInfoChanged
-      .asObservable()
-      .subscribe(() => this.readData());
+    // this.subscription = accountGlobalInfo.accountInfoChanged
+    //   .asObservable()
+    //   .subscribe(() => this.readData());
   }
 
   readData() {
     this.charts = [];
-    this.accountsInfoService
-      .getAggregatedAccountTanksInfo(this.accountGlobalInfo.accountId)
-      .subscribe(data => {
-        this.accountAggregatedInfoService.aggregateAccountTnksInfo(data);
-        this.constructCharts();
-      });
+    // this.accountsInfoService
+    //   .getAggregatedAccountTanksInfo(this.accountGlobalInfo.accountId)
+    //   .subscribe(data => {
+    //     this.accountAggregatedInfoService.aggregateAccountTnksInfo(data);
+    //     this.constructCharts();
+    //   });
   }
 
   constructCharts() {

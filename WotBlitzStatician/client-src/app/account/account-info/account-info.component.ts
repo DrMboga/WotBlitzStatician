@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { AccountGlobalInfo } from '../../shared/account-global-info';
 import { AccountInfoDto } from '../../model/account-info-dto';
 import { AccountMasteryInfo } from '../../model/account-mastery-info';
 import { PlayerPrivateInfo } from '../../model/player-private-info';
@@ -23,34 +22,33 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
 
   constructor(
     private accountService: AccountsService,
-    public accountGlobalInfo: AccountGlobalInfo
   ) {
     this.refreshAccountInfo();
-    this.subscription = accountGlobalInfo.accountInfoChanged
-      .asObservable()
-      .subscribe(() => this.refreshAccountInfo());
+    // this.subscription = accountGlobalInfo.accountInfoChanged
+    //   .asObservable()
+    //   .subscribe(() => this.refreshAccountInfo());
   }
 
   private refreshAccountInfo() {
-    const id = this.accountGlobalInfo.accountId;
-    if (id != null) {
-      this.accountService.getAccount(id).subscribe(
-        data => {
-          this.account = data;
-          this.mastery = this.GetMasteryInfo(this.account.accountMasteryInfo, 4);
-          this.rank3 = this.GetMasteryInfo(this.account.accountMasteryInfo, 3);
-          this.rank2 = this.GetMasteryInfo(this.account.accountMasteryInfo, 2);
-          this.rank1 = this.GetMasteryInfo(this.account.accountMasteryInfo, 1);
-        },
-        error => console.error(error)
-      );
-      this.accountService
-        .getPlayerPrivateInfo(id)
-        .subscribe(
-          data => (this.playerPrivateInfo = data),
-          error => console.error(error)
-        );
-    }
+    // const id = this.accountGlobalInfo.accountId;
+    // if (id != null) {
+    //   this.accountService.getAccount(id).subscribe(
+    //     data => {
+    //       this.account = data;
+    //       this.mastery = this.GetMasteryInfo(this.account.accountMasteryInfo, 4);
+    //       this.rank3 = this.GetMasteryInfo(this.account.accountMasteryInfo, 3);
+    //       this.rank2 = this.GetMasteryInfo(this.account.accountMasteryInfo, 2);
+    //       this.rank1 = this.GetMasteryInfo(this.account.accountMasteryInfo, 1);
+    //     },
+    //     error => console.error(error)
+    //   );
+    //   this.accountService
+    //     .getPlayerPrivateInfo(id)
+    //     .subscribe(
+    //       data => (this.playerPrivateInfo = data),
+    //       error => console.error(error)
+    //     );
+    // }
   }
 
   ngOnInit() {}

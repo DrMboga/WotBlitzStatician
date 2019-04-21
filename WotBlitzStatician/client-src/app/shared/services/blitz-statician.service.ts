@@ -6,14 +6,12 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { WebapiRequestsService } from './webapi-requests.service';
-import { AccountGlobalInfo } from '../account-global-info';
 import { AccountInfo } from '../../model/account-info';
 
 @Injectable()
 export class BlitzStaticianService extends WebapiRequestsService {
 
   constructor(
-    private accountGlobalInfo: AccountGlobalInfo,
     http: HttpClient,
     @Inject('BASE_URL') baseUrl: string,
     private datePipe: DatePipe) { super(http, baseUrl); }
