@@ -19,13 +19,13 @@ export class AccountsService extends WebapiRequestsService {
     private datePipe: DatePipe) { super(http, baseUrl); }
 
   getAccount(accountId: number): Observable<AccountInfoDto> {
-    return new Observable();
     // const url = this.accountGlobalInfo.isGuestAccount
     //   ? `${this.baseUrl}api/GuestAccount/${accountId}/accountinfo`
     //   : `${this.baseUrl}api/AccountInfo/${accountId}`;
-    // return this.http
-    //   .get<AccountInfoDto>(url)
-    //   .pipe(catchError(this.handleError));
+    const url = `${this.baseUrl}api/GuestAccount/${accountId}/accountinfo`;
+    return this.http
+      .get<AccountInfoDto>(url)
+      .pipe(catchError(this.handleError));
   }
 
   getPlayerPrivateInfo(accountId: number): Observable<PlayerPrivateInfo> {

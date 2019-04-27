@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { AccountRoutesModule } from './account.routes';
 import { StoreModule } from '@ngrx/store';
 import { accountReducer } from './state/account.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AccountEffects } from './state/account.effects';
 
 
 @NgModule({
@@ -19,7 +21,10 @@ import { accountReducer } from './state/account.reducer';
     AccountRoutesModule,
     SharedComponentModule,
     StoreModule.forFeature('account', accountReducer),
-    // ToDo: effects
+    EffectsModule.forFeature(
+      [ AccountEffects ]
+    ),
+
   ],
   exports: [
   ],
