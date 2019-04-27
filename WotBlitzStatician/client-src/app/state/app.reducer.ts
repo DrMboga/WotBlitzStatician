@@ -7,8 +7,7 @@ export function appReducer(state: State, action: AppActions): State {
       return {
         ...state,
         currentAccountId: action.payload.currentAccountId,
-        currentAccountNick: action.payload.currentAccountNick,
-        currentAccountLoggedIn: action.payload.currentAccountLoggedIn
+        currentAccountNick: action.payload.currentAccountNick
       };
     default:
       return state;

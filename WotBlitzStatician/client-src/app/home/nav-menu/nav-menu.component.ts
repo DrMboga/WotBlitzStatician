@@ -26,10 +26,9 @@ export class NavMenuComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch<ChangeCurrentAccount>(new ChangeCurrentAccount( {
-      currentAccountId: 90277267,
-      currentAccountNick: 'NickFromState',
-      currentAccountLoggedIn: true
-    }));
+      currentAccountId: { accountId: 90277267, accountLoggedIn: true},
+      currentAccountNick: 'NickFromState'
+     }));
   }
 
   public refreshStat() {

@@ -7,6 +7,7 @@ import { AccountsService } from '../account.service';
 import { Observable, of } from 'rxjs';
 import { AccountActionTypes, LoadAccountInfo, AccountInfoSuccessfullyLoaded, AccountInfoLoadFailed } from './account.actions';
 import { map, mergeMap, catchError } from 'rxjs/operators';
+import { CurrentAccountId } from '../../state/app.state';
 
 @Injectable()
 export class AccountEffects {
@@ -19,8 +20,8 @@ export class AccountEffects {
   getAccountInfo$: Observable<Action> = this.actions$.pipe(
     ofType(AccountActionTypes.LoadAccountInfo),
     map((action: LoadAccountInfo) => action.payload),
-    mergeMap((accountId: number) =>
-      this.accountService.getAccount(accountId).pipe(
+    mergeMap((accountId: CurrentAccountId) =>
+      this.accountService.getAccount(accountId.accountId, accountId.accountLoggedIn).pipe(
         map(accountInfo => (new AccountInfoSuccessfullyLoaded(accountInfo))),
         catchError(err => of(new AccountInfoLoadFailed(err)))
       )

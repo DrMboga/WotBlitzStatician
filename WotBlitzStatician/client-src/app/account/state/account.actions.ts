@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 import { AccountInfoDto } from '../../model/account-info-dto';
+import { CurrentAccountId } from '../../state/app.state';
 
 export enum AccountActionTypes {
   LoadAccountInfo = '[AccountInfo] loadAccount',
@@ -9,7 +10,7 @@ export enum AccountActionTypes {
 
 export class LoadAccountInfo implements Action {
   readonly type = AccountActionTypes.LoadAccountInfo;
-  constructor(public payload: number) { }
+  constructor(public payload: CurrentAccountId) { }
 }
 
 export class AccountInfoSuccessfullyLoaded implements Action {

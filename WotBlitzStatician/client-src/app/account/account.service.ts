@@ -18,7 +18,7 @@ export class AccountsService extends WebapiRequestsService {
     @Inject('BASE_URL') baseUrl: string,
     private datePipe: DatePipe) { super(http, baseUrl); }
 
-  getAccount(accountId: number): Observable<AccountInfoDto> {
+  getAccount(accountId: number, isLoggedIn: boolean): Observable<AccountInfoDto> {
     // const url = this.accountGlobalInfo.isGuestAccount
     //   ? `${this.baseUrl}api/GuestAccount/${accountId}/accountinfo`
     //   : `${this.baseUrl}api/AccountInfo/${accountId}`;

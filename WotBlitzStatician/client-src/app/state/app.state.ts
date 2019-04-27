@@ -1,5 +1,9 @@
 export interface State {
-  currentAccountId: number | null;
+  currentAccountId: CurrentAccountId;
   currentAccountNick: string | null;
-  currentAccountLoggedIn: boolean;
+}
+
+export interface CurrentAccountId {
+  accountId: number | null;
+  accountLoggedIn: boolean;
 }
