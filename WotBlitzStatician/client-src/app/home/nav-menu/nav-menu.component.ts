@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 
 import { AccountAuthenticationService } from '../../shared/services/account-authentication.service';
 import { BlitzStaticianService } from '../../shared/services/blitz-statician.service';
+import { Store } from '@ngrx/store';
+import { State } from '../../state/app.state';
+import { ChangeCurrentAccount } from '../../state/app.actions';
 
 @Component({
   selector: 'app-nav-menu',
@@ -14,6 +17,7 @@ export class NavMenuComponent implements OnInit {
   public refreshEnabled = true;
 
   constructor(
+    private store: Store<State>,
     private blitzStaticianService: BlitzStaticianService,
     @Inject('BASE_URL') private baseUrl: string,
     private accountAuthService: AccountAuthenticationService,
@@ -21,6 +25,11 @@ export class NavMenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch<ChangeCurrentAccount>(new ChangeCurrentAccount( {
+      currentAccountId: 90277267,
+      currentAccountNick: 'NickFromState',
+      currentAccountLoggedIn: true
+    }));
   }
 
   public refreshStat() {

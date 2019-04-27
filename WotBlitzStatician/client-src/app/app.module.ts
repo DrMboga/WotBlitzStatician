@@ -6,6 +6,7 @@ import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { NavMenuComponent } from './home/nav-menu/nav-menu.component';
 import { SplashScreenComponent } from './home/splash-screen/splash-screen.component';
 import { AccountSearchComponent } from './home/account-search/account-search.component';
 import { HttpClientModule } from '@angular/common/http';
+import { appReducer } from './state/app.reducer';
 
 registerLocaleData(localeRu);
 
@@ -42,12 +44,13 @@ registerLocaleData(localeRu);
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({}),
+    StoreModule.forFeature('app', appReducer),
     StoreDevtoolsModule.instrument({
       name: 'WotblitzStatician App DevTools',
       maxAge: 25,
       // logOnly: environment.production,
     }),
-
+    EffectsModule.forRoot([])
   ],
   providers: [
     DatePipe,

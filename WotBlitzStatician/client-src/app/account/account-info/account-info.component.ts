@@ -1,10 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
 
 import { AccountInfoDto } from '../../model/account-info-dto';
 import { AccountMasteryInfo } from '../../model/account-mastery-info';
 import { PlayerPrivateInfo } from '../../model/player-private-info';
-import { Subscription } from 'rxjs';
-import { AccountsService } from '../account.service';
+import { State } from '../state/account.state';
+import { getAccountInfo } from '../state/account.selectors';
+import { LoadAccountInfo } from '../state/account.actions';
+import { getAccountId } from '../../state/app.selectors';
+import { ChangeCurrentAccount } from '../../state/app.actions';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-info',
@@ -12,22 +18,32 @@ import { AccountsService } from '../account.service';
   styleUrls: ['./account-info.component.css']
 })
 export class AccountInfoComponent implements OnInit, OnDestroy {
+  public account$: Observable<AccountInfoDto>;
+
+  componentActive = true;
+
+
   public account: AccountInfoDto;
   public mastery: AccountMasteryInfo;
   public rank1: AccountMasteryInfo;
   public rank2: AccountMasteryInfo;
   public rank3: AccountMasteryInfo;
   public playerPrivateInfo: PlayerPrivateInfo;
-  subscription: Subscription;
 
-  constructor(
-    private accountService: AccountsService,
-  ) {
-    this.refreshAccountInfo();
-    // this.subscription = accountGlobalInfo.accountInfoChanged
-    //   .asObservable()
-    //   .subscribe(() => this.refreshAccountInfo());
+  constructor(private store: Store<State>) { }
+
+  ngOnInit() {
+    this.account$ = this.store.pipe(select(getAccountInfo));
+
+    this.store.pipe(
+      select(getAccountId),
+      takeWhile(() => this.componentActive)
+    )
+      .subscribe(accountId => this.store.dispatch<LoadAccountInfo>(new LoadAccountInfo(accountId)));
+
+    // ToDo: masters$, privateInfo$, error$
   }
+
 
   private refreshAccountInfo() {
     // const id = this.accountGlobalInfo.accountId;
@@ -51,10 +67,8 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
     // }
   }
 
-  ngOnInit() {}
-
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.componentActive = false;
   }
 
   private GetMasteryInfo(
@@ -66,7 +80,7 @@ export class AccountInfoComponent implements OnInit, OnDestroy {
     );
     if (masteryInfo == null) {
       const tanksCount = masters.length === 0 ? 0 : masters[0].allTanksCount;
-      masteryInfo = { markOfMastery: markOfMastery, tanksCount: 0, allTanksCount: tanksCount, masteryTanksRatio: 0};
+      masteryInfo = { markOfMastery: markOfMastery, tanksCount: 0, allTanksCount: tanksCount, masteryTanksRatio: 0 };
     }
     return masteryInfo;
   }

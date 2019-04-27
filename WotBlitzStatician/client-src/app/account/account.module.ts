@@ -8,6 +8,8 @@ import { ChartRowComponent } from './account-aggregated-info/chartRow/chart-row.
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AccountRoutesModule } from './account.routes';
+import { StoreModule } from '@ngrx/store';
+import { accountReducer } from './state/account.reducer';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { AccountRoutesModule } from './account.routes';
     CommonModule,
     FormsModule,
     AccountRoutesModule,
-    SharedComponentModule
+    SharedComponentModule,
+    StoreModule.forFeature('account', accountReducer),
+    // ToDo: effects
   ],
   exports: [
   ],
