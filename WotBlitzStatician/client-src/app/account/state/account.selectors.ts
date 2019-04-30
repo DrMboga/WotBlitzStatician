@@ -1,24 +1,29 @@
+import { State } from '../../state/app.state';
 import { AccountState } from './account.state';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-const getAccountFeatureState = createFeatureSelector<AccountState>('account');
+export interface State extends State {
+  accountState: AccountState;
+}
+
+const getAccountFeatureState = createFeatureSelector<AccountState>('accountState');
 
 export const getAccountInfo = createSelector(
   getAccountFeatureState,
-  state => state.currentAccount
+  state => state == null ? null : state.currentAccount
 );
 
 export const getMasters = createSelector(
   getAccountFeatureState,
-  state => state.masters
+  state => state == null ? null : state.masters
 );
 
 export const getPrivateInfo = createSelector(
   getAccountFeatureState,
-  state => state.playerPrivateInfo
+  state => state == null ? null : state.playerPrivateInfo
 );
 
 export const getAccountInoError = createSelector(
   getAccountFeatureState,
-  state => state.error
+  state => state == null ? null : state.error
 );

@@ -1,0 +1,9 @@
+<app-account-info
+  [account]="account$ | async"
+  [playerPrivateInfo]="privateInfo$ | async"
+></app-account-info>
+<app-account-aggregated-info></app-account-aggregated-info>
+<div *ngIf="errorMessage$ | async as errorMessage" class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>
+

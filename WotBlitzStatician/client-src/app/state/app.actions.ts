@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { State } from './app.state';
+import { HomeState } from '../home/state/home.state';
 
 export enum AppActionTypes {
   ChangeCurrentAccount = '[App] Change current account'
@@ -7,7 +7,7 @@ export enum AppActionTypes {
 
 export class ChangeCurrentAccount implements Action {
   readonly type = AppActionTypes.ChangeCurrentAccount;
-  constructor(public payload: State) {}
+  constructor(public payload: HomeState) {}
 }
 
 export type AppActions = ChangeCurrentAccount;

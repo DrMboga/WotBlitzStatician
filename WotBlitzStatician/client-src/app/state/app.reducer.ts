@@ -1,7 +1,7 @@
-import { State } from './app.state';
 import { AppActions, AppActionTypes } from './app.actions';
+import { HomeState } from '../home/state/home.state';
 
-export function appReducer(state: State, action: AppActions): State {
+export function appReducer(state: HomeState, action: AppActions): HomeState {
   switch (action.type) {
     case AppActionTypes.ChangeCurrentAccount:
       return {

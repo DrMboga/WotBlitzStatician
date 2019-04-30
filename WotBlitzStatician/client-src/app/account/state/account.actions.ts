@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { AccountInfoDto } from '../../model/account-info-dto';
-import { CurrentAccountId } from '../../state/app.state';
+import { CurrentAccountId } from '../../home/state/home.state';
 
 export enum AccountActionTypes {
   LoadAccountInfo = '[AccountInfo] loadAccount',

@@ -32,6 +32,11 @@ export class NavMenuComponent implements OnInit {
   }
 
   public refreshStat() {
+    this.store.dispatch<ChangeCurrentAccount>(new ChangeCurrentAccount( {
+      currentAccountId: { accountId: 44, accountLoggedIn: true},
+      currentAccountNick: 'NickFromState'
+     }));
+
     // if (this.accountGlobalInfo.accountId === 0) {
     //   return;
     // }

@@ -7,7 +7,7 @@ import { AccountsService } from '../account.service';
 import { Observable, of } from 'rxjs';
 import { AccountActionTypes, LoadAccountInfo, AccountInfoSuccessfullyLoaded, AccountInfoLoadFailed } from './account.actions';
 import { map, mergeMap, catchError } from 'rxjs/operators';
-import { CurrentAccountId } from '../../state/app.state';
+import { CurrentAccountId } from '../../home/state/home.state';
 
 @Injectable()
 export class AccountEffects {

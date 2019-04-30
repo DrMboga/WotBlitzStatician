@@ -1,9 +1,6 @@
+import { HomeState } from '../home/state/home.state';
+
 export interface State {
-  currentAccountId: CurrentAccountId;
-  currentAccountNick: string | null;
+  homeState: HomeState;
 }
 
-export interface CurrentAccountId {
-  accountId: number | null;
-  accountLoggedIn: boolean;
-}

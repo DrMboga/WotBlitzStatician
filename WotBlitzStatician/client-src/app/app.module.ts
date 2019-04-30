@@ -44,7 +44,7 @@ registerLocaleData(localeRu);
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({}),
-    StoreModule.forFeature('app', appReducer),
+    StoreModule.forFeature('homeState', appReducer),
     StoreDevtoolsModule.instrument({
       name: 'WotblitzStatician App DevTools',
       maxAge: 25,

@@ -19,25 +19,22 @@ export class AccountsService extends WebapiRequestsService {
     private datePipe: DatePipe) { super(http, baseUrl); }
 
   getAccount(accountId: number, isLoggedIn: boolean): Observable<AccountInfoDto> {
-    // const url = this.accountGlobalInfo.isGuestAccount
-    //   ? `${this.baseUrl}api/GuestAccount/${accountId}/accountinfo`
-    //   : `${this.baseUrl}api/AccountInfo/${accountId}`;
-    const url = `${this.baseUrl}api/GuestAccount/${accountId}/accountinfo`;
+    const url = isLoggedIn
+      ? `${this.baseUrl}api/AccountInfo/${accountId}`
+      : `${this.baseUrl}api/GuestAccount/${accountId}/accountinfo`;
     return this.http
       .get<AccountInfoDto>(url)
       .pipe(catchError(this.handleError));
   }
 
-  getPlayerPrivateInfo(accountId: number): Observable<PlayerPrivateInfo> {
-    return new Observable();
-
-    // if (this.accountGlobalInfo.isGuestAccount) {
-    //   return new Observable<PlayerPrivateInfo>();
-    // }
-    // return this.http
-    //   .get<PlayerPrivateInfo>(
-    //     `${this.baseUrl}api/WgRequests/AccountPrivateInfo/${accountId}`
-    //   )
-    //   .pipe(catchError(this.handleError));
+  getPlayerPrivateInfo(accountId: number, isLoggedIn: boolean): Observable<PlayerPrivateInfo> {
+    if (isLoggedIn) {
+      return this.http
+        .get<PlayerPrivateInfo>(
+          `${this.baseUrl}api/WgRequests/AccountPrivateInfo/${accountId}`
+        )
+        .pipe(catchError(this.handleError));
+    }
+    return new Observable<PlayerPrivateInfo>();
   }
 }

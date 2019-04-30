@@ -1,75 +1,38 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Store, select } from '@ngrx/store';
+import { Component, Input } from '@angular/core';
 
 import { AccountInfoDto } from '../../model/account-info-dto';
 import { AccountMasteryInfo } from '../../model/account-mastery-info';
 import { PlayerPrivateInfo } from '../../model/player-private-info';
-import { State } from '../state/account.state';
-import { getAccountInfo } from '../state/account.selectors';
-import { LoadAccountInfo } from '../state/account.actions';
-import { getAccountId } from '../../state/app.selectors';
-import { ChangeCurrentAccount } from '../../state/app.actions';
-import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-info',
   templateUrl: './account-info.component.html',
   styleUrls: ['./account-info.component.css']
 })
-export class AccountInfoComponent implements OnInit, OnDestroy {
-  public account$: Observable<AccountInfoDto>;
+export class AccountInfoComponent {
 
-  componentActive = true;
+  @Input() public playerPrivateInfo: PlayerPrivateInfo;
 
+  private _account: AccountInfoDto;
+  @Input() public set account(account: AccountInfoDto) {
+    this._account = account;
+    if (this._account != null && this._account.accountMasteryInfo != null) {
+      this.mastery = this.GetMasteryInfo(this._account.accountMasteryInfo, 4);
+      this.rank3 = this.GetMasteryInfo(this._account.accountMasteryInfo, 3);
+      this.rank2 = this.GetMasteryInfo(this._account.accountMasteryInfo, 2);
+      this.rank1 = this.GetMasteryInfo(this._account.accountMasteryInfo, 1);
+    }
+  }
+  public get account(): AccountInfoDto {
+    return this._account;
+  }
 
-  public account: AccountInfoDto;
   public mastery: AccountMasteryInfo;
   public rank1: AccountMasteryInfo;
   public rank2: AccountMasteryInfo;
   public rank3: AccountMasteryInfo;
-  public playerPrivateInfo: PlayerPrivateInfo;
 
-  constructor(private store: Store<State>) { }
-
-  ngOnInit() {
-    this.account$ = this.store.pipe(select(getAccountInfo));
-
-    this.store.pipe(
-      select(getAccountId),
-      takeWhile(() => this.componentActive)
-    )
-      .subscribe(accountId => this.store.dispatch<LoadAccountInfo>(new LoadAccountInfo(accountId)));
-
-    // ToDo: masters$, privateInfo$, error$
-  }
-
-
-  private refreshAccountInfo() {
-    // const id = this.accountGlobalInfo.accountId;
-    // if (id != null) {
-    //   this.accountService.getAccount(id).subscribe(
-    //     data => {
-    //       this.account = data;
-    //       this.mastery = this.GetMasteryInfo(this.account.accountMasteryInfo, 4);
-    //       this.rank3 = this.GetMasteryInfo(this.account.accountMasteryInfo, 3);
-    //       this.rank2 = this.GetMasteryInfo(this.account.accountMasteryInfo, 2);
-    //       this.rank1 = this.GetMasteryInfo(this.account.accountMasteryInfo, 1);
-    //     },
-    //     error => console.error(error)
-    //   );
-    //   this.accountService
-    //     .getPlayerPrivateInfo(id)
-    //     .subscribe(
-    //       data => (this.playerPrivateInfo = data),
-    //       error => console.error(error)
-    //     );
-    // }
-  }
-
-  ngOnDestroy(): void {
-    this.componentActive = false;
-  }
+  constructor() { }
 
   private GetMasteryInfo(
     masters: AccountMasteryInfo[],

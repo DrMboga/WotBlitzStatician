@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { accountReducer } from './state/account.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AccountEffects } from './state/account.effects';
+import { AccountInfoShellComponent } from './account-shell/account-shell.component';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { AccountEffects } from './state/account.effects';
     FormsModule,
     AccountRoutesModule,
     SharedComponentModule,
-    StoreModule.forFeature('account', accountReducer),
+    StoreModule.forFeature('accountState', accountReducer),
     EffectsModule.forFeature(
       [ AccountEffects ]
     ),
@@ -29,6 +30,7 @@ import { AccountEffects } from './state/account.effects';
   exports: [
   ],
   declarations: [
+    AccountInfoShellComponent,
     AccountInfoComponent,
     AccountAggregatedInfoComponent,
     ChartRowComponent
