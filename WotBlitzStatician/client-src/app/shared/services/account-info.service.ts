@@ -100,16 +100,6 @@ export class AccountInfoService {
       .pipe(catchError(this.handleError));
   }
 
-  getAggregatedAccountTanksInfo(
-    accountId: number
-  ): Observable<AccountTanksInfoAggregatedDto[]> {
-    return this.http
-      .get<AccountTanksInfoAggregatedDto[]>(
-        `${this.baseUrl}api/TanksStat/AggregatedAccountTanksInfo/${accountId}`
-      )
-      .pipe(catchError(this.handleError));
-  }
-
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

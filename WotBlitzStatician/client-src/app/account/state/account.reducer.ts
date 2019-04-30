@@ -13,6 +13,16 @@ export function accountReducer(state: AccountState, action: AccountActions): Acc
         ...state,
         error: action.payload
       };
+    case AccountActionTypes.AccountAggregatedInfoLoaded:
+      return {
+        ...state,
+        aggregatedInfo: action.payload
+      };
+    case AccountActionTypes.AccountAggregatedInfoLoadFailed:
+      return {
+        ...state,
+        aggregatedInfoError: action.payload
+      };
     default:
       return state;
   }

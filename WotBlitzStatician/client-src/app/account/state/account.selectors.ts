@@ -27,3 +27,13 @@ export const getAccountInoError = createSelector(
   getAccountFeatureState,
   state => state == null ? null : state.error
 );
+
+export const getAccountAggregatedInfo = createSelector(
+  getAccountFeatureState,
+  state => state == null ? null : state.aggregatedInfo
+);
+
+export const getAccountAggregatetInfoError = createSelector(
+  getAccountFeatureState,
+  state => state == null ? null : state.aggregatedInfoError
+);

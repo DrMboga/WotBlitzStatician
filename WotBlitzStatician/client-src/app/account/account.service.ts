@@ -9,6 +9,7 @@ import { WebapiRequestsService } from '../shared/services/webapi-requests.servic
 
 import { AccountInfoDto } from '../model/account-info-dto';
 import { PlayerPrivateInfo } from '../model/player-private-info';
+import { AccountTanksInfoAggregatedDto } from '../model/account-tanks-info-aggregated-dto';
 
 @Injectable()
 export class AccountsService extends WebapiRequestsService {
@@ -37,4 +38,14 @@ export class AccountsService extends WebapiRequestsService {
     }
     return new Observable<PlayerPrivateInfo>();
   }
+
+  getAggregatedAccountTanksInfo(accountId: number, isLoggedIn: boolean): Observable<AccountTanksInfoAggregatedDto[]> {
+    // ToDo: Make aggregated info for guests
+    return this.http
+      .get<AccountTanksInfoAggregatedDto[]>(
+        `${this.baseUrl}api/TanksStat/AggregatedAccountTanksInfo/${accountId}`
+      )
+      .pipe(catchError(this.handleError));
+  }
+
 }

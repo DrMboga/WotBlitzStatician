@@ -1,38 +1,33 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AccountInfoService } from '../../shared/services/account-info.service';
+import { Component, Input } from '@angular/core';
 import { AccountAggregatedInfoService } from './account-aggreagated-info.service';
-import { Subscription } from 'rxjs';
 import { ChartRowData } from './chart-row-data';
+import { AccountTanksInfoAggregatedDto } from '../../model/account-tanks-info-aggregated-dto';
 
 @Component({
   selector: 'app-account-aggregated-info',
   templateUrl: 'account-aggreagated-info.component.html'
 })
-export class AccountAggregatedInfoComponent implements OnInit, OnDestroy {
-  private subscription: Subscription;
-
+export class AccountAggregatedInfoComponent {
   public charts: ChartRowData[];
 
-  constructor(
-    private accountsInfoService: AccountInfoService,
-    private accountAggregatedInfoService: AccountAggregatedInfoService
-  ) {
+  private _aggregatedInfo: AccountTanksInfoAggregatedDto[];
+  @Input() public set aggregatedInfo(inputInfo: AccountTanksInfoAggregatedDto[]) {
     this.charts = [];
-    this.readData();
-    // this.subscription = accountGlobalInfo.accountInfoChanged
-    //   .asObservable()
-    //   .subscribe(() => this.readData());
+    this._aggregatedInfo = inputInfo;
+    if (inputInfo == null) {
+      return;
+    }
+    this.accountAggregatedInfoService.aggregateAccountTnksInfo(inputInfo);
+    this.constructCharts();
   }
 
-  readData() {
-    this.charts = [];
-    // this.accountsInfoService
-    //   .getAggregatedAccountTanksInfo(this.accountGlobalInfo.accountId)
-    //   .subscribe(data => {
-    //     this.accountAggregatedInfoService.aggregateAccountTnksInfo(data);
-    //     this.constructCharts();
-    //   });
+  public get aggregatedInfo(): AccountTanksInfoAggregatedDto[] {
+    return this._aggregatedInfo;
   }
+
+  constructor(
+    private accountAggregatedInfoService: AccountAggregatedInfoService
+  ) { }
 
   constructCharts() {
     this.charts = [
@@ -77,10 +72,5 @@ export class AccountAggregatedInfoComponent implements OnInit, OnDestroy {
         dataByPremium: this.accountAggregatedInfoService.masteryByPremium
       }
     ];
-  }
-
-  ngOnInit() {}
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 }

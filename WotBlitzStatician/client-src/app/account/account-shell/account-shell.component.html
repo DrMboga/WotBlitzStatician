@@ -2,8 +2,13 @@
   [account]="account$ | async"
   [playerPrivateInfo]="privateInfo$ | async"
 ></app-account-info>
-<app-account-aggregated-info></app-account-aggregated-info>
+<app-account-aggregated-info
+  [aggregatedInfo]="accountAggregatedInfo$ | async"
+></app-account-aggregated-info>
 <div *ngIf="errorMessage$ | async as errorMessage" class="alert alert-danger">
-  Error: {{ errorMessage }}
+  Getting account info error: {{ errorMessage }}
+</div>
+<div *ngIf="aggregatedInfoErrorMessage$ | async as aggregatedInfoErrorMessage" class="alert alert-danger">
+  Getting account aggregated info error: {{ aggregatedInfoErrorMessage }}
 </div>
 
