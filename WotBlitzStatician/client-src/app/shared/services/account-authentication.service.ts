@@ -20,8 +20,7 @@ export class AccountAuthenticationService {
     private blitzStaticianService: BlitzStaticianService
   ) {}
 
-  public parseWargamingAuthResponse(response: WgAuthResponse) {
-    console.log('Serialized response', response);
+  public parseRote(response: WgAuthResponse) {
     if (response.status === 'ok') {
       this.saveAccountInfoAndEnter(response);
       this.showButtons = false;

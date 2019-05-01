@@ -21,8 +21,7 @@ export class NavMenuComponent implements OnInit {
     private blitzStaticianService: BlitzStaticianService,
     @Inject('BASE_URL') private baseUrl: string,
     private accountAuthService: AccountAuthenticationService,
-    private router: Router) {
-  }
+    private router: Router) { }
 
   ngOnInit() {
     this.store.dispatch<ChangeCurrentAccount>(new ChangeCurrentAccount( {

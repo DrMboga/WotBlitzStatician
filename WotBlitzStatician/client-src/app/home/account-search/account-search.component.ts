@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountInfo } from '../../model/account-info';
 import { BlitzStaticianService } from '../../shared/services/blitz-statician.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-search',
@@ -21,7 +22,9 @@ export class AccountSearchComponent implements OnInit {
       return;
     }
 
-    this.blitzStatician.findAccounts(this.searchString).subscribe(
+    this.blitzStatician.findAccounts(this.searchString)
+      .pipe(take(1))
+      .subscribe(
       data => {
         this.foundAccounts = data;
       },

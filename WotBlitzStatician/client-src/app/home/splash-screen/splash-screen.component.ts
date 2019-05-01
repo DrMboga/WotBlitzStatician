@@ -2,10 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccountAuthenticationService } from '../../shared/services/account-authentication.service';
 import { WgAuthResponse } from '../../model/wg-auth-response';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 @Component({
-  selector: 'splash-screen',
+  selector: 'app-splash-screen',
   templateUrl: './splash-screen.component.html',
   styleUrls: ['./splash-screen.component.css']
 })
@@ -18,9 +18,10 @@ export class SplashScreenComponent implements OnInit {
       activeRoute.queryParams
             .pipe(
               map(params => params as WgAuthResponse),
+              take(1)
             )
             .subscribe(params =>
-              accountAuthService.parseWargamingAuthResponse(params)
+              accountAuthService.parseRote(params)
             , error => console.error('queryParams eror', error));
     }
 
