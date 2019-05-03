@@ -62,4 +62,14 @@ export class BlitzStaticianService extends WebapiRequestsService {
       .pipe(catchError(this.handleError));
   }
 
+  // api/AccountInfo/ShortAccountInfo/46512100
+  getShortAccountInfo(accountId: number): Observable<AccountInfo> {
+    return this.http
+      .get<AccountInfo>(
+        `${this.baseUrl}api/AccountInfo/ShortAccountInfo/${accountId}`
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+
 }
