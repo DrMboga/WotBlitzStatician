@@ -6,7 +6,7 @@ import { WgAuthResponse } from '../../model/wg-auth-response';
 import { BlitzStaticianService } from './blitz-statician.service';
 import { Store } from '@ngrx/store';
 import { State } from '../../state/app.state';
-import { ChangeCurrentAccount } from '../../state/app.actions';
+import { ChangeCurrentAccount, ClearWargamingLoginUrl } from '../../state/app.actions';
 
 @Injectable()
 export class AccountAuthenticationService {
@@ -40,7 +40,9 @@ export class AccountAuthenticationService {
               if (now.getTime() <= tokenExpiration.getTime()) {
                 this.store.dispatch<ChangeCurrentAccount>(new ChangeCurrentAccount( {
                   currentAccountId: { accountId: a.accountId, accountLoggedIn: true},
-                  currentAccountNick: a.nickName
+                  currentAccountNick: a.nickName,
+                  wargamingAuthUrl: null,
+                  wargamingAuthUrlLoadError: null
                  }));
                 // this.router.navigate(['/']);
               }
@@ -76,8 +78,12 @@ export class AccountAuthenticationService {
     );
     this.store.dispatch<ChangeCurrentAccount>(new ChangeCurrentAccount( {
       currentAccountId: { accountId: wgAuthResponse.account_id, accountLoggedIn: true},
-      currentAccountNick: wgAuthResponse.nickname
-     }));
+      currentAccountNick: wgAuthResponse.nickname,
+      wargamingAuthUrl: null,
+      wargamingAuthUrlLoadError: null
+    }));
+
+    this.store.dispatch<ClearWargamingLoginUrl>(new ClearWargamingLoginUrl());
   }
 
   private SaveAccountInfo(accountInfo: AccountInfo) {

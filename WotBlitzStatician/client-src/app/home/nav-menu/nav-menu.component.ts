@@ -5,7 +5,7 @@ import { AccountAuthenticationService } from '../../shared/services/account-auth
 import { BlitzStaticianService } from '../../shared/services/blitz-statician.service';
 import { Store } from '@ngrx/store';
 import { State } from '../../state/app.state';
-import { ChangeCurrentAccount } from '../../state/app.actions';
+import { ChangeCurrentAccount, WargamingLogin } from '../../state/app.actions';
 
 @Component({
   selector: 'app-nav-menu',
@@ -24,18 +24,13 @@ export class NavMenuComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.store.dispatch<ChangeCurrentAccount>(new ChangeCurrentAccount( {
-      currentAccountId: { accountId: 90277267, accountLoggedIn: true},
-      currentAccountNick: 'NickFromState'
-     }));
+    // this.store.dispatch<ChangeCurrentAccount>(new ChangeCurrentAccount( {
+    //   currentAccountId: { accountId: 90277267, accountLoggedIn: true},
+    //   currentAccountNick: 'NickFromState'
+    //  }));
   }
 
   public refreshStat() {
-    this.store.dispatch<ChangeCurrentAccount>(new ChangeCurrentAccount( {
-      currentAccountId: { accountId: 44, accountLoggedIn: true},
-      currentAccountNick: 'NickFromState'
-     }));
-
     // if (this.accountGlobalInfo.accountId === 0) {
     //   return;
     // }
@@ -49,6 +44,9 @@ export class NavMenuComponent implements OnInit {
   }
 
   public logInLogOff() {
+    this.store.dispatch<WargamingLogin>(new WargamingLogin());
+    this.router.navigate(['/splash-screen']);
+
     // if (this.accountGlobalInfo.accountId === 0) {
     //   this.blitzStaticianService.getAuthenticationRequest(`${this.baseUrl}splash-screen`).subscribe(
     //     authRequest => {

@@ -5,7 +5,8 @@ import { WgAuthResponse } from '../../model/wg-auth-response';
 import { map, take, takeWhile } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { State } from '../../state/app.state';
-import { getAccountId } from '../../state/app.selectors';
+import { getAccountId, getWgAuthUrl, getWgAuthUrlError } from '../../state/app.selectors';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-splash-screen',
@@ -14,6 +15,8 @@ import { getAccountId } from '../../state/app.selectors';
 })
 export class SplashScreenComponent implements OnInit, OnDestroy {
   componentActive = true;
+
+  public wgAuthUrlGettingError$: Observable<string>;
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -43,6 +46,18 @@ export class SplashScreenComponent implements OnInit, OnDestroy {
         }
       });
 
+    // Listen to wg auth url selector
+    this.store.pipe(
+      select(getWgAuthUrl),
+      takeWhile(() => this.componentActive)
+    )
+      .subscribe(wgAuthUrl => {
+        if (wgAuthUrl != null) {
+          window.location.href = wgAuthUrl;
+        }
+      });
+
+    this.wgAuthUrlGettingError$ = this.store.pipe(select(getWgAuthUrlError));
   }
 
   ngOnDestroy(): void {

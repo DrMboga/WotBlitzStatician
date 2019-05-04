@@ -9,6 +9,22 @@ export function appReducer(state: HomeState = initialState, action: AppActions):
         currentAccountId: action.payload.currentAccountId,
         currentAccountNick: action.payload.currentAccountNick
       };
+    case AppActionTypes.WargamingLoginUrlLoaded:
+      return {
+        ...state,
+        wargamingAuthUrl: action.payload
+      };
+    case AppActionTypes.WargamingLoginUrlLoadFailed:
+      return {
+        ...state,
+        wargamingAuthUrlLoadError: action.payload
+      };
+    case AppActionTypes.ClearWargamingLoginUrl:
+      return {
+        ...state,
+        wargamingAuthUrl: null,
+        wargamingAuthUrlLoadError: null
+      };
     default:
       return state;
   }

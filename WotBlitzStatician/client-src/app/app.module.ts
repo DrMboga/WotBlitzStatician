@@ -25,6 +25,7 @@ import { SplashScreenComponent } from './home/splash-screen/splash-screen.compon
 import { AccountSearchComponent } from './home/account-search/account-search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { appReducer } from './state/app.reducer';
+import { HomeEffects } from './home/state/home.effects';
 
 registerLocaleData(localeRu);
 
@@ -50,7 +51,8 @@ registerLocaleData(localeRu);
       maxAge: 25,
       // logOnly: environment.production,
     }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    EffectsModule.forFeature([HomeEffects])
   ],
   providers: [
     DatePipe,

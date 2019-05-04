@@ -7,3 +7,13 @@ export const getAccountId = createSelector(
   getAppFeatureState,
   state => state.currentAccountId
 );
+
+export const getWgAuthUrl = createSelector(
+  getAppFeatureState,
+  state => state.wargamingAuthUrl
+);
+
+export const getWgAuthUrlError = createSelector(
+  getAppFeatureState,
+  state => state.wargamingAuthUrlLoadError
+);

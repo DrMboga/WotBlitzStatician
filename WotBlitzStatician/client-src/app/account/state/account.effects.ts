@@ -5,7 +5,10 @@ import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { AccountsService } from '../account.service';
 import { Observable, of } from 'rxjs';
-import { AccountActionTypes, LoadAccountInfo, AccountInfoSuccessfullyLoaded, AccountInfoLoadFailed, LoadAccountAggregatedInfo, AccounAggregatedtInfoSuccessfullyLoaded, AccountAggregatedInfoLoadFailed } from './account.actions';
+import {
+  AccountActionTypes, LoadAccountInfo, AccountInfoSuccessfullyLoaded, AccountInfoLoadFailed,
+  LoadAccountAggregatedInfo, AccounAggregatedtInfoSuccessfullyLoaded, AccountAggregatedInfoLoadFailed
+} from './account.actions';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { CurrentAccountId } from '../../home/state/home.state';
 

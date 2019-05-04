@@ -1,3 +1,7 @@
+<div *ngIf="wgAuthUrlGettingError$ | async as errorMessage" class="alert alert-danger">
+  Could not get URL to Wargaming login page: {{ errorMessage }}
+</div>
+
 <div class="text-center">
     <img src="../../../assets/img/splash.png">
 </div>
