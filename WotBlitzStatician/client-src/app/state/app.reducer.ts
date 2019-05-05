@@ -7,7 +7,8 @@ export function appReducer(state: HomeState = initialState, action: AppActions):
       return {
         ...state,
         currentAccountId: action.payload.currentAccountId,
-        currentAccountNick: action.payload.currentAccountNick
+        currentAccountNick: action.payload.currentAccountNick,
+        loggedInAccountNick: action.payload.loggedInAccountNick
       };
     case AppActionTypes.WargamingLoginUrlLoaded:
       return {

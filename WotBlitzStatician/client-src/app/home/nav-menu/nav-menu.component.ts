@@ -43,9 +43,8 @@ export class NavMenuComponent implements OnInit {
     // );
   }
 
-  public logInLogOff() {
+  public logIn() {
     this.store.dispatch<WargamingLogin>(new WargamingLogin());
-    this.router.navigate(['/splash-screen']);
 
     // if (this.accountGlobalInfo.accountId === 0) {
     //   this.blitzStaticianService.getAuthenticationRequest(`${this.baseUrl}splash-screen`).subscribe(

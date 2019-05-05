@@ -41,6 +41,7 @@ export class AccountAuthenticationService {
                 this.store.dispatch<ChangeCurrentAccount>(new ChangeCurrentAccount( {
                   currentAccountId: { accountId: a.accountId, accountLoggedIn: true},
                   currentAccountNick: a.nickName,
+                  loggedInAccountNick: a.nickName,
                   wargamingAuthUrl: null,
                   wargamingAuthUrlLoadError: null
                  }));
@@ -79,6 +80,7 @@ export class AccountAuthenticationService {
     this.store.dispatch<ChangeCurrentAccount>(new ChangeCurrentAccount( {
       currentAccountId: { accountId: wgAuthResponse.account_id, accountLoggedIn: true},
       currentAccountNick: wgAuthResponse.nickname,
+      loggedInAccountNick: wgAuthResponse.nickname,
       wargamingAuthUrl: null,
       wargamingAuthUrlLoadError: null
     }));
