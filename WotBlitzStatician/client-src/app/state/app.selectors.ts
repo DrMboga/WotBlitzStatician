@@ -8,6 +8,16 @@ export const getAccountId = createSelector(
   state => state.currentAccountId
 );
 
+export const getCurremtAccountNick = createSelector(
+  getAppFeatureState,
+  state => state.currentAccountNick
+);
+
+export const getLoggedinAccountNick = createSelector(
+  getAppFeatureState,
+  state => state.loggedInAccountNick
+);
+
 export const getWgAuthUrl = createSelector(
   getAppFeatureState,
   state => state.wargamingAuthUrl
