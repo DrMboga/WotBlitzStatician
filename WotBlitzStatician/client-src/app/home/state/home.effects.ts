@@ -8,16 +8,19 @@ import {
   AppActionTypes, WargamingLoginUrlLoaded, WargamingLoginUrlLoadFailed,
   RefreshAccountInfo, ChangeCurrentAccount, AccountInfoRefreshed, AccountInfoRefreshFailed
 } from '../../state/app.actions';
-import { mergeMap, map, catchError } from 'rxjs/operators';
+import { mergeMap, map, catchError, tap } from 'rxjs/operators';
 import { BlitzStaticianService } from '../../shared/services/blitz-statician.service';
+import { Router } from '@angular/router';
+import { AccountAuthenticationService } from '../../shared/services/account-authentication.service';
 
 @Injectable()
 export class HomeEffects {
   constructor(
     private blitzStaticianService: BlitzStaticianService,
+    private accauntAuthService: AccountAuthenticationService,
     @Inject('BASE_URL') private baseUrl: string,
-    private actions$: Actions
-
+    private actions$: Actions,
+    private router: Router
   ) { }
 
   @Effect()
@@ -41,5 +44,14 @@ export class HomeEffects {
         catchError(err => of(new AccountInfoRefreshFailed(err)))
       )
     )
+  );
+
+  @Effect({ dispatch: false })
+  Logout = this.actions$.pipe(
+    ofType(AppActionTypes.WargamingLogout),
+    tap(() => {
+      this.accauntAuthService.dropCookie();
+      this.router.navigate(['/splash-screen']);
+    })
   );
 }

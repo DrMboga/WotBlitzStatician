@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { State } from '../../state/app.state';
-import { WargamingLogin, RefreshAccountInfo, AppActionTypes } from '../../state/app.actions';
+import { WargamingLogin, RefreshAccountInfo, AppActionTypes, WargamingLogout, AccountInfoRefreshed } from '../../state/app.actions';
 import { getAccountId, getCurremtAccountNick, getLoggedinAccountNick } from '../../state/app.selectors';
-import { takeWhile } from 'rxjs/operators';
+import { takeWhile, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Actions, ofType } from '@ngrx/effects';
 
@@ -47,6 +47,7 @@ export class NavMenuComponent implements OnInit, OnDestroy {
 
     this.actions$.pipe(
       ofType(AppActionTypes.AccountInfoRefreshed),
+      map((action: AccountInfoRefreshed) => action.payload),
       takeWhile(() => this.componentActive)
     )
       .subscribe(accountId => this.refreshEnabled = true);
@@ -67,23 +68,10 @@ export class NavMenuComponent implements OnInit, OnDestroy {
 
   public logIn() {
     this.store.dispatch<WargamingLogin>(new WargamingLogin());
-
-    // if (this.accountGlobalInfo.accountId === 0) {
-    //   this.blitzStaticianService.getAuthenticationRequest(`${this.baseUrl}splash-screen`).subscribe(
-    //     authRequest => {
-    //       // Redirect to authRequest
-    //       window.location.href = authRequest;
-    //   });
-    // } else {
-    //   this.accountAuthService.dropCookie();
-    //   this.accountGlobalInfo.accountId = 0;
-    //   this.accountGlobalInfo.accountNick = 'WotBlitzStatician';
-    //   this.router.navigate(['/splash-screen']);
-    // }
   }
 
   public logOut() {
-
+    this.store.dispatch<WargamingLogout>(new WargamingLogout());
   }
 
   public returnToLoggedinAccount() { }

@@ -26,6 +26,13 @@ export function appReducer(state: HomeState = initialState, action: AppActions):
         wargamingAuthUrl: null,
         wargamingAuthUrlLoadError: null
       };
+    case AppActionTypes.WargamingLogout:
+      return {
+        ...state,
+        currentAccountId: { accountId: 0, accountLoggedIn: false},
+        currentAccountNick: 'WotblitzStatician',
+        loggedInAccountNick: null
+      };
     default:
       return state;
   }

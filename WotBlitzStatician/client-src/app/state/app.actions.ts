@@ -9,7 +9,8 @@ export enum AppActionTypes {
   ClearWargamingLoginUrl = '[App] Clear WG Login Url',
   RefreshAccountInfo = '[App] Refresh accountInfo',
   AccountInfoRefreshed = '[App] AccountInfo refreshed',
-  AccountInfoRefreshFailed = '[App] AccountInfo refreshFailed'
+  AccountInfoRefreshFailed = '[App] AccountInfo refreshFailed',
+  WargamingLogout = '[App] Wargaming logout'
 }
 
 export class ChangeCurrentAccount implements Action {
@@ -50,6 +51,10 @@ export class AccountInfoRefreshFailed implements Action {
   constructor(public payload: string) {}
 }
 
+export class WargamingLogout implements Action {
+  readonly type = AppActionTypes.WargamingLogout;
+}
+
 
 export type AppActions = ChangeCurrentAccount
   | WargamingLogin
@@ -58,4 +63,5 @@ export type AppActions = ChangeCurrentAccount
   | ClearWargamingLoginUrl
   | RefreshAccountInfo
   | AccountInfoRefreshed
-  | AccountInfoRefreshFailed;
+  | AccountInfoRefreshFailed
+  | WargamingLogout;

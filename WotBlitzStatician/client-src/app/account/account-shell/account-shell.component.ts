@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { takeWhile } from 'rxjs/operators';
+import { takeWhile, map } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 
 import { AccountInfoDto } from '../../model/account-info-dto';
@@ -11,7 +11,7 @@ import { getAccountId } from '../../state/app.selectors';
 import { getAccountInfo, getPrivateInfo, getAccountInoError } from '../state/account.selectors';
 import { AccountTanksInfoAggregatedDto } from '../../model/account-tanks-info-aggregated-dto';
 import { Actions, ofType } from '@ngrx/effects';
-import { AppActionTypes } from '../../state/app.actions';
+import { AppActionTypes, AccountInfoRefreshed } from '../../state/app.actions';
 
 @Component({
   selector: 'app-account-shell',
@@ -37,15 +37,22 @@ export class AccountInfoShellComponent implements OnInit, OnDestroy {
       takeWhile(() => this.componentActive)
     )
       .subscribe(accountId => {
+        if (accountId.accountId === 0) {
+          return;
+        }
         this.store.dispatch<LoadAccountInfo>(new LoadAccountInfo(accountId));
         this.store.dispatch<LoadAccountAggregatedInfo>(new LoadAccountAggregatedInfo(accountId));
       });
 
       this.actions$.pipe(
         ofType(AppActionTypes.AccountInfoRefreshed),
+        map((action: AccountInfoRefreshed) => action.payload),
         takeWhile(() => this.componentActive)
       )
         .subscribe(accountId => {
+          if (accountId.accountId === 0) {
+            return;
+          }
           this.store.dispatch<LoadAccountInfo>(new LoadAccountInfo(accountId));
           this.store.dispatch<LoadAccountAggregatedInfo>(new LoadAccountAggregatedInfo(accountId));
         });
