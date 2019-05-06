@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { State } from '../../state/app.state';
-import { WargamingLogin } from '../../state/app.actions';
+import { WargamingLogin, RefreshAccountInfo, AppActionTypes } from '../../state/app.actions';
 import { getAccountId, getCurremtAccountNick, getLoggedinAccountNick } from '../../state/app.selectors';
 import { takeWhile } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Actions, ofType } from '@ngrx/effects';
 
 @Component({
   selector: 'app-nav-menu',
@@ -13,6 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class NavMenuComponent implements OnInit, OnDestroy {
   componentActive = true;
+  currentAccountId: number;
 
   public currentAccountNick$: Observable<string>;
   public loggedinAccountNick$: Observable<string>;
@@ -26,7 +28,8 @@ export class NavMenuComponent implements OnInit, OnDestroy {
   public refreshEnabled = true;
 
   constructor(
-    private store: Store<State>) { }
+    private store: Store<State>,
+    private actions$: Actions) { }
 
   ngOnInit() {
     this.store.pipe(
@@ -34,12 +37,19 @@ export class NavMenuComponent implements OnInit, OnDestroy {
       takeWhile(() => this.componentActive)
     )
       .subscribe(accountId => {
+        this.currentAccountId = accountId.accountId;
         this.showMenu = accountId.accountId > 0;
         this.showHistoryMenu = accountId.accountLoggedIn;
         this.showLoginButton = accountId.accountId === 0;
         this.showLogoutButton = accountId.accountLoggedIn && accountId.accountId > 0;
         this.showReturnToLoggedinButton = !accountId.accountLoggedIn && accountId.accountId > 0;
       });
+
+    this.actions$.pipe(
+      ofType(AppActionTypes.AccountInfoRefreshed),
+      takeWhile(() => this.componentActive)
+    )
+      .subscribe(accountId => this.refreshEnabled = true);
 
     this.currentAccountNick$ = this.store.pipe(select(getCurremtAccountNick));
     this.loggedinAccountNick$ = this.store.pipe(select(getLoggedinAccountNick));
@@ -51,16 +61,8 @@ export class NavMenuComponent implements OnInit, OnDestroy {
 
 
   public refreshStat() {
-    // if (this.accountGlobalInfo.accountId === 0) {
-    //   return;
-    // }
-    // this.refreshEnabled = false;
-    // this.blitzStaticianService.saveAllAccountInfo(this.accountGlobalInfo.accountId).subscribe(
-    //   () => {
-    //     this.refreshEnabled = true;
-    //     this.accountGlobalInfo.EmitAccountInfoChanged();
-    //   }
-    // );
+    this.refreshEnabled = false;
+    this.store.dispatch<RefreshAccountInfo>(new RefreshAccountInfo({ accountId: this.currentAccountId, accountLoggedIn: true }));
   }
 
   public logIn() {
@@ -84,5 +86,5 @@ export class NavMenuComponent implements OnInit, OnDestroy {
 
   }
 
-  public returnToLoggedinAccount() {}
+  public returnToLoggedinAccount() { }
 }

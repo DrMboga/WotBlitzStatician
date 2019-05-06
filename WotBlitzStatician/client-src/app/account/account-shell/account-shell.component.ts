@@ -10,6 +10,8 @@ import { State, getAccountAggregatedInfo, getAccountAggregatetInfoError } from '
 import { getAccountId } from '../../state/app.selectors';
 import { getAccountInfo, getPrivateInfo, getAccountInoError } from '../state/account.selectors';
 import { AccountTanksInfoAggregatedDto } from '../../model/account-tanks-info-aggregated-dto';
+import { Actions, ofType } from '@ngrx/effects';
+import { AppActionTypes } from '../../state/app.actions';
 
 @Component({
   selector: 'app-account-shell',
@@ -26,7 +28,8 @@ export class AccountInfoShellComponent implements OnInit, OnDestroy {
 
   componentActive = true;
 
-  constructor(private store: Store<State>) { }
+  constructor(private store: Store<State>,
+    private actions$: Actions) { }
 
   ngOnInit() {
     this.store.pipe(
@@ -37,6 +40,16 @@ export class AccountInfoShellComponent implements OnInit, OnDestroy {
         this.store.dispatch<LoadAccountInfo>(new LoadAccountInfo(accountId));
         this.store.dispatch<LoadAccountAggregatedInfo>(new LoadAccountAggregatedInfo(accountId));
       });
+
+      this.actions$.pipe(
+        ofType(AppActionTypes.AccountInfoRefreshed),
+        takeWhile(() => this.componentActive)
+      )
+        .subscribe(accountId => {
+          this.store.dispatch<LoadAccountInfo>(new LoadAccountInfo(accountId));
+          this.store.dispatch<LoadAccountAggregatedInfo>(new LoadAccountAggregatedInfo(accountId));
+        });
+
 
     this.account$ = this.store.pipe(select(getAccountInfo));
     this.privateInfo$ = this.store.pipe(select(getPrivateInfo));

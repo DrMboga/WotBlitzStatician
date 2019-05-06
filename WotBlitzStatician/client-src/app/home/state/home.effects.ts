@@ -4,7 +4,10 @@ import { Injectable, Inject } from '@angular/core';
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { AppActionTypes, WargamingLoginUrlLoaded, WargamingLoginUrlLoadFailed } from '../../state/app.actions';
+import {
+  AppActionTypes, WargamingLoginUrlLoaded, WargamingLoginUrlLoadFailed,
+  RefreshAccountInfo, ChangeCurrentAccount, AccountInfoRefreshed, AccountInfoRefreshFailed
+} from '../../state/app.actions';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { BlitzStaticianService } from '../../shared/services/blitz-statician.service';
 
@@ -24,6 +27,18 @@ export class HomeEffects {
       this.blitzStaticianService.getAuthenticationRequest(`${this.baseUrl}splash-screen`).pipe(
         map(authRequest => (new WargamingLoginUrlLoaded(authRequest))),
         catchError(err => of(new WargamingLoginUrlLoadFailed(err)))
+      )
+    )
+  );
+
+  @Effect()
+  RefreshLoggedinAccountInfo: Observable<Action> = this.actions$.pipe(
+    ofType(AppActionTypes.RefreshAccountInfo),
+    map((action: RefreshAccountInfo) => action.payload),
+    mergeMap((accountId) =>
+      this.blitzStaticianService.saveAllAccountInfo(accountId.accountId).pipe(
+        map(() => (new AccountInfoRefreshed(accountId))),
+        catchError(err => of(new AccountInfoRefreshFailed(err)))
       )
     )
   );

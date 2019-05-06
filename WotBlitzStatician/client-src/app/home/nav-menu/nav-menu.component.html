@@ -5,7 +5,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav mr-auto" *ngIf="showMenu">
-        <button class="btn btn-dark my-2 my-sm-0 text-sm-left"
+        <button class="btn btn-dark my-2 my-sm-0 text-sm-left" *ngIf="showHistoryMenu"
             title="Обновить статистику"
             [disabled]="!refreshEnabled"
             (click)="refreshStat()">
