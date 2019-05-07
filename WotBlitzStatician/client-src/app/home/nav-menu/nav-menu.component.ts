@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { State } from '../../state/app.state';
-import { WargamingLogin, RefreshAccountInfo, AppActionTypes, WargamingLogout, AccountInfoRefreshed } from '../../state/app.actions';
+import { WargamingLogin, RefreshAccountInfo, AppActionTypes, WargamingLogout, AccountInfoRefreshed, ReturnFromGuestAccount } from '../../state/app.actions';
 import { getAccountId, getCurremtAccountNick, getLoggedinAccountNick } from '../../state/app.selectors';
 import { takeWhile, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -74,5 +74,7 @@ export class NavMenuComponent implements OnInit, OnDestroy {
     this.store.dispatch<WargamingLogout>(new WargamingLogout());
   }
 
-  public returnToLoggedinAccount() { }
+  public returnToLoggedinAccount() {
+    this.store.dispatch<ReturnFromGuestAccount>(new ReturnFromGuestAccount());
+  }
 }

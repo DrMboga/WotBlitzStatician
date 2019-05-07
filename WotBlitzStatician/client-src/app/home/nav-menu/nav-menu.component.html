@@ -24,7 +24,7 @@
       <button class="btn btn-dark my-2 my-sm-0" title="Logout" style="margin-left: 2px; margin-right: 2px" (click)="logOut()" *ngIf="showLogoutButton">
           <span>{{loggedinAccountNick$ | async}} <fa-icon icon="sign-out-alt"></fa-icon></span>
       </button>
-      <button class="btn btn-dark my-2 my-sm-0" title="Returned to loggedin account" style="margin-left: 2px; margin-right: 2px" (click)="returnToLoggedinAccount()" *ngIf="showReturnToLoggedinButton">
+      <button class="btn btn-dark my-2 my-sm-0" title="Return" style="margin-left: 2px; margin-right: 2px" (click)="returnToLoggedinAccount()" *ngIf="showReturnToLoggedinButton">
           <span>{{loggedinAccountNick$ | async}} <fa-icon icon="sign-in-alt"></fa-icon></span>
       </button>
       <app-account-search></app-account-search>

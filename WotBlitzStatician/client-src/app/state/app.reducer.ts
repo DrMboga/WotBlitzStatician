@@ -27,12 +27,13 @@ export function appReducer(state: HomeState = initialState, action: AppActions):
         wargamingAuthUrlLoadError: null
       };
     case AppActionTypes.WargamingLogout:
-      return {
-        ...state,
-        currentAccountId: { accountId: 0, accountLoggedIn: false},
-        currentAccountNick: 'WotblitzStatician',
-        loggedInAccountNick: null
-      };
+    case AppActionTypes.ReturnFromGuestAccount:
+    return {
+      ...state,
+      currentAccountId: { accountId: 0, accountLoggedIn: false},
+      currentAccountNick: 'WotblitzStatician',
+      loggedInAccountNick: null
+    };
     case AppActionTypes.GuestAccountSelected:
       return {
         ...state,

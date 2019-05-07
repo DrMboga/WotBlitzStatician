@@ -56,6 +56,14 @@ export class HomeEffects {
   );
 
   @Effect({ dispatch: false })
+  ReturnFromGuestAccount = this.actions$.pipe(
+    ofType(AppActionTypes.ReturnFromGuestAccount),
+    tap(() => {
+      this.router.navigate(['/splash-screen']);
+    })
+  );
+
+  @Effect({ dispatch: false })
   GuestAccountSelected = this.actions$.pipe(
     ofType(AppActionTypes.GuestAccountSelected),
     map((action: GuestAccountSelected) => action.payload.accountId),
