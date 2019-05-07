@@ -10,7 +10,8 @@ export enum AppActionTypes {
   RefreshAccountInfo = '[App] Refresh accountInfo',
   AccountInfoRefreshed = '[App] AccountInfo refreshed',
   AccountInfoRefreshFailed = '[App] AccountInfo refreshFailed',
-  WargamingLogout = '[App] Wargaming logout'
+  WargamingLogout = '[App] Wargaming logout',
+  GuestAccountSelected = '[App] Guest account selected'
 }
 
 export class ChangeCurrentAccount implements Action {
@@ -55,6 +56,11 @@ export class WargamingLogout implements Action {
   readonly type = AppActionTypes.WargamingLogout;
 }
 
+export class GuestAccountSelected implements Action {
+  readonly type = AppActionTypes.GuestAccountSelected;
+  constructor(public payload: { accountId: number, accountNick: string }) {}
+}
+
 
 export type AppActions = ChangeCurrentAccount
   | WargamingLogin
@@ -64,4 +70,5 @@ export type AppActions = ChangeCurrentAccount
   | RefreshAccountInfo
   | AccountInfoRefreshed
   | AccountInfoRefreshFailed
-  | WargamingLogout;
+  | WargamingLogout
+  | GuestAccountSelected;

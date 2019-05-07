@@ -33,6 +33,12 @@ export function appReducer(state: HomeState = initialState, action: AppActions):
         currentAccountNick: 'WotblitzStatician',
         loggedInAccountNick: null
       };
+    case AppActionTypes.GuestAccountSelected:
+      return {
+        ...state,
+        currentAccountId: { accountId: action.payload.accountId, accountLoggedIn: false },
+        currentAccountNick: action.payload.accountNick
+      };
     default:
       return state;
   }

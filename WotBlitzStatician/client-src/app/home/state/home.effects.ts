@@ -6,7 +6,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import {
   AppActionTypes, WargamingLoginUrlLoaded, WargamingLoginUrlLoadFailed,
-  RefreshAccountInfo, ChangeCurrentAccount, AccountInfoRefreshed, AccountInfoRefreshFailed
+  RefreshAccountInfo, ChangeCurrentAccount, AccountInfoRefreshed, AccountInfoRefreshFailed, GuestAccountSelected
 } from '../../state/app.actions';
 import { mergeMap, map, catchError, tap } from 'rxjs/operators';
 import { BlitzStaticianService } from '../../shared/services/blitz-statician.service';
@@ -53,5 +53,12 @@ export class HomeEffects {
       this.accauntAuthService.dropCookie();
       this.router.navigate(['/splash-screen']);
     })
+  );
+
+  @Effect({ dispatch: false })
+  GuestAccountSelected = this.actions$.pipe(
+    ofType(AppActionTypes.GuestAccountSelected),
+    map((action: GuestAccountSelected) => action.payload.accountId),
+    mergeMap((accountId) => this.blitzStaticianService.putGuestAccountToCache(accountId))
   );
 }
