@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'tank-card',
+  selector: 'app-tank-card',
   templateUrl: './tank-card.component.html',
   styleUrls: ['./tank-card.component.css']
 })
 export class TankCardComponent implements OnInit {
 
-  @Input("tankInfo")
+  @Input('tankInfo')
   public tankInfo: any;
 
   constructor() { }

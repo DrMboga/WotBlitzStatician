@@ -80,16 +80,6 @@ export class AccountInfoService {
       .pipe(catchError(this.handleError));
   }
 
-  // api/AccountInfo/Achievements/46512100
-  getAccountAchievements(
-    accountId: number
-  ): Observable<AccountAchievementDto[]> {
-    return this.http
-      .get<AccountAchievementDto[]>(
-        `${this.baseUrl}api/AccountInfo/Achievements/${accountId}`
-      )
-      .pipe(catchError(this.handleError));
-  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
