@@ -21,12 +21,12 @@
       (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
     </div>
     <div class="col-sm-5">
-      <div class="container" *ngIf="tanksByAchievement">
+      <div class="container" *ngIf="tanksByAchievement$ | async as tanksByAchievement">
         <div class="row" *ngFor="let tank of tanksByAchievement">
           <div class="mr-2">
             <img class="achievment-img"
-              src="{{clickedAchievement.localImage}}"
-              title="{{clickedAchievement.name}}&#13;{{clickedAchievement.description}}" ><br/>
+              src="{{clickedAchievementImage$ | async}}"
+              title="{{clickedAchievementDescription$ | async}}" ><br/>
             <h4 class="text-center">{{tank.achievementsCount}}</h4>
           </div>
           <app-tank-card [tankInfo]="tank.tankInfo"></app-tank-card>

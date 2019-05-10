@@ -54,19 +54,6 @@ export class AccountInfoService {
       .pipe(catchError(this.handleError));
   }
 
-  getTanksByAchievement(
-    accountId: number,
-    achievementId: string
-  ): Observable<TankByAchievementDto[]> {
-    const params = new HttpParams().set('achievementId', achievementId);
-    return this.http
-      .get<TankByAchievementDto[]>(
-        `${this.baseUrl}api/TanksStat/TanksByAchievement/${accountId}`,
-        { params }
-      )
-      .pipe(catchError(this.handleError));
-  }
-
   getTanksByMastery(
     accountId: number,
     rankOfMastery: string

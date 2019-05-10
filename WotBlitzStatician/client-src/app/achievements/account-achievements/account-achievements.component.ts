@@ -1,12 +1,12 @@
-import { Component, OnInit, Input, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { TankByAchievementDto } from '../../model/tank-by-achievement-dto';
 import { AccountAchievementDto } from '../../model/account-achievement-dto';
-import { Subscription, of, Observable } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { Actions, ofType } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { State } from '../../state/app.state';
 import { getAccountId } from '../../state/app.selectors';
-import { takeWhile, map, mergeMap, catchError, tap, filter } from 'rxjs/operators';
+import { takeWhile, map, mergeMap, tap } from 'rxjs/operators';
 import { AppActionTypes, AccountInfoRefreshed } from '../../state/app.actions';
 import { AccountAchievementsService } from '../account-achievements.service';
 import { CurrentAccountId } from '../../home/state/home.state';
@@ -19,7 +19,7 @@ import { CurrentAccountId } from '../../home/state/home.state';
 })
 export class AccountAchievementsComponent implements OnInit, OnDestroy {
   private componentActive = true;
-  private isAccountLoggedin: boolean;
+  private currentAccount: CurrentAccountId;
 
   public battleAchievements$: Observable<AccountAchievementDto[]>;
   public epicAchievements$: Observable<AccountAchievementDto[]>;
@@ -28,7 +28,9 @@ export class AccountAchievementsComponent implements OnInit, OnDestroy {
   public commemorativeAchievements$: Observable<AccountAchievementDto[]>;
   public stepAchievements$: Observable<AccountAchievementDto[]>;
 
-  public tanksByAchievement: TankByAchievementDto[];
+  public tanksByAchievement$: Observable<TankByAchievementDto[]>;
+  public clickedAchievementImage$: Observable<string>;
+  public clickedAchievementDescription$: Observable<string>;
 
   public loadAchievemntsError$: Observable<string>;
 
@@ -36,7 +38,9 @@ export class AccountAchievementsComponent implements OnInit, OnDestroy {
     private store: Store<State>,
     private actions$: Actions,
     private accountAchievementsService: AccountAchievementsService,
-    private changeDetector: ChangeDetectorRef) {
+    // ToDo: think about setting all observables directly from some events dispatched from AccountAchievementsService.
+    private changeDetector: ChangeDetectorRef
+  ) {
   }
 
   ngOnInit() {
@@ -46,7 +50,7 @@ export class AccountAchievementsComponent implements OnInit, OnDestroy {
       mergeMap((accountId: CurrentAccountId) =>
         this.accountAchievementsService.getAccountAchievements(accountId.accountId, accountId.accountLoggedIn)
           .pipe(
-            tap(() => this.isAccountLoggedin = accountId.accountLoggedIn),
+            tap(() => this.currentAccount = accountId),
           ))
     )
       .subscribe(
@@ -61,7 +65,7 @@ export class AccountAchievementsComponent implements OnInit, OnDestroy {
       mergeMap((accountId: CurrentAccountId) =>
         this.accountAchievementsService.getAccountAchievements(accountId.accountId, accountId.accountLoggedIn)
           .pipe(
-            tap(() => this.isAccountLoggedin = accountId.accountLoggedIn),
+            tap(() => this.currentAccount = accountId),
           ))
     )
       .subscribe(
@@ -105,39 +109,19 @@ export class AccountAchievementsComponent implements OnInit, OnDestroy {
   }
 
   getTanksByAchievement(achievement: AccountAchievementDto) {
-    console.log('isAccountLoggedin', this.isAccountLoggedin);
+    this.clickedAchievementImage$ = of(achievement.image);
+    this.clickedAchievementDescription$ = of(`${achievement.name}`);
     if (
-      !this.isAccountLoggedin ||
+      !this.currentAccount.accountLoggedIn ||
       achievement.isAchievementOption ||
       (achievement.section === 'battle' &&
         achievement.achievementId.includes('Mastery'))
     ) {
-      this.tanksByAchievement = null;
+      this.tanksByAchievement$ = null;
       return;
     }
-    console.log('achievementId', achievement.achievementId);
-    // this.accountsInfoService
-    // .getTanksByAchievement(
-    //   this.accountGlobalInfo.accountId,
-    //   achievement.achievementId
-    // )
-    // .subscribe(
-    //   data => {
-    //     this.tanksByAchievement = data;
-    //     this.tanksByAchievement.sort(
-    //       (left, right): number => {
-    //         if (left.achievementsCount < right.achievementsCount) {
-    //           return 11;
-    //         }
-    //         if (left.achievementsCount > right.achievementsCount) {
-    //           return -1;
-    //         }
-    //         return 0;
-    //       }
-    //     );
-    //   },
-    //   error => console.error(error)
-    // );
+    this.tanksByAchievement$ = this.accountAchievementsService
+      .getTanksByAchievement(this.currentAccount.accountId, achievement.achievementId);
   }
 
   ngOnDestroy(): void {
