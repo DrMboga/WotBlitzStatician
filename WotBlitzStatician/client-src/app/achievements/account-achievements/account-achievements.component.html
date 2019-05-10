@@ -1,71 +1,24 @@
 <div class="container-fluid">
   <div class="row m-5">
     <div class="col-sm-7">
-      <div *ngIf="epicAchievements">
-        <h5>{{epicAchievements[0].sectionName}}</h5>
-        <div class="row">
-          <div *ngFor="let epic of epicAchievements" class="text-center">
-            <img class="achievment-img" src="{{epic.localImage}}" title="{{epic.name}}&#13;{{epic.description}}"
-            (click)="clickedAchievement = epic; getTanksByAchievement();"/><br />
-            {{epic.count}}
-          </div>
-        </div>
-      </div>
-      <div *ngIf="platoonAchievements">
-        <h5>{{platoonAchievements[0].sectionName}}</h5>
-        <div class="row">
-          <div *ngFor="let platoon of platoonAchievements" class="text-center">
-            <img class="achievment-img" src="{{platoon.localImage}}" title="{{platoon.name}}&#13;{{platoon.description}}"
-            (click)="clickedAchievement = platoon; getTanksByAchievement();"/><br />
-            <span *ngIf="platoon.isAchievementOption===false">{{platoon.count}}</span>
-            <span *ngIf="platoon.isAchievementOption===true">{{platoon.count|romanNumber}}</span>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="battleAchievements">
-        <h5>{{battleAchievements[0].sectionName}}</h5>
-        <div class="row">
-          <div *ngFor="let battle of battleAchievements" class="text-center">
-            <img class="achievment-img" src="{{battle.localImage}}" title="{{battle.name}}&#13;{{battle.description}}"
-            (click)="clickedAchievement = battle; getTanksByAchievement();"/><br />
-            <span *ngIf="battle.isAchievementOption===false">{{battle.count}}</span>
-            <span *ngIf="battle.isAchievementOption===true">{{battle.count|romanNumber}}</span>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="titleAchievements">
-        <h5>{{titleAchievements[0].sectionName}}</h5>
-        <div class="row">
-          <div *ngFor="let title of titleAchievements" class="text-center">
-            <img class="achievment-img" src="{{title.localImage}}" title="{{title.name}}&#13;{{title.description}}"
-            (click)="clickedAchievement = title; getTanksByAchievement();"/><br />
-            <span *ngIf="title.isAchievementOption===false">{{title.count}}</span>
-            <span *ngIf="title.isAchievementOption===true">{{title.count|romanNumber}}</span>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="commemorativeAchievements">
-        <h5>{{commemorativeAchievements[0].sectionName}}</h5>
-        <div class="row">
-          <div *ngFor="let com of commemorativeAchievements" class="text-center">
-            <img class="achievment-img" src="{{com.localImage}}" title="{{com.name}}&#13;{{com.description}}"
-            (click)="clickedAchievement = com; getTanksByAchievement();"/><br />
-            <span *ngIf="com.isAchievementOption===false">{{com.count}}</span>
-            <span *ngIf="com.isAchievementOption===true">{{com.count|romanNumber}}</span>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="stepAchievements">
-        <h5>{{stepAchievements[0].sectionName}}</h5>
-        <div class="row">
-          <div *ngFor="let step of stepAchievements" class="text-center">
-            <img class="achievment-img" src="{{step.localImage}}" title="{{step.name}}&#13;{{step.description}}"
-            (click)="clickedAchievement = step; getTanksByAchievement();"/><br />
-            <span *ngIf="step.isAchievementOption===false">{{step.count}}</span>
-            <span *ngIf="step.isAchievementOption===true">{{step.count|romanNumber}}</span>
-          </div>
-        </div>
-      </div>
+      <app-account-achievements-section
+      [achievements] = "epicAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
+      <app-account-achievements-section
+      [achievements] = "platoonAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
+      <app-account-achievements-section
+      [achievements] = "battleAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
+      <app-account-achievements-section
+      [achievements] = "titleAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
+      <app-account-achievements-section
+      [achievements] = "commemorativeAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
+      <app-account-achievements-section
+      [achievements] = "stepAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
     </div>
     <div class="col-sm-5">
       <div class="container" *ngIf="tanksByAchievement">
@@ -82,7 +35,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="loadAchievemntsError" class="alert alert-danger">
+<div *ngIf="loadAchievemntsError$ | async as loadAchievemntsError" class="alert alert-danger">
   Getting account info error: {{ loadAchievemntsError }}
 </div>
 

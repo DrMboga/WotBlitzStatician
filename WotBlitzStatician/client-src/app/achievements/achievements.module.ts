@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedComponentModule } from '../shared/shared-component.module';
 import { AchievementsRoutesModule } from './achievements.routes';
 import { AccountAchievementsService } from './account-achievements.service';
+import { AccountAcievementSectionComponent } from './account-achievements-section/account-achievements-section.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { AccountAchievementsService } from './account-achievements.service';
   declarations: [
     AccountAchievementsComponent,
     TankCardComponent,
+    AccountAcievementSectionComponent
   ],
   providers: [
     AccountAchievementsService
