@@ -36,6 +36,9 @@
   </div>
 </div>
 <div *ngIf="loadAchievemntsError$ | async as loadAchievemntsError" class="alert alert-danger">
-  Getting account info error: {{ loadAchievemntsError }}
+  Getting account achievements error: {{ loadAchievemntsError }}
+</div>
+<div *ngIf="loadTanksByAchievemntsError$ | async as loadTanksByAchievemntsError" class="alert alert-danger">
+  Getting tanks by achievement error: {{ loadTanksByAchievemntsError }}
 </div>
 

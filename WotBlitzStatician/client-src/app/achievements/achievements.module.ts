@@ -7,13 +7,22 @@ import { SharedComponentModule } from '../shared/shared-component.module';
 import { AchievementsRoutesModule } from './achievements.routes';
 import { AccountAchievementsService } from './account-achievements.service';
 import { AccountAcievementSectionComponent } from './account-achievements-section/account-achievements-section.component';
+import { StoreModule } from '@ngrx/store';
+import { achievementReducer } from './state/achievements.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AchievementEffects } from './state/achievements.effects';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     AchievementsRoutesModule,
-    SharedComponentModule
+    SharedComponentModule,
+    StoreModule.forFeature('achievementsState', achievementReducer),
+    EffectsModule.forFeature(
+      [ AchievementEffects ]
+    ),
+
 ],
   exports: [],
   declarations: [
