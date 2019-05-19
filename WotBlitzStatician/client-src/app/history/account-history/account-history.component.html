@@ -1,15 +1,18 @@
-<form class="form-inline" (ngSubmit)="loadHistory()">
+<div *ngIf="error$ | async as errorMessage" class="alert alert-danger">
+  Getting account history error: {{ errorMessage }}
+</div>
+<form class="form-inline">
   <div class="form-group">
     <label for="dateFrom">Дата с:</label>
-    <input type="date" class="form-control" id="dateFrom" [ngModel]="dateFrom|date:'yyyy-MM-dd'" (ngModelChange)="dateFrom = $event"
+    <input type="date" class="form-control" id="dateFrom" [ngModel]="dateFrom$ | async |date:'yyyy-MM-dd'" (ngModelChange)="dateFromChanged($event)"
       [ngModelOptions]="{standalone: true}">
   </div>
-  <button type="submit" class="btn btn-default">Показать историю</button>
 </form>
 <div class="row">
   <div class="col-sm-6" id="historyWinRateChart">
+    winrateCanvas
     <div *ngIf="winRateChart">
-      <canvas id="winRateCanvas">{{ winRateChart }}</canvas>
+      <canvas id="winrateCanvas">{{ winRateChart }}</canvas>
     </div>
   </div>
   <div class="col-sm-6" id="historyWn7Chart">
@@ -58,7 +61,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let ac of accountHistory">
+      <tr *ngFor="let ac of accountHistory$ | async as accountHistory">
         <td>
           {{ac.updatedAt|date:"short"}}
         </td>

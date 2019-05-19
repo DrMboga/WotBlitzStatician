@@ -40,19 +40,6 @@ export class AccountInfoService {
     );
   }
 
-  getAccountStatHistory(
-    accountId: number,
-    dateFrom: Date
-  ): Observable<AccountStatHistoryDto[]> {
-    const datefromString = this.datePipe.transform(dateFrom, 'yyyy-MM-dd');
-    const params = new HttpParams().set('dateFrom', datefromString);
-    return this.http
-      .get<AccountStatHistoryDto[]>(
-        `${this.baseUrl}api/AccountInfo/AccountStatHistory/${accountId}`,
-        { params }
-      )
-      .pipe(catchError(this.handleError));
-  }
 
   getTanksByMastery(
     accountId: number,
