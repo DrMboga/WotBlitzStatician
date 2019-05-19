@@ -10,6 +10,7 @@ export interface AccountState {
   aggregatedInfo: AccountTanksInfoAggregatedDto[];
   error: string;
   aggregatedInfoError: string;
+  privateInfoLoadError: string;
 }
 
 export interface AccountMasters {

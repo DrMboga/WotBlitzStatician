@@ -7,7 +7,7 @@ import { AccountsService } from '../account.service';
 import { Observable, of } from 'rxjs';
 import {
   AccountActionTypes, LoadAccountInfo, AccountInfoSuccessfullyLoaded, AccountInfoLoadFailed,
-  LoadAccountAggregatedInfo, AccounAggregatedtInfoSuccessfullyLoaded, AccountAggregatedInfoLoadFailed
+  LoadAccountAggregatedInfo, AccounAggregatedtInfoSuccessfullyLoaded, AccountAggregatedInfoLoadFailed, AccountPrivateInfoLoad, AccountPrivateInfoLoaded, AccountPrivateInfoLoadFailed
 } from './account.actions';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { CurrentAccountId } from '../../home/state/home.state';
@@ -39,6 +39,18 @@ export class AccountEffects {
       this.accountService.getAggregatedAccountTanksInfo(accountId.accountId, accountId.accountLoggedIn).pipe(
         map(accountAggregatedInfo => (new AccounAggregatedtInfoSuccessfullyLoaded(accountAggregatedInfo))),
         catchError(err => of(new AccountAggregatedInfoLoadFailed(err)))
+      )
+    )
+  );
+
+  @Effect()
+  getAccountPrivateInfo$: Observable<Action> = this.actions$.pipe(
+    ofType(AccountActionTypes.AccountPrivateInfoLoad),
+    map((action: AccountPrivateInfoLoad) => action.payload),
+    mergeMap((accountId: CurrentAccountId) =>
+      this.accountService.getPlayerPrivateInfo(accountId.accountId, accountId.accountLoggedIn).pipe(
+        map(privateInfo => (new AccountPrivateInfoLoaded(privateInfo))),
+        catchError(err => of(new AccountPrivateInfoLoadFailed(err)))
       )
     )
   );

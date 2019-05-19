@@ -37,3 +37,8 @@ export const getAccountAggregatetInfoError = createSelector(
   getAccountFeatureState,
   state => state == null ? null : state.aggregatedInfoError
 );
+
+export const getPrivateInfoError = createSelector(
+  getAccountFeatureState,
+  state => state == null ? null : state.privateInfoLoadError
+);

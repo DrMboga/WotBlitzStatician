@@ -4,14 +4,15 @@ import { takeWhile, map } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 
 import { AccountInfoDto } from '../../model/account-info-dto';
-import { LoadAccountInfo, LoadAccountAggregatedInfo } from '../state/account.actions';
+import { LoadAccountInfo, LoadAccountAggregatedInfo, AccountPrivateInfoLoad } from '../state/account.actions';
 import { PlayerPrivateInfo } from '../../model/player-private-info';
-import { State, getAccountAggregatedInfo, getAccountAggregatetInfoError } from '../state/account.selectors';
+import { State, getAccountAggregatedInfo, getAccountAggregatetInfoError, getPrivateInfoError } from '../state/account.selectors';
 import { getAccountId } from '../../state/app.selectors';
 import { getAccountInfo, getPrivateInfo, getAccountInoError } from '../state/account.selectors';
 import { AccountTanksInfoAggregatedDto } from '../../model/account-tanks-info-aggregated-dto';
 import { Actions, ofType } from '@ngrx/effects';
 import { AppActionTypes, AccountInfoRefreshed } from '../../state/app.actions';
+import { CurrentAccountId } from '../../home/state/home.state';
 
 @Component({
   selector: 'app-account-shell',
@@ -25,6 +26,7 @@ export class AccountInfoShellComponent implements OnInit, OnDestroy {
   public accountAggregatedInfo$: Observable<AccountTanksInfoAggregatedDto[]>;
   public errorMessage$: Observable<string>;
   public aggregatedInfoErrorMessage$: Observable<string>;
+  public privateInfoLoadErrorMessage$: Observable<string>;
 
   componentActive = true;
 
@@ -37,11 +39,7 @@ export class AccountInfoShellComponent implements OnInit, OnDestroy {
       takeWhile(() => this.componentActive)
     )
       .subscribe(accountId => {
-        if (accountId.accountId === 0) {
-          return;
-        }
-        this.store.dispatch<LoadAccountInfo>(new LoadAccountInfo(accountId));
-        this.store.dispatch<LoadAccountAggregatedInfo>(new LoadAccountAggregatedInfo(accountId));
+        this.dispatchActions(accountId);
       });
 
       this.actions$.pipe(
@@ -50,11 +48,7 @@ export class AccountInfoShellComponent implements OnInit, OnDestroy {
         takeWhile(() => this.componentActive)
       )
         .subscribe(accountId => {
-          if (accountId.accountId === 0) {
-            return;
-          }
-          this.store.dispatch<LoadAccountInfo>(new LoadAccountInfo(accountId));
-          this.store.dispatch<LoadAccountAggregatedInfo>(new LoadAccountAggregatedInfo(accountId));
+          this.dispatchActions(accountId);
         });
 
 
@@ -63,10 +57,20 @@ export class AccountInfoShellComponent implements OnInit, OnDestroy {
     this.errorMessage$ = this.store.pipe(select(getAccountInoError));
     this.accountAggregatedInfo$ = this.store.pipe(select(getAccountAggregatedInfo));
     this.aggregatedInfoErrorMessage$ = this.store.pipe(select(getAccountAggregatetInfoError));
+    this.privateInfoLoadErrorMessage$ = this.store.pipe(select(getPrivateInfoError));
   }
 
   ngOnDestroy(): void {
     this.componentActive = false;
   }
 
+  private dispatchActions(accountId: CurrentAccountId) {
+    if (accountId.accountId === 0) {
+      return;
+    }
+
+    this.store.dispatch<LoadAccountInfo>(new LoadAccountInfo(accountId));
+    this.store.dispatch<LoadAccountAggregatedInfo>(new LoadAccountAggregatedInfo(accountId));
+    this.store.dispatch<AccountPrivateInfoLoad>(new AccountPrivateInfoLoad(accountId));
+  }
 }

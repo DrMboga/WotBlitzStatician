@@ -23,6 +23,16 @@ export function accountReducer(state: AccountState, action: AccountActions): Acc
         ...state,
         aggregatedInfoError: action.payload
       };
+    case AccountActionTypes.AccountPrivateInfoLoaded:
+      return {
+        ...state,
+        playerPrivateInfo: action.payload
+      };
+    case AccountActionTypes.AccountPrivateInfoLoadFailed:
+      return {
+        ...state,
+        privateInfoLoadError: action.payload
+      };
     default:
       return state;
   }

@@ -11,4 +11,7 @@
 <div *ngIf="aggregatedInfoErrorMessage$ | async as aggregatedInfoErrorMessage" class="alert alert-danger">
   Getting account aggregated info error: {{ aggregatedInfoErrorMessage }}
 </div>
+<div *ngIf="privateInfoLoadErrorMessage$ | async as privateInfoLoadErrorMessage" class="alert alert-danger">
+  Getting account private info error: {{ privateInfoLoadErrorMessage }}
+</div>
 
