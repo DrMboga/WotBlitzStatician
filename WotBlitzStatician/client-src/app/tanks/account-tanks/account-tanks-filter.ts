@@ -1,6 +1,5 @@
 import { DatePipe } from '@angular/common';
 export class AccountTanksFilter {
-  accountId: number;
   inGarage: boolean;
   tires: FilterItem[];
   vehicleTypes: FilterItem[];
@@ -22,17 +21,17 @@ export class AccountTanksFilter {
   api/TanksInfo(90277267)?$filter=TankBattles gt 100
   api/TanksInfo(90277267)?$filter=TankLastBattleTime gt 2018-09-04T00:00:00.00Z
   */
-  getFilterQuery(): string {
-    let query = 'api/TanksInfo(' + this.accountId + ')';
-    let filters: string[] = new Array();
+  getFilterQuery(accountId: number): string {
+    let query = 'api/TanksInfo(' + accountId + ')';
+    const filters: string[] = new Array();
     if (this.inGarage) {
       filters.push('TankInGarage eq true');
     }
 
     if (this.tires.some(t => t.isSelected)) {
       let tierQuery = 'VehicleTier in (';
-      let tiresFilterRow: string[] = new Array();
-      for (let tier of this.tires.filter(t => t.isSelected)) {
+      const tiresFilterRow: string[] = new Array();
+      for (const tier of this.tires.filter(t => t.isSelected)) {
         tiresFilterRow.push(tier.itemValue);
       }
       tierQuery = tierQuery.concat(tiresFilterRow.join(', '));
@@ -42,9 +41,9 @@ export class AccountTanksFilter {
 
     if (this.vehicleTypes.some(t => t.isSelected)) {
       let vehicleQuery = 'VehicleType in (';
-      let vehiclesFilterRow: string[] = new Array();
-      for (let vehicle of this.vehicleTypes.filter(t => t.isSelected)) {
-        vehiclesFilterRow.push("'" + vehicle.itemValue + "'");
+      const vehiclesFilterRow: string[] = new Array();
+      for (const vehicle of this.vehicleTypes.filter(t => t.isSelected)) {
+        vehiclesFilterRow.push('\'' + vehicle.itemValue + '\'');
       }
       vehicleQuery = vehicleQuery.concat(vehiclesFilterRow.join(', '));
       vehicleQuery = vehicleQuery.concat(')');
@@ -53,9 +52,9 @@ export class AccountTanksFilter {
 
     if (this.nations.some(t => t.isSelected)) {
       let nationQuery = 'VehicleNation in (';
-      let nationsFilterRow: string[] = new Array();
-      for (let nation of this.nations.filter(t => t.isSelected)) {
-        nationsFilterRow.push("'" + nation.itemValue + "'");
+      const nationsFilterRow: string[] = new Array();
+      for (const nation of this.nations.filter(t => t.isSelected)) {
+        nationsFilterRow.push('\'' + nation.itemValue + '\'');
       }
       nationQuery = nationQuery.concat(nationsFilterRow.join(', '));
       nationQuery = nationQuery.concat(')');

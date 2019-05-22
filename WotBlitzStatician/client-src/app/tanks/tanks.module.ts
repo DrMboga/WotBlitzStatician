@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SharedComponentModule } from '../shared/shared-component.module';
 import { TankRoutesModule } from './tanks.routes';
+import { TanksTableComponent } from './account-tanks/tanks-table/tanks-table.component';
+import { AccountTanksService } from './account-tanks/account-tanks.service';
 
 @NgModule({
   imports: [
@@ -14,8 +16,11 @@ import { TankRoutesModule } from './tanks.routes';
   ],
   exports: [],
   declarations: [
-    AccountTanksComponent
+    AccountTanksComponent,
+    TanksTableComponent
   ],
-  providers: [],
+  providers: [
+    AccountTanksService
+  ],
 })
 export class TanksModule { }

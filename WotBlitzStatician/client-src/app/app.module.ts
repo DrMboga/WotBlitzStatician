@@ -16,7 +16,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './auth.guard';
 import { BlitzStaticianService } from './shared/services/blitz-statician.service';
 import { AccountAuthenticationService } from './shared/services/account-authentication.service';
-import { AccountInfoService } from './shared/services/account-info.service';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { SharedComponentModule } from './shared/shared-component.module';
@@ -63,8 +62,7 @@ registerLocaleData(localeRu);
     CookieService,
     BlitzStaticianService,
 
-    AccountAuthenticationService, // ToDo: Obsolete
-    AccountInfoService, // ToDo: Obsolete
+    AccountAuthenticationService,
     {
       provide: 'BASE_URL', useFactory: getBaseUrl
     },

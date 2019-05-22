@@ -1,0 +1,109 @@
+<div class="tanks-table" *ngIf="tanks">
+  <table class="table">
+    <thead>
+      <tr>
+        <th (click)="sortColumn = 'TankMarkOfMastery'; sortAscending = !sortAscending; sortTanks();">
+          <fa-icon *ngIf="sortColumn == 'TankMarkOfMastery' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankMarkOfMastery' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th (click)="sortColumn = 'VehicleType'; sortAscending = !sortAscending; sortTanks();">
+          <fa-icon *ngIf="sortColumn == 'VehicleType' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'VehicleType' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th (click)="sortColumn = 'VehicleTier'; sortAscending = !sortAscending; sortTanks();">
+          <fa-icon *ngIf="sortColumn == 'VehicleTier' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'VehicleTier' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th (click)="sortColumn = 'VehicleNation'; sortAscending = !sortAscending; sortTanks();">
+          <fa-icon *ngIf="sortColumn == 'VehicleNation' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'VehicleNation' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th>
+          Tank
+        </th>
+        <th (click)="sortColumn = 'TankBattles'; sortAscending = !sortAscending; sortTanks();" title="Количество боёв">
+          <fa-icon icon="gamepad"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankBattles' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankBattles' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th (click)="sortColumn = 'WinRate'; sortAscending = !sortAscending; sortTanks();" class="text-center" title="Процент побед">
+          <fa-icon icon="flag"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'WinRate' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'WinRate' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th (click)="sortColumn = 'TankWn7'; sortAscending = !sortAscending; sortTanks();" class="text-center" title="Wn7">
+          <fa-icon icon="calculator" size="xs"></fa-icon> Wn7
+          <fa-icon *ngIf="sortColumn == 'TankWn7' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankWn7' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th (click)="sortColumn = 'AvgDamage'; sortAscending = !sortAscending; sortTanks();" title="Средний урон">
+          <fa-icon icon="skull-crossbones"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'AvgDamage' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'AvgDamage' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th (click)="sortColumn = 'AvgXp'; sortAscending = !sortAscending; sortTanks();" title="Средний опыт">
+          <fa-icon [icon]="['far', 'star']"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'AvgXp' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'AvgXp' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th (click)="sortColumn = 'TankMaxXp'; sortAscending = !sortAscending; sortTanks();" title="Максимальный опыт">
+          <fa-icon icon="star-half-alt"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankMaxXp' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankMaxXp' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th (click)="sortColumn = 'SurvivalRate'; sortAscending = !sortAscending; sortTanks();" title="Выживаемость">
+          <fa-icon [icon]="['far', 'heart']"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'SurvivalRate' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'SurvivalRate' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th (click)="sortColumn = 'TankLastBattleTime'; sortAscending = !sortAscending; sortTanks();" title="Последний бой">
+          <fa-icon [icon]="['far', 'clock']"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankLastBattleTime' && !sortAscending" icon="angle-down"></fa-icon>
+          <fa-icon *ngIf="sortColumn == 'TankLastBattleTime' && sortAscending" icon="angle-up"></fa-icon>
+        </th>
+        <th title="В гараже" *ngIf="showGarageInfo">
+          <fa-icon icon="warehouse"></fa-icon>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tank of tanks; trackBy: trackByTankId">
+        <td><img *ngIf="tank.TankMarkOfMastery != 'None'" [ngClass]="'mastery-' + tank.TankMarkOfMastery" /></td>
+        <td><img [ngClass]="'tank-type-' + tank.VehicleType + (tank.VehicleIsPremium ? '-prem' : '')" /></td>
+        <td><b>{{tank.TankTierRoman}}</b></td>
+        <td><img [ngClass]="'flag-' + tank.VehicleNation" /></td>
+        <td><img src="{{tank.PreviewLocalImage}}" class="tank-image" /> {{tank.VehicleName}}</td>
+        <td>{{tank.TankBattles|number}}</td>
+        <td>
+          <div class="text-center" [appBlitzColorScale]="tank.WinRate" inverse="true">{{tank.WinRate|percent:'2.2-2'}}</div>
+        </td>
+        <td>
+          <div [appBlitzColorScale]="tank.TankWn7" inverse="true" class="text-center">{{tank.TankWn7|number:'3.0-0'}}</div>
+        </td>
+        <td>{{tank.AvgDamage|number:'3.0-0'}}</td>
+        <td>{{tank.AvgXp|number:'3.0-0'}}</td>
+        <td>{{tank.TankMaxXp|number:'3.0-0'}}</td>
+        <td>{{tank.SurvivalRate|percent:'2.2-2'}}</td>
+        <td>{{tank.TankLastBattleTime|date:"short"}}</td>
+        <td *ngIf="showGarageInfo"><fa-icon icon="warehouse" size="xs" [ngStyle]="{'opacity': (tank.TankInGarage ? '1' : '0.5')}"></fa-icon> {{tank.TankInGarageUpdated|date:"short"}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>{{tanks.length|number}}</th>
+        <th>{{tableFooter.avgTier|number:'1.0-1'}}</th>
+        <th colspan="2"></th>
+        <th>{{tableFooter.battlesSum|number}}</th>
+        <th [appBlitzColorScale]="tableFooter.avgWinrate"  inverse="true">{{tableFooter.avgWinrate|percent:'2.2-2'}}</th>
+        <th [appBlitzColorScale]="tableFooter.avgWn7"  inverse="true">{{tableFooter.avgWn7|number:'3.0-0'}}</th>
+        <th>{{tableFooter.avgDamage|number:'3.0-0'}}</th>
+        <th>{{tableFooter.avgXp|number:'3.0-0'}}</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
