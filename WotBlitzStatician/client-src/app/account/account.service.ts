@@ -28,23 +28,20 @@ export class AccountsService extends WebapiRequestsService {
       .pipe(catchError(this.handleError));
   }
 
-  getPlayerPrivateInfo(accountId: number, isLoggedIn: boolean): Observable<PlayerPrivateInfo> {
-    if (isLoggedIn) {
-      return this.http
-        .get<PlayerPrivateInfo>(
-          `${this.baseUrl}api/WgRequests/AccountPrivateInfo/${accountId}`
-        )
-        .pipe(catchError(this.handleError));
-    }
-    return new Observable<PlayerPrivateInfo>();
+  getPlayerPrivateInfo(accountId: number): Observable<PlayerPrivateInfo> {
+    return this.http
+      .get<PlayerPrivateInfo>(
+        `${this.baseUrl}api/WgRequests/AccountPrivateInfo/${accountId}`
+      )
+      .pipe(catchError(this.handleError));
   }
 
   getAggregatedAccountTanksInfo(accountId: number, isLoggedIn: boolean): Observable<AccountTanksInfoAggregatedDto[]> {
-    // ToDo: Make aggregated info for guests
+    const url = isLoggedIn
+      ? `${this.baseUrl}api/TanksStat/AggregatedAccountTanksInfo/${accountId}`
+      : `${this.baseUrl}api/GuestAccount/${accountId}/aggregatedaccountInfo`;
     return this.http
-      .get<AccountTanksInfoAggregatedDto[]>(
-        `${this.baseUrl}api/TanksStat/AggregatedAccountTanksInfo/${accountId}`
-      )
+      .get<AccountTanksInfoAggregatedDto[]>(url)
       .pipe(catchError(this.handleError));
   }
 

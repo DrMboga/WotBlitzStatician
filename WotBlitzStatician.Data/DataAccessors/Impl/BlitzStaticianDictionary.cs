@@ -103,5 +103,18 @@
       return await _dbContext.AchievementSection.AsNoTracking()
                     .ToListAsync();
     }
+
+    public async Task<List<DictionaryNations>> GetAllNations()
+    {
+      return await _dbContext.DictionaryNation.AsNoTracking()
+                    .ToListAsync();
+    }
+
+    public async Task<List<DictionaryVehicleType>> GetAllVehicelTypes()
+    {
+      return await _dbContext.DictionaryVehicleType.AsNoTracking()
+                    .ToListAsync();
+    }
+
   }
 }

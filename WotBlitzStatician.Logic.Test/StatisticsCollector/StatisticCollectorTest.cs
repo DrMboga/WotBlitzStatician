@@ -119,7 +119,7 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
       Assert.NotNull(guestAccountInfo.Tanks);
       Assert.Equal(_dataStubs.AccountTanksStatistics.Count, guestAccountInfo.Tanks.Count);
       Assert.NotNull(guestAccountInfo.Achievements);
-// ToDo: ChartsInfo
+      Assert.NotNull(guestAccountInfo.AggregatedAccountInfo);
     }
 
     [Fact]
@@ -127,6 +127,8 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
     {
       var vehicles = _dataStubs.Vehicles;
       _dbContext.VehicleEncyclopedia.AddRange(vehicles);
+      _dbContext.DictionaryNation.AddRange(_dataStubs.Nations);
+      _dbContext.DictionaryVehicleType.AddRange(_dataStubs.VehicleTypes);
 
       _dbContext.AccountInfo.Add(_dataStubs.AccountInfo);
 
@@ -144,6 +146,5 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
     {
       _dbContext.Dispose();
     }
-
   }
 }

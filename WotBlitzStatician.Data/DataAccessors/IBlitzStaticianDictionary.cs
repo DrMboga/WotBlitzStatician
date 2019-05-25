@@ -28,5 +28,9 @@ namespace WotBlitzStatician.Data.DataAccessors
     Task<List<Achievement>> GetAchievements(List<string> acievementIds);
 
     Task<List<AchievementSection>> GetAchievementSections();
+
+    Task<List<DictionaryNations>> GetAllNations();
+
+    Task<List<DictionaryVehicleType>> GetAllVehicelTypes();
   }
 }

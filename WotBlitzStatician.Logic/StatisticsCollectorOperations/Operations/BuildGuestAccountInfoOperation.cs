@@ -64,7 +64,9 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
       GetAccountMasteryInfo(accountInfoFromWg.AccountInfoTanks);
       _guestAccountInfo.AccountInfo.PlayerClanInfo = _clanInfoMapper.Map<AccountClanInfo, PlayerClanInfoDto>(accountInfoFromWg.WargamingAccountInfo.AccountClanInfo);
 
-      _guestAccountInfo.Tanks = GetTanks(accountInfoFromWg.AccountInfoTanks);
+      var (tanks, aggregated) = GetTanks(accountInfoFromWg.AccountInfoTanks);
+      _guestAccountInfo.Tanks = tanks;
+      _guestAccountInfo.AggregatedAccountInfo = aggregated.OrderBy(t => t.Tier).ToList();
       _guestAccountInfo.Achievements = GetAccountAchievements(accountInfoFromWg.WargamingAccountInfo.Achievements);
     }
 
@@ -100,10 +102,13 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
       };
     }
 
-    private List<AccountTankInfoDto> GetTanks(List<AccountTankStatistics> tanks)
+    private (List<AccountTankInfoDto>, List<AccountTanksInfoAggregationDto>) GetTanks(List<AccountTankStatistics> tanks)
     {
-      var result = new List<AccountTankInfoDto>();
+      var tanksDto = new List<AccountTankInfoDto>();
+      var aggregatedDto = new List<AccountTanksInfoAggregationDto>();
       var vehicles = _dictionaryDataAccessor.GetVehicles(tanks.Select(t => t.TankId).ToList()).GetAwaiter().GetResult();
+      var nations = _dictionaryDataAccessor.GetAllNations().GetAwaiter().GetResult();
+      var vehicleTypes = _dictionaryDataAccessor.GetAllVehicelTypes().GetAwaiter().GetResult();
       foreach (var tank in tanks)
       {
         var tuple = new AccountTanksStatisticsTuple
@@ -111,9 +116,28 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
           Tank = tank,
           Vehicle = vehicles.SingleOrDefault(v => v.TankId == tank.TankId)
         };
-        result.Add(_tanksMapper.Map<AccountTanksStatisticsTuple, AccountTankInfoDto>(tuple));
+        tanksDto.Add(_tanksMapper.Map<AccountTanksStatisticsTuple, AccountTankInfoDto>(tuple));
+
+        if (tuple.Vehicle != null)
+        {
+          aggregatedDto.Add(new AccountTanksInfoAggregationDto
+          {
+            InGarage = tuple.Tank.InGarage,
+            Battles = tuple.Tank.Battles,
+            Wins = tuple.Tank.Wins,
+            DamageDealt = tuple.Tank.DamageDealt,
+            MarkOfMastery = tuple.Tank.MarkOfMastery,
+            Wn7 = tuple.Tank.Wn7,
+            Tier = tuple.Vehicle.Tier,
+            Nation = tuple.Vehicle.Nation,
+            NationName = nations.First(n => n.NationId == tuple.Vehicle.Nation).NationName,
+            Type = tuple.Vehicle.Type,
+            TypeName = vehicleTypes.First(t => t.VehicleTypeId == tuple.Vehicle.Type).VehicleTypeName,
+            IsPremium = tuple.Vehicle.IsPremium
+          });
+        }
       }
-      return result;
+      return (tanksDto, aggregatedDto);
     }
 
     private List<AchievementDto> GetAccountAchievements(List<AccountInfoAchievement> achievements)

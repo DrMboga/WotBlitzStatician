@@ -14,11 +14,12 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
       _accountId = accountId;
     }
 
-    public async Task Execute(StatisticsCollectorOperationContext operationContext)
+    public Task Execute(StatisticsCollectorOperationContext operationContext)
     {
       operationContext.Accounts.Add(new SatisticsCollectorAccountOperationContext
       { CurrentAccountInfo = new AccountInfo { AccountId = _accountId } });
       operationContext.OperationStateMessage = $"Account {_accountId} was set as guest account.";
+      return Task.CompletedTask;
     }
 
   }

@@ -44,6 +44,14 @@ namespace WotBlitzStatician.Controllers
       return Ok(accountInfo.AccountInfo);
     }
 
+    // api/GuestAccount/{accountId}/aggregatedaccountInfo
+    [HttpGet("{accountId}/aggregatedaccountInfo")]
+    public async Task<IActionResult> GetCachedAggregatedAccountInfo(long accountId)
+    {
+      var accountInfo = await ReadAccountInfoFromCache(accountId);
+      return Ok(accountInfo.AggregatedAccountInfo);
+    }
+
     private async Task<GuestAccountInfo> ReadAccountInfoAndPutInCache(long accountId)
     {
       var guestAccountInfo = new GuestAccountInfo();
