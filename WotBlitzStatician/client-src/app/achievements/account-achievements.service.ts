@@ -20,9 +20,12 @@ export class AccountAchievementsService extends WebapiRequestsService {
     accountId: number,
     isAccountLoggedin: boolean
   ): Observable<AccountAchievementDto[]> {
+    const url = isAccountLoggedin
+      ? `${this.baseUrl}api/AccountInfo/Achievements/${accountId}`
+      : `${this.baseUrl}api/GuestAccount/${accountId}/achievements`;
     return this.http
       .get<AccountAchievementDto[]>(
-        `${this.baseUrl}api/AccountInfo/Achievements/${accountId}`
+        url
       )
       .pipe(catchError(this.handleError));
   }

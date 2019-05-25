@@ -52,6 +52,23 @@ namespace WotBlitzStatician.Controllers
       return Ok(accountInfo.AggregatedAccountInfo);
     }
 
+    // api/GuestAccount/{accountId}/achievements
+    [HttpGet("{accountId}/achievements")]
+    public async Task<IActionResult> GetCachedAchievementsAccountInfo(long accountId)
+    {
+      var accountInfo = await ReadAccountInfoFromCache(accountId);
+      return Ok(accountInfo.Achievements);
+    }
+
+// ToDo: Make an Odata
+    // api/GuestAccount/{accountId}/tanks
+    [HttpGet("{accountId}/tanks")]
+    public async Task<IActionResult> GetCachedTanks(long accountId)
+    {
+      var accountInfo = await ReadAccountInfoFromCache(accountId);
+      return Ok(accountInfo.Tanks);
+    }
+
     private async Task<GuestAccountInfo> ReadAccountInfoAndPutInCache(long accountId)
     {
       var guestAccountInfo = new GuestAccountInfo();

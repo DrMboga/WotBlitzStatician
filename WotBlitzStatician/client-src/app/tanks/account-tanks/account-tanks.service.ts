@@ -12,11 +12,13 @@ export class AccountTanksService extends WebapiRequestsService {
     http: HttpClient,
     @Inject('BASE_URL') baseUrl: string) { super(http, baseUrl); }
 
-  getTanksDataByQuery(dataQuery: string, isAccountLoggedin: boolean): Observable<TankStatisticDto[]> {
-    return this.http.get<any>(`${this.baseUrl}${dataQuery}`).pipe(
-      map(d => d.value as TankStatisticDto[]),
-      catchError(this.handleError)
-    );
+  getTanksDataByQuery(dataQuery: string, accountId: number, isAccountLoggedin: boolean): Observable<TankStatisticDto[]> {
+    if (isAccountLoggedin) {
+      return this.http.get<any>(`${this.baseUrl}${dataQuery}`).pipe(
+        map(d => d.value as TankStatisticDto[]),
+        catchError(this.handleError)
+      );
+    }
   }
 
 }

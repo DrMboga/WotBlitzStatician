@@ -54,7 +54,7 @@ export class AccountTanksComponent implements OnInit, OnDestroy {
       this.filter$
     ).pipe(
       mergeMap(([accountId, filter]) =>
-        this.accountTanksService.getTanksDataByQuery(filter.getFilterQuery(accountId.accountId), accountId.accountLoggedIn)
+        this.accountTanksService.getTanksDataByQuery(filter.getFilterQuery(accountId.accountId), accountId.accountId, accountId.accountLoggedIn)
           .pipe(
             catchError(err => {
               this.error$.next(err);
