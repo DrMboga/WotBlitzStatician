@@ -11,28 +11,19 @@ namespace WotBlitzStatician.Controllers
 
   public class GuestAccountController : Controller
   {
-    private const string CacheKeyTemplate = "guestAccount{0}";
-
-    private readonly IStatisticsCollectorEngine _statisticsCollectorEngine;
-    private readonly IStatisticsCollectorFactory _statisticsCollectorFactory;
-    private readonly IMemoryCache _cache;
-
+    private GuestAccountCache _guestAccountCache;
 
     public GuestAccountController(
-      IStatisticsCollectorEngine statisticsCollectorEngine,
-      IStatisticsCollectorFactory statisticsCollectorFactory,
-      IMemoryCache cache)
+      GuestAccountCache guestAccountCache)
     {
-      _statisticsCollectorEngine = statisticsCollectorEngine;
-      _statisticsCollectorFactory = statisticsCollectorFactory;
-      _cache = cache;
+      _guestAccountCache = guestAccountCache;
     }
 
     // api/GuestAccount/accountId
     [HttpPut("{accountId}")]
     public async Task<IActionResult> UpdateAccountInfo(long accountId)
     {
-      var guestAccountInfo = await ReadAccountInfoAndPutInCache(accountId);
+      var guestAccountInfo = await _guestAccountCache.ReadAccountInfoAndPutInCache(accountId);
       return Ok();
     }
 
@@ -40,7 +31,7 @@ namespace WotBlitzStatician.Controllers
     [HttpGet("{accountId}/accountinfo")]
     public async Task<IActionResult> GetCachedAccountInfo(long accountId)
     {
-      var accountInfo = await ReadAccountInfoFromCache(accountId);
+      var accountInfo = await _guestAccountCache.ReadAccountInfoFromCache(accountId);
       return Ok(accountInfo.AccountInfo);
     }
 
@@ -48,7 +39,7 @@ namespace WotBlitzStatician.Controllers
     [HttpGet("{accountId}/aggregatedaccountInfo")]
     public async Task<IActionResult> GetCachedAggregatedAccountInfo(long accountId)
     {
-      var accountInfo = await ReadAccountInfoFromCache(accountId);
+      var accountInfo = await _guestAccountCache.ReadAccountInfoFromCache(accountId);
       return Ok(accountInfo.AggregatedAccountInfo);
     }
 
@@ -56,41 +47,16 @@ namespace WotBlitzStatician.Controllers
     [HttpGet("{accountId}/achievements")]
     public async Task<IActionResult> GetCachedAchievementsAccountInfo(long accountId)
     {
-      var accountInfo = await ReadAccountInfoFromCache(accountId);
+      var accountInfo = await _guestAccountCache.ReadAccountInfoFromCache(accountId);
       return Ok(accountInfo.Achievements);
     }
 
-// ToDo: Make an Odata
     // api/GuestAccount/{accountId}/tanks
     [HttpGet("{accountId}/tanks")]
     public async Task<IActionResult> GetCachedTanks(long accountId)
     {
-      var accountInfo = await ReadAccountInfoFromCache(accountId);
+      var accountInfo = await _guestAccountCache.ReadAccountInfoFromCache(accountId);
       return Ok(accountInfo.Tanks);
     }
-
-    private async Task<GuestAccountInfo> ReadAccountInfoAndPutInCache(long accountId)
-    {
-      var guestAccountInfo = new GuestAccountInfo();
-      await _statisticsCollectorEngine.Collect(
-          _statisticsCollectorFactory.CreateCollector(accountId, guestAccountInfo));
-
-      string cacheKey = string.Format(CacheKeyTemplate, accountId);
-      _cache.Set<GuestAccountInfo>(cacheKey, guestAccountInfo, TimeSpan.FromMinutes(10));
-
-      return guestAccountInfo;
-    }
-
-    private async Task<GuestAccountInfo> ReadAccountInfoFromCache(long accountId)
-    {
-      string cacheKey = string.Format(CacheKeyTemplate, accountId);
-      GuestAccountInfo accountInfo;
-      if (!_cache.TryGetValue<GuestAccountInfo>(cacheKey, out accountInfo))
-      {
-        accountInfo = await ReadAccountInfoAndPutInCache(accountId);
-      }
-      return accountInfo;
-    }
-
   }
 }

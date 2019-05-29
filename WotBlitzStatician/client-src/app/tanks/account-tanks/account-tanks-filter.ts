@@ -1,4 +1,5 @@
 import { DatePipe } from '@angular/common';
+import { CurrentAccountId } from '../../home/state/home.state';
 export class AccountTanksFilter {
   inGarage: boolean;
   tires: FilterItem[];
@@ -21,8 +22,10 @@ export class AccountTanksFilter {
   api/TanksInfo(90277267)?$filter=TankBattles gt 100
   api/TanksInfo(90277267)?$filter=TankLastBattleTime gt 2018-09-04T00:00:00.00Z
   */
-  getFilterQuery(accountId: number): string {
-    let query = 'api/TanksInfo(' + accountId + ')';
+  getFilterQuery(accountId: CurrentAccountId): string {
+    const methodName = accountId.accountLoggedIn
+      ? 'TanksInfo' : 'GuestTanksInfo';
+    let query = `api/${methodName}(${accountId.accountId})`;
     const filters: string[] = new Array();
     if (this.inGarage) {
       filters.push('TankInGarage eq true');
