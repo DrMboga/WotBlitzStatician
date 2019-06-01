@@ -1,33 +1,33 @@
 <div class="row tank-card-stat-item fixed_sixe_auto-margin">
-    <img [ngClass]="'mr-1 flag-' + tankInfo.vehicleNation" />
-    <img [ngClass]="'mr-1 tank-type-' + tankInfo.vehicleType + (tankInfo.vehicleIsPremium ? '-prem' : '')" />
-    <b class="mr-1">{{tankInfo.tankTierRoman}}</b>
-    <img *ngIf="tankInfo.tankMarkOfMastery != 'None'" [ngClass]="'mr-1 mastery-' + tankInfo.tankMarkOfMastery" />
-    <fa-icon icon="warehouse" class="mr-1" [ngStyle]="{'opacity': (tankInfo.tankInGarage ? '1' : '0.5')}"></fa-icon>
-    <b>{{tankInfo.vehicleName}}</b>
+    <img [ngClass]="'mr-1 flag-' + tankInfo.VehicleNation" />
+    <img [ngClass]="'mr-1 tank-type-' + tankInfo.VehicleType + (tankInfo.VehicleIsPremium ? '-prem' : '')" />
+    <b class="mr-1">{{tankInfo.TankTierRoman}}</b>
+    <img *ngIf="tankInfo.TankMarkOfMastery != 'None'" [ngClass]="'mr-1 mastery-' + tankInfo.TankMarkOfMastery" />
+    <fa-icon icon="warehouse" class="mr-1" [ngStyle]="{'opacity': (tankInfo.TankInGarage ? '1' : '0.5')}"></fa-icon>
+    <b>{{tankInfo.VehicleName}}</b>
 </div>
 <div class="row fixed_sixe_auto-margin">
     <div class="col-sm-5">
-        <img src="{{tankInfo.previewLocalImage}}" width="100%" />
+        <img src="{{tankInfo.PreviewLocalImage}}" width="100%" />
     </div>
     <div class="col-sm-6">
         <div class="tank-card-stat-item">
-            <fa-icon icon="gamepad"></fa-icon> {{tankInfo.tankBattles|number}}
+            <fa-icon icon="gamepad"></fa-icon> {{tankInfo.TankBattles|number}}
         </div>
-        <div class="tank-card-stat-item" [appBlitzColorScale]="tankInfo.winRate">
-            <fa-icon icon="flag"></fa-icon> {{tankInfo.winRate|percent:'2.2-2'}}
+        <div class="tank-card-stat-item" [appBlitzColorScale]="tankInfo.WinRate">
+            <fa-icon icon="flag"></fa-icon> {{tankInfo.WinRate|percent:'2.2-2'}}
         </div>
-        <div class="tank-card-stat-item" [appBlitzColorScale]="tankInfo.tankWn7">
-            <fa-icon icon="calculator" size="xs"></fa-icon> Wn7 {{tankInfo.tankWn7|number:'3.0-0'}}
-        </div>
-        <div class="tank-card-stat-item">
-            <fa-icon icon="skull-crossbones"></fa-icon> {{tankInfo.avgDamage|number:'3.0-0'}}
+        <div class="tank-card-stat-item" [appBlitzColorScale]="tankInfo.TankWn7">
+            <fa-icon icon="calculator" size="xs"></fa-icon> Wn7 {{tankInfo.TankWn7|number:'3.0-0'}}
         </div>
         <div class="tank-card-stat-item">
-            <fa-icon [icon]="['far', 'star']"></fa-icon> {{tankInfo.avgXp|number:'3.0-0'}}
+            <fa-icon icon="skull-crossbones"></fa-icon> {{tankInfo.AvgDamage|number:'3.0-0'}}
         </div>
         <div class="tank-card-stat-item">
-            <fa-icon [icon]="['far', 'heart']"></fa-icon> {{tankInfo.survivalRate|percent:'2.2-2'}}
+            <fa-icon [icon]="['far', 'star']"></fa-icon> {{tankInfo.AvgXp|number:'3.0-0'}}
+        </div>
+        <div class="tank-card-stat-item">
+            <fa-icon [icon]="['far', 'heart']"></fa-icon> {{tankInfo.SurvivalRate|percent:'2.2-2'}}
         </div>
     </div>
 </div>

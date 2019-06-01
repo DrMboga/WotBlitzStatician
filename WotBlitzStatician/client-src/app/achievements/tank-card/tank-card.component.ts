@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TankByAchievementDto } from '../../model/tank-by-achievement-dto';
+import { TankStatisticDto } from '../../model/tank-statistic-dto';
 
 @Component({
   selector: 'app-tank-card',
@@ -9,7 +9,7 @@ import { TankByAchievementDto } from '../../model/tank-by-achievement-dto';
 export class TankCardComponent implements OnInit {
 
   @Input()
-  public tankInfo: TankByAchievementDto;
+  public tankInfo: TankStatisticDto;
 
   constructor() { }
 
