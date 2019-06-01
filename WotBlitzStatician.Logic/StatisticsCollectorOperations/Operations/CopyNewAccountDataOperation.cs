@@ -5,8 +5,7 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 {
 	public class CopyNewAccountDataOperation : IStatisticsCollectorOperation
 	{
-		#pragma warning disable CS1998
-		public async Task Execute(StatisticsCollectorOperationContext operationContext)
+		public Task Execute(StatisticsCollectorOperationContext operationContext)
 		{
       operationContext.OperationStateMessage = string.Empty;
       foreach (var account in operationContext.Accounts)
@@ -23,8 +22,8 @@ namespace WotBlitzStatician.Logic.StatisticsCollectorOperations.Operations
 				account.CurrentAccountInfo.AchievementsMaxSeries = account.WargamingAccountInfo.AchievementsMaxSeries;
         operationContext.OperationStateMessage += $"Copied WG info to current account info for account {account.CurrentAccountInfo.AccountId}; ";
       }
-		}
-		#pragma warning restore CS1998
+      return Task.CompletedTask;
+    }
 
 	}
 }
