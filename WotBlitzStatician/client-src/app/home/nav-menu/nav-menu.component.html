@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]="['/']">{{currentAccountNick$ | async}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav mr-auto" *ngIf="showMenu">
+        <button class="btn btn-dark my-2 my-sm-0 text-sm-left" *ngIf="showHistoryMenu"
+            title="Обновить статистику"
+            [disabled]="!refreshEnabled"
+            (click)="refreshStat()">
+          <fa-icon icon="sync"></fa-icon>
+        </button>
+        <a class="nav-item nav-link" [routerLinkActive]="['active']" [routerLink]="['/account']">Статистика</a>
+        <a class="nav-item nav-link" [routerLinkActive]="['active']" [routerLink]="['/account-achievements']">Достижения</a>
+        <a class="nav-item nav-link" [routerLinkActive]="['active']" [routerLink]="['/account-history']" *ngIf="showHistoryMenu">История</a>
+        <a class="nav-item nav-link" [routerLinkActive]="['active']" [routerLink]="['/tanks']">Танки</a>
+      </div>
+      <div class="navbar-nav mr-auto" *ngIf="!showMenu"></div>
+
+      <button class="btn btn-dark my-2 my-sm-0" title="Login with Wargaming ID" style="margin-left: 2px; margin-right: 2px" (click)="logIn()" *ngIf="showLoginButton">
+          <span>Login <fa-icon icon="sign-in-alt"></fa-icon></span>
+      </button>
+      <button class="btn btn-dark my-2 my-sm-0" title="Logout" style="margin-left: 2px; margin-right: 2px" (click)="logOut()" *ngIf="showLogoutButton">
+          <span>{{loggedinAccountNick$ | async}} <fa-icon icon="sign-out-alt"></fa-icon></span>
+      </button>
+      <button class="btn btn-dark my-2 my-sm-0" title="Return" style="margin-left: 2px; margin-right: 2px" (click)="returnToLoggedinAccount()" *ngIf="showReturnToLoggedinButton">
+          <span>{{loggedinAccountNick$ | async}} <fa-icon icon="sign-in-alt"></fa-icon></span>
+      </button>
+      <app-account-search></app-account-search>
+    </div>
+</nav>

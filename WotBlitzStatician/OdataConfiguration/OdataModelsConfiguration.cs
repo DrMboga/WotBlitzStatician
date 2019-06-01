@@ -15,6 +15,7 @@ namespace WotBlitzStatician.OdataConfiguration
       };
 
       ConfigureTanksOdata(builder);
+      ConfigureGuestTanksOdata(builder);
 
       return builder.GetEdmModel();
     }
@@ -28,6 +29,17 @@ namespace WotBlitzStatician.OdataConfiguration
         .Expand()
         .OrderBy();
       builder.EntitySet<AccountTankInfoDto>("TanksInfo");
+    }
+
+    public static void ConfigureGuestTanksOdata(ODataConventionModelBuilder builder)
+    {
+      builder.EntityType<AccountTankInfoDto>()
+        .HasKey(t => t.TankAccountTankStatisticId)
+        .Filter()
+        .Select()
+        .Expand()
+        .OrderBy();
+      builder.EntitySet<AccountTankInfoDto>("GuestTanksInfo");
     }
   }
 }

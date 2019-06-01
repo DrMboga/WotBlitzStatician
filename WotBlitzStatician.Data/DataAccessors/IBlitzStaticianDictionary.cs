@@ -20,5 +20,17 @@ namespace WotBlitzStatician.Data.DataAccessors
 		Task<Dictionary<long, double>> GetVehiclesTires();
 
 		Task<List<string>> GetAllImages();
-	}
+
+    Task<string> GetClanRole(string clanRoleId);
+
+    Task<List<VehicleEncyclopedia>> GetVehicles(List<long> tankId);
+
+    Task<List<Achievement>> GetAchievements(List<string> acievementIds);
+
+    Task<List<AchievementSection>> GetAchievementSections();
+
+    Task<List<DictionaryNations>> GetAllNations();
+
+    Task<List<DictionaryVehicleType>> GetAllVehicelTypes();
+  }
 }

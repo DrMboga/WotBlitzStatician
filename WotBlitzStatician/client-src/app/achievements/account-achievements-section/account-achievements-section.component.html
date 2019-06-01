@@ -1,0 +1,10 @@
+<div *ngIf="achievements && achievements.length > 0">
+  <h5>{{achievements[0].sectionName}}</h5>
+  <div class="row">
+    <div *ngFor="let achievement of achievements" class="text-center">
+      <img class="achievment-img" src="{{achievement.localImage}}" title="{{achievement.name}}&#13;{{achievement.description}}"
+      (click)="achievementSelected(achievement);"/><br />
+      {{achievement.count}}
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using WotBlitzStatician.Data;
 using WotBlitzStatician.Logic.Test.Logging;
 using WotBlitzStatician.Model;
+using WotBlitzStatician.Model.Dto;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -103,10 +104,31 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
     }
 
     [Fact]
+    public async Task TestGuestAccountGetter()
+    {
+      SetInitialData();
+      var guestAccountInfo = new GuestAccountInfo();
+      await _statisticsCollectorEngine.Collect(
+          _statisticsCollectorFactory.CreateCollector(_dataStubs.AccountInfo.AccountId, guestAccountInfo));
+
+      Assert.NotNull(guestAccountInfo.AccountInfo);
+      Assert.NotNull(guestAccountInfo.AccountInfo.PlayerStatistics);
+      Assert.NotNull(guestAccountInfo.AccountInfo.AccountMasteryInfo);
+      Assert.Equal(4, guestAccountInfo.AccountInfo.AccountMasteryInfo.Count());
+      Assert.NotNull(guestAccountInfo.AccountInfo.PlayerClanInfo);
+      Assert.NotNull(guestAccountInfo.Tanks);
+      Assert.Equal(_dataStubs.AccountTanksStatistics.Count, guestAccountInfo.Tanks.Count);
+      Assert.NotNull(guestAccountInfo.Achievements);
+      Assert.NotNull(guestAccountInfo.AggregatedAccountInfo);
+    }
+
+    [Fact]
     public void SetInitialData()
     {
       var vehicles = _dataStubs.Vehicles;
       _dbContext.VehicleEncyclopedia.AddRange(vehicles);
+      _dbContext.DictionaryNation.AddRange(_dataStubs.Nations);
+      _dbContext.DictionaryVehicleType.AddRange(_dataStubs.VehicleTypes);
 
       _dbContext.AccountInfo.Add(_dataStubs.AccountInfo);
 
@@ -124,6 +146,5 @@ namespace WotBlitzStatician.Logic.Test.StatisticsCollector
     {
       _dbContext.Dispose();
     }
-
   }
 }

@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="row m-5">
+    <div class="col-sm-7">
+      <app-account-achievements-section
+      [achievements] = "epicAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
+      <app-account-achievements-section
+      [achievements] = "platoonAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
+      <app-account-achievements-section
+      [achievements] = "battleAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
+      <app-account-achievements-section
+      [achievements] = "titleAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
+      <app-account-achievements-section
+      [achievements] = "commemorativeAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
+      <app-account-achievements-section
+      [achievements] = "stepAchievements$ | async"
+      (selected)="getTanksByAchievement($event)"></app-account-achievements-section>
+    </div>
+    <div class="col-sm-5">
+      <div class="container" *ngIf="tanksByAchievement$ | async as tanksByAchievement">
+        <div class="row" *ngFor="let tank of tanksByAchievement">
+          <div class="mr-2">
+            <img class="achievment-img"
+              src="{{clickedAchievementImage$ | async}}"
+              title="{{clickedAchievementDescription$ | async}}" ><br/>
+            <h4 class="text-center">{{tank.achievementsCount}}</h4>
+          </div>
+          <app-tank-card [tankInfo]="tank.tankInfo"></app-tank-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="loadAchievemntsError$ | async as loadAchievemntsError" class="alert alert-danger">
+  Getting account achievements error: {{ loadAchievemntsError }}
+</div>
+<div *ngIf="loadTanksByAchievemntsError$ | async as loadTanksByAchievemntsError" class="alert alert-danger">
+  Getting tanks by achievement error: {{ loadTanksByAchievemntsError }}
+</div>
+

@@ -1,0 +1,40 @@
+<form  (ngSubmit)="applyFilter()">
+  <div class="form-row form-inline">
+    <div class="btn-group btn-group-toggle" id="tiersToggle" title="Уровни танков">
+      <label [ngClass]="'btn btn-light' + (tier.isSelected ? ' active' : '')" *ngFor="let tier of filter.tires">
+        <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="tier.isSelected">{{tier.itemName}}
+      </label>
+    </div>
+    <div *ngIf="showGarageinfo$ | async" class="btn-group btn-group-toggle" id="inGarageToggle" title="В гараже">
+      <label [ngClass]="'btn btn-light' + (filter.inGarage ? ' active' : '')">
+        <input type="checkbox" [ngModelOptions]="{standalone: true}" autocomplete="off" [(ngModel)]="filter.inGarage" class="checkbox-empty"><fa-icon icon="warehouse"></fa-icon>
+      </label>
+    </div>
+    <div class="input-group mb-2 mr-sm-2" title="Боев >">
+      <input type="number" [ngModelOptions]="{standalone: true}" class="form-control" id="minBattles" [(ngModel)]="filter.minBattles" placeholder="100">
+    </div>
+    <div class="input-group mb-2 mr-sm-2" title="Последний бой с:">
+      <input type="date" [ngModelOptions]="{standalone: true}" class="form-control" id="dateFrom" [ngModel]="filter.dataFrom|date:'yyyy-MM-dd'" (ngModelChange)="filter.dataFrom = $event">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="btn-group btn-group-toggle" id="vehicleTypesToggle" title="Типы танков">
+      <label [ngClass]="'btn btn-light' + (vehicleType.isSelected ? ' active' : '')" *ngFor="let vehicleType of filter.vehicleTypes">
+        <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="vehicleType.isSelected"><img [ngClass]="'tank-type-' + vehicleType.itemName" />
+      </label>
+    </div>
+    <div class="btn-group btn-group-toggle" id="nationsToggle" title="Нации">
+      <label [ngClass]="'btn btn-light' + (nation.isSelected ? ' active' : '')" *ngFor="let nation of filter.nations">
+        <input type="checkbox" [ngModelOptions]="{standalone: true}" class="checkbox-empty" autocomplete="off" [(ngModel)]="nation.isSelected"><img [ngClass]="'flag-' + nation.itemName" />
+      </label>
+    </div>
+    <button class="btn btn-light" type="submit" title="Применить фильтр">
+      <fa-icon icon="search"></fa-icon>
+    </button>
+  </div>
+</form>
+<div *ngIf="error$ | async as errorMessage" class="alert alert-danger">
+  Getting account tanks error: {{ errorMessage }}
+</div>
+<app-tanks-table [tanks]="tanks$ | async" [showGarageInfo]="showGarageinfo$ | async"></app-tanks-table>
+

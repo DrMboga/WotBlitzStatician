@@ -18,6 +18,7 @@ namespace WotBlitzStatician
   using Microsoft.AspNetCore.Http;
   using Microsoft.AspNetCore.Routing;
   using Microsoft.IdentityModel.Tokens;
+  using WotBlitzStatician.Controllers;
   using WotBlitzStatician.JwtSecurity;
   using WotBlitzStatician.OdataConfiguration;
 
@@ -76,6 +77,7 @@ namespace WotBlitzStatician
       builder.RegisterInstance<ISecurityConfiguration>(wgApiConfig.SecurityConfiguration);
       builder.RegisterType<SecurityService>().As<ISecurityServise>();
       builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
+      builder.RegisterType<GuestAccountCache>();
       builder.ConfigureWargamingApi();
       builder.ConfigureDataAccessor(Configuration.GetConnectionString("BlitzStatician"));
       builder.ConfigureBlitzStaticianLogic();
