@@ -5,10 +5,26 @@ import { SplashScreenComponent } from './home/splash-screen/splash-screen.compon
 
 const routes: Routes = [
   { path: '', redirectTo: 'account', pathMatch: 'full' },
-  { path: 'account', loadChildren: './account/account.module#AccountModule', canActivate: [AuthGuard] },
-  { path: 'tanks', loadChildren: './tanks/tanks.module#TanksModule', canActivate: [AuthGuard] },
-  { path: 'account-achievements', loadChildren: './achievements/achievements.module#AchievementsModule', canActivate: [AuthGuard] },
-  { path: 'account-history', loadChildren: './history/history.module#HistoryModule', canActivate: [AuthGuard] },
+  {
+    path: 'account',
+    loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'tanks',
+    loadChildren: () => import('./tanks/tanks.module').then(m => m.TanksModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'account-achievements',
+    loadChildren: () => import('./achievements/achievements.module').then(m => m.AchievementsModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'account-history',
+    loadChildren: () => import('./history/history.module').then(m => m.HistoryModule),
+    canActivate: [AuthGuard]
+  },
   { path: 'splash-screen', component: SplashScreenComponent },
   { path: '**', redirectTo: 'account' }
 ];
