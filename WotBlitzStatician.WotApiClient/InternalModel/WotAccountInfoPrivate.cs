@@ -16,8 +16,8 @@
 		///Время окончания блокировки аккаунта
 		///</summary>
 		[JsonProperty("ban_time")]
-		private int? _banTime;
-		public DateTime? BanTime => _banTime.ToDateTime();
+		private int? _banTime { get; set; }
+    public DateTime? BanTime => _banTime.ToDateTime();
 
 		///<summary>
 		///Общее время в бою до уничтожения в секундах
@@ -53,7 +53,7 @@
 		///Срок действия премиум аккаунта
 		///</summary>
 		[JsonProperty("premium_expires_at")]
-		private int? _premiumExpiresAt;
+		private int? _premiumExpiresAt { get; set; }
 		public DateTime? PremiumExpiresAt => _premiumExpiresAt.ToDateTime();
 
 		///<summary>
