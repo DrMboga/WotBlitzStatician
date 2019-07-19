@@ -22,8 +22,8 @@
 		///Время обновления информации о технике в энциклопедии
 		///</summary>
 		[JsonProperty("tanks_updated_at")]
-		private int? _tanksUpdatedAt;
-		public DateTime? TanksUpdatedAt => _tanksUpdatedAt.ToDateTime();
+		private int? _tanksUpdatedAt { get; set; }
+    public DateTime? TanksUpdatedAt => _tanksUpdatedAt.ToDateTime();
 
 		///<summary>
 		///Возможные специальности экипажа

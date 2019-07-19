@@ -17,17 +17,17 @@
 		public int? BattleLifeTimeInSeconds { get; set; }
 
 		[JsonProperty("last_battle_time")]
-		private int? _lastBattleTime;
-		///<summary>
-		///Время последнего боя
-		///</summary>
-		public DateTime? LastBattleTime => _lastBattleTime.ToDateTime();
+		private int? _lastBattleTime { get; set; }
+    ///<summary>
+    ///Время последнего боя
+    ///</summary>
+    public DateTime? LastBattleTime => _lastBattleTime.ToDateTime();
 
 		[JsonProperty("in_garage")]
 		public bool? InGarage { get; set; }
 
 		[JsonProperty("in_garage_updated")]
-		private int? _inGarageUpdated;
+		private int? _inGarageUpdated { get; set; }
 		public DateTime? InGarageUpdated => _inGarageUpdated.ToDateTime();
 
 		///<summary>
@@ -40,7 +40,7 @@
 		///4 — Мастер
 		///</summary>
 		[JsonProperty("mark_of_mastery")]
-		private long? _markOfMastery;
+		private long? _markOfMastery { get; set; }
 		public MarkOfMastery MarkOfMastery => _markOfMastery.HasValue ? (MarkOfMastery)_markOfMastery.Value : MarkOfMastery.None;
 
 		///<summary>

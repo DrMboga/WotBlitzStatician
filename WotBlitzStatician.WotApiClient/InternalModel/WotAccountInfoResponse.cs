@@ -12,14 +12,14 @@
 		public long? AccountId { get; set; }
 
 		[JsonProperty("created_at")]
-		private int? _createdAt;
+		private int? _createdAt { get; set; }
 		///<summary>
 		///Дата создания аккаунта игрока
 		///</summary>
 		public DateTime? CreatedAt => _createdAt.ToDateTime();
 
 		[JsonProperty("last_battle_time")]
-		private int? _lastBattleTime;
+		private int? _lastBattleTime { get; set; }
 		///<summary>
 		///Время последнего боя
 		///</summary>
@@ -32,7 +32,7 @@
 		public string Nickname { get; set; }
 
 		[JsonProperty("updated_at")]
-		private int? _updatedAt;
+		private int? _updatedAt { get; set; }
 		///<summary>
 		///Дата обновления информации об игроке
 		///</summary>
