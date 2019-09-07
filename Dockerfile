@@ -16,7 +16,7 @@ RUN npm run build -- --output-path=./dist/out
 # ToDo: Run tests
 
 # dotnetcore part
-FROM microsoft/dotnet:2.1-sdk AS netcore-build
+FROM microsoft/dotnet:2.2-sdk AS netcore-build
 WORKDIR /app
 
 COPY WotBlitzStatician.sln .
@@ -43,7 +43,7 @@ RUN dotnet test
 WORKDIR /app/WotBlitzStatician
 RUN dotnet publish -c Release -o out
 
-FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
+FROM microsoft/dotnet:2.2-aspnetcore-runtime AS runtime
 ENV WgApi:ApplicationId=Demo
 ENV WgApi:HttpTimeoutInMinutes=2
 ENV SecurityConfiguration:secret=Demo
